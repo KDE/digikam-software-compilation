@@ -1,0 +1,21 @@
+This is the digiKam Software Collection (http://www.digikam.org)
+----------------------------------------------------------------
+
+All code here are dedicated to digiKam GoSC 2010 :
+
+"digikam" is 2.0.0 version. It includes currently xmp sidecar support,
+pure Qt4 port of preview widget, image versioning support by Martin.
+This branch will include too, face detection by Aditya and QTScript
+support by Kunal.
+
+"kipi-plugins" 2.0.0 is integrated in digiKam now as extra components.
+It includes a new version of GPSSync from Gabriel and Michael and it
+will include xmp sidecar support.
+
+"libkipi", "libkexiv2", and "libkdcraw", version 2.0.0 are also integrated in digiKam as extra components.
+"libkface", and "libkmap" are new libraries also integrated in digiKam as extra components.
+
+Take a look on each README files to resolve dependencies before...
+
+------------
+digiKam team
