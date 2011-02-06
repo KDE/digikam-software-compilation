@@ -4,3 +4,4 @@
 
 (cd core && git checkout -b 2.0 origin/development/2.0)
 (cd extra/kipi-plugins && git checkout -b 2.0 origin/development/2.0)
+
