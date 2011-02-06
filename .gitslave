@@ -1,4 +1,4 @@
-"kde://digikam" "core"
-"kde://libkface" "extra/libkface"
-"kde://libkmap" "extra/libkmap"
-"kde://kipi-plugins" "extra/kipi-plugins"
+"kde:digikam" "core"
+"kde:libkface" "extra/libkface"
+"kde:libkmap" "extra/libkmap"
+"kde:kipi-plugins" "extra/kipi-plugins"
