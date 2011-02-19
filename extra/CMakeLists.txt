@@ -22,9 +22,9 @@
 #
 # ============================================================
 
-SUBDIRS(libkipi)
-SUBDIRS(libkexiv2)
-SUBDIRS(libkdcraw)
-SUBDIRS(libkface)
-SUBDIRS(libkmap)
-SUBDIRS(kipi-plugins)
+ADD_SUBDIRECTORY(libkipi)
+ADD_SUBDIRECTORY(libkexiv2)
+ADD_SUBDIRECTORY(libkdcraw)
+ADD_SUBDIRECTORY(libkface)
+ADD_SUBDIRECTORY(libkmap)
+ADD_SUBDIRECTORY(kipi-plugins)

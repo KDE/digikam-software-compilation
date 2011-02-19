@@ -7,4 +7,6 @@ git config --global --add url.ssh://git@git.kde.org/.pushinsteadof kde://
 
 (cd core && git checkout -b 2.0 origin/development/2.0)
 (cd extra/kipi-plugins && git checkout -b 2.0 origin/development/2.0)
+(cd extra/libkexiv2 && git checkout -b 2.0 origin/development/2.0)
+(cd extra/libkdcraw && git checkout -b 2.0 origin/development/2.0)
 
