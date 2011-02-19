@@ -2,3 +2,6 @@ core
 extra/libkface
 extra/libkmap
 extra/kipi-plugins
+extra/libkipi
+extra/libkdcraw
+extra/libkexiv2
