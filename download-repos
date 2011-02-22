@@ -1,12 +1,9 @@
 #!/bin/sh
 
-git config --global --add url.git://anongit.kde.org/.insteadof kde://
-git config --global --add url.ssh://git@git.kde.org/.pushinsteadof kde://
-
 ./gits populate
 
-(cd core && git checkout -b 2.0 origin/development/2.0)
-(cd extra/kipi-plugins && git checkout -b 2.0 origin/development/2.0)
-(cd extra/libkexiv2 && git checkout -b 2.0 origin/development/2.0)
-(cd extra/libkdcraw && git checkout -b 2.0 origin/development/2.0)
+(cd core && git checkout -b 2.0 -t origin/development/2.0)
+(cd extra/kipi-plugins && git checkout -b 2.0 -t origin/development/2.0)
+(cd extra/libkexiv2 && git checkout -b 2.0 -t origin/development/2.0)
+(cd extra/libkdcraw && git checkout -b 2.0 -t origin/development/2.0)
 
