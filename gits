@@ -188,7 +188,15 @@ sub resolve_repository($$;$)
     # Is this repository-relative? (keep method://host from master)
     if ($relrepos =~ m:^\^(/?.*):)
     {
-      return "$mprefix$1";
+      my $path = $1;
+      if ($path =~ m-^/- || $mprefix =~ m-[:/]$-)
+      {
+          return "$mprefix$1";
+      }
+      else
+      {
+          return "$mprefix/$1";
+      }
     }
 
     # Do we have a replacement method://?  (Seems like an unlikely case)
