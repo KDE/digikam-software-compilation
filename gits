@@ -183,7 +183,7 @@ sub resolve_repository($$;$)
   else
   {
     my ($mprefix, $msuffix) = ("", $absrepos);
-    ($mprefix, $msuffix) = ($1, $2) if ($absrepos =~ m-^(\w+:(?://[^/]*|))(.*)-);
+    ($mprefix, $msuffix) = ($1, $2) if ($absrepos =~ m-^([\w\@\.]+:(?://[^/]*|))(.*)-);
 
     # Is this repository-relative? (keep method://host from master)
     if ($relrepos =~ m:^\^(/?.*):)
@@ -191,11 +191,11 @@ sub resolve_repository($$;$)
       my $path = $1;
       if ($path =~ m-^/- || $mprefix =~ m-[:/]$-)
       {
-          return "$mprefix$1";
+          return "$mprefix$path";
       }
       else
       {
-          return "$mprefix/$1";
+          return "$mprefix/$path";
       }
     }
 
