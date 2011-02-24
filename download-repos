@@ -1,6 +1,10 @@
 #!/bin/sh
 
 ./gits populate
+if [ $? -gt 0 ] ; then
+    echo "$0: Failed to populate gits repositories, aborting."
+    exit
+fi
 
 (cd core && git checkout -b 2.0 -t origin/development/2.0)
 (cd extra/kipi-plugins && git checkout -b 2.0 -t origin/development/2.0)
