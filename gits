@@ -13,6 +13,8 @@
 #
 # --Copyright LIBBK--
 #
+# This version was modified to work for the Digikam Software Compilation
+#
 use strict;
 use warnings;
 no warnings 'uninitialized';
