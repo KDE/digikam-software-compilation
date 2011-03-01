@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010 by Gilles Caulier
+# @author Copyright (C) 2010-2011 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -33,14 +33,13 @@ ENDIF(KDE4_BUILD_TESTS)
 
 # make sure that the FindXXX modules of the local libraries are found
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-        #NOTE: remove these path when KDE4.7 will be released
         ${CMAKE_SOURCE_DIR}/extra/libkipi/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkexiv2/cmake/modules
-
         ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkmap/cmake/modules
    )
+
 SET(KIPI_LOCAL_DIR extra/libkipi)
 SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
 SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
