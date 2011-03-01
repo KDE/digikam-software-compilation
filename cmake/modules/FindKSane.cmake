@@ -10,7 +10,7 @@
 #
 #  KSANE_FOUND - System has libksane
 #  KSANE_INCLUDE_DIR - The libksane include directory/directories (for #include <libksane/...> style)
-#  KSANE_LIBRARIES - Link these to use libksane
+#  KSANE_LIBRARY - Link these to use libksane
 #  KSANE_DEFINITIONS - Compiler switches required for using libksane
 #  KSANE_VERSION - Version of libksane which was found
 #
@@ -22,16 +22,16 @@
 
 # Ksane_FIND_QUIETLY and Ksane_FIND_REQUIRED may be defined by CMake.
 
-if (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERSION)
+if (KSANE_INCLUDE_DIR AND KSANE_LIBRARY AND KSANE_DEFINITIONS AND KSANE_VERSION)
 
   if (NOT Ksane_FIND_QUIETLY)
-    message(STATUS "Found Ksane library in cache: ${KSANE_LIBRARIES}")
+    message(STATUS "Found Ksane library in cache: ${KSANE_LIBRARY}")
   endif (NOT Ksane_FIND_QUIETLY)
 
   # in cache already
   set(KSANE_FOUND TRUE)
 
-else (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERSION)
+else (KSANE_INCLUDE_DIR AND KSANE_LIBRARY AND KSANE_DEFINITIONS AND KSANE_VERSION)
 
   if (NOT Ksane_FIND_QUIETLY)
     message(STATUS "Check for Ksane library in local sub-folder...")
@@ -59,7 +59,7 @@ else (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERS
     # TODO KSANE_INCLUDE_DIR sounds like it should contain only one directory...
     set(KSANE_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/${KSANE_LOCAL_DIR} ${CMAKE_BINARY_DIR}/${KSANE_LOCAL_DIR})
     set(KSANE_DEFINITIONS "-I${CMAKE_SOURCE_DIR}/${KSANE_LOCAL_DIR}" "-I${CMAKE_BINARY_DIR}/${KSANE_LOCAL_DIR}")
-    set(KSANE_LIBRARIES ksane)
+    set(KSANE_LIBRARY ksane)
     if (NOT Ksane_FIND_QUIETLY)
       message(STATUS "Found Ksane library in local sub-folder: ${CMAKE_SOURCE_DIR}/${KSANE_LOCAL_DIR}")
     endif (NOT Ksane_FIND_QUIETLY)
@@ -106,18 +106,18 @@ else (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERS
       find_path(KSANE_INCLUDE_DIR libksane/version.h ${KSANE_INCLUDEDIR})
       set(ksane_version_h_filename "${KSANE_INCLUDE_DIR}/libksane/version.h")
 
-      find_library(KSANE_LIBRARIES NAMES ksane PATHS ${KSANE_LIBDIR})
+      find_library(KSANE_LIBRARY NAMES ksane PATHS ${KSANE_LIBDIR})
 
-      if (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES)
+      if (KSANE_INCLUDE_DIR AND KSANE_LIBRARY)
         set(KSANE_FOUND TRUE)
-      else (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES)
+      else (KSANE_INCLUDE_DIR AND KSANE_LIBRARY)
         set(KSANE_FOUND FALSE)
-      endif (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES)
+      endif (KSANE_INCLUDE_DIR AND KSANE_LIBRARY)
     endif (KSANE_VERSION_GOOD_FOUND)
 
     if (KSANE_FOUND)
       if (NOT Ksane_FIND_QUIETLY)
-        message(STATUS "Found libksane: ${KSANE_LIBRARIES}")
+        message(STATUS "Found libksane: ${KSANE_LIBRARY}")
       endif (NOT Ksane_FIND_QUIETLY)
     else (KSANE_FOUND)
       if (Ksane_FIND_REQUIRED)
@@ -144,13 +144,13 @@ else (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERS
   endif (KSANE_FOUND)
 
   if (KSANE_FOUND)
-    mark_as_advanced(KSANE_INCLUDE_DIR KSANE_LIBRARIES KSANE_DEFINITIONS KSANE_VERSION KSANE_FOUND)
+    mark_as_advanced(KSANE_INCLUDE_DIR KSANE_LIBRARY KSANE_DEFINITIONS KSANE_VERSION KSANE_FOUND)
   else (KSANE_FOUND)
     # The library was not found, reset all related variables.
     unset(KSANE_INCLUDE_DIR)
-    unset(KSANE_LIBRARIES)
+    unset(KSANE_LIBRARY)
     unset(KSANE_DEFINITIONS)
     unset(KSANE_VERSION)
   endif (KSANE_FOUND)
 
-endif (KSANE_INCLUDE_DIR AND KSANE_LIBRARIES AND KSANE_DEFINITIONS AND KSANE_VERSION)
+endif (KSANE_INCLUDE_DIR AND KSANE_LIBRARY AND KSANE_DEFINITIONS AND KSANE_VERSION)
