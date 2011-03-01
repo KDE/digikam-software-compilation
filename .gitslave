@@ -6,3 +6,5 @@
 "^libkdcraw" "extra/libkdcraw"
 "^libkipi" "extra/libkipi"
 "^libksane" "extra/libksane"
+"^digikam-doc" "doc/digikam"
+"^kipi-plugins-doc" "doc/kipi-plugins"
