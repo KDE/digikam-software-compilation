@@ -7,8 +7,6 @@ if [ $? -gt 0 ] ; then
 fi
 
 (cd core && git checkout -b 2.0 -t origin/development/2.0)
-(cd extra/kipi-plugins && git checkout -b 2.0 -t origin/development/2.0)
-(cd extra/libkexiv2 && git checkout -b 2.0 -t origin/development/2.0)
 
 #checkout Exiv2 library
 #svn checkout svn://dev.exiv2.org/svn/trunk ./extra/exiv2
