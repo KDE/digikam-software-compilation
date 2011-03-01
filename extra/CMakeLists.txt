@@ -22,6 +22,7 @@
 #
 # ============================================================
 
+ADD_SUBDIRECTORY(libksane)
 ADD_SUBDIRECTORY(libkipi)
 ADD_SUBDIRECTORY(libkexiv2)
 ADD_SUBDIRECTORY(libkdcraw)

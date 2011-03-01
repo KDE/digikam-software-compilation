@@ -38,6 +38,8 @@ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
         ${CMAKE_SOURCE_DIR}/extra/libkexiv2/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkmap/cmake/modules
+
+        ${CMAKE_SOURCE_DIR}/cmake/modules
    )
 
 SET(KIPI_LOCAL_DIR extra/libkipi)
@@ -45,6 +47,7 @@ SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
 SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
 SET(KFACE_LOCAL_DIR extra/libkface)
 SET(KMAP_LOCAL_DIR extra/libkmap)
+SET(KSANE_LOCAL_DIR extra/libksane)
 
 ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)

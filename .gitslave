@@ -5,3 +5,4 @@
 "^libkexiv2" "extra/libkexiv2"
 "^libkdcraw" "extra/libkdcraw"
 "^libkipi" "extra/libkipi"
+"^libksane" "extra/libksane"
