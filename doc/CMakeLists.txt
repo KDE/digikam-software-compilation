@@ -22,6 +22,6 @@
 #
 # ============================================================
 
-ADD_SUBDIRECTORY(digikam/digikam)
-ADD_SUBDIRECTORY(digikam/showfoto)
-ADD_SUBDIRECTORY(kipi-plugins)
+MACRO_OPTIONAL_ADD_SUBDIRECTORY(digikam/digikam)
+MACRO_OPTIONAL_ADD_SUBDIRECTORY(digikam/showfoto)
+MACRO_OPTIONAL_ADD_SUBDIRECTORY(kipi-plugins)
