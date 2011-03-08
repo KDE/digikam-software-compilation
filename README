@@ -1,6 +1,23 @@
 This is the digiKam Software Compilation <http://www.digikam.org>
 
-digiKam SC Redmine page is here: https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+- ABOUT --------------------------------------------------------------------
+
+digiKam is an advanced digital photo management application for KDE, which makes importing and organizing digital photos a 'snap'.
+
+This is a super-repository that helps to download and compile digiKam with all components developed by digiKam team.
+
+- DEPENCIES ----------------------------------------------------------------
+
+* To checkout all source code:
+
+- PERL <http://www.perl.org>
+- GIT  <http://git-scm.com>
+
+To download all needed git repositories, execute the "./download-repos" script.
+
+* To compile all source code: 
+
+- take a look on each README files to resolve dependencies...
 
 - COMPONENTS ---------------------------------------------------------------
 
@@ -30,11 +47,7 @@ https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-co
 - libkmap
 - libksane
 
-* This SC include too digiKam and Kipi-plugins handbooks.
-
-Take a look on each README files to resolve dependencies before...
-
-To download all needed git repositories, execute the "./download-repos" script.
+* This Software Collection include also digiKam and Kipi-plugins handbooks.
 
 - NOTES ---------------------------------------------------------------------
 
