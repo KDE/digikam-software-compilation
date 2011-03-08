@@ -1,25 +1,42 @@
-This is the digiKam Software Collection (http://www.digikam.org)
-----------------------------------------------------------------
+This is the digiKam Software Compilation <http://www.digikam.org>
 
-All code here are dedicated to digiKam GoSC 2010 :
+digiKam SC Redmine page is here: https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
 
-"digikam" is 2.0.0 version. It includes currently xmp sidecar support,
-pure Qt4 port of preview widget, image versioning support by Martin.
-This branch will include too, face detection by Aditya and QTScript
-support by Kunal.
+- COMPONENTS ---------------------------------------------------------------
 
-"kipi-plugins" 2.0.0 is integrated in digiKam now as extra components.
-It includes a new version of GPSSync from Gabriel and Michael and it
-will include xmp sidecar support.
+* All code here are dedicated to digiKam plus all extra components maintained by digiKam team:
 
-"libkipi", "libkexiv2", and "libkdcraw", version 2.0.0 are also integrated in digiKam as extra components.
-"libkface", and "libkmap" are new libraries also integrated in digiKam as extra components.
+"digikam" is 2.x version. It includes currently :
+
+- XMP sidecar support,
+- Pure Qt4 port of preview widget,
+- Image versioning support in editor,
+- Reverse Geo-coding,
+- Color and Pick Labels support,
+- Tags keyboard shortcuts,
+- Face detection,
+- etc...
+
+digiKam Redmine page can be found here
+https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+
+* Extra components managed by this Software Compilation are listed below:
+
+- kipi-plugins 2.x
+- libkipi
+- libkexiv2
+- libkdcraw
+- libkface
+- libkmap
+- libksane
+
+* This SC include too digiKam and Kipi-plugins handbooks.
 
 Take a look on each README files to resolve dependencies before...
 
-To download all needed git repositories, execute the
-    ./download-repos
-script.
+To download all needed git repositories, execute the "./download-repos" script.
+
+- NOTES ---------------------------------------------------------------------
 
 If you are a developer with push access to the repositories, it is strongly recommended
 to use the "kde:" prefix and let git use the read-only mirrors for pulling.
@@ -28,6 +45,19 @@ If you did not clone this repository (digikam-software-compilation) from kde:, d
     git config --global url.ssh://git@git.kde.org/.pushinsteadof kde:
     git clone kde:digikam-software-compilation
 
+- REDMINE PROJECT PAGES -----------------------------------------------------
+
+digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
+digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
+Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
+Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
+libkface         : https://projects.kde.org/projects/kdereview/libkface
+libkmap          : https://projects.kde.org/projects/kdereview/libkmap
+libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
+libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
+libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
+libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 
 ------------
 digiKam team
