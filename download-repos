@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/usr/bin/perl
 
-./gits populate
-if [ $? -gt 0 ] ; then
-    echo "$0: Failed to populate gits repositories, aborting."
-    exit
-fi
+system("./gits populate");
+
+if ( $? > 0 )
+{
+    print "$ : Failed to populate gits repositories, aborting.\n";
+    exit;
+}
 
 #checkout Exiv2 library
-#svn checkout svn://dev.exiv2.org/svn/trunk ./extra/exiv2
+#system("svn checkout svn://dev.exiv2.org/svn/trunk ./extra/exiv2");
