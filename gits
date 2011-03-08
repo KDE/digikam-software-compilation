@@ -13,7 +13,7 @@
 #
 # --Copyright LIBBK--
 #
-# This version was modified to work for the Digikam Software Compilation
+# This version was modified to work for the digiKam Software Compilation
 #
 use strict;
 use warnings;
