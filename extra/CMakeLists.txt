@@ -22,7 +22,10 @@
 #
 # ============================================================
 
-ADD_SUBDIRECTORY(libksane)
+FIND_PACKAGE(KDE4 REQUIRED)
+INCLUDE(MacroOptionalAddSubdirectory)
+
+MACRO_OPTIONAL_ADD_SUBDIRECTORY(libksane)
 ADD_SUBDIRECTORY(libkipi)
 ADD_SUBDIRECTORY(libkexiv2)
 ADD_SUBDIRECTORY(libkdcraw)
