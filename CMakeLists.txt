@@ -33,9 +33,7 @@ ENDIF(KDE4_BUILD_TESTS)
 
 # make sure that the FindXXX modules of the local libraries are found
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-        ${CMAKE_SOURCE_DIR}/extra/libkipi/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkexiv2/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkmap/cmake/modules
 
