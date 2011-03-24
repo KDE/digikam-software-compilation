@@ -11,7 +11,7 @@
 #  KIPI_DEFINITIONS - Compiler switches required for using libkipi
 #
 
-# Copyright (c) 2008, Gilles Caulier, <caulier.gilles@gmail.com>
+# Copyright (c) 2008-2011, Gilles Caulier, <caulier.gilles@gmail.com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -35,7 +35,7 @@ else (KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS)
     find_file(KIPI_LOCAL_FOUND libkipi/kipi.h ${CMAKE_SOURCE_DIR}/libkipi ${CMAKE_SOURCE_DIR}/libs/libkipi NO_DEFAULT_PATH)
 
     if (KIPI_LOCAL_FOUND)
-      # Was it found in libkdcraw/ or in libs/libkdcraw?
+      # Was it found in libkipi/ or in libs/libkipi?
       find_file(KIPI_LOCAL_FOUND_IN_LIBS libkipi/kipi.h ${CMAKE_SOURCE_DIR}/libs/libkipi NO_DEFAULT_PATH)
       if (KIPI_LOCAL_FOUND_IN_LIBS)
         set(KIPI_LOCAL_DIR libs/libkipi)
@@ -67,13 +67,13 @@ else (KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS)
       PKGCONFIG(libkipi _KIPIIncDir _KIPILinkDir _KIPILinkFlags _KIPICflags)
 
       if (_KIPILinkFlags)
-        # query pkg-config asking for a libkipi >= 0.2.0
-        exec_program(${PKGCONFIG_EXECUTABLE} ARGS --atleast-version=0.2.0 libkipi RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _pkgconfigDevNull )
+        # query pkg-config asking for a libkipi >= 1.0.0
+        exec_program(${PKGCONFIG_EXECUTABLE} ARGS --atleast-version=1.0.0 libkipi RETURN_VALUE _return_VALUE OUTPUT_VARIABLE _pkgconfigDevNull )
         if (_return_VALUE STREQUAL "0")
-            message(STATUS "Found libkipi release >= 0.2.0")
+            message(STATUS "Found libkipi release >= 1.0.0")
             set(KIPI_VERSION_GOOD_FOUND TRUE)
         else (_return_VALUE STREQUAL "0")
-            message(STATUS "Found libkipi release < 0.2.0, too old")
+            message(STATUS "Found libkipi release < 1.0.0, too old")
             set(KIPI_VERSION_GOOD_FOUND FALSE)
             set(KIPI_FOUND FALSE)
         endif (_return_VALUE STREQUAL "0")
