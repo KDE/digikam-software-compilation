@@ -13,7 +13,7 @@ This is a super-repository that helps to download and compile digiKam with all c
 - PERL <http://www.perl.org>
 - GIT  <http://git-scm.com>
 
-To download all needed git repositories, execute the "./download-repos" script.
+To download all needed git repositories, execute download script like this: perl ./download-repos
 
 * To compile all source code: 
 

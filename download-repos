@@ -1,12 +1,9 @@
 #!/usr/bin/perl
 
-system("./gits populate");
+system("perl ./gits populate");
 
 if ( $? > 0 )
 {
     print "$ : Failed to populate gits repositories, aborting.\n";
     exit;
 }
-
-#checkout Exiv2 library
-#system("svn checkout svn://dev.exiv2.org/svn/trunk ./extra/exiv2");
