@@ -2,7 +2,6 @@
 
 REM Adjust there the right path to KDE4 install directory.
 SET KDE4_INSTALL_DIR=D:\4.5.4\kde4-mingw
-#SET TARGET_INSTALL_DIR=D:\kde4
 SET TARGET_INSTALL_DIR=%KDE4_INSTALL_DIR%
 
 SET PATH=%PATH%;%KDE4_INSTALL_DIR%\bin;%KDE4_INSTALL_DIR%\plugins
@@ -18,15 +17,8 @@ SET QT_INSTALL_DIR=%KDE4_INSTALL_DIR%
 REM Clean-up CMake cache file.
 DEL /F CMakeCache.txt
 
-REM configure CMake env with right compiler. Uncoment the right line.
-
 REM MinGW : gcc for Windows.
 cmake -G "MinGW Makefiles" . -DCMAKE_BUILD_TYPE=relwithdebinfo -DOpenCV_ROOT_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR% -DKDE4_INSTALL_DIR=%KDE4_INSTALL_DIR%
 REM cmake -G "MinGW Makefiles" . -DCMAKE_BUILD_TYPE=debugfull -DOpenCV_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR%
 
-REM Microsoft Visual C++ IDE.
-REM cmake -G "Visual Studio 9 2008" . -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/libexpat.lib -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR%
-
-REM Microsoft Visual C++ command line compiler.
-REM cmake -G "NMake Makefiles" . -DCMAKE_BUILD_TYPE=debugfull -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/libexpat.lib -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR%
 
