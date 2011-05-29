@@ -16,6 +16,6 @@ export MAKEFILES_TYPE='Unix Makefiles'
 
 # We will work with CodeBlock IDE using MinGW compiler
 #export MAKEFILES_TYPE='CodeBlocks - Unix Makefiles'
-
-cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr
+mkdir build && cd build 
+cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr ..
 
