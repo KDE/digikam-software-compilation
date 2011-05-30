@@ -7,3 +7,11 @@ if ( $? > 0 )
     print "$ : Failed to populate gits repositories, aborting.\n";
     exit;
 }
+
+system("ruby ./project/release/fetch_l10n.rb");
+
+if ( $? > 0 )
+{
+      print "$ : Failed to populate translations, aborting.\n";
+      exit;
+}
