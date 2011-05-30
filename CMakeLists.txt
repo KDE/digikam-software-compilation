@@ -26,17 +26,13 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 PROJECT(digikam-sc)
 
-FIND_PACKAGE(KDE4 REQUIRED)
-INCLUDE(KDE4Defaults)
-INCLUDE(MacroLibrary)
-
-INCLUDE(FindPackageHandleStandardArgs)
-set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
-
 IF(KDE4_BUILD_TESTS)
     INCLUDE(CTest)
     ENABLE_TESTING()
 ENDIF(KDE4_BUILD_TESTS)
+#FIND_PACKAGE(KDE4 REQUIRED)
+# Added for the po/ folder 
+#set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 
 # make sure that the FindXXX modules of the local libraries are found
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
@@ -60,6 +56,7 @@ ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
 ADD_SUBDIRECTORY(doc)
 
-find_package(Msgfmt REQUIRED)
-find_package(Gettext REQUIRED)
-ADD_SUBDIRECTORY( po )
+#find_package(Msgfmt REQUIRED)
+#find_package(Gettext REQUIRED)
+#add_subdirectory( po )
+
