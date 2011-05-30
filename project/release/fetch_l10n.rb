@@ -29,7 +29,7 @@ puts "\n"
 puts "**** l10n ****"
 puts "\n"
 
-i18nlangs = `cat subdirs`
+i18nlangs = `cat project/release/subdirs`
 Dir.mkdir( "po" )
 Dir.chdir( "po" )
 topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
