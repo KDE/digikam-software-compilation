@@ -8,10 +8,10 @@ if ( $? > 0 )
     exit;
 }
 
-system("ruby ./project/release/fetch_l10n.rb");
+#system("ruby ./project/release/fetch_l10n.rb");
 
-if ( $? > 0 )
-{
-      print "$ : Failed to populate translations, aborting.\n";
-      exit;
-}
+#if ( $? > 0 )
+#{
+#      print "$ : Failed to populate translations, aborting.\n";
+#      exit;
+#}
