@@ -1,0 +1,51 @@
+# Copy this script on root folder where are source code
+
+#!/bin/sh
+# set devel env from Mandriva 2009.0
+export QTDIR=/usr/lib/qt4/
+export PATH=$QTDIR/bin:$PATH
+export LD_LIBRARY_PATH=/usr/lib/kde4
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+
+#export VERBOSE=1
+#export CC=gcc4.4
+#export CXX=g++4.4
+
+# We will work on command line using MinGW compiler
+export MAKEFILES_TYPE='Unix Makefiles'
+
+# We will work with CodeBlock IDE using MinGW compiler
+#export MAKEFILES_TYPE='CodeBlocks - Unix Makefiles'
+
+export OpenCVOptions='-DBUILD_EXAMPLES=OFF \
+                      -DINSTALL_C_EXAMPLES=OFF \
+                      -DINSTALL_PYTHON_EXAMPLES=OFF \
+                      -DBUILD_TESTS=OFF \
+                      -DOPENCV_BUILD_3RDPARTY_LIBS=OFF \
+                      -DBUILD_NEW_PYTHON_SUPPORT=OFF \
+                      -DWITH_PNG=OFF -DWITH_JPEG=OFF \
+                      -DWITH_JASPER=OFF \
+                      -DWITH_TIFF=OFF \
+                      -DWITH_OPENEXR=OFF \
+                      -DWITH_FFMPEG=OFF \
+                      -DWITH_UNICAP=OFF \
+                      -DWITH_GTK=OFF \
+                      -DWITH_GSTREAMER=OFF \
+                      -DWITH_V4L=OFF \
+                      -DWITH_XINE=OFF \
+                      -DWITH_PVAPI=OFF \
+                      -DWITH_1394=OFF \
+                      -DWITH_CARBON=OFF \
+                      -DWITH_QUICKTIME=OFF \
+                      -DWITH_TBB=OFF \
+                      -DWITH_IPP=OFF \
+                      -DWITH_EIGEN=OFF \
+                      -DWITH_CUDA=OFF \
+                      -DWITH_VIDEOINPUT=OFF \
+                      -DWITH_OPENNI=OFF \
+                      -DWITH_QT=OFF \
+                      -DWITH_QT_OPENGL=OFF \
+                      -DBUILD_DOCS=OFF'
+
+cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr $OpenCVOptions
+
