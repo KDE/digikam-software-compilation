@@ -44,7 +44,7 @@ https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-co
 - libkexiv2
 - libkdcraw
 - libkface
-- libkmap
+- libkgeomap
 - libksane
 
 * This Software Collection include also digiKam and Kipi-plugins handbooks.
@@ -65,8 +65,8 @@ digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
 digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
 Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
-libkface         : https://projects.kde.org/projects/kdereview/libkface
-libkmap          : https://projects.kde.org/projects/kdereview/libkmap
+libkface         : https://projects.kde.org/projects/extragear/libs/libkface
+libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw

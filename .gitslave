@@ -1,6 +1,6 @@
 "^digikam" "core"
 "^libkface" "extra/libkface"
-"^libkmap" "extra/libkmap"
+"^libkgeomap" "extra/libkgeomap"
 "^kipi-plugins" "extra/kipi-plugins"
 "^libkexiv2" "extra/libkexiv2"
 "^libkdcraw" "extra/libkdcraw"

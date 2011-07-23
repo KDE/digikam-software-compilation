@@ -39,14 +39,14 @@ IF (${KDE_VERSION} VERSION_LESS "4.6.95")
 	SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
         	${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
         	${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
-        	${CMAKE_SOURCE_DIR}/extra/libkmap/cmake/modules
+        	${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
         	${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
 
         	${CMAKE_SOURCE_DIR}/cmake/modules
 		)
 ELSE()
 	SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-		${CMAKE_SOURCE_DIR}/extra/libkmap/cmake/modules
+		${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
 		${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
 		${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
 
@@ -62,7 +62,7 @@ SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
 SET(KSANE_LOCAL_DIR extra/libksane)
 ENDIF()
 SET(KFACE_LOCAL_DIR extra/libkface)
-SET(KMAP_LOCAL_DIR extra/libkmap)
+SET(KMAP_LOCAL_DIR extra/libkgeomap)
 SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
 
 ADD_SUBDIRECTORY(extra)
