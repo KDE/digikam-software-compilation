@@ -62,7 +62,7 @@ SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
 SET(KSANE_LOCAL_DIR extra/libksane)
 ENDIF()
 SET(KFACE_LOCAL_DIR extra/libkface)
-SET(KMAP_LOCAL_DIR extra/libkgeomap)
+SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
 SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
 
 ADD_SUBDIRECTORY(extra)
