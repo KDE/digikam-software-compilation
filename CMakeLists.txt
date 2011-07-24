@@ -35,27 +35,38 @@ FIND_PACKAGE(KDE4 REQUIRED)
 # Added for the po/ folder 
 #set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 
-# make sure that the FindXXX modules of the local libraries are found
-IF (${KDE_VERSION} VERSION_LESS "4.6.95")
-    SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-        ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
+# If building for KDE<4.6.95, we need to build some parts of KDE-graphics
+# by ourselves, because we depend on newer versions. If you want
+# to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1
+# as an argument to CMake.
+IF(NOT DEFINED DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS)
+    IF(${KDE_VERSION} VERSION_LESS "4.6.95")
+        SET(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS 1)
+    ELSE()
+        SET(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS 0)
+    ENDIF()
+ENDIF()
 
-        ${CMAKE_SOURCE_DIR}/cmake/modules
-        )
-ELSE()
-    SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-        ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
-
-        ${CMAKE_SOURCE_DIR}/cmake/modules
+# Make sure that the FindXXX modules of the local libraries are found
+IF(${DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS})
+    # prepend our own FindXXX modules to CMAKE_MODULE_PATH
+    SET(CMAKE_MODULE_PATH
+            ${CMAKE_SOURCE_DIR}/extra/libkexiv2/cmake/modules
+            ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
+            ${CMAKE_MODULE_PATH}
         )
 ENDIF()
 
-IF (${KDE_VERSION} VERSION_LESS "4.6.95")
+# prepend our own FindXXX modules to CMAKE_MODULE_PATH
+SET(CMAKE_MODULE_PATH
+        ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
+        ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
+        ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
+        ${CMAKE_SOURCE_DIR}/cmake/modules
+        ${CMAKE_MODULE_PATH}
+    )
+
+IF(${DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS})
     SET(KIPI_LOCAL_DIR extra/libkipi)
     SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
     SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
