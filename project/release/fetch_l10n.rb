@@ -37,7 +37,8 @@ for lang in i18nlangs
     lang.chomp!()
     Dir.mkdir(lang)
     Dir.chdir(lang)
-    for part in ['digikam']
+    for part in ['digikam','kipiplugin_acquireimages','kipiplugin_advancedslideshow','kipiplugin_batchprocessimages','kipiplugin_calendar','kipiplugin_dngconverter','kipiplugin_expoblending','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickrexport','kipiplugin_galleryexport','kipiplugin_gpssync','kipiplugin_htmlexport','kipiplugin_imageviewer','kipiplugin_ipodexport','kipiplugin_jpeglossless','kipiplugin_kioexportimport','kipiplugin_metadataedit','kipiplugin_picasawebexport','kipiplugin_piwigoexport','kipiplugin_printimages','kipiplugin_rawconverter','kipiplugin_removeredeyes','kipiplugin_sendimages','kipiplugin_shwup','kipiplugin_smug,kipiplugins','kipiplugin_timeadjust' ]
+# Do not include kipiplugin_wallpaper for now as the plugin is disable.
         puts "Copying #{lang}'s #{part} over..  "
         `svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
 
