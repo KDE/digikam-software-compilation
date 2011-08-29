@@ -1,5 +1,3 @@
-# Copy this script on root folder where are source code
-
 #!/bin/sh
 # set devel env from Mageia 1
 export QTDIR=/usr/lib/qt4/
