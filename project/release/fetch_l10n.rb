@@ -54,6 +54,35 @@ for lang in i18nlangs
                                                         
         puts( "done.\n" )
     end
+    
+     # we add the translation for kgeomap which is in extragear-libs
+    for part in ['libkgeomap']
+      puts "Copying #{lang}'s #{part} over..  "
+      `svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+
+      if FileTest.size( "#{part}.po" ) == 0
+        File.delete( "#{part}.po" )
+        puts "Delete File #{part}.po"
+      end
+
+      puts( "done.\n" )
+    end
+
+
+      # libkvkontakte is in kdereview but will be moved soon.
+      for part in ['libkvkontakte']
+        puts "Copying #{lang}'s #{part} over..  "
+        `svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
+
+
+        if FileTest.size( "#{part}.po" ) == 0
+          File.delete( "#{part}.po" )
+          puts "Delete File #{part}.po"
+        end
+        
+        puts( "done.\n" )
+      end
+
     Dir.chdir("..")
     topmakefile << "add_subdirectory( #{lang} )\n"
 end
