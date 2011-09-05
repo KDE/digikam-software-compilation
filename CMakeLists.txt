@@ -62,6 +62,7 @@ SET(CMAKE_MODULE_PATH
         ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
+        ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
         ${CMAKE_SOURCE_DIR}/cmake/modules
         ${CMAKE_MODULE_PATH}
     )
@@ -76,6 +77,7 @@ ENDIF()
 SET(KFACE_LOCAL_DIR extra/libkface)
 SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
 SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
+SET(VKONTAKTE_LOCAL_DIR extra/libkvkontakte)
 
 ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
