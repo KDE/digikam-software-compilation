@@ -82,7 +82,7 @@ ENDIF()
 SET(KFACE_LOCAL_DIR extra/libkface)
 SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
 SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
-SET(VKONTAKTE_LOCAL_DIR extra/libkvkontakte)
+SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
 
 ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
