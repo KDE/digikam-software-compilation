@@ -22,12 +22,11 @@
 #
 # ============================================================
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.4)
 
-if(POLICY CMP0011)
-   cmake_policy(SET CMP0017 NEW)
-endif(POLICY CMP0011)
-
+IF(POLICY CMP0011)
+   CMAKE_POLICY(SET CMP0017 NEW)
+ENDIF(POLICY CMP0011)
 
 PROJECT(digikam-sc)
 
@@ -35,10 +34,11 @@ IF(KDE4_BUILD_TESTS)
     INCLUDE(CTest)
     ENABLE_TESTING()
 ENDIF(KDE4_BUILD_TESTS)
+
 FIND_PACKAGE(KDE4 REQUIRED)
 
 # Added for the po/ folder 
-#set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+#SET_PROPERTY(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 
 # If building for KDE<4.6.95, we need to build some parts of KDE-graphics
 # by ourselves, because we depend on newer versions. If you want
@@ -88,7 +88,6 @@ ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
 ADD_SUBDIRECTORY(doc)
 
-#find_package(Msgfmt REQUIRED)
-#find_package(Gettext REQUIRED)
-#add_subdirectory( po )
-
+#FIND_PACKAGE(Msgfmt REQUIRED)
+#FIND_PACKAGE(Gettext REQUIRED)
+#ADD_SUBDIRECTORY(po)
