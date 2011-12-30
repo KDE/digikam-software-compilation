@@ -34,18 +34,21 @@ To download all needed git repositories, execute download script like this: perl
 - Face detection,
 - etc...
 
-digiKam Redmine page can be found here
+digiKam Redmine page can be found here :
+
 https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
 
 * Extra components managed by this Software Compilation are listed below:
 
-- kipi-plugins 2.x
+- kipi-plugins
 - libkipi
 - libkexiv2
 - libkdcraw
 - libkface
 - libkgeomap
 - libksane
+- libmediawiki
+- libkvkontatke
 
 * This Software Collection include also digiKam and Kipi-plugins handbooks.
 
@@ -67,10 +70,13 @@ Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plu
 Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
 libkface         : https://projects.kde.org/projects/extragear/libs/libkface
 libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
+libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
+libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
+
 
 ------------
 digiKam team
