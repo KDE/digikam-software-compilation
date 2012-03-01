@@ -21,5 +21,5 @@ fi
 
 cd build
 
-cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr -DKDE4_BUILD_TESTS=on -Wno-dev ..
+cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr -DKDE4_BUILD_TESTS=on -Wno-dev -DENABLE_LCMS2=on ..
 
