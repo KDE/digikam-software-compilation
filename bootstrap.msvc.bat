@@ -19,5 +19,12 @@ IF NOT EXIST "build" md "build"
 cd "build"
 
 REM Microsoft Visual C++ command line compiler.
-cmake -G "NMake Makefiles" . -DCMAKE_BUILD_TYPE=relwithdebinfo -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ..
+cmake -G "NMake Makefiles" . -DCMAKE_BUILD_TYPE=relwithdebinfo ^
+                             -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
+                             -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
+                             -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
+                             -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
+                             -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
+                             -DKDE4_BUILD_TESTS=on ^
+                             ..
 
