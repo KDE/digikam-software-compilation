@@ -1,5 +1,5 @@
 #!/bin/sh
-# set devel env from Mageia 1
+# set devel env from Mageia
 export QTDIR=/usr/lib/qt4/
 export PATH=$QTDIR/bin:$PATH
 export LD_LIBRARY_PATH=/usr/lib/kde4
@@ -8,6 +8,7 @@ export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 #export VERBOSE=1
 #export CC=gcc4.4
 #export CXX=g++4.4
+export CXXFLAGS="$CXXFLAGS -fvisibility=hidden "
 
 # We will work on command line using GNU Make
 export MAKEFILES_TYPE='Unix Makefiles'
@@ -21,5 +22,12 @@ fi
 
 cd build
 
-cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr -DKDE4_BUILD_TESTS=on -Wno-dev -DENABLE_LCMS2=on ..
+cmake -G "$MAKEFILES_TYPE" \
+         . \
+         -DCMAKE_BUILD_TYPE=debugfull \
+         -DCMAKE_INSTALL_PREFIX=/usr \
+         -DKDE4_BUILD_TESTS=on \
+         -Wno-dev \
+         \ #-DENABLE_LCMS2=on \
+         ..
 
