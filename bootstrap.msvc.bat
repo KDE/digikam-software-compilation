@@ -1,3 +1,8 @@
+REM  Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
+REM 
+REM  Redistribution and use is allowed according to the terms of the BSD license.
+REM  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+
 @ECHO OFF
 
 REM Adjust there the right path to KDE4 install directory.
@@ -14,17 +19,20 @@ SET QT_PLUGIN_PATH=%KDE4_INSTALL_DIR%\plugins
 SET QTDIR=%KDE4_INSTALL_DIR%
 SET QT_INSTALL_DIR=%KDE4_INSTALL_DIR%
 
-IF NOT EXIST "build" md "build"
+IF NOT EXIST "build" ^
+    md "build"
 
 cd "build"
 
 REM Microsoft Visual C++ command line compiler.
-cmake -G "NMake Makefiles" . -DCMAKE_BUILD_TYPE=relwithdebinfo ^
-                             -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
-                             -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
-                             -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
-                             -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
-                             -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
-                             -DKDE4_BUILD_TESTS=on ^
-                             ..
-
+cmake -G "NMake Makefiles" . ^
+      -DCMAKE_BUILD_TYPE=relwithdebinfo ^
+      -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
+      -DKDE4_BUILD_TESTS=on ^
+      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
+      ^ REM -DENABLE_LCMS2=on ^
+      -Wno-dev ^
+      -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
+      -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
+      -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
+      ..

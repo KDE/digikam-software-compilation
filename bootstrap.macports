@@ -1,4 +1,10 @@
 #!/bin/sh
+
+# Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# 
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+
 # set devel env from MacOS-X through MacPorts
 export QTDIR=/opt/local/lib
 export QT_INCLUDE_DIR=/opt/local/include
@@ -18,5 +24,22 @@ fi
 
 cd build
 
-cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/opt/local -DCMAKE_COLOR_MAKEFILE=ON -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON -DCMAKE_INSTALL_NAME_DIR=/opt/local/lib -DCMAKE_SYSTEM_PREFIX_PATH="/opt/local;/usr" -DCMAKE_MODULE_PATH=/opt/local/share/cmake/modules -DBUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4 -DKDE_DISTRIBUTION_TEXT="MacPorts/Mac OS X" -DQT_QT_INCLUDE_DIR=/opt/local/include  -DQT_LIBRARY_DIR=/opt/local/lib  -DQT_QMAKE_EXECUTABLE=/opt/local/bin/qmake -DCMAKE_OSX_ARCHITECTURES="x86_64" -DKDE4_BUILD_TESTS=on -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=1 -Wno-dev ..
-
+cmake -G "$MAKEFILES_TYPE" . \
+      -DCMAKE_BUILD_TYPE=debugfull \
+      -DCMAKE_INSTALL_PREFIX=/opt/local \
+      -DKDE4_BUILD_TESTS=on \
+      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+      \ #-DENABLE_LCMS2=on \
+      -Wno-dev \
+      -DCMAKE_COLOR_MAKEFILE=ON \
+      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+      -DCMAKE_INSTALL_NAME_DIR=/opt/local/lib \
+      -DCMAKE_SYSTEM_PREFIX_PATH="/opt/local;/usr" \
+      -DCMAKE_MODULE_PATH=/opt/local/share/cmake/modules \
+      -DBUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4 \
+      -DKDE_DISTRIBUTION_TEXT="MacPorts/Mac OS X" \
+      -DQT_QT_INCLUDE_DIR=/opt/local/include \
+      -DQT_LIBRARY_DIR=/opt/local/lib \
+      -DQT_QMAKE_EXECUTABLE=/opt/local/bin/qmake \
+      -DCMAKE_OSX_ARCHITECTURES="x86_64" \
+      ..

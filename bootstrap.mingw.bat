@@ -1,3 +1,8 @@
+REM  Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
+REM 
+REM  Redistribution and use is allowed according to the terms of the BSD license.
+REM  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+
 @ECHO OFF
 
 REM Adjust there the right path to KDE4 install directory.
@@ -14,11 +19,21 @@ SET QT_PLUGIN_PATH=%KDE4_INSTALL_DIR%\plugins
 SET QTDIR=%KDE4_INSTALL_DIR%
 SET QT_INSTALL_DIR=%KDE4_INSTALL_DIR%
 
-REM Clean-up CMake cache file.
-DEL /F CMakeCache.txt
+IF NOT EXIST "build" ^
+    md "build"
+
+cd "build"
 
 REM MinGW : gcc for Windows.
-cmake -G "MinGW Makefiles" . -DCMAKE_BUILD_TYPE=relwithdebinfo -DOpenCV_ROOT_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR% -DKDE4_INSTALL_DIR=%KDE4_INSTALL_DIR%
-REM cmake -G "MinGW Makefiles" . -DCMAKE_BUILD_TYPE=debugfull -DOpenCV_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR%
-
-
+cmake -G "MinGW Makefiles" . ^
+      -DCMAKE_BUILD_TYPE=relwithdebinfo ^
+      -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR% ^
+      -DKDE4_BUILD_TESTS=on ^
+      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
+      ^ REM -DENABLE_LCMS2=on ^
+      -Wno-dev ^
+      -DOpenCV_ROOT_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules ^
+      -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
+      -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
+      -DKDE4_INSTALL_DIR=%KDE4_INSTALL_DIR% ^
+      ..
