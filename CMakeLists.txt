@@ -30,17 +30,19 @@ ENDIF()
 
 PROJECT(digikam-sc)
 
-OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                OFF)
-OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                    OFF)
-OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics librairies instead to use distributed KDE files (default=OFF)" OFF)
-
 FIND_PACKAGE(KDE4 REQUIRED)
 INCLUDE(KDE4Defaults)
 INCLUDE(MacroLibrary)
 INCLUDE(MacroOptionalAddSubdirectory)
 
-MACRO_BOOL_TO_01(ENABLE_COMPILE_PO  DIGIKAMSC_COMPILE_PO)
-MACRO_BOOL_TO_01(ENABLE_COMPILE_DOC DIGIKAMSC_COMPILE_DOC)
+# COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
+
+OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                OFF)
+OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                    OFF)
+OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics librairies instead to use distributed KDE files (default=OFF)" OFF)
+
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 
 # If building for KDE<4.6.95, we need to build some parts of KDE-graphics
 # by ourselves, because we depend on newer versions. If you want
@@ -55,6 +57,26 @@ IF(NOT DEFINED DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS)
 ELSE()
     SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
 ENDIF()
+
+IF(ENABLE_PRIVATE_KDEGRAPHICS)
+    MESSAGE(STATUS "Local kdegraphics libraies will be compiled... YES")
+ELSE()
+    MESSAGE(STATUS "Local kdegraphics libraies will be compiled... NO")
+ENDIF()
+
+IF(DIGIKAMSC_COMPILE_DOC)
+    MESSAGE(STATUS "Handbooks will be compiled.................... YES")
+ELSE()
+    MESSAGE(STATUS "Handbooks will be compiled.................... NO")
+ENDIF()
+
+IF(ENABLE_COMPILE_PO)
+    MESSAGE(STATUS "Translations will be compiled................. YES")
+ELSE()
+    MESSAGE(STATUS "Translations will be compiled................. NO")
+ENDIF()
+
+############################################################################################################################################
 
 IF(ENABLE_COMPILE_PO)
     SET_PROPERTY(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
@@ -101,7 +123,7 @@ ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
 
 IF(ENABLE_COMPILE_DOC)
-    IF(${KDE_VERSION} VERSION_LESS "4.7.0")
+    IF(${KDE_VERSION} VERSION_GREATER "4.8.0")
         FIND_PACKAGE(DocBookXML REQUIRED)
         FIND_PACKAGE(DocBookXSL REQUIRED)
     ENDIF()
