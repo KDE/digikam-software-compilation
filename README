@@ -77,6 +77,12 @@ libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkex
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 
+- CMAKE OPTIONS --------------------------------------------------------------
+
+"-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on" : Force to use local libkipi, libkexiv2, and libkdcraw implementation 
+                                           instead KDE version installed on your computer.
+
+Look README files from sub-dirs for more options available to configure compilation environnement.
 
 ------------
 digiKam team
