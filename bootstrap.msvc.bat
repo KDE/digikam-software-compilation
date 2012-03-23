@@ -19,8 +19,7 @@ SET QT_PLUGIN_PATH=%KDE4_INSTALL_DIR%\plugins
 SET QTDIR=%KDE4_INSTALL_DIR%
 SET QT_INSTALL_DIR=%KDE4_INSTALL_DIR%
 
-IF NOT EXIST "build" ^
-    md "build"
+IF NOT EXIST "build" md "build"
 
 cd "build"
 
