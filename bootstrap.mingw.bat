@@ -1,9 +1,9 @@
+@ECHO OFF
+
 REM  Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
 REM 
 REM  Redistribution and use is allowed according to the terms of the BSD license.
 REM  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
-
-@ECHO OFF
 
 REM Adjust there the right path to KDE4 install directory.
 SET KDE4_INSTALL_DIR=D:\4.5.4\kde4-mingw
