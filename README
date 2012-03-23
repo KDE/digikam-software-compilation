@@ -81,6 +81,8 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 
 "-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on" : Force to use local libkipi, libkexiv2, and libkdcraw implementation 
                                            instead KDE version installed on your computer.
+"-DDIGIKAMSC_COMPILE_PO=on"                Build translations files (require to checkout po files before from KDE repository.                                                OFF)
+"-DDIGIKAMSC_COMPILE_DOC=on"               Build handbook files.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 

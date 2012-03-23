@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010-2011 by Gilles Caulier
+# @author Copyright (C) 2010-2012 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -30,6 +30,10 @@ ENDIF(POLICY CMP0011)
 
 PROJECT(digikam-sc)
 
+OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                OFF)
+OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                    OFF)
+OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics librairies instead to use distributed KDE files (default=OFF)" OFF)
+
 IF(KDE4_BUILD_TESTS)
     INCLUDE(CTest)
     ENABLE_TESTING()
@@ -40,8 +44,9 @@ INCLUDE(KDE4Defaults)
 INCLUDE(MacroLibrary)
 INCLUDE(MacroOptionalAddSubdirectory)
 
-# Added for the po/ folder 
-#SET_PROPERTY(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+IF(DEFINED DIGIKAMSC_COMPILE_PO)
+    SET_PROPERTY(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+ENDIF(DEFINED DIGIKAMSC_COMPILE_PO)
 
 # If building for KDE<4.6.95, we need to build some parts of KDE-graphics
 # by ourselves, because we depend on newer versions. If you want
@@ -90,10 +95,12 @@ SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
 ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
 
-IF(NOT WIN32)
+IF(NOT WIN32 AND DEFINED DIGIKAMSC_COMPILE_DOC)
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(doc)
-ENDIF(NOT WIN32)
+ENDIF(NOT WIN32 AND DEFINED DIGIKAMSC_COMPILE_DOC)
 
-#FIND_PACKAGE(Msgfmt REQUIRED)
-#FIND_PACKAGE(Gettext REQUIRED)
-#ADD_SUBDIRECTORY(po)
+IF(DEFINED DIGIKAMSC_COMPILE_PO)
+    FIND_PACKAGE(Msgfmt REQUIRED)
+    FIND_PACKAGE(Gettext REQUIRED)
+    ADD_SUBDIRECTORY(po)
+ENDIF(DEFINED DIGIKAMSC_COMPILE_PO)
