@@ -32,6 +32,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
-      \ #-DENABLE_LCMS2=on \
+      -DENABLE_LCMS2=off \
       -Wno-dev \
       ..
