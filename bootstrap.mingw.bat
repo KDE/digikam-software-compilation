@@ -29,6 +29,7 @@ cmake -G "MinGW Makefiles" . ^
       -DCMAKE_INSTALL_PREFIX=%TARGET_INSTALL_DIR% ^
       -DKDE4_BUILD_TESTS=on ^
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
+      -DDIGIKAMSC_COMPILE_DOC=off ^
       -DENABLE_LCMS2=off ^
       -Wno-dev ^
       -DOpenCV_ROOT_DIR=%KDE4_INSTALL_DIR%/share/apps/cmake/modules ^

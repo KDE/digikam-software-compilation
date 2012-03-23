@@ -29,6 +29,7 @@ cmake -G "NMake Makefiles" . ^
       -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
       -DKDE4_BUILD_TESTS=on ^
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
+      -DDIGIKAMSC_COMPILE_DOC=off ^
       -DENABLE_LCMS2=off ^
       -Wno-dev ^
       -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^

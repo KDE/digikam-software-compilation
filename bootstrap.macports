@@ -29,6 +29,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_PREFIX=/opt/local \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+      -DDIGIKAMSC_COMPILE_DOC=on \
       -DENABLE_LCMS2=off \
       -Wno-dev \
       -DCMAKE_COLOR_MAKEFILE=ON \
