@@ -37,9 +37,9 @@ INCLUDE(MacroOptionalAddSubdirectory)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
-OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                OFF)
-OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                    OFF)
-OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics librairies instead to use distributed KDE files (default=OFF)" OFF)
+OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                 OFF)
+OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                     OFF)
+OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
 
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
@@ -48,7 +48,7 @@ MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 # by ourselves, because we depend on newer versions. If you want
 # to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1
 # as an argument to CMake.
-IF(NOT DEFINED DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS)
+IF(NOT DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS)
     IF(${KDE_VERSION} VERSION_LESS "4.6.95")
         SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
     ELSE()
@@ -59,9 +59,9 @@ ELSE()
 ENDIF()
 
 IF(ENABLE_PRIVATE_KDEGRAPHICS)
-    MESSAGE(STATUS "Local kdegraphics libraies will be compiled... YES")
+    MESSAGE(STATUS "Local kdegraphics libraries will be compiled... YES")
 ELSE()
-    MESSAGE(STATUS "Local kdegraphics libraies will be compiled... NO")
+    MESSAGE(STATUS "Local kdegraphics libraries will be compiled... NO")
 ENDIF()
 
 IF(DIGIKAMSC_COMPILE_DOC)
