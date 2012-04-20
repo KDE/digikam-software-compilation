@@ -37,8 +37,8 @@ INCLUDE(MacroOptionalAddSubdirectory)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
-OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=OFF)"                                                 OFF)
-OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=OFF)"                                                     OFF)
+OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
+OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
 OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
 
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
@@ -58,6 +58,11 @@ ELSE()
     SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
 ENDIF()
 
+IF(ENABLE_COMPILE_PO AND NOT EXISTS("po/"))
+    MESSAGE(STATUS "PO dir do not exists. Translations compilation disabled...")
+    SET(ENABLE_COMPILE_PO 0)
+ENDIF()
+
 IF(ENABLE_PRIVATE_KDEGRAPHICS)
     MESSAGE(STATUS "Local kdegraphics libraries will be compiled... YES")
 ELSE()
@@ -65,15 +70,15 @@ ELSE()
 ENDIF()
 
 IF(DIGIKAMSC_COMPILE_DOC)
-    MESSAGE(STATUS "Handbooks will be compiled.................... YES")
+    MESSAGE(STATUS "Handbooks will be compiled..................... YES")
 ELSE()
-    MESSAGE(STATUS "Handbooks will be compiled.................... NO")
+    MESSAGE(STATUS "Handbooks will be compiled..................... NO")
 ENDIF()
 
 IF(ENABLE_COMPILE_PO)
-    MESSAGE(STATUS "Translations will be compiled................. YES")
+    MESSAGE(STATUS "Translations will be compiled.................. YES")
 ELSE()
-    MESSAGE(STATUS "Translations will be compiled................. NO")
+    MESSAGE(STATUS "Translations will be compiled.................. NO")
 ENDIF()
 
 ############################################################################################################################################
