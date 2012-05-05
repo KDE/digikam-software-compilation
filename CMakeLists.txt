@@ -60,6 +60,7 @@ ENDIF()
 
 IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
     MESSAGE(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
+    MESSAGE(STATUS "Take a care to run "./project/release/fetch_l10n.rb" Ruby script before, to extract po files from KDE repositories")
     SET(ENABLE_COMPILE_PO 0)
 ENDIF()
 
