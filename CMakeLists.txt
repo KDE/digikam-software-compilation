@@ -58,8 +58,8 @@ ELSE()
     SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
 ENDIF()
 
-IF(ENABLE_COMPILE_PO AND NOT EXISTS("po/"))
-    MESSAGE(STATUS "PO dir do not exists. Translations compilation disabled...")
+IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
+    MESSAGE(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
     SET(ENABLE_COMPILE_PO 0)
 ENDIF()
 
