@@ -33,6 +33,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
+      -DENABLE_PRESENTATIONMODE=off\
       -DENABLE_LCMS2=off \
       -Wno-dev \
       ..
