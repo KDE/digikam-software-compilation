@@ -37,10 +37,12 @@ INCLUDE(MacroOptionalAddSubdirectory)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
+OPTION(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                                                  ON)
 OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
 OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
 
+MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO ENABLE_CHECKOUT_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 
@@ -58,9 +60,15 @@ ELSE()
     SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
 ENDIF()
 
+IF(ENABLE_CHECKOUT_PO)
+    MESSAGE(STATUS "Extract translations files from KDE repositories. Please wait, it can take a while...")
+    EXEC_PROGRAM(./project/release/fetch_l10n.rb ${CMAKE_SOURCE_DIR})
+    MESSAGE(STATUS "Translations files extraction done.")
+ENDIF()
+
 IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
     MESSAGE(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
-    MESSAGE(STATUS "Take a care to run \"./project/release/fetch_l10n.rb\" Ruby script before, to extract po files from KDE repositories".)
+    MESSAGE(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
     SET(ENABLE_COMPILE_PO 0)
 ENDIF()
 

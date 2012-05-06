@@ -12,6 +12,7 @@ This is a super-repository that helps to download and compile digiKam with all c
 
 - PERL <http://www.perl.org>
 - GIT  <http://git-scm.com>
+- RUBY <http://www.ruby-lang.org> (optional, to extract translations files from KDE repositories)
 
 To download all needed git repositories, execute download script like this: perl ./download-repos
 
@@ -82,6 +83,7 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 "-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on" : Force to use local libkipi, libkexiv2, and libkdcraw implementation
                                            instead KDE version installed on your computer.
 "-DDIGIKAMSC_COMPILE_DOC=on"               Build handbook files.
+"-DDIGIKAMSC_CHECKOUT_PO=on"               Extract po files from KDE repositories.
 "-DDIGIKAMSC_COMPILE_PO=on"                Build translations files. It require to checkout po files before from KDE repositories
                                            using ./project/release/fetch_l10n.rb Ruby script.
 
