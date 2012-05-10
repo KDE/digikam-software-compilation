@@ -1,0 +1,35 @@
+Author: Gregor Quade <u3dreal@yahoo.de>
+
+How To build darktable.app from source in 6 easy steps ;): INTEL ONLY will try universal build later ;)
+
+Installing:
+
+
+1) install XCode DeveloperPackage from Apple
+   install macports from macports.org make shure you have the latest version ( sudo port -v selfupdate )
+	
+	!!! default install is /opt/local/ change this below if you have different macport dir !!!
+
+
+2) (Optional) add +quartz +atsui +no_x11 -x11 to /opt/local/etc/macports/variants.conf
+   (There have been some problems with DT when using GTK Quartz; X11 seems to work better, at least on my machine)
+   set "buildmakejobs" to more than 1 in /opt/local/etc/macports/macports.conf to use multiple threads 
+
+3) run:
+   sudo port -d sync
+   sudo port install gtk2 libxml2 gphoto2 lensfun cairo pango librsvg gdk-pixbuf2 sqlite3 exiv2 curl libpng openjpeg tiff openexr lcms2 flickcurl libgnome-keyring gtk-engines2
+
+	take a walk ! !
+
+4) compile dt from git:
+
+	git clone git://darktable.git.sf.net/gitroot/darktable/darktable
+	cd darktable
+	build.sh `pwd`/release Debug
+	(Optional -- you don't need to enable debug)
+	cd build
+	make install
+
+5) to make a disk image, run ./packaging/macosx/make-app-bundle -- this will create DarkTable.dmg in the release directory, which contains a standalone application.
+
+"Let's rock" u3dreal '09 (build instructions modified by Wyatt Olson <wyatt@digitalcave.ca> to no longer require a XCode application stub project)
