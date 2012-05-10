@@ -7,13 +7,13 @@
 	<key>CFBundleExecutable</key>
 	<string>start</string>
 	<key>CFBundleIconFile</key>
-	<string>darktable.icns</string>
+	<string>digiKam.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.sourceforge.darktable</string>
+	<string>org.digikam</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Darktable</string>
+	<string>digiKam</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
