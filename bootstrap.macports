@@ -27,7 +27,7 @@ cd build
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debugfull \
       -DCMAKE_INSTALL_PREFIX=/opt/local \
-      -DKDE4_BUILD_TESTS=off \
+      -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
       -DENABLE_LCMS2=off \
