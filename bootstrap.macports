@@ -4,6 +4,9 @@
 # 
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+# Arguments : $1 : install path (default /opt/local)
+#             $2 : build type   (default debugfull)
 
 # set devel env from MacOS-X through MacPorts
 export QTDIR=/opt/local/lib
@@ -11,12 +14,20 @@ export QT_INCLUDE_DIR=/opt/local/include
 export PATH=$QTDIR/bin:$PATH
 export PKG_CONFIG_PATH=/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
-#export VERBOSE=1
-#export CC=gcc4.4
-#export CXX=g++4.4
-
 # We will work on command line using GNU make
 export MAKEFILES_TYPE='Unix Makefiles'
+
+INSTALL_PREFIX=$1
+if [ "$INSTALL_PREFIX" =  "" ]; then
+        INSTALL_PREFIX=/opt/local
+fi
+
+BUILD_TYPE=$2
+if [ "$BUILD_TYPE" =  "" ]; then
+        BUILD_TYPE=debugfull
+fi
+
+echo Installing to $INSTALL_PREFIX for $BUILD_TYPE
 
 if [ ! -d "build" ]; then
     mkdir build
@@ -24,13 +35,13 @@ fi
 
 cd build
 
-cmake -G "$MAKEFILES_TYPE" . \
-      -DCMAKE_BUILD_TYPE=debugfull \
-      -DCMAKE_INSTALL_PREFIX=/opt/local \
+cmake -G ${MAKEFILES_TYPE} . \
+      -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
-      -DENABLE_LCMS2=off \
+      -DENABLE_LCMS2=on \
       -Wno-dev \
       -DCMAKE_COLOR_MAKEFILE=ON \
       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
