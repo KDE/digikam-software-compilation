@@ -34,7 +34,7 @@ SHARE=${MACOS}/share
 RELEASE=build/release
 DMG=${RELEASE}/${PROGN}.dmg
 EXECUTABLE=bin/digikam
-BUILD_FOLDER=./packaging/macosx
+BUILD_FOLDER=./project/macosx
 DTVER=`git describe --tags $branch | sed 's,^release-,,;s,-,+,;s,-,~,;'`
 
 #Find where MacPorts is installed.  We take a known binary (port), which is in <MacPorts>/bin, and 
