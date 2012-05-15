@@ -10,7 +10,7 @@ How To build digiKam.app for MacOS-X from source in 3 easy steps (based on DarkT
 2) Recompile digiKam under Macports. Look README.MACOSX for details. Note that you need to run ./bootstrap.macport script
    from root source dir like this:
 
-        ./bootstrap.macport `pwd`/release debugfull
+        ./bootstrap.macports `pwd`/release debugfull
         cd build
         make install/fast
 
