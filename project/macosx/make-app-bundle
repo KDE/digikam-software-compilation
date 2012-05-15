@@ -1,26 +1,28 @@
 #!/bin/bash
 # Function checkLink:
 # args: $1 - file
-#
-# Will loop through all dynamic links for $file, and update each to be relative.
-function checkLink {
-	#echo "checkLink called with $1 $2"
-	local FILE=$1
 
-	otool -L $FILE | grep -v "${APP}" | grep -v '/usr/lib' | grep -v '/System/' | grep -v "@executable_path" | cut -f 1 -d ' ' | while read X
-	do 
-		local NAME=${LIB}/`basename "$X"`
-		if [ ! -f "${NAME}" ]
-		then
-			cp $X "${NAME}"
-		
-			#Recursively update the linkage of libraries
-			checkLink "${NAME}"
-		fi
-	done
+
+# Will loop through all dynamic links for $file, and update each to be relative.
+function checkLink
+{
+    #echo "checkLink called with $1 $2"
+    local FILE=$1
+
+    otool -L $FILE | grep -v "${APP}" | grep -v '/usr/lib' | grep -v '/System/' | grep -v "@executable_path" | cut -f 1 -d ' ' | while read X
+    do 
+        local NAME=${LIB}/`basename "$X"`
+        if [ ! -f "${NAME}" ]
+        then
+            cp $X "${NAME}"
+
+            #Recursively update the linkage of libraries
+            checkLink "${NAME}"
+        fi
+    done
 }
 
-PROGN=Darktable
+PROGN=digiKam
 APP=${PROGN}.app
 CONTENTS=${APP}/Contents
 RESOURCES=${CONTENTS}/Resources
@@ -31,7 +33,7 @@ LIB=${MACOS}/lib
 SHARE=${MACOS}/share
 RELEASE=build/release
 DMG=${RELEASE}/${PROGN}.dmg
-EXECUTABLE=bin/darktable
+EXECUTABLE=bin/digikam
 BUILD_FOLDER=./packaging/macosx
 DTVER=`git describe --tags $branch | sed 's,^release-,,;s,-,+,;s,-,~,;'`
 
@@ -42,17 +44,18 @@ MACPORTS_PREFIX=`dirname $MACPORTS_PREFIX`
 MACPORTS_PREFIX=`dirname $MACPORTS_PREFIX`
 
 if [ ! -d ${RELEASE} ]; then
-	echo "Please run this from the root of the project; i.e. ${BUILD_FOLDER}/`basename $0`."
-	exit
+    echo "Please run this from the root of the project; i.e. ${BUILD_FOLDER}/`basename $0`."
+    exit
 fi
 
 if [ -d "${APP}" ]; then
-	echo "Removing old application..."
-	rm -rf "${APP}"
+    echo "Removing old application..."
+    rm -rf "${APP}"
 fi
+
 if [ -f ${DMG} ]; then
-	echo "Removing old disk image..."
-	rm "${DMG}"
+    echo "Removing old disk image..."
+    rm "${DMG}"
 fi
 
 echo "Making application directory structure..."
@@ -79,7 +82,6 @@ ESCAPED_MACPORTS_PREFIX=`echo ${MACPORTS_PREFIX} | sed -e 's/\\//\\\\\\//g'`
 sed -i .bak -e "s/${ESCAPED_MACPORTS_PREFIX}/@executable_path\/../g" ${ETC}/gtk-2.0/gdk-pixbuf.loaders ${ETC}/pango/pango.modules
 echo -e "[Pango]\nModuleFiles = /tmp/`basename ${EXECUTABLE}`_pango.modules" > ${ETC}/pango/pangorc
 
-
 #Copy over the release files
 echo "Copying release files..."
 cp -R ${RELEASE}/* ${MACOS}
@@ -95,38 +97,37 @@ cp ${BUILD_FOLDER}/start ${MACOS}
 echo "Recursively copying libraries referenced by executable..."
 checkLink "${MACOS}/${EXECUTABLE}"
 
-
 #Make a .dmg for distribution and delete the .app
 echo "Creating distribution .dmg ..."
 
 # Creating temporary rw image
 SIZE=$(( $(du -sm "${APP}"| awk '{print $1}') + 3 ))
 hdiutil create -srcfolder "${APP}" -volname "${PROGN}" -fs HFS+ \
-      -fsargs "-c c=64,a=16,e=16" -format UDRW -size ${SIZE}M pack.temp.dmg
+               -fsargs "-c c=64,a=16,e=16" -format UDRW -size ${SIZE}M pack.temp.dmg
 
-# mounting image without autoopen to create window style params
+# mounting image without auto-open to create window style params
 device=$(hdiutil attach -readwrite -noverify -noautoopen "pack.temp.dmg" | \
          egrep '^/dev/' | sed 1q | awk '{print $1}')
 echo '
  tell application "Finder"
-	tell disk "'${PROGN}'"
-		open
-		set current view of container window to icon view
-		set toolbar visible of container window to false
-		set statusbar visible of container window to false
-		set the bounds of container window to {400, 100, 885, 330}
-		set theViewOptions to the icon view options of container window
-		set arrangement of theViewOptions to not arranged
-		set icon size of theViewOptions to 72
-		#   set background picture of theViewOptions to file ".backgroundimage:darktable.svg"
-		make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
-		set position of item "'${PROGN}'" of container window to {100, 100}
-		set position of item "Applications" of container window to {375, 100}
-		update without registering applications
-		close
-		open
-		delay 5
-	end tell
+    tell disk "'${PROGN}'"
+        open
+        set current view of container window to icon view
+        set toolbar visible of container window to false
+        set statusbar visible of container window to false
+        set the bounds of container window to {400, 100, 885, 330}
+        set theViewOptions to the icon view options of container window
+        set arrangement of theViewOptions to not arranged
+        set icon size of theViewOptions to 72
+        #   set background picture of theViewOptions to file ".backgroundimage:digikam.svg"
+        make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
+        set position of item "'${PROGN}'" of container window to {100, 100}
+        set position of item "Applications" of container window to {375, 100}
+        update without registering applications
+        close
+        open
+        delay 5
+    end tell
  end tell
 ' | osascript
 
@@ -135,13 +136,16 @@ chmod -Rf go-w /Volumes/"${PROGN}"
 sync
 sync
 hdiutil detach ${device}
+
 if [ -f build/"${PROGN}".dmg ]
    then echo "removing old .dmg file" && rm -if build/"${PROGN}".dmg
 fi
 
 hdiutil convert "pack.temp.dmg" -format UDZO -imagekey zlib-level=9 -o build/"${PROGN}"
 rm -f pack.temp.dmg 
+
 echo "Cleaning up..."
 rm -rf ${APP}
 du -sh build/"${PROGN}".dmg
+
 echo "All done!"

@@ -8,6 +8,7 @@ How To build digiKam.app for MacOS-X from source in 3 easy steps (based on DarkT
 
 2) Recompile digiKam under Macports. Look README.MACOSX for details.
 
-3) To make a disk image, run ./project/macosx/make-app-bundle -- this will create digiKam.dmg in the release directory, which contains a standalone application.
+3) To make a disk image, run ./project/macosx/make-app-bundle -- this will create digiKam.dmg in the release directory,
+   which contains a standalone application.
 
 Author: Gilles Caulier <caulier dot gilles at gmail dot com>
