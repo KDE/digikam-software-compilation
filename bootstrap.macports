@@ -19,21 +19,21 @@ export PKG_CONFIG_PATH=/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH
 export MAKEFILES_TYPE='Unix Makefiles'
 
 INSTALL_PREFIX=$1
-if [ "$INSTALL_PREFIX" =  "" ]; then
+if [ "$INSTALL_PREFIX" = "" ]; then
         INSTALL_PREFIX=/opt/local
 fi
 
 BUILD_TYPE=$2
-if [ "$BUILD_TYPE" =  "" ]; then
+if [ "$BUILD_TYPE" = "" ]; then
         BUILD_TYPE=debugfull
 fi
 
 TARGET_TYPE=$3
-if [ "$TARGET_TYPE" =  "" ]; then
+if [ "$TARGET_TYPE" = "" ]; then
         TARGET_TYPE=x86_64
 fi
 
-echo Installing to $INSTALL_PREFIX for $BUILD_TYPE
+echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE"
 
 if [ ! -d "build" ]; then
     mkdir build
