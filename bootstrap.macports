@@ -5,8 +5,9 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
-# Arguments : $1 : install path (default /opt/local)
-#             $2 : build type   (default debugfull)
+# Arguments : $1 : install path '/opt/local' (default).
+#             $2 : build type   'debugfull' to hack (default), 'release' for production.
+#             $3 : target type  'x86_64' for OSX Lion (default), 'i386' for Snow Leopard.
 
 # set devel env from MacOS-X through MacPorts
 export QTDIR=/opt/local/lib
@@ -27,6 +28,11 @@ if [ "$BUILD_TYPE" =  "" ]; then
         BUILD_TYPE=debugfull
 fi
 
+TARGET_TYPE=$3
+if [ "$TARGET_TYPE" =  "" ]; then
+        TARGET_TYPE=x86_64
+fi
+
 echo Installing to $INSTALL_PREFIX for $BUILD_TYPE
 
 if [ ! -d "build" ]; then
@@ -38,6 +44,7 @@ cd build
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_OSX_ARCHITECTURES=${TARGET_TYPE} \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
@@ -53,5 +60,4 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DQT_QT_INCLUDE_DIR=/opt/local/include \
       -DQT_LIBRARY_DIR=/opt/local/lib \
       -DQT_QMAKE_EXECUTABLE=/opt/local/bin/qmake \
-      -DCMAKE_OSX_ARCHITECTURES="x86_64" \
       ..
