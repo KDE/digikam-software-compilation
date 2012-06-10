@@ -31,6 +31,7 @@ See complete MacPort guide for more information : http://guide.macports.org
 
 Install all compilation and run-time dependencies:
 
+> sudo port -v install qt4-mac +mysql
 > sudo port -v install kde4-baseapps
 > sudo port -v install opencv
 > sudo port -v install marble
