@@ -11,6 +11,10 @@ Remark: To fix the warning when running the installer/uninstaller one need to si
 
 -------------------------------------------------------------------------------------------------------------------------
 
-RKWard project (http://rkward.sourceforge.net) has also an nsis installer. Look here:
+Other project that use NSIS installer :
 
-http://rkward.svn.sourceforge.net/viewvc/rkward/trunk/rkward/windows_nsis/installer.nsi?view=markup
+- RKWard (http://rkward.sourceforge.net) :
+  http://rkward.svn.sourceforge.net/viewvc/rkward/trunk/rkward/windows_nsis
+
+- Clementine (http://www.clementine-player.org)
+  http://code.google.com/p/clementine-player/source/browse/dist/windows
