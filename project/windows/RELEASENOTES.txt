@@ -8,3 +8,7 @@ For example:
 To report new bugs, please use this url:
 
 http://www.digikam.org/support
+
+To know all current reports open about Windows release, please check this url:
+
+https://bugs.kde.org/buglist.cgi?list_id=144974&op_sys=MS%20Windows&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&product=digikam
