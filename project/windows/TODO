@@ -5,7 +5,13 @@
 - Replace digikam/showphoto program icons with high-quality versions
 - Support multiple user install (non-administrator install)
   see: http://nsis.sourceforge.net/Add_uninstall_information_to_Add/Remove_Programs
-- Support quiet install/uninstall
+- Support quiet (silent?) install/uninstall
+
+- Internationalize LockedList windows - see LameXP:
+  http://lamexp.git.sourceforge.net/git/gitweb.cgi?p=lamexp/lamexp;a=blob;f=etc/NSIS/setup.nsi;hb=HEAD
+
+- Internationalize prior installation notification - see VLC:
+  http://nsis.sourceforge.net/VLC_media_player
 
 Remark: To fix the warning when running the installer/uninstaller one need to sign the .exe, this would require to buy a 900$ certificate !
 

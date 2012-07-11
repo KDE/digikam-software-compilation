@@ -8,6 +8,7 @@
  ;
  ; Copyright (C) 2010 by Julien Narboux <julien at narboux dot fr>
  ; Copyright (C) 2010 by Gilles Caulier <caulier dot gilles at gmail dot com>
+ ; Copyright (C) 2012 by Ananta Palani <anantapalani at gmail dot com>
  ;
  ; Script arguments:
  ; VERSION  : the digiKam version string.
@@ -56,7 +57,7 @@ SetCompressorDictSize 96
 ;General
 
   ;Name and file
-  Name "${MY_PRODUCT}"
+  Name "${MY_PRODUCT} ${VERSION}"
   Icon "digikam-installer.ico"
   UninstallIcon "digikam-uninstaller.ico"
   OutFile "${OUTFILE}"
@@ -68,15 +69,67 @@ SetCompressorDictSize 96
   InstallDirRegKey HKLM "Software\${MY_PRODUCT}" ""
 
   ;Request application privileges for Windows Vista
-  ;Requires UAC plugin:
+  ;Requires UAC plugin :
   ;http://nsis.sourceforge.net/UAC_plug-in
-  ;Copy UAC.dll to NSIS 'Plugins', UAC.nsh to '', and the two .nsi to 'Examples'
   !include "UAC.nsh"
   RequestExecutionLevel admin
+  
+  !include "LogicLib.nsh"
+  !include "StrFunc.nsh"
+  ${StrRep}
+  ${StrStr}
+  ${StrStrAdv}
+  
+  ;Requires Registry plugin :
+  ;http://nsis.sourceforge.net/Registry_plug-in
+  !include "Registry.nsh"
 
   Function .onInit
-    #TODO: call UserInfo plugin to make sure user is admin
-  FunctionEnd
+    #TODO: call UserInfo plugin to make sure user is admin - with current method, this doesn't seem to be necessary, but asking for elevation later may require this?
+    
+    Push $R0
+    Push $R1
+    Push $R2
+    
+    checkUninstallRequired:
+      ReadRegStr $R0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "UninstallString"
+      ${StrRep} $R0 $R0 '"' "" ; Remove double-quotes so Delete and RMDir work properly and we can extract the path
+      StrCmp $R0 "" done
+      
+      ;Get path
+      ${StrStrAdv} $R1 $R0 "\" "<" "<" "0" "0" "0"
+      
+      ReadRegStr $R2 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "DisplayName" ; DisplayName contains version
+      
+      #TODO: need to internationalize string (see VLC / clementine / etc)
+      MessageBox MB_YESNO|MB_ICONEXCLAMATION|MB_TOPMOST|MB_SETFOREGROUND "$R2 is currently installed but only a single instance of ${MY_PRODUCT} can be installed at any time.$\r$\n$\r$\n\
+        Do you want to uninstall the current instance of ${MY_PRODUCT} and continue installing ${MY_PRODUCT} ${VERSION}?" /SD IDYES IDNO noInstall
+    
+    ;Run the uninstaller
+    ;uninst:
+      ClearErrors
+      
+      IfSilent 0 notSilent
+        ExecWait '"$R0" /S _?=$R1' ; Do not copy the uninstaller to a temp file
+        Goto uninstDone
+      notSilent:
+        ExecWait '"$R0" _?=$R1' ; Do not copy the uninstaller to a temp file
+        
+      uninstDone:
+        IfErrors checkUninstallRequired
+        Delete "$R0" ; If uninstall successfule, remove uninstaller
+        RMDir "$R1" ; remove previous install directory
+        Goto checkUninstallRequired
+    
+    noInstall:
+      Abort
+    
+    done:
+      Pop $R2
+      Pop $R1
+      Pop $R0
+    
+    FunctionEnd
 
 ;-------------------------------------------------------------------------------
 ;Interface Configuration
@@ -94,11 +147,96 @@ SetCompressorDictSize 96
   Var StartMenuFolder
 
 ;-------------------------------------------------------------------------------
+;Functions and Macros
+  
+  ; Sets up a variable to indicate to LockedListShow that it was arrived at from the previous page rather than the next
+  !macro LeavePageBeforeLockedListShow un
+    Function ${un}LeavePageBeforeLockedListShow
+      StrCpy $R9 0
+    FunctionEnd
+  !macroend
+  !insertmacro LeavePageBeforeLockedListShow ""
+  !insertmacro LeavePageBeforeLockedListShow "un."
+  
+  ;Requires LockedList plugin :
+  ;http://nsis.sourceforge.net/LockedList_plug-in
+  #TODO: internationalize MUI_HEADER_TEXT and possibly columns (see LameXP)
+  !macro LockedListShow un
+    Function ${un}LockedListShow
+      ;Check if we are coming from the previous page or the next.
+      ;If the next page, abort.
+      ;This prevents autonext from never allowing the Back button to work.
+      ${If} $R9 == 1
+        Abort
+      ${EndIf}
+      StrCpy $R9 1
+      !insertmacro MUI_HEADER_TEXT "Close Conflicting Programs" "Ensure no programs are using the install location"
+      LockedList::AddFolder $INSTDIR
+      LockedList::Dialog /autonext /autoclose
+      Pop $R0
+    FunctionEnd
+  !macroend
+  !insertmacro LockedListShow ""
+  !insertmacro LockedListShow "un."
+  
+  Function DirectoryLeave
+    Call NotifyIfRebootRequired
+    Call LeavePageBeforeLockedListShow
+  FunctionEnd
+  
+  Function NotifyIfRebootRequired
+    Call IsRebootRequired
+    Exch $0
+    
+    ${If} $0 == 1
+      #TODO: need to internationalize string (see VLC / clementine / etc)
+      MessageBox MB_YESNO|MB_ICONSTOP|MB_TOPMOST|MB_SETFOREGROUND "You must reboot to complete uninstallation of a previous install of ${MY_PRODUCT} before ${MY_PRODUCT} ${VERSION} can be installed.$\r$\n$\r$\n\
+        Would you like to reboot now?" /SD IDNO IDNO noInstall
+        Reboot
+    ${Else}
+      Goto done
+    ${EndIf}
+    
+    noInstall:
+      Abort
+    
+    done:
+      Pop $0
+  FunctionEnd
+
+  Function IsRebootRequired
+    Push $0
+    Push $1
+    Push $2
+    Push $3
+    
+    ${registry::Read} "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager" "PendingFileRenameOperations" $0 $1
+    ${registry::Unload}
+    
+    ${If} $0 != ""
+      StrLen $2 "$INSTDIR"
+      ${StrStr} $1 "$0" "$INSTDIR"
+      StrCpy $3 $1 $2
+    ${AndIf} $3 == "$INSTDIR"
+      StrCpy $0 1
+    ${Else}
+      StrCpy $0 0
+    ${EndIf}
+    
+    Pop $3
+    Pop $2
+    Pop $1
+    Exch $0
+  FunctionEnd
+
+;-------------------------------------------------------------------------------
 ;Pages
 
   !insertmacro MUI_PAGE_WELCOME
   !insertmacro MUI_PAGE_LICENSE "COPYING"
+  !define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirectoryLeave
   !insertmacro MUI_PAGE_DIRECTORY
+  Page Custom LockedListShow
 
   ;Start Menu Folder Page Configuration
   !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
@@ -110,9 +248,11 @@ SetCompressorDictSize 96
   !insertmacro MUI_PAGE_FINISH
 
   !insertmacro MUI_UNPAGE_WELCOME
+  !define MUI_PAGE_CUSTOMFUNCTION_LEAVE un.LeavePageBeforeLockedListShow
   !insertmacro MUI_UNPAGE_CONFIRM
+  UninstPage Custom un.LockedListShow
   !insertmacro MUI_UNPAGE_INSTFILES
-
+  
 ;-------------------------------------------------------------------------------
 ;Languages
 
@@ -178,21 +318,7 @@ SetCompressorDictSize 96
 
 Section "digiKam" SecDigiKam
 
-  ;First we kill the running process.
-  nsExec::Exec 'taskkill /f /im dbus-daemon.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im kded4.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im kioslave.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im klauncher.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im update-mime-database.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im kio_http_cache_cleaner.exe'
-	Pop $0 # return value/error/timeout
-  nsExec::Exec 'taskkill /f /im digikam.exe'
-	Pop $0 # return value/error/timeout
+  #No longer killing running processes prior to install since we are using LockedList to let the user have control over this
   
   SetOutPath "$INSTDIR"
 
@@ -302,35 +428,35 @@ SectionEnd
 
 Section "Uninstall"
 
-  ;ADD YOUR OWN FILES HERE...
+  #No longer adding /REBOOTOK to Delete and RMDir since using LockedList and also potentially uninstalling from the installer
 
-  Delete /REBOOTOK "$INSTDIR\Uninstall.exe"
-  Delete /REBOOTOK "$INSTDIR\RELEASENOTES.txt"
-  Delete /REBOOTOK "$INSTDIR\digikam-uninstaller.ico"
+  Delete "$INSTDIR\Uninstall.exe"
+  Delete "$INSTDIR\RELEASENOTES.txt"
+  Delete "$INSTDIR\digikam-uninstaller.ico"
 
-  RMDir /r /REBOOTOK "$INSTDIR\kde4" ;remove any old installs
-  RMDir /r /REBOOTOK "$INSTDIR\bin"
-  RMDir /r /REBOOTOK "$INSTDIR\certs"
-  ;RMDir /r /REBOOTOK "$INSTDIR\data"
-  ;RMDir /r /REBOOTOK "$INSTDIR\database"
-  ;RMDir /r /REBOOTOK "$INSTDIR\doc"
-  RMDir /r /REBOOTOK "$INSTDIR\etc"
-  RMDir /r /REBOOTOK "$INSTDIR\hosting"
-  RMDir /r /REBOOTOK "$INSTDIR\imports"
-  RMDir /r /REBOOTOK "$INSTDIR\include"
-  RMDir /r /REBOOTOK "$INSTDIR\lib"
-  ;RMDir /r /REBOOTOK "$INSTDIR\manifest"
-  RMDir /r /REBOOTOK "$INSTDIR\phrasebooks"
-  RMDir /r /REBOOTOK "$INSTDIR\plugins"
-  ;RMDir /r /REBOOTOK "$INSTDIR\scripts"
-  RMDir /r /REBOOTOK "$INSTDIR\share"
-  RMDir /r /REBOOTOK "$INSTDIR\translations"
-  ;RMDir /r /REBOOTOK "$INSTDIR\vad"
-  ;RMDir /r /REBOOTOK "$INSTDIR\vsp"
-  RMDir /r /REBOOTOK "$INSTDIR\xdg"
+  RMDir /r "$INSTDIR\kde4" ;remove any old installs
+  RMDir /r "$INSTDIR\bin"
+  RMDir /r "$INSTDIR\certs"
+  ;RMDir /r "$INSTDIR\data"
+  ;RMDir /r "$INSTDIR\database"
+  ;RMDir /r "$INSTDIR\doc"
+  RMDir /r "$INSTDIR\etc"
+  RMDir /r "$INSTDIR\hosting"
+  RMDir /r "$INSTDIR\imports"
+  RMDir /r "$INSTDIR\include"
+  RMDir /r "$INSTDIR\lib"
+  ;RMDir /r "$INSTDIR\manifest"
+  RMDir /r "$INSTDIR\phrasebooks"
+  RMDir /r "$INSTDIR\plugins"
+  ;RMDir /r "$INSTDIR\scripts"
+  RMDir /r "$INSTDIR\share"
+  RMDir /r "$INSTDIR\translations"
+  ;RMDir /r "$INSTDIR\vad"
+  ;RMDir /r "$INSTDIR\vsp"
+  RMDir /r "$INSTDIR\xdg"
 
   ;Do not do a recursive removal of $INSTDIR because user may have accidentally installed into system critical directory!
-  RMDir /REBOOTOK "$INSTDIR"
+  RMDir "$INSTDIR"
 
   ;Remove start menu items
   SetShellVarContext all
