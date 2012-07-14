@@ -1,7 +1,12 @@
 #!/bin/sh
 
 ###################### CONFIG ######################
+# Replace path/to/your/root/directory with the directory where you want your local digikam
+
 MYROOT=$HOME/path/to/your/root/directory
+
+# Set to 1 if you want to clean that directory (this script will delete and recreate it)
+CLEANROOT=0
 
 # After running this script, do the following to compile and install (replace $MYROOT with the correct value):
 # $ cd build
@@ -35,13 +40,16 @@ export MAKEFILES_TYPE='Unix Makefiles'
 # We will work with CodeBlock IDE using MinGW compiler
 #export MAKEFILES_TYPE='CodeBlocks - Unix Makefiles'
 
-rm -Rf $MYROOT
-if [ ! -d "build" ]; then
+if [ $CLEANROOT == 1 ]
+then
+    rm -Rf $MYROOT
+fi
+mkdir -p $MYROOT
+
+if [ ! -d "build" ]
+then
     mkdir build
 fi
-
-mkdir $MYROOT
-
 cd build
 
 cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=$MYROOT/ -DKDE4_BUILD_TESTS=on -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1 -Wno-dev ..
