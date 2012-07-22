@@ -1,28 +1,14 @@
 #!/bin/sh
 
 ###################### CONFIG ######################
+# See README.git for more information
+
 # Replace path/to/your/root/directory with the directory where you want your local digikam
 
 MYROOT=$HOME/path/to/your/root/directory
 
 # Set to 1 if you want to clean that directory (this script will delete and recreate it)
 CLEANROOT=0
-
-# After running this script, do the following to compile and install (replace $MYROOT with the correct value):
-# $ cd build
-# $ make
-# $ make install
-# $ mkdir -p $MYROOT/var/tmp/kde-$USER/ksycoca4
-# $ KDEDIRS="$MYROOT" KDESYCOCA="$MYROOT/var/tmp/kde-$USER/ksycoca4" kbuildsycoca4
-
-# To run digikam, use the following command (after replacing $MYROOT with the correct path):
-# $ KDESYCOCA="$MYROOT/var/tmp/kde-$USER/ksycoca4" KDE_FORK_SLAVES=1 LD_LIBRARY_PATH="$MYROOT/lib64/" KDEDIRS="$MYROOT" $MYROOT/bin/digikam
-
-# For bash users, you can setup a new alias like this at the end of your $HOME/.bashrc :
-#   DIGIKAMROOT="$MYROOT"
-#   alias digikam-dev="KDESYCOCA='$DIGIKAMROOT/var/tmp/kde-neb/ksycoca4' KDE_FORK_SLAVES=1 LD_LIBRARY_PATH='$DIGIKAMROOT/lib64/' KDEDIRS='$DIGIKAMROOT' $DIGIKAMROOT/bin/digikam"
-
-# The same applies for other binaries in $MYROOT/bin/
 
 ###################### END CONFIG ######################
 
