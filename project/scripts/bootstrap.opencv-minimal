@@ -47,5 +47,5 @@ export OpenCVOptions='-DBUILD_EXAMPLES=OFF \
                       -DWITH_QT_OPENGL=OFF \
                       -DBUILD_DOCS=OFF'
 
-cmake -G "$MAKEFILES_TYPE" . -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr $OpenCVOptions
+cmake -G "$MAKEFILES_TYPE" -DCMAKE_BUILD_TYPE=debugfull -DCMAKE_INSTALL_PREFIX=/usr $OpenCVOptions .
 
