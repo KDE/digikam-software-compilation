@@ -112,6 +112,21 @@ for lang in i18nlangs
 			puts( "done.\n" )
 		end
 
+        for part in ['libkipi']
+          puts "Copying #{lang}'s #{part} over..  "
+          if isWindows
+            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdegraphics/#{part}.po > #{part}.po `
+          else
+            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdegraphics/#{part}.po 2> /dev/null | tee #{part}.po `
+          end
+          if FileTest.size( "#{part}.po" ) == 0
+            File.delete( "#{part}.po" )
+            puts "Delete File #{part}.po"
+          end
+          
+          puts( "done.\n" )
+        end
+
 		Dir.chdir("..")
 		topmakefile << "add_subdirectory( #{lang} )\n"
 	end
