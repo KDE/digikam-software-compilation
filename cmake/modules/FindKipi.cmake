@@ -5,19 +5,21 @@
 #
 # Once done this will define
 #
-#  KIPI_FOUND       - system has libkipi
-#  KIPI_INCLUDE_DIR - the libkipi include directory
+#  KIPI_FOUND       - System has libkipi
+#  KIPI_INCLUDE_DIR - The libkipi include directory
 #  KIPI_LIBRARIES   - Link these to use libkipi
 #  KIPI_DEFINITIONS - Compiler switches required for using libkipi
-#  KIPI_VERSION     - The version of the Kipi library
+#  KIPI_VERSION     - The release version of the Kipi library
+#  KIPI_SO_VERSION  - The binary SO version of the Kipi library
 #
 
 # Copyright (c) 2012, Victor Dodon <dodonvictor at gmail dot com>
+# Copyright (c) 2012, Gilles Caulier <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-IF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION)
+IF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION AND KIPI_SO_VERSION)
 
   IF(NOT Kipi_FIND_QUIETLY)
     MESSAGE(STATUS "Found kipi library in cache ${KIPI_LIBRARIES}")
@@ -25,7 +27,7 @@ IF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION)
   # Already in cache
   SET(KIPI_FOUND TRUE)
 
-ELSE(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION)
+ELSE(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION AND KIPI_SO_VERSION)
 
   IF(NOT Kipi_FIND_QUIETLY)
     MESSAGE(STATUS "Check Kipi library in local sub-folder...")
@@ -81,21 +83,36 @@ ELSE(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION)
   ENDIF(KIPI_LOCAL_FOUND)
 
   IF(KIPI_FOUND)
+
     IF(NOT KIPI_VERSION)
       FILE(READ "${KIPI_VERSION_H_FILENAME}" KIPI_VERSION_H_CONTENT)
       STRING(REGEX REPLACE ".*static +const +char +kipi_version\\[\\] += +\"([^\"]+)\".*" "\\1" KIPI_VERSION "${KIPI_VERSION_H_CONTENT}")
-      UNSET(KIPI_VERSION_H_CONTENT)
+      MESSAGE(STATUS "Kipi library version: ${KIPI_VERSION}")
     ENDIF(NOT KIPI_VERSION)
+
+    IF(NOT KIPI_SO_VERSION)
+      FILE(READ "${KIPI_VERSION_H_FILENAME}" KIPI_VERSION_H_CONTENT)
+      STRING(REGEX REPLACE
+             ".*static +const +int +kipi_binary_version +=  ([^ ;]+).*"
+             "\\1"
+             KIPI_SO_VERSION
+             "${KIPI_VERSION_H_CONTENT}"
+            )
+      MESSAGE(STATUS "Kipi library SO binary version: ${KIPI_SO_VERSION}")
+    ENDIF(NOT KIPI_SO_VERSION)
+
+    UNSET(KIPI_VERSION_H_CONTENT)
     UNSET(KIPI_VERSION_H_FILENAME)
   ENDIF(KIPI_FOUND)
 
   IF(KIPI_FOUND)
-    MARK_AS_ADVANCED(KIPI_INCLUDE_DIR KIPI_LIBRARIES KIPI_DEFINITIONS KIPI_VERSION)
+    MARK_AS_ADVANCED(KIPI_INCLUDE_DIR KIPI_LIBRARIES KIPI_DEFINITIONS KIPI_VERSION KIPI_SO_VERSION)
   ELSE(KIPI_FOUND)
     UNSET(KIPI_INCLUDE_DIR)
     UNSET(KIPI_LIBRARIES)
     UNSET(KIPI_DEFINITIONS)
     UNSET(KIPI_VERSION)
+    UNSET(KIPI_SO_VERSION)
   ENDIF(KIPI_FOUND)
 
-ENDIF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION)
+ENDIF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION AND KIPI_SO_VERSION)
