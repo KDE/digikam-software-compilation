@@ -11,9 +11,11 @@ not to install a specific released version provided by MacPort team as package t
 2 - INSTALLING MACPORT
 ----------------------
 
-
-* Install development environnement Xcode from apple (http://developer.apple.com/xcode).
-  It's free, you just need to create an acount on apple.com to download it.
+* Install development environnement Xcode from apple.
+   * For OS X versions 10.7 and later, download Xcode from the app store 
+     (http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+   * For OS X versions less than 10.7 download from applehttp://developer.apple.com/xcode).
+     It's free, you just need to create an acount on apple.com to download it.
 
   NOTE: since Xcode 4.3.2, you need to install Xcode Command Line Tools extension package to be able to use Macport on your computer.
   See this url for details : http://guide.macports.org/#installing.xcode.
@@ -32,6 +34,7 @@ See complete MacPort guide for more information : http://guide.macports.org
 Install all compilation and run-time dependencies:
 
 > sudo port -v install qt4-mac +mysql
+> sudo port -v install qt4-mac-mysql55-plugin
 > sudo port -v install kde4-baseapps
 > sudo port -v install opencv
 > sudo port -v install marble
