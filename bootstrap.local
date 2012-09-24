@@ -5,40 +5,41 @@
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
-
-
-###################### CONFIG ######################
+#
 # See README.LOCAL for more information
 
-# Replace path/to/your/root/directory with the directory where you want your local digikam
-
-MYROOT=$HOME/path/to/your/root/directory
+########################## CONFIG ######################
 
 # Set to 1 if you want to clean that directory (this script will delete and recreate it)
 CLEANROOT=0
 
+# Replace path/to/your/root/directory with the directory where you want your local digikam
+
+DIGIKAM_INSTALL_PREFIX=$HOME/path/to/your/root/directory
+
 ###################### END CONFIG ######################
 
-export PATH=$MYROOT/bin:$PATH
-export LD_LIBRARY_PATH=$MYROOT/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=$MYROOT/lib/pkgconfig:/usr/lib/pkgconfig
+QT_INSTALL_PREFIX=`qmake -query "QT_INSTALL_PREFIX"`
+QT_BIN=$QT_INSTALL_PREFIX/bin
+export PATH=$QT_BIN:$PATH
+export MAKEFILES_TYPE='Unix Makefiles'
+
+export PATH=$DIGIKAM_INSTALL_PREFIX/bin:$PATH
+export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:/usr/lib/pkgconfig
 
 #export VERBOSE=1
 #export CC=gcc4.4
 #export CXX=g++4.4
 
-# We will work on command line using GNU Make
-export MAKEFILES_TYPE='Unix Makefiles'
-
-# We will work with CodeBlock IDE using MinGW compiler
-#export MAKEFILES_TYPE='CodeBlocks - Unix Makefiles'
-
+# Manage local install dir
 if [ $CLEANROOT == 1 ]
 then
-    rm -Rf $MYROOT
+    rm -Rf $DIGIKAM_INSTALL_PREFIX
 fi
-mkdir -p $MYROOT
+mkdir -p $DIGIKAM_INSTALL_PREFIX
 
+# Manage build sub-dir
 if [ ! -d "build" ]
 then
     mkdir build
@@ -47,7 +48,7 @@ cd build
 
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debugfull \
-      -DCMAKE_INSTALL_PREFIX=$MYROOT/ \
+      -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX/ \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \

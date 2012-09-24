@@ -5,28 +5,25 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
+DIGIKAM_INSTALL_PREFIX=`kde4-config --prefix`
+
 QT_INSTALL_PREFIX=`qmake -query "QT_INSTALL_PREFIX"`
 QT_BIN=$QT_INSTALL_PREFIX/bin
-DIGIKAM_INSTALL_PREFIX=`kde4-config --prefix`
-#export QTDIR=/usr/lib/qt4/
 export PATH=$QT_BIN:$PATH
+export MAKEFILES_TYPE='Unix Makefiles'
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kde4-config --path lib`
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kde4-config --path lib`/pkgconfig
+
 
 #export VERBOSE=1
 #export CC=gcc4.4
 #export CXX=g++4.4
 
-# We will work on command line using GNU Make
-export MAKEFILES_TYPE='Unix Makefiles'
-
-# We will work with CodeBlock IDE using MinGW compiler
-#export MAKEFILES_TYPE='CodeBlocks - Unix Makefiles'
-
+# Manage build sub-dir
 if [ ! -d "build" ]; then
     mkdir build
 fi
-
 cd build
 
 cmake -G "$MAKEFILES_TYPE" . \
@@ -38,6 +35,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_CHECKOUT_PO=off \
       -DENABLE_PRESENTATIONMODE=off\
       -DENABLE_LCMS2=off \
-      -DENABLE_RAWSPEED=off \
+      -DENABLE_RAWSPEED=on \
       -Wno-dev \
       ..
