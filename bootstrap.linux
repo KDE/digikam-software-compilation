@@ -5,11 +5,13 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-# set devel env from Mageia
-export QTDIR=/usr/lib/qt4/
-export PATH=$QTDIR/bin:$PATH
-export LD_LIBRARY_PATH=/usr/lib/kde4
-export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+QT_INSTALL_PREFIX=`qmake -query "QT_INSTALL_PREFIX"`
+QT_BIN=$QT_INSTALL_PREFIX/bin
+DIGIKAM_INSTALL_PREFIX=`kde4-config --prefix`
+#export QTDIR=/usr/lib/qt4/
+export PATH=$QT_BIN:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kde4-config --path lib`
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kde4-config --path lib`/pkgconfig
 
 #export VERBOSE=1
 #export CC=gcc4.4
@@ -29,7 +31,7 @@ cd build
 
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debugfull \
-      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
