@@ -1,9 +1,12 @@
 # Module that tries to find the Kipi library
 #
-# If you have put a local version of libkipi into your source tree,
-# set KIPI_LOCAL_DIR to the relative path to the local directory.
+# Input values :
 #
-# Once done this will define
+# KIPI_MIN_VERSION  - Minimum libkipi version to found (ex: "2.0.0").
+# KIPI_LOCAL_DIR    - If you have put a local version of libkipi into your source tree,
+#                     set this variable to the relative path from the local directory.
+#
+# Output values :
 #
 #  KIPI_FOUND       - System has libkipi
 #  KIPI_INCLUDE_DIR - The libkipi include directory
@@ -18,6 +21,13 @@
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+
+IF(${KIPI_MIN_VERSION} STREQUAL "")
+    SET(KIPI_MIN_VERSION "2.0.0")
+    MESSAGE(STATUS "No Kipi library version required. Check default version : ${KIPI_MIN_VERSION}")
+ELSE()
+    MESSAGE(STATUS "Kipi library version required : ${KIPI_MIN_VERSION}")
+ENDIF()
 
 IF(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION AND KIPI_SO_VERSION)
 
@@ -69,7 +79,7 @@ ELSE(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION A
       ENDIF(NOT Kipi_FIND_QUIETLY)
 
       INCLUDE(FindPkgConfig)
-      PKG_CHECK_MODULES(KIPI libkipi>=2.0.0)
+      PKG_CHECK_MODULES(KIPI libkipi>=${KIPI_MIN_VERSION})
     ENDIF(NOT WIN32)
 
     FIND_LIBRARY(KIPI_LIBRARIES NAMES libkipi PATHS ${KIPI_LIBRARY_DIRS} ${LIB_INSTALL_DIR} ${KDE4_LIB_DIR})
@@ -107,7 +117,12 @@ ELSE(KIPI_INCLUDE_DIR AND KIPI_LIBRARIES AND KIPI_DEFINITIONS AND KIPI_VERSION A
   ENDIF(KIPI_FOUND)
 
   IF(KIPI_FOUND)
-    MARK_AS_ADVANCED(KIPI_INCLUDE_DIR KIPI_LIBRARIES KIPI_DEFINITIONS KIPI_VERSION KIPI_SO_VERSION)
+    MESSAGE(STATUS "libkipi: Found version ${KIPI_VERSION} (required: ${KIPI_MIN_VERSION})")
+    IF(${KIPI_VERSION} VERSION_LESS ${KIPI_MIN_VERSION})
+        SET(KIPI_FOUND FALSE)
+    ELSE()
+        MARK_AS_ADVANCED(KIPI_INCLUDE_DIR KIPI_LIBRARIES KIPI_DEFINITIONS KIPI_VERSION KIPI_SO_VERSION)
+    ENDIF()
   ELSE(KIPI_FOUND)
     UNSET(KIPI_INCLUDE_DIR)
     UNSET(KIPI_LIBRARIES)
