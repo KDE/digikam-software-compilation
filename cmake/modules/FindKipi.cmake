@@ -23,7 +23,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 IF(${KIPI_MIN_VERSION} STREQUAL "")
-    SET(KIPI_MIN_VERSION "2.0.0")
+    SET(KIPI_MIN_VERSION "1.2.0")
     MESSAGE(STATUS "No Kipi library version required. Check default version : ${KIPI_MIN_VERSION}")
 ELSE()
     MESSAGE(STATUS "Kipi library version required : ${KIPI_MIN_VERSION}")
