@@ -40,7 +40,7 @@ INCLUDE(MacroOptionalAddSubdirectory)
 OPTION(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
 OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
-OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
+OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" ON)
 
 MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO ENABLE_CHECKOUT_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
