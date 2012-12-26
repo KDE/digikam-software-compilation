@@ -21,7 +21,7 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-IF(${Kipi_FIND_VERSION} STREQUAL "")
+IF("${Kipi_FIND_VERSION}" STREQUAL "")
     SET(Kipi_FIND_VERSION "1.2.0")
     MESSAGE(STATUS "No Kipi library version required. Check default version : ${Kipi_FIND_VERSION}")
 ELSE()
