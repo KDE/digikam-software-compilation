@@ -49,6 +49,8 @@ cd build
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debugfull \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX/ \
+      -DCMAKE_CXX_FLAGS="-pedantic -Werror=return-type" \
+      -DCMAKE_C_FLAGS="-pedantic -Werror=return-type" \
       -DKDE4_BUILD_TESTS=on \
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
       -DDIGIKAMSC_COMPILE_DOC=on \
