@@ -13,6 +13,9 @@
 # Set to 1 if you want to clean that directory (this script will delete and recreate it)
 CLEANROOT=0
 
+# Set the ccache path for faster compile cycles
+CCACHE_PATH=/usr/lib/ccache/bin
+
 # Replace path/to/your/root/directory with the directory where you want your local digikam
 
 DIGIKAM_INSTALL_PREFIX=$HOME/path/to/your/root/directory
@@ -24,7 +27,7 @@ QT_BIN=$QT_INSTALL_PREFIX/bin
 export PATH=$QT_BIN:$PATH
 export MAKEFILES_TYPE='Unix Makefiles'
 
-export PATH=$DIGIKAM_INSTALL_PREFIX/bin:$PATH
+export PATH=$CCACHE_PATH:$DIGIKAM_INSTALL_PREFIX/bin:$PATH
 export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:/usr/lib/pkgconfig
 
