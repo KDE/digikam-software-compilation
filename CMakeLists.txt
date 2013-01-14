@@ -61,14 +61,24 @@ ELSE()
 ENDIF()
 
 IF(ENABLE_CHECKOUT_PO)
-    MESSAGE(STATUS "Extract translations files from KDE repositories. Please wait, it can take a while...")
-    EXEC_PROGRAM(./project/release/fetch_l10n.rb ${CMAKE_SOURCE_DIR})
-    MESSAGE(STATUS "Translations files extraction done.")
+    FIND_PACKAGE(Ruby)
+    IF(RUBY_EXECUTABLE)
+        MESSAGE(STATUS "Extract translation files from KDE repositories. Please wait, it can take a while...")
+        EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n.rb"
+                        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+                        OUTPUT_QUIET
+                        ERROR_QUIET)
+        MESSAGE(STATUS "Translation files extraction done.")
+    ELSE()
+        MESSAGE(STATUS "Could not find Ruby to extract translation files")
+    ENDIF()
 ENDIF()
 
 IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
     MESSAGE(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
-    MESSAGE(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
+    IF(NOT ENABLE_CHECKOUT_PO)
+        MESSAGE(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
+    ENDIF()
     SET(ENABLE_COMPILE_PO 0)
 ENDIF()
 
