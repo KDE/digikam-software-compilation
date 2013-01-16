@@ -54,7 +54,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
       -DCMAKE_INSTALL_NAME_DIR=/opt/local/lib \
       -DCMAKE_SYSTEM_PREFIX_PATH="/opt/local;/usr" \
-      -DCMAKE_MODULE_PATH=/opt/local/share/cmake/modules \
+      -DCMAKE_MODULE_PATH="/opt/local/share/cmake-2.8/Modules;/opt/local/share/cmake/modules" \
       -DBUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4 \
       -DKDE_DISTRIBUTION_TEXT="MacPorts/Mac OS X" \
       -DQT_QT_INCLUDE_DIR=/opt/local/include \
