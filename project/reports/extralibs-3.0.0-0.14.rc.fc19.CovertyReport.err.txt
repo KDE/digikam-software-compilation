@@ -1,0 +1,268 @@
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:129: cond_true: Condition "it != this->databases.end()", taking true branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:136: cond_true: Condition "it.value()->ref.fetchAndAddOrdered(1) != 0", taking true branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:139: check_return: Calling function "QBasicAtomicInt::deref()" without checking return value (as is done elsewhere 33 out of 37 times).
+/usr/include/QtCore/qstring.h:880: example_checked: "this->d->ref.deref()" has its value checked in "this->d->ref.deref()".
+/usr/include/kde4/ksharedptr.h:213: example_checked: "this->d->ref.deref()" has its value checked in "this->d->ref.deref()".
+/usr/include/QtCore/qsharedpointer_impl.h:344: example_checked: "d->weakref.deref()" has its value checked in "d->weakref.deref()".
+/usr/include/QtCore/qhash.h:283: example_checked: "(*this).d->ref.deref()" has its value checked in "(*this).d->ref.deref()".
+digikam-3.0.0-rc/core/libs/dimg/dshareddata.h:264: example_checked: "x->ref.deref()" has its value checked in "x->ref.deref()".
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:139: unchecked_value: No check of the return value of "it.value()->ref.deref()".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:324: cond_false: Condition "input == NULL", taking false branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:330: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:339: cond_true: Condition "j < this->d->faceImgArr.size()", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:345: cond_true: Condition "!(eigenValues = (float *)cvAlloc(8UL /* 2 * sizeof (float) */))", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:345: var_compare_op: Comparing "eigenValues" to null implies that "eigenValues" might be null.
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:360: cond_true: Condition "!(pAvgTrainImg = cvCreateImage(size, 32, 1))", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_true: Condition "i < 2", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:366: cond_true: Condition "!eigenObjects[i]", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_true: Condition "i < 2", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:366: cond_true: Condition "!eigenObjects[i]", taking true branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_false: Condition "i < 2", taking false branch
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:376: var_deref_op: Dereferencing null pointer "eigenValues".
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_true: Condition "!KFaceIface::_k_static_static_d", taking true branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_true: Condition "this->isDestroyed()", taking true branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: var_assign: Assigning: "x" = storage returned from "new KFaceIface::RecognitionDatabaseStaticPriv".
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KFaceIface::RecognitionDatabaseStaticPriv>::testAndSetOrdered(KFaceIface::RecognitionDatabaseStaticPriv *, KFaceIface::RecognitionDatabaseStaticPriv *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KFaceIface::RecognitionDatabaseStaticPriv>::testAndSetOrdered(KFaceIface::RecognitionDatabaseStaticPriv *, KFaceIface::RecognitionDatabaseStaticPriv *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_false: Condition "!KFaceIface::_k_static_static_d.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull", taking true branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "this->isDestroyed()", taking true branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: var_assign: Assigning: "x" = storage returned from "new Digikam::ImageHistoryGraphDataSharedNull".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_false: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: else_branch: Reached else branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:71: member_decl: Class member declaration for "type".
+digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:69: uninit_member: Non-static class member "type" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:68: member_decl: Class member declaration for "htl".
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "htl" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:73: member_decl: Class member declaration for "rect".
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "rect" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:76: member_decl: Class member declaration for "moving".
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "moving" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:78: member_decl: Class member declaration for "resizing".
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "resizing" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:79: member_decl: Class member declaration for "resizeType".
+digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "resizeType" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:79: member_decl: Class member declaration for "sceneWidth".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "sceneWidth" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:79: member_decl: Class member declaration for "sceneHeight".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "sceneHeight" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "x1".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "x1" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "x2".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "x2" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "y1".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "y1" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "y2".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "y2" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:89: member_decl: Class member declaration for "origScale".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "origScale" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:90: member_decl: Class member declaration for "scale".
+digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "scale" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:87: member_decl: Class member declaration for "lastPhotoItem".
+digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "lastPhotoItem" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:92: member_decl: Class member declaration for "scale".
+digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "scale" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNREACHABLE (CWE-561):
+digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:186: unreachable: This code cannot be reached: "cvReleaseImage(&img);".
+
+Error: UNREACHABLE (CWE-561):
+digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:392: unreachable: This code cannot be reached: "cvReleaseImage(&img);".
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: cond_true: Condition "!KGeoMap::_k_static_kgeomapGlobalObjectCreator", taking true branch
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: cond_true: Condition "this->isDestroyed()", taking true branch
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: var_assign: Assigning: "x" = storage returned from "new KGeoMap::KGeoMapGlobalObjectCreator".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KGeoMap::KGeoMapGlobalObjectCreator>::testAndSetOrdered(KGeoMap::KGeoMapGlobalObjectCreator *, KGeoMap::KGeoMapGlobalObjectCreator *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KGeoMap::KGeoMapGlobalObjectCreator>::testAndSetOrdered(KGeoMap::KGeoMapGlobalObjectCreator *, KGeoMap::KGeoMapGlobalObjectCreator *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: cond_false: Condition "!KGeoMap::_k_static_kgeomapGlobalObjectCreator.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/placeholderwidget.cpp:47: member_decl: Class member declaration for "messageLabel".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/placeholderwidget.cpp:45: uninit_member: Non-static class member "messageLabel" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:160: member_decl: Class member declaration for "actionPreviewSingleItems".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "actionPreviewSingleItems" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:161: member_decl: Class member declaration for "actionPreviewGroupedItems".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "actionPreviewGroupedItems" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:162: member_decl: Class member declaration for "actionShowNumbersOnItems".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "actionShowNumbersOnItems" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:171: member_decl: Class member declaration for "hBoxForAdditionalControlWidgetItems".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "hBoxForAdditionalControlWidgetItems" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:173: member_decl: Class member declaration for "mouseModeActionGroup".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "mouseModeActionGroup" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:182: member_decl: Class member declaration for "setPanModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setPanModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:183: member_decl: Class member declaration for "setSelectionModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setSelectionModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:184: member_decl: Class member declaration for "removeCurrentSelectionButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "removeCurrentSelectionButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:185: member_decl: Class member declaration for "setZoomModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setZoomModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:186: member_decl: Class member declaration for "setRegionSelectionFromIconModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setRegionSelectionFromIconModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:187: member_decl: Class member declaration for "setFilterModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setFilterModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:188: member_decl: Class member declaration for "removeFilterModeButton".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "removeFilterModeButton" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:189: member_decl: Class member declaration for "setSelectThumbnailMode".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_widget.cpp:141: uninit_member: Non-static class member "setSelectThumbnailMode" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.h:166: member_decl: Class member declaration for "pixmapType".
+digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.h:151: uninit_member: Non-static class member "pixmapType" is not initialized in this constructor nor in any functions that it calls.
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/job_p.h:48: member_decl: Class member declaration for "reply".
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/job_p.h:44: uninit_member: Non-static class member "reply" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:60: member_decl: Class member declaration for "id".
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:58: uninit_member: Non-static class member "id" is not initialized in this constructor nor in any functions that it calls.
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:110: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIO::StoredTransferJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:110: alias_transfer: Assigning: "job" = "dynamic_cast <KIO::StoredTransferJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:112: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:116: var_deref_model: Passing null pointer "job" to function "KIO::Job::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:66: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::NotesListJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:66: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::NotesListJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:69: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:72: var_deref_model: Passing null pointer "job" to function "KJob::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:66: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::NotesListJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:66: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::NotesListJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:69: cond_false: Condition "job->error()", taking false branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:74: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allnoteslistjob.cpp:76: var_deref_model: Passing null pointer "job" to function "Vkontakte::NotesListJob::list() const", which dereferences it.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/noteslistjob.cpp:70:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photopostjob.cpp:109: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIO::StoredTransferJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photopostjob.cpp:109: alias_transfer: Assigning: "job" = "dynamic_cast <KIO::StoredTransferJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photopostjob.cpp:111: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photopostjob.cpp:115: var_deref_model: Passing null pointer "job" to function "KIO::Job::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photojob.cpp:56: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIO::StoredTransferJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photojob.cpp:56: alias_transfer: Assigning: "job" = "dynamic_cast <KIO::StoredTransferJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photojob.cpp:58: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photojob.cpp:62: var_deref_model: Passing null pointer "job" to function "KIO::Job::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:176: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::SavePhotoJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:176: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::SavePhotoJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:179: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:182: var_deref_model: Passing null pointer "job" to function "KJob::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:176: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::SavePhotoJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:176: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::SavePhotoJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:179: cond_false: Condition "job->error()", taking false branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:185: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:187: var_deref_model: Passing null pointer "job" to function "Vkontakte::SavePhotoJob::list() const", which dereferences it.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/savephotojob.cpp:105:5: deref_parm_field_in_call: Function "QList<QSharedPointer<Vkontakte::PhotoInfo> >::QList(QList<QSharedPointer<Vkontakte::PhotoInfo> > const &)" dereferences an offset off "this".
+/usr/include/QtCore/qlist.h:122:46: deref_parm: Directly dereferencing parameter "l".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:88: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::GetPhotoUploadServerJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:88: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::GetPhotoUploadServerJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:91: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:94: var_deref_model: Passing null pointer "job" to function "KJob::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:88: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::GetPhotoUploadServerJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:88: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::GetPhotoUploadServerJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:91: cond_false: Condition "job->error()", taking false branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:97: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:99: var_deref_model: Passing null pointer "job" to function "Vkontakte::GetPhotoUploadServerJob::uploadUrl() const", which dereferences it.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/getphotouploadserverjob.cpp:110:5: deref_parm_field_in_call: Function "QString::QString(QString const &)" dereferences an offset off "this".
+/usr/include/QtCore/qstring.h:726:1: deref_parm: Directly dereferencing parameter "other".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:133: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::PhotoPostJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:133: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::PhotoPostJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:139: cond_true: Condition "this->mayStartPostJob()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:139: cond_true: Condition "!this->d->pendingPostJobs.empty()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:148: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:151: var_deref_model: Passing null pointer "job" to function "KJob::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:133: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::PhotoPostJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:133: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::PhotoPostJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:139: cond_true: Condition "this->mayStartPostJob()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:139: cond_true: Condition "!this->d->pendingPostJobs.empty()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:148: cond_false: Condition "job->error()", taking false branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:154: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/uploadphotosjob.cpp:156: var_deref_model: Passing null pointer "job" to function "Vkontakte::PhotoPostJob::response() const", which dereferences it.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/photopostjob.cpp:149:5: deref_parm_field_in_call: Function "QMap<QString, QVariant>::QMap(QMap<QString, QVariant> const &)" dereferences an offset off "this".
+/usr/include/QtCore/qmap.h:184:5: deref_parm: Directly dereferencing parameter "other".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:84: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::MessagesListJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:84: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::MessagesListJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:87: cond_true: Condition "job->error()", taking true branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:90: var_deref_model: Passing null pointer "job" to function "KJob::errorString() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:84: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::MessagesListJob *>(kjob)" can return NULL.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:84: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::MessagesListJob *>(kjob)".
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:87: cond_false: Condition "job->error()", taking false branch
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:92: if_end: End of if statement
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:94: var_deref_model: Passing null pointer "job" to function "Vkontakte::MessagesListJob::list() const", which dereferences it.
+digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/messageslistjob.cpp:76:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.h:77: member_decl: Class member declaration for "mediawiki".
+digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.cpp:46: uninit_member: Non-static class member "mediawiki" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:73: member_decl: Class member declaration for "onlyOneSignal".
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:54: uninit_member: Non-static class member "onlyOneSignal" is not initialized in this constructor nor in any functions that it calls.
+
