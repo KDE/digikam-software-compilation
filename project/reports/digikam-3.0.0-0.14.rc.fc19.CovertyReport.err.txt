@@ -3161,66 +3161,6 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/libs/database/core/thumbnaildb.h:80: member_decl: Class member declaration for "orientationHint".
 digikam-3.0.0-rc/core/libs/database/core/thumbnaildb.h:75: uninit_member: Non-static class member "orientationHint" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:102: member_decl: Class member declaration for "lens".
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:78: uninit_member: Non-static class member "lens" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/fx/filmgrainsettings.cpp:140: member_decl: Class member declaration for "expanderBox".
-digikam-3.0.0-rc/core/libs/dimg/filters/fx/filmgrainsettings.cpp:90: uninit_member: Non-static class member "expanderBox" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-/usr/include/gphoto2/gphoto2-abilities-list.h:121: member_decl: Class member declaration for "model".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.model" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:122: member_decl: Class member declaration for "status".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.status" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:125: member_decl: Class member declaration for "port".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.port" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:127: member_decl: Class member declaration for "speed".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.speed" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:130: member_decl: Class member declaration for "operations".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.operations" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:131: member_decl: Class member declaration for "file_operations".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.file_operations" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:132: member_decl: Class member declaration for "folder_operations".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.folder_operations" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:134: member_decl: Class member declaration for "usb_vendor".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.usb_vendor" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:135: member_decl: Class member declaration for "usb_product".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.usb_product" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:136: member_decl: Class member declaration for "usb_class".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.usb_class" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:137: member_decl: Class member declaration for "usb_subclass".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.usb_subclass" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:138: member_decl: Class member declaration for "usb_protocol".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.usb_protocol" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:141: member_decl: Class member declaration for "library".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.library" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:142: member_decl: Class member declaration for "id".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.id" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:144: member_decl: Class member declaration for "device_type".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.device_type" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:147: member_decl: Class member declaration for "reserved2".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved2" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:148: member_decl: Class member declaration for "reserved3".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved3" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:149: member_decl: Class member declaration for "reserved4".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved4" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:150: member_decl: Class member declaration for "reserved5".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved5" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:151: member_decl: Class member declaration for "reserved6".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved6" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:152: member_decl: Class member declaration for "reserved7".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved7" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/gphoto2/gphoto2-abilities-list.h:153: member_decl: Class member declaration for "reserved8".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:125: uninit_member: Non-static class member field "cameraAbilities.reserved8" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:104: member_decl: Class member declaration for "geolocationFilter".
-digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:85: uninit_member: Non-static class member "geolocationFilter" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:110: member_decl: Class member declaration for "withoutTagCheckBox".
-digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:85: uninit_member: Non-static class member "withoutTagCheckBox" is not initialized in this constructor nor in any functions that it calls.
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
 
