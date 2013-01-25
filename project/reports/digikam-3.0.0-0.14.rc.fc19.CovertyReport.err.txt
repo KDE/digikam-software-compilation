@@ -3245,15 +3245,6 @@ digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:124: uninit_member: Non-stat
 digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:159: member_decl: Class member declaration for "mapView".
 digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:124: uninit_member: Non-static class member "mapView" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/imageplugins/color/filmtool.cpp:125: member_decl: Class member declaration for "autoButton".
-digikam-3.0.0-rc/core/imageplugins/color/filmtool.cpp:109: uninit_member: Non-static class member "autoButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/imageplugins/color/filmtool.cpp:132: member_decl: Class member declaration for "colorBalanceInput".
-digikam-3.0.0-rc/core/imageplugins/color/filmtool.cpp:109: uninit_member: Non-static class member "colorBalanceInput" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/core/libs/dimg/filters/icc/iccsettings.cpp:282: unreachable: This code cannot be reached: "return Digikam::IccProfile();".
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
 
