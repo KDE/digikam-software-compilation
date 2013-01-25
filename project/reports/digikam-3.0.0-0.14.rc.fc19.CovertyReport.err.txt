@@ -3239,12 +3239,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-s
 digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:57: member_decl: Class member declaration for "alphaMap16".
 digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "alphaMap16" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:154: member_decl: Class member declaration for "peopleSideBar".
-digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:124: uninit_member: Non-static class member "peopleSideBar" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:159: member_decl: Class member declaration for "mapView".
-digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:124: uninit_member: Non-static class member "mapView" is not initialized in this constructor nor in any functions that it calls.
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
 
