@@ -3221,24 +3221,6 @@ digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:85: uninit_member:
 digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:110: member_decl: Class member declaration for "withoutTagCheckBox".
 digikam-3.0.0-rc/core/digikam/filters/filtersidebarwidget.cpp:85: uninit_member: Non-static class member "withoutTagCheckBox" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:49: member_decl: Class member declaration for "redMap".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "redMap" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:50: member_decl: Class member declaration for "greenMap".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "greenMap" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:51: member_decl: Class member declaration for "blueMap".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "blueMap" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:52: member_decl: Class member declaration for "alphaMap".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "alphaMap" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:54: member_decl: Class member declaration for "redMap16".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "redMap16" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:55: member_decl: Class member declaration for "greenMap16".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "greenMap16" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:56: member_decl: Class member declaration for "blueMap16".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "blueMap16" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:57: member_decl: Class member declaration for "alphaMap16".
-digikam-3.0.0-rc/core/libs/dimg/filters/cb/cbfilter.cpp:47: uninit_member: Non-static class member "alphaMap16" is not initialized in this constructor nor in any functions that it calls.
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
 
