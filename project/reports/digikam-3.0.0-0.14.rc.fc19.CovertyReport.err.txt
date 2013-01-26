@@ -3138,20 +3138,8 @@ digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:75: me
 digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:67: uninit_member: Non-static class member "currentSelectedImageId" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/database/imagelisterrecord.h:87: member_decl: Class member declaration for "category".
-digikam-3.0.0-rc/core/libs/database/imagelisterrecord.h:70: uninit_member: Non-static class member "category" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/database/databasecopymanager.h:78: member_decl: Class member declaration for "m_isStopProcessing".
-digikam-3.0.0-rc/core/libs/database/databasecopymanager.cpp:48: uninit_member: Non-static class member "m_isStopProcessing" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:66: member_decl: Class member declaration for "type".
 digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:57: uninit_member: Non-static class member "type" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.h:256: member_decl: Class member declaration for "m_wasCancelled".
-digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.cpp:68: uninit_member: Non-static class member "m_wasCancelled" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.h:87: member_decl: Class member declaration for "m_label".
