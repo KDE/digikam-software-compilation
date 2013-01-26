@@ -3157,10 +3157,6 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.h:87: member_decl: Class member declaration for "m_label".
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.cpp:49: uninit_member: Non-static class member "m_label" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/database/core/thumbnaildb.h:80: member_decl: Class member declaration for "orientationHint".
-digikam-3.0.0-rc/core/libs/database/core/thumbnaildb.h:75: uninit_member: Non-static class member "orientationHint" is not initialized in this constructor nor in any functions that it calls.
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
 
