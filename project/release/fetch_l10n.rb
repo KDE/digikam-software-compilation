@@ -46,7 +46,7 @@ if !(File.exists?("po") && File.directory?("po"))
 end
 Dir.chdir( "po" )
 topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-for lang in i18nlangs
+i18nlangs.each_line do |lang|
     lang.chomp!()
 	if (lang != nil && lang != "")
 		if !(File.exists?(lang) && File.directory?(lang))
