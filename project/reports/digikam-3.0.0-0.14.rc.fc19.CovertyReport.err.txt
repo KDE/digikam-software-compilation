@@ -3101,27 +3101,6 @@ digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.cpp:36: uninit_m
 digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.h:65: member_decl: Class member declaration for "downloadverlay".
 digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.cpp:36: uninit_member: Non-static class member "downloadverlay" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/bcg/bcgfilter.cpp:93: member_decl: Class member declaration for "map16".
-digikam-3.0.0-rc/core/libs/dimg/filters/bcg/bcgfilter.cpp:91: uninit_member: Non-static class member "map16" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/bcg/bcgfilter.cpp:94: member_decl: Class member declaration for "map".
-digikam-3.0.0-rc/core/libs/dimg/filters/bcg/bcgfilter.cpp:91: uninit_member: Non-static class member "map" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/album/albumselectiontreeview.cpp:105: member_decl: Class member declaration for "contextMenuElement".
-digikam-3.0.0-rc/core/digikam/album/albumselectiontreeview.cpp:92: uninit_member: Non-static class member "contextMenuElement" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/levels/imagelevels.cpp:104: member_decl: Class member declaration for "sixteenBit".
-digikam-3.0.0-rc/core/libs/dimg/filters/levels/imagelevels.cpp:96: uninit_member: Non-static class member "sixteenBit" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/searchwindow/searchfields.h:364: member_decl: Class member declaration for "m_model".
-digikam-3.0.0-rc/core/utilities/searchwindow/searchfields.cpp:2063: uninit_member: Non-static class member "m_model" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.h:87: member_decl: Class member declaration for "m_label".
-digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.cpp:49: uninit_member: Non-static class member "m_label" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
