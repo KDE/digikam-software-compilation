@@ -3056,46 +3056,6 @@ digikam-3.0.0-rc/core/digikam/utils/editablesearchtreeview.cpp:56: member_decl: 
 digikam-3.0.0-rc/core/digikam/utils/editablesearchtreeview.cpp:51: uninit_member: Non-static class member "deleteSearchAction" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/models/imagesortsettings.h:107: member_decl: Class member declaration for "currentCategorizationSortOrder".
-digikam-3.0.0-rc/core/libs/models/imagesortsettings.cpp:47: uninit_member: Non-static class member "currentCategorizationSortOrder" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/models/imagesortsettings.h:132: member_decl: Class member declaration for "currentSortOrder".
-digikam-3.0.0-rc/core/libs/models/imagesortsettings.cpp:47: uninit_member: Non-static class member "currentSortOrder" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:214: member_decl: Class member declaration for "mode".
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:208: uninit_member: Non-static class member "mode" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/widgets/common/filtershistorywidget.cpp:73: member_decl: Class member declaration for "headerLabel".
-digikam-3.0.0-rc/core/libs/widgets/common/filtershistorywidget.cpp:67: uninit_member: Non-static class member "headerLabel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/models/imagefiltersettings.h:301: member_decl: Class member declaration for "m_includeTagFilter".
-digikam-3.0.0-rc/core/libs/models/imagefiltersettings.cpp:687: uninit_member: Non-static class member "m_includeTagFilter" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/models/imagefiltersettings.h:302: member_decl: Class member declaration for "m_exceptionTagFilter".
-digikam-3.0.0-rc/core/libs/models/imagefiltersettings.cpp:687: uninit_member: Non-static class member "m_exceptionTagFilter" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:68: member_decl: Class member declaration for "WP".
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:61: uninit_member: Non-static class member "WP" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:70: member_decl: Class member declaration for "rgbMax".
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:61: uninit_member: Non-static class member "rgbMax" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:72: member_decl: Class member declaration for "curve".
-digikam-3.0.0-rc/core/libs/dimg/filters/wb/wbfilter.cpp:61: uninit_member: Non-static class member "curve" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/widgets/itemview/itemviewimagedelegatepriv.h:90: member_decl: Class member declaration for "q".
-digikam-3.0.0-rc/core/libs/widgets/itemview/itemviewimagedelegate.cpp:70: uninit_member: Non-static class member "q" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.cpp:1575: cond_false: Condition "QFlags<Digikam::AbstractAlbumTreeView::Flag>(flags & Digikam::AbstractAlbumTreeView::CreateDefaultModel).operator int()", taking false branch
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.cpp:1578: if_end: End of if statement
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.cpp:1580: cond_false: Condition "QFlags<Digikam::AbstractAlbumTreeView::Flag>(flags & Digikam::AbstractAlbumTreeView::CreateDefaultFilterModel).operator int()", taking false branch
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.cpp:1583: if_end: End of if statement
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.h:577: member_decl: Class member declaration for "m_filteredModel".
-digikam-3.0.0-rc/core/digikam/album/albumtreeview.cpp:1584: uninit_member: Non-static class member "m_filteredModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.h:57: member_decl: Class member declaration for "utilities".
 digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.cpp:36: uninit_member: Non-static class member "utilities" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.h:65: member_decl: Class member declaration for "downloadverlay".
