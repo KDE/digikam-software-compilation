@@ -3116,30 +3116,8 @@ digikam-3.0.0-rc/core/libs/dimg/filters/levels/imagelevels.cpp:104: member_decl:
 digikam-3.0.0-rc/core/libs/dimg/filters/levels/imagelevels.cpp:96: uninit_member: Non-static class member "sixteenBit" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/3rdparty/cimg/greycstoration.h:322: member_decl: Class member declaration for "mask".
-digikam-3.0.0-rc/core/libs/3rdparty/cimg/greycstoration.h:156: uninit_member: Non-static class member "mask" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:138: member_decl: Class member declaration for "moreMenu".
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:127: uninit_member: Non-static class member "moreMenu" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:143: member_decl: Class member declaration for "moreButton".
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:127: uninit_member: Non-static class member "moreButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:174: member_decl: Class member declaration for "metadataChangeTimer".
-digikam-3.0.0-rc/core/libs/imageproperties/imagedescedittab.cpp:127: uninit_member: Non-static class member "metadataChangeTimer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfields.h:364: member_decl: Class member declaration for "m_model".
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfields.cpp:2063: uninit_member: Non-static class member "m_model" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:74: member_decl: Class member declaration for "currentSelectedImageListPosition".
-digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:67: uninit_member: Non-static class member "currentSelectedImageListPosition" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:75: member_decl: Class member declaration for "currentSelectedImageId".
-digikam-3.0.0-rc/core/libs/imageproperties/imagepropertiesversionstab.cpp:67: uninit_member: Non-static class member "currentSelectedImageId" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:66: member_decl: Class member declaration for "type".
-digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:57: uninit_member: Non-static class member "type" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/searchwindow/searchfieldgroup.h:87: member_decl: Class member declaration for "m_label".
