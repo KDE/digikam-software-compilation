@@ -2899,17 +2899,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:183: cond_true: Condit
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:183: cond_true: Condition "i < this->m_orgImage.numPixels()", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:186: uninit_use: Using uninitialized value "rowPosition[columnIndex]".
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:105: member_decl: Class member declaration for "eventBuffer".
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:91: uninit_member: Non-static class member "eventBuffer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/database/core/databaseparameters.h:76: member_decl: Class member declaration for "internalServer".
-digikam-3.0.0-rc/core/libs/database/core/databaseparameters.cpp:71: uninit_member: Non-static class member "internalServer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/digikam/album/albumwatch.cpp:73: member_decl: Class member declaration for "mode".
-digikam-3.0.0-rc/core/digikam/album/albumwatch.cpp:68: uninit_member: Non-static class member "mode" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/digikam/utils/albumsettings.cpp:239: member_decl: Class member declaration for "iconShowTitle".
