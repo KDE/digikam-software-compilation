@@ -2302,20 +2302,6 @@ digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:444: uninit_use_in_call: U
 digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/geocoordinates.h:84:5: read_parm: Reading a parameter value.
 
 Error: UNINIT_CTOR (CWE-457):
-/usr/include/lcms2.h:947: member_decl: Class member declaration for "Red".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "Primaries.Red" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/lcms2.h:948: member_decl: Class member declaration for "Green".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "Primaries.Green" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/lcms2.h:949: member_decl: Class member declaration for "Blue".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "Primaries.Blue" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/lcms2.h:905: member_decl: Class member declaration for "X".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "MediaWhite.X" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/lcms2.h:906: member_decl: Class member declaration for "Y".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "MediaWhite.Y" is not initialized in this constructor nor in any functions that it calls.
-/usr/include/lcms2.h:907: member_decl: Class member declaration for "Z".
-digikam-3.0.0-rc/core/libs/widgets/iccprofiles/cietonguewidget.cpp:178: uninit_member: Non-static class member field "MediaWhite.Z" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/slideshow/slideshowsettings.h:128: member_decl: Class member declaration for "printColorLabel".
 digikam-3.0.0-rc/core/utilities/slideshow/slideshowsettings.cpp:71: uninit_member: Non-static class member "printColorLabel" is not initialized in this constructor nor in any functions that it calls.
 
