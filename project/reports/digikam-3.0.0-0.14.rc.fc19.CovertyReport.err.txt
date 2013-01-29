@@ -181,16 +181,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:604: check_return: 
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:604: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s", buf1)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:324: cond_false: Condition "!sFile.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:328: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:330: cond_false: Condition "!dFile.QFile::open(QIODevice::OpenMode(QIODevice::WriteOnly))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:335: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:341: cond_false: Condition "(len = sFile.read(buffer, 32768LL /* MAX_IPC_SIZE */)) != 0", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:349: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:357: check_return: Calling function "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:357: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)".
-
-Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:144: cond_true: Condition "this->runningFlag()", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:144: cond_true: Condition "x < this->m_orgImage.numPixels()", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:146: cond_true: Condition "this->runningFlag()", taking true branch
@@ -580,16 +570,7 @@ digikam-3.0.0-rc/core/digikam/views/welcomepageview.cpp:208: example_checked: "f
 digikam-3.0.0-rc/core/imageplugins/enhance/inpaintingtool.cpp:488: example_checked: "file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))" has its value checked in "file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))".
 digikam-3.0.0-rc/core/imageplugins/enhance/restorationtool.cpp:374: example_checked: "file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))" has its value checked in "file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))".
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:382: unchecked_value: No check of the return value of "filewms.QFile::open(QIODevice::OpenMode(QIODevice::WriteOnly | QIODevice::Text))".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:427: cond_false: Condition "!sFile.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:431: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:433: cond_false: Condition "!dFile.QFile::open(QIODevice::OpenMode(QIODevice::WriteOnly))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:438: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:446: cond_false: Condition "(len = sFile.read(buffer, 32768LL /* MAX_IPC_SIZE */)) != 0", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:454: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:462: check_return: Calling function "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/core/utilities/importui/backend/umscamera.cpp:462: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)".
+a.cpp:462: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)".
 
 Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
 digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:201: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
@@ -744,13 +725,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:150: dead_error_con
 digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:158: dead_error_line: Execution cannot reach this statement "if (r > threshold){
   r = 6...".
 
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/utilities/importui/widgets/freespacewidget.cpp:293: cond_at_most: Condition "peUsed > 100", taking false branch. Now the value of "peUsed" is at most 100.
-digikam-3.0.0-rc/core/utilities/importui/widgets/freespacewidget.cpp:296: cond_at_most: Condition "peUsed > 80", taking false branch. Now the value of "peUsed" is at most 80.
-digikam-3.0.0-rc/core/utilities/importui/widgets/freespacewidget.cpp:300: at_most: At condition "peUsed > 95", the value of "peUsed" must be at most 80.
-digikam-3.0.0-rc/core/utilities/importui/widgets/freespacewidget.cpp:300: dead_error_condition: The condition "peUsed > 95" cannot be true.
-digikam-3.0.0-rc/core/utilities/importui/widgets/freespacewidget.cpp:302: dead_error_line: Execution cannot reach this expression "(barcol) = (QColor(255, 62, 62, 255))" inside statement "(barcol) = (QColor(255, 62,...".
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:62: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::ThumbnailLoadThread *>(thread)" can return NULL.
 digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:62: alias_transfer: Assigning: "thumbThread" = "dynamic_cast <Digikam::ThumbnailLoadThread *>(thread)".
@@ -839,24 +813,11 @@ digikam-3.0.0-rc/core/utilities/imageeditor/core/undoaction.cpp:141:5: deref_par
 digikam-3.0.0-rc/core/libs/dimg/filters/dimgbuiltinfilter.cpp:269:5: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/importui/dialogs/camerafolderdialog.cpp:144: cond_false: Condition "!item", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/dialogs/camerafolderdialog.cpp:147: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/dialogs/camerafolderdialog.cpp:149: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::CameraFolderItem *>(item)" can return NULL.
-digikam-3.0.0-rc/core/utilities/importui/dialogs/camerafolderdialog.cpp:149: alias_transfer: Assigning: "folderItem" = "dynamic_cast <Digikam::CameraFolderItem *>(item)".
-digikam-3.0.0-rc/core/utilities/importui/dialogs/camerafolderdialog.cpp:151: var_deref_model: Passing null pointer "folderItem" to function "Digikam::CameraFolderItem::isVirtualFolder() const", which dereferences it.
-digikam-3.0.0-rc/core/utilities/importui/items/camerafolderitem.cpp:75:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesview.cpp:105: cond_true: Condition "*it", taking true branch
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesview.cpp:107: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::FindDuplicatesAlbumItem *>(*it)" can return NULL.
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesview.cpp:107: alias_transfer: Assigning: "item" = "dynamic_cast <Digikam::FindDuplicatesAlbumItem *>(*it)".
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesview.cpp:109: var_deref_model: Passing null pointer "item" to function "Digikam::FindDuplicatesAlbumItem::refUrl() const", which dereferences it.
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesalbumitem.cpp:120:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/imageeditor/printiface/printoptionspage.cpp:350: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::EditorWindow *>(this->d->mParent)" can return NULL.
-digikam-3.0.0-rc/core/utilities/imageeditor/printiface/printoptionspage.cpp:350: alias_transfer: Assigning: "editor" = "dynamic_cast <Digikam::EditorWindow *>(this->d->mParent)".
-digikam-3.0.0-rc/core/utilities/imageeditor/printiface/printoptionspage.cpp:351: var_deref_model: Passing null pointer "editor" to function "Digikam::EditorWindow::setupICC()", which dereferences it. (The dereference happens because this is a virtual function call.)
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/digikam/views/digikamview.cpp:1063: cond_false: Condition "!album", taking false branch
@@ -938,33 +899,6 @@ digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:135: alias_tra
 digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:136: var_deref_model: Passing null pointer "p" to function "Digikam::PAlbum::caption() const", which dereferences it.
 digikam-3.0.0-rc/core/digikam/album/album.cpp:411:5: deref_parm_field_in_call: Function "QString::QString(QString const &)" dereferences an offset off "this".
 /usr/include/QtCore/qstring.h:726:1: deref_parm: Directly dereferencing parameter "other".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:318: cond_false: Condition "this->m_widget", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:321: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:318: var_compare_op: Comparing "this->m_widget" to null implies that "this->m_widget" might be null.
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:325: var_deref_model: Passing "this" to function "Digikam::ImportRatingOverlay::updatePosition()", which dereferences null "this->m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:274:5: cond_false: Condition "!this->m_index.isValid()", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:277:5: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:281:5: identity_transfer: Member function call "this->ratingWidget()" returns field "m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:212:5: return_parm: Returning field "this->m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:281:5: deref_var_in_call: Function "Digikam::RatingWidget::maximumVisibleWidth() const" dereferences "this->ratingWidget()" (which is a copy of "this->m_widget").
-digikam-3.0.0-rc/core/libs/widgets/common/ratingwidget.cpp:209:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:318: cond_false: Condition "this->m_widget", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:321: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:318: var_compare_op: Comparing "this->m_widget" to null implies that "this->m_widget" might be null.
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:326: var_deref_model: Passing "this" to function "Digikam::ImportRatingOverlay::updateRating()", which dereferences null "this->m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:296:5: cond_false: Condition "!this->m_index.isValid()", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:299:5: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:302:5: identity_transfer: Member function call "this->ratingWidget()" returns field "m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:212:5: return_parm: Returning field "this->m_widget".
-digikam-3.0.0-rc/core/utilities/importui/items/importoverlays.cpp:302:5: deref_var_in_call: Function "Digikam::RatingWidget::setRating(int)" dereferences "this->ratingWidget()" (which is a copy of "this->m_widget").
-digikam-3.0.0-rc/core/libs/widgets/common/ratingwidget.cpp:140:5: cond_true: Condition "val < 0 /* Digikam::RatingMin */", taking true branch
-digikam-3.0.0-rc/core/libs/widgets/common/ratingwidget.cpp:140:5: cond_false: Condition "val != -1 /* Digikam::NoRating */", taking false branch
-digikam-3.0.0-rc/core/libs/widgets/common/ratingwidget.cpp:143:5: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/widgets/common/ratingwidget.cpp:145:5: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/digikam/items/imageratingoverlay.cpp:160: cond_false: Condition "this->m_widget", taking false branch
@@ -1050,18 +984,6 @@ digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: non_progress_update:
 digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: loop_top: Top of the loop.
 digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:825: loop_bottom: Bottom of the loop.
 digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: loop_condition: If "i > end" is initially true then it will remain true.
-
-Error: INFINITE_LOOP:
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:368: non_progress_update: Update "++i" makes no progress toward falsifying the loop condition "i > end".
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:368: loop_top: Top of the loop.
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:371: loop_bottom: Bottom of the loop.
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:368: loop_condition: If "i > end" is initially true then it will remain true.
-
-Error: INFINITE_LOOP:
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:356: non_progress_update: Update "++i" makes no progress toward falsifying the loop condition "i > end".
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:356: loop_top: Top of the loop.
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:359: loop_bottom: Bottom of the loop.
-digikam-3.0.0-rc/core/utilities/importui/models/importfiltermodel.cpp:356: loop_condition: If "i > end" is initially true then it will remain true.
 
 Error: NULL_RETURNS (CWE-476):
 digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:722: cond_false: Condition "filePath->isNull()", taking false branch
@@ -1398,17 +1320,6 @@ digikam-3.0.0-rc/core/libs/template/templatemanager.cpp:74: else_branch: Reached
 digikam-3.0.0-rc/core/libs/template/templatemanager.cpp:74: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
 
 Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: cond_true: Condition "!Digikam::_k_static_creator", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: cond_true: Condition "this->isDestroyed()", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: var_assign: Assigning: "x" = storage returned from "new Digikam::ImportSettingsCreator".
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<Digikam::ImportSettingsCreator>::testAndSetOrdered(Digikam::ImportSettingsCreator *, Digikam::ImportSettingsCreator *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<Digikam::ImportSettingsCreator>::testAndSetOrdered(Digikam::ImportSettingsCreator *, Digikam::ImportSettingsCreator *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: cond_false: Condition "!Digikam::_k_static_creator.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: else_branch: Reached else branch
-digikam-3.0.0-rc/core/utilities/importui/views/importsettings.cpp:212: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/core/libs/progressmanager/progressmanager.cpp:338: cond_true: Condition "!Digikam::_k_static_creator", taking true branch
 digikam-3.0.0-rc/core/libs/progressmanager/progressmanager.cpp:338: cond_true: Condition "this->isDestroyed()", taking true branch
 digikam-3.0.0-rc/core/libs/progressmanager/progressmanager.cpp:338: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
@@ -1461,53 +1372,6 @@ digikam-3.0.0-rc/core/digikam/database/scancontroller.cpp:273: noescape: Resourc
 /usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<Digikam::ScanControllerCreator>::testAndSetOrdered(Digikam::ScanControllerCreator *, Digikam::ScanControllerCreator *)" does not free or save its pointer parameter "newValue".
 digikam-3.0.0-rc/core/digikam/database/scancontroller.cpp:273: cond_false: Condition "!Digikam::_k_static_creator.testAndSetOrdered(NULL, x)", taking false branch
 digikam-3.0.0-rc/core/digikam/database/scancontroller.cpp:273: else_branch: Reached else branch
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1079: cond_false: Condition "!file.QFile::open(QIODevice::OpenMode(QIODevice::ReadWrite))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1083: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: open_fn: Returning handle opened by function "dup(int)".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: var_assign: Assigning: "handle" = handle returned from "dup(file.handle())".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1088: cond_false: Condition "handle == -1", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1092: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1096: cond_true: Condition "errorCode != 0", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1098: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1098: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1098: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1098: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1098: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1100: leaked_handle: Handle variable "handle" going out of scope leaks the handle.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1079: cond_false: Condition "!file.QFile::open(QIODevice::OpenMode(QIODevice::ReadWrite))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1083: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: open_fn: Returning handle opened by function "dup(int)".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: var_assign: Assigning: "handle" = handle returned from "dup(file.handle())".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1088: cond_false: Condition "handle == -1", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1092: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1096: cond_false: Condition "errorCode != 0", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1101: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1110: cond_true: Condition "errorCode != 0", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1112: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1112: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1112: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1112: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1112: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1117: leaked_handle: Handle variable "handle" going out of scope leaks the handle.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1079: cond_false: Condition "!file.QFile::open(QIODevice::OpenMode(QIODevice::ReadWrite))", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1083: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: open_fn: Returning handle opened by function "dup(int)".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1086: var_assign: Assigning: "handle" = handle returned from "dup(file.handle())".
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1088: cond_false: Condition "handle == -1", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1092: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1096: cond_false: Condition "errorCode != 0", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1101: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1110: cond_false: Condition "errorCode != 0", taking false branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1118: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1123: cond_true: Condition "errorCode == 0", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1123: cond_true: Condition "mtime", taking true branch
-digikam-3.0.0-rc/core/utilities/importui/backend/gpcamera.cpp:1137: leaked_handle: Handle variable "handle" going out of scope leaks the handle.
 
 Error: REVERSE_INULL (CWE-476):
 digikam-3.0.0-rc/core/digikam/album/albummanager.cpp:2426: deref_ptr_in_call: Dereferencing pointer "newParent".
@@ -2299,10 +2163,6 @@ digikam-3.0.0-rc/core/libs/widgets/common/imagefiltershistorytreeitem.cpp:41: me
 digikam-3.0.0-rc/core/libs/widgets/common/imagefiltershistorytreeitem.cpp:36: uninit_member: Non-static class member "disabled" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/importui/models/importimagemodel.cpp:57: member_decl: Class member declaration for "controller".
-digikam-3.0.0-rc/core/utilities/importui/models/importimagemodel.cpp:45: uninit_member: Non-static class member "controller" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.h:256: member_decl: Class member declaration for "m_wasCancelled".
 digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.cpp:56: uninit_member: Non-static class member "m_wasCancelled" is not initialized in this constructor nor in any functions that it calls.
 
@@ -2317,12 +2177,6 @@ digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/backend_map_marble.cpp:116: uninit_
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/libs/imageproperties/versionsdelegate.cpp:76: member_decl: Class member declaration for "categoryDrawer".
 digikam-3.0.0-rc/core/libs/imageproperties/versionsdelegate.cpp:67: uninit_member: Non-static class member "categoryDrawer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/importui/models/camitemsortsettings.h:95: member_decl: Class member declaration for "currentCategorizationSortOrder".
-digikam-3.0.0-rc/core/utilities/importui/models/camitemsortsettings.cpp:43: uninit_member: Non-static class member "currentCategorizationSortOrder" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/utilities/importui/models/camitemsortsettings.h:118: member_decl: Class member declaration for "currentSortOrder".
-digikam-3.0.0-rc/core/utilities/importui/models/camitemsortsettings.cpp:43: uninit_member: Non-static class member "currentSortOrder" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/libs/models/albumfiltermodel.h:303: member_decl: Class member declaration for "m_listTemporary".
@@ -2352,18 +2206,8 @@ digikam-3.0.0-rc/core/digikam/utils/editablesearchtreeview.cpp:51: uninit_member
 digikam-3.0.0-rc/core/digikam/utils/editablesearchtreeview.cpp:56: member_decl: Class member declaration for "deleteSearchAction".
 digikam-3.0.0-rc/core/digikam/utils/editablesearchtreeview.cpp:51: uninit_member: Non-static class member "deleteSearchAction" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.h:57: member_decl: Class member declaration for "utilities".
-digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.cpp:36: uninit_member: Non-static class member "utilities" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.h:65: member_decl: Class member declaration for "downloadverlay".
-digikam-3.0.0-rc/core/utilities/importui/views/importiconview_p.cpp:36: uninit_member: Non-static class member "downloadverlay" is not initialized in this constructor nor in any functions that it calls.
-
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:2556: unreachable: This code cannot be reached: "return QString();".
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/core/utilities/importui/models/importimagemodel.cpp:872: unreachable: Since the loop increment "++it;" is unreachable, the loop body will never execute more than once.
 
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/core/libs/database/schemaupdater.cpp:772: unreachable: This code cannot be reached: "if (this->d->observer){
