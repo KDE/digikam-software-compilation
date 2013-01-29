@@ -716,12 +716,6 @@ digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1428:
 digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1430: dead_error_line: Execution cannot reach this statement "vis->back_edge(e, g);".
 
 Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:633: cond_notnull: Condition "dev", taking true branch. Now the value of "dev" is not NULL.
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:644: notnull: At condition "dev", the value of "dev" cannot be NULL.
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:644: dead_error_condition: The condition "dev" must be true.
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfuncameraselector.cpp:644: dead_error_line: Execution cannot reach this expression "-1." inside statement "settings.cropFactor = (dev ...".
-
-Error: DEADCODE (CWE-561):
 digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2595: cond_cannot_single: Condition "orientation != 1", taking true branch. Now the value of "orientation" cannot be equal to 1.
 digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2597: cannot_single: When switching on "orientation", the value of "orientation" cannot be equal to 1.
 digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2599: dead_error_condition: The switch value "orientation" cannot be "1".
@@ -894,11 +888,6 @@ digikam-3.0.0-rc/core/digikam/album/albummanager.cpp:2447: cond_false: Condition
 digikam-3.0.0-rc/core/digikam/album/albummanager.cpp:2447: var_compare_op: Comparing "newParent" to null implies that "newParent" might be null.
 digikam-3.0.0-rc/core/digikam/album/albummanager.cpp:2449: var_deref_model: Passing null pointer "newParent" to function "Digikam::Album::id() const", which dereferences it.
 digikam-3.0.0-rc/core/digikam/album/album.cpp:266:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/imageplugins/enhance/lensautofixtool.cpp:254: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::LensFunFilter *>(this->filter())" can return NULL.
-digikam-3.0.0-rc/core/imageplugins/enhance/lensautofixtool.cpp:254: var_deref_model: Passing null pointer "dynamic_cast <Digikam::LensFunFilter *>(this->filter())" to function "Digikam::LensFunFilter::registerSettingsToXmp(Digikam::KExiv2Data &) const", which dereferences it.
-digikam-3.0.0-rc/core/libs/dimg/filters/lens/lensfunfilter.cpp:303:26: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:146: switch: Switch case value "0"
