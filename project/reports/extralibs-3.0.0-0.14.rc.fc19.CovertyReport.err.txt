@@ -160,6 +160,15 @@ digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:60: member_de
 digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:58: uninit_member: Non-static class member "id" is not initialized in this constructor nor in any functions that it calls.
 
 
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.h:77: member_decl: Class member declaration for "mediawiki".
+digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.cpp:46: uninit_member: Non-static class member "mediawiki" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:73: member_decl: Class member declaration for "onlyOneSignal".
+digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:54: uninit_member: Non-static class member "onlyOneSignal" is not initialized in this constructor nor in any functions that it calls.
+
+
 // -----------------------------------------------------------------------------------------------------------------
 
 
@@ -258,11 +267,32 @@ digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:92: if
 digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/allmessageslistjob.cpp:94: var_deref_model: Passing null pointer "job" to function "Vkontakte::MessagesListJob::list() const", which dereferences it.
 digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/messageslistjob.cpp:76:5: deref_parm: Directly dereferencing parameter "this".
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.h:77: member_decl: Class member declaration for "mediawiki".
-digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.cpp:46: uninit_member: Non-static class member "mediawiki" is not initialized in this constructor nor in any functions that it calls.
+// -----------------------------------------------------------------------------------------------------------------
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:73: member_decl: Class member declaration for "onlyOneSignal".
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:54: uninit_member: Non-static class member "onlyOneSignal" is not initialized in this constructor nor in any functions that it calls.
+Error: CHECKED_RETURN (CWE-252):
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:171: cond_true: Condition "mode == Exiv2::amWrite", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:181: cond_true: Condition "mode == Exiv2::amWrite", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:183: cond_true: Condition "std::string(image->mimeType()) == "image/tiff"", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:207: cond_false: Condition "it != orgExif.end()", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:213: loop_end: Reached end of loop
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:217: cond_false: Condition "it != readedExif.end()", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:223: loop_end: Reached end of loop
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:226: if_fallthrough: Falling through to end of if statement
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:230: if_end: End of if statement
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:239: cond_true: Condition "mode == Exiv2::amWrite", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:249: cond_true: Condition "mode == Exiv2::amWrite", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:257: cond_false: Condition "!wroteComment", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:262: cond_false: Condition "!wroteEXIF", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:262: cond_false: Condition "!wroteIPTC", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:262: cond_false: Condition "!wroteXMP", taking false branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:266: if_end: End of if statement
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:268: cond_true: Condition "!this->updateFileTimeStamp", taking true branch
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:272: check_return: Calling function "stat(QByteArray(QFile::encodeName(this->filePath)).operator char const *(), &st)" without checking return value. This library function may fail and return an error code.
+libkexiv2-4.9.97/libkexiv2/kexiv2_p.cpp:272: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(this->filePath)).operator char const *(), &st)".
+
+Error: DEADCODE (CWE-561):
+libkexiv2-4.9.97/libkexiv2/kexiv2exif.cpp:806: cond_const: Condition "orientation != 1", taking false branch. Now the value of "orientation" is equal to 1.
+libkexiv2-4.9.97/libkexiv2/kexiv2exif.cpp:806: const: At condition "orientation != 0", the value of "orientation" must be equal to 1.
+libkexiv2-4.9.97/libkexiv2/kexiv2exif.cpp:806: dead_error_condition: The condition "orientation != 0" must be true.
+libkexiv2-4.9.97/libkexiv2/kexiv2exif.cpp:812: dead_error_line: Execution cannot reach this statement "return false;".
 
