@@ -7034,12 +7034,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/expoblending/manager/actions.h:99: member_de
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/manager/actions.h:83: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshacktalker.h:112: member_decl: Class member declaration for "m_loginInProgress".
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshacktalker.cpp:61: uninit_member: Non-static class member "m_loginInProgress" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshacktalker.h:116: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshacktalker.cpp:61: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/batchprocessimages/tools/convertoptionsdialog.cpp:58: cond_true: Condition "ImageFormatType == 0", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/batchprocessimages/tools/convertoptionsdialog.cpp:78: cond_true: Condition "ImageFormatType == 0", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/batchprocessimages/tools/convertoptionsdialog.cpp:90: cond_false: Condition "ImageFormatType == 2", taking false branch
@@ -7158,10 +7152,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSiz
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSizeDialog.cpp:83: uninit_member: Non-static class member "yResolution" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSizeDialog.cpp:105: member_decl: Class member declaration for "resolutionUnitsWidget".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSizeDialog.cpp:83: uninit_member: Non-static class member "resolutionUnitsWidget" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshackwidget.h:75: member_decl: Class member declaration for "m_hasAccount".
-digikam-3.0.0-rc/extra/kipi-plugins/imageshackexport/imageshackwidget.cpp:237: uninit_member: Non-static class member "m_hasAccount" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/batchprocessimages/tools/filteroptionsdialog.cpp:69: cond_true: Condition "FilterType == 0", taking true branch
@@ -7485,5 +7475,3 @@ digikam-3.0.0-rc/extra/kipi-plugins/videoslideshow/magickiface/processimage.cpp:
 digikam-3.0.0-rc/extra/kipi-plugins/videoslideshow/magickiface/processimage.cpp:116: freed_arg: "KIPIPlugins::MagickApi::freeImage(KIPIPlugins::MagickImage const &) const" frees "img".
 digikam-3.0.0-rc/extra/kipi-plugins/videoslideshow/magickiface/magickiface.cpp:451:5: freed_arg: "operator delete(void *)" frees parameter "img".
 digikam-3.0.0-rc/extra/kipi-plugins/videoslideshow/magickiface/processimage.cpp:117: deref_after_free: Dereferencing freed pointer "img".
-
-
