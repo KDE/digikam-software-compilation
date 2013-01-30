@@ -86,16 +86,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yftalker.cpp:72: uninit_member: 
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/sendimages/settingswidget.cpp:67: member_decl: Class member declaration for "labelAttachmentLimit".
-digikam-3.0.0-rc/extra/kipi-plugins/sendimages/settingswidget.cpp:62: uninit_member: Non-static class member "labelAttachmentLimit" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/sendimages/settingswidget.cpp:68: member_decl: Class member declaration for "labelImageCompression".
-digikam-3.0.0-rc/extra/kipi-plugins/sendimages/settingswidget.cpp:62: uninit_member: Non-static class member "labelImageCompression" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleryitem.h:46: member_decl: Class member declaration for "album_num".
 digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleryitem.h:43: uninit_member: Non-static class member "album_num" is not initialized in this constructor nor in any functions that it calls.
 
