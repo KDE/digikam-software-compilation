@@ -151,27 +151,6 @@ digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.h:151: uninit_member
 // -----------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/job_p.h:48: member_decl: Class member declaration for "reply".
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/job_p.h:44: uninit_member: Non-static class member "reply" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:60: member_decl: Class member declaration for "id".
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryrevision.cpp:58: uninit_member: Non-static class member "id" is not initialized in this constructor nor in any functions that it calls.
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.h:77: member_decl: Class member declaration for "mediawiki".
-digikam-3.0.0-rc/extra/libmediawiki/samplecode/editsample/mainwindow.cpp:46: uninit_member: Non-static class member "mediawiki" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:73: member_decl: Class member declaration for "onlyOneSignal".
-digikam-3.0.0-rc/extra/libmediawiki/libmediawiki/queryimageinfo.cpp:54: uninit_member: Non-static class member "onlyOneSignal" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -----------------------------------------------------------------------------------------------------------------
-
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:110: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIO::StoredTransferJob *>(kjob)" can return NULL.
 digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/vkontaktejobs.cpp:110: alias_transfer: Assigning: "job" = "dynamic_cast <KIO::StoredTransferJob *>(kjob)".
