@@ -1,17 +1,3 @@
-Error: ARRAY_VS_SINGLETON (CWE-119):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1321: goto: Jumping to label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1331: label: Reached label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_false: Condition "10000 < yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1368: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1376: address_of: Taking address with "&yyptr->yyss_alloc" yields a singleton pointer.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1376: assign: Assigning: "yyss" = "&yyptr->yyss_alloc".
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1385: ptr_arith: Using "yyss" as an array.  This might corrupt or misinterpret adjacent memory locations.
 
 Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:548: cond_true: Condition "this->m_job", taking true branch
@@ -25,9 +11,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:621: cond_true
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:625: cond_true: Condition "sendOriginal", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: check_return: Calling function "QFile::copy(QString const &)" without checking return value (as is done elsewhere 4 out of 5 times).
 digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:181: example_checked: "file.copy(destGiven)" has its value checked in "file.copy(destGiven)".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/tasks/copyfilestask.cpp:99: example_checked: "panoFile.copy(QString(this->finalPanoUrl.toLocalFile(KUrl::LeaveTrailingSlash)))" has its value checked in "panoFile.copy(QString(this->finalPanoUrl.toLocalFile(KUrl::LeaveTrailingSlash)))".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/tasks/copyfilestask.cpp:112: example_checked: "ptoFile.copy(QString(finalPTOUrl.toLocalFile(KUrl::LeaveTrailingSlash)))" has its value checked in "ptoFile.copy(QString(finalPTOUrl.toLocalFile(KUrl::LeaveTrailingSlash)))".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/tasks/copyfilestask.cpp:129: example_checked: "imgFile.copy(QString(finalImgUrl.toLocalFile(KUrl::LeaveTrailingSlash)))" has its value checked in "imgFile.copy(QString(finalImgUrl.toLocalFile(KUrl::LeaveTrailingSlash)))".
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: unchecked_value: No check of the return value of "imgFile.copy(path)".
 
 Error: CHECKED_RETURN (CWE-252):
@@ -130,8 +113,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThrea
 digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:125: example_checked: "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)".
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/manager/actionthread.cpp:659: example_assign: Assigning: "decoded" = return value from "rawdec->decodeRAWImage(QString(inUrl->toLocalFile(KUrl::LeaveTrailingSlash)), settings, imageData, width, height, rgbmax)".
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/manager/actionthread.cpp:666: example_checked: "decoded" has its value checked in "decoded".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/tasks/preprocesstask.cpp:140: example_assign: Assigning: "decoded" = return value from "this->rawProcess->decodeRAWImage(QString(inUrl->toLocalFile(KUrl::LeaveTrailingSlash)), this->settings, imageData, width, height, rgbmax)".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/tasks/preprocesstask.cpp:143: example_checked: "decoded" has its value checked in "decoded".
 digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:83: example_checked: "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: unchecked_value: No check of the return value of "loader->decodeRAWImage(QString(url->path(KUrl::LeaveTrailingSlash)), settings, ba, width, height, rgbamax)".
 
@@ -162,15 +143,6 @@ digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1618: example_checked: "this-
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1623: example_checked: "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrExtadr", info.address, false)" has its value checked in "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrExtadr", info.address, false)".
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1628: example_checked: "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrPcode", info.postalCode, false)" has its value checked in "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrPcode", info.postalCode, false)".
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/manager/actionthread.cpp:423: unchecked_value: No check of the return value of "meta.setXmpTagString("Xmp.kipi.EnfuseSettings", QString(t->enfuseSettings.asCommentString()).replace(QChar('\n'), QString const(" ; "), Qt::CaseSensitive), false)".
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actionthread.cpp:296: pointless_expression: The expression t->action == KIPIPanoramaPlugin::NONAFILE || t->action == KIPIPanoramaPlugin::NONAFILE does not accomplish anything because it evaluates to either of its identical operands, t->action == KIPIPanoramaPlugin::NONAFILE.  Did you intend the operands to be different?
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actionthread.cpp:321: pointless_expression: The expression t->action == KIPIPanoramaPlugin::NONAFILE || t->action == KIPIPanoramaPlugin::NONAFILE does not accomplish anything because it evaluates to either of its identical operands, t->action == KIPIPanoramaPlugin::NONAFILE.  Did you intend the operands to be different?
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actionthread.cpp:348: pointless_expression: The expression t->action == KIPIPanoramaPlugin::NONAFILE || t->action == KIPIPanoramaPlugin::NONAFILE does not accomplish anything because it evaluates to either of its identical operands, t->action == KIPIPanoramaPlugin::NONAFILE.  Did you intend the operands to be different?
 
 Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
 digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp:366: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
@@ -279,39 +251,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:985: cond_false
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:988: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KArchiveFile const *>(entry)" can return NULL.
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:988: alias_transfer: Assigning: "entryFile" = "dynamic_cast <KArchiveFile const *>(entry)".
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:989: var_deref_model: Passing null pointer "entryFile" to function "KArchiveFile::data() const", which dereferences it. (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1068: assign_zero: Assigning: "yyformat" = "NULL".
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1102: cond_true: Condition "yytoken != -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1106: cond_true: Condition "!!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1117: cond_true: Condition "yyx < yyxend", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "yycheck[yyx + yyn] == yyx", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "yyx != 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "1 /* !0 */", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1121: cond_false: Condition "yycount == YYERROR_VERBOSE_ARGS_MAXIMUM", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1126: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1129: cond_true: Condition "yysize <= yysize1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1129: cond_true: Condition "yysize1 <= 18446744073709551615UL /* (unsigned long)-1 */", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1131: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1133: loop: Jumping back to the beginning of the loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1117: loop_begin: Jumped back to beginning of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1117: cond_true: Condition "yyx < yyxend", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "yycheck[yyx + yyn] == yyx", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "yyx != 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1118: cond_true: Condition "1 /* !0 */", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1121: cond_false: Condition "yycount == YYERROR_VERBOSE_ARGS_MAXIMUM", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1126: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1129: cond_true: Condition "yysize <= yysize1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1129: cond_true: Condition "yysize1 <= 18446744073709551615UL /* (unsigned long)-1 */", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1131: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1133: loop: Jumping back to the beginning of the loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1117: loop_begin: Jumped back to beginning of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1117: cond_false: Condition "yyx < yyxend", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1133: loop_end: Reached end of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1137: switch: Switch case default
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1150: switch_default: Reached end of switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1152: var_deref_model: Passing null pointer "yyformat" to function "strlen(char const *)", which dereferences it.
-
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
@@ -645,16 +584,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/expoblending/blendingdlg/bracketstack.cpp:77
 /usr/include/QtGui/qtreewidget.h:85:46: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1664: cond_false: Condition "yy_buffer_stack", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1664: cond_false: Condition "(yy_buffer_stack ? yy_buffer_stack[yy_buffer_stack_top] : NULL) == new_buffer", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1665: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1667: cond_false: Condition "yy_buffer_stack", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1667: var_compare_op: Comparing "yy_buffer_stack" to null implies that "yy_buffer_stack" might be null.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1667: cond_false: Condition "yy_buffer_stack ? yy_buffer_stack[yy_buffer_stack_top] : NULL", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1673: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1675: var_deref_op: Dereferencing null pointer "yy_buffer_stack".
-
-Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)" can return NULL.
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)".
@@ -910,18 +839,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:103: var
 /usr/include/QtGui/qtreewidget.h:400:3: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1806: cond_false: Condition "new_buffer == NULL", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1807: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1812: cond_false: Condition "yy_buffer_stack", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1812: cond_false: Condition "yy_buffer_stack ? yy_buffer_stack[yy_buffer_stack_top] : NULL", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1818: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1821: cond_false: Condition "yy_buffer_stack", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1821: var_compare_op: Comparing "yy_buffer_stack" to null implies that "yy_buffer_stack" might be null.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1821: cond_false: Condition "yy_buffer_stack ? yy_buffer_stack[yy_buffer_stack_top] : NULL", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1822: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoScanner.c:1823: var_deref_op: Dereferencing null pointer "yy_buffer_stack".
-
-Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:63: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Herqq::Upnp::Av::HMediaServerDeviceConfiguration *>(target)" can return NULL.
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:63: alias_transfer: Assigning: "conf" = "dynamic_cast <Herqq::Upnp::Av::HMediaServerDeviceConfiguration *>(target)".
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:66: cond_false: Condition "!target", taking false branch
@@ -929,24 +846,12 @@ digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hm
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:71: var_deref_op: Dereferencing null pointer "conf".
 
 Error: MISSING_BREAK (CWE-484):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1026: unterminated_case: This case (value 92) is not terminated by a 'break' statement.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1030: fallthrough: The above case falls through to this one.
-
-Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:691: unterminated_case: This case (value 2) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:710: fallthrough: The above case falls through to this one.
 
 Error: MISSING_BREAK (CWE-484):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/ptoparser/ptofile.cpp:121: unterminated_case: This case (value 3) is not terminated by a 'break' statement.
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/ptoparser/ptofile.cpp:124: fallthrough: The above case falls through to this one.
-
-Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:929: unterminated_case: This case (value 202) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:950: fallthrough: The above case falls through to this one.
-
-Error: MISSING_BREAK (CWE-484):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/ptotype/ptotype.cpp:93: unterminated_case: This case (value 2) is not terminated by a 'break' statement.
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/ptotype/ptotype.cpp:95: fallthrough: The above case falls through to this one.
 
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:90: unterminated_case: This case (value 1) is not terminated by a 'break' statement.
@@ -955,35 +860,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:97: fal
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkwindow.cpp:364: unterminated_case: This case (value 64) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkwindow.cpp:367: fallthrough: The above case falls through to this one.
-
-Error: NEGATIVE_RETURNS (CWE-394):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1321: goto: Jumping to label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1331: label: Reached label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_false: Condition "10000 < yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1368: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1391: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1392: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_true: Condition "yyn == 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: goto: Jumping to label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2553: label: Reached label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2556: cond_true: Condition "yychar == -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2556: var_tested_neg: Assigning: "yytoken" = a negative value.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2559: cond_true: Condition "!yyerrstatus", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2570: negative_returns: Passing variable "yytoken" to a parameter that cannot be negative.
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1063:20: index: Indexing "yytname" with "yytoken".
 
 Error: NULL_RETURNS (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: returned_null: Function "fopen(char const *, char const *)" returns null.
@@ -2109,282 +1985,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/s
 /usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtProperty const *, QtProperty *> >::testAndSetOrdered(PropertyMap *, PropertyMap *)" does not free or save its pointer parameter "newValue".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1321: goto: Jumping to label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1331: label: Reached label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_false: Condition "10000 < yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1368: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1372: alloc_fn: Storage is returned from allocation function "malloc(size_t)".
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1372: var_assign: Assigning: "yyptr" = storage returned from "malloc(yystacksize * 1010UL + 1007UL)".
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1381: leaked_storage: Variable "yyptr" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1321: goto: Jumping to label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1331: label: Reached label "yysetstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_false: Condition "10000 < yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1368: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1391: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1392: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_true: Condition "yyn == 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: goto: Jumping to label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2553: label: Reached label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2556: cond_true: Condition "yychar == -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2559: cond_true: Condition "!yyerrstatus", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2571: cond_false: Condition "yysyntax_error_status == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2573: else_branch: Reached else branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2573: cond_true: Condition "yysyntax_error_status == 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2575: cond_true: Condition "yymsg != yymsgbuf", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2578: cond_false: Condition "!yymsg", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2585: else_branch: Reached else branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2591: cond_false: Condition "yysyntax_error_status == 2", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2592: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2600: cond_false: Condition "yyerrstatus == 3", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2617: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2621: goto: Jumping to label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2647: label: Reached label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2650: cond_true: Condition "true", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2653: cond_true: Condition "!!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "0 <= yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yyn <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yycheck[yyn] == 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2659: cond_true: Condition "0 < yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2660: break: Breaking from loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2674: loop_end: Reached end of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2685: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_false: Condition "10000 < yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1368: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1391: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1392: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_true: Condition "yyn == 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: goto: Jumping to label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2553: label: Reached label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2556: cond_true: Condition "yychar == -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2559: cond_false: Condition "!yyerrstatus", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2596: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2600: cond_true: Condition "yyerrstatus == 3", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2605: cond_true: Condition "yychar <= 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2608: cond_false: Condition "yychar == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2609: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2610: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2616: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2621: goto: Jumping to label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2647: label: Reached label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2650: cond_true: Condition "true", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2653: cond_true: Condition "!!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "0 <= yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yyn <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yycheck[yyn] == 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2659: cond_true: Condition "0 < yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2660: break: Breaking from loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2674: loop_end: Reached end of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2685: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_true: Condition "yyss + yystacksize - 1 <= yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1364: cond_false: Condition "10000 <= yystacksize", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1365: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1367: cond_true: Condition "10000 < yystacksize", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1374: cond_false: Condition "!yyptr", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1375: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1379: cond_true: Condition "yyss1 != yyssa", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1391: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1392: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_false: Condition "yyn == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1475: goto: Jumping to label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1481: label: Reached label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1497: switch: Switch case value "2"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1499: switch_case: Reached case "2"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:117: break: Breaking from switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2515: switch_end: Reached end of switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "0 <= yystate", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yystate <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yycheck[yystate] == *yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2543: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2545: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2547: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1393: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_true: Condition "yyn == 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: goto: Jumping to label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2553: label: Reached label "yyerrlab"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2556: cond_true: Condition "yychar == -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2559: cond_false: Condition "!yyerrstatus", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2596: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2600: cond_true: Condition "yyerrstatus == 3", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2605: cond_true: Condition "yychar <= 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2608: cond_false: Condition "yychar == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2609: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2610: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2616: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2621: goto: Jumping to label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2647: label: Reached label "yyerrlab1"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2650: cond_true: Condition "true", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2653: cond_true: Condition "!!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "0 <= yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yyn <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yycheck[yyn] == 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2659: cond_false: Condition "0 < yyn", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2660: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2665: cond_false: Condition "yyssp == yyss", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2666: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2674: loop: Jumping back to the beginning of the loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2650: loop_begin: Jumped back to beginning of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2650: cond_true: Condition "true", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2653: cond_true: Condition "!!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "0 <= yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yyn <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2656: cond_true: Condition "yycheck[yyn] == 1", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2659: cond_true: Condition "0 < yyn", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2660: break: Breaking from loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2674: loop_end: Reached end of loop
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2685: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1393: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_false: Condition "yyn == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1475: goto: Jumping to label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1481: label: Reached label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1497: switch: Switch case value "2"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1499: switch_case: Reached case "2"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:117: break: Breaking from switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2515: switch_end: Reached end of switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "0 <= yystate", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yystate <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_false: Condition "yycheck[yystate] == *yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2545: else_branch: Reached else branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2547: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1393: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_false: Condition "!!(yyn == -48)", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1418: cond_true: Condition "yychar == -2", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1424: cond_true: Condition "yychar <= 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1428: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1433: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1438: cond_true: Condition "yyn < 0", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1439: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_false: Condition "yyn == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1475: goto: Jumping to label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1481: label: Reached label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1497: switch: Switch case value "2"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1499: switch_case: Reached case "2"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:117: break: Breaking from switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2515: switch_end: Reached end of switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "0 <= yystate", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yystate <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yycheck[yystate] == *yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2543: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2545: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2547: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1393: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_false: Condition "yyn == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1475: goto: Jumping to label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1481: label: Reached label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1497: switch: Switch case value "27"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:289: switch_case: Reached case "27"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:292: alloc_fn: Storage is returned from allocation function "malloc(size_t)".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:292: var_assign: Assigning: "mask" = storage returned from "malloc(24UL)".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:293: cond_false: Condition "mask == NULL", taking false branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:296: if_end: End of if statement
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:298: break: Breaking from switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2515: switch_end: Reached end of switch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "0 <= yystate", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yystate <= 92", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2542: cond_true: Condition "yycheck[yystate] == *yyssp", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2543: if_fallthrough: Falling through to end of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2545: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:2547: goto: Jumping to label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1326: label: Reached label "yynewstate"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1334: cond_false: Condition "yyss + yystacksize - 1 <= yyssp", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1393: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1397: cond_false: Condition "yystate == 5", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1398: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1400: goto: Jumping to label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1405: label: Reached label "yybackup"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1412: cond_true: Condition "!!(yyn == -48)", taking true branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1413: goto: Jumping to label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1471: label: Reached label "yydefault"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1473: cond_false: Condition "yyn == 0", taking false branch
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1474: if_end: End of if statement
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1475: goto: Jumping to label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1481: label: Reached label "yyreduce"
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1497: switch: Switch case value "27"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:289: switch_case: Reached case "27"
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/panorama/ptoparser/panoParser.y:292: overwrite_var: Overwriting "mask" in "mask = (pt_script_mask *)malloc(24UL)" leaks the storage that "mask" points to.
 
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
@@ -5562,10 +5162,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_str
 digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_string.cpp:1997: check_after_deref: Null-checking "aPtr" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
 
 Error: REVERSE_NEGATIVE (CWE-394):
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1063: negative_sink: Using "yytoken" as index to array "yytname".
-/tmp/digikam-sc/build/extra/kipi-plugins/panorama/panoParser.c:1102: check_after_sink: You might be using variable "yytoken" before verifying that it is >= 0.
-
-Error: REVERSE_NEGATIVE (CWE-394):
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yandexrsa.cpp:1049: negative_sink_in_call: Passing "portion_len" to a parameter that cannot be negative.
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yandexrsa.cpp:1056: check_after_sink: You might be using variable "portion_len" before verifying that it is >= 0.
 
@@ -5735,10 +5331,6 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1833: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/optimizepage.cpp:81: member_decl: Class member declaration for "preprocessResults".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/optimizepage.cpp:72: uninit_member: Non-static class member "preprocessResults" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:89: member_decl: Class member declaration for "width".
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:81: uninit_member: Non-static class member "width" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:90: member_decl: Class member declaration for "height".
@@ -5749,10 +5341,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPho
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_effects_group" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:64: member_decl: Class member declaration for "m_borders_group".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_borders_group" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/lastpage.cpp:68: member_decl: Class member declaration for "warningLabel".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/lastpage.cpp:61: uninit_member: Non-static class member "warningLabel" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/plugin/kbeffect.h:71: member_decl: Class member declaration for "m_img".
@@ -5824,22 +5412,12 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1432: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/previewpage.cpp:75: member_decl: Class member declaration for "curProgress".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/previewpage.cpp:67: uninit_member: Non-static class member "curProgress" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/previewpage.cpp:75: member_decl: Class member declaration for "totalProgress".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/previewpage.cpp:67: uninit_member: Non-static class member "totalProgress" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/importwizard/preprocessingpage.cpp:85: member_decl: Class member declaration for "alignCheckBox".
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/importwizard/preprocessingpage.cpp:77: uninit_member: Non-static class member "alignCheckBox" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/blendingdlg/enfusestack.cpp:156: member_decl: Class member declaration for "outputFormat".
 digikam-3.0.0-rc/extra/kipi-plugins/expoblending/blendingdlg/enfusestack.cpp:154: uninit_member: Non-static class member "outputFormat" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/preprocessingpage.cpp:88: member_decl: Class member declaration for "nbFilesProcessed".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/importwizard/preprocessingpage.cpp:80: uninit_member: Non-static class member "nbFilesProcessed" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:382: member_decl: Class member declaration for "item_row".
@@ -6059,12 +5637,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:176: member_dec
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "bookmarkManager" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:177: member_decl: Class member declaration for "kipiImageModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "kipiImageModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actions.h:99: member_decl: Class member declaration for "id".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actions.h:92: uninit_member: Non-static class member "id" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actions.h:101: member_decl: Class member declaration for "action".
-digikam-3.0.0-rc/extra/kipi-plugins/panorama/manager/actions.h:92: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2457: cond_false: Condition "!(profile->NumFunctions() <= 4U /* kMaxColorPlanes */)", taking false branch
