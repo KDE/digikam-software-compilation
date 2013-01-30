@@ -69,20 +69,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/sessionstate.h:106: uninit_membe
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:58: member_decl: Class member declaration for "width".
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:56: uninit_member: Non-static class member "width" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:59: member_decl: Class member declaration for "height".
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:56: uninit_member: Non-static class member "height" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:60: member_decl: Class member declaration for "bytesPerLine".
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:56: uninit_member: Non-static class member "bytesPerLine" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:61: member_decl: Class member declaration for "frmt".
-digikam-3.0.0-rc/extra/kipi-plugins/acquireimages/saveimgthread.cpp:56: uninit_member: Non-static class member "frmt" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:929: unterminated_case: This case (value 202) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:950: fallthrough: The above case falls through to this one.

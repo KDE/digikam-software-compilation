@@ -34,7 +34,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_COMPILE_DOC=on \
       -DDIGIKAMSC_CHECKOUT_PO=off \
       -DENABLE_PRESENTATIONMODE=off\
-      -DENABLE_LCMS2=off \
+      -DENABLE_LCMS2=on \
       -DENABLE_RAWSPEED=on \
       -Wno-dev \
       ..
