@@ -1,13 +1,3 @@
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/kioexportimport/KioExportWidget.cpp:58: cond_true: Condition "this->m_targetLabel->button()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/kioexportimport/KioExportWidget.h:103: member_decl: Class member declaration for "m_targetDialog".
-digikam-3.0.0-rc/extra/kipi-plugins/kioexportimport/KioExportWidget.cpp:99: uninit_member: Non-static class member "m_targetDialog" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:152: cond_true: Condition "KIPIHTMLExport::sList.isEmpty()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:156: cond_true: Condition "it != end", taking true branch
