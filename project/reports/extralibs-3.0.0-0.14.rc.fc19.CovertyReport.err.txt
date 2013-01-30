@@ -1,15 +1,4 @@
 
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:129: cond_true: Condition "it != this->databases.end()", taking true branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:136: cond_true: Condition "it.value()->ref.fetchAndAddOrdered(1) != 0", taking true branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:139: check_return: Calling function "QBasicAtomicInt::deref()" without checking return value (as is done elsewhere 33 out of 37 times).
-/usr/include/QtCore/qstring.h:880: example_checked: "this->d->ref.deref()" has its value checked in "this->d->ref.deref()".
-/usr/include/kde4/ksharedptr.h:213: example_checked: "this->d->ref.deref()" has its value checked in "this->d->ref.deref()".
-/usr/include/QtCore/qsharedpointer_impl.h:344: example_checked: "d->weakref.deref()" has its value checked in "d->weakref.deref()".
-/usr/include/QtCore/qhash.h:283: example_checked: "(*this).d->ref.deref()" has its value checked in "(*this).d->ref.deref()".
-digikam-3.0.0-rc/core/libs/dimg/dshareddata.h:264: example_checked: "x->ref.deref()" has its value checked in "x->ref.deref()".
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:139: unchecked_value: No check of the return value of "it.value()->ref.deref()".
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:324: cond_false: Condition "input == NULL", taking false branch
 digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:330: if_end: End of if statement
@@ -28,17 +17,6 @@ digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: loop_begin: Jumped b
 digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_false: Condition "i < 2", taking false branch
 digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop_end: Reached end of loop
 digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:376: var_deref_op: Dereferencing null pointer "eigenValues".
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_true: Condition "!KFaceIface::_k_static_static_d", taking true branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_true: Condition "this->isDestroyed()", taking true branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: var_assign: Assigning: "x" = storage returned from "new KFaceIface::RecognitionDatabaseStaticPriv".
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KFaceIface::RecognitionDatabaseStaticPriv>::testAndSetOrdered(KFaceIface::RecognitionDatabaseStaticPriv *, KFaceIface::RecognitionDatabaseStaticPriv *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KFaceIface::RecognitionDatabaseStaticPriv>::testAndSetOrdered(KFaceIface::RecognitionDatabaseStaticPriv *, KFaceIface::RecognitionDatabaseStaticPriv *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_false: Condition "!KFaceIface::_k_static_static_d.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:68: member_decl: Class member declaration for "htl".
