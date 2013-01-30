@@ -2391,3 +2391,13 @@ digikam-3.0.0-rc/core/utilities/imageeditor/q3support/previewwidget.cpp:578: if_
 digikam-3.0.0-rc/core/utilities/imageeditor/q3support/previewwidget.cpp:582: if_end: End of if statement
 digikam-3.0.0-rc/core/utilities/imageeditor/q3support/previewwidget.cpp:584: pass_freed_arg: Passing freed pointer "pix" as an argument to function "QPixmap::fill(QColor const &)".
 
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull", taking true branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "this->isDestroyed()", taking true branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: var_assign: Assigning: "x" = storage returned from "new Digikam::ImageHistoryGraphDataSharedNull".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_false: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: else_branch: Reached else branch
+digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
