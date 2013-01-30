@@ -1,23 +1,4 @@
 
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:324: cond_false: Condition "input == NULL", taking false branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:330: if_end: End of if statement
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:339: cond_true: Condition "j < this->d->faceImgArr.size()", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:345: cond_true: Condition "!(eigenValues = (float *)cvAlloc(8UL /* 2 * sizeof (float) */))", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:345: var_compare_op: Comparing "eigenValues" to null implies that "eigenValues" might be null.
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:360: cond_true: Condition "!(pAvgTrainImg = cvCreateImage(size, 32, 1))", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_true: Condition "i < 2", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:366: cond_true: Condition "!eigenObjects[i]", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_true: Condition "i < 2", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:366: cond_true: Condition "!eigenObjects[i]", taking true branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:363: cond_false: Condition "i < 2", taking false branch
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:368: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/libkface/libface/Eigenfaces.cpp:376: var_deref_op: Dereferencing null pointer "eigenValues".
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:68: member_decl: Class member declaration for "htl".
 digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "htl" is not initialized in this constructor nor in any functions that it calls.
