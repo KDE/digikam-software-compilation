@@ -13,18 +13,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:164: leaked_storage: Va
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/smug/smugitem.h:91: member_decl: Class member declaration for "imageCount".
-digikam-3.0.0-rc/extra/kipi-plugins/smug/smugitem.h:72: uninit_member: Non-static class member "imageCount" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/smug/smugtalker.h:146: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/smug/smugtalker.cpp:60: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "_container_.i != _container_.e", taking true branch
