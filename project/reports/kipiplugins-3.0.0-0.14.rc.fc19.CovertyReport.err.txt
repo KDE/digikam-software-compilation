@@ -246,13 +246,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:24
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:244: dead_error_line: Execution cannot reach this statement "return NULL;".
 
 Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:985: cond_false: Condition "!entry", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:985: cond_false: Condition "!entry->isFile()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:988: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KArchiveFile const *>(entry)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:988: alias_transfer: Assigning: "entryFile" = "dynamic_cast <KArchiveFile const *>(entry)".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:989: var_deref_model: Passing null pointer "entryFile" to function "KArchiveFile::data() const", which dereferences it. (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
@@ -844,10 +837,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hm
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:66: cond_false: Condition "!target", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:69: if_end: End of if statement
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp_av/src/mediaserver/hmediaserver_deviceconfiguration.cpp:71: var_deref_op: Dereferencing null pointer "conf".
-
-Error: MISSING_BREAK (CWE-484):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:691: unterminated_case: This case (value 2) is not terminated by a 'break' statement.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:710: fallthrough: The above case falls through to this one.
 
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:929: unterminated_case: This case (value 202) is not terminated by a 'break' statement.
@@ -5331,12 +5320,6 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1833: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:89: member_decl: Class member declaration for "width".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:81: uninit_member: Non-static class member "width" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:90: member_decl: Class member declaration for "height".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewer.cpp:81: uninit_member: Non-static class member "height" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:63: member_decl: Class member declaration for "m_effects_group".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_effects_group" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:64: member_decl: Class member declaration for "m_borders_group".
@@ -5449,10 +5432,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/s
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5595: member_decl: Class member declaration for "m_boolPropertyManager".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_boolPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/importWizard/selectionpage.cpp:62: member_decl: Class member declaration for "manager".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/importWizard/selectionpage.cpp:58: uninit_member: Non-static class member "manager" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp/src/devicehosting/hddoc_parser_p.h:170: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "m_lastError".
@@ -5599,10 +5578,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWi
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:53: uninit_member: Non-static class member "toolArea" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/importWizard/importwizarddlg.cpp:75: member_decl: Class member declaration for "settings".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/importWizard/importwizarddlg.cpp:71: uninit_member: Non-static class member "settings" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:354: member_decl: Class member declaration for "imageModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:352: uninit_member: Non-static class member "imageModel" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:355: member_decl: Class member declaration for "sourceSelectionModel".
@@ -5679,52 +5654,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:62: member_decl: Class member declaration for "q_ptr".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:61: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:141: member_decl: Class member declaration for "plugType".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "plugType" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:144: member_decl: Class member declaration for "imgGetOption".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "imgGetOption" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:150: member_decl: Class member declaration for "enableRightClickOpen".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "enableRightClickOpen" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:151: member_decl: Class member declaration for "resizeExportImages".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "resizeExportImages" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:152: member_decl: Class member declaration for "showComments".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "showComments" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:153: member_decl: Class member declaration for "fixOrientation".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "fixOrientation" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:154: member_decl: Class member declaration for "openInKonqueror".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "openInKonqueror" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:155: member_decl: Class member declaration for "showKeywords".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "showKeywords" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:163: member_decl: Class member declaration for "thumbnailColumns".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "thumbnailColumns" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:164: member_decl: Class member declaration for "thumbnailRows".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "thumbnailRows" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:166: member_decl: Class member declaration for "imagesExportSize".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "imagesExportSize" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:167: member_decl: Class member declaration for "frameWidth".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "frameWidth" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:171: member_decl: Class member declaration for "stagePadding".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "stagePadding" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:172: member_decl: Class member declaration for "maxImageDimension".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "maxImageDimension" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:174: member_decl: Class member declaration for "thumbnailPosition".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "thumbnailPosition" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:177: member_decl: Class member declaration for "imagePadding".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "imagePadding" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:178: member_decl: Class member declaration for "displayTime".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "displayTime" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:181: member_decl: Class member declaration for "showFlipButton".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "showFlipButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:182: member_decl: Class member declaration for "useReloadButton".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "useReloadButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:188: member_decl: Class member declaration for "cellDimension".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "cellDimension" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:189: member_decl: Class member declaration for "zoomOutPerc".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "zoomOutPerc" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:190: member_decl: Class member declaration for "zoomInPerc".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/simpleviewersettingscontainer.h:73: uninit_member: Non-static class member "zoomInPerc" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:54: member_decl: Class member declaration for "gpxLoadFutureWatcher".
@@ -6087,10 +6016,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:65: member_decl: Cla
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "display_y" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:66: member_decl: Class member declaration for "texnr".
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "texnr" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/flashmanager.cpp:56: member_decl: Class member declaration for "containerSettings".
-digikam-3.0.0-rc/extra/kipi-plugins/flashexport/flashmanager.cpp:54: uninit_member: Non-static class member "containerSettings" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:73: member_decl: Class member declaration for "action".
