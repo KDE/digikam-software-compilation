@@ -1,44 +1,4 @@
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:68: member_decl: Class member declaration for "htl".
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "htl" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:73: member_decl: Class member declaration for "rect".
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "rect" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:76: member_decl: Class member declaration for "moving".
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "moving" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:78: member_decl: Class member declaration for "resizing".
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "resizing" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:79: member_decl: Class member declaration for "resizeType".
-digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:62: uninit_member: Non-static class member "resizeType" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:79: member_decl: Class member declaration for "sceneWidth".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "sceneWidth" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:79: member_decl: Class member declaration for "sceneHeight".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "sceneHeight" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "x1".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "x1" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "x2".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "x2" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "y1".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "y1" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:80: member_decl: Class member declaration for "y2".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "y2" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:89: member_decl: Class member declaration for "origScale".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "origScale" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:90: member_decl: Class member declaration for "scale".
-digikam-3.0.0-rc/extra/libkface/test/gui/faceitem.cpp:75: uninit_member: Non-static class member "scale" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:87: member_decl: Class member declaration for "lastPhotoItem".
-digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "lastPhotoItem" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:92: member_decl: Class member declaration for "scale".
-digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "scale" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -----------------------------------------------------------------------------------------------------------------
-
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: cond_true: Condition "!KGeoMap::_k_static_kgeomapGlobalObjectCreator", taking true branch
 digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/kgeomap_common.cpp:45: cond_true: Condition "this->isDestroyed()", taking true branch
