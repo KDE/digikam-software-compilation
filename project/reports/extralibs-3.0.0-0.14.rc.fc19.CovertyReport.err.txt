@@ -39,20 +39,6 @@ digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: noescape: R
 digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: cond_false: Condition "!KFaceIface::_k_static_static_d.testAndSetOrdered(NULL, x)", taking false branch
 digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: else_branch: Reached else branch
 digikam-3.0.0-rc/extra/libkface/libkface/recognitiondatabase.cpp:82: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_true: Condition "this->isDestroyed()", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: var_assign: Assigning: "x" = storage returned from "new Digikam::ImageHistoryGraphDataSharedNull".
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<Digikam::ImageHistoryGraphDataSharedNull>::testAndSetOrdered(Digikam::ImageHistoryGraphDataSharedNull *, Digikam::ImageHistoryGraphDataSharedNull *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: cond_false: Condition "!Digikam::_k_static_imageHistoryGraphDataSharedNull.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: else_branch: Reached else branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph.cpp:51: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:71: member_decl: Class member declaration for "type".
-digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:69: uninit_member: Non-static class member "type" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/libkface/test/gui/marquee.cpp:68: member_decl: Class member declaration for "htl".
@@ -89,12 +75,6 @@ digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:87: member_decl: Class mem
 digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "lastPhotoItem" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.h:92: member_decl: Class member declaration for "scale".
 digikam-3.0.0-rc/extra/libkface/test/gui/mainwindow.cpp:91: uninit_member: Non-static class member "scale" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:186: unreachable: This code cannot be reached: "cvReleaseImage(&img);".
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/libkface/libface/LibFace.cpp:392: unreachable: This code cannot be reached: "cvReleaseImage(&img);".
 
 
 // -----------------------------------------------------------------------------------------------------------------
