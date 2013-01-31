@@ -1,36 +1,3 @@
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rdx".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "rdx" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rdy".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "rdy" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "z".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "z" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "ux".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "ux" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "uy".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "uy" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rtx".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "rtx" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rty".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "rty" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:64: member_decl: Class member declaration for "vtop".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "vtop" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:64: member_decl: Class member declaration for "vbottom".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "vbottom" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:64: member_decl: Class member declaration for "vleft".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "vleft" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:64: member_decl: Class member declaration for "vright".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "vright" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:65: member_decl: Class member declaration for "display_x".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "display_x" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:65: member_decl: Class member declaration for "display_y".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "display_y" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:66: member_decl: Class member declaration for "texnr".
-digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "texnr" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
