@@ -973,87 +973,6 @@ digikam-3.0.0-rc/core/utilities/kipiiface/kipiimagecollection.cpp:110: var_deref
 digikam-3.0.0-rc/core/digikam/album/album.cpp:476:5: deref_parm_in_call: Function "Digikam::Album::isRoot() const" dereferences "this".
 digikam-3.0.0-rc/core/digikam/album/album.cpp:309:5: deref_parm: Directly dereferencing parameter "this".
 
-Error: INFINITE_LOOP:
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:834: non_progress_update: Update "++i" makes no progress toward falsifying the loop condition "i > end".
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:834: loop_top: Top of the loop.
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:837: loop_bottom: Bottom of the loop.
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:834: loop_condition: If "i > end" is initially true then it will remain true.
-
-Error: INFINITE_LOOP:
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: non_progress_update: Update "++i" makes no progress toward falsifying the loop condition "i > end".
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: loop_top: Top of the loop.
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:825: loop_bottom: Bottom of the loop.
-digikam-3.0.0-rc/core/libs/models/imagefiltermodel.cpp:822: loop_condition: If "i > end" is initially true then it will remain true.
-
-Error: NULL_RETURNS (CWE-476):
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:722: cond_false: Condition "filePath->isNull()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:725: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:732: cond_false: Condition "!fileInfo.exists()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:736: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:741: cond_true: Condition "!ext.isEmpty()", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:743: cond_false: Condition "ext == QString("JPEG")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:743: cond_false: Condition "ext == QString("JPG")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:743: cond_false: Condition "ext == QString("JPE")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:747: cond_false: Condition "ext == QString("PNG")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:751: cond_false: Condition "ext == QString("TIFF")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:751: cond_false: Condition "ext == QString("TIF")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:755: cond_false: Condition "QString(rawFilesExt.toUpper()).contains(ext, Qt::CaseSensitive).operator void const *()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:758: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:760: cond_false: Condition "ext == QString("JP2")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:760: cond_false: Condition "ext == QString("JPX")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:760: cond_false: Condition "ext == QString("JPC")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:760: cond_false: Condition "ext == QString("J2K")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:760: cond_false: Condition "ext == QString("PGX")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:766: cond_false: Condition "ext == QString("PGF")", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:769: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:776: cond_false: Condition "!f", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:780: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:786: cond_false: Condition "fread(&header, 9UL /* headerLen */, 1, f) != 1", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:791: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:804: cond_false: Condition "memcmp(&header, &jpegID, 2) == 0", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:808: cond_false: Condition "memcmp(&header, &pngID, 8) == 0", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:812: cond_true: Condition "memcmp(&header[0], "P", 1) == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:812: cond_true: Condition "memcmp(&header[2], "\n", 1) == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:817: returned_null: Function "fopen(char const *, char const *)" returns null.
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:817: var_assigned: Assigning: "file" = null return value from "fopen(char const *, char const *)".
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:820: dereference: Dereferencing a pointer that might be null "file" when calling "fscanf(FILE *, char const *, ...)".
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/loadsavetask.h:85: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/loadsavetask.cpp:87: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:58: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/previewtask.h:43: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/previewloadthread.cpp:82: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/sharedloadsavethread.cpp:40: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:110: pass_by_value: Passing parameter rawDecodingSettings of type Digikam::DRawDecoding (size 368 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/loadsavethread.cpp:90: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailloadthread.cpp:63: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/loadingcache.cpp:242: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/threadimageio/loadsavetask.cpp:413: pass_by_value: Passing parameter description of type Digikam::LoadingDescription (size 440 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:103: pass_by_value: Passing parameter rawDecodingSettings of type Digikam::DRawDecoding (size 368 bytes) by value.
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/core/libs/dimg/filters/icc/iccprofile.cpp:119: cond_true: Condition "!Digikam::_k_static_static_d", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/icc/iccprofile.cpp:119: cond_true: Condition "this->isDestroyed()", taking true branch
@@ -2175,20 +2094,8 @@ digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/backend_map_marble.cpp:155: member_
 digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/backend_map_marble.cpp:116: uninit_member: Non-static class member "bmLayer" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/imageproperties/versionsdelegate.cpp:76: member_decl: Class member declaration for "categoryDrawer".
-digikam-3.0.0-rc/core/libs/imageproperties/versionsdelegate.cpp:67: uninit_member: Non-static class member "categoryDrawer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/models/albumfiltermodel.h:303: member_decl: Class member declaration for "m_listTemporary".
-digikam-3.0.0-rc/core/libs/models/albumfiltermodel.cpp:447: uninit_member: Non-static class member "m_listTemporary" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/maintenance/maintenancesettings.h:79: member_decl: Class member declaration for "faceDetection".
 digikam-3.0.0-rc/core/utilities/maintenance/maintenancesettings.h:49: uninit_member: Non-static class member "faceDetection" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/core/libs/widgets/common/imagefiltershistorymodel.cpp:60: member_decl: Class member declaration for "disabledEntries".
-digikam-3.0.0-rc/core/libs/widgets/common/imagefiltershistorymodel.cpp:54: uninit_member: Non-static class member "disabledEntries" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/digikam/date/monthwidget.cpp:62: member_decl: Class member declaration for "active".
