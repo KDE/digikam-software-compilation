@@ -94,53 +94,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/shwup/swconnector.cpp:87: uninit_member: Non
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:134: member_decl: Class member declaration for "m_pathWidget".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_pathWidget" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:135: member_decl: Class member declaration for "m_binaryLabel".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_binaryLabel" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:136: member_decl: Class member declaration for "m_versionLabel".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_versionLabel" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:137: member_decl: Class member declaration for "m_pathButton".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_pathButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:138: member_decl: Class member declaration for "m_downloadButton".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_downloadButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:139: member_decl: Class member declaration for "m_lineEdit".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_lineEdit" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.h:140: member_decl: Class member declaration for "m_statusIcon".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/kpbinaryiface.cpp:59: uninit_member: Non-static class member "m_statusIcon" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:404: member_decl: Class member declaration for "mouseDragAction".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "mouseDragAction" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:418: member_decl: Class member declaration for "lastdx".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "lastdx" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:419: member_decl: Class member declaration for "lastdy".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "lastdy" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:423: member_decl: Class member declaration for "selection".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "selection" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:424: member_decl: Class member declaration for "enableSelection".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "enableSelection" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:425: member_decl: Class member declaration for "mouseZone".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "mouseZone" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:434: member_decl: Class member declaration for "highLightLeft".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "highLightLeft" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:435: member_decl: Class member declaration for "highLightRight".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "highLightRight" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:436: member_decl: Class member declaration for "highLightTop".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "highLightTop" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:437: member_decl: Class member declaration for "highLightBottom".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "highLightBottom" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:438: member_decl: Class member declaration for "highLightArea".
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/widgets/kppreviewimage.cpp:416: uninit_member: Non-static class member "highLightArea" is not initialized in this constructor nor in any functions that it calls.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/common/libkipiplugins/tools/imageio/kpwriteimage.cpp:366: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.h:86: member_decl: Class member declaration for "m_dlGrp".
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.cpp:170: uninit_member: Non-static class member "m_dlGrp" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.h:100: member_decl: Class member declaration for "m_uploadWidget".
