@@ -86,14 +86,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: N
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/shwup/swconnector.h:102: member_decl: Class member declaration for "m_resultHandler".
-digikam-3.0.0-rc/extra/kipi-plugins/shwup/swconnector.cpp:87: uninit_member: Non-static class member "m_resultHandler" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.h:86: member_decl: Class member declaration for "m_dlGrp".
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.cpp:170: uninit_member: Non-static class member "m_dlGrp" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/debianscreenshots/dswidget.h:100: member_decl: Class member declaration for "m_uploadWidget".
