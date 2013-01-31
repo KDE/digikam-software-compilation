@@ -147,21 +147,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcorigin.cpp:94: uninit_
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:152: cond_true: Condition "KIPIHTMLExport::sList.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:156: cond_true: Condition "it != end", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:157: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:157: var_assign: Assigning: "theme" = storage returned from "new KIPIHTMLExport::Theme".
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:159: noescape: Resource "theme" is not freed or pointed-to in function "KIPIHTMLExport::Theme::internalName() const".
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:183:16: noescape: "KIPIHTMLExport::Theme::internalName() const" does not free or save its pointer parameter "this".
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:160: cond_false: Condition "!internalNameList.contains(internalName, Qt::CaseSensitive).operator void const *()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:163: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:164: leaked_storage: Variable "theme" going out of scope leaks the storage it points to.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "_container_.i != _container_.e", taking true branch
