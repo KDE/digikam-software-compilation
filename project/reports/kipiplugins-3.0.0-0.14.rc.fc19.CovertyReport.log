@@ -226,12 +226,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:9
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:81: uninit_member: Non-static class member "m_audioOutput" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:78: cond_false: Condition "this->m_urlList.empty()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:82: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:93: member_decl: Class member declaration for "m_muted".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:117: uninit_member: Non-static class member "m_muted" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/plugin/kbeffect.h:71: member_decl: Class member declaration for "m_img".
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/plugin/kbeffect.cpp:50: uninit_member: Non-static class member "m_img" is not initialized in this constructor nor in any functions that it calls.
 
