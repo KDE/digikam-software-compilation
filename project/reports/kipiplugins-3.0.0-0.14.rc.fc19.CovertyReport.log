@@ -147,22 +147,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcorigin.cpp:94: uninit_
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: MISSING_BREAK (CWE-484):
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:929: unterminated_case: This case (value 202) is not terminated by a 'break' statement.
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:950: fallthrough: The above case falls through to this one.
-
-Error: REVERSE_NEGATIVE (CWE-394):
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yandexrsa.cpp:1049: negative_sink_in_call: Passing "portion_len" to a parameter that cannot be negative.
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yandexrsa.cpp:1056: check_after_sink: You might be using variable "portion_len" before verifying that it is >= 0.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yftalker.h:279: member_decl: Class member declaration for "m_lastPhoto".
-digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yftalker.cpp:72: uninit_member: Non-static class member "m_lastPhoto" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:152: cond_true: Condition "KIPIHTMLExport::sList.isEmpty()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/theme.cpp:156: cond_true: Condition "it != end", taking true branch
