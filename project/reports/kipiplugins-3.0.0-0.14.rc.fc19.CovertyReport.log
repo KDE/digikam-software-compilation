@@ -1,36 +1,4 @@
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.h:103: member_decl: Class member declaration for "kmlDocument".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.cpp:37: uninit_member: Non-static class member "kmlDocument" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:105: member_decl: Class member declaration for "m_localTarget".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_localTarget" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:106: member_decl: Class member declaration for "m_optimize_googlemap".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_optimize_googlemap" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:107: member_decl: Class member declaration for "m_GPXtracks".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_GPXtracks" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:109: member_decl: Class member declaration for "m_iconSize".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_iconSize" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:110: member_decl: Class member declaration for "m_googlemapSize".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_googlemapSize" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:111: member_decl: Class member declaration for "m_size".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_size" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:112: member_decl: Class member declaration for "m_altitudeMode".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_altitudeMode" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:113: member_decl: Class member declaration for "m_TimeZone".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_TimeZone" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:114: member_decl: Class member declaration for "m_LineWidth".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_LineWidth" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:115: member_decl: Class member declaration for "m_GPXOpacity".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_GPXOpacity" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.h:116: member_decl: Class member declaration for "m_GPXAltitudeMode".
-digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlexport.cpp:69: uninit_member: Non-static class member "m_GPXAltitudeMode" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rdx".
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: Non-static class member "rdx" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:63: member_decl: Class member declaration for "rdy".
