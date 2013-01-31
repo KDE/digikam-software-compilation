@@ -506,12 +506,6 @@ digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/imgurexport/imgurtal
 Error: PASS_BY_VALUE:
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurimageslist.cpp:134: pass_by_value: Passing parameter success of type KIPIImgurExportPlugin::ImgurSuccess (size 168 bytes) by value.
 
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/imgurexport/imgurwindow.moc:128: pass_by_value: Passing parameter _t2 of type KIPIImgurExportPlugin::ImgurSuccess (size 168 bytes) by value.
-
-Error: PASS_BY_VALUE:
-digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurwindow.cpp:221: pass_by_value: Passing parameter success of type KIPIImgurExportPlugin::ImgurSuccess (size 168 bytes) by value.
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:97: cond_false: Condition "images.isValid()", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:100: if_end: End of if statement
