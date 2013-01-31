@@ -30,30 +30,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/calendar/print/calsettings.cpp:314: unreacha
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.h:135: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.cpp:87: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.cpp:691: assignment: Assigning: "success" = "true".
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.cpp:694: const: At condition "success", the value of "success" must be equal to 1.
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.cpp:694: dead_error_condition: The condition "!success" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebtalker.cpp:695: dead_error_line: Execution cannot reach this statement "this->getToken(this->m_user...".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:94: cond_true: Condition "import", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:101: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:109: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:186: cond_true: Condition "this->m_username.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.h:131: member_decl: Class member declaration for "m_renamingOpt".
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:190: uninit_member: Non-static class member "m_renamingOpt" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.h:139: member_decl: Class member declaration for "m_interface".
-digikam-3.0.0-rc/extra/kipi-plugins/picasawebexport/picasawebwindow.cpp:190: uninit_member: Non-static class member "m_interface" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.h:103: member_decl: Class member declaration for "kmlDocument".
 digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.cpp:37: uninit_member: Non-static class member "kmlDocument" is not initialized in this constructor nor in any functions that it calls.
 
