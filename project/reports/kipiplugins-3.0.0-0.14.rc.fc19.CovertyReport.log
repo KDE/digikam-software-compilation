@@ -147,18 +147,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcorigin.cpp:94: uninit_
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.h:154: member_decl: Class member declaration for "m_loginInProgress".
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.cpp:83: uninit_member: Non-static class member "m_loginInProgress" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.h:160: member_decl: Class member declaration for "m_sessionExpires".
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.cpp:83: uninit_member: Non-static class member "m_sessionExpires" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.h:167: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/facebook/fbtalker.cpp:83: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:929: unterminated_case: This case (value 202) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/yandexfotki/yfwindow.cpp:950: fallthrough: The above case falls through to this one.
