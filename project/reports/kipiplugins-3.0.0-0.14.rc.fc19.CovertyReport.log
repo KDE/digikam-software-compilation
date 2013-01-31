@@ -190,10 +190,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/soundtrackdialog.h:101: member_decl: Class member declaration for "m_currIndex".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/soundtrackdialog.cpp:153: uninit_member: Non-static class member "m_currIndex" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "fabs(s[0] - s[1]) < 0.15", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "++i < 10", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:76: loop_begin: Jumped back to beginning of loop
