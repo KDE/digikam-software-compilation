@@ -119,34 +119,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/imageviewer/texture.cpp:61: uninit_member: N
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmporigin.cpp:107: member_decl: Class member declaration for "countryCB".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmporigin.cpp:85: uninit_member: Non-static class member "countryCB" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/exif/exifdevice.cpp:91: member_decl: Class member declaration for "deviceTypeCB".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/exif/exifdevice.cpp:84: uninit_member: Non-static class member "deviceTypeCB" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmpcredits.cpp:80: member_decl: Class member declaration for "contactCheck".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmpcredits.cpp:75: uninit_member: Non-static class member "contactCheck" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmpcontent.cpp:78: member_decl: Class member declaration for "copyrightEdit".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/xmp/xmpcontent.cpp:66: uninit_member: Non-static class member "copyrightEdit" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcproperties.cpp:105: member_decl: Class member declaration for "objectTypeDescEdit".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcproperties.cpp:87: uninit_member: Non-static class member "objectTypeDescEdit" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcorigin.cpp:123: member_decl: Class member declaration for "countryCB".
-digikam-3.0.0-rc/extra/kipi-plugins/metadataedit/iptc/iptcorigin.cpp:94: uninit_member: Non-static class member "countryCB" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "_container_.i != _container_.e", taking true branch
