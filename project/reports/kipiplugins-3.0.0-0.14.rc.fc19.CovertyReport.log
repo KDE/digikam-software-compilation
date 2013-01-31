@@ -1,34 +1,3 @@
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:78: cond_true: Condition "images.isValid()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:78: cond_true: Condition "!KUrl::List(images.images()).isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:90: cond_true: Condition "i < 13", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:97: cond_true: Condition "i < urlList.count()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:102: cond_true: Condition "i < months", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:105: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:109: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:112: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:90: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:90: cond_true: Condition "i < 13", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:97: cond_true: Condition "i < urlList.count()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:102: cond_true: Condition "i < months", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:105: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:109: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:112: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:90: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:90: cond_false: Condition "i < 13", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:112: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.h:64: member_decl: Class member declaration for "monthBoxLayout_".
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/wizard/caltemplate.cpp:140: uninit_member: Non-static class member "monthBoxLayout_" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/calendar/print/calsettings.cpp:314: unreachable: This code cannot be reached: "QString ret;".
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.h:103: member_decl: Class member declaration for "kmlDocument".
 digikam-3.0.0-rc/extra/kipi-plugins/kmlexport/kmlgpsdataparser.cpp:37: uninit_member: Non-static class member "kmlDocument" is not initialized in this constructor nor in any functions that it calls.
