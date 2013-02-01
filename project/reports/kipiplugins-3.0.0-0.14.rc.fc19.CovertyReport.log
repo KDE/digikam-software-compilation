@@ -188,32 +188,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "fabs(s[0] - s[1]) < 0.15", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "++i < 10", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:76: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "fabs(s[0] - s[1]) < 0.15", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "++i < 10", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:76: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_true: Condition "fabs(s[0] - s[1]) < 0.15", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:80: cond_false: Condition "++i < 10", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:82: cond_true: Condition "!zoomIn", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:97: cond_true: Condition "relAspect > 1.", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:101: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:106: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:129: cond_false: Condition "fabs(x[1] - x[0]) + fabs(y[1] - y[0]) > bestDist", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:136: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:139: cond_false: Condition "bestDist < 0.3", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.h:108: member_decl: Class member declaration for "m_deltaX".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:140: uninit_member: Non-static class member "m_deltaX" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.h:108: member_decl: Class member declaration for "m_deltaY".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:140: uninit_member: Non-static class member "m_deltaY" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.h:109: member_decl: Class member declaration for "m_baseX".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:140: uninit_member: Non-static class member "m_baseX" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.h:109: member_decl: Class member declaration for "m_baseY".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:140: uninit_member: Non-static class member "m_baseY" is not initialized in this constructor nor in any functions that it calls.
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:78: cond_true: Condition "this->m_urlList.empty()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:93: member_decl: Class member declaration for "m_muted".
@@ -228,11 +202,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/plugin/kbeffect.h:71: member_decl: Class member declaration for "m_img".
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/plugin/kbeffect.cpp:50: uninit_member: Non-static class member "m_img" is not initialized in this constructor nor in any functions that it calls.
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:82: const: At condition "zoomIn", the value of "zoomIn" must be equal to 1.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:82: dead_error_condition: The condition "zoomIn" must be true.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/slideshowkb.cpp:82: dead_error_line: Execution cannot reach this expression "s[0] > s[1]" inside statement "if (!zoomIn || s[0] > s[1] ...".
 
 Error: DEADCODE (CWE-561):
 digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:340: cond_notnull: Condition "item", taking true branch. Now the value of "item" is not NULL.
