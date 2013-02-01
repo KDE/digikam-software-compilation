@@ -3,6 +3,7 @@ Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:261: cond_true: Condition "this->m_inotifyFd > 0", taking true branch
 digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:263: check_return: Calling function "fcntl(this->m_inotifyFd, 2, 1)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:263: unchecked_value: No check of the return value of "fcntl(this->m_inotifyFd, 2, 1)".
+=> Ignoring value (setting close on execve flag) seems ok (MW)
 
 Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:69: cond_false: Condition "!weakRef", taking false branch
@@ -15,6 +16,7 @@ digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:87: check_return: Calling
 /usr/include/QtCore/qhash.h:283: example_checked: "(*this).d->ref.deref()" has its value checked in "(*this).d->ref.deref()".
 digikam-3.0.0-rc/core/libs/dimg/dshareddata.h:264: example_checked: "x->ref.deref()" has its value checked in "x->ref.deref()".
 digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:87: unchecked_value: No check of the return value of "weakRef->ref.deref()".
+=> Logic seems ok (MW)
 
 Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:69: cond_false: Condition "!weakRef", taking false branch
@@ -28,32 +30,8 @@ digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:94: check_return: Calling
 /usr/include/QtCore/qhash.h:283: example_checked: "(*this).d->ref.deref()" has its value checked in "(*this).d->ref.deref()".
 digikam-3.0.0-rc/core/libs/dimg/dshareddata.h:264: example_checked: "x->ref.deref()" has its value checked in "x->ref.deref()".
 digikam-3.0.0-rc/core/libs/database/imageinfocache.cpp:94: unchecked_value: No check of the return value of "weakRef->ref.deref()".
+=> Logic seems ok (MW)
 
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:71: cond_false: Condition "!file", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:76: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:80: cond_false: Condition "fread(&header, 2, 1, file) != 1", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:86: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:90: cond_false: Condition "*c != 'P'", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:96: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:100: cond_false: Condition "*c != '6'", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:106: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:111: cond_false: Condition "fscanf(file, "P6 %d %d %d%c", &width, &height, &rgbmax, &nl) != 4", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:117: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:119: cond_false: Condition "rgbmax <= 255", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:125: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:127: cond_true: Condition "observer", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:134: cond_true: Condition "QFlags<Digikam::DImgLoader::LoadFlag>(this->m_loadFlags & Digikam::DImgLoader::LoadImageData).operator int()", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:138: cond_false: Condition "data.isNull()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:144: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:155: cond_true: Condition "h < height", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:158: cond_true: Condition "observer", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:158: cond_true: Condition "h == checkpoint", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:162: cond_false: Condition "!observer->continueQuery(this->m_image)", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:167: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:172: cond_true: Condition "w < width", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:175: check_return: Calling function "fread(src, 6UL, 1UL, file)" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/core/libs/dimg/loaders/ppmloader.cpp:175: unchecked_value: No check of the return value of "fread(src, 6UL, 1UL, file)".
 
 Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/libs/database/databasechecker.cpp:58: cond_false: Condition "!fromDBbackend.open(this->m_parameters)", taking false branch
@@ -67,26 +45,7 @@ digikam-3.0.0-rc/core/libs/database/databasechecker.cpp:73: example_checked: "th
 digikam-3.0.0-rc/core/libs/database/databasechecker.cpp:78: example_checked: "this->checkPriv(fromDBbackend, QString const("CheckPriv_DROP_TRIGGER"))" has its value checked in "this->checkPriv(fromDBbackend, QString const("CheckPriv_DROP_TRIGGER"))".
 digikam-3.0.0-rc/core/libs/database/databasechecker.cpp:83: example_checked: "this->checkPriv(fromDBbackend, QString const("CheckPriv_DROP_TABLE"))" has its value checked in "this->checkPriv(fromDBbackend, QString const("CheckPriv_DROP_TABLE"))".
 digikam-3.0.0-rc/core/libs/database/databasechecker.cpp:90: unchecked_value: No check of the return value of "this->checkPriv(fromDBbackend, QString const("CheckPriv_Cleanup"))".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/jpegutils/jpegutils.cpp:445: cond_true: Condition "!exifThumb.isNull()", taking true branch
-digikam-3.0.0-rc/core/libs/jpegutils/jpegutils.cpp:451: cond_true: Condition "this->m_metadata.getImagePreview(imagePreview)", taking true branch
-digikam-3.0.0-rc/core/libs/jpegutils/jpegutils.cpp:465: check_return: Calling function "stat(QByteArray(QFile::encodeName(this->m_file)).operator char const *(), &st)" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/core/libs/jpegutils/jpegutils.cpp:465: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(this->m_file)).operator char const *(), &st)".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:169: cond_false: Condition "!this->addWatch(path)", taking false branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:178: cond_true: Condition "dir", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:181: cond_true: Condition "!readdir_r(dir, entry, &result)", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:184: cond_false: Condition "!result", taking false branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:188: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:190: cond_true: Condition "entry->d_type == DT_UNKNOWN", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:190: cond_true: Condition "this->watchHiddenFolders", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:190: cond_true: Condition "qstrcmp(entry->d_name, ".")", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:190: cond_true: Condition "qstrcmp(entry->d_name, "..")", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:200: cond_true: Condition "entry->d_type == DT_UNKNOWN", taking true branch
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:203: check_return: Calling function "lstat(subDir.data(), &buf)" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:203: unchecked_value: No check of the return value of "lstat(subDir.data(), &buf)".
+=> ok to ignore, no consequence of failure (MW)
 
 Error: CHECKED_RETURN (CWE-252):
 digikam-3.0.0-rc/core/digikam/fileaction/fileactionmngr_p.cpp:230: check_return: Calling function "QBasicAtomicInt::deref()" without checking return value (as is done elsewhere 33 out of 37 times).
@@ -96,87 +55,40 @@ digikam-3.0.0-rc/core/digikam/fileaction/fileactionmngr_p.cpp:230: check_return:
 /usr/include/QtCore/qhash.h:283: example_checked: "(*this).d->ref.deref()" has its value checked in "(*this).d->ref.deref()".
 digikam-3.0.0-rc/core/libs/dimg/dshareddata.h:264: example_checked: "x->ref.deref()" has its value checked in "x->ref.deref()".
 digikam-3.0.0-rc/core/digikam/fileaction/fileactionmngr_p.cpp:230: unchecked_value: No check of the return value of "this->activeProgressItems.deref()".
+=> Need not check return value in this usage context (MW)
+
+TODO: Rewrite the Channel mixer configuration file writing and parsing using Qt routines (QTextStream, QString),
+fscanf is not robust anyway. (MW)
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:594: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:597: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:601: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:606: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:609: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:613: if_end: End of if statement
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:616: check_return: Calling function "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:616: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:594: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:597: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:601: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:606: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:609: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:613: if_end: End of if statement
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:622: check_return: Calling function "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:622: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:594: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:597: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:601: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:606: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:609: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:613: if_end: End of if statement
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:628: check_return: Calling function "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:628: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:594: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:597: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:601: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:606: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:609: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:613: if_end: End of if statement
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:634: check_return: Calling function "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:634: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s %s %s", buf1, buf2, buf3)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:571: check_return: Calling function "fscanf(fp, "%*s %s", buf1)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:571: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s", buf1)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:589: check_return: Calling function "fscanf(fp, "%*s %s", buf1)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:589: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s", buf1)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:592: check_return: Calling function "fscanf(fp, "%*s %s", buf1)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:592: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s", buf1)".
 
 Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:552: cond_false: Condition "loadGainsFileUrl.isEmpty()", taking false branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:555: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:559: cond_true: Condition "fp", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:594: cond_true: Condition "strcmp(buf1, "true") == 0", taking true branch
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:597: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:601: if_end: End of if statement
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:604: check_return: Calling function "fscanf(fp, "%*s %s", buf1)" without checking return value. This library function may fail and return an error code.
 digikam-3.0.0-rc/core/libs/dimg/filters/bw/mixersettings.cpp:604: unchecked_value: No check of the return value of "fscanf(fp, "%*s %s", buf1)".
 
