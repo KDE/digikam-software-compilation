@@ -1,8 +1,4 @@
 
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:543: unreachable: This code cannot be reached: "return QModelIndex();".
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:174: uninit_member: Non-static class member "fileIOCountTotal" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:190: member_decl: Class member declaration for "fileIOCloseAfterSaving".
@@ -183,16 +179,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:57: member_decl: C
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:52: uninit_member: Non-static class member "thread" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:69: member_decl: Class member declaration for "startInsert".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:63: uninit_member: Non-static class member "startInsert" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:69: member_decl: Class member declaration for "endInsert".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:63: uninit_member: Non-static class member "endInsert" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:70: member_decl: Class member declaration for "startRemove".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:63: uninit_member: Non-static class member "startRemove" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:70: member_decl: Class member declaration for "endRemove".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:63: uninit_member: Non-static class member "endRemove" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:175: member_decl: Class member declaration for "model".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "model" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:176: member_decl: Class member declaration for "bookmarkManager".
@@ -218,10 +204,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:102: uninit_member: Non-st
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:105: member_decl: Class member declaration for "setupGeneral".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:102: uninit_member: Non-static class member "setupGeneral" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:52: member_decl: Class member declaration for "cbMapLayout".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:50: uninit_member: Non-static class member "cbMapLayout" is not initialized in this constructor nor in any functions that it calls.
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_true: Condition "!KIPIGPSSyncPlugin::_k_static_setupGlobalObjectCreator", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_true: Condition "this->isDestroyed()", taking true branch
@@ -233,11 +215,9 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_false: Condition 
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: else_branch: Reached else branch
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
 
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:307: assignment: Assigning: "found" = "false".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:321: const: At condition "found", the value of "found" must be equal to 0.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:321: dead_error_condition: The condition "!found" must be true.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:335: dead_error_line: Execution cannot reach this statement "<temporary>.QPersistentMode...".
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:52: member_decl: Class member declaration for "cbMapLayout".
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:50: uninit_member: Non-static class member "cbMapLayout" is not initialized in this constructor nor in any functions that it calls.
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
