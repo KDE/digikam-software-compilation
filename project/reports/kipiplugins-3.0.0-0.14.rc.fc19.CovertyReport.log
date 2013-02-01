@@ -188,26 +188,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:78: cond_true: Condition "this->m_urlList.empty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:93: member_decl: Class member declaration for "m_muted".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:81: uninit_member: Non-static class member "m_muted" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:95: member_decl: Class member declaration for "m_isZeroTime".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:81: uninit_member: Non-static class member "m_isZeroTime" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:98: member_decl: Class member declaration for "m_mediaObject".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:81: uninit_member: Non-static class member "m_mediaObject" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.h:99: member_decl: Class member declaration for "m_audioOutput".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/widgets/playbackwidget.cpp:81: uninit_member: Non-static class member "m_audioOutput" is not initialized in this constructor nor in any functions that it calls.
-
- Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:340: cond_notnull: Condition "item", taking true branch. Now the value of "item" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:347: assignment: Assigning: "pitem" = "static_cast<KIPIPlugins::KPImagesListViewItem *>(item)".
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:349: notnull: At condition "pitem", the value of "pitem" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:349: dead_error_condition: The condition "!pitem" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/advancedslideshow/dialogs/maindialog.cpp:350: dead_error_line: Execution cannot reach this statement "return;".
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:160: cond_true: Condition "job->error()", taking true branch
