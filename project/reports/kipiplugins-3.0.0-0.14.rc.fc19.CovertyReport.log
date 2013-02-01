@@ -1,4 +1,364 @@
 
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:73: member_decl: Class member declaration for "action".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:74: member_decl: Class member declaration for "rotAction".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "rotAction" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:75: member_decl: Class member declaration for "flipAction".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "flipAction" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:145: var_decl: Declaring variable "transformoption" without initializer.
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:169: cond_false: Condition "!input_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:174: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:176: cond_false: Condition "!output_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadWrite))", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:182: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:193: uninit_use_in_call: Using uninitialized value "transformoption.perfect" when calling "KIPIJPEGLossLessPlugin::jtransform_request_workspace(j_decompress_ptr, KIPIJPEGLossLessPlugin::jpeg_transform_info *)".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "info->force_grayscale", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "srcinfo->jpeg_color_space == JCS_YCbCr", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "srcinfo->num_components == 3", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:894:3: read_parm_fld: Reading a parameter field.
+
+Error: MISSING_BREAK (CWE-484):
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:90: unterminated_case: This case (value 1) is not terminated by a 'break' statement.
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:97: fallthrough: The above case falls through to this one.
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:174: cond_false: Condition "flip == KIPIJPEGLossLessPlugin::JXFORM_NONE", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:188: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:222: cond_false: Condition "!input_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:227: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:230: cond_true: Condition "twoPass", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:234: check_return: Calling function "QTemporaryFile::open()" without checking return value (as is done elsewhere 10 out of 12 times).
+digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/generator.cpp:215: example_checked: "tempFile->open()" has its value checked in "tempFile->open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: example_checked: "exifTemp.open()" has its value checked in "exifTemp.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:96: example_checked: "this->m_tmpFile.open()" has its value checked in "this->m_tmpFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:234: unchecked_value: No check of the return value of "tempFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:181: example_checked: "file.copy(destGiven)" has its value checked in "file.copy(destGiven)".
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:85: cond_false: Condition "src->isEmpty()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:85: cond_false: Condition "!finfo.isReadable()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:89: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: cond_false: Condition "!exifTemp.open()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:119: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:128: check_return: Calling function "QTemporaryFile::open()" without checking return value (as is done elsewhere 10 out of 12 times).
+digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/generator.cpp:215: example_checked: "tempFile->open()" has its value checked in "tempFile->open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: example_checked: "exifTemp.open()" has its value checked in "exifTemp.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:96: example_checked: "this->m_tmpFile.open()" has its value checked in "this->m_tmpFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:128: unchecked_value: No check of the return value of "iptcTemp.open()".
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actions.h:70: member_decl: Class member declaration for "action".
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actions.h:58: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actionthread.cpp:47: member_decl: Class member declaration for "outputFormat".
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actionthread.cpp:45: uninit_member: Non-static class member "outputFormat" is not initialized in this constructor nor in any functions that it calls.
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:99: cond_true: Condition "*it", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:101: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIRawConverterPlugin::MyImageListViewItem *>(*it)" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:101: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIRawConverterPlugin::MyImageListViewItem *>(*it)".
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:102: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::isSelected() const", which dereferences it.
+/usr/include/QtGui/qtreewidget.h:400:3: deref_parm: Directly dereferencing parameter "this".
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:83: example_checked: "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)".
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_true: Condition "i < width * height", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:106: cond_true: Condition "!sixteenBits", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:115: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:127: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_true: Condition "i < width * height", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:106: cond_true: Condition "!sixteenBits", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:115: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:127: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_false: Condition "i < width * height", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_true: Condition "i < width * height", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:140: cond_true: Condition "!sixteenBits", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:144: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:152: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_true: Condition "i < width * height", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:140: cond_true: Condition "!sixteenBits", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:144: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:152: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_false: Condition "i < width * height", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:180: cond_true: Condition "outputFileFormat != KIPIPlugins::KPSaveSettingsWidget::OUTPUT_JPEG", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:195: switch: Switch case value "0"
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:202: switch_case: Reached case "0"
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:204: cond_false: Condition "!wImageIface.write2PNG(destPath)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:205: break: Breaking from switch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:222: switch_end: Reached end of switch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:224: cond_true: Condition "this->m_cancel", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:226: check_return: Calling function "remove(QByteArray(QFile::encodeName(destPath)).operator char const *())" without checking return value. This library function may fail and return an error code.
+digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:226: unchecked_value: No check of the return value of "remove(QByteArray(QFile::encodeName(destPath)).operator char const *())".
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: cond_true: Condition "fDelta@dim0 < 8UL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: cond_false: Condition "fDelta@dim0 < 8UL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:52: member_decl: Class member declaration for "fWeight32".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fWeight32" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:53: member_decl: Class member declaration for "fWeight16".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fWeight16" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:55: member_decl: Class member declaration for "fOffset".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fOffset" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.h:54: member_decl: Class member declaration for "fCFAPlaneColor".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:1330: uninit_member: Non-static class member "fCFAPlaneColor" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2457: cond_false: Condition "!(profile->NumFunctions() <= 4U /* kMaxColorPlanes */)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2457: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2460: cond_false: Condition "i < profile->NumFunctions()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2466: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.h:973: member_decl: Class member declaration for "fValues".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2468: uninit_member: Non-static class member "fValues" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_fingerprint.h:234: member_decl: Class member declaration for "buffer".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_fingerprint.cpp:140: uninit_member: Non-static class member "buffer" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:457: cond_false: Condition "index < this->fCount", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:462: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.h:155: member_decl: Class member declaration for "fData".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:464: uninit_member: Non-static class member "fData" is not initialized in this constructor nor in any functions that it calls.
+
+Error: REVERSE_INULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_string.cpp:1989: deref_ptr: Directly dereferencing pointer "aPtr".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_string.cpp:1997: check_after_deref: Null-checking "aPtr" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:146: cond_true: Condition "s->Length() == 32", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:149: cond_true: Condition "j < 16", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:154: check_return: Calling function "sscanf(char const *, char const *, ...)" without checking return value (as is done elsewhere 26 out of 28 times).
+digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:306: example_checked: "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch)" has its value checked in "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch) != 3".
+digikam-3.0.0-rc/core/libs/3rdparty/kmemoryinfo/kmemoryinfo_backend.cpp:266: example_checked: "sscanf(line_ptr, "%*s %llu kB", &value)" has its value checked in "sscanf(line_ptr, "%*s %llu kB", &value) != 1".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_date_time.cpp:290: example_checked: "sscanf(s, "%u-%u-%u", &year, &month, &day)" has its value checked in "sscanf(s, "%u-%u-%u", &year, &month, &day) != 3".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1180: example_checked: "sscanf(s.Get(), "%u", &y)" has its value checked in "sscanf(s.Get(), "%u", &y) == 1".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1559: example_checked: "sscanf(s.Get(), "%d/%d", &n, &d)" has its value checked in "sscanf(s.Get(), "%d/%d", &n, &d) == 2".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:154: unchecked_value: No check of the return value of "sscanf(s->Get() + j * 2U, "%02X", &x)".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1112: example_checked: "compressedFile.open()" has its value checked in "compressedFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1230: example_checked: "previewFile.open()" has its value checked in "previewFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1112: example_checked: "compressedFile.open()" has its value checked in "compressedFile.open()".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1230: example_checked: "previewFile.open()" has its value checked in "previewFile.open()".
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[0].IsValid()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[1].IsValid()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[2].IsValid()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:419: cond_true: Condition "dateStamp->NotEmpty()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:422: check_return: Calling function "sscanf(char const *, char const *, ...)" without checking return value (as is done elsewhere 26 out of 28 times).
+digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:306: example_checked: "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch)" has its value checked in "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch) != 3".
+digikam-3.0.0-rc/core/libs/3rdparty/kmemoryinfo/kmemoryinfo_backend.cpp:266: example_checked: "sscanf(line_ptr, "%*s %llu kB", &value)" has its value checked in "sscanf(line_ptr, "%*s %llu kB", &value) != 1".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_date_time.cpp:290: example_checked: "sscanf(s, "%u-%u-%u", &year, &month, &day)" has its value checked in "sscanf(s, "%u-%u-%u", &year, &month, &day) != 3".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1180: example_checked: "sscanf(s.Get(), "%u", &y)" has its value checked in "sscanf(s.Get(), "%u", &y) == 1".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1559: example_checked: "sscanf(s.Get(), "%d/%d", &n, &d)" has its value checked in "sscanf(s.Get(), "%d/%d", &n, &d) == 2".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:422: unchecked_value: No check of the return value of "sscanf(dateStamp->Get(), "%d:%d:%d", &year, &month, &day)".
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter_p.cpp:63: check_return: Calling function "remove(QByteArray(QFile::encodeName(this->outputFile)).operator char const *())" without checking return value. This library function may fail and return an error code.
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter_p.cpp:63: unchecked_value: No check of the return value of "remove(QByteArray(QFile::encodeName(this->outputFile)).operator char const *())".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:100: cond_true: Condition "*it", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:102: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIDNGConverterPlugin::MyImageListViewItem *>(*it)" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:102: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIDNGConverterPlugin::MyImageListViewItem *>(*it)".
+digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:103: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::isSelected() const", which dereferences it.
+/usr/include/QtGui/qtreewidget.h:400:3: deref_parm: Directly dereferencing parameter "this".
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:548: cond_true: Condition "this->m_job", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:589: cond_true: Condition "tags.length() > 0", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:595: cond_true: Condition "!info.title.isEmpty()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:601: cond_true: Condition "!info.description.isEmpty()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:612: cond_true: Condition "KIPIPlugins::KPMetadata::isRawFile(KUrl const(photoPath))", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:615: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:619: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:621: cond_true: Condition "!image.isNull()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:625: cond_true: Condition "sendOriginal", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: check_return: Calling function "QFile::copy(QString const &)" without checking return value (as is done elsewhere 4 out of 5 times).
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: unchecked_value: No check of the return value of "imgFile.copy(path)".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:130: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:132: cond_true: Condition "state", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:132: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setFamily(bool)", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:525:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:130: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:134: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:136: cond_true: Condition "state", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:136: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setFriends(bool)", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:538:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:128: cond_true: Condition "state", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:128: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setPublic(bool)", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:483:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:105: cond_true: Condition "contentType != KIPIFlickrExportPlugin::FlickrList::MIXEDTYPES", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:107: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:109: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:109: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:110: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setContentType(KIPIFlickrExportPlugin::FlickrList::ContentType)", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:558:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:89: cond_true: Condition "safetyLevel != KIPIFlickrExportPlugin::FlickrList::MIXEDLEVELS", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:91: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:93: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:93: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:95: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setSafetyLevel(KIPIFlickrExportPlugin::FlickrList::SafetyLevel)", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:551:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:250: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:250: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:251: var_deref_model: Passing null pointer "lvItem" to function "QTreeWidgetItem::data(int, int) const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:253: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:257: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:266: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:270: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:274: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:276: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::contentType() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:588:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:253: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:256: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:266: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:270: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:272: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::safetyLevel() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:583:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:185: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::toggled()", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:461:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isFamily() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:572:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isFriends() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:578:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:560: cond_false: Condition "KUrl::List(this->m_imglst->imageUrls(false)).isEmpty()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:563: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:569: cond_true: Condition "i < this->m_imglst->listView()->topLevelItemCount()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))" can return NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:580: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:85: cond_true: Condition "serviceName == "23"", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:95: if_fallthrough: Falling through to end of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:99: member_decl: Class member declaration for "m_authProgressDlg".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_authProgressDlg" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:161: member_decl: Class member declaration for "m_state".
+digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "_container_.i != _container_.e", taking true branch
@@ -947,366 +1307,6 @@ digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1613: example_checked: "this-
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1618: example_checked: "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrCtry", info.country, false)" has its value checked in "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrCtry", info.country, false)".
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1623: example_checked: "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrExtadr", info.address, false)" has its value checked in "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrExtadr", info.address, false)".
 digikam-3.0.0-rc/core/libs/dmetadata/dmetadata.cpp:1628: example_checked: "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrPcode", info.postalCode, false)" has its value checked in "this->setXmpTagString("Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:CiAdrPcode", info.postalCode, false)".
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actions.h:70: member_decl: Class member declaration for "action".
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actions.h:58: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actionthread.cpp:47: member_decl: Class member declaration for "outputFormat".
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/actionthread.cpp:45: uninit_member: Non-static class member "outputFormat" is not initialized in this constructor nor in any functions that it calls.
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:99: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:101: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIRawConverterPlugin::MyImageListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:101: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIRawConverterPlugin::MyImageListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/dialogs/myimagelist.cpp:102: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::isSelected() const", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:400:3: deref_parm: Directly dereferencing parameter "this".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:83: example_checked: "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, rawDecodingSettings, imageData, width, height, rgbmax)".
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_true: Condition "i < width * height", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:106: cond_true: Condition "!sixteenBits", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:115: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:127: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_true: Condition "i < width * height", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:106: cond_true: Condition "!sixteenBits", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:115: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:127: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:104: cond_false: Condition "i < width * height", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:128: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_true: Condition "i < width * height", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:140: cond_true: Condition "!sixteenBits", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:144: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:152: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_true: Condition "i < width * height", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:140: cond_true: Condition "!sixteenBits", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:144: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:152: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:138: cond_false: Condition "i < width * height", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:153: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:180: cond_true: Condition "outputFileFormat != KIPIPlugins::KPSaveSettingsWidget::OUTPUT_JPEG", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:195: switch: Switch case value "0"
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:202: switch_case: Reached case "0"
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:204: cond_false: Condition "!wImageIface.write2PNG(destPath)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:205: break: Breaking from switch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:222: switch_end: Reached end of switch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:224: cond_true: Condition "this->m_cancel", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:226: check_return: Calling function "remove(QByteArray(QFile::encodeName(destPath)).operator char const *())" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/extra/kipi-plugins/rawconverter/manager/rawdecodingiface.cpp:226: unchecked_value: No check of the return value of "remove(QByteArray(QFile::encodeName(destPath)).operator char const *())".
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: cond_true: Condition "fDelta@dim0 < 8UL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:61: cond_false: Condition "fDelta@dim0 < 8UL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:52: member_decl: Class member declaration for "fWeight32".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fWeight32" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:53: member_decl: Class member declaration for "fWeight16".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fWeight16" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:55: member_decl: Class member declaration for "fOffset".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:62: uninit_member: Non-static class member "fOffset" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.h:54: member_decl: Class member declaration for "fCFAPlaneColor".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_mosaic_info.cpp:1330: uninit_member: Non-static class member "fCFAPlaneColor" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2457: cond_false: Condition "!(profile->NumFunctions() <= 4U /* kMaxColorPlanes */)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2457: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2460: cond_false: Condition "i < profile->NumFunctions()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2466: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.h:973: member_decl: Class member declaration for "fValues".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_image_writer.cpp:2468: uninit_member: Non-static class member "fValues" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_fingerprint.h:234: member_decl: Class member declaration for "buffer".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_fingerprint.cpp:140: uninit_member: Non-static class member "buffer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:457: cond_false: Condition "index < this->fCount", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:462: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.h:155: member_decl: Class member declaration for "fData".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_matrix.cpp:464: uninit_member: Non-static class member "fData" is not initialized in this constructor nor in any functions that it calls.
-
-Error: REVERSE_INULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_string.cpp:1989: deref_ptr: Directly dereferencing pointer "aPtr".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_string.cpp:1997: check_after_deref: Null-checking "aPtr" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:146: cond_true: Condition "s->Length() == 32", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:149: cond_true: Condition "j < 16", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:154: check_return: Calling function "sscanf(char const *, char const *, ...)" without checking return value (as is done elsewhere 26 out of 28 times).
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:306: example_checked: "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch)" has its value checked in "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch) != 3".
-digikam-3.0.0-rc/core/libs/3rdparty/kmemoryinfo/kmemoryinfo_backend.cpp:266: example_checked: "sscanf(line_ptr, "%*s %llu kB", &value)" has its value checked in "sscanf(line_ptr, "%*s %llu kB", &value) != 1".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_date_time.cpp:290: example_checked: "sscanf(s, "%u-%u-%u", &year, &month, &day)" has its value checked in "sscanf(s, "%u-%u-%u", &year, &month, &day) != 3".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1180: example_checked: "sscanf(s.Get(), "%u", &y)" has its value checked in "sscanf(s.Get(), "%u", &y) == 1".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1559: example_checked: "sscanf(s.Get(), "%d/%d", &n, &d)" has its value checked in "sscanf(s.Get(), "%d/%d", &n, &d) == 2".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:154: unchecked_value: No check of the return value of "sscanf(s->Get() + j * 2U, "%02X", &x)".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1112: example_checked: "compressedFile.open()" has its value checked in "compressedFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1230: example_checked: "previewFile.open()" has its value checked in "previewFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1112: example_checked: "compressedFile.open()" has its value checked in "compressedFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter.cpp:1230: example_checked: "previewFile.open()" has its value checked in "previewFile.open()".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[0].IsValid()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[1].IsValid()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:400: cond_true: Condition "timeStamp[2].IsValid()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:419: cond_true: Condition "dateStamp->NotEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:422: check_return: Calling function "sscanf(char const *, char const *, ...)" without checking return value (as is done elsewhere 26 out of 28 times).
-digikam-3.0.0-rc/core/libs/3rdparty/kinotify/kinotify.cpp:306: example_checked: "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch)" has its value checked in "sscanf(uts.release, "%d.%d.%d", &major, &minor, &patch) != 3".
-digikam-3.0.0-rc/core/libs/3rdparty/kmemoryinfo/kmemoryinfo_backend.cpp:266: example_checked: "sscanf(line_ptr, "%*s %llu kB", &value)" has its value checked in "sscanf(line_ptr, "%*s %llu kB", &value) != 1".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_date_time.cpp:290: example_checked: "sscanf(s, "%u-%u-%u", &year, &month, &day)" has its value checked in "sscanf(s, "%u-%u-%u", &year, &month, &day) != 3".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1180: example_checked: "sscanf(s.Get(), "%u", &y)" has its value checked in "sscanf(s.Get(), "%u", &y) == 1".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:1559: example_checked: "sscanf(s.Get(), "%d/%d", &n, &d)" has its value checked in "sscanf(s.Get(), "%d/%d", &n, &d) == 2".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/extra/dng_sdk/dng_xmp.cpp:422: unchecked_value: No check of the return value of "sscanf(dateStamp->Get(), "%d:%d:%d", &year, &month, &day)".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter_p.cpp:63: check_return: Calling function "remove(QByteArray(QFile::encodeName(this->outputFile)).operator char const *())" without checking return value. This library function may fail and return an error code.
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/dngwriter/dngwriter_p.cpp:63: unchecked_value: No check of the return value of "remove(QByteArray(QFile::encodeName(this->outputFile)).operator char const *())".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:100: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:102: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIDNGConverterPlugin::MyImageListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:102: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIDNGConverterPlugin::MyImageListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/dngconverter/plugin/myimagelist.cpp:103: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::isSelected() const", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:400:3: deref_parm: Directly dereferencing parameter "this".
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:548: cond_true: Condition "this->m_job", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:589: cond_true: Condition "tags.length() > 0", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:595: cond_true: Condition "!info.title.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:601: cond_true: Condition "!info.description.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:612: cond_true: Condition "KIPIPlugins::KPMetadata::isRawFile(KUrl const(photoPath))", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:615: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:619: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:621: cond_true: Condition "!image.isNull()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:625: cond_true: Condition "sendOriginal", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: check_return: Calling function "QFile::copy(QString const &)" without checking return value (as is done elsewhere 4 out of 5 times).
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: unchecked_value: No check of the return value of "imgFile.copy(path)".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:130: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:132: cond_true: Condition "state", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:132: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setFamily(bool)", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:525:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:130: cond_false: Condition "type == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:134: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:136: cond_true: Condition "state", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:136: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setFriends(bool)", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:538:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:124: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:126: cond_true: Condition "type == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:128: cond_true: Condition "state", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:128: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setPublic(bool)", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:483:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:105: cond_true: Condition "contentType != KIPIFlickrExportPlugin::FlickrList::MIXEDTYPES", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:107: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:109: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:109: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:110: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setContentType(KIPIFlickrExportPlugin::FlickrList::ContentType)", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:558:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:89: cond_true: Condition "safetyLevel != KIPIFlickrExportPlugin::FlickrList::MIXEDLEVELS", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:91: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:93: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:93: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:95: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::setSafetyLevel(KIPIFlickrExportPlugin::FlickrList::SafetyLevel)", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:551:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:250: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:250: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:251: var_deref_model: Passing null pointer "lvItem" to function "QTreeWidgetItem::data(int, int) const", which dereferences it. (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:253: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:257: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:266: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:270: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:274: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::CONTENTTYPE", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:276: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::contentType() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:588:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:243: cond_true: Condition "this->m_userIsEditing", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:253: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:256: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:266: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:268: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:270: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::SAFETYLEVEL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:272: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::safetyLevel() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:583:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:184: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(item)".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:185: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::toggled()", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:461:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isFamily() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:572:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_false: Condition "column == KIPIFlickrExportPlugin::FlickrList::FAMILY", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::FRIENDS", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isFriends() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:578:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:180: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:190: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:560: cond_false: Condition "KUrl::List(this->m_imglst->imageUrls(false)).isEmpty()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:563: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:569: cond_true: Condition "i < this->m_imglst->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:580: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:85: cond_true: Condition "serviceName == "23"", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:95: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:99: member_decl: Class member declaration for "m_authProgressDlg".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_authProgressDlg" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:161: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:73: member_decl: Class member declaration for "action".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "action" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:74: member_decl: Class member declaration for "rotAction".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "rotAction" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:75: member_decl: Class member declaration for "flipAction".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:67: uninit_member: Non-static class member "flipAction" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:145: var_decl: Declaring variable "transformoption" without initializer.
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:169: cond_false: Condition "!input_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:174: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:176: cond_false: Condition "!output_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadWrite))", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:182: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:193: uninit_use_in_call: Using uninitialized value "transformoption.perfect" when calling "KIPIJPEGLossLessPlugin::jtransform_request_workspace(j_decompress_ptr, KIPIJPEGLossLessPlugin::jpeg_transform_info *)".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "info->force_grayscale", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "srcinfo->jpeg_color_space == JCS_YCbCr", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:880:3: cond_true: Condition "srcinfo->num_components == 3", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/libjpeg/transupp.v8a.cpp:894:3: read_parm_fld: Reading a parameter field.
-
-Error: MISSING_BREAK (CWE-484):
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:90: unterminated_case: This case (value 1) is not terminated by a 'break' statement.
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/actionthread.cpp:97: fallthrough: The above case falls through to this one.
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:174: cond_false: Condition "flip == KIPIJPEGLossLessPlugin::JXFORM_NONE", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:188: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:222: cond_false: Condition "!input_file.QFile::open(QIODevice::OpenMode(QIODevice::ReadOnly))", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:227: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:230: cond_true: Condition "twoPass", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:234: check_return: Calling function "QTemporaryFile::open()" without checking return value (as is done elsewhere 10 out of 12 times).
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/generator.cpp:215: example_checked: "tempFile->open()" has its value checked in "tempFile->open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: example_checked: "exifTemp.open()" has its value checked in "exifTemp.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:96: example_checked: "this->m_tmpFile.open()" has its value checked in "this->m_tmpFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:234: unchecked_value: No check of the return value of "tempFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/jpegtransform.cpp:181: example_checked: "file.copy(destGiven)" has its value checked in "file.copy(destGiven)".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:85: cond_false: Condition "src->isEmpty()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:85: cond_false: Condition "!finfo.isReadable()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:89: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: cond_false: Condition "!exifTemp.open()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:119: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:128: check_return: Calling function "QTemporaryFile::open()" without checking return value (as is done elsewhere 10 out of 12 times).
-digikam-3.0.0-rc/extra/kipi-plugins/htmlexport/generator.cpp:215: example_checked: "tempFile->open()" has its value checked in "tempFile->open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:115: example_checked: "exifTemp.open()" has its value checked in "exifTemp.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/transform/convert2grayscale.cpp:96: example_checked: "this->m_tmpFile.open()" has its value checked in "this->m_tmpFile.open()".
-digikam-3.0.0-rc/extra/kipi-plugins/jpeglossless/plugin/utils.cpp:128: unchecked_value: No check of the return value of "iptcTemp.open()".
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
