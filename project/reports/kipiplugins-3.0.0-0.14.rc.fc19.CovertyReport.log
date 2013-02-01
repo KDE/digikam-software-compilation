@@ -520,32 +520,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/rgtagmodel.cpp:335: dead_error_line:
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/ipodheader.h:74: member_decl: Class member declaration for "m_viewType".
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/ipodheader.cpp:67: uninit_member: Non-static class member "m_viewType" is not initialized in this constructor nor in any functions that it calls.
-
-Error: REVERSE_INULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:823: deref_ptr: Directly dereferencing pointer "this->m_itdb".
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:825: check_after_deref: Null-checking "this->m_itdb" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:493: cond_notnull: Condition "item", taking true branch. Now the value of "item" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:499: assignment: Assigning: "pitem" = "static_cast<KIPIIpodExportPlugin::ImageListItem *>(item)".
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:500: notnull: At condition "pitem", the value of "pitem" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:500: dead_error_condition: The condition "!pitem" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:500: dead_error_line: Execution cannot reach this statement "return;".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:454: cond_true: Condition "this->m_ipodAlbumList->currentItem()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:461: cond_false: Condition "!dynamic_cast <KIPIIpodExportPlugin::IpodPhotoItem *>(item)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:464: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIIpodExportPlugin::IpodPhotoItem *>(item)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/uploaddialog.cpp:464: var_deref_model: Passing null pointer "dynamic_cast <KIPIIpodExportPlugin::IpodPhotoItem *>(item)" to function "KIPIIpodExportPlugin::IpodPhotoItem::artwork() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/ipodexport/ipodlistitem.h:67:37: deref_parm: Directly dereferencing parameter "this".
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNREACHABLE (CWE-561):
 digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp/src/ssdp/hssdp_messagecreator_p.cpp:67: unreachable: This code cannot be reached: "return QString();".
 
