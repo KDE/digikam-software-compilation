@@ -61,12 +61,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:128: member_
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:100: uninit_member: Non-static class member "imageModel" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:48: member_decl: Class member declaration for "pixmapCache".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:43: uninit_member: Non-static class member "pixmapCache" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:49: member_decl: Class member declaration for "interface".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:43: uninit_member: Non-static class member "interface" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:157: member_decl: Class member declaration for "tagSelectionModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "tagSelectionModel" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:158: member_decl: Class member declaration for "actionAddCountry".
@@ -127,10 +121,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:94: membe
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "altitudeReceivedCount" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:66: member_decl: Class member declaration for "bookmarkModelHelper".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:58: uninit_member: Non-static class member "bookmarkModelHelper" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:92: member_decl: Class member declaration for "mapWidget".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:89: uninit_member: Non-static class member "mapWidget" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:93: member_decl: Class member declaration for "gpsBookmarkOwner".
@@ -173,10 +163,18 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:118: member_decl: C
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:89: uninit_member: Non-static class member "actionRemovedSelectedSearchResultsFromList" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:304: member_decl: Class member declaration for "selectionModel".
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:297: uninit_member: Non-static class member "selectionModel" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:54: member_decl: Class member declaration for "gpxLoadFutureWatcher".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:52: uninit_member: Non-static class member "gpxLoadFutureWatcher" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:57: member_decl: Class member declaration for "thread".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:52: uninit_member: Non-static class member "thread" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:66: member_decl: Class member declaration for "bookmarkModelHelper".
+digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:58: uninit_member: Non-static class member "bookmarkModelHelper" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:175: member_decl: Class member declaration for "model".
@@ -185,18 +183,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:176: member_dec
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "bookmarkManager" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:177: member_decl: Class member declaration for "kipiImageModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "kipiImageModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:304: member_decl: Class member declaration for "selectionModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:297: uninit_member: Non-static class member "selectionModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:354: member_decl: Class member declaration for "imageModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:352: uninit_member: Non-static class member "imageModel" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:355: member_decl: Class member declaration for "sourceSelectionModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:352: uninit_member: Non-static class member "sourceSelectionModel" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:356: member_decl: Class member declaration for "linkItemSelectionModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/kipiimagemodel.cpp:352: uninit_member: Non-static class member "linkItemSelectionModel" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:104: member_decl: Class member declaration for "pageGeneral".
