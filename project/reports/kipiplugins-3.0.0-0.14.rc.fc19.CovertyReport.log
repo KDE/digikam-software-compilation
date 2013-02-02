@@ -158,45 +158,6 @@ Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:304: member_decl: Class member declaration for "selectionModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/searchwidget.cpp:297: uninit_member: Non-static class member "selectionModel" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:54: member_decl: Class member declaration for "gpxLoadFutureWatcher".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:52: uninit_member: Non-static class member "gpxLoadFutureWatcher" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:57: member_decl: Class member declaration for "thread".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsdataparser.cpp:52: uninit_member: Non-static class member "thread" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:66: member_decl: Class member declaration for "bookmarkModelHelper".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:58: uninit_member: Non-static class member "bookmarkModelHelper" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:175: member_decl: Class member declaration for "model".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "model" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:176: member_decl: Class member declaration for "bookmarkManager".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "bookmarkManager" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:177: member_decl: Class member declaration for "kipiImageModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsbookmarkowner.cpp:173: uninit_member: Non-static class member "kipiImageModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:104: member_decl: Class member declaration for "pageGeneral".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:102: uninit_member: Non-static class member "pageGeneral" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:105: member_decl: Class member declaration for "setupGeneral".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:102: uninit_member: Non-static class member "setupGeneral" is not initialized in this constructor nor in any functions that it calls.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_true: Condition "!KIPIGPSSyncPlugin::_k_static_setupGlobalObjectCreator", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_true: Condition "this->isDestroyed()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: var_assign: Assigning: "x" = storage returned from "new KIPIGPSSyncPlugin::SetupGlobalObjectCreator".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KIPIGPSSyncPlugin::SetupGlobalObjectCreator>::testAndSetOrdered(KIPIGPSSyncPlugin::SetupGlobalObjectCreator *, KIPIGPSSyncPlugin::SetupGlobalObjectCreator *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KIPIGPSSyncPlugin::SetupGlobalObjectCreator>::testAndSetOrdered(KIPIGPSSyncPlugin::SetupGlobalObjectCreator *, KIPIGPSSyncPlugin::SetupGlobalObjectCreator *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: cond_false: Condition "!KIPIGPSSyncPlugin::_k_static_setupGlobalObjectCreator.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup.cpp:46: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:52: member_decl: Class member declaration for "cbMapLayout".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/setup_general.cpp:50: uninit_member: Non-static class member "cbMapLayout" is not initialized in this constructor nor in any functions that it calls.
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
