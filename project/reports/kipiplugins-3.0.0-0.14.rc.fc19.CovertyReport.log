@@ -94,24 +94,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: u
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:176: member_decl: Class member declaration for "actionAddAllAddressElementsToTag".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddAllAddressElementsToTag" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:80: member_decl: Class member declaration for "actionRemoveCoordinates".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "actionRemoveCoordinates" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:81: member_decl: Class member declaration for "actionRemoveAltitude".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "actionRemoveAltitude" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:82: member_decl: Class member declaration for "actionRemoveUncertainty".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "actionRemoveUncertainty" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:83: member_decl: Class member declaration for "actionRemoveSpeed".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "actionRemoveSpeed" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:84: member_decl: Class member declaration for "actionLookupMissingAltitudes".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "actionLookupMissingAltitudes" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:86: member_decl: Class member declaration for "bookmarkOwner".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "bookmarkOwner" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:93: member_decl: Class member declaration for "altitudeRequestedCount".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "altitudeRequestedCount" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:94: member_decl: Class member declaration for "altitudeReceivedCount".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpslistviewcontextmenu.cpp:73: uninit_member: Non-static class member "altitudeReceivedCount" is not initialized in this constructor nor in any functions that it calls.
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
