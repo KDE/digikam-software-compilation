@@ -53,14 +53,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:230: member_decl: 
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:174: uninit_member: Non-static class member "sortMenu" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:105: member_decl: Class member declaration for "gpxLoadFilesButton".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:100: uninit_member: Non-static class member "gpxLoadFilesButton" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:125: member_decl: Class member declaration for "gpsDataParser".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:100: uninit_member: Non-static class member "gpsDataParser" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:128: member_decl: Class member declaration for "imageModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpscorrelatorwidget.cpp:100: uninit_member: Non-static class member "imageModel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:157: member_decl: Class member declaration for "tagSelectionModel".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "tagSelectionModel" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:158: member_decl: Class member declaration for "actionAddCountry".
