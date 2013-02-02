@@ -52,48 +52,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:174: uninit_member
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:230: member_decl: Class member declaration for "sortMenu".
 digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpssyncdialog.cpp:174: uninit_member: Non-static class member "sortMenu" is not initialized in this constructor nor in any functions that it calls.
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:157: member_decl: Class member declaration for "tagSelectionModel".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "tagSelectionModel" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:158: member_decl: Class member declaration for "actionAddCountry".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddCountry" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:159: member_decl: Class member declaration for "actionAddState".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddState" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:160: member_decl: Class member declaration for "actionAddStateDistrict".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddStateDistrict" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:161: member_decl: Class member declaration for "actionAddCounty".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddCounty" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:162: member_decl: Class member declaration for "actionAddCity".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddCity" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:163: member_decl: Class member declaration for "actionAddCityDistrict".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddCityDistrict" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:164: member_decl: Class member declaration for "actionAddSuburb".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddSuburb" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:165: member_decl: Class member declaration for "actionAddTown".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddTown" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:166: member_decl: Class member declaration for "actionAddVillage".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddVillage" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:167: member_decl: Class member declaration for "actionAddHamlet".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddHamlet" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:168: member_decl: Class member declaration for "actionAddStreet".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddStreet" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:169: member_decl: Class member declaration for "actionAddHouseNumber".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddHouseNumber" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:170: member_decl: Class member declaration for "actionAddPlace".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddPlace" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:171: member_decl: Class member declaration for "actionAddLAU2".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddLAU2" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:172: member_decl: Class member declaration for "actionAddLAU1".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddLAU1" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:173: member_decl: Class member declaration for "actionAddCustomizedSpacer".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddCustomizedSpacer" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:174: member_decl: Class member declaration for "actionRemoveTag".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionRemoveTag" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:175: member_decl: Class member declaration for "actionRemoveAllSpacers".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionRemoveAllSpacers" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:176: member_decl: Class member declaration for "actionAddAllAddressElementsToTag".
-digikam-3.0.0-rc/extra/kipi-plugins/gpssync/gpsreversegeocodingwidget.cpp:125: uninit_member: Non-static class member "actionAddAllAddressElementsToTag" is not initialized in this constructor nor in any functions that it calls.
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
