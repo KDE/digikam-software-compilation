@@ -1,16 +1,3 @@
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:548: cond_true: Condition "this->m_job", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:589: cond_true: Condition "tags.length() > 0", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:595: cond_true: Condition "!info.title.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:601: cond_true: Condition "!info.description.isEmpty()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:612: cond_true: Condition "KIPIPlugins::KPMetadata::isRawFile(KUrl const(photoPath))", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:615: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:619: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:621: cond_true: Condition "!image.isNull()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:625: cond_true: Condition "sendOriginal", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: check_return: Calling function "QFile::copy(QString const &)" without checking return value (as is done elsewhere 4 out of 5 times).
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:628: unchecked_value: No check of the return value of "imgFile.copy(path)".
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:120: cond_true: Condition "state != Qt::PartiallyChecked", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:122: cond_true: Condition "i < this->listView()->topLevelItemCount()", taking true branch
@@ -132,33 +119,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:192: alias_trans
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: cond_true: Condition "column == KIPIFlickrExportPlugin::FlickrList::PUBLIC", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:194: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
 digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:556: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:560: cond_false: Condition "KUrl::List(this->m_imglst->imageUrls(false)).isEmpty()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:563: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:569: cond_true: Condition "i < this->m_imglst->listView()->topLevelItemCount()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:571: alias_transfer: Assigning: "lvItem" = "dynamic_cast <KIPIFlickrExportPlugin::FlickrListViewItem *>(this->m_imglst->listView()->topLevelItem(i))".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:575: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrwindow.cpp:580: var_deref_model: Passing null pointer "lvItem" to function "KIPIFlickrExportPlugin::FlickrListViewItem::isPublic() const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrlist.cpp:566:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:85: cond_true: Condition "serviceName == "23"", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:95: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:99: member_decl: Class member declaration for "m_authProgressDlg".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_authProgressDlg" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.h:161: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/flickrexport/flickrtalker.cpp:120: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
