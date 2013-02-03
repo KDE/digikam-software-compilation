@@ -221,44 +221,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/sessionstate.h:106: uninit_membe
 
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleryitem.h:46: member_decl: Class member declaration for "album_num".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleryitem.h:43: uninit_member: Non-static class member "album_num" is not initialized in this constructor nor in any functions that it calls.
-
-Error: CTOR_DTOR_LEAK (CWE-401):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:63: alloc_new: Allocating memory by calling "new KIPIGalleryExportPlugin::GalleryMPForm::Private".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:63: var_assign: Assigning: "this->d" = "new KIPIGalleryExportPlugin::GalleryMPForm::Private".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:63: ctor_dtor_leak: The constructor allocates field "d" of "KIPIGalleryExportPlugin::GalleryMPForm" but the destructor and whatever functions it calls do not free it.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:77: destructor: This is the destructor implementation.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:67: cond_true: Condition "KIPIGalleryExportPlugin::GalleryTalker::isGallery2()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerympform.cpp:72: cond_true: Condition "!auth_token.isEmpty()", taking true branch
-
-Error: CTOR_DTOR_LEAK (CWE-401):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleries.cpp:62: alloc_new: Allocating memory by calling "new KIPIGalleryExportPlugin::Gallery::Private".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleries.cpp:62: var_assign: Assigning: "this->d" = "new KIPIGalleryExportPlugin::Gallery::Private".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleries.cpp:62: ctor_dtor_leak: The constructor allocates field "d" of "KIPIGalleryExportPlugin::Gallery" but the destructor and whatever functions it calls do not free it.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/galleries.cpp:66: destructor: This is the destructor implementation.
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:515: cond_notnull: Condition "item", taking true branch. Now the value of "item" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:529: notnull: At condition "item", the value of "item" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:529: dead_error_condition: The condition "!item" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:531: dead_error_line: Execution cannot reach this statement "this->d->addPhotoBtn->setEn...".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerytalker.cpp:77: member_decl: Class member declaration for "state".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerytalker.cpp:95: uninit_member: Non-static class member "state" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:104: member_decl: Class member declaration for "uploadCount".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:210: uninit_member: Non-static class member "uploadCount" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:106: member_decl: Class member declaration for "uploadTotal".
-digikam-3.0.0-rc/extra/kipi-plugins/galleryexport/gallerywindow.cpp:210: uninit_member: Non-static class member "uploadTotal" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.h:97: member_decl: Class member declaration for "m_albumToSelect".
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:93: uninit_member: Non-static class member "m_albumToSelect" is not initialized in this constructor nor in any functions that it calls.
 
