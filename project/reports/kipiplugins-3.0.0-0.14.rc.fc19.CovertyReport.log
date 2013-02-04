@@ -110,17 +110,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:85: uninit_memb
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: cond_true: Condition "!_k_static_s_globalPrintImagesConfig", taking true branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: cond_true: Condition "this->_ZNKUt0_11isDestroyedEv()", taking true branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: var_assign: Assigning: "x" = storage returned from "new KIPIPrintImagesPlugin::PrintImagesConfigHelper".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KIPIPrintImagesPlugin::PrintImagesConfigHelper>::testAndSetOrdered(KIPIPrintImagesPlugin::PrintImagesConfigHelper *, KIPIPrintImagesPlugin::PrintImagesConfigHelper *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KIPIPrintImagesPlugin::PrintImagesConfigHelper>::testAndSetOrdered(KIPIPrintImagesPlugin::PrintImagesConfigHelper *, KIPIPrintImagesPlugin::PrintImagesConfigHelper *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: cond_false: Condition "!_k_static_s_globalPrintImagesConfig.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: else_branch: Reached else branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:209: cond_false: Condition "!this->m_root", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:214: if_end: End of if statement
