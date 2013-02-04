@@ -110,16 +110,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:85: uninit_memb
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:209: cond_false: Condition "!this->m_root", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:214: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:217: assign_zero: Assigning: "bestTree" = "NULL".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:220: cond_false: Condition "i < this->m_count", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:260: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:263: alias_transfer: Assigning: "this->m_root" = "bestTree".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:264: var_deref_model: Passing null pointer "this->m_root" to function "KIPIPrintImagesPlugin::LayoutNode::computeDivisions()", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/layouttree.cpp:152:5: deref_parm: Directly dereferencing parameter "this".
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.h:68: member_decl: Class member declaration for "m_photo".
 digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_member: Non-static class member "m_photo" is not initialized in this constructor nor in any functions that it calls.
