@@ -153,6 +153,7 @@ digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:381: uninit_use_
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker_common.h:67:8: read_parm_fld: Reading a parameter field.
 
 Error: PASS_BY_VALUE:
+
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/imgurexport/imgurtalker.moc:167: pass_by_value: Passing parameter _t2 of type KIPIImgurExportPlugin::ImgurSuccess (size 168 bytes) by value.
 
 Error: PASS_BY_VALUE:
@@ -163,48 +164,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:97: cond_false: 
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:100: if_end: End of if statement
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.h:103: member_decl: Class member declaration for "state".
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:102: uninit_member: Non-static class member "state" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:100: member_decl: Class member declaration for "talker".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "talker" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:101: member_decl: Class member declaration for "pPiwigo".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "pPiwigo" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:103: member_decl: Class member declaration for "progressDlg".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "progressDlg" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:104: member_decl: Class member declaration for "uploadCount".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "uploadCount" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:105: member_decl: Class member declaration for "uploadTotal".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "uploadTotal" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:106: member_decl: Class member declaration for "pUploadList".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:220: uninit_member: Non-static class member "pUploadList" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.h:151: member_decl: Class member declaration for "m_state".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.cpp:67: uninit_member: Non-static class member "m_state" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.h:157: member_decl: Class member declaration for "m_chunkId".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.cpp:67: uninit_member: Non-static class member "m_chunkId" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.h:162: member_decl: Class member declaration for "m_albumId".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.cpp:67: uninit_member: Non-static class member "m_albumId" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.h:163: member_decl: Class member declaration for "m_photoId".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigotalker.cpp:67: uninit_member: Non-static class member "m_photoId" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigoconfig.h:60: member_decl: Class member declaration for "mpHeaderLabel".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigoconfig.cpp:99: uninit_member: Non-static class member "mpHeaderLabel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:506: cond_notnull: Condition "item", taking true branch. Now the value of "item" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:515: notnull: At condition "item", the value of "item" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:515: dead_error_condition: The condition "!item" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigowindow.cpp:517: dead_error_line: Execution cannot reach this statement "this->button(KDialog::User1...".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigos.h:72: member_decl: Class member declaration for "mpWallet".
-digikam-3.0.0-rc/extra/kipi-plugins/piwigoexport/piwigos.cpp:47: uninit_member: Non-static class member "mpWallet" is not initialized in this constructor nor in any functions that it calls.
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
