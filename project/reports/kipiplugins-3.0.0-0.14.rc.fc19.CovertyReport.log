@@ -110,14 +110,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:85: uninit_memb
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.h:91: member_decl: Class member declaration for "scale_width".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.cpp:46: uninit_member: Non-static class member "scale_width" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.h:92: member_decl: Class member declaration for "scale_height".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.cpp:46: uninit_member: Non-static class member "scale_height" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.h:93: member_decl: Class member declaration for "rotate".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/tools/templateicon.cpp:46: uninit_member: Non-static class member "rotate" is not initialized in this constructor nor in any functions that it calls.
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: cond_true: Condition "!_k_static_s_globalPrintImagesConfig", taking true branch
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/printimages/printimagesconfig.cpp:22: cond_true: Condition "this->_ZNKUt0_11isDestroyedEv()", taking true branch
