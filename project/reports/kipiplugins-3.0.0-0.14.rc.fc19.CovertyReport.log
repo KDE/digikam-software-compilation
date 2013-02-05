@@ -229,20 +229,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp/src/dataelements/hres
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-Error: NULL_RETURNS (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: returned_null: Function "fopen(char const *, char const *)" returns null.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: var_assigned: Assigning: "fitxer_sortida" = null return value from "fopen(char const *, char const *)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:943: cond_false: Condition "i < this->GetNumBlobs()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:947: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:949: dereference: Dereferencing a pointer that might be null "fitxer_sortida" when calling "fclose(FILE *)".
-
-Error: NULL_RETURNS (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: returned_null: Function "fopen(char const *, char const *)" returns null.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: var_assigned: Assigning: "fitxer_sortida" = null return value from "fopen(char const *, char const *)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:943: cond_true: Condition "i < this->GetNumBlobs()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:945: dereference: Dereferencing a pointer that might be null "fitxer_sortida" when calling "fprintf(FILE *, char const *, ...)".
-
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:83: cond_true: Condition "inputImage->roi", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:90: if_fallthrough: Falling through to end of if statement
