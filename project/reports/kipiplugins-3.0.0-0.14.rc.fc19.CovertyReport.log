@@ -110,18 +110,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:85: uninit_memb
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.h:68: member_decl: Class member declaration for "m_photo".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_member: Non-static class member "m_photo" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.h:71: member_decl: Class member declaration for "m_pixmapX".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_member: Non-static class member "m_pixmapX" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.h:72: member_decl: Class member declaration for "m_pixmapY".
-digikam-3.0.0-rc/extra/kipi-plugins/printimages/wizard/cropframe.cpp:50: uninit_member: Non-static class member "m_pixmapY" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:160: cond_true: Condition "job->error()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/imgurexport/imgurtalker.cpp:162: var_decl: Declaring variable "err".
