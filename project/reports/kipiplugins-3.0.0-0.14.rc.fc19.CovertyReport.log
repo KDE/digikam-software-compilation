@@ -1,60 +1,4 @@
 
-Error: UNINIT (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "_container_.i != _container_.e", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "true", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:455: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: break: Breaking from loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:455: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:451: cond_false: Condition "_container_.i != _container_.e", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:461: var_decl: Declaring variable "album".
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: cond_true: Condition "_container_.i != _container_.e", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: cond_true: Condition "true", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:464: cond_false: Condition "a.name == albumName", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:468: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:469: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: break: Breaking from loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:469: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:462: cond_false: Condition "_container_.i != _container_.e", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:471: cond_true: Condition "album.name == albumName", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcewidget.cpp:473: uninit_use_in_call: Using uninitialized value "album.id" when calling "KIPIRajceExportPlugin::RajceSession::openAlbum(KIPIRajceExportPlugin::Album const &)".
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:806:31: read_parm_fld: Reading a parameter field.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:557: cond_true: Condition "isRaw", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:559: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:559: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:559: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:559: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:559: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:561: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:565: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:567: cond_true: Condition "this->m_image.isNull()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:569: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:569: cond_true: Condition "!!_k_kDebugDoOutput_", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:569: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:569: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:569: cond_false: Condition "!!_k_kDebugDoOutput_", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:241: member_decl: Class member declaration for "m_maxDimension".
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:570: uninit_member: Non-static class member "m_maxDimension" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:248: member_decl: Class member declaration for "m_form".
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/rajcesession.cpp:570: uninit_member: Non-static class member "m_form" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/sessionstate.h:233: member_decl: Class member declaration for "m_lastCommand".
-digikam-3.0.0-rc/extra/kipi-plugins/rajceexport/sessionstate.h:106: uninit_member: Non-static class member "m_lastCommand" is not initialized in this constructor nor in any functions that it calls.
-
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.h:97: member_decl: Class member declaration for "m_albumToSelect".
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:93: uninit_member: Non-static class member "m_albumToSelect" is not initialized in this constructor nor in any functions that it calls.
@@ -881,5 +825,3 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidget
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop_end: Reached end of loop
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:74: member_decl: Class member declaration for "m_item".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: uninit_member: Non-static class member "m_item" is not initialized in this constructor nor in any functions that it calls.
-
-
