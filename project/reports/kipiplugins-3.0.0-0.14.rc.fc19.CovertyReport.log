@@ -230,10 +230,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/dlnaexport/extra/hupnp/src/dataelements/hres
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/workerthread.h:122: member_decl: Class member declaration for "progress".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/workerthread.h:117: uninit_member: Non-static class member "progress" is not initialized in this constructor nor in any functions that it calls.
-
 Error: NULL_RETURNS (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: returned_null: Function "fopen(char const *, char const *)" returns null.
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: var_assigned: Assigning: "fitxer_sortida" = null return value from "fopen(char const *, char const *)".
@@ -246,32 +242,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941:
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:941: var_assigned: Assigning: "fitxer_sortida" = null return value from "fopen(char const *, char const *)".
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:943: cond_true: Condition "i < this->GetNumBlobs()", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobResult.cpp:945: dereference: Dereferencing a pointer that might be null "fitxer_sortida" when calling "fprintf(FILE *, char const *, ...)".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:91: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:93: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:93: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:94: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::setText(int, QString const &)", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:227:3: deref_parm_in_call: Function "QTreeWidgetItem::setData(int, int, QVariant const &)" dereferences "this". (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:71: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:73: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:73: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:75: cond_true: Condition "KUrl(item->url()) == url", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:77: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::setText(int, QString const &)", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:227:3: deref_parm_in_call: Function "QTreeWidgetItem::setData(int, int, QVariant const &)" dereferences "this". (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/removeredeyeswindow.cpp:850: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/removeredeyeswindow.cpp:852: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/removeredeyeswindow.cpp:852: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/plugin/removeredeyeswindow.cpp:854: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::text(int) const", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:110:11: deref_parm_in_call: Function "QTreeWidgetItem::data(int, int) const" dereferences "this". (The dereference happens because this is a virtual function call.)
-
-Error: COPY_PASTE_ERROR:
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/previewwidget.cpp:266: original: "this->width() / 2 - this->d->controller->width() / 2" looks like the original copy.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/previewwidget.cpp:266: copy_paste_error: "width" in "this->height() / 2 - this->d->controller->width() / 2" looks like a copy-paste error.  Should it say "height" instead?
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:83: cond_true: Condition "inputImage->roi", taking true branch
@@ -487,20 +457,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:620: switch: Switch case value "1"
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:622: switch_case: Reached case "1"
 digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/libcvblobs/BlobExtraction.cpp:637: var_deref_op: Dereferencing null pointer "regionDataThisRegion".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:107: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:109: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:109: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:111: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::text(int) const", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:110:11: deref_parm_in_call: Function "QTreeWidgetItem::data(int, int) const" dereferences "this". (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:127: cond_true: Condition "*it", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:129: dynamic_cast: Dynamic cast to pointer "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:129: alias_transfer: Assigning: "item" = "dynamic_cast <KIPIPlugins::KPImagesListViewItem *>(*it)".
-digikam-3.0.0-rc/extra/kipi-plugins/removeredeyes/widgets/myimageslist.cpp:131: var_deref_model: Passing null pointer "item" to function "QTreeWidgetItem::setSelected(bool)", which dereferences it.
-/usr/include/QtGui/qtreewidget.h:397:3: deref_parm: Directly dereferencing parameter "this".
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
