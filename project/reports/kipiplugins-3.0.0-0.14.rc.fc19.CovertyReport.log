@@ -332,43 +332,16 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSiz
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSizeDialog.cpp:83: uninit_member: Non-static class member "resolutionUnitsWidget" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:453: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesView.h:36: member_decl: Class member declaration for "columns".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesView.cpp:109: uninit_member: Non-static class member "columns" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:148: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:150: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/CanvasLoadingThread.cpp:48: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "i".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/CanvasLoadingThread.cpp:49: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "count".
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:62: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:61: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:62: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:433: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/PhotoItem.cpp:124: member_decl: Class member declaration for "command".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/PhotoItem.cpp:132: uninit_member: Non-static class member "command" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:298: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:303: member_decl: Class member declaration for "m_creatingProperty".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_creatingProperty" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:304: member_decl: Class member declaration for "m_creatingSubProperties".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_creatingSubProperties" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:305: member_decl: Class member declaration for "m_destroyingSubProperties".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_destroyingSubProperties" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:306: member_decl: Class member declaration for "m_propertyType".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_propertyType" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:270: member_decl: Class member declaration for "m_blend_active".
@@ -421,15 +394,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWi
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:53: uninit_member: Non-static class member "toolArea" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:902: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:605: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1432: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:382: member_decl: Class member declaration for "item_row".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:394: uninit_member: Non-static class member "item_row" is not initialized in this constructor nor in any functions that it calls.
 
@@ -448,54 +412,8 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.cpp:68: uninit_member: Non-static class member "m_destination_row" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2076: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5575: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5593: member_decl: Class member declaration for "m_intPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_intPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5594: member_decl: Class member declaration for "m_enumPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5595: member_decl: Class member declaration for "m_boolPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_boolPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:72: member_decl: Class member declaration for "m_loaded_bytes".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:67: uninit_member: Non-static class member "m_loaded_bytes" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2295: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2318: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2307: member_decl: Class member declaration for "m_enumPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2318: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5250: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5263: member_decl: Class member declaration for "m_intPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "m_intPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5264: member_decl: Class member declaration for "m_enumPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:300: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1232: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1267: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1962: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1614: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1846: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1833: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:63: member_decl: Class member declaration for "m_effects_group".
@@ -504,45 +422,10 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPho
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_borders_group" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:144: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2279: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1075: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:714: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2501: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1721: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1320: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2008: member_decl: Class member declaration for "q_ptr".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2017: member_decl: Class member declaration for "m_enumEditorFactory".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "m_enumEditorFactory" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2018: member_decl: Class member declaration for "m_enumPropertyManager".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1211: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:167: member_decl: Class member declaration for "rotation_angle".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:112: uninit_member: Non-static class member "rotation_angle" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:169: member_decl: Class member declaration for "elipse_pressed".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:112: uninit_member: Non-static class member "elipse_pressed" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:79: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:43: cond_true: Condition "m_handlers@dim0 < 3UL", taking true branch
@@ -559,6 +442,125 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidget
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:43: uninit_member: Non-static class member "pressedVHandler" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:90: member_decl: Class member declaration for "pressedHHandler".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:43: uninit_member: Non-static class member "pressedHHandler" is not initialized in this constructor nor in any functions that it calls.
+
+Error: REVERSE_INULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1384: deref_ptr_in_call: Dereferencing pointer "observer". (The dereference happens because this is a virtual function call.)
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1387: check_after_deref: Null-checking "observer" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "!_k_static_s_globalPLEConfigSkeleton", taking true branch
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "this->_ZNKUt0_11isDestroyedEv()", taking true branch
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: var_assign: Assigning: "x" = storage returned from "new KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper".
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper>::testAndSetOrdered(KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *, KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper>::testAndSetOrdered(KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *, KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_false: Condition "!_k_static_s_globalPLEConfigSkeleton.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: else_branch: Reached else branch
+digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: cond_false: Condition "hgi", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:55: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: var_compare_op: Comparing "hgi" to null implies that "hgi" might be null.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:63: cond_true: Condition "vgi", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:65: var_deref_model: Passing null pointer "hgi" to function "KConfigSkeletonItem::minValue() const", which dereferences it. (The dereference happens because this is a virtual function call.)
+
+Error: OVERRUN:
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_at_least: Checking "radius < 1U" implies that the value of "radius" is at least 1 on the false branch.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_between: Checking "radius > 68UL" implies that the value of "radius" is between 1 and 68 (inclusive) on the false branch.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: overrun-local: Overrunning array "tab" of 17 4-byte elements at element index 67 (byte offset 268) using index "radius - 1U" (which evaluates to 67).
+
+Error: DEADCODE (CWE-561):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:313: cond_at_most: Condition "sourceCount > 0", taking false branch. Now the value of "sourceCount" is at most 0.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: decr: Decrementing "sourceCount". The value of "sourceCount" may now be up to -1.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: at_most: At condition "sourceCount--", the value of "sourceCount--" must be at most -1.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: dead_error_condition: The condition "sourceCount--" must be true.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:326: dead_error_line: Execution cannot reach this statement "for (; movingItems.count();...".
+
+Error: CHECKED_RETURN (CWE-252):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: check_return: Calling function "KDcrawIface::KDcraw::decodeRAWImage(QString const &, KDcrawIface::RawDecodingSettings const &, QByteArray &, int &, int &, int &)" without checking return value (as is done elsewhere 4 out of 5 times).
+digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:125: example_checked: "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: unchecked_value: No check of the return value of "loader->decodeRAWImage(QString(url->path(KUrl::LeaveTrailingSlash)), settings, ba, width, height, rgbamax)".
+
+Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:773: logical_vs_bitwise: (int)Qt::KeyboardModifiers(event->modifiers()).operator int() & 0 /* !Qt::ControlModifier */ is always 0 regardless of the values of its operands. This occurs as an initializer. Did you intend to use '~' rather than '!'?
+
+Error: UNREACHABLE (CWE-561):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesModel.cpp:93: unreachable: This code cannot be reached: "return QVariant();".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim0 < 3UL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim1 < 3UL", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_false: Condition "m_handlers@dim1 < 3UL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop: Jumping back to the beginning of the loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: loop_begin: Jumped back to beginning of loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_false: Condition "m_handlers@dim0 < 3UL", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop_end: Reached end of loop
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:74: member_decl: Class member declaration for "m_item".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: uninit_member: Non-static class member "m_item" is not initialized in this constructor nor in any functions that it calls.
+
+// --------
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:453: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:437: freed_arg: "operator delete(void *)" frees "property".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:440: use_after_free: Using freed pointer "property".
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5179: cond_false: Condition "it == this->d_ptr->m_values.end()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5184: cond_false: Condition "data.flagNames == flagNames", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5193: cond_true: Condition "itProp.hasNext()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5195: cond_true: Condition "prop", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5196: freed_arg: "operator delete(void *)" frees "prop".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5197: use_after_free: Using freed pointer "prop".
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5234: cond_true: Condition "itProp.hasNext()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5236: cond_true: Condition "prop", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5237: freed_arg: "operator delete(void *)" frees "prop".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5238: use_after_free: Using freed pointer "prop".
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:154: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:155: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:159: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:160: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
+
+Error: DEADCODE (CWE-561):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:240: cond_notnull: Condition "w", taking true branch. Now the value of "w" is not NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: notnull: At condition "w", the value of "w" cannot be NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: dead_error_condition: The condition "!w" cannot be true.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:244: dead_error_line: Execution cannot reach this statement "return NULL;".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:345: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:349: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:357: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:359: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:362: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:363: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
 
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
@@ -610,116 +612,116 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/s
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
 
-Error: REVERSE_INULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1384: deref_ptr_in_call: Dereferencing pointer "observer". (The dereference happens because this is a virtual function call.)
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1387: check_after_deref: Null-checking "observer" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "!_k_static_s_globalPLEConfigSkeleton", taking true branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "this->_ZNKUt0_11isDestroyedEv()", taking true branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: var_assign: Assigning: "x" = storage returned from "new KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper>::testAndSetOrdered(KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *, KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper>::testAndSetOrdered(KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *, KIPIPhotoLayoutsEditor::PLEConfigSkeletonHelper *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_false: Condition "!_k_static_s_globalPLEConfigSkeleton.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: else_branch: Reached else branch
-digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: cond_false: Condition "hgi", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:55: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: var_compare_op: Comparing "hgi" to null implies that "hgi" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:63: cond_true: Condition "vgi", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:65: var_deref_model: Passing null pointer "hgi" to function "KConfigSkeletonItem::minValue() const", which dereferences it. (The dereference happens because this is a virtual function call.)
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:154: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:155: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:159: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:160: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:345: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:349: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:357: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:359: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:362: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:363: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
-
-Error: OVERRUN:
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_at_least: Checking "radius < 1U" implies that the value of "radius" is at least 1 on the false branch.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_between: Checking "radius > 68UL" implies that the value of "radius" is between 1 and 68 (inclusive) on the false branch.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: overrun-local: Overrunning array "tab" of 17 4-byte elements at element index 67 (byte offset 268) using index "radius - 1U" (which evaluates to 67).
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:313: cond_at_most: Condition "sourceCount > 0", taking false branch. Now the value of "sourceCount" is at most 0.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: decr: Decrementing "sourceCount". The value of "sourceCount" may now be up to -1.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: at_most: At condition "sourceCount--", the value of "sourceCount--" must be at most -1.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: dead_error_condition: The condition "sourceCount--" must be true.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:326: dead_error_line: Execution cannot reach this statement "for (; movingItems.count();...".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:240: cond_notnull: Condition "w", taking true branch. Now the value of "w" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: notnull: At condition "w", the value of "w" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: dead_error_condition: The condition "!w" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:244: dead_error_line: Execution cannot reach this statement "return NULL;".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: check_return: Calling function "KDcrawIface::KDcraw::decodeRAWImage(QString const &, KDcrawIface::RawDecodingSettings const &, QByteArray &, int &, int &, int &)" without checking return value (as is done elsewhere 4 out of 5 times).
-digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:125: example_checked: "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: unchecked_value: No check of the return value of "loader->decodeRAWImage(QString(url->path(KUrl::LeaveTrailingSlash)), settings, ba, width, height, rgbamax)".
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:773: logical_vs_bitwise: (int)Qt::KeyboardModifiers(event->modifiers()).operator int() & 0 /* !Qt::ControlModifier */ is always 0 regardless of the values of its operands. This occurs as an initializer. Did you intend to use '~' rather than '!'?
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesModel.cpp:93: unreachable: This code cannot be reached: "return QVariant();".
-
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:437: freed_arg: "operator delete(void *)" frees "property".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:440: use_after_free: Using freed pointer "property".
-
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5179: cond_false: Condition "it == this->d_ptr->m_values.end()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5184: cond_false: Condition "data.flagNames == flagNames", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5193: cond_true: Condition "itProp.hasNext()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5195: cond_true: Condition "prop", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5196: freed_arg: "operator delete(void *)" frees "prop".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5197: use_after_free: Using freed pointer "prop".
-
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5234: cond_true: Condition "itProp.hasNext()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5236: cond_true: Condition "prop", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5237: freed_arg: "operator delete(void *)" frees "prop".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5238: use_after_free: Using freed pointer "prop".
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:144: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim0 < 3UL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim1 < 3UL", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_false: Condition "m_handlers@dim1 < 3UL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_false: Condition "m_handlers@dim0 < 3UL", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: loop_end: Reached end of loop
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:74: member_decl: Class member declaration for "m_item".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:72: uninit_member: Non-static class member "m_item" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2279: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1075: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:714: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2501: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1721: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1320: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2008: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2017: member_decl: Class member declaration for "m_enumEditorFactory".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "m_enumEditorFactory" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2018: member_decl: Class member declaration for "m_enumPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2031: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2295: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2318: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2307: member_decl: Class member declaration for "m_enumPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2318: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5250: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5263: member_decl: Class member declaration for "m_intPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "m_intPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5264: member_decl: Class member declaration for "m_enumPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5279: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:300: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1232: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1267: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1962: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1614: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:1846: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1833: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1211: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:79: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:2076: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5575: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5593: member_decl: Class member declaration for "m_intPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_intPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5594: member_decl: Class member declaration for "m_enumPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_enumPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5595: member_decl: Class member declaration for "m_boolPropertyManager".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5621: uninit_member: Non-static class member "m_boolPropertyManager" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:902: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:605: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:1432: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:298: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:303: member_decl: Class member declaration for "m_creatingProperty".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_creatingProperty" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:304: member_decl: Class member declaration for "m_creatingSubProperties".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_creatingSubProperties" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:305: member_decl: Class member declaration for "m_destroyingSubProperties".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_destroyingSubProperties" is not initialized in this constructor nor in any functions that it calls.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:306: member_decl: Class member declaration for "m_propertyType".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:389: uninit_member: Non-static class member "m_propertyType" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:62: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:61: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:62: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:433: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+
+Error: UNINIT_CTOR (CWE-457):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:148: member_decl: Class member declaration for "q_ptr".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:150: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
