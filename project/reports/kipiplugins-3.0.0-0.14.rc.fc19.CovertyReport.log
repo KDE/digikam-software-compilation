@@ -459,24 +459,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPh
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_between: Checking "radius > 68UL" implies that the value of "radius" is between 1 and 68 (inclusive) on the false branch.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: overrun-local: Overrunning array "tab" of 17 4-byte elements at element index 67 (byte offset 268) using index "radius - 1U" (which evaluates to 67).
 
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:313: cond_at_most: Condition "sourceCount > 0", taking false branch. Now the value of "sourceCount" is at most 0.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: decr: Decrementing "sourceCount". The value of "sourceCount" may now be up to -1.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: at_most: At condition "sourceCount--", the value of "sourceCount--" must be at most -1.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:324: dead_error_condition: The condition "sourceCount--" must be true.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/borders/BordersGroup.cpp:326: dead_error_line: Execution cannot reach this statement "for (; movingItems.count();...".
-
-Error: CHECKED_RETURN (CWE-252):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: check_return: Calling function "KDcrawIface::KDcraw::decodeRAWImage(QString const &, KDcrawIface::RawDecodingSettings const &, QByteArray &, int &, int &, int &)" without checking return value (as is done elsewhere 4 out of 5 times).
-digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:125: example_checked: "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)" has its value checked in "this->decodeRAWImage(filePath, this->m_rawDecodingSettings, data, width, height, rgbmax)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:201: unchecked_value: No check of the return value of "loader->decodeRAWImage(QString(url->path(KUrl::LeaveTrailingSlash)), settings, ba, width, height, rgbamax)".
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:773: logical_vs_bitwise: (int)Qt::KeyboardModifiers(event->modifiers()).operator int() & 0 /* !Qt::ControlModifier */ is always 0 regardless of the values of its operands. This occurs as an initializer. Did you intend to use '~' rather than '!'?
-
-Error: UNREACHABLE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesModel.cpp:93: unreachable: This code cannot be reached: "return QVariant();".
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim0 < 3UL", taking true branch
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:62: cond_true: Condition "m_handlers@dim1 < 3UL", taking true branch
