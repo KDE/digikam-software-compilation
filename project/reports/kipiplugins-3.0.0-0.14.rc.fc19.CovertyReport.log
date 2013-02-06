@@ -1,54 +1,7 @@
 
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.h:97: member_decl: Class member declaration for "m_albumToSelect".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:93: uninit_member: Non-static class member "m_albumToSelect" is not initialized in this constructor nor in any functions that it calls.
-
 Error: MISSING_BREAK (CWE-484):
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkwindow.cpp:364: unterminated_case: This case (value 64) is not terminated by a 'break' statement.
 digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkwindow.cpp:367: fallthrough: The above case falls through to this one.
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:122: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::GetVariableJob *>(kjob)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:122: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::GetVariableJob *>(kjob)".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:122: cond_false: Condition "job->error()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:122: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:124: var_deref_model: Passing null pointer "job" to function "Vkontakte::GetVariableJob::variable() const", which dereferences it.
-digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/getvariablejob.cpp:49:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:142: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::GetVariableJob *>(kjob)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:142: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::GetVariableJob *>(kjob)".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:142: cond_false: Condition "job->error()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:142: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:144: var_deref_model: Passing null pointer "job" to function "Vkontakte::GetVariableJob::variable() const", which dereferences it.
-digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/getvariablejob.cpp:49:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:271: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::AlbumListJob *>(kjob)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:271: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::AlbumListJob *>(kjob)".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:271: cond_false: Condition "job->error()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:271: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:274: var_deref_model: Passing null pointer "job" to function "Vkontakte::AlbumListJob::list() const", which dereferences it.
-digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/albumlistjob.cpp:62:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:158: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::CreateAlbumJob *>(kjob)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:158: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::CreateAlbumJob *>(kjob)".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:158: cond_false: Condition "job->error()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:158: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/albumchooserwidget.cpp:161: var_deref_model: Passing null pointer "job" to function "Vkontakte::CreateAlbumJob::album() const", which dereferences it.
-digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/createalbumjob.cpp:60:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkapi.cpp:99: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Vkontakte::GetApplicationPermissionsJob *>(kjob)" can return NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkapi.cpp:99: alias_transfer: Assigning: "job" = "dynamic_cast <Vkontakte::GetApplicationPermissionsJob *>(kjob)".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkapi.cpp:101: cond_false: Condition "job->error()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/vkapi.cpp:101: var_deref_model: Passing null pointer "job" to function "Vkontakte::GetApplicationPermissionsJob::permissions() const", which dereferences it.
-digikam-3.0.0-rc/extra/libkvkontakte/libkvkontakte/getapplicationpermissionsjob.cpp:52:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.h:79: member_decl: Class member declaration for "m_userId".
-digikam-3.0.0-rc/extra/kipi-plugins/vkontakte/authinfowidget.cpp:85: uninit_member: Non-static class member "m_userId" is not initialized in this constructor nor in any functions that it calls.
 
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
