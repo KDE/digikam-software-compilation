@@ -332,22 +332,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSiz
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/CanvasSizeDialog.cpp:83: uninit_member: Non-static class member "resolutionUnitsWidget" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesView.h:36: member_decl: Class member declaration for "columns".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/TemplatesView.cpp:109: uninit_member: Non-static class member "columns" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/CanvasLoadingThread.cpp:48: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "i".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/CanvasLoadingThread.cpp:49: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "count".
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/PhotoItem.cpp:124: member_decl: Class member declaration for "command".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/PhotoItem.cpp:132: uninit_member: Non-static class member "command" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:270: member_decl: Class member declaration for "m_blend_active".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:104: uninit_member: Non-static class member "m_blend_active" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/CanvasEditTool.cpp:126: member_decl: Class member declaration for "background_type_widget".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/CanvasEditTool.cpp:111: uninit_member: Non-static class member "background_type_widget" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/CanvasEditTool.cpp:127: member_decl: Class member declaration for "background_widgets".
@@ -388,16 +372,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/CanvasEditT
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/CanvasEditTool.cpp:111: uninit_member: Non-static class member "background_pattern_type" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:59: member_decl: Class member declaration for "formLayout".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:53: uninit_member: Non-static class member "formLayout" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:60: member_decl: Class member declaration for "toolArea".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/tools/ToolsDockWidget.cpp:53: uninit_member: Non-static class member "toolArea" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:382: member_decl: Class member declaration for "item_row".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:394: uninit_member: Non-static class member "item_row" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.cpp:40: cond_false: Condition "this->m_model", taking false branch
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.cpp:56: if_end: End of if statement
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.h:40: member_decl: Class member declaration for "m_src_parent_row".
@@ -410,22 +384,7 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.cpp:68: uninit_member: Non-static class member "m_rows_count" is not initialized in this constructor nor in any functions that it calls.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.h:44: member_decl: Class member declaration for "m_destination_row".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/undo/UndoMoveRowsCommand.cpp:68: uninit_member: Non-static class member "m_destination_row" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:72: member_decl: Class member declaration for "m_loaded_bytes".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/threads/ImageLoadingThread.cpp:67: uninit_member: Non-static class member "m_loaded_bytes" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:63: member_decl: Class member declaration for "m_effects_group".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_effects_group" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.h:64: member_decl: Class member declaration for "m_borders_group".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/items/AbstractPhoto_p.cpp:35: uninit_member: Non-static class member "m_borders_group" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:167: member_decl: Class member declaration for "rotation_angle".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:112: uninit_member: Non-static class member "rotation_angle" is not initialized in this constructor nor in any functions that it calls.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:169: member_decl: Class member declaration for "elipse_pressed".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/RotationWidgetItem.cpp:112: uninit_member: Non-static class member "elipse_pressed" is not initialized in this constructor nor in any functions that it calls.
+.cpp:67: uninit_member: Non-static class member "m_loaded_bytes" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:43: cond_true: Condition "m_handlers@dim0 < 3UL", taking true branch
