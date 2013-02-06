@@ -421,111 +421,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidget
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:453: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:437: freed_arg: "operator delete(void *)" frees "property".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:440: use_after_free: Using freed pointer "property".
-
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5179: cond_false: Condition "it == this->d_ptr->m_values.end()", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5184: cond_false: Condition "data.flagNames == flagNames", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5193: cond_true: Condition "itProp.hasNext()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5195: cond_true: Condition "prop", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5196: freed_arg: "operator delete(void *)" frees "prop".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5197: use_after_free: Using freed pointer "prop".
-
-Error: USE_AFTER_FREE (CWE-416):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5234: cond_true: Condition "itProp.hasNext()", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5236: cond_true: Condition "prop", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5237: freed_arg: "operator delete(void *)" frees "prop".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5238: use_after_free: Using freed pointer "prop".
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:154: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:155: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:159: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:160: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:240: cond_notnull: Condition "w", taking true branch. Now the value of "w" is not NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: notnull: At condition "w", the value of "w" cannot be NULL.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: dead_error_condition: The condition "!w" cannot be true.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:244: dead_error_line: Execution cannot reach this statement "return NULL;".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:345: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:349: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "this->m_editorPrivate", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:357: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:359: cond_false: Condition "!hasValue", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:362: else_branch: Reached else branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:363: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: var_assign: Assigning: "x" = storage returned from "new Map2".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtAbstractPropertyManager *, QMap<QtAbstractEditorFactoryBase *, QList<QtAbstractPropertyBrowser *> > > >::testAndSetOrdered(Map2 *, Map2 *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtAbstractPropertyManager *, QMap<QtAbstractEditorFactoryBase *, QList<QtAbstractPropertyBrowser *> > > >::testAndSetOrdered(Map2 *, Map2 *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: var_assign: Assigning: "x" = storage returned from "new PropertyMap".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtProperty const *, QtProperty *> >::testAndSetOrdered(PropertyMap *, PropertyMap *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtProperty const *, QtProperty *> >::testAndSetOrdered(PropertyMap *, PropertyMap *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: var_assign: Assigning: "x" = storage returned from "new Map1".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtAbstractPropertyBrowser *, QMap<QtAbstractPropertyManager *, QtAbstractEditorFactoryBase *> > >::testAndSetOrdered(Map1 *, Map1 *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtAbstractPropertyBrowser *, QMap<QtAbstractPropertyManager *, QtAbstractEditorFactoryBase *> > >::testAndSetOrdered(Map1 *, Map1 *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: var_assign: Assigning: "x" = storage returned from "new QtMetaEnumProvider".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtMetaEnumProvider>::testAndSetOrdered(QtMetaEnumProvider *, QtMetaEnumProvider *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtMetaEnumProvider>::testAndSetOrdered(QtMetaEnumProvider *, QtMetaEnumProvider *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
-Error: RESOURCE_LEAK (CWE-404):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
-/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:144: member_not_init_in_gen_ctor: The compiler-generated constructor for this class does not initialize "q_ptr".
 
@@ -639,3 +534,109 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/s
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:148: member_decl: Class member declaration for "q_ptr".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:150: uninit_member: Non-static class member "q_ptr" is not initialized in this constructor nor in any functions that it calls.
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:437: freed_arg: "operator delete(void *)" frees "property".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:440: use_after_free: Using freed pointer "property".
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5179: cond_false: Condition "it == this->d_ptr->m_values.end()", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5184: cond_false: Condition "data.flagNames == flagNames", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5193: cond_true: Condition "itProp.hasNext()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5195: cond_true: Condition "prop", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5196: freed_arg: "operator delete(void *)" frees "prop".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5197: use_after_free: Using freed pointer "prop".
+
+Error: USE_AFTER_FREE (CWE-416):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5234: cond_true: Condition "itProp.hasNext()", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5236: cond_true: Condition "prop", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5237: freed_arg: "operator delete(void *)" frees "prop".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:5238: use_after_free: Using freed pointer "prop".
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:6329: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:154: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:150: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:155: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:159: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:160: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
+
+Error: DEADCODE (CWE-561):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:240: cond_notnull: Condition "w", taking true branch. Now the value of "w" is not NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: notnull: At condition "w", the value of "w" cannot be NULL.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:243: dead_error_condition: The condition "!w" cannot be true.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/KEditFactory.cpp:244: dead_error_line: Execution cannot reach this statement "return NULL;".
+
+Error: FORWARD_NULL (CWE-476):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:345: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:349: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "this->m_editorPrivate", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: var_compare_op: Comparing "this->m_editorPrivate" to null implies that "this->m_editorPrivate" might be null.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:351: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:357: if_end: End of if statement
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:359: cond_false: Condition "!hasValue", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:362: else_branch: Reached else branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:363: var_deref_model: Passing null pointer "this->m_editorPrivate" to function "QtTreePropertyBrowserPrivate::indexToBrowserItem(QModelIndex const &) const", which dereferences it.
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qttreepropertybrowser.cpp:523:27: deref_parm: Directly dereferencing parameter "this".
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: var_assign: Assigning: "x" = storage returned from "new Map2".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtAbstractPropertyManager *, QMap<QtAbstractEditorFactoryBase *, QList<QtAbstractPropertyBrowser *> > > >::testAndSetOrdered(Map2 *, Map2 *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtAbstractPropertyManager *, QMap<QtAbstractEditorFactoryBase *, QList<QtAbstractPropertyBrowser *> > > >::testAndSetOrdered(Map2 *, Map2 *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1228: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: var_assign: Assigning: "x" = storage returned from "new PropertyMap".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtProperty const *, QtProperty *> >::testAndSetOrdered(PropertyMap *, PropertyMap *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtProperty const *, QtProperty *> >::testAndSetOrdered(PropertyMap *, PropertyMap *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtvariantproperty.cpp:139: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: var_assign: Assigning: "x" = storage returned from "new Map1".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QMap<QtAbstractPropertyBrowser *, QMap<QtAbstractPropertyManager *, QtAbstractEditorFactoryBase *> > >::testAndSetOrdered(Map1 *, Map1 *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QMap<QtAbstractPropertyBrowser *, QMap<QtAbstractPropertyManager *, QtAbstractEditorFactoryBase *> > >::testAndSetOrdered(Map1 *, Map1 *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertybrowser.cpp:1227: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: var_assign: Assigning: "x" = storage returned from "new QtMetaEnumProvider".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtMetaEnumProvider>::testAndSetOrdered(QtMetaEnumProvider *, QtMetaEnumProvider *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtMetaEnumProvider>::testAndSetOrdered(QtMetaEnumProvider *, QtMetaEnumProvider *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qtpropertymanager.cpp:561: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
+Error: RESOURCE_LEAK (CWE-404):
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_true: Condition "!this__StaticVar_.pointer", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_true: Condition "!this__StaticVar_.destroyed", taking true branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: alloc_fn: Storage is returned from allocation function "operator new(std::size_t)".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: var_assign: Assigning: "x" = storage returned from "new QtCursorDatabase".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: noescape: Resource "x" is not freed or pointed-to in function "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)".
+/usr/include/QtCore/qatomic_x86_64.h:169:87: noescape: "QBasicAtomicPointer<QtCursorDatabase>::testAndSetOrdered(QtCursorDatabase *, QtCursorDatabase *)" does not free or save its pointer parameter "newValue".
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: cond_false: Condition "!this__StaticVar_.pointer.testAndSetOrdered(NULL, x)", taking false branch
+digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/extra/qtpropertybrowser/src/qteditorfactory.cpp:2004: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
+
