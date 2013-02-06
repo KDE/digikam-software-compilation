@@ -454,13 +454,6 @@ digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/P
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: else_branch: Reached else branch
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: leaked_storage: Variable "x" going out of scope leaks the storage it points to.
 
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: cond_false: Condition "hgi", taking false branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:55: if_end: End of if statement
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:51: var_compare_op: Comparing "hgi" to null implies that "hgi" might be null.
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:63: cond_true: Condition "vgi", taking true branch
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/dialogs/GridSetupDialog.cpp:65: var_deref_model: Passing null pointer "hgi" to function "KConfigSkeletonItem::minValue() const", which dereferences it. (The dereference happens because this is a virtual function call.)
-
 Error: OVERRUN:
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_at_least: Checking "radius < 1U" implies that the value of "radius" is at least 1 on the false branch.
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/effectplugins/blur/BlurPhotoEffect.h:113: cond_between: Checking "radius > 68UL" implies that the value of "radius" is between 1 and 68 (inclusive) on the false branch.
