@@ -443,10 +443,6 @@ digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidget
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:90: member_decl: Class member declaration for "pressedHHandler".
 digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/CropWidgetItem.cpp:43: uninit_member: Non-static class member "pressedHHandler" is not initialized in this constructor nor in any functions that it calls.
 
-Error: REVERSE_INULL (CWE-476):
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1384: deref_ptr_in_call: Dereferencing pointer "observer". (The dereference happens because this is a virtual function call.)
-digikam-3.0.0-rc/extra/kipi-plugins/photolayoutseditor/widgets/canvas/Scene.cpp:1387: check_after_deref: Null-checking "observer" suggests that it may be null, but it has already been dereferenced on all paths leading to the check.
-
 Error: RESOURCE_LEAK (CWE-404):
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "!_k_static_s_globalPLEConfigSkeleton", taking true branch
 digikam-3.0.0-rc/x86_64-redhat-linux-gnu/extra/kipi-plugins/photolayoutseditor/PLEConfigSkeleton.cpp:22: cond_true: Condition "this->_ZNKUt0_11isDestroyedEv()", taking true branch
