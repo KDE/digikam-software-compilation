@@ -38,7 +38,6 @@ See complete MacPort guide for more information : http://guide.macports.org
 Install all compilation and run-time dependencies:
 
 > sudo port -v install qt4-mac
-> sudo port -v install qt4-mac-mysql55-plugin
 > sudo port -v install kde4-baseapps
 > sudo port -v install opencv
 > sudo port -v install marble
@@ -46,6 +45,11 @@ Install all compilation and run-time dependencies:
 > sudo port -v install sane-backends
 > sudo port -v install libgpod
 > sudo port -v install libgphoto2
+
+Optional if you want to use Mysql dtabase instead SQlite
+
+> sudo port -v install qt4-mac-mysql55-plugin
+
 
 4 - RUN COMMON SETUP FOR KDE APPLICATIONS
 -----------------------------------------
