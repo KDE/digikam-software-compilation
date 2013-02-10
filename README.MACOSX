@@ -52,16 +52,7 @@ Optional if you want to use Mysql dtabase instead SQlite
 
 > sudo port -v install qt4-mac-mysql55-plugin
 
-
-4 - RUN COMMON SETUP FOR KDE APPLICATIONS
------------------------------------------
-
-From a terminal, initialize KDE and Dbus services.
-
-> launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
-> /opt/local/bin/kbuildsycoca4
-
-5 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
+4 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
 ----------------------------------------------------------------
 
 * In you prefered directory dedicated to store and compile source code, checkout digiKam Software Compilation 
@@ -81,7 +72,15 @@ From a terminal, initialize KDE and Dbus services.
 
 > sudo make install/fast
 
-* digiKam must be available on Applications/Macports/KDE menu of your Apple computer.
+5 - RUN COMMON SETUP FOR KDE APPLICATIONS
+-----------------------------------------
+
+From a terminal, initialize KDE and Dbus services.
+
+> launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
+> /opt/local/bin/kbuildsycoca4
+
+digiKam must be available on Applications/Macports/KDE menu of your Apple computer and ready to use...
 
 6 - AUTHORS
 -----------
