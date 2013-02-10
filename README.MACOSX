@@ -13,10 +13,10 @@ not to install a specific released version provided by MacPort team as package t
 
 * Install development environnement Xcode from apple.
 
-   * For OS X versions 10.7 and later, download Xcode from the AppStore
+   - For OS X versions 10.7 and later, download Xcode from the AppStore
      (http://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 
-   * For OS X versions less than 10.7 download from apple developer center.
+   - For OS X versions less than 10.7 download from apple developer center.
      (http://developer.apple.com/xcode).
      It's free, but you need to create an acount as developer on apple.com to download it.
 
@@ -35,7 +35,7 @@ See complete MacPort guide for more information : http://guide.macports.org
 3 - INSTALL DEPENDENCIES
 ------------------------
 
-Install all compilation and run-time dependencies:
+Install all compilation and run-time dependencies :
 
 > sudo port -v install qt4-mac
 > sudo port -v install qt4-mac-sqlite3-plugin
@@ -49,9 +49,14 @@ Install all compilation and run-time dependencies:
 > sudo port -v install lensfun
 > sudo port -v install liblqr
 
-Optional if you want to use Mysql dtabase instead SQlite
+Optional if you want to use Mysql database instead SQlite
 
 > sudo port -v install qt4-mac-mysql55-plugin
+
+Optional Run-time dependencies:
+
+> sudo port -v install hugin-app
+> sudo port -v install enblend
 
 4 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
 ----------------------------------------------------------------
