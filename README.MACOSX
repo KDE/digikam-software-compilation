@@ -45,6 +45,8 @@ Install all compilation and run-time dependencies:
 > sudo port -v install sane-backends
 > sudo port -v install libgpod
 > sudo port -v install libgphoto2
+> sudo port -v install lensfun
+> sudo port -v install liblqr
 
 Optional if you want to use Mysql dtabase instead SQlite
 
