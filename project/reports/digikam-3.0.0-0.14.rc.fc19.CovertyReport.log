@@ -2041,38 +2041,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/icc/icctransform.cpp:483: cond_true: Con
 digikam-3.0.0-rc/core/libs/dimg/filters/icc/icctransform.cpp:491: uninit_use_in_call: Using uninitialized value "description.proofIntent" when calling "Digikam::TransformDescription::TransformDescription(Digikam::TransformDescription const &)".
 digikam-3.0.0-rc/core/libs/dimg/filters/icc/icctransform.cpp:54:7: read_parm_fld: Reading a parameter field.
 
-Error: UNINIT (CWE-457):
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:376: cond_false: Condition "list->isEmpty()", taking false branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:379: if_end: End of if statement
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:385: cond_true: Condition "i < list->count()", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:389: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:385: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:385: cond_true: Condition "i < list->count()", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:389: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:385: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:385: cond_false: Condition "i < list->count()", taking false branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:389: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:391: cond_false: Condition "this->d->mode", taking false branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:431: else_branch: Reached else branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "_container_.i != _container_.e", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "true", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:440: cond_true: Condition "meta.getGPSLatitudeNumber(&lat)", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:440: cond_true: Condition "meta.getGPSLongitudeNumber(&lng)", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:446: cond_true: Condition "haveAlt", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:457: loop: Jumping back to the beginning of the loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: break: Breaking from loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:457: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: loop_begin: Jumped back to beginning of loop
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "_container_.i != _container_.e", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:436: cond_true: Condition "true", taking true branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:439: var_decl: Declaring variable "lng" without initializer.
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:440: cond_false: Condition "meta.getGPSLatitudeNumber(&lat)", taking false branch
-digikam-3.0.0-rc/core/digikam/views/mapwidgetview.cpp:444: uninit_use_in_call: Using uninitialized value "lng" when calling "KGeoMap::GeoCoordinates::GeoCoordinates(double, double)".
-digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/geocoordinates.h:84:5: read_parm: Reading a parameter value.
-
 Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/slideshow/slideshowsettings.h:128: member_decl: Class member declaration for "printColorLabel".
 digikam-3.0.0-rc/core/utilities/slideshow/slideshowsettings.cpp:71: uninit_member: Non-static class member "printColorLabel" is not initialized in this constructor nor in any functions that it calls.
