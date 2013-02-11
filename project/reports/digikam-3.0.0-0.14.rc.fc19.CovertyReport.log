@@ -2054,14 +2054,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.h:256: member_decl: C
 digikam-3.0.0-rc/core/libs/dimg/filters/dimgthreadedfilter.cpp:56: uninit_member: Non-static class member "m_wasCancelled" is not initialized in this constructor nor in any functions that it calls.
 
 Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/abstractmarkertiler.cpp:95: member_decl: Class member declaration for "atStartOfLevel".
-digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/abstractmarkertiler.cpp:83: uninit_member: Non-static class member "atStartOfLevel" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
-digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/backend_map_marble.cpp:155: member_decl: Class member declaration for "bmLayer".
-digikam-3.0.0-rc/extra/libkgeomap/libkgeomap/backend_map_marble.cpp:116: uninit_member: Non-static class member "bmLayer" is not initialized in this constructor nor in any functions that it calls.
-
-Error: UNINIT_CTOR (CWE-457):
 digikam-3.0.0-rc/core/utilities/maintenance/maintenancesettings.h:79: member_decl: Class member declaration for "faceDetection".
 digikam-3.0.0-rc/core/utilities/maintenance/maintenancesettings.h:49: uninit_member: Non-static class member "faceDetection" is not initialized in this constructor nor in any functions that it calls.
 
