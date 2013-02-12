@@ -484,52 +484,6 @@ digikam-3.0.0-rc/core/imageplugins/enhance/restorationtool.cpp:374: example_chec
 digikam-3.0.0-rc/core/libs/dimg/filters/nr/nrestimate.cpp:382: unchecked_value: No check of the return value of "filewms.QFile::open(QIODevice::OpenMode(QIODevice::WriteOnly | QIODevice::Text))".
 a.cpp:462: unchecked_value: No check of the return value of "stat(QByteArray(QFile::encodeName(src)).operator char const *(), &st)".
 
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/rawloader.cpp:201: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:294: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:320: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:348: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:385: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:416: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:444: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:473: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:569: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:797: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/dimg/loaders/pngloader.cpp:966: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CONSTANT_EXPRESSION_RESULT (CWE-569):
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailbasic.cpp:227: same_on_both_sides: QSysInfo::LittleEndian == QSysInfo::LittleEndian is always true regardless of the values of its operands because those operands are identical. This occurs as the logical operand of if.
-
-Error: CTOR_DTOR_LEAK (CWE-401):
-digikam-3.0.0-rc/core/libs/widgets/common/visibilitycontroller.cpp:68: alloc_new: Allocating memory by calling "new Digikam::VisibilityController::VisibilityControllerPriv".
-digikam-3.0.0-rc/core/libs/widgets/common/visibilitycontroller.cpp:68: var_assign: Assigning: "this->d" = "new Digikam::VisibilityController::VisibilityControllerPriv".
-digikam-3.0.0-rc/core/libs/widgets/common/visibilitycontroller.cpp:68: ctor_dtor_leak: The constructor allocates field "d" of "Digikam::VisibilityController" but there is no destructor.
-
-Error: CTOR_DTOR_LEAK (CWE-401):
-digikam-3.0.0-rc/core/libs/dimg/filters/greycstoration/greycstorationfilter.cpp:76: alloc_new: Allocating memory by calling "new cimg_library::CImg<float>::GreycstorationThreadManager".
-digikam-3.0.0-rc/core/libs/dimg/filters/greycstoration/greycstorationfilter.cpp:76: var_assign: Assigning: "this->threadManager" = "new cimg_library::CImg<float>::GreycstorationThreadManager".
-digikam-3.0.0-rc/core/libs/dimg/filters/greycstoration/greycstorationfilter.cpp:76: ctor_dtor_leak: The constructor allocates field "threadManager" of "Digikam::GreycstorationFilter::GreycstorationFilterPriv" but there is no destructor.
-
 Error: CTOR_DTOR_LEAK (CWE-401):
 digikam-3.0.0-rc/core/imageplugins/enhance/hotpixels/weights.cpp:50: alloc_fn: Calling allocation function "DigikamEnhanceImagePlugin::Weights::operator =(DigikamEnhanceImagePlugin::Weights const &)".
 digikam-3.0.0-rc/core/imageplugins/enhance/hotpixels/weights.cpp:65:5: cond_false: Condition "!w->weightMatrices()", taking false branch
@@ -579,51 +533,6 @@ digikam-3.0.0-rc/core/imageplugins/enhance/hotpixels/weights.cpp:50: ctor_dtor_l
 digikam-3.0.0-rc/core/imageplugins/enhance/hotpixels/weights.h:44: destructor: This is the destructor implementation.
 
 Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2180: assignment: Assigning: "removeBy" = "0".
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2184: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2188: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2192: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2195: between: When switching on "removeBy", the value of "removeBy" must be between 0 and 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2209: dead_error_condition: The switch value "removeBy" cannot be "2".
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2209: dead_error_begin: Execution cannot reach this statement "case 2:".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2180: assignment: Assigning: "removeBy" = "0".
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2184: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2188: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2192: incr: Incrementing "removeBy". The value of "removeBy" is now 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2195: between: When switching on "removeBy", the value of "removeBy" must be between 0 and 1.
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2215: dead_error_condition: The switch value "removeBy" cannot be "3".
-digikam-3.0.0-rc/core/libs/database/albumdb.cpp:2215: dead_error_begin: Execution cannot reach this statement "case 3:".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1423: cond_cannot_single: Condition "v_color == 0", taking false branch. Now the value of "v_color" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1428: cannot_single: At condition "v_color == 0", the value of "v_color" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1428: dead_error_condition: The condition "v_color == 0" cannot be true.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1430: dead_error_line: Execution cannot reach this statement "vis->back_edge(e, g);".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1423: cond_cannot_single: Condition "v_color == 0", taking false branch. Now the value of "v_color" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1428: cannot_single: At condition "v_color == 0", the value of "v_color" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1428: dead_error_condition: The condition "v_color == 0" cannot be true.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraph_boost.h:1430: dead_error_line: Execution cannot reach this statement "vis->back_edge(e, g);".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2595: cond_cannot_single: Condition "orientation != 1", taking true branch. Now the value of "orientation" cannot be equal to 1.
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2597: cannot_single: When switching on "orientation", the value of "orientation" cannot be equal to 1.
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2599: dead_error_condition: The switch value "orientation" cannot be "1".
-digikam-3.0.0-rc/core/libs/dimg/dimg.cpp:2599: dead_error_line: Execution cannot reach this statement "case 1:".
-
-Error: DEADCODE (CWE-561):
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1471: cond_at_most: Condition "type > 2", taking false branch. Now the value of "type" is at most 2.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1486: cond_between: Condition "type == 0", taking false branch. Now the value of "type" is between 1 and 2.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1509: const: At condition "type == 2", the value of "type" must be equal to 2.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1486: cond_cannot_single: Condition "type == 0", taking false branch. Now the value of "type" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1509: cannot_single: At condition "type == 2", the value of "type" cannot be equal to 0.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1509: dead_error_condition: The condition "type == 2" must be true.
-digikam-3.0.0-rc/core/libs/dimg/filters/curves/imagecurves.cpp:1542: dead_error_line: Execution cannot reach this statement "return false;".
-
-Error: DEADCODE (CWE-561):
 digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:79: assignment: Assigning: "stretch" = "true".
 digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:102: const: At condition "stretch", the value of "stretch" must be equal to 1.
 digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:102: dead_error_condition: The condition "stretch" must be true.
@@ -637,92 +546,6 @@ digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:150: dead_error_con
 digikam-3.0.0-rc/core/libs/dimg/filters/fx/colorfxfilter.cpp:158: dead_error_line: Execution cannot reach this statement "if (r > threshold){
   r = 6...".
 
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:62: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::ThumbnailLoadThread *>(thread)" can return NULL.
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:62: alias_transfer: Assigning: "thumbThread" = "dynamic_cast <Digikam::ThumbnailLoadThread *>(thread)".
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailtask.cpp:63: var_deref_model: Passing null pointer "thumbThread" to function "Digikam::ThumbnailLoadThread::thumbnailCreator() const", which dereferences it.
-digikam-3.0.0-rc/core/libs/threadimageio/thumbnailloadthread.cpp:274:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:351: assign_zero: Assigning: "previousItem" = "NULL".
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:353: cond_true: Condition "!_container_.brk", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:353: cond_true: Condition "_container_.i != _container_.e", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:353: cond_true: Condition "true", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:356: cond_false: Condition "currentLevel == -1", taking false branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:370: if_end: End of if statement
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:373: cond_true: Condition "!sources.isEmpty()", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:378: cond_false: Condition "currentLevel == previousLevel", taking false branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:382: cond_true: Condition "currentLevel > previousLevel", taking true branch
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:384: var_deref_model: Passing null pointer "previousItem" to function "Digikam::HistoryTreeItem::addItem(Digikam::HistoryTreeItem *)", which dereferences it.
-digikam-3.0.0-rc/core/libs/database/imagehistory/imagehistorygraphmodel.cpp:188:5: deref_parm_field_in_call: Function "QList<Digikam::HistoryTreeItem *>::operator <<(Digikam::HistoryTreeItem * const &)" dereferences an offset off "this".
-/usr/include/QtCore/qlist.h:334:7: deref_parm_in_call: Function "QList<Digikam::HistoryTreeItem *>::append(Digikam::HistoryTreeItem * const &)" dereferences "this".
-/usr/include/QtCore/qlist.h:509:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:108: cond_true: Condition "create", taking true branch
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:111: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:115: if_end: End of if statement
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:155: cond_true: Condition "this->d->create", taking true branch
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:159: cond_true: Condition "it != QList<Digikam::Album *>::const_iterator(tList.constEnd())", taking true branch
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:161: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::TAlbum *>(*it)" can return NULL.
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:161: alias_transfer: Assigning: "tag" = "dynamic_cast <Digikam::TAlbum *>(*it)".
-digikam-3.0.0-rc/core/digikam/tags/tageditdlg.cpp:162: var_deref_model: Passing null pointer "tag" to function "Digikam::TAlbum::tagPath(bool) const", which dereferences it.
-digikam-3.0.0-rc/core/digikam/album/album.cpp:476:5: deref_parm_in_call: Function "Digikam::Album::isRoot() const" dereferences "this".
-digikam-3.0.0-rc/core/digikam/album/album.cpp:309:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:204: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::UndoActionReversible *>(action)" can return NULL.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:204: alias_transfer: Assigning: "reversible" = "dynamic_cast <Digikam::UndoActionReversible *>(action)".
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:213: cond_true: Condition "this->isAtOrigin()", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:216: cond_true: Condition "lastOrigin >= 0", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:218: cond_true: Condition "this->d->undoActions.at(lastOrigin)->hasFileOriginData()", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:222: break: Breaking from loop
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:224: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:227: cond_true: Condition "saveRedo", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:231: cond_true: Condition "this->d->redoActions.isEmpty()", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:235: cond_false: Condition "irreversible", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:236: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:242: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:244: cond_false: Condition "needSnapshot", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:248: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:251: cond_true: Condition "execute", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:254: cond_false: Condition "irreversible", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:254: cond_false: Condition "flyingRollback", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:260: else_branch: Reached else branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:261: var_deref_model: Passing null pointer "reversible" to function "Digikam::UndoActionReversible::getReverseFilter() const", which dereferences it.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undoaction.cpp:141:5: deref_parm_field_in_call: Function "Digikam::DImgBuiltinFilter::reverseFilter() const" dereferences an offset off "this".
-digikam-3.0.0-rc/core/libs/dimg/filters/dimgbuiltinfilter.cpp:269:5: deref_parm: Directly dereferencing parameter "this".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:309: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::UndoActionReversible *>(action)" can return NULL.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:309: alias_transfer: Assigning: "reversible" = "dynamic_cast <Digikam::UndoActionReversible *>(action)".
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:311: cond_true: Condition "execute", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:313: cond_false: Condition "irreversible", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:313: cond_false: Condition "flyingRollback", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:318: else_branch: Reached else branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:319: var_deref_model: Passing null pointer "reversible" to function "Digikam::UndoActionReversible::getFilter() const", which dereferences it.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undoaction.cpp:136:5: deref_parm_field_in_call: Function "Digikam::DImgBuiltinFilter::DImgBuiltinFilter(Digikam::DImgBuiltinFilter const &)" dereferences an offset off "this".
-digikam-3.0.0-rc/core/libs/dimg/filters/dimgbuiltinfilter.h:43:22: deref_parm: Directly dereferencing parameter "<anonymous>".
-
-Error: FORWARD_NULL (CWE-476):
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:394: cond_false: Condition "stepsBack <= 0", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:394: cond_false: Condition "stepsBack > this->d->undoActions.size()", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:397: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:410: cond_true: Condition "snapshot < this->d->undoActions.size()", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:412: cond_true: Condition "dynamic_cast <Digikam::UndoActionIrreversible *>(this->d->undoActions.at(snapshot))", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:414: break: Breaking from loop
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:416: loop_end: Reached end of loop
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:418: cond_false: Condition "snapshot == step", taking false branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:423: else_branch: Reached else branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:427: cond_true: Condition "snapshot < this->d->undoActions.size()", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:430: if_fallthrough: Falling through to end of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:434: if_end: End of if statement
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:437: cond_true: Condition "snapshot > step", taking true branch
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:439: dynamic_cast: Dynamic cast to pointer "dynamic_cast <Digikam::UndoActionReversible *>(this->d->undoActions.at(snapshot - 1))" can return NULL.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:439: alias_transfer: Assigning: "reversible" = "dynamic_cast <Digikam::UndoActionReversible *>(this->d->undoActions.at(snapshot - 1))".
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undomanager.cpp:440: var_deref_model: Passing null pointer "reversible" to function "Digikam::UndoActionReversible::getReverseFilter() const", which dereferences it.
-digikam-3.0.0-rc/core/utilities/imageeditor/core/undoaction.cpp:141:5: deref_parm_field_in_call: Function "Digikam::DImgBuiltinFilter::reverseFilter() const" dereferences an offset off "this".
-digikam-3.0.0-rc/core/libs/dimg/filters/dimgbuiltinfilter.cpp:269:5: deref_parm: Directly dereferencing parameter "this".
 
 Error: FORWARD_NULL (CWE-476):
 digikam-3.0.0-rc/core/utilities/fuzzysearch/findduplicatesview.cpp:105: cond_true: Condition "*it", taking true branch
