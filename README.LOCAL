@@ -11,7 +11,7 @@ This procedure is based on the boostrap script boostrap.local
    $ cd build
    $ make
    $ make install
-   $ mkdir -p /your/root/directory/var/tmp/kde-$USER/ksycoca4
+   $ mkdir -p /your/root/directory/var/tmp/kde-$USER
    $ KDEDIRS="/your/root/directory/" KDESYCOCA="/your/root/directory/var/tmp/kde-$USER/ksycoca4" kbuildsycoca4
 
 To run digikam, use the following commands:
