@@ -16,6 +16,8 @@ tar czvf myproject.tgz cov-int
 
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
+nslookup scan5.coverity.com
+
 curl -v --form file=@myproject.tgz \
      --form project=digiKam \
      --form password=$digiKamCoverityPassword \
