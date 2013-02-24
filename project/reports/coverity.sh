@@ -4,6 +4,7 @@
 # http://scan.coverity.com/self-build/
 
 cd ../../build/
+make clean
 cov-build --dir cov-int --tmpdir ~/tmp make
 tar czvf myproject.tgz cov-int
 
