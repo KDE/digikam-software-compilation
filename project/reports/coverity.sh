@@ -6,10 +6,13 @@
 cd ../..
 
 # Manage build sub-dir
-if [ ! -d "build" ]; then
-    mkdir build
+if [ -d "build" ]; then
+    rm -rfv ./build
 fi
-cd build
+
+./bootstrap.linux
+
+cd ./build
 
 cov-build --dir cov-int --tmpdir ~/tmp make
 tar czvf myproject.tgz cov-int
