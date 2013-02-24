@@ -3,14 +3,20 @@
 # See this url to see how to prepare your computer with Coverity SCAN tool:
 # http://scan.coverity.com/self-build/
 
-cd ../../build/
-make clean
+cd ../..
+
+# Manage build sub-dir
+if [ ! -d "build" ]; then
+    mkdir build
+fi
+cd build
+
 cov-build --dir cov-int --tmpdir ~/tmp make
 tar czvf myproject.tgz cov-int
 
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
-curl --form file=@myproject.tgz \
+curl -v --form file=@myproject.tgz \
      --form project=digiKam \
      --form password=$digiKamCoverityPassword \
      --form email=caulier.gilles@gmail.com \
