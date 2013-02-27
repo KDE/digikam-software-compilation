@@ -40,13 +40,12 @@ https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-co
 
 * This Software Collection include also digiKam and Kipi-plugins handbooks.
 
-* To download automatically all source code from git, run "download-repos" script.
-
 - NOTES ---------------------------------------------------------------------
 
 If you are a developer with push access to the repositories, it is strongly recommended
 to use the "kde:" prefix and let git use the read-only mirrors for pulling.
-If you did not clone this repository (digikam-software-compilation) from kde:, do it again:
+
+If you did not clone this repository (digikam-software-compilation) from "kde:", do it again:
     git config --global url.git://anongit.kde.org/.insteadof kde:
     git config --global url.ssh://git@git.kde.org/.pushinsteadof kde:
     git clone kde:digikam-software-compilation
@@ -78,7 +77,7 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 
-To configure project with CMake, run dedicated "bootstrap" script for your platform.
+To configure project with CMake, use dedicated "bootstrap" script for your platform.
 
 ------------
 digiKam team
