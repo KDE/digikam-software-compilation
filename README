@@ -6,7 +6,7 @@ digiKam is an advanced digital photo management application for KDE, which makes
 
 This is a super-repository that helps to download and compile digiKam with all components developed by digiKam team.
 
-- DEPENCIES ----------------------------------------------------------------
+- DEPENDENCIES -------------------------------------------------------------
 
 * To checkout all source code:
 
@@ -22,20 +22,7 @@ To download all needed git repositories, execute download script like this: perl
 
 - COMPONENTS ---------------------------------------------------------------
 
-* All code here are dedicated to digiKam plus all extra components maintained by digiKam team:
-
-"digikam" is 2.x version. It includes currently :
-
-- XMP sidecar support,
-- Pure Qt4 port of preview widget,
-- Image versioning support in editor,
-- Reverse Geo-coding,
-- Color and Pick Labels support,
-- Tags keyboard shortcuts,
-- Face detection,
-- etc...
-
-digiKam Redmine page can be found here :
+* digiKam Redmine page can be found here :
 
 https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
 
@@ -52,6 +39,8 @@ https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-co
 - libkvkontatke
 
 * This Software Collection include also digiKam and Kipi-plugins handbooks.
+
+* To download automatically all source code from git, run "download-repos" script.
 
 - NOTES ---------------------------------------------------------------------
 
@@ -88,6 +77,8 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
                                            using ./project/release/fetch_l10n.rb Ruby script.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
+
+To configure project with CMake, run dedicated "bootstrap" script for your platform.
 
 ------------
 digiKam team
