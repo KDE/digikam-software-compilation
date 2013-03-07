@@ -37,26 +37,26 @@ See complete MacPort guide for more information : http://guide.macports.org
 
 Install all compilation and run-time dependencies :
 
-> sudo port -v install qt4-mac
-> sudo port -v install qt4-mac-sqlite3-plugin
-> sudo port -v install kde4-baseapps
-> sudo port -v install opencv
-> sudo port -v install marble
-> sudo port -v install oxygen-icons
-> sudo port -v install sane-backends
-> sudo port -v install libgpod
-> sudo port -v install libgphoto2
-> sudo port -v install lensfun
-> sudo port -v install liblqr
+> sudo port -v install qt4-mac +debug
+> sudo port -v install qt4-mac-sqlite3-plugin +debug
+> sudo port -v install kde4-baseapps +debug
+> sudo port -v install opencv +debug
+> sudo port -v install marble +debug
+> sudo port -v install oxygen-icons +debug
+> sudo port -v install sane-backends +debug
+> sudo port -v install libgpod +debug
+> sudo port -v install libgphoto2 +debug
+> sudo port -v install lensfun +debug
+> sudo port -v install liblqr +debug
 
 Optional if you want to use Mysql database instead SQlite
 
-> sudo port -v install qt4-mac-mysql55-plugin
+> sudo port -v install qt4-mac-mysql55-plugin +debug
 
 Optional Run-time dependencies:
 
-> sudo port -v install hugin-app
-> sudo port -v install enblend
+> sudo port -v install hugin-app +debug
+> sudo port -v install enblend +debug
 
 4 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
 ----------------------------------------------------------------
