@@ -2,7 +2,7 @@
 
 sudo port -fp uninstall installed
 
-sudo rm -rf \
+sudo rm -rf    \
     /opt/local \
     /Applications/DarwinPorts \
     /Applications/MacPorts \
