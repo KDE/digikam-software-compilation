@@ -41,6 +41,7 @@ Install all compilation and run-time dependencies :
 > sudo port -v install qt4-mac-sqlite3-plugin +debug
 > sudo port -v install kdelibs4 +debug
 > sudo port -v install kde4-baseapps +debug
+> sudo port -v install kdesdk4 +debug
 > sudo port -v install opencv +debug
 > sudo port -v install marble +debug
 > sudo port -v install oxygen-icons +debug
