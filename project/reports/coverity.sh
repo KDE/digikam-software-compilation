@@ -26,7 +26,7 @@ curl -v --form file=@myproject.tgz \
      --form password=$digiKamCoverityPassword \
      --form email=caulier.gilles@gmail.com \
      --form version=git-master \
-     --form description="Git/Master from KDE repository" \
+     --form description="Git/Master from KDE repository - digiKam branch 'tableview' - libkface branch 'opentld'" \
      http://scan5.coverity.com/cgi-bin/upload.py
 
 echo "Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
