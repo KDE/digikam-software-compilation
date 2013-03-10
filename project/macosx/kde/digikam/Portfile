@@ -1,0 +1,71 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           kde4 1.1
+
+name                digikam
+version             git
+revision            4
+categories          kde kde4
+license             GPL-2+
+maintainers         hyper-world.de:jan openmaintainer
+platforms           darwin
+
+description         Photo Management Program
+long_description    Digital photo management program to import, organize, enhance, search and export your digital images.
+
+homepage            http://www.digikam.org/
+master_sites        file:////Users/gilles/Ports
+
+checksums sha256  79edb5968fdb384cdcdb3878964c99bb01137ce4120ca5911ea4e0255f7f0838
+
+use_bzip2           yes
+
+# Dependencies of digiKam and Kipi-plugins.
+depends_lib-append  port:kdelibs4 \
+                    port:kdepimlibs4 \
+                    port:qt4-mac \
+                    port:tiff \
+                    port:jpeg \
+                    port:libpng \
+                    port:marble
+
+# Dependencies of kipi-plugins.
+depends_lib-append  port:expat\
+                    port:gdk-pixbuf2 \
+                    port:libgpod \
+                    port:libxml2 \
+                    port:libxslt \
+                    port:opencv \
+                    port:qca \
+                    port:qjson
+
+# opencv is not universal
+universal_variant   no
+
+# Dependencies of digiKam.
+depends_lib-append  port:boost \
+                    port:gettext \
+                    path:lib/pkgconfig/glib-2.0.pc:glib2 \
+                    port:lcms2 \
+                    port:lensfun \
+                    port:libgphoto2 \
+                    port:liblqr \
+                    port:libusb \
+                    port:jasper \
+                    path:bin/mysql_config5:mysql5 \
+                    port:shared-desktop-ontologies
+
+depends_run-append  port:oxygen-icons port:qt4-mac-sqlite3-plugin
+
+configure.args -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+                      -DDIGIKAMSC_COMPILE_DOC=on \
+                      -DENABLE_LCMS2=on \
+                      -Wno-dev \
+                      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                      -DCMAKE_BUILD_TYPE=debugfull \
+                      -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
+                      -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
+                      -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\"
+                      
