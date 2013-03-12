@@ -1,20 +1,23 @@
 #!/bin/sh
 
-sudo port -v selfupdate
+# XCode and Macports must be installed before. See http://www.macports.org/install.php for details
+# This script must be run as root through sudo.
 
-sudo port -v install qt4-mac +debug
-sudo port -v install qt4-mac-sqlite3-plugin +debug
-sudo port -v install kdelibs4 +debug
-sudo port -v install kde4-baseapps +debug
-sudo port -v install kdesdk4 +debug
-sudo port -v install opencv +debug
-sudo port -v install marble +debug
-sudo port -v install oxygen-icons +debug
-sudo port -v install sane-backends +debug
-sudo port -v install libgpod +debug
-sudo port -v install libgphoto2 +debug
-sudo port -v install lensfun +debug
-sudo port -v install liblqr +debug
+port -v selfupdate
 
-sudo port -v install hugin-app +debug
-sudo port -v install enblend +debug
+port -v install qt4-mac +debug
+port -v install qt4-mac-sqlite3-plugin +debug
+port -v install kdelibs4 +debug
+port -v install kde4-baseapps +debug
+port -v install kdesdk4 +debug
+port -v install opencv +debug
+port -v install marble +debug
+port -v install oxygen-icons +debug
+port -v install sane-backends +debug
+port -v install libgpod +debug
+port -v install libgphoto2 +debug
+port -v install lensfun +debug
+port -v install liblqr +debug
+
+port -v install hugin-app +debug
+port -v install enblend +debug
