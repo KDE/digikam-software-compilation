@@ -5,7 +5,7 @@ PortSystem          1.0
 PortGroup           kde4 1.1
 
 name                digikam
-version             git
+version             3.1.0
 revision            4
 categories          kde kde4
 license             GPL-2+
@@ -16,9 +16,9 @@ description         Photo Management Program
 long_description    Digital photo management program to import, organize, enhance, search and export your digital images.
 
 homepage            http://www.digikam.org/
-master_sites        file:////Users/gilles/Ports
+master_sites        kde:stable/digikam/
 
-checksums sha256  79edb5968fdb384cdcdb3878964c99bb01137ce4120ca5911ea4e0255f7f0838
+checksums sha256    f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cfb4127684c2aa
 
 use_bzip2           yes
 
