@@ -32,10 +32,10 @@ depends_lib-append  port:kdelibs4 \
                     port:libpng \
                     port:opencv \
                     port:marble
-                    #port:libkdcraw \
-                    #port:libkexiv2 \
-                    #port:libkipi \
-                    #port:libksane
+                    port:libkdcraw \
+                    port:libkexiv2 \
+                    port:libkipi \
+                    port:libksane
 
 # Dependencies of kipi-plugins (bin and run-time).
 depends_lib-append  port:expat\
@@ -78,8 +78,8 @@ configure.args-append -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
                       -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\" \
                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
                       -DOpenCV_DIR=${prefix}/lib/cmake \
-                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=off \
                       -DDIGIKAMSC_COMPILE_DOC=off \
-                      -DDIGIKAMSC_COMPILE_PO=on \
+                      -DDIGIKAMSC_COMPILE_PO=off \
                       -Wno-dev \
                       ../${distname}
