@@ -18,7 +18,7 @@ long_description    Digital photo management program to import, organize, enhanc
 homepage            http://www.digikam.org/
 master_sites        kde:stable/digikam/
 
-checksums sha256    f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cfb4127684c2aa
+checksums           sha256  f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cfb4127684c2aa
 
 use_bzip2           yes
 
@@ -29,7 +29,12 @@ depends_lib-append  port:kdelibs4 \
                     port:tiff \
                     port:jpeg \
                     port:libpng \
+                    port:opencv \
                     port:marble
+                    #port:libkdcraw \
+                    #port:libkexiv2 \
+                    #port:libkipi \
+                    #port:libksane
 
 # Dependencies of kipi-plugins.
 depends_lib-append  port:expat\
@@ -37,7 +42,6 @@ depends_lib-append  port:expat\
                     port:libgpod \
                     port:libxml2 \
                     port:libxslt \
-                    port:opencv \
                     port:qca \
                     port:qjson
 
@@ -63,26 +67,16 @@ depends_run-append  port:oxygen-icons port:qt4-mac-sqlite3-plugin
 # clang stumbles over CV_XADD macro, see #37184
 compiler.blacklist  gcc-4.0 clang
 
-configure.args-append -DOpenCV_DIR=${prefix}/lib/cmake \
-                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
-                      -DDIGIKAMSC_COMPILE_DOC=on \
-                      -Wno-dev \
+configure.args-append -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
+                      -DCMAKE_CXX_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
                       -DCMAKE_BUILD_TYPE=debugfull \
                       -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
                       -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
                       -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\" \
                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                      -DOpenCV_DIR=${prefix}/lib/cmake \
+                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+                      -DDIGIKAMSC_COMPILE_DOC=off \
+                      -DDIGIKAMSC_COMPILE_PO=on \
+                      -Wno-dev \
                       ../${distname}
-
-# configure.args -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
-#                       -DDIGIKAMSC_COMPILE_DOC=on \
-#                       -DENABLE_LCMS2=on \
-#                       -Wno-dev \
-#                       -DCMAKE_BUILD_TYPE=debugfull \
-#                       -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
-#                       -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
-#                       -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\"
-#                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-#                       -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
-#                       -DCMAKE_CXX_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
-#                       
