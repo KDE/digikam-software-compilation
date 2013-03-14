@@ -44,9 +44,9 @@ depends_lib-append  port:expat\
                     port:libxml2 \
                     port:libxslt \
                     port:qca \
-                    port:qjson \
-                    port:hugin-app \
-                    port:enblend
+                    port:qjson 
+#                   port:hugin-app \
+#                   port:enblend
 
 # opencv is not universal
 universal_variant   no
