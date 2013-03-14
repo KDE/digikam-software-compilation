@@ -48,7 +48,7 @@ universal_variant   no
 depends_lib-append  port:boost \
                     port:gettext \
                     path:lib/pkgconfig/glib-2.0.pc:glib2 \
-                    port:lcms2 \
+                    port:lcms \
                     port:lensfun \
                     port:libgphoto2 \
                     port:liblqr \
@@ -59,13 +59,30 @@ depends_lib-append  port:boost \
 
 depends_run-append  port:oxygen-icons port:qt4-mac-sqlite3-plugin
 
-configure.args -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+# gcc-4.0 is also blacklisted for opencv
+# clang stumbles over CV_XADD macro, see #37184
+compiler.blacklist  gcc-4.0 clang
+
+configure.args-append -DOpenCV_DIR=${prefix}/lib/cmake \
+                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
                       -DDIGIKAMSC_COMPILE_DOC=on \
-                      -DENABLE_LCMS2=on \
                       -Wno-dev \
-                      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
                       -DCMAKE_BUILD_TYPE=debugfull \
                       -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
                       -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
-                      -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\"
-                      
+                      -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\" \
+                      -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                      ../${distname}
+
+# configure.args -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
+#                       -DDIGIKAMSC_COMPILE_DOC=on \
+#                       -DENABLE_LCMS2=on \
+#                       -Wno-dev \
+#                       -DCMAKE_BUILD_TYPE=debugfull \
+#                       -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
+#                       -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
+#                       -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\"
+#                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+#                       -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
+#                       -DCMAKE_CXX_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
+#                       
