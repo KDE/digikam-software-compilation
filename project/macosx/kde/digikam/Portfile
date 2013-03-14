@@ -31,7 +31,7 @@ depends_lib-append  port:kdelibs4 \
                     port:jpeg \
                     port:libpng \
                     port:opencv \
-                    port:marble
+                    port:marble \
                     port:libkdcraw \
                     port:libkexiv2 \
                     port:libkipi \
