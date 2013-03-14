@@ -9,7 +9,6 @@ port -v install qt4-mac +debug
 port -v install qt4-mac-sqlite3-plugin +debug
 port -v install kdelibs4 +debug
 port -v install kde4-baseapps +debug
-port -v install kdesdk4 +debug
 port -v install opencv +debug
 port -v install marble +debug
 port -v install oxygen-icons +debug
