@@ -23,6 +23,8 @@ checksums           sha256  f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cf
 
 use_bzip2           yes
 
+# List of whole dependencies ###############################################
+
 # Dependencies of digiKam and Kipi-plugins.
 depends_lib-append  port:kdelibs4 \
                     port:kdepimlibs4 \
@@ -31,11 +33,7 @@ depends_lib-append  port:kdelibs4 \
                     port:jpeg \
                     port:libpng \
                     port:opencv \
-                    port:marble \
-                    port:libkdcraw \
-                    port:libkexiv2 \
-                    port:libkipi \
-                    port:libksane
+                    port:marble 
 
 # Dependencies of kipi-plugins (bin and run-time).
 depends_lib-append  port:expat\
@@ -70,16 +68,49 @@ depends_run-append  port:oxygen-icons port:qt4-mac-sqlite3-plugin
 # clang stumbles over CV_XADD macro, see #37184
 compiler.blacklist  gcc-4.0 clang
 
+# Configurations rules to compile fine #####################################
+
 configure.args-append -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
                       -DCMAKE_CXX_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
-                      -DCMAKE_BUILD_TYPE=debugfull \
                       -DCMAKE_SYSTEM_PREFIX_PATH=\"/opt/local\;/usr\" \
                       -DCMAKE_MODULE_PATH=\"/opt/local/share/cmake-2.8/Modules\;/opt/local/share/cmake/modules\" \
                       -DCMAKE_PREFIX_PATH=\"/opt/local/lib/cmake\" \
                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
                       -DOpenCV_DIR=${prefix}/lib/cmake \
-                      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=off \
-                      -DDIGIKAMSC_COMPILE_DOC=off \
-                      -DDIGIKAMSC_COMPILE_PO=off \
                       -Wno-dev \
                       ../${distname}
+
+# Optional compilation options #############################################
+
+if {[variant_isset debug]} {
+    configure.args-append -DCMAKE_BUILD_TYPE=debugfull
+} else {
+    configure.args-append -DCMAKE_BUILD_TYPE=releasewithdebug
+}
+
+if {[variant_isset docs]} {
+    configure.args-append -DDIGIKAMSC_COMPILE_DOC=on
+} else {
+    configure.args-append -DDIGIKAMSC_COMPILE_DOC=off
+}
+
+variant translations description {Build digiKam GUI translations} {}
+
+if {[variant_isset translations]} {
+    configure.args-append -DDIGIKAMSC_COMPILE_PO=on
+} else {
+    configure.args-append -DDIGIKAMSC_COMPILE_PO=off
+}
+
+variant use_private_libs description {Build digiKam with internal KDEGraphics libs} {}
+
+if {[variant_isset use_private_libs]} {
+    configure.args-append -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on
+} else {
+    configure.args-append -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=off
+
+    depends_lib-append port:libkdcraw \
+                       port:libkexiv2 \
+                       port:libkipi \
+                       port:libksane
+}
