@@ -33,6 +33,7 @@ depends_lib-append  port:kdelibs4 \
                     port:tiff \
                     port:jpeg \
                     port:libpng \
+                    port:lcms \
                     port:opencv \
                     port:marble 
 
@@ -54,7 +55,6 @@ universal_variant   no
 depends_lib-append  port:boost \
                     port:gettext \
                     path:lib/pkgconfig/glib-2.0.pc:glib2 \
-                    port:lcms \
                     port:lensfun \
                     port:libgphoto2 \
                     port:liblqr \
