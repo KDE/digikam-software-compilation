@@ -145,3 +145,15 @@ if {[variant_isset lcms2]} {
 
     depends_lib-append port:lcms
 }
+
+# Option to check MySql availability before to compile target
+
+variant mysql_check description {Check MySql availability before to build digiKam} {}
+
+if {[variant_isset mysql_check]} {
+    configure.args-append -DENABLE_INTERNALMYSQL=on
+    
+    depends_lib-append    path:bin/mysql_config5:mysql5 \
+} else {
+    configure.args-append -DENABLE_INTERNALMYSQL=off
+}
