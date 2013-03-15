@@ -62,7 +62,6 @@ depends_lib-append    port:boost \
                       port:liblqr \
                       port:libusb \
                       port:jasper \
-                      path:bin/mysql_config5:mysql5 \
                       port:shared-desktop-ontologies
 
 # RunTime dependencies
