@@ -33,18 +33,18 @@ depends_lib-append  port:kdelibs4 \
                     port:tiff \
                     port:jpeg \
                     port:libpng \
-                    port:lcms \
                     port:opencv \
                     port:marble 
 
-# Dependencies of kipi-plugins (bin and run-time).
+# Dependencies of kipi-plugins
 depends_lib-append  port:expat\
                     port:gdk-pixbuf2 \
                     port:libgpod \
                     port:libxml2 \
                     port:libxslt \
                     port:qca \
-                    port:qjson 
+                    port:qjson \
+                    port:ImageMagick
 
 # opencv is not universal
 universal_variant   no
@@ -61,6 +61,7 @@ depends_lib-append  port:boost \
                     path:bin/mysql_config5:mysql5 \
                     port:shared-desktop-ontologies
 
+# RunTime dependencies
 depends_run-append  port:oxygen-icons \
                     port:qt4-mac-sqlite3-plugin 
 #                   port:hugin-app \
@@ -84,17 +85,23 @@ configure.args-append -DCMAKE_C_FLAGS='-D__KDE_HAVE_GCC_VISIBILITY' \
 
 # Optional compilation options #############################################
 
+# Option to include debug symbols in compiled target
+
 if {[variant_isset debug]} {
     configure.args-append -DCMAKE_BUILD_TYPE=debugfull
 } else {
     configure.args-append -DCMAKE_BUILD_TYPE=releasewithdebug
 }
 
+# Option to compile handbook
+
 if {[variant_isset docs]} {
     configure.args-append -DDIGIKAMSC_COMPILE_DOC=on
 } else {
     configure.args-append -DDIGIKAMSC_COMPILE_DOC=off
 }
+
+# Option to compile GUI translations
 
 variant translations description {Build digiKam GUI translations} {}
 
@@ -103,6 +110,8 @@ if {[variant_isset translations]} {
 } else {
     configure.args-append -DDIGIKAMSC_COMPILE_PO=off
 }
+
+# Option to compile target using internal implementation of KdeGraphics shared libs maintained by digiKam team
 
 variant use_private_libs description {Build digiKam with internal KDEGraphics libs} {}
 
@@ -115,4 +124,18 @@ if {[variant_isset use_private_libs]} {
                        port:libkexiv2 \
                        port:libkipi \
                        port:libksane
+}
+
+# Option to compile target with LCMS shared lib version 2 instead version 1
+
+variant lcms2 description {Build digiKam with LCMS2 shared libs instead LCMS1} {}
+
+if {[variant_isset lcms2]} {
+    configure.args-append -DENABLE_LCMS2=on
+
+    depends_lib-append port:lcms2
+} else {
+    configure.args-append -DENABLE_LCMS2=off
+
+    depends_lib-append port:lcms
 }
