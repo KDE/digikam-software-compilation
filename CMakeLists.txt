@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010-2012 by Gilles Caulier
+# @author Copyright (C) 2010-2013 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -40,7 +40,9 @@ INCLUDE(MacroOptionalAddSubdirectory)
 OPTION(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
 OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
-OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" ON)
+OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
+
+###########################################################################################################################################
 
 MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO ENABLE_CHECKOUT_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
