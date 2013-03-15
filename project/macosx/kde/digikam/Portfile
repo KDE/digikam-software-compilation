@@ -19,7 +19,8 @@ long_description    Digital photo management program to import, organize, enhanc
 homepage            http://www.digikam.org/
 master_sites        kde:stable/digikam/
 
-checksums           sha256  f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cfb4127684c2aa
+checksums           rmd160  511550a7ee37aac958a0d2e5afaa0a07aa1eab0e \
+                    sha256  f70fc84f3a680a855642fcc4664710116406bbe4068b0ad4d2cfb4127684c2aa
 
 use_bzip2           yes
 
