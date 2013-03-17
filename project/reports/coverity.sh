@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Copyright (c) 2013, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+# Copy this script on root folder where are source code
+#
 # See this url to see how to prepare your computer with Coverity SCAN tool:
 # http://scan.coverity.com/self-build/
 
@@ -21,13 +28,15 @@ echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
 nslookup scan5.coverity.com
 
-curl -v --form file=@myproject.tgz \
+curl -v \
+     --progress-bar \
+     --form file=@myproject.tgz \
      --form project=digiKam \
      --form password=$digiKamCoverityPassword \
      --form email=caulier.gilles@gmail.com \
      --form version=git-master \
-     --form description="Git/Master from KDE repository - digiKam branch 'tableview' - libkface branch 'opentld'" \
+     --form description="Git/Master from KDE repository" \
      http://scan5.coverity.com/cgi-bin/upload.py
 
-echo "Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
+echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
 
