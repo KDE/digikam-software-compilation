@@ -23,14 +23,14 @@ fi
 ./gits branch | sed -e "s/*/#/g" | sed -e "s/On:/#On:/g" | grep "#" | sed -e "s/#On:/On:/g" | sed -e "s/#/BRANCH:/g" > ./build/git_branches.txt
 desc=$(<build/git_branches.txt)
 
-echo "-- SCAN Import description --"
-echo $desc
-echo "--"
-
 cd ./build
 
 cov-build --dir cov-int --tmpdir ~/tmp make
 tar czvf myproject.tgz cov-int
+
+echo "-- SCAN Import description --"
+echo $desc
+echo "-----------------------------"
 
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
