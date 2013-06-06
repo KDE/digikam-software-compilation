@@ -5,10 +5,12 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
-# Copy this script on root folder where are source code
+# before to run this script you must set these sheel variable :
+# $DKCoverityToken with token of digiKam project given by Coverity SCAN.
+# $DKCoverityEmail with email adress to send SCAN result.
 #
 # See this url to see how to prepare your computer with Coverity SCAN tool:
-# http://scan.coverity.com/self-build/
+# http://scan.coverity.com/projects/285/upload_form
 
 cd ../..
 
@@ -41,7 +43,7 @@ curl -v \
      --form file=@myproject.tgz \
      --form project=digiKam \
      --form token=$DKCoverityToken \
-     --form email=caulier.gilles@gmail.com \
+     --form email=$DKCoverityEmail \
      --form version=git-master \
      --form description="$desc" \
      http://scan5.coverity.com/cgi-bin/upload.py
