@@ -40,7 +40,7 @@ curl -v \
      --progress-bar \
      --form file=@myproject.tgz \
      --form project=digiKam \
-     --form password=$digiKamCoverityPassword \
+     --form token=$digiKamCoverityPassword \
      --form email=caulier.gilles@gmail.com \
      --form version=git-master \
      --form description="$desc" \
