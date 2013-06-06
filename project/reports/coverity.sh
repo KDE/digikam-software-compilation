@@ -37,6 +37,7 @@ echo "-----------------------------"
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
 nslookup scan5.coverity.com
+date
 
 curl -v \
      --progress-bar \
@@ -48,5 +49,6 @@ curl -v \
      --form description="$desc" \
      http://scan5.coverity.com/cgi-bin/upload.py
 
+date
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
 
