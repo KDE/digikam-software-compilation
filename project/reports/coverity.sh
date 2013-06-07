@@ -37,18 +37,15 @@ echo "-----------------------------"
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
 nslookup scan5.coverity.com
-date
+SECONDS=0
 
-curl -v \
-     --progress-bar \
-     --form file=@myproject.tgz \
-     --form project=digiKam \
+curl --form project=digiKam \
      --form token=$DKCoverityToken \
      --form email=$DKCoverityEmail \
+     --form file=@myproject.tgz \
      --form version=git-master \
      --form description="$desc" \
      http://scan5.coverity.com/cgi-bin/upload.py
 
-date
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
-
+echo "That took approximately $SECONDS seconds to upload."
