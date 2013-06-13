@@ -1,7 +1,8 @@
 #!/bin/sh
 
-# XCode and Macports must be installed before. See http://www.macports.org/install.php for details
-# This script must be run as root through sudo.
+# XCode and Macports must be installed before to run this script.
+# See http://www.macports.org/install.php for details.
+# This script must be run as root through 'sudo' command.
 
 port -v selfupdate
 
@@ -18,5 +19,5 @@ port -v install libgphoto2 +debug
 port -v install lensfun +debug
 port -v install liblqr +debug
 
-port -v install hugin-app +debug
-port -v install enblend +debug
+#port -v install hugin-app +debug
+#port -v install enblend +debug

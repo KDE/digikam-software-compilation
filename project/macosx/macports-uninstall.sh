@@ -1,8 +1,10 @@
 #!/bin/sh
 
-sudo port -fp uninstall installed
+# This script must be run as root through 'sudo' command to remove whole Macports install and configuration.
 
-sudo rm -rf    \
+port -fp uninstall installed
+
+rm -rf    \
     /opt/local \
     /Applications/DarwinPorts \
     /Applications/MacPorts \
