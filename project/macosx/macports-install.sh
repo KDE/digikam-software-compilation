@@ -6,6 +6,8 @@
 
 port -v selfupdate
 
+# Packages to compile digiKam
+
 port -v install qt4-mac +debug
 port -v install qt4-mac-sqlite3-plugin +debug
 port -v install kdelibs4 +debug
@@ -19,15 +21,15 @@ port -v install libgphoto2 +debug
 port -v install lensfun +debug
 port -v install liblqr +debug
 
-#port -v install hugin-app +debug
-#port -v install enblend +debug
-
-# Extra packages
+# Extra packages to hack code
 
 port -v install kdeartwork +debug
 port -v install kate +debug
 port -v install konsole +debug
+port -v install kdemultimedia4 +debug
+port -v install kdeutils4 +debug
 
+port -v install valgrind +debug
 port -v install mc +debug
 
 # Packages not functionnals currently
