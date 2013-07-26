@@ -21,3 +21,16 @@ port -v install liblqr +debug
 
 #port -v install hugin-app +debug
 #port -v install enblend +debug
+
+# Extra packages
+
+port -v install kdeartwork +debug
+port -v install kate +debug
+port -v install konsole +debug
+
+port -v install mc +debug
+
+# Packages not functionnals currently
+
+#port -v install hugin-app +debug
+#port -v install enblend +debug
