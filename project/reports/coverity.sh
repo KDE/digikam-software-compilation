@@ -19,7 +19,7 @@ if [ -d "build" ]; then
     rm -rfv ./build
 fi
 
-./bootstrap.linux
+./bootstrap.macports
 
 # Get active git branches to create SCAN import description string
 ./gits branch | sed -e "s/*/#/g" | sed -e "s/On:/#On:/g" | grep "#" | sed -e "s/#On:/On:/g" | sed -e "s/#/BRANCH:/g" > ./build/git_branches.txt
