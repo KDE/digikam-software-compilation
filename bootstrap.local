@@ -60,6 +60,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_CHECKOUT_PO=off \
       -DENABLE_PRESENTATIONMODE=off\
       -DENABLE_LCMS2=off \
-      -DENABLE_RAWSPEED=off \
+      -DENABLE_NEPOMUKSUPPORT=ON \
       -Wno-dev \
       ..

@@ -31,7 +31,6 @@ cmake -G "NMake Makefiles" . ^
       -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on ^
       -DDIGIKAMSC_COMPILE_DOC=off ^
       -DENABLE_LCMS2=off ^
-      -DENABLE_RAWSPEED=on ^
       -Wno-dev ^
       -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
       -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
