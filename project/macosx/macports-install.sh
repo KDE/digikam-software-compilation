@@ -20,6 +20,7 @@ port -v install libgpod +debug
 port -v install libgphoto2 +debug
 port -v install lensfun +debug
 port -v install liblqr +debug
+port -v install libraw +debug
 
 # Extra packages to hack code
 
