@@ -36,7 +36,7 @@ export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:/usr/lib/pkgconfig
 #export CXX=g++4.4
 
 # Manage local install dir
-if [ $CLEANROOT == 1 ]
+if [ "$CLEANROOT" = "1" ]
 then
     rm -Rf $DIGIKAM_INSTALL_PREFIX
 fi
