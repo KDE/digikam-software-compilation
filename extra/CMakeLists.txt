@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010-2011 by Gilles Caulier
+# @author Copyright (C) 2010-2013 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -25,7 +25,7 @@
 FIND_PACKAGE(KDE4 REQUIRED)
 INCLUDE(MacroOptionalAddSubdirectory)
 
-IF (${DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS})
+IF(${ENABLE_PRIVATE_KDEGRAPHICS})
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(libksane)
     ADD_SUBDIRECTORY(libkipi)
     ADD_SUBDIRECTORY(libkexiv2)
