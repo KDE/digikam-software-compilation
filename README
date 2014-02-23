@@ -50,6 +50,58 @@ If you did not clone this repository (digikam-software-compilation) from "kde:",
     git config --global url.ssh://git@git.kde.org/.pushinsteadof kde:
     git clone kde:digikam-software-compilation
 
+See below an example of .gitconfig file working with a developer account :
+
+[url "git://anongit.kde.org/"]
+        insteadof = kde://
+
+[url "git@git.kde.org:"]
+        pushinsteadof = kde://
+
+[url "ssh://git@git.kde.org/"]
+        pushinsteadof = kde://
+
+[alias]
+        up = pull --rebase -v --stat
+        ci = commit -a -v
+[core]
+        editor = mcedit
+
+[user]
+        name = Gilles Caulier
+        email = caulier.gilles@gmail.com
+
+[push]
+        default = tracking
+
+[color]
+        # turn on color
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = auto
+
+[color "branch"]
+        current = green bold
+        local = green
+        remote = red bold
+
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+
+[color "status"]
+        added = green bold
+        changed = yellow bold
+        untracked = red
+
+[color "sh"]
+        branch = yellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [color "sh"]                                                                                                                                                                                                       
+
+
 - REDMINE PROJECT PAGES -----------------------------------------------------
 
 digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
