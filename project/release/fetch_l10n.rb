@@ -5,6 +5,7 @@
 # 
 # originally a Ruby script for generating Amarok tarball releases from KDE SVN
 # (c) 2005 Mark Kretschmann <kretschmann@kde.org>
+# (c) 2014 Nicolas Lécureuil <kde@nicolaslecureuil.fr>
 # Some parts of this code taken from cvs2dist
 # License: GNU General Public License V2
 
@@ -40,6 +41,44 @@ if isWindows
 else
     i18nlangs = `cat project/release/subdirs`
 end
+
+##########"
+if !(File.exists?("doc-translated") && File.directory?("doc-translated"))
+    Dir.mkdir( "doc-translated" )
+end
+
+Dir.chdir( "doc-translated" )
+docmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+i18nlangs.each_line do |lang|
+    lang.chomp!()
+    if (lang != nil && lang != "")
+        if !(File.exists?(lang) && File.directory?(lang))
+            Dir.mkdir(lang)
+        end
+        Dir.chdir(lang)
+        for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
+            puts "Copying #{lang}'s #{part}.docbook over..  "
+            if isWindows
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
+            else
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+            end
+            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
+                File.delete( "#{part}.docbook" )
+                puts "Delete File #{part}.docbook"
+            end
+            output = `pwd`
+            p output
+            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+            makefile << "kde4_create_handbook( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/"
+            makefile.close()
+	    puts( "done.\n" )
+        end
+        Dir.chdir("..")
+    end
+end
+
+#################
 
 if !(File.exists?("po") && File.directory?("po"))
     Dir.mkdir( "po" )
