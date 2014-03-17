@@ -67,8 +67,6 @@ i18nlangs.each_line do |lang|
                 File.delete( "#{part}.docbook" )
                 puts "Delete File #{part}.docbook"
             end
-            output = `pwd`
-            p output
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "kde4_create_handbook( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/"
             makefile.close()
