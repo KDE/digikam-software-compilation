@@ -21,6 +21,7 @@ port install libgphoto2
 port install lensfun 
 port install liblqr 
 port install libraw 
+port install mysql5
 
 # Extra packages to hack code
 
@@ -29,12 +30,13 @@ port install kate
 port install konsole 
 port install kdemultimedia4 
 port install kdeutils4
-
-port install valgrind 
-port install mc 
+port install eigen3
+port install sqlite2
+port install mc
 
 # Packages not functionnals currently
 
 #port -v install hugin-app 
 #port -v install enblend
+#port -v install valgrind 
 
