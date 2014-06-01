@@ -21,6 +21,9 @@ export MAKEFILES_TYPE='Unix Makefiles'
 INSTALL_PREFIX=$1
 if [ "$INSTALL_PREFIX" = "" ]; then
         INSTALL_PREFIX=/opt/local
+        BUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4
+else
+       BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/MacPorts/KDE4
 fi
 
 BUILD_TYPE=$2
@@ -56,7 +59,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_NAME_DIR=/opt/local/lib \
       -DCMAKE_SYSTEM_PREFIX_PATH="/opt/local;/usr" \
       -DCMAKE_MODULE_PATH="/opt/local/share/cmake-2.8/Modules;/opt/local/share/cmake/modules" \
-      -DBUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4 \
+      -DBUNDLE_INSTALL_DIR=${BUNDLE_INSTALL_DIR} \
       -DQT_QT_INCLUDE_DIR=/opt/local/include \
       -DQT_LIBRARY_DIR=/opt/local/lib \
       -DQT_QMAKE_EXECUTABLE=/opt/local/bin/qmake \
