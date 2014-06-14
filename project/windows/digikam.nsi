@@ -14,10 +14,9 @@
  ; VERSION  : the digiKam version string.
  ; KDE4PATH : the path where whole KDE4 + digiKam & co is installed.
  ;
- ; Example: makensis.exe /DVERSION=1.6.0 /DKDE4PATH=D:\kde4 digikam.nsi
+ ; Example: C:\NSIS\makensis.exe /DVERSION=4.1.0 /DKDE4PATH=C:\KDE digikam.nsi
  ;
- ;
- ; Extra NSIS plugins to install :
+ ; Extra NSIS plugins to install in order to run this script :
  ;
  ; Registry   : http://nsis.sourceforge.net/Registry_plug-in
  ; LockedList : http://nsis.sourceforge.net/LockedList_plug-in
