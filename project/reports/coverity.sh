@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2013-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -36,16 +36,21 @@ echo "-----------------------------"
 
 echo "Coverity Scan tarball 'myproject.tgz' uploading in progress..."
 
+# To be sure that resolv domain is in cache
 nslookup scan5.coverity.com
+
+# To mesure uploading time
 SECONDS=0
 
-curl --form project=digiKam \
+curl -# \
+     --form project=digiKam \
      --form token=$DKCoverityToken \
      --form email=$DKCoverityEmail \
      --form file=@myproject.tgz \
      --form version=git-master \
      --form description="$desc" \
-     http://scan5.coverity.com/cgi-bin/upload.py
+     http://scan5.coverity.com/cgi-bin/upload.py \
+     > /dev/null
 
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
 echo "That took approximately $SECONDS seconds to upload."
