@@ -36,6 +36,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DENABLE_PRESENTATIONMODE=off\
       -DENABLE_LCMS2=on \
       -DENABLE_NEPOMUKSUPPORT=ON \
-      -DENABLE_PGF_OPENMP=ON \
+      -DENABLE_PGF_OPENMP=OFF \
       -Wno-dev \
       ..
