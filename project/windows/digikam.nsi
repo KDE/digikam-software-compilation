@@ -46,7 +46,6 @@ SetCompressor /SOLID lzma
 SetDatablockOptimize on
 SetCompressorDictSize 96
 
-
 ;-------------------------------------------------------------------------------
 ;Include Modern UI
 
