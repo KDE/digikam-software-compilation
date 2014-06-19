@@ -1,21 +1,18 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
-# 
+# Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 # Copy this script on root folder where are source code
 
 
-export QTDIR=/usr/lib/qt4/
 export PATH=$QTDIR/bin:$PATH
 export LD_LIBRARY_PATH=/usr/lib/kde4
 export PKG_CONFIG_PATH=/usr/lib/pkgconfig
 
 #export VERBOSE=1
-#export CC=gcc4.4
-#export CXX=g++4.4
 
 # We will work on command line using MinGW compiler
 export MAKEFILES_TYPE='Unix Makefiles'
@@ -26,9 +23,10 @@ fi
 
 cd build
 
-export OpenCVOptions='-DBUILD_EXAMPLES=OFF \
-                      -DBUILD_TESTS=OFF \
+export OpenCVOptions='-DCMAKE_BUILD_TYPE=debugfull \
                       -BUILD_WITH_DEBUG_INFO=ON \
+                      -DBUILD_EXAMPLES=OFF \
+                      -DBUILD_TESTS=OFF \
                       -DBUILD_DOCS=OFF \
                       -DBUILD_PERF_TESTS=OFF \
                       -DBUILD_NEW_PYTHON_SUPPORT=OFF \
@@ -57,7 +55,8 @@ export OpenCVOptions='-DBUILD_EXAMPLES=OFF \
                       -DWITH_UNICAP=OFF \
                       -DWITH_V4L=OFF \
                       -DWITH_VIDEOINPUT=OFF \
-                      -DWITH_XINE=OFF'
+                      -DWITH_XINE=OFF \
+                      -DWITH_OPENCL=OFF'
 
 
 cmake -G "$MAKEFILES_TYPE" . \

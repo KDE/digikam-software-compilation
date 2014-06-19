@@ -1,9 +1,12 @@
 Thank you for installing digiKam!
 
-We would like to inform you that this port of digiKam under windows is not as stable as the linux version.
-DigiKam works mostly fine under windows, but some features are still broken due to some bugs in the underlying KDE libraries.
-For example:
- - Camera auto detection doesn't work under windows.
+We would like to inform you that this port of digiKam under windows
+is not as stable as the linux version.
+
+digiKam works mostly fine under windows, but some features are still broken
+due to some bugs in the underlying KDE libraries.
+
+For example, Camera auto detection doesn't work under windows.
 
 To report new bugs, please use this url:
 
@@ -12,3 +15,7 @@ http://www.digikam.org/support
 To know all current reports open about Windows release, please check this url:
 
 https://bugs.kde.org/buglist.cgi?list_id=144974&op_sys=MS%20Windows&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&product=digikam
+
+To report a bug or a whish, please follow instructions at http://www.digikam.org/support
+
+The digiKam team
