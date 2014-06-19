@@ -24,7 +24,7 @@ fi
 cd build
 
 export OpenCVOptions='-DCMAKE_BUILD_TYPE=debugfull \
-                      -BUILD_WITH_DEBUG_INFO=ON \
+                      -DBUILD_WITH_DEBUG_INFO=ON \
                       -DBUILD_EXAMPLES=OFF \
                       -DBUILD_TESTS=OFF \
                       -DBUILD_DOCS=OFF \
@@ -34,7 +34,7 @@ export OpenCVOptions='-DCMAKE_BUILD_TYPE=debugfull \
                       -DINSTALL_C_EXAMPLES=OFF \
                       -DINSTALL_PYTHON_EXAMPLES=OFF \
                       -DWITH_1394=OFF \
-                      -DWITH_CARBON=OFF \
+                      -DWITH_VTK=OFF \
                       -DWITH_CUDA=OFF \
                       -DWITH_EIGEN=OFF \
                       -DWITH_FFMPEG=OFF \
