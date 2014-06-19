@@ -50,8 +50,10 @@ SetCompressorDictSize 96
   !define SUPPORT_HOMEPAGE "http://www.digikam.org/support"
   !define ABOUT_HOMEPAGE "http://www.digikam.org/about"
   !define OUTFILE "${MY_PRODUCT}-installer-${VERSION}-win32.exe"
-  !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
-  !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
+#  !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
+  !define MSVCRuntimePath "C:\Windows\System32"
+#  !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
+  !define MSVCOpenMPPath "C:\Windows\System32"
 
 ;-------------------------------------------------------------------------------
 ;General
@@ -347,8 +349,8 @@ Section "digiKam" SecDigiKam
   File "${MSVCRuntimePath}\msvcr100.dll"
   File "${MSVCOpenMPPath}\vcomp100.dll"
   File /r "${KDE4PATH}\bin\*.*"
-  SetOutPath "$INSTDIR\certs"
-  File /r "${KDE4PATH}\certs\*.*"
+#  SetOutPath "$INSTDIR\certs"
+#  File /r "${KDE4PATH}\certs\*.*"
   ;SetOutPath "$INSTDIR\data"
   ;File /r "${KDE4PATH}\data\*.*"
   ;SetOutPath "$INSTDIR\database"
@@ -357,10 +359,10 @@ Section "digiKam" SecDigiKam
   ;File /r "${KDE4PATH}\doc\*.*"
   SetOutPath "$INSTDIR\etc"
   File /r /x kdesettings.bat /x portage "${KDE4PATH}\etc\*.*"
-  SetOutPath "$INSTDIR\hosting"
-  File /r "${KDE4PATH}\hosting\*.*"
-  SetOutPath "$INSTDIR\imports"
-  File /r "${KDE4PATH}\imports\*.*"
+#  SetOutPath "$INSTDIR\hosting"
+#  File /r "${KDE4PATH}\hosting\*.*"
+#  SetOutPath "$INSTDIR\imports"
+#  File /r "${KDE4PATH}\imports\*.*"
   SetOutPath "$INSTDIR\include"
   File /r "${KDE4PATH}\include\*.*"
   SetOutPath "$INSTDIR\lib"
@@ -381,8 +383,8 @@ Section "digiKam" SecDigiKam
   ;File /r "${KDE4PATH}\vad\*.*"
   ;SetOutPath "$INSTDIR\vsp"
   ;File /r "${KDE4PATH}\vsp\*.*"
-  SetOutPath "$INSTDIR\xdg"
-  File /r "${KDE4PATH}\xdg\*.*"
+#  SetOutPath "$INSTDIR\xdg"
+#  File /r "${KDE4PATH}\xdg\*.*"
 
   ;Store installation folder
   WriteRegStr HKLM "Software\${MY_PRODUCT}" "" $INSTDIR
