@@ -26,9 +26,10 @@ fi
 
 cd build
 
-export OpenCVOptions='-DBUILD_EXAMPLES=OFF \
-                      -DBUILD_TESTS=OFF \
+export OpenCVOptions='-DCMAKE_BUILD_TYPE=debugfull \
                       -BUILD_WITH_DEBUG_INFO=ON \
+                      -DBUILD_EXAMPLES=OFF \
+                      -DBUILD_TESTS=OFF \
                       -DBUILD_DOCS=OFF \
                       -DBUILD_PERF_TESTS=OFF \
                       -DBUILD_NEW_PYTHON_SUPPORT=OFF \
