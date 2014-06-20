@@ -23,7 +23,7 @@ fi
 
 cd build
 
-export OpenCVOptions='-DCMAKE_BUILD_TYPE=debugfull \
+export OpenCVOptions='-DCMAKE_BUILD_TYPE=Debug \
                       -DBUILD_WITH_DEBUG_INFO=ON \
                       -DBUILD_EXAMPLES=OFF \
                       -DBUILD_TESTS=OFF \
