@@ -25,7 +25,6 @@ cd "build"
 
 REM Microsoft Visual C++ command line compiler.
 cmake -G "NMake Makefiles" . ^
-      -DCMAKE_BUILD_TYPE=debugfull ^
       -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
       -BUILD_WITH_DEBUG_INFO=ON ^
       -DBUILD_EXAMPLES=OFF ^
