@@ -25,11 +25,8 @@ cd "build"
 
 REM Microsoft Visual C++ command line compiler.
 cmake -G "NMake Makefiles" . ^
-      -Wno-dev ^
-      -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
-      -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
-      -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
       -DCMAKE_BUILD_TYPE=debugfull ^
+      -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
       -BUILD_WITH_DEBUG_INFO=ON ^
       -DBUILD_EXAMPLES=OFF ^
       -DBUILD_TESTS=OFF ^
@@ -63,4 +60,8 @@ cmake -G "NMake Makefiles" . ^
       -DWITH_VIDEOINPUT=OFF ^
       -DWITH_XINE=OFF ^
       -DWITH_OPENCL=OFF ^
+      -Wno-dev ^
+      -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
+      -DCMAKE_INCLUDE_PATH=%KDE4_INSTALL_DIR%/include ^
+      -DCMAKE_LIBRARY_PATH=%KDE4_INSTALL_DIR%/lib ^
       ..
