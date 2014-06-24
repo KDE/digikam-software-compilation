@@ -351,8 +351,11 @@ Section "digiKam" SecDigiKam
   ;  folder with the name 'bin' in all subdirectories of ${KDE4PATH}
   SetOutPath "$INSTDIR\bin"
   File "${MSVCRuntimePath}\msvcp100.dll"
+  File "${MSVCRuntimePath}\msvcp100d.dll"
   File "${MSVCRuntimePath}\msvcr100.dll"
+  File "${MSVCRuntimePath}\msvcr100d.dll"
   File "${MSVCOpenMPPath}\vcomp100.dll"
+  File "${MSVCOpenMPPath}\vcomp100d.dll"
   File /r "${KDE4PATH}\bin\*.*"
 #  SetOutPath "$INSTDIR\certs"
 #  File /r "${KDE4PATH}\certs\*.*"
