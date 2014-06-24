@@ -355,7 +355,6 @@ Section "digiKam" SecDigiKam
   File "${MSVCRuntimePath}\msvcr100.dll"
   File "${MSVCRuntimePath}\msvcr100d.dll"
   File "${MSVCOpenMPPath}\vcomp100.dll"
-  File "${MSVCOpenMPPath}\vcomp100d.dll"
   File /r "${KDE4PATH}\bin\*.*"
 #  SetOutPath "$INSTDIR\certs"
 #  File /r "${KDE4PATH}\certs\*.*"
