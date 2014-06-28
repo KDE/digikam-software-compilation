@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2012, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
 # 
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -29,13 +29,14 @@ cd build
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debugfull \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX \
-      -DKDE4_BUILD_TESTS=on \
-      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on \
-      -DDIGIKAMSC_COMPILE_DOC=on \
-      -DDIGIKAMSC_CHECKOUT_PO=off \
-      -DENABLE_PRESENTATIONMODE=off\
-      -DENABLE_LCMS2=on \
+      -DKDE4_BUILD_TESTS=ON \
+      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=ON \
+      -DDIGIKAMSC_COMPILE_DOC=ON \
+      -DDIGIKAMSC_CHECKOUT_PO=OFF \
+      -DENABLE_PRESENTATIONMODE=OFF \
+      -DENABLE_LCMS2=ON \
       -DENABLE_NEPOMUKSUPPORT=ON \
       -DENABLE_PGF_OPENMP=OFF \
+      -DENABLE_INTERNALMYSQL=OFF \
       -Wno-dev \
       ..
