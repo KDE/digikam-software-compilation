@@ -10,6 +10,7 @@ set QT_PLUGIN_PATH=%KDE4_INSTALL_DIR%\plugins
 set QTDIR=%KDE4_INSTALL_DIR%
 set QT_INSTALL_DIR=%KDE4_INSTALL_DIR%
 set GIT_EDITOR="C:\KDE\bin\kwrite"
+set CL=/MP
 
 call "C:\Program Files\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat"
 
