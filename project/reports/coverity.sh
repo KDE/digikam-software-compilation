@@ -19,7 +19,14 @@ if [ -d "build" ]; then
     rm -rfv ./build
 fi
 
-./bootstrap.linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    ./bootstrap.linux
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    ./bootstrap.macports
+else
+    echo "Unsupported platform..."
+    exit -1
+fi
 
 # Get active git branches to create SCAN import description string
 ./gits branch | sed -e "s/*/#/g" | sed -e "s/On:/#On:/g" | grep "#" | sed -e "s/#On:/On:/g" | sed -e "s/#/BRANCH:/g" > ./build/git_branches.txt
