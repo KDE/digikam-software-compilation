@@ -14,7 +14,7 @@
 #  KSANE_DEFINITIONS - Compiler switches required for using libksane
 #  KSANE_VERSION - Version of libksane which was found
 #
-# Copyright (c) 2008-2011, Gilles Caulier, <caulier.gilles@gmail.com>
+# Copyright (c) 2008-2014, Gilles Caulier, <caulier.gilles@gmail.com>
 # Copyright (c) 2011, Michael G. Hansen, <mike@mghansen.de>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
@@ -39,16 +39,16 @@ else (KSANE_INCLUDE_DIR AND KSANE_LIBRARY AND KSANE_DEFINITIONS AND KSANE_VERSIO
 
   # Check for a local version of the library.
   if (KSANE_LOCAL_DIR)
-    find_file(KSANE_LOCAL_FOUND libksane/version.h.cmake ${CMAKE_SOURCE_DIR}/${KSANE_LOCAL_DIR} NO_DEFAULT_PATH)
+    find_file(KSANE_LOCAL_FOUND libksane/libksane_export.h ${CMAKE_SOURCE_DIR}/${KSANE_LOCAL_DIR} NO_DEFAULT_PATH)
     if (NOT KSANE_LOCAL_FOUND)
       message(WARNING "KSANE_LOCAL_DIR specified as \"${KSANE_LOCAL_DIR}\" but libksane could not be found there.")
     endif (NOT KSANE_LOCAL_FOUND)
   else (KSANE_LOCAL_DIR)
-    find_file(KSANE_LOCAL_FOUND libksane/version.h.cmake ${CMAKE_SOURCE_DIR}/libksane NO_DEFAULT_PATH)
+    find_file(KSANE_LOCAL_FOUND libksane/libksane_export.h ${CMAKE_SOURCE_DIR}/libksane NO_DEFAULT_PATH)
     if (KSANE_LOCAL_FOUND)
       set(KSANE_LOCAL_DIR libksane)
     endif (KSANE_LOCAL_FOUND)
-    find_file(KSANE_LOCAL_FOUND libksane/version.h.cmake ${CMAKE_SOURCE_DIR}/libs/libksane NO_DEFAULT_PATH)
+    find_file(KSANE_LOCAL_FOUND libksane/libksane_export.h ${CMAKE_SOURCE_DIR}/libs/libksane NO_DEFAULT_PATH)
     if (KSANE_LOCAL_FOUND)
       set(KSANE_LOCAL_DIR libs/libksane)
     endif (KSANE_LOCAL_FOUND)
