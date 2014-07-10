@@ -1,8 +1,20 @@
 #!/bin/sh
 
-# XCode and Macports must be installed before to run this script.
+# Copyright (c) 2013-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+
+# XCode must be installed before to run this script.
 # See http://www.macports.org/install.php for details.
 # This script must be run as root through 'sudo' command.
+
+# Install Macports package
+
+curl -O http://distfiles.macports.org/MacPorts/MacPorts-2.3.1-10.9-Mavericks.pkg
+installer -verbose -pkg MacPorts-2.3.1-10.9-Mavericks.pkg -target /
+
+# update macport
 
 port -v selfupdate
 
@@ -39,4 +51,3 @@ port install mc
 #port -v install hugin-app 
 #port -v install enblend
 #port -v install valgrind 
-
