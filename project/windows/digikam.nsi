@@ -8,7 +8,7 @@
  ;
  ; Copyright (C) 2010      by Julien Narboux <julien at narboux dot fr>
  ; Copyright (C) 2010-2014 by Gilles Caulier <caulier dot gilles at gmail dot com>
- ; Copyright (C) 2011-2012 by Ananta Palani <anantapalani at gmail dot com>
+ ; Copyright (C) 2011-2014 by Ananta Palani <anantapalani at gmail dot com>
  ;
  ; Script arguments:
  ; VERSION  : the digiKam version string.
@@ -55,10 +55,12 @@ SetCompressorDictSize 96
   !define SUPPORT_HOMEPAGE "http://www.digikam.org/support"
   !define ABOUT_HOMEPAGE "http://www.digikam.org/about"
   !define OUTFILE "${MY_PRODUCT}-installer-${VERSION}-win32.exe"
-#  !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
-  !define MSVCRuntimePath "C:\Windows\System32"
-#  !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
-  !define MSVCOpenMPPath "C:\Windows\System32"
+  !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
+  !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
+  ;The libraries in the system folder are often outdated. It is better to use the
+  ;   the latest redistributable instead
+  ;!define MSVCRuntimePath "C:\Windows\System32"
+  ;!define MSVCOpenMPPath "C:\Windows\System32"
 
 ;-------------------------------------------------------------------------------
 ;General
@@ -350,14 +352,17 @@ Section "digiKam" SecDigiKam
   ;The \*.* is required for File /r because without it, NSIS would add every 
   ;  folder with the name 'bin' in all subdirectories of ${KDE4PATH}
   SetOutPath "$INSTDIR\bin"
+  ;Microsoft does not allow debug libraries to be redistributed, so compile
+  ;  using one of the release modes to ensure the *d.dll are not required
   File "${MSVCRuntimePath}\msvcp100.dll"
-  File "${MSVCRuntimePath}\msvcp100d.dll"
   File "${MSVCRuntimePath}\msvcr100.dll"
-  File "${MSVCRuntimePath}\msvcr100d.dll"
   File "${MSVCOpenMPPath}\vcomp100.dll"
+  ;File "${MSVCRuntimePath}\msvcp100d.dll"
+  ;File "${MSVCRuntimePath}\msvcr100d.dll"
+  ;File "${MSVCOpenMPPath}\vcomp100d.dll"
   File /r "${KDE4PATH}\bin\*.*"
-#  SetOutPath "$INSTDIR\certs"
-#  File /r "${KDE4PATH}\certs\*.*"
+  ;SetOutPath "$INSTDIR\certs"
+  ;File /r "${KDE4PATH}\certs\*.*"
   ;SetOutPath "$INSTDIR\data"
   ;File /r "${KDE4PATH}\data\*.*"
   ;SetOutPath "$INSTDIR\database"
@@ -366,10 +371,10 @@ Section "digiKam" SecDigiKam
   ;File /r "${KDE4PATH}\doc\*.*"
   SetOutPath "$INSTDIR\etc"
   File /r /x kdesettings.bat /x portage "${KDE4PATH}\etc\*.*"
-#  SetOutPath "$INSTDIR\hosting"
-#  File /r "${KDE4PATH}\hosting\*.*"
-#  SetOutPath "$INSTDIR\imports"
-#  File /r "${KDE4PATH}\imports\*.*"
+  ;SetOutPath "$INSTDIR\hosting"
+  ;File /r "${KDE4PATH}\hosting\*.*"
+  ;SetOutPath "$INSTDIR\imports"
+  ;File /r "${KDE4PATH}\imports\*.*"
   SetOutPath "$INSTDIR\include"
   File /r "${KDE4PATH}\include\*.*"
   SetOutPath "$INSTDIR\lib"
@@ -390,8 +395,8 @@ Section "digiKam" SecDigiKam
   ;File /r "${KDE4PATH}\vad\*.*"
   ;SetOutPath "$INSTDIR\vsp"
   ;File /r "${KDE4PATH}\vsp\*.*"
-#  SetOutPath "$INSTDIR\xdg"
-#  File /r "${KDE4PATH}\xdg\*.*"
+  ;SetOutPath "$INSTDIR\xdg"
+  ;File /r "${KDE4PATH}\xdg\*.*"
 
   ;Store installation folder
   WriteRegStr HKLM "Software\${MY_PRODUCT}" "" $INSTDIR
@@ -450,7 +455,7 @@ SectionEnd
 
 Section "Uninstall"
 
-  #No longer adding /REBOOTOK to Delete and RMDir since using LockedList and also potentially uninstalling from the installer
+  ;No longer adding /REBOOTOK to Delete and RMDir since using LockedList and also potentially uninstalling from the installer
 
   Delete "$INSTDIR\Uninstall.exe"
   Delete "$INSTDIR\RELEASENOTES.txt"
