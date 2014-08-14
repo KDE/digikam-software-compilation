@@ -14,7 +14,7 @@
 curl -O http://distfiles.macports.org/MacPorts/MacPorts-2.3.1-10.9-Mavericks.pkg
 installer -verbose -pkg MacPorts-2.3.1-10.9-Mavericks.pkg -target /
 
-# update macport
+# Update macport
 
 port -v selfupdate
 
@@ -33,21 +33,36 @@ port install libgphoto2
 port install lensfun 
 port install liblqr 
 port install libraw 
-port install mysql5
-
-# Extra packages to hack code
-
-port install kdeartwork 
-port install kate 
-port install konsole 
-port install kdemultimedia4 
-port install kdeutils4
 port install eigen3
 port install sqlite2
-port install mc
 
-# Packages not functionnals currently
+# For Color themes support
+
+port install kdeartwork 
+
+# For video support
+
+port install kdemultimedia4 
+port install ffmpegthumbs 
+
+# Mysql support.
+
+#port install mysql5
+
+# Packages not functionnals currently. Install Hugin through DMG installer from project web site.
 
 #port -v install hugin-app 
 #port -v install enblend
-#port -v install valgrind 
+
+# Extra packages to hack code.
+
+#port install mc
+#port install valgrind 
+#port install kate 
+#port install konsole 
+#port install kdeutils4
+
+# Prepare KDE background process to run applications.
+
+launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
+/opt/local/bin/kbuildsycoca4
