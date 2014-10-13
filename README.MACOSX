@@ -59,7 +59,23 @@ Optional Run-time dependencies:
 > sudo port -v install hugin-app +debug
 > sudo port -v install enblend +debug
 
-4 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
+4 - LIBPGF INSTALLATION
+-----------------------
+
+Since digiKAm 4.5.0, libpgf source code have been dropped from core implementation to 
+use external version of library.
+Macports do not provide yet libpgf. Library need to be installed following these commands,
+to run temporally somewhere in your home directory :
+
+> sudo port install libtool
+> svn checkout svn://svn.code.sf.net/p/libpgf/code/trunk libpgf
+> cd libpgf
+> glibtoolize --copy --force && aclocal && automake --gnu --add-missing --copy && autoconf
+> ./configure --prefix=/opt/local
+> make
+> sudo make install
+
+5 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
 ----------------------------------------------------------------
 
 * In you prefered directory dedicated to store and compile source code, checkout digiKam Software Compilation 
@@ -79,7 +95,7 @@ Optional Run-time dependencies:
 
 > sudo make install/fast
 
-5 - RUN COMMON SETUP FOR KDE APPLICATIONS
+6 - RUN COMMON SETUP FOR KDE APPLICATIONS
 -----------------------------------------
 
 From a terminal, initialize KDE and Dbus services.
@@ -89,7 +105,7 @@ From a terminal, initialize KDE and Dbus services.
 
 digiKam must be available on Applications/Macports/KDE menu of your Apple computer and ready to use...
 
-6 - AUTHORS
+7 - CREDITS
 -----------
 
 Gilles Caulier <caulier dot gilles at gmail dot com>
