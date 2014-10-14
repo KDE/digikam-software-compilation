@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010-2013 by Gilles Caulier
+# @author Copyright (C) 2010-2014 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -123,7 +123,6 @@ ENDIF()
 IF(ENABLE_PRIVATE_KDEGRAPHICS)
     # prepend our own FindXXX modules to CMAKE_MODULE_PATH
     SET(CMAKE_MODULE_PATH
-            ${CMAKE_SOURCE_DIR}/extra/libkexiv2/cmake/modules
             ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
             ${CMAKE_MODULE_PATH}
         )
@@ -133,7 +132,6 @@ ENDIF()
 SET(CMAKE_MODULE_PATH
         ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkface/cmake/modules
         ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
         ${CMAKE_SOURCE_DIR}/cmake/modules
         ${CMAKE_MODULE_PATH}
@@ -143,10 +141,10 @@ IF(ENABLE_PRIVATE_KDEGRAPHICS)
     SET(KIPI_LOCAL_DIR extra/libkipi)
     SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
     SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
+    SET(KFACE_LOCAL_DIR extra/libkface)
     SET(KSANE_LOCAL_DIR extra/libksane)
 ENDIF()
 
-SET(KFACE_LOCAL_DIR extra/libkface)
 SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
 SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
 SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)

@@ -6,7 +6,7 @@
 # @date   2010-12-11
 # @brief  digiKam Software Collection
 #
-# @author Copyright (C) 2010-2013 by Gilles Caulier
+# @author Copyright (C) 2010-2014 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
 #
 # This program is free software; you can redistribute it
@@ -30,11 +30,11 @@ IF(${ENABLE_PRIVATE_KDEGRAPHICS})
     ADD_SUBDIRECTORY(libkipi)
     ADD_SUBDIRECTORY(libkexiv2)
     ADD_SUBDIRECTORY(libkdcraw)
+    ADD_SUBDIRECTORY(libkface)
 ENDIF()
 
 MACRO_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
 MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
 
 ADD_SUBDIRECTORY(libkgeomap)
-ADD_SUBDIRECTORY(libkface)
 ADD_SUBDIRECTORY(kipi-plugins)
