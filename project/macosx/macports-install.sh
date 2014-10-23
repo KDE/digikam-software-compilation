@@ -4,21 +4,18 @@
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
 
-# XCode must be installed before to run this script.
-# See http://www.macports.org/install.php for details.
-# This script must be run as root through 'sudo' command.
+# Pre-processing checks
 
-# Install Macports package
+. ./common.sh
+CommonChecks
 
-curl -O http://distfiles.macports.org/MacPorts/MacPorts-2.3.1-10.9-Mavericks.pkg
-installer -verbose -pkg MacPorts-2.3.1-10.9-Mavericks.pkg -target /
-
-# Update macport
+# Update Macports installation
 
 port -v selfupdate
 
-# Packages to compile digiKam
+# Install Macports packages to compile digiKam
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin 

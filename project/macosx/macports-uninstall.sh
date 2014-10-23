@@ -5,9 +5,16 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-# This script must be run as root through 'sudo' command to remove whole Macports install and configuration.
+# Pre-processing checks
+
+. ./common.sh
+CommonChecks
+
+# Uninstall Macports packages
 
 port -fp uninstall installed
+
+# Remove Macports dirs
 
 rm -rf    \
     /opt/local \
