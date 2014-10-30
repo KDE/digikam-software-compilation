@@ -1,7 +1,7 @@
 @ECHO OFF
 
 REM  Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
-REM 
+REM
 REM  Redistribution and use is allowed according to the terms of the BSD license.
 REM  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
@@ -28,7 +28,7 @@ cmake -G "NMake Makefiles" . ^
       -DCMAKE_BUILD_TYPE=relwithdebinfo ^
       -DCMAKE_INSTALL_PREFIX=%KDE4_INSTALL_DIR% ^
       -DKDE4_BUILD_TESTS=ON ^
-      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=ON ^
+      -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON ^
       -DDIGIKAMSC_COMPILE_PO=OFF ^
       -DDIGIKAMSC_COMPILE_DOC=OFF ^
       -DENABLE_LCMS2=OFF ^

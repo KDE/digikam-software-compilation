@@ -55,7 +55,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_CXX_FLAGS="-pedantic -Werror=return-type" \
       -DCMAKE_C_FLAGS="-pedantic -Werror=return-type" \
       -DKDE4_BUILD_TESTS=ON \
-      -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=ON \
+      -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON \
       -DDIGIKAMSC_COMPILE_DOC=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DENABLE_PRESENTATIONMODE=OFF \

@@ -25,16 +25,18 @@
 FIND_PACKAGE(KDE4 REQUIRED)
 INCLUDE(MacroOptionalAddSubdirectory)
 
-IF(${ENABLE_PRIVATE_KDEGRAPHICS})
-    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libksane)
+IF(${ENABLE_PRIVATE_SHAREDLIBS})
+    # from kdegraphics/libs
     ADD_SUBDIRECTORY(libkipi)
     ADD_SUBDIRECTORY(libkexiv2)
     ADD_SUBDIRECTORY(libkdcraw)
     ADD_SUBDIRECTORY(libkface)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libksane)
+
+    # from extragear/libs
+    ADD_SUBDIRECTORY(libkgeomap)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
 ENDIF()
 
-MACRO_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
-MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
-
-ADD_SUBDIRECTORY(libkgeomap)
 ADD_SUBDIRECTORY(kipi-plugins)

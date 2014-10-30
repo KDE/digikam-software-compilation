@@ -40,7 +40,7 @@ INCLUDE(MacroOptionalAddSubdirectory)
 OPTION(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
 OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
-OPTION(DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS "Build local kdegraphics libraries instead of using distributed KDE files (default=OFF)" OFF)
+OPTION(DIGIKAMSC_USE_PRIVATE_SHAREDLIBS  "Build local shared libraries instead of using distributed files (default=OFF)"          OFF)
 
 ###########################################################################################################################################
 
@@ -52,18 +52,19 @@ MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 # by ourselves, because we depend on newer versions. If you want
 # to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1
 # as an argument to CMake.
-IF(NOT DIGIKAMSC_USE_PRIVATE_KDEGRAPHICS)
+IF(NOT DIGIKAMSC_USE_PRIVATE_SHAREDLIBS)
     IF(${KDE_VERSION} VERSION_LESS "4.6.95")
-        SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
+        SET(ENABLE_PRIVATE_SHAREDLIBS 1)
     ELSE()
-        SET(ENABLE_PRIVATE_KDEGRAPHICS 0)
+        SET(ENABLE_PRIVATE_SHAREDLIBS 0)
     ENDIF()
 ELSE()
-    SET(ENABLE_PRIVATE_KDEGRAPHICS 1)
+    SET(ENABLE_PRIVATE_SHAREDLIBS 1)
 ENDIF()
 
 IF(ENABLE_CHECKOUT_PO)
     FIND_PACKAGE(Ruby)
+
     IF(RUBY_EXECUTABLE)
         MESSAGE(STATUS "Extract translation files from KDE repositories. Please wait, it can take a while...")
         EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n.rb"
@@ -84,10 +85,10 @@ IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
     SET(ENABLE_COMPILE_PO 0)
 ENDIF()
 
-IF(ENABLE_PRIVATE_KDEGRAPHICS)
-    MESSAGE(STATUS "Local kdegraphics libraries will be compiled... YES")
+IF(ENABLE_PRIVATE_SHAREDLIBS)
+    MESSAGE(STATUS "Local shared libraries will be compiled........ YES")
 ELSE()
-    MESSAGE(STATUS "Local kdegraphics libraries will be compiled... NO")
+    MESSAGE(STATUS "Local shared libraries will be compiled........ NO")
 ENDIF()
 
 IF(DIGIKAMSC_COMPILE_DOC)
@@ -123,31 +124,33 @@ ENDIF()
 IF(ENABLE_PRIVATE_KDEGRAPHICS)
     # prepend our own FindXXX modules to CMAKE_MODULE_PATH
     SET(CMAKE_MODULE_PATH
-            ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
-            ${CMAKE_MODULE_PATH}
+        ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
+        ${CMAKE_MODULE_PATH}
         )
 ENDIF()
 
 # prepend our own FindXXX modules to CMAKE_MODULE_PATH
 SET(CMAKE_MODULE_PATH
-        ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
-        ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
-        ${CMAKE_SOURCE_DIR}/cmake/modules
-        ${CMAKE_MODULE_PATH}
+    ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
+    ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
+    ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
+    ${CMAKE_SOURCE_DIR}/cmake/modules
+    ${CMAKE_MODULE_PATH}
     )
 
-IF(ENABLE_PRIVATE_KDEGRAPHICS)
+IF(ENABLE_PRIVATE_SHAREDLIBS)
+    # from kdegraphics/libs
     SET(KIPI_LOCAL_DIR extra/libkipi)
     SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
     SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
     SET(KFACE_LOCAL_DIR extra/libkface)
     SET(KSANE_LOCAL_DIR extra/libksane)
-ENDIF()
 
-SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
-SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
-SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
+    #from extragear/libs
+    SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
+    SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
+    SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
+ENDIF()
 
 ADD_SUBDIRECTORY(extra)
 ADD_SUBDIRECTORY(core)
