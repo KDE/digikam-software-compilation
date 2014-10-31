@@ -121,7 +121,7 @@ IF(KDE4_BUILD_TESTS)
 ENDIF()
 
 # Make sure that the FindXXX modules of the local libraries are found
-IF(ENABLE_PRIVATE_KDEGRAPHICS)
+IF(ENABLE_PRIVATE_SHAREDLIBS)
     # prepend our own FindXXX modules to CMAKE_MODULE_PATH
     SET(CMAKE_MODULE_PATH
         ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
