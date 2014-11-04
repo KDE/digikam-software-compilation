@@ -1,46 +1,28 @@
-# ===========================================================
 #
-# This file is a part of digiKam project
-# <a href="http://www.digikam.org">http://www.digikam.org</a>
+# Copyright (c) 2010-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
-# @date   2010-12-11
-# @brief  digiKam Software Collection
-#
-# @author Copyright (C) 2010-2014 by Gilles Caulier
-#         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
-#
-# This program is free software; you can redistribute it
-# and/or modify it under the terms of the GNU General
-# Public License as published by the Free Software Foundation;
-# either version 2, or (at your option)
-# any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# ============================================================
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.4)
+cmake_minimum_required(VERSION 2.8.4)
 
-IF(POLICY CMP0011)
-   CMAKE_POLICY(SET CMP0017 NEW)
-ENDIF()
+if(POLICY CMP0011)
+   cmake_policy(SET CMP0017 NEW)
+endif()
 
-PROJECT(digikam-sc)
+project(digikam-sc)
 
-FIND_PACKAGE(KDE4 REQUIRED)
-INCLUDE(KDE4Defaults)
-INCLUDE(MacroLibrary)
-INCLUDE(MacroOptionalAddSubdirectory)
+find_package(KDE4 REQUIRED)
+include(KDE4Defaults)
+include(MacroLibrary)
+include(MacroOptionalAddSubdirectory)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
-OPTION(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
-OPTION(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
-OPTION(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
-OPTION(DIGIKAMSC_USE_PRIVATE_SHAREDLIBS  "Build local shared libraries instead of using distributed files (default=OFF)"          OFF)
+option(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
+option(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
+option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
+option(DIGIKAMSC_USE_PRIVATE_SHAREDLIBS  "Build local shared libraries instead of using distributed files (default=OFF)"          OFF)
 
 ###########################################################################################################################################
 
@@ -52,115 +34,128 @@ MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 # by ourselves, because we depend on newer versions. If you want
 # to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1
 # as an argument to CMake.
-IF(NOT DIGIKAMSC_USE_PRIVATE_SHAREDLIBS)
-    IF(${KDE_VERSION} VERSION_LESS "4.6.95")
-        SET(ENABLE_PRIVATE_SHAREDLIBS 1)
-    ELSE()
-        SET(ENABLE_PRIVATE_SHAREDLIBS 0)
-    ENDIF()
-ELSE()
-    SET(ENABLE_PRIVATE_SHAREDLIBS 1)
-ENDIF()
+if(NOT DIGIKAMSC_USE_PRIVATE_SHAREDLIBS)
 
-IF(ENABLE_CHECKOUT_PO)
-    FIND_PACKAGE(Ruby)
+    if(${KDE_VERSION} VERSION_LESS "4.6.95")
+        set(ENABLE_PRIVATE_SHAREDLIBS 1)
+    else()
+        set(ENABLE_PRIVATE_SHAREDLIBS 0)
+    endif()
 
-    IF(RUBY_EXECUTABLE)
-        MESSAGE(STATUS "Extract translation files from KDE repositories. Please wait, it can take a while...")
-        EXECUTE_PROCESS(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n.rb"
+else()
+
+    set(ENABLE_PRIVATE_SHAREDLIBS 1)
+
+endif()
+
+if(ENABLE_CHECKOUT_PO)
+
+    find_package(Ruby)
+
+    if(RUBY_EXECUTABLE)
+        message(STATUS "Extract translation files from KDE repositories. Please wait, it can take a while...")
+        execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n.rb"
                         WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
                         OUTPUT_QUIET
                         ERROR_QUIET)
-        MESSAGE(STATUS "Translation files extraction done.")
-    ELSE()
-        MESSAGE(STATUS "Could not find Ruby to extract translation files")
-    ENDIF()
-ENDIF()
+        message(STATUS "Translation files extraction done.")
+    else()
+        message(STATUS "Could not find Ruby to extract translation files")
+    endif()
 
-IF(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
-    MESSAGE(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
-    IF(NOT ENABLE_CHECKOUT_PO)
-        MESSAGE(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
-    ENDIF()
-    SET(ENABLE_COMPILE_PO 0)
-ENDIF()
+endif()
 
-IF(ENABLE_PRIVATE_SHAREDLIBS)
-    MESSAGE(STATUS "Local shared libraries will be compiled........ YES")
-ELSE()
-    MESSAGE(STATUS "Local shared libraries will be compiled........ NO")
-ENDIF()
+if(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
-IF(DIGIKAMSC_COMPILE_DOC)
-    MESSAGE(STATUS "Handbooks will be compiled..................... YES")
-ELSE()
-    MESSAGE(STATUS "Handbooks will be compiled..................... NO")
-ENDIF()
+    message(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
 
-IF(ENABLE_CHECKOUT_PO)
-    MESSAGE(STATUS "Extract translations files..................... YES")
-ELSE()
-    MESSAGE(STATUS "Extract translations files..................... NO")
-ENDIF()
+    if(NOT ENABLE_CHECKOUT_PO)
+        message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
+    endif()
 
-IF(ENABLE_COMPILE_PO)
-    MESSAGE(STATUS "Translations will be compiled.................. YES")
-ELSE()
-    MESSAGE(STATUS "Translations will be compiled.................. NO")
-ENDIF()
+    set(ENABLE_COMPILE_PO 0)
+
+endif()
+
+message(STATUS "----------------------------------------------------------------------------------")
+message(STATUS "Starting CMake configuration for: digiKam Software Collection")
+
+if(ENABLE_PRIVATE_SHAREDLIBS)
+    message(STATUS "Local shared libraries will be compiled........ YES")
+else()
+    message(STATUS "Local shared libraries will be compiled........ NO")
+endif()
+
+if(DIGIKAMSC_COMPILE_DOC)
+    message(STATUS "Handbooks will be compiled..................... YES")
+else()
+    message(STATUS "Handbooks will be compiled..................... NO")
+endif()
+
+if(ENABLE_CHECKOUT_PO)
+    message(STATUS "Extract translations files..................... YES")
+else()
+    message(STATUS "Extract translations files..................... NO")
+endif()
+
+if(ENABLE_COMPILE_PO)
+    message(STATUS "Translations will be compiled.................. YES")
+else()
+    message(STATUS "Translations will be compiled.................. NO")
+endif()
 
 ############################################################################################################################################
 
-IF(ENABLE_COMPILE_PO)
-    SET_PROPERTY(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
-ENDIF()
+if(ENABLE_COMPILE_PO)
+    set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+endif()
 
-IF(KDE4_BUILD_TESTS)
-    INCLUDE(CTest)
+if(KDE4_BUILD_TESTS)
+    include(CTest)
     ENABLE_TESTING()
-ENDIF()
+endif()
 
 # Make sure that the FindXXX modules of the local libraries are found
-IF(ENABLE_PRIVATE_SHAREDLIBS)
+if(ENABLE_PRIVATE_SHAREDLIBS)
     # prepend our own FindXXX modules to CMAKE_MODULE_PATH
-    SET(CMAKE_MODULE_PATH
+    set(CMAKE_MODULE_PATH
         ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
         ${CMAKE_MODULE_PATH}
-        )
-ENDIF()
+       )
+endif()
 
 # prepend our own FindXXX modules to CMAKE_MODULE_PATH
-SET(CMAKE_MODULE_PATH
+set(CMAKE_MODULE_PATH
     ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
     ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
     ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
     ${CMAKE_SOURCE_DIR}/cmake/modules
     ${CMAKE_MODULE_PATH}
-    )
+   )
 
-IF(ENABLE_PRIVATE_SHAREDLIBS)
+if(ENABLE_PRIVATE_SHAREDLIBS)
     # from kdegraphics/libs
-    SET(KIPI_LOCAL_DIR extra/libkipi)
-    SET(KEXIV2_LOCAL_DIR extra/libkexiv2)
-    SET(KDCRAW_LOCAL_DIR extra/libkdcraw)
-    SET(KFACE_LOCAL_DIR extra/libkface)
-    SET(KSANE_LOCAL_DIR extra/libksane)
+    set(KIPI_LOCAL_DIR   extra/libkipi)
+    set(KEXIV2_LOCAL_DIR extra/libkexiv2)
+    set(KDCRAW_LOCAL_DIR extra/libkdcraw)
+    set(KFACE_LOCAL_DIR  extra/libkface)
+    set(KSANE_LOCAL_DIR  extra/libksane)
 
     #from extragear/libs
-    SET(KGEOMAP_LOCAL_DIR extra/libkgeomap)
-    SET(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
-    SET(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
-ENDIF()
+    set(KGEOMAP_LOCAL_DIR       extra/libkgeomap)
+    set(MEDIAWIKI_LOCAL_DIR     extra/libmediawiki)
+    set(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
+endif()
 
-ADD_SUBDIRECTORY(extra)
-ADD_SUBDIRECTORY(core)
+add_subdirectory(extra)
+add_subdirectory(core)
 
-IF(ENABLE_COMPILE_DOC)
+if(ENABLE_COMPILE_DOC)
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(doc)
-ENDIF()
+endif()
 
-IF(ENABLE_COMPILE_PO)
-    FIND_PACKAGE(Msgfmt REQUIRED)
-    FIND_PACKAGE(Gettext REQUIRED)
-    ADD_SUBDIRECTORY(po)
-ENDIF()
+if(ENABLE_COMPILE_PO)
+    find_package(Msgfmt  REQUIRED)
+    find_package(Gettext REQUIRED)
+    add_subdirectory(po)
+endif()
