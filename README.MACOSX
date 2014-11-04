@@ -81,8 +81,8 @@ to run temporally somewhere in your home directory :
 * In you prefered directory dedicated to store and compile source code, checkout digiKam Software Compilation 
 * from KDE git/master repository, and start cmake configuration:
 
-> git clone git://anongit.kde.org/digikam-software-compilation ./3.x
-> cd 3.x
+> git clone git://anongit.kde.org/digikam-software-compilation ./dsc
+> cd dsc
 > ./download-repos
 > ./bootstrap.macports
 
