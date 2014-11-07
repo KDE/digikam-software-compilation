@@ -19,28 +19,30 @@ port -v selfupdate
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin 
-port install kdelibs4 
+port install kdelibs4
 port install kde4-baseapps
-port install opencv 
-port install marble 
+port install opencv
+port install marble
 port install oxygen-icons
 port install sane-backends
-port install libgpod 
+port install libgpod
 port install libgphoto2
-port install lensfun 
-port install liblqr 
-port install libraw 
+port install lensfun
+port install liblqr
+port install libraw
 port install eigen3
 port install sqlite2
+port install baloo
+
 
 # For Color themes support
 
-port install kdeartwork 
+port install kdeartwork
 
 # For video support
 
-port install kdemultimedia4 
-port install ffmpegthumbs 
+port install kdemultimedia4
+port install ffmpegthumbs
 
 # Mysql support.
 
