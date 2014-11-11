@@ -34,7 +34,7 @@ desc=$(<build/git_branches.txt)
 
 cd ./build
 
-cov-build --dir cov-int --tmpdir ~/tmp make
+cov-build --dir cov-int --tmpdir ~/tmp make -j8
 tar czvf myproject.tgz cov-int
 
 echo "-- SCAN Import description --"
