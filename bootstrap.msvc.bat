@@ -32,6 +32,7 @@ cmake -G "NMake Makefiles" . ^
       -DDIGIKAMSC_COMPILE_PO=OFF ^
       -DDIGIKAMSC_COMPILE_DOC=OFF ^
       -DENABLE_LCMS2=OFF ^
+      -DENABLE_MYSQLSUPPORT=OFF ^
       -DENABLE_INTERNALMYSQL=OFF ^
       -Wno-dev ^
       -DEXPAT_LIBRARY=%KDE4_INSTALL_DIR%/lib/expat.lib ^
