@@ -30,9 +30,9 @@ MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO ENABLE_CHECKOUT_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
 
-# If building for KDE<4.6.95, we need to build some parts of KDE-graphics
+# If building for KDE < 4.6.95, we need to build some parts of KDE-graphics
 # by ourselves, because we depend on newer versions. If you want
-# to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS:BOOL=1
+# to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON
 # as an argument to CMake.
 if(NOT DIGIKAMSC_USE_PRIVATE_SHAREDLIBS)
 
