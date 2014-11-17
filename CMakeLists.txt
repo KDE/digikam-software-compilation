@@ -19,34 +19,39 @@ include(MacroOptionalAddSubdirectory)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
+# doc and translations options
+
 option(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
 option(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
-option(DIGIKAMSC_USE_PRIVATE_SHAREDLIBS  "Build local shared libraries instead of using distributed files (default=OFF)"          OFF)
+
+# shared libs options
+
+option(DIGIKAMSC_COMPILE_LIBKIPI         "Build local libkipi library instead of using distributed files (default=OFF)"           OFF)
+option(DIGIKAMSC_COMPILE_LIBKEXIV2       "Build local libkexiv2 library instead of using distributed files (default=OFF)"         OFF)
+option(DIGIKAMSC_COMPILE_LIBKDCRAW       "Build local libkdcraw library instead of using distributed files (default=OFF)"         OFF)
+option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
+option(DIGIKAMSC_COMPILE_LIBKFACE        "Build local libkface library instead of using distributed files (default=OFF)"          OFF)
+option(DIGIKAMSC_COMPILE_LIBKGEOMAP      "Build local libkgeomap library instead of using distributed files (default=OFF)"        OFF)
+option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
+option(DIGIKAMSC_COMPILE_LIBKVKONTAKTE   "Build local libkvkontakte library instead of using distributed files (default=OFF)"     OFF)
 
 ###########################################################################################################################################
 
-MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO ENABLE_CHECKOUT_PO)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO  ENABLE_COMPILE_PO)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC ENABLE_COMPILE_DOC)
+MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO           ENABLE_CHECKOUT_PO)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO            ENABLE_COMPILE_PO)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC           ENABLE_COMPILE_DOC)
 
-# If building for KDE < 4.6.95, we need to build some parts of KDE-graphics
-# by ourselves, because we depend on newer versions. If you want
-# to force building of these libraries, specify -DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=ON
-# as an argument to CMake.
-if(NOT DIGIKAMSC_USE_PRIVATE_SHAREDLIBS)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKIPI       ENABLE_COMPILE_LIBKIPI)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKEXIV2     ENABLE_COMPILE_LIBKEXIV2)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKDCRAW     ENABLE_COMPILE_LIBKDCRAW)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKSANE      ENABLE_COMPILE_LIBKSANE)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKFACE      ENABLE_COMPILE_LIBKFACE)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKGEOMAP    ENABLE_COMPILE_LIBKGEOMAP)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBMEDIAWIKI  ENABLE_COMPILE_LIBMEDIAWIKI)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKVKONTAKTE ENABLE_COMPILE_LIBKVKONTAKTE)
 
-    if(${KDE_VERSION} VERSION_LESS "4.6.95")
-        set(ENABLE_PRIVATE_SHAREDLIBS 1)
-    else()
-        set(ENABLE_PRIVATE_SHAREDLIBS 0)
-    endif()
-
-else()
-
-    set(ENABLE_PRIVATE_SHAREDLIBS 1)
-
-endif()
+###########################################################################################################################################
 
 if(ENABLE_CHECKOUT_PO)
 
@@ -77,19 +82,66 @@ if(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
 endif()
 
+if(ENABLE_COMPILE_PO)
+    set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+endif()
+
+if(KDE4_BUILD_TESTS)
+    include(CTest)
+    ENABLE_TESTING()
+endif()
+
+############################################################################################################################################
+
 message(STATUS "----------------------------------------------------------------------------------")
 message(STATUS "Starting CMake configuration for: digiKam Software Collection")
 
-if(ENABLE_PRIVATE_SHAREDLIBS)
-    message(STATUS "Local shared libraries will be compiled........ YES")
+if(ENABLE_COMPILE_LIBKIPI)
+    message(STATUS "Local shared libkipi will be compiled.......... YES")
 else()
-    message(STATUS "Local shared libraries will be compiled........ NO")
+    message(STATUS "Local shared libkipi will be compiled.......... NO")
 endif()
 
-if(DIGIKAMSC_COMPILE_DOC)
-    message(STATUS "Handbooks will be compiled..................... YES")
+if(ENABLE_COMPILE_LIBKEXIV2)
+    message(STATUS "Local shared libkexiv2 will be compiled........ YES")
 else()
-    message(STATUS "Handbooks will be compiled..................... NO")
+    message(STATUS "Local shared libkexiv2 will be compiled........ NO")
+endif()
+
+if(ENABLE_COMPILE_LIBKDCRAW)
+    message(STATUS "Local shared libkdcraw will be compiled........ YES")
+else()
+    message(STATUS "Local shared libkdcraw will be compiled........ NO")
+endif()
+
+if(ENABLE_COMPILE_LIBKSANE)
+    message(STATUS "Local shared libksane will be compiled......... YES")
+else()
+    message(STATUS "Local shared libksane will be compiled......... NO")
+endif()
+
+if(ENABLE_COMPILE_LIBKFACE)
+    message(STATUS "Local shared libkface will be compiled......... YES")
+else()
+    message(STATUS "Local shared libkface will be compiled......... NO")
+endif()
+
+if(ENABLE_COMPILE_LIBKGEOMAP)
+    message(STATUS "Local shared libkgeomap will be compiled....... YES")
+else()
+    message(STATUS "Local shared libkgeomap will be compiled....... NO")
+endif()
+
+if(ENABLE_COMPILE_LIBMEDIAWIKI)
+    message(STATUS "Local shared libmediawiki will be compiled..... YES")
+else()
+    message(STATUS "Local shared libmediawiki will be compiled..... NO")
+endif()
+
+if(ENABLE_COMPILE_LIBKVKONTAKTE)
+    message(STATUS "Local shared libkvkontakte will be compiled.... YES")
+else()
+    message(STATUS "Local shared libkvkontakte will be compiled.... NO")
 endif()
 
 if(ENABLE_CHECKOUT_PO)
@@ -104,27 +156,22 @@ else()
     message(STATUS "Translations will be compiled.................. NO")
 endif()
 
-############################################################################################################################################
-
-if(ENABLE_COMPILE_PO)
-    set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
+if(ENABLE_COMPILE_DOC)
+    message(STATUS "Handbooks will be compiled..................... YES")
+else()
+    message(STATUS "Handbooks will be compiled..................... NO")
 endif()
 
 if(KDE4_BUILD_TESTS)
-    include(CTest)
-    ENABLE_TESTING()
+    message(STATUS "Tests code will be compiled.................... YES")
+else()
+    message(STATUS "Tests code will be compiled.................... NO")
 endif()
 
-# Make sure that the FindXXX modules of the local libraries are found
-if(ENABLE_PRIVATE_SHAREDLIBS)
-    # prepend our own FindXXX modules to CMAKE_MODULE_PATH
-    set(CMAKE_MODULE_PATH
-        ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules
-        ${CMAKE_MODULE_PATH}
-       )
-endif()
+############################################################################################################################################
 
-# prepend our own FindXXX modules to CMAKE_MODULE_PATH
+# Make sure that the FindXXX modules of the local libraries are found and set compilation variables if necessary
+
 set(CMAKE_MODULE_PATH
     ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
     ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
@@ -133,19 +180,40 @@ set(CMAKE_MODULE_PATH
     ${CMAKE_MODULE_PATH}
    )
 
-if(ENABLE_PRIVATE_SHAREDLIBS)
-    # from kdegraphics/libs
-    set(KIPI_LOCAL_DIR   extra/libkipi)
-    set(KEXIV2_LOCAL_DIR extra/libkexiv2)
-    set(KDCRAW_LOCAL_DIR extra/libkdcraw)
-    set(KFACE_LOCAL_DIR  extra/libkface)
-    set(KSANE_LOCAL_DIR  extra/libksane)
+if(ENABLE_COMPILE_LIBKIPI)
+    set(KIPI_LOCAL_DIR extra/libkipi)
+endif()
 
-    #from extragear/libs
-    set(KGEOMAP_LOCAL_DIR       extra/libkgeomap)
-    set(MEDIAWIKI_LOCAL_DIR     extra/libmediawiki)
+if(ENABLE_COMPILE_LIBKEXIV2)
+    set(KEXIV2_LOCAL_DIR extra/libkexiv2)
+endif()
+
+if(ENABLE_COMPILE_LIBKFACE)
+    set(KFACE_LOCAL_DIR extra/libkface)
+endif()
+
+if(ENABLE_COMPILE_LIBKSANE)
+    set(KSANE_LOCAL_DIR extra/libksane)
+endif()
+
+if(ENABLE_COMPILE_LIBKDCRAW)
+    set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules ${CMAKE_MODULE_PATH})
+    set(KDCRAW_LOCAL_DIR extra/libkdcraw)
+endif()
+
+if(ENABLE_COMPILE_LIBKGEOMAP)
+    set(KGEOMAP_LOCAL_DIR extra/libkgeomap)
+endif()
+
+if(ENABLE_COMPILE_LIBMEDIAWIKI)
+    set(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
+endif()
+
+if(ENABLE_COMPILE_LIBKVKONTAKTE)
     set(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
 endif()
+
+############################################################################################################################################
 
 add_subdirectory(extra)
 add_subdirectory(core)

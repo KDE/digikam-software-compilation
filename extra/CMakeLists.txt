@@ -7,20 +7,36 @@
 find_package(KDE4 REQUIRED)
 include(MacroOptionalAddSubdirectory)
 
-if(${ENABLE_PRIVATE_SHAREDLIBS})
-
-    # from kdegraphics/libs
-    add_subdirectory(libkipi)
+if(ENABLE_COMPILE_LIBKEXIV2)
     add_subdirectory(libkexiv2)
+endif()
+
+if(ENABLE_COMPILE_LIBKDCRAW)
     add_subdirectory(libkdcraw)
-    add_subdirectory(libkface)
+endif()
+
+if(ENABLE_COMPILE_LIBKIPI)
+    add_subdirectory(libkipi)
+endif()
+
+if(ENABLE_COMPILE_LIBKGEOMAP)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkgeomap)
+endif()
+
+if(ENABLE_COMPILE_LIBKFACE)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkface)
+endif()
+
+if(ENABLE_COMPILE_LIBKSANE)
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(libksane)
+endif()
 
-    # from extragear/libs
-    add_subdirectory(libkgeomap)
+if(ENABLE_COMPILE_LIBMEDIAWIKI)
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
-    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
+endif()
 
+if(ENABLE_COMPILE_LIBKVKONTAKTE)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
 endif()
 
 add_subdirectory(kipi-plugins)

@@ -18,7 +18,7 @@ To download all needed git repositories, execute download script like this: perl
 
 * To compile all source code: 
 
-- take a look on each README files to resolve dependencies...
+- take a look on each README files to resolve dependencies.
 
 - COMPONENTS ---------------------------------------------------------------
 
@@ -68,8 +68,8 @@ See below an example of .gitconfig file working with a developer account :
         editor = mcedit
 
 [user]
-        name = Gilles Caulier
-        email = caulier.gilles@gmail.com
+        name = my name
+        email = my email
 
 [push]
         default = tracking
@@ -120,12 +120,20 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 
 - CMAKE OPTIONS --------------------------------------------------------------
 
-"-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=on"    Force to use local libkipi, libkexiv2, and libkdcraw, etc implementation
-                                           instead KDE version installed on your computer.
-"-DDIGIKAMSC_COMPILE_DOC=on"               Build handbook files.
-"-DDIGIKAMSC_CHECKOUT_PO=on"               Extract po files from KDE repositories.
-"-DDIGIKAMSC_COMPILE_PO=on"                Build translations files. It require to checkout po files before from KDE repositories
-                                           using ./project/release/fetch_l10n.rb Ruby script.
+"-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook files.
+"-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract po files from KDE repositories using ./project/release/fetch_l10n.rb Ruby script.
+"-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
+
+"-DKDE4_BUILD_TESTS=on"                    Build tests code.
+
+"-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF"        Force to use local libkdcraw instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF"       Force to use local libkgeomap instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF"    Force to use local libkvkontakte instead version installed on your computer.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 
