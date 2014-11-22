@@ -20,12 +20,12 @@ if(ENABLE_COMPILE_LIBKFACE)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libkface)
 endif()
 
-if(ENABLE_COMPILE_LIBKIPI)
-    add_subdirectory(libkipi)
-endif()
-
 if(ENABLE_COMPILE_LIBKSANE)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libksane)
+endif()
+
+if(ENABLE_COMPILE_LIBKIPI)
+    add_subdirectory(libkipi)
 endif()
 
 if(ENABLE_COMPILE_LIBMEDIAWIKI)
