@@ -4,18 +4,37 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-cmake_minimum_required(VERSION 2.8.4)
+project(digikam-software-collection)
 
-if(POLICY CMP0011)
-   cmake_policy(SET CMP0017 NEW)
-endif()
+message(STATUS "----------------------------------------------------------------------------------")
+message(STATUS "Starting CMake configuration for: ${PROJECT_NAME}")
 
-project(digikam-sc)
+set(CMAKE_MIN_VERSION   "2.8.12")
+set(ECM_MIN_VERSION     "1.1.0")
+set(KF5_VERSION         "5.1.0")
+set(REQUIRED_QT_VERSION "5.2.0")
+set(EXIV2_MIN_VERSION   "0.24")
 
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-include(MacroLibrary)
-include(MacroOptionalAddSubdirectory)
+cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
+
+############## ECM setup #################################################################################################################
+
+find_package(ECM ${ECM_MIN_VERSION} CONFIG REQUIRED)
+set(CMAKE_MODULE_PATH ${digikam-software-collection_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
+
+include(ECMGenerateHeaders)
+include(ECMGeneratePriFile)
+include(ECMPackageConfigHelpers)
+include(ECMSetupVersion)
+include(ECMMarkNonGuiExecutable)
+include(ECMOptionalAddSubdirectory)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDEFrameworkCompilerSettings)
+include(GenerateExportHeader)
+include(FeatureSummary)
+
+include(MacroBoolTo01)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
@@ -92,9 +111,6 @@ if(KDE4_BUILD_TESTS)
 endif()
 
 ############################################################################################################################################
-
-message(STATUS "----------------------------------------------------------------------------------")
-message(STATUS "Starting CMake configuration for: digiKam Software Collection")
 
 if(ENABLE_COMPILE_LIBKIPI)
     message(STATUS "Local shared libkipi will be compiled.......... YES")
