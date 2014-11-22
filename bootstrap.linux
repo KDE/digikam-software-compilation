@@ -1,22 +1,20 @@
 #!/bin/sh
 
 # Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
-#
+# 
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-DIGIKAM_INSTALL_PREFIX=`kf5-config --prefix 2>/dev/null`
+DIGIKAM_INSTALL_PREFIX=`kde4-config --prefix`
 
 QT_INSTALL_PREFIX=`qmake -query "QT_INSTALL_PREFIX"`
 QT_BIN=$QT_INSTALL_PREFIX/bin
 export PATH=$QT_BIN:$PATH
 export MAKEFILES_TYPE='Unix Makefiles'
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kf5-config --path lib 2>/dev/null`/pkgconfig
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kde4-config --path lib`
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kde4-config --path lib`/pkgconfig
 
-echo "Qt  Install Path : $QT_INSTALL_PREFIX"
-echo "KF5 Install Path : $DIGIKAM_INSTALL_PREFIX"
 
 #export VERBOSE=1
 #export CC=gcc4.4
@@ -29,9 +27,9 @@ fi
 cd build
 
 cmake -G "$MAKEFILES_TYPE" . \
-      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_BUILD_TYPE=debugfull \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX \
-      -DBUILD_TESTING=ON \
+      -DKDE4_BUILD_TESTS=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_COMPILE_PO=OFF \
       -DDIGIKAMSC_COMPILE_DOC=ON \
