@@ -124,7 +124,7 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 "-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract po files from KDE repositories using ./project/release/fetch_l10n.rb Ruby script.
 "-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
 
-"-DKDE4_BUILD_TESTS=on"                    Build tests code.
+"-DBUILD_TESTING=ON"                       Build tests code.
 
 "-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
@@ -134,6 +134,9 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 "-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF"       Force to use local libkgeomap instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF"    Force to use local libkvkontakte instead version installed on your computer.
+
+"-DDIGIKAMSC_COMPILE_PLUGINS=ON"           Compile Kipi-plugins.
+"-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON"     Compile digiKam core.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 

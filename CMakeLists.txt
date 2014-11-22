@@ -55,6 +55,9 @@ option(DIGIKAMSC_COMPILE_LIBKGEOMAP      "Build local libkgeomap library instead
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
 option(DIGIKAMSC_COMPILE_LIBKVKONTAKTE   "Build local libkvkontakte library instead of using distributed files (default=OFF)"     OFF)
 
+option(DIGIKAMSC_COMPILE_PLUGINS         "Build Kipi-plugins (default=OFF)"                                                       OFF)
+option(DIGIKAMSC_COMPILE_CORE            "Build digiKam core (default=OFF)"                                                       OFF)
+
 ###########################################################################################################################################
 
 MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO           ENABLE_CHECKOUT_PO)
@@ -69,6 +72,9 @@ MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKFACE      ENABLE_COMPILE_LIBKFACE)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKGEOMAP    ENABLE_COMPILE_LIBKGEOMAP)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBMEDIAWIKI  ENABLE_COMPILE_LIBMEDIAWIKI)
 MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKVKONTAKTE ENABLE_COMPILE_LIBKVKONTAKTE)
+
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PLUGINS       ENABLE_COMPILE_PLUGINS)
+MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_CORE          ENABLE_COMPILE_CORE)
 
 ###########################################################################################################################################
 
@@ -232,7 +238,10 @@ endif()
 ############################################################################################################################################
 
 add_subdirectory(extra)
-add_subdirectory(core)
+
+if(ENABLE_COMPILE_CORE)
+    add_subdirectory(core)
+endif()
 
 if(ENABLE_COMPILE_DOC)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
