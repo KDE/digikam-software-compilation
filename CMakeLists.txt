@@ -235,7 +235,7 @@ add_subdirectory(extra)
 add_subdirectory(core)
 
 if(ENABLE_COMPILE_DOC)
-    MACRO_OPTIONAL_ADD_SUBDIRECTORY(doc)
+    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
 endif()
 
 if(ENABLE_COMPILE_PO)
