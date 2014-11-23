@@ -6,7 +6,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 # Arguments : $1 : install path '/opt/local' (default).
-#             $2 : build type   'debugfull' to hack (default), 'release' for production.
+#             $2 : build type   'debug' to hack (default), 'release' for production.
 #             $3 : target type  'x86_64' for OSX Lion (default), 'i386' for Snow Leopard.
 
 # set devel env from MacOS-X through MacPorts
@@ -21,14 +21,14 @@ export MAKEFILES_TYPE='Unix Makefiles'
 INSTALL_PREFIX=$1
 if [ "$INSTALL_PREFIX" = "" ]; then
         INSTALL_PREFIX=/opt/local
-        BUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4
+        BUNDLE_INSTALL_DIR=/Applications/MacPorts/KF5
 else
-       BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/MacPorts/KDE4
+       BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/MacPorts/KF5
 fi
 
 BUILD_TYPE=$2
 if [ "$BUILD_TYPE" = "" ]; then
-        BUILD_TYPE=debugfull
+        BUILD_TYPE=debug
 fi
 
 TARGET_TYPE=$3
@@ -46,20 +46,22 @@ cd build
 
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
-      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+      -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX}/ \
       -DCMAKE_OSX_ARCHITECTURES=${TARGET_TYPE} \
-      -DKDE4_BUILD_TESTS=ON \
+      -DBUILD_TESTING=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_COMPILE_PO=OFF \
       -DDIGIKAMSC_COMPILE_DOC=ON \
-      -DDIGIKAMSC_COMPILE_LIBKIPI=OFF \
-      -DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF \
-      -DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF \
-      -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
-      -DDIGIKAMSC_COMPILE_LIBKFACE=OFF \
-      -DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF \
+      -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
+      -DDIGIKAMSC_COMPILE_LIBKEXIV2=ON \
+      -DDIGIKAMSC_COMPILE_LIBKDCRAW=ON \
+      -DDIGIKAMSC_COMPILE_LIBKFACE=ON \
+      -DDIGIKAMSC_COMPILE_LIBKGEOMAP=ON \
+      -DDIGIKAMSC_COMPILE_LIBKSANE=ON \
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
       -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
+      -DDIGIKAMSC_COMPILE_PLUGINS=OFF \
+      -DDIGIKAMSC_COMPILE_CORE=OFF \
       -DENABLE_LCMS2=ON \
       -DENABLE_BALOOSUPPORT=ON \
       -DENABLE_KDEPIMLIBSSUPPORT=ON \
