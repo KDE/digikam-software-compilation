@@ -181,6 +181,18 @@ else()
     message(STATUS "Handbooks will be compiled..................... NO")
 endif()
 
+if(ENABLE_COMPILE_PLUGINS)
+    message(STATUS "Kipi-plugins will be compiled.................. YES")
+else()
+    message(STATUS "Kipi-plugins will be compiled.................. NO")
+endif()
+
+if(ENABLE_COMPILE_CORE)
+    message(STATUS "digiKam core will be compiled.................. YES")
+else()
+    message(STATUS "digiKam core will be compiled.................. NO")
+endif()
+
 if(KDE4_BUILD_TESTS)
     message(STATUS "Tests code will be compiled.................... YES")
 else()
