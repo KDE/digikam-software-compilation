@@ -4,6 +4,5 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-ECM_OPTIONAL_ADD_SUBDIRECTORY(digikam/digikam)
-ECM_OPTIONAL_ADD_SUBDIRECTORY(digikam/showfoto)
+ECM_OPTIONAL_ADD_SUBDIRECTORY(digikam)
 ECM_OPTIONAL_ADD_SUBDIRECTORY(kipi-plugins)
