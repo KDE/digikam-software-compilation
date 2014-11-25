@@ -80,7 +80,7 @@ if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
         message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
     endif()
 
-    set(DIGIKAMSC_COMPILE_PO 0)
+    set(DIGIKAMSC_COMPILE_PO OFF)
 
 endif()
 
