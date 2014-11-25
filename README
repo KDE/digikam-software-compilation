@@ -10,9 +10,13 @@ This is a super-repository that helps to download and compile digiKam with all c
 
 * To checkout all source code:
 
-- PERL <http://www.perl.org>
-- GIT  <http://git-scm.com>
-- RUBY <http://www.ruby-lang.org> (optional, to extract translations files from KDE repositories)
+- PERL     <http://www.perl.org>
+- GIT      <http://git-scm.com>
+
+* To process translations files (optional)
+
+- RUBY     <http://www.ruby-lang.org>             (to extract translations files from KDE repositories)
+- Gettext  <https://www.gnu.org/software/gettext> (including Msgfmt)
 
 To download all needed git repositories, execute download script like this: perl ./download-repos
 
@@ -22,23 +26,22 @@ To download all needed git repositories, execute download script like this: perl
 
 - COMPONENTS ---------------------------------------------------------------
 
-* digiKam Redmine page can be found here :
+* Redmine project pages can be found here :
 
-https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
+Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
+libkface         : https://projects.kde.org/projects/extragear/libs/libkface
+libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
+libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
+libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
+libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
+libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
+libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
+libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
 
-* Extra components managed by this Software Compilation are listed below:
-
-- kipi-plugins
-- libkipi
-- libkexiv2
-- libkdcraw
-- libkface
-- libkgeomap
-- libksane
-- libmediawiki
-- libkvkontatke
-
-* This Software Collection include also digiKam and Kipi-plugins handbooks.
+digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
+Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
 
 - NOTES ---------------------------------------------------------------------
 
@@ -100,23 +103,6 @@ See below an example of .gitconfig file working with a developer account :
 
 [color "sh"]
         branch = yellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [color "sh"]                                                                                                                                                                                                       
-
-
-- REDMINE PROJECT PAGES -----------------------------------------------------
-
-digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
-digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
-digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
-Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
-Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
-libkface         : https://projects.kde.org/projects/extragear/libs/libkface
-libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
-libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
-libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
-libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
-libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
-libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
-libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 
 - CMAKE OPTIONS --------------------------------------------------------------
 

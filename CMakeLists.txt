@@ -17,7 +17,7 @@ cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
 ############## ECM setup #################################################################################################################
 
 find_package(ECM ${ECM_MIN_VERSION} CONFIG REQUIRED)
-set(CMAKE_MODULE_PATH ${digikam-software-collection_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 include(ECMGenerateHeaders)
 include(ECMGeneratePriFile)
@@ -30,8 +30,6 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings)
 include(GenerateExportHeader)
 include(FeatureSummary)
-
-include(MacroBoolTo01)
 
 # COMPILATION OPTIONS MANAGEMENT ###########################################################################################################
 
@@ -57,25 +55,7 @@ option(DIGIKAMSC_COMPILE_CORE            "Build digiKam core (default=OFF)"     
 
 ###########################################################################################################################################
 
-MACRO_BOOL_TO_01(DIGIKAMSC_CHECKOUT_PO           ENABLE_CHECKOUT_PO)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PO            ENABLE_COMPILE_PO)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_DOC           ENABLE_COMPILE_DOC)
-
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKIPI       ENABLE_COMPILE_LIBKIPI)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKEXIV2     ENABLE_COMPILE_LIBKEXIV2)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKDCRAW     ENABLE_COMPILE_LIBKDCRAW)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKSANE      ENABLE_COMPILE_LIBKSANE)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKFACE      ENABLE_COMPILE_LIBKFACE)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKGEOMAP    ENABLE_COMPILE_LIBKGEOMAP)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBMEDIAWIKI  ENABLE_COMPILE_LIBMEDIAWIKI)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_LIBKVKONTAKTE ENABLE_COMPILE_LIBKVKONTAKTE)
-
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_PLUGINS       ENABLE_COMPILE_PLUGINS)
-MACRO_BOOL_TO_01(DIGIKAMSC_COMPILE_CORE          ENABLE_COMPILE_CORE)
-
-###########################################################################################################################################
-
-if(ENABLE_CHECKOUT_PO)
+if(DIGIKAMSC_CHECKOUT_PO)
 
     find_package(Ruby)
 
@@ -92,102 +72,102 @@ if(ENABLE_CHECKOUT_PO)
 
 endif()
 
-if(ENABLE_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
+if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
     message(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
 
-    if(NOT ENABLE_CHECKOUT_PO)
+    if(NOT DIGIKAMSC_CHECKOUT_PO)
         message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
     endif()
 
-    set(ENABLE_COMPILE_PO 0)
+    set(DIGIKAMSC_COMPILE_PO 0)
 
 endif()
 
-if(ENABLE_COMPILE_PO)
+if(DIGIKAMSC_COMPILE_PO)
     set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 endif()
 
 if(KDE4_BUILD_TESTS)
     include(CTest)
-    ENABLE_TESTING()
+    DIGIKAMSC_TESTING()
 endif()
 
 ############################################################################################################################################
 
-if(ENABLE_COMPILE_LIBKIPI)
+if(DIGIKAMSC_COMPILE_LIBKIPI)
     message(STATUS "Local shared libkipi will be compiled.......... YES")
 else()
     message(STATUS "Local shared libkipi will be compiled.......... NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKEXIV2)
+if(DIGIKAMSC_COMPILE_LIBKEXIV2)
     message(STATUS "Local shared libkexiv2 will be compiled........ YES")
 else()
     message(STATUS "Local shared libkexiv2 will be compiled........ NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKDCRAW)
+if(DIGIKAMSC_COMPILE_LIBKDCRAW)
     message(STATUS "Local shared libkdcraw will be compiled........ YES")
 else()
     message(STATUS "Local shared libkdcraw will be compiled........ NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKSANE)
+if(DIGIKAMSC_COMPILE_LIBKSANE)
     message(STATUS "Local shared libksane will be compiled......... YES")
 else()
     message(STATUS "Local shared libksane will be compiled......... NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKFACE)
+if(DIGIKAMSC_COMPILE_LIBKFACE)
     message(STATUS "Local shared libkface will be compiled......... YES")
 else()
     message(STATUS "Local shared libkface will be compiled......... NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKGEOMAP)
+if(DIGIKAMSC_COMPILE_LIBKGEOMAP)
     message(STATUS "Local shared libkgeomap will be compiled....... YES")
 else()
     message(STATUS "Local shared libkgeomap will be compiled....... NO")
 endif()
 
-if(ENABLE_COMPILE_LIBMEDIAWIKI)
+if(DIGIKAMSC_COMPILE_LIBMEDIAWIKI)
     message(STATUS "Local shared libmediawiki will be compiled..... YES")
 else()
     message(STATUS "Local shared libmediawiki will be compiled..... NO")
 endif()
 
-if(ENABLE_COMPILE_LIBKVKONTAKTE)
+if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
     message(STATUS "Local shared libkvkontakte will be compiled.... YES")
 else()
     message(STATUS "Local shared libkvkontakte will be compiled.... NO")
 endif()
 
-if(ENABLE_CHECKOUT_PO)
+if(DIGIKAMSC_CHECKOUT_PO)
     message(STATUS "Extract translations files..................... YES")
 else()
     message(STATUS "Extract translations files..................... NO")
 endif()
 
-if(ENABLE_COMPILE_PO)
+if(DIGIKAMSC_COMPILE_PO)
     message(STATUS "Translations will be compiled.................. YES")
 else()
     message(STATUS "Translations will be compiled.................. NO")
 endif()
 
-if(ENABLE_COMPILE_DOC)
+if(DIGIKAMSC_COMPILE_DOC)
     message(STATUS "Handbooks will be compiled..................... YES")
 else()
     message(STATUS "Handbooks will be compiled..................... NO")
 endif()
 
-if(ENABLE_COMPILE_PLUGINS)
+if(DIGIKAMSC_COMPILE_PLUGINS)
     message(STATUS "Kipi-plugins will be compiled.................. YES")
 else()
     message(STATUS "Kipi-plugins will be compiled.................. NO")
 endif()
 
-if(ENABLE_COMPILE_CORE)
+if(DIGIKAMSC_COMPILE_CORE)
     message(STATUS "digiKam core will be compiled.................. YES")
 else()
     message(STATUS "digiKam core will be compiled.................. NO")
@@ -199,64 +179,19 @@ else()
     message(STATUS "Tests code will be compiled.................... NO")
 endif()
 
-############################################################################################################################################
-
-# Make sure that the FindXXX modules of the local libraries are found and set compilation variables if necessary
-
-set(CMAKE_MODULE_PATH
-    ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
-    ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
-    ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
-    ${CMAKE_SOURCE_DIR}/cmake/modules
-    ${CMAKE_MODULE_PATH}
-   )
-
-if(ENABLE_COMPILE_LIBKIPI)
-    set(KIPI_LOCAL_DIR extra/libkipi)
-endif()
-
-if(ENABLE_COMPILE_LIBKEXIV2)
-    set(KEXIV2_LOCAL_DIR extra/libkexiv2)
-endif()
-
-if(ENABLE_COMPILE_LIBKFACE)
-    set(KFACE_LOCAL_DIR extra/libkface)
-endif()
-
-if(ENABLE_COMPILE_LIBKSANE)
-    set(KSANE_LOCAL_DIR extra/libksane)
-endif()
-
-if(ENABLE_COMPILE_LIBKDCRAW)
-    set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/extra/libkdcraw/cmake/modules ${CMAKE_MODULE_PATH})
-    set(KDCRAW_LOCAL_DIR extra/libkdcraw)
-endif()
-
-if(ENABLE_COMPILE_LIBKGEOMAP)
-    set(KGEOMAP_LOCAL_DIR extra/libkgeomap)
-endif()
-
-if(ENABLE_COMPILE_LIBMEDIAWIKI)
-    set(MEDIAWIKI_LOCAL_DIR extra/libmediawiki)
-endif()
-
-if(ENABLE_COMPILE_LIBKVKONTAKTE)
-    set(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
-endif()
-
-############################################################################################################################################
+#############################################################################################
 
 add_subdirectory(extra)
 
-if(ENABLE_COMPILE_CORE)
+if(DIGIKAMSC_COMPILE_CORE)
     add_subdirectory(core)
 endif()
 
-if(ENABLE_COMPILE_DOC)
+if(DIGIKAMSC_COMPILE_DOC)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
 endif()
 
-if(ENABLE_COMPILE_PO)
+if(DIGIKAMSC_COMPILE_PO)
     find_package(Msgfmt  REQUIRED)
     find_package(Gettext REQUIRED)
     add_subdirectory(po)
