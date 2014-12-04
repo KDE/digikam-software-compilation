@@ -181,6 +181,10 @@ endif()
 
 #############################################################################################
 
+# add a rules to be able to uninstall files.
+configure_file(cmake/templates/cmake_uninstall.cmake.in ${CMAKE_BINARY_DIR}/cmake_uninstall.cmake COPYONLY)
+add_custom_target(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_BINARY_DIR}/cmake_uninstall.cmake")
+
 add_subdirectory(extra)
 
 if(DIGIKAMSC_COMPILE_CORE)
