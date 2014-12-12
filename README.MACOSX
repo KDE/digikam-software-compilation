@@ -62,8 +62,9 @@ Optional Run-time dependencies:
 4 - LIBPGF INSTALLATION
 -----------------------
 
-Since digiKAm 4.5.0, libpgf source code have been dropped from core implementation to 
+Since digiKam 4.5.0, libpgf source code have been dropped from core implementation to 
 use external version of library.
+
 Macports do not provide yet libpgf. Library need to be installed following these commands,
 to run temporally somewhere in your home directory :
 
