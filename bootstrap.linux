@@ -50,5 +50,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DENABLE_KDEPIMLIBSSUPPORT=OFF \
       -DENABLE_MYSQLSUPPORT=ON \
       -DENABLE_INTERNALMYSQL=ON \
+      -DENABLE_VIDEO=ON \
       -Wno-dev \
       ..
