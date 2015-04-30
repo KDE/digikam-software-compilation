@@ -1,36 +1,64 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2008-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c)      2015, Ulf Rompe <kde dot org at rompe dot org>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-DIGIKAM_INSTALL_PREFIX=`kf5-config --prefix 2>/dev/null`
+SOURCEDIR=$PWD
 
-QT_INSTALL_PREFIX=`qmake -query "QT_INSTALL_PREFIX"`
-QT_BIN=$QT_INSTALL_PREFIX/bin
-export PATH=$QT_BIN:$PATH
-export MAKEFILES_TYPE='Unix Makefiles'
+if [ "$1" == "" ]; then
+    MAKEFILES_TYPE='Unix Makefiles'
+    BUILDDIR=$PWD"/build"
+    MESSAGE="Now run make in $BUILDDIR."
+elif [ "$1" == "--eclipse" ]; then
+    MAKEFILES_TYPE='Eclipse CDT4 - Unix Makefiles'
+    ADDITIONAL_CMAKE_FLAGS="-DCMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT=ON $ADDITIONAL_CMAKE_FLAGS"
+    BUILDDIR=$PWD"-debug"
+    MESSAGE="
+Now import these folders as existing projects into Eclipse without
+copying source into the workspace:
+$SOURCEDIR
+$BUILDDIR"
+else
+    echo "Syntax: $0 [--eclipse]"
+    echo "Run without arguments to create a Unix Makefile project in a build subdir."
+    echo "Run with '--eclipse' to create an Eclipse IDE project and build source in a parallel directory."
+    exit 1
+fi
+
+if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
+    DIGIKAM_INSTALL_PREFIX=`kf5-config --prefix 2>/dev/null`
+else
+    # bootstrap.local may have preset DIGIKAM_INSTALL_PREFIX.
+    export PATH=$DIGIKAM_INSTALL_PREFIX/bin:$PATH
+    export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
+    export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
+fi
+
+QT_INSTALL_PREFIX=`qtpaths --install-prefix`
+export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kf5-config --path lib 2>/dev/null`/pkgconfig
 
-echo "Qt  Install Path : $QT_INSTALL_PREFIX"
-echo "KF5 Install Path : $DIGIKAM_INSTALL_PREFIX"
+echo "Qt      Install Path : $QT_INSTALL_PREFIX"
+echo "KF5     Install Path : "`kf5-config --prefix 2>/dev/null`
+echo "digiKam Install Path : $DIGIKAM_INSTALL_PREFIX"
 
 #export VERBOSE=1
 #export CC=gcc4.4
 #export CXX=g++4.4
 
-# Manage build sub-dir
-if [ ! -d "build" ]; then
-    mkdir build
-fi
-cd build
+mkdir -p $DIGIKAM_INSTALL_PREFIX
+mkdir -p $BUILDDIR
+cd $BUILDDIR
 
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX/ \
+      $ADDITIONAL_CMAKE_FLAGS \
       -DBUILD_TESTING=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_COMPILE_PO=OFF \
@@ -45,10 +73,10 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
       -DDIGIKAMSC_COMPILE_PLUGINS=ON \
       -DDIGIKAMSC_COMPILE_CORE=ON \
-      -DENABLE_BALOOSUPPORT=ON \
+      -DENABLE_BALOOSUPPORT=OFF \
       -DENABLE_KDEPIMLIBSSUPPORT=OFF \
       -DENABLE_MYSQLSUPPORT=ON \
       -DENABLE_INTERNALMYSQL=ON \
       -DENABLE_MEDIAPLAYER=OFF \
       -Wno-dev \
-      ..
+      $SOURCEDIR && echo "$MESSAGE"
