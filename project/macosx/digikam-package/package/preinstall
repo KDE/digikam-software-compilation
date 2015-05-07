@@ -1,0 +1,17 @@
+#!/bin/bash
+# Generated (and will be overwritten by) makepackage.sh
+
+if [ `launchctl list | grep -c org.freedesktop.dbus-system` -gt 0 ] ; then
+  echo "Unloading dbus-system"
+  launchctl unload "/opt/digikam/Library/LaunchDaemons/org.freedesktop.dbus-system"
+fi
+
+if [ -d /Applications/digiKam ] ; then
+  echo "Removing digikam from Applications folder"
+  rm -r /Applications/digiKam 
+fi
+
+if [ -d "/opt/digikam" ] ; then
+  echo "Removing /opt/digikam"
+  rm -rf "/opt/digikam"
+fi

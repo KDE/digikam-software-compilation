@@ -1,0 +1,10 @@
+#!/bin/bash
+# Generated (and will be overwritten) by makepackage.sh
+
+launchctl load -w "/opt/digikam/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
+
+[[ ! -d /Applications/digiKam ]] && mkdir "/Applications/digiKam"
+
+for app in /opt/digikam/Applications/digiKam/*.app ; do
+  ln -s "$app" /Applications/digiKam/${app##*/}
+done
