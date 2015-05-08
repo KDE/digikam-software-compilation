@@ -102,6 +102,6 @@ port -fv install texlive-fonts-recommended texlive-fontutils
 # akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port -fv install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
-port -fv install digikam +docs+debug+lcms2+translations+use_private_libs
+port -fv install digikam +docs+debug+lcms2+translations
 
 export PATH=$ORIG_PATH
