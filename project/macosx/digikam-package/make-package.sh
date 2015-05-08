@@ -36,8 +36,7 @@ KDE_APP_PATHS="Applications/KDE4 lib/kde4/libexec"
 OTHER_APPS="bin/dbus-daemon bin/dbus-launch bin/kbuildsycoca4 libexec/dbus-daemon-launch-helper lib/kde4/kipiplugin*.so lib/kde4/libexec/klauncher lib/kde4/libexec/lnusertemp share/qt4/plugins/designer/libphononwidgets.dylib share/qt4/plugins/imageformats/*.dylib share/qt4/plugins/sqldrivers/*.dylib"
 binaries="$OTHER_APPS"
 
-# Additional Files/Directories  - to be copied recursively but not checked
-# for dependencies
+# Additional Files/Directories - to be copied recursively but not checked for dependencies
 OTHER_DIRS="Library/LaunchAgents/org.freedesktop.dbus-session.plist Library/LaunchDaemons/org.freedesktop.dbus-system.plist etc/dbus-1 etc/xdg/menus lib/kde4 share/applications/kde4 share/apps share/config share/dbus-1 share/doc/HTML/en/digikam share/doc/HTML/en/showfoto  share/icons/hicolor share/icons/oxygen share/kde4 share/qt4/plugins/designer/libphononwidgets.dylib share/qt4/plugins/imageformats share/qt4/plugins/sqldrivers share/locale/currency/usd.desktop share/locale/en_US share/mime var/run/dbus"
 
 PACKAGESUTIL="/usr/local/bin/packagesutil"
@@ -91,11 +90,10 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
       echo "    Copying $app"
       cp -pr "$INSTALL_PREFIX/$searchpath/$app.app" "$TEMPROOT/$searchpath/"
 
-      # Add executable to list of binaries for which we need to collect 
-      # dependencies for
+      # Add executable to list of binaries for which we need to collect dependencies for
       binaries="$binaries $searchpath/$app.app/Contents/MacOS/$app"
 
-      # If application is to be run by user, create Applescript launcher to 
+      # If application is to be run by user, create Applescript launcher to
       # load dbus-session if necessary, launch kded4, set DYLD_IMAGE_SUFFIX
       # if built with debug variant
       if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
@@ -210,14 +208,13 @@ EOF
 # Delete dbus system config lines pertaining to running as non-root user
 # (installed version will be run as root, although MacPorts version wasn't)
 echo "Deleting dbus system config lines pertaining to running as non-root user"
-sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf 
-
+sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 # Create package postinstall script 
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated (and will be overwritten) by makepackage.sh
+# Generated (and will be overwritten) by make-package.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
@@ -233,7 +230,7 @@ EOF
 # installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated (and will be overwritten by) makepackage.sh
+# Generated (and will be overwritten by) make-package.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
   echo "Unloading dbus-system"
@@ -242,7 +239,7 @@ fi
 
 if [ -d /Applications/digiKam ] ; then
   echo "Removing digikam from Applications folder"
-  rm -r /Applications/digiKam 
+  rm -r /Applications/digiKam
 fi
 
 if [ -d "$INSTALL_PREFIX" ] ; then
