@@ -220,6 +220,7 @@ add_subdirectory(core)
 
 if(ENABLE_COMPILE_DOC)
     MACRO_OPTIONAL_ADD_SUBDIRECTORY(doc)
+    MACRO_OPTIONAL_ADD_SUBDIRECTORY(doc-translated)
 endif()
 
 if(ENABLE_COMPILE_PO)
