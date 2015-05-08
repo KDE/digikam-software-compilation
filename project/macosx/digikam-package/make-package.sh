@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to prepare previously-built KDE and digikam installation 
+# Script to prepare previously-built KDE and digikam installation
 # and package it using Packages 2015-04-16
 
 # MacPorts install directory (and location where packaged files will be)
@@ -36,10 +36,12 @@ PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
+# Create build sub-dir in project dir
+if [ ! -d "$PROJECTDIR/build" ]; then
+    mkdir $PROJECTDIR/build
+fi
 
-# If the port command isn't in install prefix/bin, $INSTALL_PREFIX is probably
-# wrong
-
+# If the port command isn't in install prefix/bin, $INSTALL_PREFIX is probably wrong
 if [ ! -f "$INSTALL_PREFIX/bin/port" ] ; then 
   echo "$INSTALL_PREFIX/bin/port not found"
   exit
@@ -52,6 +54,7 @@ DIGIKAM_VERSION="`$INSTALL_PREFIX/bin/port -q installed digikam | sed "s/^.*@//;
 echo $DIGIKAM_VERSION
 
 # Is the debug variant installed (we'll need to set DYLIB_IMAGE_SUFFIX later)
+
 if [[ $DIGIKAM_VERSION == *"+debug"* ]] ; then
   echo "Debug variant found"
   DEBUG=1
@@ -175,7 +178,7 @@ while read lib ; do
     echo "  $lib"
     cp -aH "$INSTALL_PREFIX/$lib" "$TEMPROOT/$dir/"
   fi
-done	
+done
 
 # Copy non-binary files and directories, creating parent directories if needed
 echo "Copying non-binary files and directories..."
@@ -205,8 +208,7 @@ EOF
 # Delete dbus system config lines pertaining to running as non-root user
 # (installed version will be run as root, although MacPorts version wasn't)
 echo "Deleting dbus system config lines pertaining to running as non-root user"
-sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf 
-
+sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 # Create package postinstall script 
 # Loads dbus-system and creates Applications menu icons
