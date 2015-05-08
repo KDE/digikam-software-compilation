@@ -1,4 +1,8 @@
+RESUME
 Scripts to build binary digiKam packages for Mac OS X
+
+AUTHORS
+Shanti <listaccount at revenant dot org>
 
 I've used these files and scripts used to make binary packages of the digikam 
 Software Collection packages for OS X.  In addition to this README, there are 
@@ -9,7 +13,7 @@ REQUIREMENTS
 The scripts build digikam with MacPorts, so you will need Xcode and the other 
 prerequisites for Macports.  You will also need to install from 
 http://s.sudre.free.fr/Software/Packages/about.html, which does the actual
-packaging of the files needed to install digikam.  
+packaging of the files needed to install digikam.
 
 HERE THERE BE DRAGONS
 Use these scripts at your own risk.  For example, both scripts contain 
@@ -24,23 +28,23 @@ MacPorts and compiles digikam, and make-packages.sh, which... makes a package.
 Both should be run from within the digikam-package directory.
 
 * build-digikam.sh:
-The build-digikam.sh script downloads and configures a custom non-root install 
-of MacPorts to /opt/digikam. The package will install to the same place, 
-avoiding the confusion associated with relocation and install_name_tool. The 
-custom location, as opposed to /opt/local, should allow digikam to co-exist 
-with a standard Macports installation (but probably not another KDE 
-installation). 
+The build-digikam.sh script downloads and configures a custom non-root install
+of MacPorts to /opt/digikam. The package will install to the same place,
+avoiding the confusion associated with relocation and install_name_tool. The
+custom location, as opposed to /opt/local, should allow digikam to co-exist
+with a standard Macports installation (but probably not another KDE
+installation).
 
 If "digikam-portfile/Portfile" exists, it is used to build digkam instead of
 the version supplied by MacPorts. Currently, the Portfile supplied with these
-scripts uses digikam 4.9.0 (versus 4.8.0), and includes variants to support 
+scripts uses digikam 4.9.0 (versus 4.8.0), and includes variants to support
 for external MySQL databases, which are the reason for my interest in digikam.
 
 * make-packages.sh:
 Once you've successfully built digikam from MacPorts (I don't think I've done
-in one continuous session, without manual intervention), /opt/digikam may 
-contain over 10GB of files. The make-package.sh script grabs the ~500MB needed 
-to run digikam and showfoto, and places them in ~/digikam-package/opt.  These 
+in one continuous session, without manual intervention), /opt/digikam may
+contain over 10GB of files. The make-package.sh script grabs the ~500MB needed
+to run digikam and showfoto, and places them in ~/digikam-package/opt.  These
 include documentation for digikam and showfoto.
 
 This script creates Applescript launch applications for the programs that will
@@ -50,32 +54,26 @@ scripts in digikam-package/package.
 The launcher applications:
      1) load dbus-session with launchctl if it isn't already loaded
      2) launch kded4 if it isn't already running and 
-     3) set "DYLD_IMAGE_SUFFIX=_debug" if the digikam port was built with  the 
+     3) set "DYLD_IMAGE_SUFFIX=_debug" if the digikam port was built with  the
        +debug variant.
 
-makepackages.sh also create the preinstall and postinstall scripts that are run
-when the package is installed.  They delete any pre-existing /opt/digikam
+make-packages.sh also create the preinstall and postinstall scripts that are run
+when the package is installed. They delete any pre-existing /opt/digikam
 delete and recreate /Applications/digiKam, and load dbus-system with launchctl.
 
 Finally, makepackage.sh sets the version number, and runs Packages to 
 put everything together.
 
-* rll.py 
+* rll.py
 Run by makepackages.sh. It is a python script that takes a list of binaries 
 and libraries supplied by makepackages.sh and recursively lists the dylibs on 
-which they depend, and their dependencies, etc.. Adapted with minimal 
-modification (mostly deleting stuff) from 
+which they depend, and their dependencies, etc.. Adapted with minimal
+modification (mostly deleting stuff) from
 https://github.com/mixxxdj/mixxx/blob/master/build/osx/otool.py.
-  
-HELP!
-I realize that these scripts are a cobbled-togetherm mess. Please improve them,
-fix things that are broken in the build process and resulting packages, and
-contribute the solutions. 
 
 LICENSE
 rll.py, like the otool.py source from which it has been adapted, is licensed 
 under GNU General Public License version 2.
 
 The scripts and other contents of this package that I have created are licensed
-licensed under the GNU General Public License version 2, or any later version. 
-
+licensed under the GNU General Public License version 2, or any later version.
