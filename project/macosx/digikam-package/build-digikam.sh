@@ -1,5 +1,15 @@
 #! /bin/bash
-# Script to build digikam using MacPorts - 2015-04-16 
+
+# Script to build digiKam using MacPorts
+# This script must be run as sudo
+#
+# Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
+# Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+
 
 # Directiory where MacPorts will be built, and where it will be installed by
 # packaging script
@@ -80,16 +90,18 @@ echo -e "\n"
 #sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
 # Use custom digikam portfile if digikam-portfile/Portfile exists
-[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
+#[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
 
 echo "*** Building digikam with Macports"
 
 # Manual install of texlive-fonts-recommended & texlive-font-utils is
 # required  to build docs
-port -fv install texlive-fonts-recommended texlive-fontutils 
+port -fv install texlive-fonts-recommended texlive-fontutils
 
-# External MySQL external database support is why I use digikam. Default 
+# External MySQL external database support is why I use digikam. Default
 # akonadi variant (mariadb55) breaks build due to conflict with mysql5x
-port -fv install akonadi +mysql56 digikam +docs+mysql56_external+debug
+#port -fv install akonadi +mysql56 digikam +docs+mysql56_external+debug
+
+port -fv install digikam +docs+debug+lcms2+translations+use_private_libs
 
 export PATH=$ORIG_PATH
