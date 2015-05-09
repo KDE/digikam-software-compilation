@@ -262,6 +262,6 @@ mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 #Build Checksum files of package
 echo Compute package checksums for digikam $DIGIKAM_VERSION
-shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" > "$BUILDDIR/digikam-$DIGIKAM_VERSION.sha1"
-shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" > "$BUILDDIR/digikam-$DIGIKAM_VERSION.sha256"
-md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" > "$BUILDDIR/digikam-$DIGIKAM_VERSION.md5"
+shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
