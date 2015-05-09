@@ -33,11 +33,42 @@ KDE_OTHER_APPS="kcmshell4 kded4 kdeinit4 kdialog khelpcenter knotify4 scangui dr
 KDE_APP_PATHS="Applications/KDE4 lib/kde4/libexec"
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
-OTHER_APPS="bin/dbus-daemon bin/dbus-launch bin/kbuildsycoca4 libexec/dbus-daemon-launch-helper lib/kde4/kipiplugin*.so lib/kde4/libexec/klauncher lib/kde4/libexec/lnusertemp share/qt4/plugins/designer/libphononwidgets.dylib share/qt4/plugins/imageformats/*.dylib share/qt4/plugins/sqldrivers/*.dylib"
+OTHER_APPS=\
+"bin/dbus-daemon \
+bin/dbus-launch \
+bin/kbuildsycoca4 \
+libexec/dbus-daemon-launch-helper \
+lib/kde4/kipiplugin*.so \
+lib/kde4/libexec/klauncher \
+lib/kde4/libexec/lnusertemp \
+share/qt4/plugins/designer/libphononwidgets.dylib \
+share/qt4/plugins/imageformats/*.dylib \
+share/qt4/plugins/sqldrivers/*.dylib"
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
-OTHER_DIRS="Library/LaunchAgents/org.freedesktop.dbus-session.plist Library/LaunchDaemons/org.freedesktop.dbus-system.plist etc/dbus-1 etc/xdg/menus lib/kde4 share/applications/kde4 share/apps share/config share/dbus-1 share/doc/HTML/en/digikam share/doc/HTML/en/showfoto  share/icons/hicolor share/icons/oxygen share/kde4 share/qt4/plugins/designer/libphononwidgets.dylib share/qt4/plugins/imageformats share/qt4/plugins/sqldrivers share/locale/currency/usd.desktop share/locale/en_US share/mime var/run/dbus"
+OTHER_DIRS=\
+"Library/LaunchAgents/org.freedesktop.dbus-session.plist \
+Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
+etc/dbus-1 \
+etc/xdg/menus \
+lib/kde4 \
+share/applications/kde4 \
+share/apps \
+share/config \
+share/dbus-1 \
+share/doc/HTML/en/digikam \
+share/doc/HTML/en/showfoto \
+share/icons/hicolor \
+share/icons/oxygen \
+share/kde4 \
+share/qt4/plugins/designer/libphononwidgets.dylib \
+share/qt4/plugins/imageformats \
+share/qt4/plugins/sqldrivers \
+share/locale/currency/usd.desktop \
+share/locale/en_US \
+share/mime \
+var/run/dbus"
 
 PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
