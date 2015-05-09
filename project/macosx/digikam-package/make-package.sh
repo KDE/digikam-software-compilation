@@ -23,11 +23,11 @@ PROJECTDIR="$BUILDDIR/package"
 # Staging area where files to be packaged will be copied
 TEMPROOT="$BUILDDIR/opt/digikam"
 
-# KDE apps to be launched directly by user -- create launch script
-KDE_MENU_APPS="digikam dngconverter photolayoutseditor panoramagui showfoto"
+# KDE apps to be launched directly by user (create launch scripts)
+KDE_MENU_APPS="digikam dngconverter panoramagui showfoto"
 
 # KDE apps to be included but not launched directly by user
-KDE_OTHER_APPS="kcmshell4 kded4 kdeinit4 kdialog khelpcenter knotify4 kxmlkipicmd scangui drkonqi"
+KDE_OTHER_APPS="kcmshell4 kded4 kdeinit4 kdialog khelpcenter knotify4 scangui drkonqi"
 
 # Paths to search for KDE applications above
 KDE_APP_PATHS="Applications/KDE4 lib/kde4/libexec"
@@ -265,5 +265,3 @@ echo Compute package checksums for digikam $DIGIKAM_VERSION
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-
-echo Follow instructions from http://download.kde.org/README_UPLOAD to upload PKG file on KDE servers.
