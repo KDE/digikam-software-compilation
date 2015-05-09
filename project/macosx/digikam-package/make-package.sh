@@ -251,6 +251,7 @@ EOF
 # Preinstall and postinstall need to be executable
 chmod 755 "$PROJECTDIR/preinstall" "$PROJECTDIR/postinstall"
 
+# Build PKG file
 echo Preparing to create package for digikam $DIGIKAM_VERSION
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
    set version "$DIGIKAM_VERSION"
@@ -258,3 +259,9 @@ $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
 mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+
+#Build Checksum files of package
+echo Compute package checksums for digikam $DIGIKAM_VERSION
+shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
