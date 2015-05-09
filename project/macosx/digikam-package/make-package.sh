@@ -265,3 +265,5 @@ echo Compute package checksums for digikam $DIGIKAM_VERSION
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+
+echo Follow instructions from http://download.kde.org/README_UPLOAD to upload PKG file on KDE servers.
