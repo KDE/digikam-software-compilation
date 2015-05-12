@@ -50,13 +50,12 @@ nslookup scan5.coverity.com
 SECONDS=0
 
 curl -# \
-     --form project=digiKam \
      --form token=$DKCoverityToken \
      --form email=$DKCoverityEmail \
      --form file=@myproject.tgz \
      --form version=git-master \
      --form description="$desc" \
-     http://scan5.coverity.com/cgi-bin/upload.py \
+     https://scan.coverity.com/builds?project=digiKam
      > /dev/null
 
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
