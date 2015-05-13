@@ -112,7 +112,7 @@ port install libgpod
 port install libgphoto2
 port install lensfun
 port install liblqr
-port install liblpgf
+port install libpgf
 port install libraw
 port install eigen3
 port install sqlite2
