@@ -26,15 +26,30 @@ port install opencv
 port install marble
 port install oxygen-icons
 port install sane-backends
-port install libgpod
 port install libgphoto2
 port install lensfun
+port install jpeg
+port install tiff
+port install jasper
+port install expat
+port install boost
+port install libpng
 port install liblqr
 port install libpgf
 port install libraw
+port install lcms2
 port install eigen3
 port install sqlite2
 port install baloo
+
+# For Kipi-plugins
+
+port install libgpod
+port install libxml2
+port install libxstl
+port install qca
+port install qjson
+port install ImageMagick
 
 # For Color themes support
 
@@ -50,16 +65,16 @@ port install qtcurve
 port install kdemultimedia4
 port install ffmpegthumbs
 
-# Mysql support.
+# Mysql support
 
 #port install mysql5
 
-# Packages not functionnals currently. Install Hugin through DMG installer from project web site.
+# Packages not functionnals currently. Install Hugin through DMG installer from project web site
 
-#port -v install hugin-app 
+#port -v install hugin-app
 #port -v install enblend
 
-# Extra packages to hack code.
+# Extra packages to hack code
 
 #port install mc
 #port install valgrind 
@@ -67,7 +82,7 @@ port install ffmpegthumbs
 #port install konsole 
 #port install kdeutils4
 
-# Prepare KDE background process to run applications.
+# Prepare KDE background process to run applications
 
 launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
 /opt/local/bin/kbuildsycoca4
