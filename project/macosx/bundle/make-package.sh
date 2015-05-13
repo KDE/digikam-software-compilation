@@ -24,14 +24,30 @@ PROJECTDIR="$BUILDDIR/package"
 TEMPROOT="$BUILDDIR/opt/digikam"
 
 # KDE apps to be launched directly by user (create launch scripts)
-KDE_MENU_APPS="digikam dngconverter panoramagui showfoto"
+KDE_MENU_APPS="\
+digikam \
+dngconverter \
+panoramagui \
+showfoto \
+"
 
 # KDE apps to be included but not launched directly by user
-KDE_OTHER_APPS="kcmshell4 kded4 kdeinit4 kdialog khelpcenter knotify4 scangui drkonqi"
+KDE_OTHER_APPS="\
+kcmshell4 \
+kded4 \
+kdeinit4 \
+kdialog \
+khelpcenter \
+knotify4 \
+scangui \
+drkonqi \
+"
 
 # Paths to search for KDE applications above
-KDE_APP_PATHS="Applications/KDE4 lib/kde4/libexec"
-
+KDE_APP_PATHS="\
+Applications/KDE4 \
+lib/kde4/libexec \
+"
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
 bin/dbus-daemon \
@@ -243,21 +259,6 @@ EOF
 echo "Deleting dbus system config lines pertaining to running as non-root user"
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
-# Create package postinstall script 
-# Loads dbus-system and creates Applications menu icons
-cat << EOF > "$PROJECTDIR/postinstall"
-#!/bin/bash
-# Generated (and will be overwritten) by make-package.sh
-
-launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
-
-[[ ! -d /Applications/digiKam ]] && mkdir "/Applications/digiKam"
-
-for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
-  ln -s "\$app" /Applications/digiKam/\${app##*/}
-done
-EOF
-
 # Create package preinstall script
 # Unload dbus-system, delete /Applications entries, delete existing
 # installation
@@ -281,6 +282,21 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 fi
 EOF
 
+# Create package postinstall script
+# Loads dbus-system and creates Applications menu icons
+cat << EOF > "$PROJECTDIR/postinstall"
+#!/bin/bash
+# Generated (and will be overwritten) by make-package.sh
+
+launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
+
+[[ ! -d /Applications/digiKam ]] && mkdir "/Applications/digiKam"
+
+for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
+  ln -s "\$app" /Applications/digiKam/\${app##*/}
+done
+EOF
+
 # Preinstall and postinstall need to be executable
 chmod 755 "$PROJECTDIR/preinstall" "$PROJECTDIR/postinstall"
 
@@ -298,3 +314,5 @@ echo Compute package checksums for digikam $DIGIKAM_VERSION
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+
+echo To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD
