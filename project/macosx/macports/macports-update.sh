@@ -7,7 +7,7 @@
 
 # Pre-processing checks
 
-. ./common.sh
+. ./common/common.sh
 CommonChecks
 
 # Update Macports binary
