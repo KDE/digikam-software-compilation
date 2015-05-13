@@ -114,6 +114,9 @@ else
   DEBUG=0
 fi
 
+# ./package sub-dir must be writable by root
+chmod 777 ${PROJECTDIR}
+
 ORIG_WD="`pwd`"
 
 if [ -d "$TEMPROOT" ] ; then
