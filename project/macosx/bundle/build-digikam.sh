@@ -105,7 +105,7 @@ port install texlive-fonts-recommended texlive-fontutils
 # See https://trac.macports.org/wiki/KDE for details
 
 port install qt4-mac
-port install qt4-mac-sqlite3-plugin 
+port install qt4-mac-sqlite3-plugin
 port install kdelibs4
 port install kde4-baseapps
 port install opencv
@@ -115,12 +115,28 @@ port install sane-backends
 port install libgpod
 port install libgphoto2
 port install lensfun
+port install jpeg
+port install tiff
+port install jasper
+port install boost
+port install libpng
 port install liblqr
 port install libpgf
 port install libraw
+port install lcms2
 port install eigen3
 port install sqlite2
 port install baloo
+
+# For Kipi-plugins
+
+port install expat
+port install libgpod
+port install libxml2
+port install libxstl
+port install qca
+port install qjson
+port install ImageMagick
 
 # For Color themes support
 
