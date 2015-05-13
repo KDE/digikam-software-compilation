@@ -8,7 +8,7 @@
 
 # Pre-processing checks
 
-. ./common/common.sh
+. ../common/common.sh
 CommonChecks
 
 # Update Macports installation

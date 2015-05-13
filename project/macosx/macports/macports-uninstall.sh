@@ -7,7 +7,7 @@
 
 # Pre-processing checks
 
-. ./common/common.sh
+. ../common/common.sh
 CommonChecks
 
 # Uninstall Macports packages

@@ -11,7 +11,7 @@
 #
 
 # Pre-processing checks.
-. ./common/common.sh
+. ../common/common.sh
 ChecksRunAsRoot
 ChecksXCodeCLI
 
