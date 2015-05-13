@@ -131,13 +131,10 @@ port install qtcurve
 port install kdemultimedia4
 port install ffmpegthumbs
 
-
 # External MySQL external database support is why I use digikam. Default
 # akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
 port install digikam +docs+lcms2+translations
-
-kbuildsycoca4
 
 export PATH=$ORIG_PATH
