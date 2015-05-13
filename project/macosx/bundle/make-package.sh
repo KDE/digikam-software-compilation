@@ -35,8 +35,6 @@ systemsettings \
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
 kcmshell4 \
-kcminit \
-kcminit_startup \
 kded4 \
 kdeinit4 \
 kdialog \
@@ -65,6 +63,8 @@ lib/kde4/kcm_*.so \
 lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
+lib/plugins \
+lib/sane \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
@@ -76,9 +76,13 @@ binaries="$OTHER_APPS"
 OTHER_DIRS="\
 Library/LaunchAgents/org.freedesktop.dbus-session.plist \
 Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
+etc/ImageMagick* \
 etc/dbus-1 \
+etc/sane.d \
 etc/xdg/menus \
 lib/kde4 \
+lib/ImageMagick* \
+lib/libgphoto* \
 share/applications/kde4 \
 share/apps \
 share/config \
@@ -87,6 +91,7 @@ share/doc/HTML/en/digikam \
 share/doc/HTML/en/showfoto \
 share/icons/hicolor \
 share/icons/oxygen \
+share/OpenCV \
 share/kde4 \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats \
