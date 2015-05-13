@@ -29,6 +29,7 @@ digikam \
 dngconverter \
 panoramagui \
 showfoto \
+systemsettings \
 "
 
 # KDE apps to be included but not launched directly by user
@@ -37,6 +38,7 @@ kcmshell4 \
 kded4 \
 kdeinit4 \
 kdialog \
+kdebugdialog \
 khelpcenter \
 knotify4 \
 scangui \
