@@ -57,6 +57,9 @@ bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
 lib/kde4/kipiplugin*.so \
+lib/kde4/digikamimageplugin*.so \
+lib/kde4/kcm_*.so \
+lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
 share/qt4/plugins/designer/libphononwidgets.dylib \
@@ -84,6 +87,7 @@ share/kde4 \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats \
 share/qt4/plugins/sqldrivers \
+share/lensfun \
 share/locale/currency/usd.desktop \
 share/locale/en_US \
 share/mime \
