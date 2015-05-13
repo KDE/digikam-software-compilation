@@ -29,14 +29,18 @@ digikam \
 dngconverter \
 panoramagui \
 showfoto \
+systemsettings \
 "
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
 kcmshell4 \
+kcminit \
+kcminit_startup \
 kded4 \
 kdeinit4 \
 kdialog \
+kdebugdialog \
 khelpcenter \
 knotify4 \
 scangui \
@@ -48,6 +52,7 @@ KDE_APP_PATHS="\
 Applications/KDE4 \
 lib/kde4/libexec \
 "
+
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
 bin/dbus-daemon \
@@ -55,12 +60,16 @@ bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
 lib/kde4/kipiplugin*.so \
+lib/kde4/digikamimageplugin*.so \
+lib/kde4/kcm_*.so \
+lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
 "
+
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
@@ -82,6 +91,7 @@ share/kde4 \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats \
 share/qt4/plugins/sqldrivers \
+share/lensfun \
 share/locale/currency/usd.desktop \
 share/locale/en_US \
 share/mime \
@@ -111,6 +121,9 @@ if [[ $DIGIKAM_VERSION == *"+debug"* ]] ; then
 else
   DEBUG=0
 fi
+
+# ./package sub-dir must be writable by root
+chmod 777 ${PROJECTDIR}
 
 ORIG_WD="`pwd`"
 
@@ -311,6 +324,7 @@ mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 #Build Checksum files of package
 echo Compute package checksums for digikam $DIGIKAM_VERSION
+du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
