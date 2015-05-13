@@ -10,7 +10,6 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-
 # Directiory where MacPorts will be built, and where it will be installed by
 # packaging script
 INSTALL_PREFIX="/opt/digikam"
@@ -26,7 +25,7 @@ ORIG_WD="`pwd`"
 
 echo -e "\n\n"
 
-# (Delete and re-)Create MacPorts install directory 
+# Delete and re-create MacPorts install directory
 if [ -d "$INSTALL_PREFIX" ] ; then
    echo "---------- Removing existing  $INSTALL_PREFIX"
    rm -rf "$INSTALL_PREFIX"
@@ -35,7 +34,7 @@ fi
 echo "---------- Creating $INSTALL_PREFIX"
 mkdir "$INSTALL_PREFIX"
 
-# (Delete and re-)Create temporary MacPorts build directory
+# Delete and re-create temporary MacPorts build directory
 if [ -d "$MP_BUILDTEMP" ] ; then
    echo "---------- Removing existing $MP_BUILDTEMP" 
    rm -rf "$MP_BUILDTEMP"
@@ -99,6 +98,7 @@ echo "*** Building digikam with Macports"
 port install texlive-fonts-recommended texlive-fontutils
 
 # Install Macports packages to compile digiKam
+# See https://trac.macports.org/wiki/KDE for details
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin 
@@ -121,15 +121,23 @@ port install baloo
 
 port install kdeartwork
 
+# For Acqua style support
+
+port install kde4-workspace
+port install qtcurve
+
 # For video support
 
 port install kdemultimedia4
 port install ffmpegthumbs
+
 
 # External MySQL external database support is why I use digikam. Default
 # akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
 port install digikam +docs+lcms2+translations
+
+kbuildsycoca4
 
 export PATH=$ORIG_PATH
