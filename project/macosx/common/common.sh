@@ -57,8 +57,8 @@ fi
 CommonChecks()
 {
 
-ChecksRunAsRoot()
-ChecksXCodeCLI()
-ChecksMacports()
+ChecksRunAsRoot
+ChecksXCodeCLI
+ChecksMacports
 
 }

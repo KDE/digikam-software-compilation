@@ -10,8 +10,12 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-# Directiory where MacPorts will be built, and where it will be installed by
-# packaging script
+# Pre-processing checks.
+. ./common/common.sh
+ChecksRunAsRoot
+ChecksXCodeCLI
+
+# Directiory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
 
 # Temporary directory in which MacPorts will be built
