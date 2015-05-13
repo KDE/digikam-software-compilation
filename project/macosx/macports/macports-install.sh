@@ -31,7 +31,6 @@ port install lensfun
 port install jpeg
 port install tiff
 port install jasper
-port install expat
 port install boost
 port install libpng
 port install liblqr
@@ -44,6 +43,7 @@ port install baloo
 
 # For Kipi-plugins
 
+port install expat
 port install libgpod
 port install libxml2
 port install libxstl

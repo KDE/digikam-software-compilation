@@ -47,15 +47,30 @@ Install all compilation and run-time dependencies:
 > sudo port -v install marble +debug
 > sudo port -v install oxygen-icons +debug
 > sudo port -v install sane-backends +debug
-> sudo port -v install libgpod +debug
 > sudo port -v install libgphoto2 +debug
 > sudo port -v install lensfun +debug
+> sudo port -v install jpeg +debug
+> sudo port -v install tiff +debug
+> sudo port -v install jasper +debug
+> sudo port -v install boost +debug
+> sudo port -v install libpng +debug
 > sudo port -v install liblqr +debug
 > sudo port -v install libpgf +debug
-> sudo port -v install libraw
-> sudo port -v install eigen3
-> sudo port -v install sqlite2
-> sudo port -v install baloo
+> sudo port -v install libraw +debug
+> sudo port -v install lcms2 +debug
+> sudo port -v install eigen3 +debug
+> sudo port -v install sqlite2 +debug
+> sudo port -v install baloo +debug
+
+# For Kipi-plugins
+
+> sudo port -v install expat +debug
+> sudo port -v install libgpod +debug
+> sudo port -v install libxml2 +debug
+> sudo port -v install libxstl +debug
+> sudo port -v install qca +debug
+> sudo port -v install qjson +debug
+> sudo port -v install ImageMagick +debug
 
 # For Color themes support
 
