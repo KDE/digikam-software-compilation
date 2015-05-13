@@ -35,6 +35,8 @@ systemsettings \
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
 kcmshell4 \
+kcminit \
+kcminit_startup \
 kded4 \
 kdeinit4 \
 kdialog \
@@ -50,6 +52,7 @@ KDE_APP_PATHS="\
 Applications/KDE4 \
 lib/kde4/libexec \
 "
+
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
 bin/dbus-daemon \
@@ -66,6 +69,7 @@ share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
 "
+
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
