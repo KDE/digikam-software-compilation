@@ -16,9 +16,10 @@ CommonChecks
 port -v selfupdate
 
 # Install Macports packages to compile digiKam
+# See https://trac.macports.org/wiki/KDE for details
 
 port install qt4-mac
-port install qt4-mac-sqlite3-plugin 
+port install qt4-mac-sqlite3-plugin
 port install kdelibs4
 port install kde4-baseapps
 port install opencv
@@ -29,15 +30,20 @@ port install libgpod
 port install libgphoto2
 port install lensfun
 port install liblqr
+port install libpgf
 port install libraw
 port install eigen3
 port install sqlite2
 port install baloo
 
-
 # For Color themes support
 
 port install kdeartwork
+
+# For Acqua style support
+
+port install kde4-workspace
+port install qtcurve
 
 # For video support
 
