@@ -15,55 +15,7 @@ CommonChecks
 
 port -v selfupdate
 
-# Install Macports packages to compile digiKam
-# See https://trac.macports.org/wiki/KDE for details
-
-port install qt4-mac
-port install qt4-mac-sqlite3-plugin
-port install kdelibs4
-port install kde4-baseapps
-port install opencv
-port install marble
-port install oxygen-icons
-port install sane-backends
-port install libgphoto2
-port install lensfun
-port install jpeg
-port install tiff
-port install jasper
-port install boost
-port install libpng
-port install liblqr
-port install libpgf
-port install libraw
-port install lcms2
-port install eigen3
-port install sqlite2
-port install baloo
-
-# For Kipi-plugins
-
-port install expat
-port install libgpod
-port install libxml2
-port install libxstl
-port install qca
-port install qjson
-port install ImageMagick
-
-# For Color themes support
-
-port install kdeartwork
-
-# For Acqua style support
-
-port install kde4-workspace
-port install qtcurve
-
-# For video support
-
-port install kdemultimedia4
-port install ffmpegthumbs
+InstallCorePackages
 
 # Mysql support
 
@@ -77,9 +29,9 @@ port install ffmpegthumbs
 # Extra packages to hack code
 
 #port install mc
-#port install valgrind 
-#port install kate 
-#port install konsole 
+#port install valgrind
+#port install kate
+#port install konsole
 #port install kdeutils4
 
 # Prepare KDE background process to run applications
