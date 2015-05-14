@@ -97,7 +97,7 @@ port install baloo
 port install expat
 port install libgpod
 port install libxml2
-port install libxstl
+port install libxslt
 port install qca
 port install qjson
 port install ImageMagick
