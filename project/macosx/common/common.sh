@@ -72,22 +72,25 @@ port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 port install kdelibs4
 port install kde4-baseapps
-port install exiv2
-port install opencv
-port install marble
+port install kde4-runtime
 port install oxygen-icons
-port install sane-backends
-port install libgpod
+port install libusb
 port install libgphoto2
-port install lensfun
-port install jpeg
-port install tiff
-port install jasper
-port install boost
 port install libpng
 port install liblqr
 port install libpgf
 port install libraw
+port install jpeg
+port install tiff
+port install exiv2
+port install boost
+port install opencv
+
+# For core optional dependencies
+
+port install marble
+port install lensfun
+port install jasper
 port install lcms2
 port install eigen3
 port install sqlite2
@@ -95,6 +98,7 @@ port install baloo
 
 # For Kipi-plugins
 
+port install sane-backends
 port install expat
 port install libgpod
 port install libxml2
@@ -102,12 +106,13 @@ port install libxslt
 port install qca
 port install qjson
 port install ImageMagick
+port install glib2
 
 # For Color themes support
 
 port install kdeartwork
 
-# For Acqua style support
+# For Acqua style support (including KDE system settings)
 
 port install kde4-workspace
 port install qtcurve
@@ -116,8 +121,9 @@ port install qtcurve
 
 port install kdemultimedia4
 port install ffmpegthumbs
+port install phonon
 
-# Manual install of texlive-fonts-recommended & texlive-font-utils is required to build docs
+# For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
 }
