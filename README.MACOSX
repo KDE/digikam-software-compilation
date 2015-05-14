@@ -32,71 +32,22 @@ not to install a specific released version provided by MacPort team as package t
 
 See complete MacPort guide for more information : http://guide.macports.org
 
-3 - INSTALL DEPENDENCIES
-------------------------
+3 - INSTALL DEPENDENCIES FROM MACPORTS
+--------------------------------------
 
 Note : See https://trac.macports.org/wiki/KDE for details
 
-Install all compilation and run-time dependencies:
+Install all compilation and run-time dependencies for digiKam using shell script given on 
 
-> sudo port -v install qt4-mac +debug
-> sudo port -v install qt4-mac-sqlite3-plugin +debug
-> sudo port -v install kdelibs4 +debug
-> sudo port -v install kde4-baseapps +debug
-> sudo port -v install opencv +debug
-> sudo port -v install marble +debug
-> sudo port -v install oxygen-icons +debug
-> sudo port -v install sane-backends +debug
-> sudo port -v install libgphoto2 +debug
-> sudo port -v install lensfun +debug
-> sudo port -v install jpeg +debug
-> sudo port -v install tiff +debug
-> sudo port -v install jasper +debug
-> sudo port -v install boost +debug
-> sudo port -v install libpng +debug
-> sudo port -v install liblqr +debug
-> sudo port -v install libpgf +debug
-> sudo port -v install libraw +debug
-> sudo port -v install lcms2 +debug
-> sudo port -v install eigen3 +debug
-> sudo port -v install sqlite2 +debug
-> sudo port -v install baloo +debug
+./project/macosx/macports/macports-install.sh
 
-# For Kipi-plugins
+4 - THE SIMPLE WAY : INSTALL CURRENT MACPORTS DIGIKAM PACKAGE
+-------------------------------------------------------------
 
-> sudo port -v install expat +debug
-> sudo port -v install libgpod +debug
-> sudo port -v install libxml2 +debug
-> sudo port -v install libxstl +debug
-> sudo port -v install qca +debug
-> sudo port -v install qjson +debug
-> sudo port -v install ImageMagick +debug
+> sudo port install digikam +docs+lcms2+translations
 
-# For Color themes support
-
-> sudo port -v install kdeartwork +debug
-
-# For Acqua style support
-
-> sudo port -v install kde4-workspace +debug
-> sudo port -v install qtcurve +debug
-
-# For video support
-
-> sudo port -v install kdemultimedia4 +debug
-> sudo port -v install ffmpegthumbs +debug
-
-Optional if you want to use Mysql database instead SQlite
-
-> sudo port -v install qt4-mac-mysql55-plugin +debug
-
-Optional Run-time dependencies (can be non compilable):
-
-> sudo port -v install hugin-app +debug
-> sudo port -v install enblend +debug
-
-4 - INSTALLATION TO COMPILE CURRENT DIGIKAM CODE FROM GIT/MASTER
-----------------------------------------------------------------
+4 - ALTERNATIVE : INSTALLATION OF CURRENT DIGIKAM IMPLEMENTATIONFROM GIT/MASTER
+-------------------------------------------------------------------------------
 
 * In you prefered directory dedicated to store and compile source code, checkout digiKam Software Compilation 
 * from KDE git/master repository, and start cmake configuration:
@@ -124,6 +75,9 @@ From a terminal, initialize KDE and Dbus services.
 > /opt/local/bin/kbuildsycoca4
 
 digiKam must be available on Applications/Macports/KDE menu of your Apple computer and ready to use...
+
+It's Highly recommended to use "QtCurve" widgets style with KDE application to have the best GUI rendering. 
+In digiKam just go to Preferences/Miscs dialog to change widgets style.
 
 6 - CREDITS
 -----------

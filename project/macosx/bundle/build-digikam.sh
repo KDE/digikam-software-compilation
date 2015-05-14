@@ -11,7 +11,7 @@
 #
 
 # Pre-processing checks.
-. ./common/common.sh
+. ../common/common.sh
 ChecksRunAsRoot
 ChecksXCodeCLI
 
@@ -97,63 +97,10 @@ echo -e "\n"
 
 echo "*** Building digikam with Macports"
 
-# Manual install of texlive-fonts-recommended & texlive-font-utils is
-# required  to build docs
-port install texlive-fonts-recommended texlive-fontutils
+InstallCorePackages
 
-# Install Macports packages to compile digiKam
-# See https://trac.macports.org/wiki/KDE for details
-
-port install qt4-mac
-port install qt4-mac-sqlite3-plugin
-port install kdelibs4
-port install kde4-baseapps
-port install opencv
-port install marble
-port install oxygen-icons
-port install sane-backends
-port install libgpod
-port install libgphoto2
-port install lensfun
-port install jpeg
-port install tiff
-port install jasper
-port install boost
-port install libpng
-port install liblqr
-port install libpgf
-port install libraw
-port install lcms2
-port install eigen3
-port install sqlite2
-port install baloo
-
-# For Kipi-plugins
-
-port install expat
-port install libgpod
-port install libxml2
-port install libxstl
-port install qca
-port install qjson
-port install ImageMagick
-
-# For Color themes support
-
-port install kdeartwork
-
-# For Acqua style support
-
-port install kde4-workspace
-port install qtcurve
-
-# For video support
-
-port install kdemultimedia4
-port install ffmpegthumbs
-
-# External MySQL external database support is why I use digikam. Default
-# akonadi variant (mariadb55) breaks build due to conflict with mysql5x
+# External MySQL external database support.
+# By default akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
 port install digikam +docs+lcms2+translations
