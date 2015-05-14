@@ -68,16 +68,14 @@ ChecksMacports
 # See https://trac.macports.org/wiki/KDE for details
 InstallCorePackages()
 {
+
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 port install kdelibs4
 port install kde4-baseapps
 port install kde4-runtime
 port install oxygen-icons
-port install libusb
-port install libgphoto2
 port install libpng
-port install liblqr
 port install libpgf
 port install libraw
 port install jpeg
@@ -85,13 +83,16 @@ port install tiff
 port install exiv2
 port install boost
 port install opencv
-port install gettext
 
 # For core optional dependencies
 
+port install gettext
+port install libusb
+port install libgphoto2
 port install marble
 port install lensfun
 port install jasper
+port install liblqr
 port install lcms2
 port install eigen3
 port install sqlite2
@@ -128,4 +129,5 @@ port install phonon
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
+
 }
