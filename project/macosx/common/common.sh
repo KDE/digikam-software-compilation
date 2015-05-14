@@ -95,6 +95,7 @@ port install lcms2
 port install eigen3
 port install sqlite2
 port install baloo
+port install shared-desktop-ontologies
 
 # For Kipi-plugins
 
