@@ -85,6 +85,7 @@ port install tiff
 port install exiv2
 port install boost
 port install opencv
+port install gettext
 
 # For core optional dependencies
 
