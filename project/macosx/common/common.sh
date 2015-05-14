@@ -72,6 +72,7 @@ port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 port install kdelibs4
 port install kde4-baseapps
+port install exiv2
 port install opencv
 port install marble
 port install oxygen-icons
