@@ -17,36 +17,36 @@ ChecksXCodeCLI
 
 #################################################################################################"
 
-# Directiory where MacPorts will be built, and where it will be installed by packaging script
+# Directory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
-
-# Temporary directory in which MacPorts will be built
-MP_BUILDTEMP=~/mptemp
 
 # Macports tarball information
 MP_URL="https://distfiles.macports.org/MacPorts/"
 MP_VERSION="2.3.3"
+MP_BUILDTEMP=~/mptemp
 
 # Pathes rules
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
 #################################################################################################"
-# Target directory creation and Macports installation
+# Target directory creation
 echo -e "\n\n"
 
-# Delete and re-create MacPorts install directory
+# Delete and re-create target install directory
 if [ -d "$INSTALL_PREFIX" ] ; then
-   echo "---------- Removing existing  $INSTALL_PREFIX"
+   echo "---------- Removing existing $INSTALL_PREFIX"
    rm -rf "$INSTALL_PREFIX"
 fi
 
 echo "---------- Creating $INSTALL_PREFIX"
 mkdir "$INSTALL_PREFIX"
 
-# Delete and re-create temporary MacPorts build directory
+#################################################################################################"
+# Build Macports in temporary directory and installation
+
 if [ -d "$MP_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $MP_BUILDTEMP" 
+   echo "---------- Removing existing $MP_BUILDTEMP"
    rm -rf "$MP_BUILDTEMP"
 fi
 
@@ -70,11 +70,11 @@ echo "---------- Configuring MacPorts"
 	    --with-install-group="$(id -n -g)" 
 echo -e "\n\n"
 
-echo *** Building MacPorts
-make 
+echo "---------- Building MacPorts"
+make
 echo -e "\n\n"
 
-echo *** Installing MacPorts
+echo "---------- Installing MacPorts"
 echo -e "\n\n"
 make install && cd "$ORIG_WD" && rm -rf "$MP_BUILDTEMP"
 
@@ -105,7 +105,7 @@ echo -e "\n"
 #[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
 
 #################################################################################################"
-# Dependencies installation
+# Dependencies build and installation
 
 echo "*** Building digikam dependencies with Macports"
 
@@ -116,10 +116,10 @@ InstallCorePackages
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
 #################################################################################################"
-# digiKam installation
-
-echo "*** Building digikam with Macports"
+# digiKam build and installation
 
 port install digikam +docs+lcms2+translations
+
+#################################################################################################"
 
 export PATH=$ORIG_PATH
