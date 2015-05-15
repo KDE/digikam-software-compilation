@@ -10,10 +10,12 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-# Pre-processing checks.
+# Pre-processing checks
 . ../common/common.sh
 ChecksRunAsRoot
 ChecksXCodeCLI
+
+#################################################################################################"
 
 # Directiory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
@@ -21,12 +23,16 @@ INSTALL_PREFIX="/opt/digikam"
 # Temporary directory in which MacPorts will be built
 MP_BUILDTEMP=~/mptemp
 
+# Macports tarball information
 MP_URL="https://distfiles.macports.org/MacPorts/"
 MP_VERSION="2.3.3"
 
+# Pathes rules
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
+#################################################################################################"
+# Target directory creation and Macports installation
 echo -e "\n\n"
 
 # Delete and re-create MacPorts install directory
@@ -78,6 +84,9 @@ startupitem_type none
 startupitem_install no
 EOF
 
+#################################################################################################"
+# Macports update
+
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
 echo -e "\n"
@@ -95,13 +104,21 @@ echo -e "\n"
 # Use custom digikam portfile if digikam-portfile/Portfile exists
 #[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
 
-echo "*** Building digikam with Macports"
+#################################################################################################"
+# Dependencies installation
+
+echo "*** Building digikam dependencies with Macports"
 
 InstallCorePackages
 
 # External MySQL external database support.
 # By default akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
+
+#################################################################################################"
+# digiKam installation
+
+echo "*** Building digikam with Macports"
 
 port install digikam +docs+lcms2+translations
 
