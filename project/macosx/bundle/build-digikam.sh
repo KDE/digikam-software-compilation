@@ -35,8 +35,16 @@ echo -e "\n\n"
 
 # Delete and re-create target install directory
 if [ -d "$INSTALL_PREFIX" ] ; then
-   echo "---------- Removing existing $INSTALL_PREFIX"
-   rm -rf "$INSTALL_PREFIX"
+
+    read -p "$INSTALL_PREFIX already exist and will be removed. Do you want to continue?" answer
+    if echo "$answer" | grep -iq "^y" ;then
+        echo "---------- Removing existing $INSTALL_PREFIX"
+        rm -rf "$INSTALL_PREFIX"
+    else
+        echo "---------- Aborting..."
+        exit;
+    fi
+
 fi
 
 echo "---------- Creating $INSTALL_PREFIX"
