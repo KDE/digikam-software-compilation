@@ -63,8 +63,6 @@ lib/kde4/kcm_*.so \
 lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
-lib/plugins \
-lib/sane \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
@@ -83,6 +81,8 @@ etc/xdg/menus \
 lib/kde4 \
 lib/ImageMagick* \
 lib/libgphoto* \
+lib/plugins \
+lib/sane \
 share/applications/kde4 \
 share/apps \
 share/config \
@@ -278,8 +278,7 @@ echo "Deleting dbus system config lines pertaining to running as non-root user"
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 # Create package preinstall script
-# Unload dbus-system, delete /Applications entries, delete existing
-# installation
+# Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
 # Generated (and will be overwritten by) make-package.sh
