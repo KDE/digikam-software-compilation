@@ -71,6 +71,8 @@ share/qt4/plugins/sqldrivers/*.dylib \
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
+# Note : share/locale and share/doc/HTML are not optimized to only host digiKam
+# translations and documentations
 OTHER_DIRS="\
 Library/LaunchAgents/org.freedesktop.dbus-session.plist \
 Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
@@ -87,8 +89,7 @@ share/applications/kde4 \
 share/apps \
 share/config \
 share/dbus-1 \
-share/doc/HTML/en/digikam \
-share/doc/HTML/en/showfoto \
+share/doc/HTML/ \
 share/icons/hicolor \
 share/icons/oxygen \
 share/OpenCV \
@@ -97,8 +98,7 @@ share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats \
 share/qt4/plugins/sqldrivers \
 share/lensfun \
-share/locale/currency/usd.desktop \
-share/locale/en_US \
+share/locale/ \
 share/mime \
 var/run/dbus \
 "
