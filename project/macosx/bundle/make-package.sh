@@ -57,7 +57,7 @@ bin/dbus-daemon \
 bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
-lib/liqtcurve*.dylib \
+lib/libqtcurve*.dylib \
 lib/kde4/kipiplugin*.so \
 lib/kde4/kstyle*.so \
 lib/kde4/digikamimageplugin*.so \
