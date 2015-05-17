@@ -65,6 +65,7 @@ lib/kde4/kcm_*.so \
 lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
+lib/kde4/plugins/styles/*.so \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
@@ -96,10 +97,7 @@ share/icons/hicolor \
 share/icons/oxygen \
 share/OpenCV \
 share/kde4 \
-share/qt4/plugins/designer/libphononwidgets.dylib \
-share/qt4/plugins/imageformats \
-share/qt4/plugins/sqldrivers \
-share/qt4/plugins/styles \
+share/qt4/ \
 share/lensfun \
 share/locale/ \
 share/mime \
