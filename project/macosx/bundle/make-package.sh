@@ -99,6 +99,7 @@ share/kde4 \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats \
 share/qt4/plugins/sqldrivers \
+share/qt4/plugins/styles \
 share/lensfun \
 share/locale/ \
 share/mime \
