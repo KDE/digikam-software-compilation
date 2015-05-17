@@ -204,12 +204,13 @@ if not checkProcess("kded4")
 	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
 end if
 
-do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
+do shell script "ulimit -n 65536"
+
+do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --graphicssystem=native"
 EOF
 # ------ End KDE application launcher script
 
-        # Get application icon for launcher. If no icon file matchesl pattern 
-        # app_SRCS.icns (e.g. panoramagui), grab the first icon
+        # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
         if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
           echo "    Found icon for $app launcher"
           cp -p "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
@@ -230,8 +231,7 @@ EOF
   done
 done
 
-# Collect dylib dependencies for all KDE and other binaries, then copy them
-# to the staging area (creating directories as required)
+# Collect dylib dependencies for all KDE and other binaries, then copy them to the staging area (creating directories as required)
 echo "Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
