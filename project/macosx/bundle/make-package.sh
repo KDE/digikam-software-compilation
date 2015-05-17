@@ -204,8 +204,6 @@ if not checkProcess("kded4")
 	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
 end if
 
-do shell script "ulimit -n 65536"
-
 do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --graphicssystem=native"
 EOF
 # ------ End KDE application launcher script
