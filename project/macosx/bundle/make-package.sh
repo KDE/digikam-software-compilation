@@ -57,14 +57,15 @@ bin/dbus-daemon \
 bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
+lib/libqtcurve*.dylib \
 lib/kde4/kipiplugin*.so \
+lib/kde4/kstyle*.so \
 lib/kde4/digikamimageplugin*.so \
 lib/kde4/kcm_*.so \
 lib/kde4/kio_digikam*.so \
 lib/kde4/libexec/klauncher \
 lib/kde4/libexec/lnusertemp \
-lib/plugins \
-lib/sane \
+lib/kde4/plugins/styles/*.so \
 share/qt4/plugins/designer/libphononwidgets.dylib \
 share/qt4/plugins/imageformats/*.dylib \
 share/qt4/plugins/sqldrivers/*.dylib \
@@ -73,6 +74,8 @@ share/qt4/plugins/sqldrivers/*.dylib \
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
+# Note : share/locale and share/doc/HTML are not optimized to only host digiKam
+# translations and documentations
 OTHER_DIRS="\
 Library/LaunchAgents/org.freedesktop.dbus-session.plist \
 Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
@@ -83,22 +86,20 @@ etc/xdg/menus \
 lib/kde4 \
 lib/ImageMagick* \
 lib/libgphoto* \
+lib/plugins \
+lib/sane \
 share/applications/kde4 \
 share/apps \
 share/config \
 share/dbus-1 \
-share/doc/HTML/en/digikam \
-share/doc/HTML/en/showfoto \
+share/doc/HTML/ \
 share/icons/hicolor \
 share/icons/oxygen \
 share/OpenCV \
 share/kde4 \
-share/qt4/plugins/designer/libphononwidgets.dylib \
-share/qt4/plugins/imageformats \
-share/qt4/plugins/sqldrivers \
+share/qt4/ \
 share/lensfun \
-share/locale/currency/usd.desktop \
-share/locale/en_US \
+share/locale/ \
 share/mime \
 var/run/dbus \
 "
@@ -206,8 +207,7 @@ do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
 EOF
 # ------ End KDE application launcher script
 
-        # Get application icon for launcher. If no icon file matchesl pattern 
-        # app_SRCS.icns (e.g. panoramagui), grab the first icon
+        # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
         if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
           echo "    Found icon for $app launcher"
           cp -p "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
@@ -228,8 +228,7 @@ EOF
   done
 done
 
-# Collect dylib dependencies for all KDE and other binaries, then copy them
-# to the staging area (creating directories as required)
+# Collect dylib dependencies for all KDE and other binaries, then copy them to the staging area (creating directories as required)
 echo "Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
@@ -278,8 +277,7 @@ echo "Deleting dbus system config lines pertaining to running as non-root user"
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 # Create package preinstall script
-# Unload dbus-system, delete /Applications entries, delete existing
-# installation
+# Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
 # Generated (and will be overwritten by) make-package.sh
