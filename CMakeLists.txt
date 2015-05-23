@@ -175,7 +175,6 @@ endif()
 set(CMAKE_MODULE_PATH
     ${CMAKE_SOURCE_DIR}/extra/libkgeomap/cmake/modules
     ${CMAKE_SOURCE_DIR}/extra/libmediawiki/cmake/modules
-    ${CMAKE_SOURCE_DIR}/extra/libkvkontakte/cmake/modules
     ${CMAKE_SOURCE_DIR}/cmake/modules
     ${CMAKE_MODULE_PATH}
    )
