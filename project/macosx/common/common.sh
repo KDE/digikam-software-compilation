@@ -85,65 +85,65 @@ InstallCorePackages()
 
 port install qt4-mac ${DEBUG_SYMBOLS}
 port install qt4-mac-sqlite3-plugin ${DEBUG_SYMBOLS}
-port install kdelibs4
-port install kde4-baseapps
-port install kde4-runtime
-port install oxygen-icons
-port install libpng
-port install libpgf
-port install libraw
-port install jpeg
-port install tiff
-port install exiv2
-port install boost
-port install opencv
+port install kdelibs4 ${DEBUG_SYMBOLS}
+port install kde4-baseapps ${DEBUG_SYMBOLS}
+port install kde4-runtime ${DEBUG_SYMBOLS}
+port install oxygen-icons ${DEBUG_SYMBOLS}
+port install libpng ${DEBUG_SYMBOLS}
+port install libpgf ${DEBUG_SYMBOLS}
+port install libraw ${DEBUG_SYMBOLS}
+port install jpeg ${DEBUG_SYMBOLS}
+port install tiff ${DEBUG_SYMBOLS}
+port install exiv2 ${DEBUG_SYMBOLS}
+port install boost ${DEBUG_SYMBOLS}
+port install opencv ${DEBUG_SYMBOLS}
 
 # For core optional dependencies
 
-port install gettext
-port install libusb
-port install libgphoto2
-port install marble
-port install lensfun
-port install jasper
-port install liblqr
-port install lcms2
-port install eigen3
-port install sqlite2
-port install baloo
-port install shared-desktop-ontologies
+port install gettext ${DEBUG_SYMBOLS}
+port install libusb ${DEBUG_SYMBOLS}
+port install libgphoto2 ${DEBUG_SYMBOLS}
+port install marble ${DEBUG_SYMBOLS}
+port install lensfun ${DEBUG_SYMBOLS}
+port install jasper ${DEBUG_SYMBOLS}
+port install liblqr ${DEBUG_SYMBOLS}
+port install lcms2 ${DEBUG_SYMBOLS}
+port install eigen3 ${DEBUG_SYMBOLS}
+port install sqlite2 ${DEBUG_SYMBOLS}
+port install baloo ${DEBUG_SYMBOLS}
+port install shared-desktop-ontologies ${DEBUG_SYMBOLS}
 
 # For Kipi-plugins
 
-port install sane-backends
-port install expat
-port install libgpod
-port install libxml2
-port install libxslt
-port install qca
-port install qjson
-port install ImageMagick
-port install glib2
+port install sane-backends ${DEBUG_SYMBOLS}
+port install expat ${DEBUG_SYMBOLS}
+port install libgpod ${DEBUG_SYMBOLS}
+port install libxml2 ${DEBUG_SYMBOLS}
+port install libxslt ${DEBUG_SYMBOLS}
+port install qca ${DEBUG_SYMBOLS}
+port install qjson ${DEBUG_SYMBOLS}
+port install ImageMagick ${DEBUG_SYMBOLS}
+port install glib2 ${DEBUG_SYMBOLS}
 
 # For Color themes support
 
-port install kdeartwork
+port install kdeartwork ${DEBUG_SYMBOLS}
 
 # For Acqua style support (including KDE system settings)
 
-port install kde4-workspace
-port install qtcurve
+port install kde4-workspace ${DEBUG_SYMBOLS}
+port install qtcurve ${DEBUG_SYMBOLS}
 
 # For video support
 
-port install kdemultimedia4
-port install ffmpegthumbs
-port install phonon
-port install gstreamer1-gst-libav
-port install gstreamer1-plugins-good
+port install kdemultimedia4 ${DEBUG_SYMBOLS}
+port install ffmpegthumbs ${DEBUG_SYMBOLS}
+port install phonon ${DEBUG_SYMBOLS}
+port install gstreamer1-gst-libav ${DEBUG_SYMBOLS}
+port install gstreamer1-plugins-good ${DEBUG_SYMBOLS}
 
 # For documentations
-port install texlive-fonts-recommended
-port install texlive-fontutils
+port install texlive-fonts-recommended ${DEBUG_SYMBOLS}
+port install texlive-fontutils ${DEBUG_SYMBOLS}
 
 }
