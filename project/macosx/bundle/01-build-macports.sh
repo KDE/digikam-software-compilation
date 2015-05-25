@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build digiKam using MacPorts
+# Script to build a stand alone Macports install
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -109,9 +109,6 @@ echo -e "\n"
 #echo "---------- Removing Avahi depenency from kdelibs4"
 #sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
-# Use custom digikam portfile if digikam-portfile/Portfile exists
-#[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
-
 #################################################################################################"
 # Dependencies build and installation
 
@@ -122,11 +119,6 @@ InstallCorePackages
 # External MySQL external database support.
 # By default akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
-
-#################################################################################################"
-# digiKam build and installation
-
-port install digikam +docs+lcms2+translations
 
 #################################################################################################"
 
