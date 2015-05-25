@@ -39,6 +39,8 @@ echo -e "\n"
 # Use custom digikam portfile if digikam-portfile/Portfile exists
 #[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
 
+port clean --all digikam
+port uninstall digikam
 port install digikam +docs+lcms2+translations+debug
 
 #################################################################################################"
