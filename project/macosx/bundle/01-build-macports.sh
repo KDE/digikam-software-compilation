@@ -29,7 +29,7 @@ ORIG_WD="`pwd`"
 
 #################################################################################################"
 # Target directory creation
-echo -e "\n\n"
+echo -e "\n"
 
 # Delete and re-create target install directory
 if [ -d "$INSTALL_PREFIX" ] ; then
