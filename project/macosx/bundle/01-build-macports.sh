@@ -10,6 +10,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+echo "01-build-macports.sh : build a stand alone Macports install with digiKam dependencies."
+echo "--------------------------------------------------------------------------------------"
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup
@@ -29,7 +32,6 @@ ORIG_WD="`pwd`"
 
 #################################################################################################"
 # Target directory creation
-echo -e "\n"
 
 # Delete and re-create target install directory
 if [ -d "$INSTALL_PREFIX" ] ; then

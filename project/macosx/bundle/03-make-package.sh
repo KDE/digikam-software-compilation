@@ -11,6 +11,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+echo "03-build-package.sh : build digiKam binary PKG."
+echo "-----------------------------------------------"
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup

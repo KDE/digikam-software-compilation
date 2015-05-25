@@ -10,6 +10,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+echo "02-build-digikam.sh : build digiKam using MacPorts."
+echo "---------------------------------------------------"
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup
