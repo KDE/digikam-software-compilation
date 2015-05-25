@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a stand alone Macports install
+# Script to build a stand alone Macports install with digiKam dependencies
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -12,13 +12,11 @@
 
 # Pre-processing checks
 . ../common/common.sh
+CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 
 #################################################################################################"
-
-# Directory where MacPorts will be built, and where it will be installed by packaging script
-INSTALL_PREFIX="/opt/digikam"
 
 # Macports tarball information
 MP_URL="https://distfiles.macports.org/MacPorts/"

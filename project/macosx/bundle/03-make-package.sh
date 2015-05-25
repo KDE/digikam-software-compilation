@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to prepare previously-built KDE and digiKam installation through build-digikam.sh
+# Script to prepare previously-built KDE and digiKam installation through 01-build-macports.sh and 02-build-digikam.sh
 # and package it using Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
@@ -11,8 +11,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-# MacPorts install directory (and location where packaged files will be)
-INSTALL_PREFIX="/opt/digikam"
+# Pre-processing checks
+. ../common/common.sh
+CommonSetup
 
 # Directory where this script is located (default - current directory)
 BUILDDIR="$PWD"
