@@ -10,15 +10,16 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+echo "02-build-digikam.sh : build digiKam using MacPorts."
+echo "---------------------------------------------------"
+
 # Pre-processing checks
 . ../common/common.sh
+CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 
 #################################################################################################"
-
-# Directory where MacPorts will be built, and where it will be installed by packaging script
-INSTALL_PREFIX="/opt/digikam"
 
 # Pathes rules
 ORIG_PATH="$PATH"
@@ -41,7 +42,7 @@ echo -e "\n"
 
 port clean --all digikam
 port uninstall digikam
-port install digikam +docs+lcms2+translations+debug
+port install digikam +docs+lcms2+translations${DEBUG_SYMBOLS}
 
 #################################################################################################"
 

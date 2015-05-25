@@ -6,6 +6,19 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 ########################################################################
+# Set common variables
+CommonSetup()
+{
+
+# Directory where MacPorts will be built, and where it will be installed by packaging script
+INSTALL_PREFIX="/opt/digikam"
+
+# Compile with debug symbols Macports variant
+DEBUG_SYMBOLS="+debug"
+
+}
+
+########################################################################
 # Check if run as root
 ChecksRunAsRoot()
 {
@@ -53,10 +66,11 @@ fi
 }
 
 ########################################################################
-# PerformsAllChecks
+# Performs All Checks
 CommonChecks()
 {
 
+CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 ChecksMacports
@@ -69,8 +83,8 @@ ChecksMacports
 InstallCorePackages()
 {
 
-port install qt4-mac
-port install qt4-mac-sqlite3-plugin
+port install qt4-mac ${DEBUG_SYMBOLS}
+port install qt4-mac-sqlite3-plugin ${DEBUG_SYMBOLS}
 port install kdelibs4
 port install kde4-baseapps
 port install kde4-runtime
