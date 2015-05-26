@@ -14,10 +14,10 @@ INSTALL_PREFIX=$1
 if [ "$INSTALL_PREFIX" = "" ]; then
     # Standard Macports install
     INSTALL_PREFIX=/opt/local
-    BUNDLE_INSTALL_DIR=/Applications/MacPorts/KDE4
+    BUNDLE_INSTALL_DIR=/Applications/KDE4
 else
     # Specific install path as /opt/digikam to build bundle PKG for example
-    BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/MacPorts/KDE4
+    BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/KDE4
 fi
 
 BUILD_TYPE=$2
