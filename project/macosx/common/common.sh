@@ -13,8 +13,8 @@ CommonSetup()
 # Directory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
 
-# Compile with debug symbols Macports variant
-DEBUG_SYMBOLS="+debug"
+# Uncomment this line to compile with debug symbols Macports variant
+#DEBUG_SYMBOLS="+debug"
 
 }
 
