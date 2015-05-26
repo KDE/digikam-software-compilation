@@ -13,6 +13,8 @@
 echo "01-build-macports.sh : build a stand alone Macports install with digiKam dependencies."
 echo "--------------------------------------------------------------------------------------"
 
+begin=$(date +"%s")
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup
@@ -123,3 +125,7 @@ InstallCorePackages
 #################################################################################################"
 
 export PATH=$ORIG_PATH
+
+termin=$(date +"%s")
+difftimelps=$(($termin-$begin))
+echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script Execution."
