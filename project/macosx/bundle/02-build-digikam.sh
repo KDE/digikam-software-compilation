@@ -45,7 +45,10 @@ cd "$DK_BUILDTEMP"
 echo -e "\n\n"
 
 echo "---------- Downloading digiKam $DK_VERSION"
-curl -# -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
+
+curl -# \
+     -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
+
 tar jxvf digikam-$DK_VERSION.tar.bz2
 
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
