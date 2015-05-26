@@ -79,7 +79,7 @@ echo "---------- Configuring MacPorts"
 echo -e "\n\n"
 
 echo "---------- Building MacPorts"
-make
+make -j8
 echo -e "\n\n"
 
 echo "---------- Installing MacPorts"

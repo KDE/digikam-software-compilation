@@ -21,28 +21,51 @@ ChecksXCodeCLI
 
 #################################################################################################"
 
+# Macports tarball information
+DK_URL="http://download.kde.org/stable/digikam/"
+DK_VERSION="4.10.0"
+DK_BUILDTEMP=~/dktemp
+
 # Pathes rules
 ORIG_PATH="$PATH"
+ORIG_WD="`pwd`"
 
 #################################################################################################"
-# Macports update
+# Build digiKam in temporary directory and installation
 
-export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+if [ -d "$DK_BUILDTEMP" ] ; then
+   echo "---------- Removing existing $DK_BUILDTEMP"
+   rm -rf "$DK_BUILDTEMP"
+fi
 
-echo -e "\n"
-echo "---------- Updating MacPorts"
-port -v selfupdate
-echo -e "\n"
+echo "---------- Creating $DK_BUILDTEMP"
+mkdir "$DK_BUILDTEMP"
 
-#################################################################################################"
-# digiKam build and installation
+cd "$DK_BUILDTEMP"
+echo -e "\n\n"
 
-# Use custom digikam portfile if digikam-portfile/Portfile exists
-#[[ -f digikam-portfile/Portfile ]] && echo "*** Replacing digikam portfile with digikam-portfile/Portfile" && cp digikam-portfile/Portfile "`port file digikam`"
+echo "---------- Downloading digiKam $DK_VERSION"
+curl -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
+tar jxvf digikam-$DK_VERSION.tar.bz2
 
-port clean --all digikam
-port uninstall digikam
-port install digikam +docs+lcms2+translations${DEBUG_SYMBOLS}
+cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
+cd digikam-$DK_VERSION
+echo -e "\n\n"
+
+echo "---------- Configuring digiKam"
+
+./bootstrap.macports $INSTALL_PREFIX
+
+echo -e "\n\n"
+
+echo "---------- Building digiKam"
+cd build
+make -j8
+echo -e "\n\n"
+
+echo "---------- Installing digiKam"
+echo -e "\n\n"
+make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 
 #################################################################################################"
 
