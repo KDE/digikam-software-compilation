@@ -23,9 +23,8 @@ ChecksXCodeCLI
 
 #################################################################################################"
 
-# Macports tarball information
+# digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam/"
-DK_VERSION="4.10.0"
 DK_BUILDTEMP=~/dktemp
 
 # Pathes rules
@@ -76,7 +75,6 @@ make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 #################################################################################################"
 
 export PATH=$ORIG_PATH
-
 
 termin=$(date +"%s")
 difftimelps=$(($termin-$begin))

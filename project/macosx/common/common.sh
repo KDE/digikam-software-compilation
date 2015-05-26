@@ -16,6 +16,9 @@ INSTALL_PREFIX="/opt/digikam"
 # Uncomment this line to compile with debug symbols Macports variant
 #DEBUG_SYMBOLS="+debug"
 
+# digiKam version to build
+DK_VERSION="4.10.0"
+
 }
 
 ########################################################################
