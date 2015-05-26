@@ -115,14 +115,14 @@ See below an example of .gitconfig file working with a developer account :
 "-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF"        Force to use local libkdcraw instead version installed on your computer.
-"-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF"       Force to use local libkgeomap instead version installed on your computer.
+"-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF"    Force to use local libkvkontakte instead version installed on your computer.
 
 "-DDIGIKAMSC_COMPILE_PLUGINS=ON"           Compile Kipi-plugins.
-"-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON"     Compile digiKam core.
+"-DDIGIKAMSC_COMPILE_CORE=ON"              Compile digiKam core.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 

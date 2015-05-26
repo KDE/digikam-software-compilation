@@ -8,5 +8,5 @@
 "^digikam-doc" "doc/digikam"
 "^kipi-plugins-doc" "doc/kipi-plugins"
 "^digikam" "core"
-#"^libmediawiki" "extra/libmediawiki"
-#"^libkvkontakte" "extra/libkvkontakte"
+"^libmediawiki" "extra/libmediawiki"
+"^libkvkontakte" "extra/libkvkontakte"
