@@ -13,6 +13,8 @@
 echo "02-build-digikam.sh : build digiKam using MacPorts."
 echo "---------------------------------------------------"
 
+begin=$(date +"%s")
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup
@@ -33,6 +35,8 @@ ORIG_WD="`pwd`"
 #################################################################################################"
 # Build digiKam in temporary directory and installation
 
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
 if [ -d "$DK_BUILDTEMP" ] ; then
    echo "---------- Removing existing $DK_BUILDTEMP"
    rm -rf "$DK_BUILDTEMP"
@@ -46,8 +50,7 @@ echo -e "\n\n"
 
 echo "---------- Downloading digiKam $DK_VERSION"
 
-curl -# \
-     -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
+curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
 
 tar jxvf digikam-$DK_VERSION.tar.bz2
 
@@ -73,3 +76,8 @@ make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 #################################################################################################"
 
 export PATH=$ORIG_PATH
+
+
+termin=$(date +"%s")
+difftimelps=$(($termin-$begin))
+echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script Execution."
