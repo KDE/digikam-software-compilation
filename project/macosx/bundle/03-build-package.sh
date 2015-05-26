@@ -14,6 +14,8 @@
 echo "03-build-package.sh : build digiKam binary PKG."
 echo "-----------------------------------------------"
 
+begin=$(date +"%s")
+
 # Pre-processing checks
 . ../common/common.sh
 CommonSetup
@@ -25,7 +27,7 @@ BUILDDIR="$PWD"
 PROJECTDIR="$BUILDDIR/package"
 
 # Staging area where files to be packaged will be copied
-TEMPROOT="$BUILDDIR/opt/digikam"
+TEMPROOT="$BUILDDIR/$INSTALL_PREFIX"
 
 # KDE apps to be launched directly by user (create launch scripts)
 KDE_MENU_APPS="\
@@ -112,25 +114,12 @@ PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
-# If the port command isn't in install prefix/bin, $INSTALL_PREFIX is probably wrong
-if [ ! -f "$INSTALL_PREFIX/bin/port" ] ; then 
-  echo "$INSTALL_PREFIX/bin/port not found"
-  exit
-fi
-
-# Make sure digikam is installed, and figure out what version
-echo -n "Determining digikam version: "
-DIGIKAM_VERSION="`$INSTALL_PREFIX/bin/port -q installed digikam | sed "s/^.*@//;s/ (.*)//"`"
-[[ ! "$DIGIKAM_VERSION" ]] && echo "digikam port not installed" && exit
+echo -n "digiKam version: "
+DIGIKAM_VERSION=$DK_VERSION
 echo $DIGIKAM_VERSION
 
-# Is the debug variant installed (we'll need to set DYLIB_IMAGE_SUFFIX later)
-if [[ $DIGIKAM_VERSION == *"+debug"* ]] ; then
-  echo "Debug variant found"
-  DEBUG=1
-else
-  DEBUG=0
-fi
+# digiKam has been built with debug symbol. We'll need to set DYLIB_IMAGE_SUFFIX later.
+DEBUG=1
 
 # ./package sub-dir must be writable by root
 chmod 777 ${PROJECTDIR}
@@ -170,6 +159,7 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
       # if built with debug variant
       if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
         echo "    Creating launcher script for $app"
+
         # Debug variant needs DYLD_IMAGE_SUFFIX="_debug set at runtime
         if [ $DEBUG ] ; then
           DYLD_ENV_CMD="DYLD_IMAGE_SUFFIX=_debug "
@@ -337,3 +327,7 @@ shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 echo To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD
+
+termin=$(date +"%s")
+difftimelps=$(($termin-$begin))
+echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script Execution."
