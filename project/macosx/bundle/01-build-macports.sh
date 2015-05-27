@@ -108,10 +108,6 @@ echo -e "\n"
 #echo "---------- Modifying net-snmp portfile to install when not root"
 #sed -e "/install.asroot/ s|yes|no|" -i ".orig" "`port file net-snmp`"
 
-# Remove kdelibs avahi dependency  (https://bugs.kde.org/show_bug.cgi?id=257679)
-#echo "---------- Removing Avahi depenency from kdelibs4"
-#sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
-
 #################################################################################################
 # Dependencies build and installation
 
@@ -119,9 +115,9 @@ echo "*** Building digikam dependencies with Macports"
 
 InstallCorePackages
 
-# External MySQL external database support.
-# By default akonadi variant (mariadb55) breaks build due to conflict with mysql5x
-#port install akonadi +mysql56 digikam +docs+mysql56_external+debug
+# Remove kdelibs avahi dependency  (https://bugs.kde.org/show_bug.cgi?id=257679)
+#echo "---------- Removing Avahi depenency from kdelibs4"
+#sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
 #################################################################################################
 
