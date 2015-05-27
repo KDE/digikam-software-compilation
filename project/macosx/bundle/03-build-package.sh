@@ -256,6 +256,7 @@ done
 # Copy non-binary files and directories, creating parent directories if needed
 
 echo "Copying non-binary files and directories..."
+
 for path in $OTHER_APPS $OTHER_DIRS ; do
   dir="${path%/*}"
   if [ ! -d "$TEMPROOT/$dir" ] ; then
@@ -271,9 +272,10 @@ cd "$ORIG_WD"
 [[ -e "$TEMPROOT/var/run/dbus/.turd_dbus" ]] && rm -v "$TEMPROOT/var/run/dbus/.turd_dbus"
 
 #################################################################################################
-# Set KDE default applications to OSX paths
+# Set KDE default applications settings for OSX
 
-echo "Creating $TEMPROOT/share/config/kdeglobals"
+echo "Creating KDE global config for OSX"
+
 cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 [General]
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
@@ -286,10 +288,13 @@ EOF
 # (installed version will be run as root, although MacPorts version wasn't)
 
 echo "Deleting dbus system config lines pertaining to running as non-root user"
+
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 #################################################################################################
 # Create package pre-install script
+
+echo "Create package pre-install script"
 
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
@@ -312,8 +317,13 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 fi
 EOF
 
+# Pre-install script need to be executable
+chmod 755 "$PROJECTDIR/preinstall"
+
 #################################################################################################
 # Create package post-install script
+
+echo "Create package post-install script"
 
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
@@ -329,15 +339,14 @@ for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
 done
 EOF
 
-#################################################################################################
-# Pre-install and post-install scripts need to be executable
-
-chmod 755 "$PROJECTDIR/preinstall" "$PROJECTDIR/postinstall"
+# Post-install script need to be executable
+chmod 755 "$PROJECTDIR/postinstall"
 
 #################################################################################################
 # Build PKG file
 
-echo Preparing to create package for digikam $DIGIKAM_VERSION
+echo "Preparing to create package for digikam $DIGIKAM_VERSION"
+
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
    set version "$DIGIKAM_VERSION"
 
@@ -348,14 +357,15 @@ mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 #################################################################################################
 # Build Checksum files of package
 
-echo Compute package checksums for digikam $DIGIKAM_VERSION
+echo "Compute package checksums for digikam $DIGIKAM_VERSION"
+
 du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
-echo To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD
+echo "To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD"
 
 termin=$(date +"%s")
 difftimelps=$(($termin-$begin))
-echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script Execution."
+echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script execution."
