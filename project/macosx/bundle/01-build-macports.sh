@@ -15,13 +15,15 @@ echo "--------------------------------------------------------------------------
 
 begin=$(date +"%s")
 
+#################################################################################################
 # Pre-processing checks
+
 . ../common/common.sh
 CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 
-#################################################################################################"
+#################################################################################################
 
 # Macports tarball information
 MP_URL="https://distfiles.macports.org/MacPorts/"
@@ -32,7 +34,7 @@ MP_BUILDTEMP=~/mptemp
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
-#################################################################################################"
+#################################################################################################
 # Target directory creation
 
 # Delete and re-create target install directory
@@ -52,7 +54,7 @@ fi
 echo "---------- Creating $INSTALL_PREFIX"
 mkdir "$INSTALL_PREFIX"
 
-#################################################################################################"
+#################################################################################################
 # Build Macports in temporary directory and installation
 
 if [ -d "$MP_BUILDTEMP" ] ; then
@@ -94,7 +96,7 @@ startupitem_type none
 startupitem_install no
 EOF
 
-#################################################################################################"
+#################################################################################################
 # Macports update
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
@@ -111,7 +113,7 @@ echo -e "\n"
 #echo "---------- Removing Avahi depenency from kdelibs4"
 #sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
-#################################################################################################"
+#################################################################################################
 # Dependencies build and installation
 
 echo "*** Building digikam dependencies with Macports"
@@ -122,7 +124,7 @@ InstallCorePackages
 # By default akonadi variant (mariadb55) breaks build due to conflict with mysql5x
 #port install akonadi +mysql56 digikam +docs+mysql56_external+debug
 
-#################################################################################################"
+#################################################################################################
 
 export PATH=$ORIG_PATH
 

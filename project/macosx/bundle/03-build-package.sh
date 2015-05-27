@@ -16,9 +16,13 @@ echo "-----------------------------------------------"
 
 begin=$(date +"%s")
 
+#################################################################################################
 # Pre-processing checks
+
 . ../common/common.sh
 CommonSetup
+
+#################################################################################################
 
 # Directory where this script is located (default - current directory)
 BUILDDIR="$PWD"
@@ -92,7 +96,6 @@ etc/xdg/menus \
 lib/kde4 \
 lib/ImageMagick* \
 lib/libgphoto* \
-lib/plugins \
 lib/sane \
 share/applications/kde4 \
 share/apps \
@@ -126,6 +129,9 @@ chmod 777 ${PROJECTDIR}
 
 ORIG_WD="`pwd`"
 
+#################################################################################################
+# Create temporary dir to build package contents
+
 if [ -d "$TEMPROOT" ] ; then
   echo "Removing temporary packaging directory $TEMPROOT"
   rm -rf "$TEMPROOT"
@@ -133,6 +139,9 @@ fi
 
 echo "Creating $TEMPROOT"
 mkdir -p "$TEMPROOT/Applications/digiKam"
+
+#################################################################################################
+# Prepare KDE applications for OSX
 
 echo "Preparing KDE Applications"
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
@@ -222,7 +231,10 @@ EOF
   done
 done
 
-# Collect dylib dependencies for all KDE and other binaries, then copy them to the staging area (creating directories as required)
+#################################################################################################
+# Collect dylib dependencies for all KDE and other binaries,
+# then copy them to the staging area (creating directories as required)
+
 echo "Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
@@ -240,7 +252,9 @@ while read lib ; do
   fi
 done
 
+#################################################################################################
 # Copy non-binary files and directories, creating parent directories if needed
+
 echo "Copying non-binary files and directories..."
 for path in $OTHER_APPS $OTHER_DIRS ; do
   dir="${path%/*}"
@@ -256,7 +270,9 @@ cd "$ORIG_WD"
 
 [[ -e "$TEMPROOT/var/run/dbus/.turd_dbus" ]] && rm -v "$TEMPROOT/var/run/dbus/.turd_dbus"
 
+#################################################################################################
 # Set KDE default applications to OSX paths
+
 echo "Creating $TEMPROOT/share/config/kdeglobals"
 cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 [General]
@@ -265,12 +281,16 @@ TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
 EOF
 
+#################################################################################################
 # Delete dbus system config lines pertaining to running as non-root user
 # (installed version will be run as root, although MacPorts version wasn't)
+
 echo "Deleting dbus system config lines pertaining to running as non-root user"
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
-# Create package preinstall script
+#################################################################################################
+# Create package pre-install script
+
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
@@ -292,7 +312,9 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 fi
 EOF
 
-# Create package postinstall script
+#################################################################################################
+# Create package post-install script
+
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
@@ -307,10 +329,14 @@ for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
 done
 EOF
 
-# Preinstall and postinstall need to be executable
+#################################################################################################
+# Pre-install and post-install scripts need to be executable
+
 chmod 755 "$PROJECTDIR/preinstall" "$PROJECTDIR/postinstall"
 
+#################################################################################################
 # Build PKG file
+
 echo Preparing to create package for digikam $DIGIKAM_VERSION
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
    set version "$DIGIKAM_VERSION"
@@ -319,7 +345,9 @@ $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
 mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
-#Build Checksum files of package
+#################################################################################################
+# Build Checksum files of package
+
 echo Compute package checksums for digikam $DIGIKAM_VERSION
 du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
