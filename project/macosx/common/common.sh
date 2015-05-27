@@ -158,7 +158,7 @@ port install kdemultimedia4
 port install ffmpegthumbs
 port install phonon
 port install gstreamer1-gst-libav
-port install gstreamer1-plugins-good
+port install gstreamer1-gst-plugins-good
 
 # For documentations
 port install texlive-fonts-recommended
