@@ -115,6 +115,9 @@ echo "*** Building digikam dependencies with Macports"
 
 InstallCorePackages
 
+# Require for QtCurves
+ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
+
 # Remove kdelibs avahi dependency  (https://bugs.kde.org/show_bug.cgi?id=257679)
 #echo "---------- Removing Avahi depenency from kdelibs4"
 #sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
