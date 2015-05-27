@@ -8,6 +8,7 @@
 # Pre-processing checks
 
 . ../common/common.sh
+StartScript
 CommonChecks
 
 # Uninstall Macports packages
@@ -27,3 +28,5 @@ rm -rf    \
     /Library/Tcl/darwinports1.0 \
     /Library/Tcl/macports1.0 \
     ~/.macports
+
+TerminateScript
