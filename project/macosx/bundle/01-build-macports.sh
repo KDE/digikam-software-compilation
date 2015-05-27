@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a stand alone Macports install with digiKam dependencies
+# Script to build a bundle Macports install with digiKam dependencies in a dedicated directory
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -10,8 +10,8 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-echo "01-build-macports.sh : build a stand alone Macports install with digiKam dependencies."
-echo "--------------------------------------------------------------------------------------"
+echo "01-build-macports.sh : build a bundle Macports install with digiKam dependencies."
+echo "---------------------------------------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
@@ -108,6 +108,10 @@ echo -e "\n"
 #echo "---------- Modifying net-snmp portfile to install when not root"
 #sed -e "/install.asroot/ s|yes|no|" -i ".orig" "`port file net-snmp`"
 
+# Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
+echo "---------- Removing Avahi dependency from kdelibs4"
+sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
+
 #################################################################################################
 # Dependencies build and installation
 
@@ -117,10 +121,6 @@ InstallCorePackages
 
 # Require for QtCurves
 ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
-
-# Remove kdelibs avahi dependency  (https://bugs.kde.org/show_bug.cgi?id=257679)
-#echo "---------- Removing Avahi depenency from kdelibs4"
-#sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
 #################################################################################################
 
