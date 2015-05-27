@@ -13,17 +13,16 @@
 echo "02-build-digikam.sh : build digiKam using MacPorts."
 echo "---------------------------------------------------"
 
-begin=$(date +"%s")
-
 #################################################################################################
 # Pre-processing checks
 
 . ../common/common.sh
+StartScript
 CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 
-#################################################################################################"
+#################################################################################################
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam/"
@@ -33,7 +32,7 @@ DK_BUILDTEMP=~/dktemp
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
-#################################################################################################"
+#################################################################################################
 # Build digiKam in temporary directory and installation
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
@@ -74,10 +73,8 @@ echo "---------- Installing digiKam"
 echo -e "\n\n"
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 
-#################################################################################################"
+#################################################################################################
 
 export PATH=$ORIG_PATH
 
-termin=$(date +"%s")
-difftimelps=$(($termin-$begin))
-echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script execution."
+TerminateScript

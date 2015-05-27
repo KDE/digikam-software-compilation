@@ -14,15 +14,15 @@
 echo "03-build-package.sh : build digiKam binary PKG."
 echo "-----------------------------------------------"
 
-begin=$(date +"%s")
-
 #################################################################################################
 # Pre-processing checks
 
 . ../common/common.sh
+StartScript
 CommonSetup
 
 #################################################################################################
+# Configurations
 
 # Directory where this script is located (default - current directory)
 BUILDDIR="$PWD"
@@ -355,7 +355,7 @@ $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 #################################################################################################
-# Build Checksum files of package
+# Show resume information
 
 echo "Compute package checksums for digikam $DIGIKAM_VERSION"
 
@@ -366,6 +366,6 @@ md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 echo "To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD"
 
-termin=$(date +"%s")
-difftimelps=$(($termin-$begin))
-echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script execution."
+#################################################################################################
+
+TerminateScript

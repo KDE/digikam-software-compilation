@@ -78,6 +78,26 @@ ChecksMacports
 }
 
 ########################################################################
+# For time execution measurement ; startup
+StartScript()
+{
+
+begin=$(date +"%s")
+
+}
+
+########################################################################
+# For time execution measurement : shutdown
+TerminateScript()
+{
+
+termin=$(date +"%s")
+difftimelps=$(($termin-$begin))
+echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script execution."
+
+}
+
+########################################################################
 # Install Macports core packages to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
 InstallCorePackages()
