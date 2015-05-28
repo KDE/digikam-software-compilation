@@ -357,14 +357,16 @@ mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 #################################################################################################
 # Show resume information
 
-echo "Compute package checksums for digikam $DIGIKAM_VERSION\n"
+echo -e "Compute package checksums for digikam $DIGIKAM_VERSION\n"
 
+echo -n "File size  : "
 du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-echo -n "SHA1 sum : "
+echo -n "SHA1 sum   : "
 shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 echo -n "SHA256 sum : "
 shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+echo -n "MD5 sum    : "
+md5 -q "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
