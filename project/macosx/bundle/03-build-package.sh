@@ -357,14 +357,15 @@ mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 #################################################################################################
 # Show resume information
 
-echo -e "Compute package checksums for digikam $DIGIKAM_VERSION\n"
+echo -e "\nCompute package checksums for digikam $DIGIKAM_VERSION\n"
 
-echo -n "File size  : "
-du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+echo "File       : $BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+echo -n "Size       : "
+du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
 echo -n "SHA1 sum   : "
-shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
-shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
 md5 -q "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
 
