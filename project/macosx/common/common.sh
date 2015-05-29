@@ -82,7 +82,7 @@ ChecksMacports
 StartScript()
 {
 
-begin=$(date +"%s")
+BEGIN_SCRIPT=$(date +"%s")
 
 }
 
@@ -91,9 +91,44 @@ begin=$(date +"%s")
 TerminateScript()
 {
 
-termin=$(date +"%s")
-difftimelps=$(($termin-$begin))
-echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for script execution."
+TERMIN_SCRIPT=$(date +"%s")
+difftimelps=$(($TERMIN_SCRIPT-$BEGIN_SCRIPT))
+echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($difftimelps % 3600) / 60)) minutes $(($difftimelps % 60)) seconds"
+
+}
+
+########################################################################
+# Set $OSX_CODE_NAME string with detected OSX code name
+OsxCodeName()
+{
+
+MAJOR_OSX_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
+
+if [[ $MAJOR_OSX_VERSION == "10.10" ]]
+    then OSX_CODE_NAME="Yosemite"
+elif [[ $MAJOR_OSX_VERSION == "10.9" ]]
+    then OSX_CODE_NAME="Mavericks"
+elif [[ $MAJOR_OSX_VERSION == "10.8" ]]
+    then OSX_CODE_NAME="Mountain Lion"
+elif [[ $MAJOR_OSX_VERSION == "10.7" ]]
+    then OSX_CODE_NAME="Lion"
+elif [[ $MAJOR_OSX_VERSION == "10.6" ]]
+    then OSX_CODE_NAME="Snow Leopard"
+elif [[ $MAJOR_OSX_VERSION == "10.5" ]]
+    then OSX_CODE_NAME="Leopard"
+elif [[ $MAJOR_OSX_VERSION == "10.4" ]]
+    then OSX_CODE_NAME="Tiger"
+elif [[ $MAJOR_OSX_VERSION == "10.3" ]]
+    then OSX_CODE_NAME="Panther"
+elif [[ $MAJOR_OSX_VERSION == "10.2" ]]
+    then OSX_CODE_NAME="Jaguar"
+elif [[ $MAJOR_OSX_VERSION == "10.1" ]]
+    then OSX_CODE_NAME="Puma"
+elif [[ $MAJOR_OSX_VERSION == "10.0" ]]
+    then OSX_CODE_NAME="Cheetah"
+fi
+
+echo -e "\nDetected OSX version $MAJOR_OSX_VERSION and code name $OSX_CODE_NAME\n"
 
 }
 
