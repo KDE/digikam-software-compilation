@@ -34,6 +34,17 @@ ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
 #################################################################################################
+# Standard Macports install path check
+
+if [ -d "/opt/local" ] ; then
+    echo "---------- A standard Macports install exists on /opt/local."
+    echo "           To prevent wrong links from this bundle to this repository"
+    echo "           this one must be disabled (moving to /opt/local.back for ex)."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+#################################################################################################
 # Target directory creation
 
 # Delete and re-create target install directory
