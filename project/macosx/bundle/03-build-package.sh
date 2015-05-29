@@ -1,7 +1,8 @@
 #! /bin/bash
 
-# Script to prepare previously-built KDE and digiKam installation through 01-build-macports.sh and 02-build-digikam.sh
-# and package it using Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
+# Script to bundle data using previously-built KDE and digiKam installation
+# through 01-build-macports.sh and 02-build-digikam.sh scripts,
+# and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -345,29 +346,34 @@ chmod 755 "$PROJECTDIR/postinstall"
 #################################################################################################
 # Build PKG file
 
-echo "Preparing to create package for digikam $DIGIKAM_VERSION"
+OsxCodeName
+
+echo "Create package for digiKam $DIGIKAM_VERSION for OSX $MAJOR_OSX_VERSION"
+
+TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
+echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-   set version "$DIGIKAM_VERSION"
+   set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
 
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
-mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
 #################################################################################################
-# Show resume information
+# Show resume information and future instructions to host PKG file to KDE server
 
-echo -e "\nCompute package checksums for digikam $DIGIKAM_VERSION\n"
+echo -e "\nCompute package checksums for digiKam $DIGIKAM_VERSION\n"
 
-echo "File       : $BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+echo "File       : $TARGET_PKG_FILE"
 echo -n "Size       : "
-du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
+du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "SHA1 sum   : "
-shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
+shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
-shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg" | { read first rest ; echo $first ; }
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
-md5 -q "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+md5 -q "$TARGET_PKG_FILE"
 
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
