@@ -282,6 +282,7 @@ cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
+widgetStyle=qtcurve
 EOF
 
 #################################################################################################
