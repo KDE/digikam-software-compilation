@@ -34,14 +34,19 @@ ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
 #################################################################################################
-# Standard Macports install path check
+# Check if /opt exists and standard Macports install path
 
-if [ -d "/opt/local" ] ; then
-    echo "---------- A standard Macports install exists on /opt/local."
-    echo "           To prevent wrong links from this bundle to this repository"
-    echo "           this one must be disabled (moving to /opt/local.back for ex)."
-    echo "---------- Aborting..."
-    exit;
+if [ -d "/opt" ] ; then
+    if [ -d "/opt/local" ] ; then
+        echo "---------- A standard Macports install exists on /opt/local."
+        echo "           To prevent wrong links from this bundle to this repository"
+        echo "           this one must be disabled (moving to /opt/local.back for ex)."
+        echo "---------- Aborting..."
+        exit;
+    fi
+else
+    echo "---------- /opt do not exist, creating"
+    mkdir "/opt"
 fi
 
 #################################################################################################
