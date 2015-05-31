@@ -138,6 +138,10 @@ echo -e "\nDetected OSX version $MAJOR_OSX_VERSION and code name $OSX_CODE_NAME\
 InstallCorePackages()
 {
 
+# Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
+echo "---------- Removing Avahi dependency from kdelibs4"
+sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
+
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 port install kdelibs4
@@ -170,13 +174,10 @@ port install sqlite2
 
 port install sane-backends
 port install expat
-port install libgpod
 port install libxml2
 port install libxslt
 port install qca
 port install qjson
-port install ImageMagick
-port install glib2
 
 # For Color themes support
 
@@ -198,5 +199,8 @@ port install gstreamer1-gst-plugins-good
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
+
+# Require for QtCurves
+ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
 
 }

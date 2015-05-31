@@ -124,19 +124,15 @@ echo -e "\n"
 #echo "---------- Modifying net-snmp portfile to install when not root"
 #sed -e "/install.asroot/ s|yes|no|" -i ".orig" "`port file net-snmp`"
 
-# Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
-echo "---------- Removing Avahi dependency from kdelibs4"
-sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
-
 #################################################################################################
 # Dependencies build and installation
 
-echo "*** Building digikam dependencies with Macports"
+echo -e "\n"
+echo "---------- Building digiKam dependencies with Macports"
 
 InstallCorePackages
 
-# Require for QtCurves
-ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
+echo -e "\n"
 
 #################################################################################################
 
