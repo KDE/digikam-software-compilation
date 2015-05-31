@@ -36,7 +36,7 @@ fi
 # Check if Xcode Command Line tools are installed
 ChecksXCodeCLI()
 {
-xcode-select -p
+xcode-select --print-path
 
 if [[ $? -ne 0 ]]; then
     echo "XCode CLI tools are not installed"
