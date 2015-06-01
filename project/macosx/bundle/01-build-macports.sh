@@ -21,6 +21,7 @@ StartScript
 CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
+ChecksCPUCores
 
 #################################################################################################
 
@@ -137,7 +138,7 @@ echo "---------- Configuring MacPorts"
 echo -e "\n\n"
 
 echo "---------- Building MacPorts"
-make -j8
+make -j$CPU_CORES
 echo -e "\n\n"
 
 echo "---------- Installing MacPorts"

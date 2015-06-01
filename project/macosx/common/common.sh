@@ -36,6 +36,7 @@ fi
 # Check if Xcode Command Line tools are installed
 ChecksXCodeCLI()
 {
+
 xcode-select --print-path
 
 if [[ $? -ne 0 ]]; then
@@ -62,6 +63,17 @@ if [[ $? -ne 0 ]]; then
 else
     echo "Check Macports passed..."
 fi
+
+}
+
+########################################################################
+# Check CPU core available (Linux or OSX)
+ChecksCPUCores()
+{
+
+CPU_CORES=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
+
+echo "CPU Cores detected : $CPU_CORES"
 
 }
 

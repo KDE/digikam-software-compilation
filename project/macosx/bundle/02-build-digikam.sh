@@ -21,6 +21,7 @@ StartScript
 CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
+ChecksCPUCores
 
 #################################################################################################
 
@@ -66,7 +67,7 @@ echo -e "\n\n"
 
 echo "---------- Building digiKam"
 cd build
-make -j8
+make -j$CPU_CORES
 echo -e "\n\n"
 
 echo "---------- Installing digiKam"
