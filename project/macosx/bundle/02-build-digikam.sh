@@ -46,6 +46,12 @@ fi
 echo "---------- Creating $DK_BUILDTEMP"
 mkdir "$DK_BUILDTEMP"
 
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create $DK_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
 cd "$DK_BUILDTEMP"
 echo -e "\n\n"
 

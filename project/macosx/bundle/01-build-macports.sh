@@ -49,7 +49,14 @@ if [ -d "/opt" ] ; then
     fi
 else
     echo "---------- /opt do not exist, creating"
+
     mkdir "/opt"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create /opt directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
 fi
 
 #################################################################################################

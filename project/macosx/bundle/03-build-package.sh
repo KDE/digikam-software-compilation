@@ -145,6 +145,7 @@ mkdir -p "$TEMPROOT/Applications/digiKam"
 # Prepare KDE applications for OSX
 
 echo "Preparing KDE Applications"
+
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
   echo "  $app"
   # Look for application
