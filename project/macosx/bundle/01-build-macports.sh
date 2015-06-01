@@ -89,14 +89,14 @@ fi
 #################################################################################################
 # Chaeck latest Macports version available
 
-if [ -z $MP_VERSION ]
+if [ -z $MP_VERSION ] ; then
 
     MP_LASTEST_VER=$(curl $MP_URL | \
         egrep -o 'href="MacPorts-[0-9]+\.[0-9]+\.[0-9]+' | \
         sed 's/^href="MacPorts-//' | \
         sort -t. -rn -k1,1 -k2,2 -k3,3 | head -1)
 
-    if [ -z $MP_LASTEST_VER ]
+    if [ -z $MP_LASTEST_VER ] ; then
         echo "---------- Cannot check the lastest Macports verion from $MP_URL"
         echo "---------- Aborting..."
         exit;
@@ -105,10 +105,8 @@ if [ -z $MP_VERSION ]
     echo "---------- Detected lastest Macports version : $MP_LASTEST_VER"
 
     MP_VERSION=$MP_LASTEST_VER
-    
-fi
 
-exit;
+fi
 
 #################################################################################################
 # Build Macports in temporary directory and installation
