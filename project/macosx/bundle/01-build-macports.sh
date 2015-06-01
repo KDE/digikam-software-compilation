@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a stand alone Macports install with digiKam dependencies
+# Script to build a bundle Macports install with digiKam dependencies in a dedicated directory
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -10,8 +10,8 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-echo "01-build-macports.sh : build a stand alone Macports install with digiKam dependencies."
-echo "--------------------------------------------------------------------------------------"
+echo "01-build-macports.sh : build a bundle Macports install with digiKam dependencies."
+echo "---------------------------------------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
@@ -34,6 +34,22 @@ MP_BUILDTEMP=~/mptemp
 # Pathes rules
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
+
+#################################################################################################
+# Check if /opt exists and standard Macports install path
+
+if [ -d "/opt" ] ; then
+    if [ -d "/opt/local" ] ; then
+        echo "---------- A standard Macports install exists on /opt/local."
+        echo "           To prevent wrong links from this bundle to this repository"
+        echo "           this one must be disabled (moving to /opt/local.back for ex)."
+        echo "---------- Aborting..."
+        exit;
+    fi
+else
+    echo "---------- /opt do not exist, creating"
+    mkdir "/opt"
+fi
 
 #################################################################################################
 # Target directory creation
@@ -150,13 +166,12 @@ echo -e "\n"
 #################################################################################################
 # Dependencies build and installation
 
-echo "*** Building digikam dependencies with Macports"
+echo -e "\n"
+echo "---------- Building digiKam dependencies with Macports"
 
 InstallCorePackages
 
-# Remove kdelibs avahi dependency  (https://bugs.kde.org/show_bug.cgi?id=257679)
-#echo "---------- Removing Avahi depenency from kdelibs4"
-#sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
+echo -e "\n"
 
 #################################################################################################
 

@@ -9,6 +9,7 @@
 # Pre-processing checks
 
 . ../common/common.sh
+StartScript
 CommonChecks
 
 # Update Macports installation
@@ -38,3 +39,5 @@ InstallCorePackages
 
 launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
 /opt/local/bin/kbuildsycoca4
+
+TerminateScript

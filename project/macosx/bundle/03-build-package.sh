@@ -1,7 +1,8 @@
 #! /bin/bash
 
-# Script to prepare previously-built KDE and digiKam installation through 01-build-macports.sh and 02-build-digikam.sh
-# and package it using Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
+# Script to bundle data using previously-built KDE and digiKam installation
+# through 01-build-macports.sh and 02-build-digikam.sh scripts,
+# and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -206,7 +207,7 @@ if not checkProcess("kded4")
 	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
 end if
 
-do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
+do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
 EOF
 # ------ End KDE application launcher script
 
@@ -281,6 +282,7 @@ cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
+widgetStyle=qtcurve
 EOF
 
 #################################################################################################
@@ -299,7 +301,7 @@ echo "Create package pre-install script"
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated (and will be overwritten by) make-package.sh
+# Generated and will be overwritten by 03-build-package.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
   echo "Unloading dbus-system"
@@ -328,7 +330,7 @@ echo "Create package post-install script"
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated (and will be overwritten) by make-package.sh
+# Generated and will be overwritten by 03-build-package.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
@@ -345,26 +347,38 @@ chmod 755 "$PROJECTDIR/postinstall"
 #################################################################################################
 # Build PKG file
 
-echo "Preparing to create package for digikam $DIGIKAM_VERSION"
+OsxCodeName
+
+echo "Create package for digiKam $DIGIKAM_VERSION for OSX $MAJOR_OSX_VERSION"
+
+TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
+echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-   set version "$DIGIKAM_VERSION"
+   set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
 
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
-mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
 #################################################################################################
-# Show resume information
+# Show resume information and future instructions to host PKG file to KDE server
 
-echo "Compute package checksums for digikam $DIGIKAM_VERSION"
+echo -e "\nCompute package checksums for digiKam $DIGIKAM_VERSION\n"
 
-du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+echo "File       : $TARGET_PKG_FILE"
+echo -n "Size       : "
+du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "SHA1 sum   : "
+shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "SHA256 sum : "
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "MD5 sum    : "
+md5 -q "$TARGET_PKG_FILE"
 
-echo "To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD"
+echo -e "\n------------------------------------------------------------------"
+curl http://download.kde.org/README_UPLOAD
+echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################
 

@@ -36,7 +36,7 @@ fi
 # Check if Xcode Command Line tools are installed
 ChecksXCodeCLI()
 {
-xcode-select -p
+xcode-select --print-path
 
 if [[ $? -ne 0 ]]; then
     echo "XCode CLI tools are not installed"
@@ -82,7 +82,7 @@ ChecksMacports
 StartScript()
 {
 
-begin=$(date +"%s")
+BEGIN_SCRIPT=$(date +"%s")
 
 }
 
@@ -91,9 +91,44 @@ begin=$(date +"%s")
 TerminateScript()
 {
 
-termin=$(date +"%s")
-difftimelps=$(($termin-$begin))
-echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed for Script execution."
+TERMIN_SCRIPT=$(date +"%s")
+difftimelps=$(($TERMIN_SCRIPT-$BEGIN_SCRIPT))
+echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($difftimelps % 3600) / 60)) minutes $(($difftimelps % 60)) seconds"
+
+}
+
+########################################################################
+# Set $OSX_CODE_NAME string with detected OSX code name
+OsxCodeName()
+{
+
+MAJOR_OSX_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
+
+if [[ $MAJOR_OSX_VERSION == "10.10" ]]
+    then OSX_CODE_NAME="Yosemite"
+elif [[ $MAJOR_OSX_VERSION == "10.9" ]]
+    then OSX_CODE_NAME="Mavericks"
+elif [[ $MAJOR_OSX_VERSION == "10.8" ]]
+    then OSX_CODE_NAME="Mountain Lion"
+elif [[ $MAJOR_OSX_VERSION == "10.7" ]]
+    then OSX_CODE_NAME="Lion"
+elif [[ $MAJOR_OSX_VERSION == "10.6" ]]
+    then OSX_CODE_NAME="Snow Leopard"
+elif [[ $MAJOR_OSX_VERSION == "10.5" ]]
+    then OSX_CODE_NAME="Leopard"
+elif [[ $MAJOR_OSX_VERSION == "10.4" ]]
+    then OSX_CODE_NAME="Tiger"
+elif [[ $MAJOR_OSX_VERSION == "10.3" ]]
+    then OSX_CODE_NAME="Panther"
+elif [[ $MAJOR_OSX_VERSION == "10.2" ]]
+    then OSX_CODE_NAME="Jaguar"
+elif [[ $MAJOR_OSX_VERSION == "10.1" ]]
+    then OSX_CODE_NAME="Puma"
+elif [[ $MAJOR_OSX_VERSION == "10.0" ]]
+    then OSX_CODE_NAME="Cheetah"
+fi
+
+echo -e "\nDetected OSX version $MAJOR_OSX_VERSION and code name $OSX_CODE_NAME\n"
 
 }
 
@@ -102,6 +137,10 @@ echo "$(($difftimelps / 60)) minutes and $(($difftimelps % 60)) seconds elapsed 
 # See https://trac.macports.org/wiki/KDE for details
 InstallCorePackages()
 {
+
+# Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
+echo "---------- Removing Avahi dependency from kdelibs4"
+sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
@@ -135,13 +174,10 @@ port install sqlite2
 
 port install sane-backends
 port install expat
-port install libgpod
 port install libxml2
 port install libxslt
 port install qca
 port install qjson
-port install ImageMagick
-port install glib2
 
 # For Color themes support
 
@@ -158,10 +194,13 @@ port install kdemultimedia4
 port install ffmpegthumbs
 port install phonon
 port install gstreamer1-gst-libav
-port install gstreamer1-plugins-good
+port install gstreamer1-gst-plugins-good
 
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
+
+# Require for QtCurves
+ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
 
 }
