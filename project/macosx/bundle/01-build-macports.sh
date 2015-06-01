@@ -25,8 +25,10 @@ ChecksXCodeCLI
 #################################################################################################
 
 # Macports tarball information
+
+# Uncomment this line to force a specific version of Macports to use, else lastest will be used.
+#MP_VERSION="2.3.3"
 MP_URL="https://distfiles.macports.org/MacPorts/"
-MP_VERSION="2.3.3"
 MP_BUILDTEMP=~/mptemp
 
 # Pathes rules
@@ -51,7 +53,38 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 fi
 
 echo "---------- Creating $INSTALL_PREFIX"
+
 mkdir "$INSTALL_PREFIX"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create target install directory $INSTALL_PREFIX"
+    echo "---------- Aborting..."
+    exit;
+fi
+
+#################################################################################################
+# Chaeck latest Macports version available
+
+if [ -z $MP_VERSION ]
+
+    MP_LASTEST_VER=$(curl $MP_URL | \
+        egrep -o 'href="MacPorts-[0-9]+\.[0-9]+\.[0-9]+' | \
+        sed 's/^href="MacPorts-//' | \
+        sort -t. -rn -k1,1 -k2,2 -k3,3 | head -1)
+
+    if [ -z $MP_LASTEST_VER ]
+        echo "---------- Cannot check the lastest Macports verion from $MP_URL"
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    echo "---------- Detected lastest Macports version : $MP_LASTEST_VER"
+
+    MP_VERSION=$MP_LASTEST_VER
+    
+fi
+
+exit;
 
 #################################################################################################
 # Build Macports in temporary directory and installation
@@ -63,6 +96,12 @@ fi
 
 echo "---------- Creating $MP_BUILDTEMP"
 mkdir "$MP_BUILDTEMP"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create temporary directory $MP_BUILDTEMP to compile Macports"
+    echo "---------- Aborting..."
+    exit;
+fi
 
 cd "$MP_BUILDTEMP"
 echo -e "\n\n"
