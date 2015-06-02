@@ -164,6 +164,7 @@ export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 echo -e "\n"
 echo "---------- Updating MacPorts"
 port -v selfupdate
+port -v upgrade outdated
 echo -e "\n"
 
 #echo "---------- Modifying net-snmp portfile to install when not root"
