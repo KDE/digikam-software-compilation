@@ -156,6 +156,10 @@ sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-ava
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
+
+# kdelibs depend of akonadi which do not compile fine with older clang compiler due to C++11 syntax
+port install akonadi configure.compiler=macports-clang-3.5
+
 port install kdelibs4
 port install kde4-baseapps
 port install kde4-runtime
@@ -198,7 +202,8 @@ port install kdeartwork
 # For Acqua style support (including KDE system settings)
 
 port install kde4-workspace
-port install qtcurve
+# qtcurve do not compile fine with older clang compiler due to C++11 syntax
+port install qtcurve configure.compiler=macports-clang-3.5
 
 # For video support
 
