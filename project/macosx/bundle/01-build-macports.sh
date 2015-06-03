@@ -10,10 +10,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-
 . ../common/common.sh
-
-BuildMacports 2>&1 | tee 01-build-macports.full.log | grep "Error: " > 01-build-macports.errors.log
 
 BuildMacports()
 {
@@ -199,3 +196,5 @@ export PATH=$ORIG_PATH
 TerminateScript
 
 }
+
+BuildMacports 2>&1 | tee 01-build-macports.full.log | grep "Error: " > 01-build-macports.errors.log
