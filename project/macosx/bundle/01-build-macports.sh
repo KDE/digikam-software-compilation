@@ -11,8 +11,7 @@
 #
 
 # Manage log files to handle standards and errors traces
-exec > >(tee 01-build-macports.full.log) 2>&1
-exec 2> >(tee 01-build-macports.error.log)
+exec > >(grep "Error: " | tee 01-build-macports.errors.log) > >(tee 01-build-macports.full.log) 2>&1
 
 echo "01-build-macports.sh : build a bundle Macports install with digiKam dependencies."
 echo "---------------------------------------------------------------------------------"
@@ -68,7 +67,7 @@ fi
 # Delete and re-create target install directory
 if [ -d "$INSTALL_PREFIX" ] ; then
 
-    read -p "$INSTALL_PREFIX already exist and will be removed. Do you want to continue?" answer
+    read -p "$INSTALL_PREFIX already exist and will be removed. Do you want to continue ? " answer
     if echo "$answer" | grep -iq "^y" ;then
         echo "---------- Removing existing $INSTALL_PREFIX"
         rm -rf "$INSTALL_PREFIX"
