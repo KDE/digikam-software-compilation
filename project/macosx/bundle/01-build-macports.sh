@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a bundle Macports install with digiKam dependencies in a dedicated directory
+# Script to build a bundle Macports installation with all digiKam dependencies in a dedicated directory
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -93,7 +93,7 @@ if [ $? -ne 0 ] ; then
 fi
 
 #################################################################################################
-# Chaeck latest Macports version available
+# Check latest Macports version available if necessary
 
 if [ -z $MP_VERSION ] ; then
 
