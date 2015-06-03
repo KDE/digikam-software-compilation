@@ -11,9 +11,9 @@
 #
 
 #################################################################################################
-# Manage log files to handle standards and errors traces
+# Manage script traces to log file
 
-exec > >(grep "Error: " | tee 01-build-macports.errors.log) > >(tee 01-build-macports.full.log) 2>&1
+exec > >(tee 01-build-macports.full.log) 2>&1
 
 #################################################################################################
 
