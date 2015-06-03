@@ -10,16 +10,16 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-. ../common/common.sh
-
-BuildMacports()
-{
+# Manage log files to handle standards and errors traces
+exec > >(tee 01-build-macports.full.log) 2>&1
+exec 2> >(tee 01-build-macports.error.log)
 
 echo "01-build-macports.sh : build a bundle Macports install with digiKam dependencies."
 echo "---------------------------------------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
+. ../common/common.sh
 StartScript
 CommonSetup
 ChecksRunAsRoot
@@ -194,7 +194,3 @@ echo -e "\n"
 export PATH=$ORIG_PATH
 
 TerminateScript
-
-}
-
-BuildMacports 2>&1 | tee 01-build-macports.full.log | grep "Error: " > 01-build-macports.errors.log
