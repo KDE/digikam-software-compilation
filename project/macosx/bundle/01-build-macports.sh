@@ -10,8 +10,12 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+#################################################################################################
 # Manage log files to handle standards and errors traces
+
 exec > >(grep "Error: " | tee 01-build-macports.errors.log) > >(tee 01-build-macports.full.log) 2>&1
+
+#################################################################################################
 
 echo "01-build-macports.sh : build a bundle Macports install with digiKam dependencies."
 echo "---------------------------------------------------------------------------------"
