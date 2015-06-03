@@ -158,7 +158,7 @@ port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 
 # kdelibs depend of akonadi which do not compile fine with older clang compiler due to C++11 syntax
-port install akonadi configure.compiler=macports-clang-3.5
+port install akonadi configure.compiler=macports-gcc49
 
 port install kdelibs4
 port install kde4-baseapps
@@ -203,7 +203,7 @@ port install kdeartwork
 
 port install kde4-workspace
 # qtcurve do not compile fine with older clang compiler due to C++11 syntax
-port install qtcurve configure.compiler=macports-clang-3.5
+port install qtcurve configure.compiler=macports-gcc49
 
 # For video support
 
