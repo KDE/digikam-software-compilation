@@ -110,7 +110,9 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 }
 
 ########################################################################
-# Set $OSX_CODE_NAME string with detected OSX code name
+# Set strings with detected OSX info :
+#    $MAJOR_OSX_VERSION : detected OSX major ID
+#    $OSX_CODE_NAME     : detected OSX code name
 OsxCodeName()
 {
 
@@ -154,14 +156,13 @@ InstallCorePackages()
 echo "---------- Removing Avahi dependency from kdelibs4"
 sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
+# QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
+#TODO
+
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
 
-# kdelibs depend of akonadi which do not compile fine with older clang compiler due to C++11 syntax
-port install akonadi configure.compiler=macports-gcc49
-
 port install kdelibs4
-port install kde4-baseapps
 port install kde4-runtime
 port install oxygen-icons
 port install libpng
@@ -184,7 +185,6 @@ port install jasper
 port install liblqr
 port install lcms2
 port install eigen3
-port install sqlite2
 
 # For Kipi-plugins
 
@@ -202,8 +202,7 @@ port install kdeartwork
 # For Acqua style support (including KDE system settings)
 
 port install kde4-workspace
-# qtcurve do not compile fine with older clang compiler due to C++11 syntax
-port install qtcurve configure.compiler=macports-gcc49
+port install qtcurve
 
 # For video support
 
