@@ -187,7 +187,7 @@ InstallCorePackages
 echo -e "\n"
 
 echo -e "---------- List of Macports packages with suspicious installation\n"
-ls -l $INSTALL_PREFIX/var/macports/log/
+ls -l $INSTALL_PREFIX/var/macports/logs/
 echo -e "\n----------"
 
 echo -e "\n"
