@@ -163,7 +163,7 @@ if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]]; then
     # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
     # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
     echo "---------- Ajust C++11 compilation rules for older OSX release"
-    echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n' >> $INSTALL_PREFIX/etc/macports/macports.conf
+    echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n" >> $INSTALL_PREFIX/etc/macports/macports.conf
 
 fi
 
