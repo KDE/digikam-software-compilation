@@ -158,12 +158,12 @@ OsxCodeName
 echo "---------- Removing Avahi dependency from kdelibs4"
 sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
-if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]] ; then
+if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]]; then
 
     # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
     # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
-    echo "---------- Ajust C++11 compilation rules for older OSX releases"
-    sed -i '$ a\\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n' $INSTALL_PREFIX/etc/macports/macports.conf
+    echo "---------- Ajust C++11 compilation rules for older OSX release"
+    echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n' >> $INSTALL_PREFIX/etc/macports/macports.conf
 
 fi
 
