@@ -156,7 +156,7 @@ InstallCorePackages()
 {
 
 for i in "$@" ; do
-    if [[ $i == "DISABLE_LIBRAW" ]]
+    if [[ $i == "DISABLE_LIBRAW" ]]; then
         echo "---------- LibRaw will not installed through Macports"
         DISABLE_LIBRAW=1
     fi
