@@ -22,6 +22,7 @@ CommonSetup
 ChecksRunAsRoot
 ChecksXCodeCLI
 ChecksCPUCores
+OsxCodeName
 
 #################################################################################################
 
@@ -125,7 +126,13 @@ echo -e "\n\n"
 
 echo "---------- Configuring digiKam"
 
-./bootstrap.macports $INSTALL_PREFIX
+if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]]; then
+    EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
+else
+    EXTRA_CXX_FLAGS=""
+fi
+
+./bootstrap.macports $INSTALL_PREFIX debugfull x86_64 $EXTRA_CXX_FLAGS
 
 echo -e "\n\n"
 

@@ -7,7 +7,8 @@
 #
 # Arguments : $1 : install path '/opt/local' (default).
 #             $2 : build type   'debugfull' to hack (default), 'release' for production.
-#             $3 : target type  'x86_64' for OSX Lion (default), 'i386' for Snow Leopard.
+#             $3 : target type  'x86_64' for OSX Lion and later (default), 'i386' for Snow Leopard.
+#             $4 : extra CXX flags (empty by default)
 #
 
 INSTALL_PREFIX=$1
@@ -30,6 +31,8 @@ if [ "$TARGET_TYPE" = "" ]; then
     TARGET_TYPE=x86_64
 fi
 
+EXTRA_CXX_FLAGS=$4
+
 # Set devel env from MacOS-X through MacPorts
 export QTDIR=${INSTALL_PREFIX}/lib
 export QT_INCLUDE_DIR=${INSTALL_PREFIX}/include
@@ -39,7 +42,7 @@ export PKG_CONFIG_PATH=${INSTALL_PREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH
 # We will work on command line using GNU make
 export MAKEFILES_TYPE='Unix Makefiles'
 
-echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE"
+echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE and extra CXX flags $EXTRA_CXX_FLAGS"
 
 if [ ! -d "build" ]; then
     mkdir build
@@ -51,6 +54,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
       -DCMAKE_OSX_ARCHITECTURES=${TARGET_TYPE} \
+      -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
       -DKDE4_BUILD_TESTS=OFF \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_COMPILE_PO=ON \
