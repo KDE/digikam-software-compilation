@@ -160,7 +160,7 @@ for i in "$@" ; do
         echo "---------- LibRaw will not installed through Macports"
         DISABLE_LIBRAW=1
     fi
-fi
+done
 
 OsxCodeName
 
