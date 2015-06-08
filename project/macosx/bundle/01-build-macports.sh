@@ -182,7 +182,7 @@ echo -e "\n"
 echo -e "\n"
 echo "---------- Building digiKam dependencies with Macports"
 
-InstallCorePackages
+InstallCorePackages DISABLE_LIBRAW
 
 echo -e "\n"
 

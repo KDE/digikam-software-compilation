@@ -149,8 +149,18 @@ echo -e "\nDetected OSX version $MAJOR_OSX_VERSION and code name $OSX_CODE_NAME\
 ########################################################################
 # Install Macports core packages to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
+# Possible arguments : 
+#     DISABLE_LIBRAW : do not install LibRaw through Macports.
+#
 InstallCorePackages()
 {
+
+for i in "$@" ; do
+    if [[ $i == "DISABLE_LIBRAW" ]]
+        echo "---------- LibRaw will not installed through Macports"
+        DISABLE_LIBRAW=1
+    fi
+fi
 
 OsxCodeName
 
@@ -175,12 +185,15 @@ port install kde4-runtime
 port install oxygen-icons
 port install libpng
 port install libpgf
-port install libraw
 port install jpeg
 port install tiff
 port install exiv2
 port install boost
 port install opencv
+
+if [[ -z "$DISABLE_LIBRAW" ]]; then
+    port install libraw
+fi
 
 # For core optional dependencies
 

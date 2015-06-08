@@ -26,6 +26,11 @@ ChecksCPUCores
 #################################################################################################
 
 # digiKam tarball information
+LR_URL="http://www.libraw.org/data"
+LR_BUILDTEMP=~/lrtemp
+LR_VERSION=0.16.2
+
+# digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam/"
 DK_BUILDTEMP=~/dktemp
 
@@ -33,10 +38,63 @@ DK_BUILDTEMP=~/dktemp
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
+#################################################################################################
+# Build Libraw in temporary directory and installation
+
+if [ -d "$LR_BUILDTEMP" ] ; then
+   echo "---------- Removing existing $LR_BUILDTEMP"
+   rm -rf "$LR_BUILDTEMP"
+fi
+
+echo "---------- Creating $LR_BUILDTEMP"
+mkdir "$LR_BUILDTEMP"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create $LR_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$LR_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading Libraw $LR_VERSION"
+
+curl -L -o "LibRaw-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-$LR_VERSION.tar.gz"
+curl -L -o "LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz"
+curl -L -o "LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz"
+
+tar zxvf LibRaw-$LR_VERSION.tar.gz
+tar zxvf LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz
+tar zxvf LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz
+
+cd LibRaw-$LR_VERSION
+echo -e "\n\n"
+
+echo "---------- Configuring LibRaw"
+
+./configure \
+    --prefix=$INSTALL_PREFIX \
+    --enable-openmp \
+    --enable-lcms \
+    --disable-examples \
+    --enable-demosaic-pack-gpl2 \
+    --enable-demosaic-pack-gpl3
+
+echo -e "\n\n"
+
+echo "---------- Building LibRaw"
+make -j$CPU_CORES
+echo -e "\n\n"
+
+echo "---------- Installing LibRaw"
+echo -e "\n\n"
+make install && cd "$ORIG_WD" && rm -rf "$LR_BUILDTEMP"
+
 #################################################################################################
 # Build digiKam in temporary directory and installation
-
-export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
 if [ -d "$DK_BUILDTEMP" ] ; then
    echo "---------- Removing existing $DK_BUILDTEMP"
