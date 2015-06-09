@@ -181,7 +181,8 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
         cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 
 #!/usr/bin/osascript
-#Partially derived from https://discussions.apple.com/thread/3934912
+# Partially derived from https://discussions.apple.com/thread/3934912 and
+# http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
 
 on checkService(service)
 	do shell script "launchctl list"
@@ -192,8 +193,8 @@ on checkService(service)
 	end if
 end checkService
 
-on checkProcess(process)
-	tell app "System Events" to set processRunning to exists (processes whose name is "process")
+on checkProcess(appName)
+	tell application "System Events" to set processRunning to (name of processes) contains appName
 	return ProcessRunning
 end checkProcess
 
