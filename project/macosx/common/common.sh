@@ -181,8 +181,8 @@ if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
 
     echo "---------- Install more recent Clang compiler from Macports"
     port install clang_select
-    port install clang-3.4
-    port select --set clang mp-clang-3.4
+    port install clang-3.6
+    port select --set clang mp-clang-3.6
 
 fi
 
