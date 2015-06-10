@@ -131,10 +131,22 @@ chmod 777 ${PROJECTDIR}
 ORIG_WD="`pwd`"
 
 #################################################################################################
+# Check if Packages CLI tools are installed
+
+if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
+    echo "Packages CLI tools are not installed"
+    echo "See (http://s.sudre.free.fr/Software/Packages/about.html for details."
+    exit 1
+else
+    echo "Check Packages CLI tools passed..."
+  exit
+fi
+
+#################################################################################################
 # Create temporary dir to build package contents
 
 if [ -d "$TEMPROOT" ] ; then
-  echo "Removing temporary packaging directory $TEMPROOT"
+  echo "---------- Removing temporary packaging directory $TEMPROOT"
   rm -rf "$TEMPROOT"
 fi
 
@@ -144,7 +156,7 @@ mkdir -p "$TEMPROOT/Applications/digiKam"
 #################################################################################################
 # Prepare KDE applications for OSX
 
-echo "Preparing KDE Applications"
+echo "---------- Preparing KDE Applications"
 
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
   echo "  $app"
@@ -238,7 +250,7 @@ done
 # Collect dylib dependencies for all KDE and other binaries,
 # then copy them to the staging area (creating directories as required)
 
-echo "Collecting dependencies for applications, binaries, and libraries:"
+echo "---------- Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
 "$RECURSIVE_LIBRARY_LISTER" $binaries | sort -u | \
@@ -258,7 +270,7 @@ done
 #################################################################################################
 # Copy non-binary files and directories, creating parent directories if needed
 
-echo "Copying non-binary files and directories..."
+echo "---------- Copying non-binary files and directories..."
 
 for path in $OTHER_APPS $OTHER_DIRS ; do
   dir="${path%/*}"
@@ -277,7 +289,7 @@ cd "$ORIG_WD"
 #################################################################################################
 # Set KDE default applications settings for OSX
 
-echo "Creating KDE global config for OSX"
+echo "---------- Creating KDE global config for OSX"
 
 cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 [General]
@@ -291,14 +303,14 @@ EOF
 # Delete dbus system config lines pertaining to running as non-root user
 # (installed version will be run as root, although MacPorts version wasn't)
 
-echo "Deleting dbus system config lines pertaining to running as non-root user"
+echo "---------- Deleting dbus system config lines pertaining to running as non-root user"
 
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 #################################################################################################
 # Create package pre-install script
 
-echo "Create package pre-install script"
+echo "---------- Create package pre-install script"
 
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
@@ -327,7 +339,7 @@ chmod 755 "$PROJECTDIR/preinstall"
 #################################################################################################
 # Create package post-install script
 
-echo "Create package post-install script"
+echo "---------- Create package post-install script"
 
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
@@ -351,7 +363,7 @@ chmod 755 "$PROJECTDIR/postinstall"
 
 OsxCodeName
 
-echo "Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
+echo "---------- Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
 
 TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"
@@ -366,15 +378,15 @@ mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 #################################################################################################
 # Show resume information and future instructions to host PKG file to KDE server
 
-echo -e "\nCompute package checksums for digiKam $DIGIKAM_VERSION\n"
+echo -e "\n---------- Compute package checksums for digiKam $DIGIKAM_VERSION\n"
 
 echo "File       : $TARGET_PKG_FILE"
 echo -n "Size       : "
 du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
-echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
 shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "SHA1 sum   : "
+shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
 md5 -q "$TARGET_PKG_FILE"
 
