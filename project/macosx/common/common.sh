@@ -142,7 +142,7 @@ elif [[ $MAJOR_OSX_VERSION == "0" ]]
     then OSX_CODE_NAME="Cheetah"
 fi
 
-echo -e "\nDetected OSX version $MAJOR_OSX_VERSION and code name $OSX_CODE_NAME\n"
+echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OSX_CODE_NAME"
 
 }
 
@@ -185,6 +185,8 @@ if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
     port select --set clang mp-clang-3.4
 
 fi
+
+echo -e "\n"
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
