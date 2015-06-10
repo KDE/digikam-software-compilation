@@ -351,7 +351,7 @@ chmod 755 "$PROJECTDIR/postinstall"
 
 OsxCodeName
 
-echo "Create package for digiKam $DIGIKAM_VERSION for OSX $MAJOR_OSX_VERSION"
+echo "Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
 
 TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"

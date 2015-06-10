@@ -126,7 +126,7 @@ echo -e "\n\n"
 
 echo "---------- Configuring digiKam"
 
-if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]]; then
+if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
     EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
 else
     EXTRA_CXX_FLAGS=""

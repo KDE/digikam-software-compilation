@@ -111,34 +111,34 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 
 ########################################################################
 # Set strings with detected OSX info :
-#    $MAJOR_OSX_VERSION : detected OSX major ID
+#    $MAJOR_OSX_VERSION : detected OSX major ID (as 7 for 10.7 or 10 for 10.10)
 #    $OSX_CODE_NAME     : detected OSX code name
 OsxCodeName()
 {
 
-MAJOR_OSX_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}')
+MAJOR_OSX_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'| cut -d . -f 2)
 
-if [[ $MAJOR_OSX_VERSION == "10.10" ]]
+if [[ $MAJOR_OSX_VERSION == "10" ]]
     then OSX_CODE_NAME="Yosemite"
-elif [[ $MAJOR_OSX_VERSION == "10.9" ]]
+elif [[ $MAJOR_OSX_VERSION == "9" ]]
     then OSX_CODE_NAME="Mavericks"
-elif [[ $MAJOR_OSX_VERSION == "10.8" ]]
-    then OSX_CODE_NAME="Mountain Lion"
-elif [[ $MAJOR_OSX_VERSION == "10.7" ]]
+elif [[ $MAJOR_OSX_VERSION == "8" ]]
+    then OSX_CODE_NAME="MountainLion"
+elif [[ $MAJOR_OSX_VERSION == "7" ]]
     then OSX_CODE_NAME="Lion"
-elif [[ $MAJOR_OSX_VERSION == "10.6" ]]
-    then OSX_CODE_NAME="Snow Leopard"
-elif [[ $MAJOR_OSX_VERSION == "10.5" ]]
+elif [[ $MAJOR_OSX_VERSION == "6" ]]
+    then OSX_CODE_NAME="SnowLeopard"
+elif [[ $MAJOR_OSX_VERSION == "5" ]]
     then OSX_CODE_NAME="Leopard"
-elif [[ $MAJOR_OSX_VERSION == "10.4" ]]
+elif [[ $MAJOR_OSX_VERSION == "4" ]]
     then OSX_CODE_NAME="Tiger"
-elif [[ $MAJOR_OSX_VERSION == "10.3" ]]
+elif [[ $MAJOR_OSX_VERSION == "3" ]]
     then OSX_CODE_NAME="Panther"
-elif [[ $MAJOR_OSX_VERSION == "10.2" ]]
+elif [[ $MAJOR_OSX_VERSION == "2" ]]
     then OSX_CODE_NAME="Jaguar"
-elif [[ $MAJOR_OSX_VERSION == "10.1" ]]
+elif [[ $MAJOR_OSX_VERSION == "1" ]]
     then OSX_CODE_NAME="Puma"
-elif [[ $MAJOR_OSX_VERSION == "10.0" ]]
+elif [[ $MAJOR_OSX_VERSION == "0" ]]
     then OSX_CODE_NAME="Cheetah"
 fi
 
@@ -168,12 +168,21 @@ OsxCodeName
 echo "---------- Removing Avahi dependency from kdelibs4"
 sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
-if [[ ($MAJOR_OSX_VERSION != "10.10" && $MAJOR_OSX_VERSION != "10.9") ]]; then
+if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
 
     # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
     # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
     echo "---------- Ajust C++11 compilation rules for older OSX release"
     echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n" >> $INSTALL_PREFIX/etc/macports/macports.conf
+
+fi
+
+if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
+
+    echo "---------- Install more recent Clang compiler from Macports"
+    port install clang_select
+    port install clang-3.4
+    port select --set clang mp-clang-3.4
 
 fi
 
