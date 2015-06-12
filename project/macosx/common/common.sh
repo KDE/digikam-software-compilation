@@ -166,9 +166,9 @@ for i in "$@" ; do
     fi
 done
 
-if [[ -z "$CONTINUE_INSTALL" ]]; then
+OsxCodeName
 
-    OsxCodeName
+if [[ -z "$CONTINUE_INSTALL" ]]; then
 
     # Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
     echo "---------- Removing Avahi dependency from kdelibs4"

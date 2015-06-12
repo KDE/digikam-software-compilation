@@ -179,10 +179,14 @@ startupitem_type none
 startupitem_install no
 EOF
 
-    #################################################################################################
-    # Macports update
+fi
 
-    export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+#################################################################################################
+# Macports update
+
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
+if [[ -z "$CONTINUE_INSTALL" ]]; then
 
     echo -e "\n"
     echo "---------- Updating MacPorts"
