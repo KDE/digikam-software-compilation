@@ -132,7 +132,7 @@ fi
 
 echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 
-./bootstrap.macports $INSTALL_PREFIX debugfull x86_64 $EXTRA_CXX_FLAGS
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
 
 echo -e "\n\n"
 
