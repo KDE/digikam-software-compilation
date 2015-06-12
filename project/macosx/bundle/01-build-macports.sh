@@ -186,11 +186,12 @@ fi
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
+echo -e "\n"
+echo "---------- Updating MacPorts"
+port -v selfupdate
+
 if [[ -z "$CONTINUE_INSTALL" ]]; then
 
-    echo -e "\n"
-    echo "---------- Updating MacPorts"
-    port -v selfupdate
     port -v upgrade outdated
     echo -e "\n"
 
