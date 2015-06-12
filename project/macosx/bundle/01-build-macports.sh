@@ -92,7 +92,7 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 
 fi
 
-if [[ -z "$CONTINUE_INSTALL" ]]; then
+if [[ $CONTINUE_INSTALL == 0 ]]; then
 
     #################################################################################################
     # Target directory creation
@@ -190,7 +190,7 @@ echo -e "\n"
 echo "---------- Updating MacPorts"
 port -v selfupdate
 
-if [[ -z "$CONTINUE_INSTALL" ]]; then
+if [[ $CONTINUE_INSTALL == 0 ]]; then
 
     port -v upgrade outdated
     echo -e "\n"
@@ -206,7 +206,7 @@ fi
 echo -e "\n"
 echo "---------- Building digiKam dependencies with Macports"
 
-if [[ -z "$CONTINUE_INSTALL" ]]; then
+if [[ $CONTINUE_INSTALL == 0 ]]; then
 
     InstallCorePackages DISABLE_LIBRAW
 

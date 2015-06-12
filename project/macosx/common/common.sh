@@ -158,19 +158,22 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 InstallCorePackages()
 {
 
+DISABLE_LIBRAW=0
+CONTINUE_INSTALL=0
+
 for i in "$@" ; do
     if [[ $i == "DISABLE_LIBRAW" ]]; then
         echo "---------- LibRaw will not installed through Macports"
-        DISABLE_LIBRAW=1
+        $DISABLE_LIBRAW=1
     elif [[ $i == "CONTINUE_INSTALL" ]]; then
         echo "---------- Continue aborted previous installation"
-        CONTINUE_INSTALL=1
+        $CONTINUE_INSTALL=1
     fi
 done
 
 OsxCodeName
 
-if [[ -z "$CONTINUE_INSTALL" ]]; then
+if [[ $CONTINUE_INSTALL == 0 ]]; then
 
     # Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
     echo "---------- Removing Avahi dependency from kdelibs4"
@@ -213,7 +216,7 @@ port install exiv2
 port install boost
 port install opencv
 
-if [[ -z "$DISABLE_LIBRAW" ]]; then
+if [[ $DISABLE_LIBRAW == 0 ]]; then
     port install libraw
 fi
 
