@@ -139,7 +139,6 @@ if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
     exit 1
 else
     echo "Check Packages CLI tools passed..."
-  exit
 fi
 
 #################################################################################################
