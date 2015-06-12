@@ -150,7 +150,8 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 # Install Macports core packages to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 
-#     DISABLE_LIBRAW : do not install LibRaw through Macports.
+#     DISABLE_LIBRAW   : do not install LibRaw through Macports.
+#     CONTINUE_INSTALL : Continue aborted previous installation.
 #
 InstallCorePackages()
 {
@@ -159,30 +160,38 @@ for i in "$@" ; do
     if [[ $i == "DISABLE_LIBRAW" ]]; then
         echo "---------- LibRaw will not installed through Macports"
         DISABLE_LIBRAW=1
+    elif [[ $i == "CONTINUE_INSTALL" ]]; then
+        echo "---------- Continue aborted previous installation"
+        CONTINUE_INSTALL=1
     fi
 done
 
-OsxCodeName
+if [[ -z "$CONTINUE_INSTALL" ]]; then
 
-# Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
-echo "---------- Removing Avahi dependency from kdelibs4"
-sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
+    OsxCodeName
 
-if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
+    # Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
+    echo "---------- Removing Avahi dependency from kdelibs4"
+    sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
 
-    # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
-    # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
-    echo "---------- Ajust C++11 compilation rules for older OSX release"
-    echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n" >> $INSTALL_PREFIX/etc/macports/macports.conf
+    if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
+
+        # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
+        # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
+        echo "---------- Ajust C++11 compilation rules for older OSX release"
+        echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n" >> $INSTALL_PREFIX/etc/macports/macports.conf
+
+    fi
 
 fi
 
 if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
 
-    echo "---------- Install more recent Clang compiler from Macports"
+    echo "---------- Install more recent Clang compiler from Macports for specific ports"
     port install clang_select
-    port install clang-3.6
-    port select --set clang mp-clang-3.6
+    port install clang-3.4
+    port select --set clang mp-clang-3.4
+    port install icu configure.compiler=macports-clang-3.4
 
 fi
 
