@@ -68,6 +68,8 @@ fi
 #################################################################################################
 # Check if a previous bundle already exist
 
+CONTINUE_INSTALL=0
+
 if [ -d "$INSTALL_PREFIX" ] ; then
 
     read -p "$INSTALL_PREFIX already exist. Do you want to remove it or to continue an aborted previous installation ? [(r)emove/(c)ontinue/(s)top] " answer
@@ -76,7 +78,6 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 
         echo "---------- Removing existing $INSTALL_PREFIX"
         rm -rf "$INSTALL_PREFIX"
-        CONTINUE_INSTALL=0
 
     elif echo "$answer" | grep -iq "^c" ;then
 
