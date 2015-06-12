@@ -124,8 +124,6 @@ cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
 cd digikam-$DK_VERSION
 echo -e "\n\n"
 
-echo "---------- Configuring digiKam"
-
 if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
     EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
 else
