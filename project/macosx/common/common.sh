@@ -164,10 +164,10 @@ CONTINUE_INSTALL=0
 for i in "$@" ; do
     if [[ $i == "DISABLE_LIBRAW" ]]; then
         echo "---------- LibRaw will not installed through Macports"
-        $DISABLE_LIBRAW=1
+        DISABLE_LIBRAW=1
     elif [[ $i == "CONTINUE_INSTALL" ]]; then
         echo "---------- Continue aborted previous installation"
-        $CONTINUE_INSTALL=1
+        CONTINUE_INSTALL=1
     fi
 done
 
