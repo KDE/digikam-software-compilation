@@ -194,6 +194,7 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
 #!/usr/bin/osascript
 # Partially derived from https://discussions.apple.com/thread/3934912 and
 # http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
+# and https://discussions.apple.com/thread/4059113
 
 on checkService(service)
 	do shell script "launchctl list"
@@ -205,8 +206,14 @@ on checkService(service)
 end checkService
 
 on checkProcess(appName)
-	tell application "System Events" to set processRunning to (name of processes) contains appName
-	return ProcessRunning
+	tell application "System Events"
+		set processList to name of every process
+		if appName is in processList then
+			return true
+		else
+			return false
+		end if
+	end tell
 end checkProcess
 
 if not checkService("org.freedesktop.dbus-session") then
