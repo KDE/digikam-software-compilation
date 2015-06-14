@@ -26,7 +26,7 @@ OsxCodeName
 
 #################################################################################################
 
-# digiKam tarball information
+# Libraw tarball information
 LR_URL="http://www.libraw.org/data"
 LR_BUILDTEMP=~/lrtemp
 LR_VERSION=0.16.2
