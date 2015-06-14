@@ -209,11 +209,11 @@ echo "---------- Building digiKam dependencies with Macports"
 
 if [[ $CONTINUE_INSTALL == 0 ]]; then
 
-    InstallCorePackages DISABLE_LIBRAW
+    InstallCorePackages DISABLE_LIBRAW DISABLE_EXIV2 DISABLE_LENSFUN
 
 else
 
-    InstallCorePackages DISABLE_LIBRAW CONTINUE_INSTALL
+    InstallCorePackages DISABLE_LIBRAW DISABLE_EXIV2 DISABLE_LENSFUN CONTINUE_INSTALL
 
 fi
 

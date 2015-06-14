@@ -3,7 +3,6 @@
 # Script to build digiKam using MacPorts
 # This script must be run as sudo
 #
-# Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
 # Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
@@ -26,13 +25,23 @@ OsxCodeName
 
 #################################################################################################
 
+# Exiv2 tarball information
+EX_URL="http://www.exiv2.org"
+EX_BUILDTEMP=~/extemp
+EX_VERSION=0.24
+
+# Lensfun tarball information
+LF_URL="http://sourceforge.net/projects/lensfun/files/"
+LF_BUILDTEMP=~/lftemp
+LF_VERSION=0.3.1
+
 # Libraw tarball information
 LR_URL="http://www.libraw.org/data"
 LR_BUILDTEMP=~/lrtemp
 LR_VERSION=0.16.2
 
 # digiKam tarball information
-DK_URL="http://download.kde.org/stable/digikam/"
+DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
 
 # Pathes rules
@@ -40,6 +49,102 @@ ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
+#################################################################################################
+# Build Exiv2 in temporary directory and installation
+
+if [ -d "$EX_BUILDTEMP" ] ; then
+   echo "---------- Removing existing $EX_BUILDTEMP"
+   rm -rf "$EX_BUILDTEMP"
+fi
+
+echo "---------- Creating $EX_BUILDTEMP"
+mkdir "$EX_BUILDTEMP"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create $EX_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$EX_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading Exiv2 $EX_VERSION"
+
+curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
+
+tar zxvf exiv2-$EX_VERSION.tar.gz
+
+cd exiv2-$EX_VERSION
+echo -e "\n\n"
+
+echo "---------- Configuring Exiv2"
+
+./configure \
+    --prefix=$INSTALL_PREFIX
+
+echo -e "\n\n"
+
+echo "---------- Building Exiv2"
+make -j$CPU_CORES
+echo -e "\n\n"
+
+echo "---------- Installing Exiv2"
+echo -e "\n\n"
+make install && cd "$ORIG_WD" && rm -rf "$EX_BUILDTEMP"
+
+#################################################################################################
+# Build Lensfun in temporary directory and installation
+
+if [ -d "$LF_BUILDTEMP" ] ; then
+   echo "---------- Removing existing $LF_BUILDTEMP"
+   rm -rf "$LF_BUILDTEMP"
+fi
+
+echo "---------- Creating $LF_BUILDTEMP"
+mkdir "$LF_BUILDTEMP"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create $LF_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$LF_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading Lensfun $LF_VERSION"
+
+curl -L -o "lensfun-$LF_VERSION.tar.gz" "$LF_URL/$LF_VERSION/lensfun-$LF_VERSION.tar.gz"
+
+tar zxvf lensfun-$LF_VERSION.tar.gz
+
+cd lensfun-$LF_VERSION
+echo -e "\n\n"
+
+echo "---------- Configuring Lensfun"
+
+cmake \
+    -G "Unix Makefiles" \
+    -DCMAKE_BUILD_TYPE=DEBUG \
+    -DLENSFUN_INSTALL_PREFIX=${INSTALL_PREFIX} \
+    -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+    -DBUILD_TESTS=OFF \
+    -DBUILD_LENSTOOL=OFF \
+    -DBUILD_DOC=OFF \
+    -DINSTALL_HELPER_SCRIPTS=OFF \
+    .
+
+echo -e "\n\n"
+
+echo "---------- Building Lensfun"
+make -j$CPU_CORES
+echo -e "\n\n"
+
+echo "---------- Installing Lensfun"
+echo -e "\n\n"
+make install/fast && cd "$ORIG_WD" && rm -rf "$LF_BUILDTEMP"
 
 #################################################################################################
 # Build Libraw in temporary directory and installation
