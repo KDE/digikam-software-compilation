@@ -13,6 +13,11 @@ CommonSetup()
 # Directory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
 
+# Libraries to build outside Macports at the same time than digiKam (0: use port file / 1: use tarball)
+ENABLE_LIBRAW=1
+ENABLE_EXIV2=1
+ENABLE_LENSFUN=1
+
 # digiKam version to build
 DK_VERSION="4.10.0"
 

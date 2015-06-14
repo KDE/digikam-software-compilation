@@ -207,15 +207,25 @@ fi
 echo -e "\n"
 echo "---------- Building digiKam dependencies with Macports"
 
-if [[ $CONTINUE_INSTALL == 0 ]]; then
+Arguments=""
 
-    InstallCorePackages DISABLE_LIBRAW DISABLE_EXIV2 DISABLE_LENSFUN
-
-else
-
-    InstallCorePackages DISABLE_LIBRAW DISABLE_EXIV2 DISABLE_LENSFUN CONTINUE_INSTALL
-
+if [[ $CONTINUE_INSTALL == 1 ]]; then
+    Arguments=$Arguments" CONTINUE_INSTALL"
 fi
+
+if [[ $ENABLE_LIBRAW == 1 ]]; then
+    Arguments=$Arguments" DISABLE_LIBRAW"
+fi
+
+if [[ $ENABLE_EXIV2 == 1 ]]; then
+    Arguments=$Arguments" DISABLE_EXIV2"
+fi
+
+if [[ $ENABLE_LENSFUN == 1 ]]; then
+    Arguments=$Arguments" DISABLE_LENSFUN"
+fi
+
+InstallCorePackages $Arguments
 
 echo -e "\n"
 

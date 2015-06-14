@@ -53,151 +53,163 @@ export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 #################################################################################################
 # Build Exiv2 in temporary directory and installation
 
-if [ -d "$EX_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $EX_BUILDTEMP"
-   rm -rf "$EX_BUILDTEMP"
+if [[ $ENABLE_EXIV2 == 1 ]]; then
+
+    if [ -d "$EX_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $EX_BUILDTEMP"
+    rm -rf "$EX_BUILDTEMP"
+    fi
+
+    echo "---------- Creating $EX_BUILDTEMP"
+    mkdir "$EX_BUILDTEMP"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $EX_BUILDTEMP directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    cd "$EX_BUILDTEMP"
+    echo -e "\n\n"
+
+    echo "---------- Downloading Exiv2 $EX_VERSION"
+
+    curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
+
+    tar zxvf exiv2-$EX_VERSION.tar.gz
+
+    cd exiv2-$EX_VERSION
+    echo -e "\n\n"
+
+    echo "---------- Configuring Exiv2"
+
+    ./configure \
+        --prefix=$INSTALL_PREFIX
+
+    echo -e "\n\n"
+
+    echo "---------- Building Exiv2"
+    make -j$CPU_CORES
+    echo -e "\n\n"
+
+    echo "---------- Installing Exiv2"
+    echo -e "\n\n"
+    make install && cd "$ORIG_WD" && rm -rf "$EX_BUILDTEMP"
+
 fi
-
-echo "---------- Creating $EX_BUILDTEMP"
-mkdir "$EX_BUILDTEMP"
-
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot create $EX_BUILDTEMP directory."
-    echo "---------- Aborting..."
-    exit;
-fi
-
-cd "$EX_BUILDTEMP"
-echo -e "\n\n"
-
-echo "---------- Downloading Exiv2 $EX_VERSION"
-
-curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
-
-tar zxvf exiv2-$EX_VERSION.tar.gz
-
-cd exiv2-$EX_VERSION
-echo -e "\n\n"
-
-echo "---------- Configuring Exiv2"
-
-./configure \
-    --prefix=$INSTALL_PREFIX
-
-echo -e "\n\n"
-
-echo "---------- Building Exiv2"
-make -j$CPU_CORES
-echo -e "\n\n"
-
-echo "---------- Installing Exiv2"
-echo -e "\n\n"
-make install && cd "$ORIG_WD" && rm -rf "$EX_BUILDTEMP"
 
 #################################################################################################
 # Build Lensfun in temporary directory and installation
 
-if [ -d "$LF_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $LF_BUILDTEMP"
-   rm -rf "$LF_BUILDTEMP"
+if [[ $ENABLE_LENSFUN == 1 ]]; then
+
+    if [ -d "$LF_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $LF_BUILDTEMP"
+    rm -rf "$LF_BUILDTEMP"
+    fi
+
+    echo "---------- Creating $LF_BUILDTEMP"
+    mkdir "$LF_BUILDTEMP"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $LF_BUILDTEMP directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    cd "$LF_BUILDTEMP"
+    echo -e "\n\n"
+
+    echo "---------- Downloading Lensfun $LF_VERSION"
+
+    curl -L -o "lensfun-$LF_VERSION.tar.gz" "$LF_URL/$LF_VERSION/lensfun-$LF_VERSION.tar.gz"
+
+    tar zxvf lensfun-$LF_VERSION.tar.gz
+
+    cd lensfun-$LF_VERSION
+    echo -e "\n\n"
+
+    echo "---------- Configuring Lensfun"
+
+    cmake \
+        -G "Unix Makefiles" \
+        -DCMAKE_BUILD_TYPE=DEBUG \
+        -DLENSFUN_INSTALL_PREFIX=${INSTALL_PREFIX} \
+        -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+        -DBUILD_TESTS=OFF \
+        -DBUILD_LENSTOOL=OFF \
+        -DBUILD_DOC=OFF \
+        -DINSTALL_HELPER_SCRIPTS=OFF \
+        .
+
+    echo -e "\n\n"
+
+    echo "---------- Building Lensfun"
+    make -j$CPU_CORES
+    echo -e "\n\n"
+
+    echo "---------- Installing Lensfun"
+    echo -e "\n\n"
+    make install/fast && cd "$ORIG_WD" && rm -rf "$LF_BUILDTEMP"
+
 fi
-
-echo "---------- Creating $LF_BUILDTEMP"
-mkdir "$LF_BUILDTEMP"
-
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot create $LF_BUILDTEMP directory."
-    echo "---------- Aborting..."
-    exit;
-fi
-
-cd "$LF_BUILDTEMP"
-echo -e "\n\n"
-
-echo "---------- Downloading Lensfun $LF_VERSION"
-
-curl -L -o "lensfun-$LF_VERSION.tar.gz" "$LF_URL/$LF_VERSION/lensfun-$LF_VERSION.tar.gz"
-
-tar zxvf lensfun-$LF_VERSION.tar.gz
-
-cd lensfun-$LF_VERSION
-echo -e "\n\n"
-
-echo "---------- Configuring Lensfun"
-
-cmake \
-    -G "Unix Makefiles" \
-    -DCMAKE_BUILD_TYPE=DEBUG \
-    -DLENSFUN_INSTALL_PREFIX=${INSTALL_PREFIX} \
-    -DCMAKE_OSX_ARCHITECTURES=x86_64 \
-    -DBUILD_TESTS=OFF \
-    -DBUILD_LENSTOOL=OFF \
-    -DBUILD_DOC=OFF \
-    -DINSTALL_HELPER_SCRIPTS=OFF \
-    .
-
-echo -e "\n\n"
-
-echo "---------- Building Lensfun"
-make -j$CPU_CORES
-echo -e "\n\n"
-
-echo "---------- Installing Lensfun"
-echo -e "\n\n"
-make install/fast && cd "$ORIG_WD" && rm -rf "$LF_BUILDTEMP"
 
 #################################################################################################
 # Build Libraw in temporary directory and installation
 
-if [ -d "$LR_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $LR_BUILDTEMP"
-   rm -rf "$LR_BUILDTEMP"
+if [[ $ENABLE_LIBRAW == 1 ]]; then
+
+    if [ -d "$LR_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $LR_BUILDTEMP"
+    rm -rf "$LR_BUILDTEMP"
+    fi
+
+    echo "---------- Creating $LR_BUILDTEMP"
+    mkdir "$LR_BUILDTEMP"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $LR_BUILDTEMP directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    cd "$LR_BUILDTEMP"
+    echo -e "\n\n"
+
+    echo "---------- Downloading Libraw $LR_VERSION"
+
+    curl -L -o "LibRaw-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-$LR_VERSION.tar.gz"
+    curl -L -o "LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz"
+    curl -L -o "LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz"
+
+    tar zxvf LibRaw-$LR_VERSION.tar.gz
+    tar zxvf LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz
+    tar zxvf LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz
+
+    cd LibRaw-$LR_VERSION
+    echo -e "\n\n"
+
+    echo "---------- Configuring LibRaw"
+
+    ./configure \
+        --prefix=$INSTALL_PREFIX \
+        --enable-openmp \
+        --enable-lcms \
+        --disable-examples \
+        --enable-demosaic-pack-gpl2 \
+        --enable-demosaic-pack-gpl3
+
+    echo -e "\n\n"
+
+    echo "---------- Building LibRaw"
+    make -j$CPU_CORES
+    echo -e "\n\n"
+
+    echo "---------- Installing LibRaw"
+    echo -e "\n\n"
+    make install && cd "$ORIG_WD" && rm -rf "$LR_BUILDTEMP"
+
 fi
-
-echo "---------- Creating $LR_BUILDTEMP"
-mkdir "$LR_BUILDTEMP"
-
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot create $LR_BUILDTEMP directory."
-    echo "---------- Aborting..."
-    exit;
-fi
-
-cd "$LR_BUILDTEMP"
-echo -e "\n\n"
-
-echo "---------- Downloading Libraw $LR_VERSION"
-
-curl -L -o "LibRaw-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-$LR_VERSION.tar.gz"
-curl -L -o "LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz"
-curl -L -o "LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz" "$LR_URL/LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz"
-
-tar zxvf LibRaw-$LR_VERSION.tar.gz
-tar zxvf LibRaw-demosaic-pack-GPL2-$LR_VERSION.tar.gz
-tar zxvf LibRaw-demosaic-pack-GPL3-$LR_VERSION.tar.gz
-
-cd LibRaw-$LR_VERSION
-echo -e "\n\n"
-
-echo "---------- Configuring LibRaw"
-
-./configure \
-    --prefix=$INSTALL_PREFIX \
-    --enable-openmp \
-    --enable-lcms \
-    --disable-examples \
-    --enable-demosaic-pack-gpl2 \
-    --enable-demosaic-pack-gpl3
-
-echo -e "\n\n"
-
-echo "---------- Building LibRaw"
-make -j$CPU_CORES
-echo -e "\n\n"
-
-echo "---------- Installing LibRaw"
-echo -e "\n\n"
-make install && cd "$ORIG_WD" && rm -rf "$LR_BUILDTEMP"
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
