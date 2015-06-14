@@ -50,6 +50,12 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
+if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
+    EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
+else
+    EXTRA_CXX_FLAGS=""
+fi
+
 #################################################################################################
 # Build Exiv2 in temporary directory and installation
 
@@ -83,8 +89,23 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 
     echo "---------- Configuring Exiv2"
 
-    ./configure \
-        --prefix=$INSTALL_PREFIX
+    cmake \
+        -G "Unix Makefiles" \
+        -DCMAKE_BUILD_TYPE=debugfull \
+        -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+        -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
+        -DEXIV2_ENABLE_SHARED=ON \
+        -DEXIV2_ENABLE_XMP=ON \
+        -DEXIV2_ENABLE_LIBXMP=ON \
+        -DEXIV2_ENABLE_PNG=ON \
+        -DEXIV2_ENABLE_NLS=ON \
+        -DEXIV2_ENABLE_PRINTUCS2=ON \
+        -DEXIV2_ENABLE_LENSDATA=ON \
+        -DEXIV2_ENABLE_COMMERCIAL=OFF \
+        -DEXIV2_ENABLE_BUILD_SAMPLES=OFF \
+        -DEXIV2_ENABLE_BUILD_PO=ON \
+        .
 
     echo -e "\n\n"
 
@@ -136,6 +157,7 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
         -DCMAKE_BUILD_TYPE=DEBUG \
         -DLENSFUN_INSTALL_PREFIX=${INSTALL_PREFIX} \
         -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
         -DBUILD_TESTS=OFF \
         -DBUILD_LENSTOOL=OFF \
         -DBUILD_DOC=OFF \
@@ -240,12 +262,6 @@ tar jxvf digikam-$DK_VERSION.tar.bz2
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
 cd digikam-$DK_VERSION
 echo -e "\n\n"
-
-if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
-    EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
-else
-    EXTRA_CXX_FLAGS=""
-fi
 
 echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 
