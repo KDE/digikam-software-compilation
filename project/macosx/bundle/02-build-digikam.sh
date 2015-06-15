@@ -162,6 +162,7 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
         -DBUILD_LENSTOOL=OFF \
         -DBUILD_DOC=OFF \
         -DINSTALL_HELPER_SCRIPTS=OFF \
+        -DGLIB2_BASE_DIR=${INSTALL_PREFIX} \
         .
 
     echo -e "\n\n"
