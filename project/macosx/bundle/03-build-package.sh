@@ -28,7 +28,6 @@ echo "-----------------------------------------------"
 . ../common/configbundlepkg.sh
 . ../common/common.sh
 StartScript
-CommonSetup
 
 #################################################################################################
 # Configurations
