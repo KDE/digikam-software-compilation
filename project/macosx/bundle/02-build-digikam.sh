@@ -148,7 +148,8 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
     tar zxvf lensfun-$LF_VERSION.tar.gz
 
     cd lensfun-$LF_VERSION
-    cp -f ${INSTALL_PREFIX}/share/apps/cmake/modules/FindGLIB2.cmake  ./build/CMakeModules/
+    # Fix linking with Glib2. cmake find script is buggous. We will pass Glib2 config at configuration time as well.
+    touch -f ./build/CMakeModules/FindGLIB2.cmake
     echo -e "\n\n"
 
     echo "---------- Configuring Lensfun"
