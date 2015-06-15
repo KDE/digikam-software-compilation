@@ -164,6 +164,7 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
         -DBUILD_LENSTOOL=OFF \
         -DBUILD_DOC=OFF \
         -DINSTALL_HELPER_SCRIPTS=OFF \
+        -DGLIB2_INCLUDE_DIR=${INSTALL_PREFIX}/include/glib-2.0/ \
         .
 
     echo -e "\n\n"
