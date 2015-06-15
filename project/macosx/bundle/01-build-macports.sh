@@ -22,6 +22,8 @@ echo "--------------------------------------------------------------------------
 
 #################################################################################################
 # Pre-processing checks
+
+. ../common/configbundlepkg.sh
 . ../common/common.sh
 StartScript
 CommonSetup
@@ -30,13 +32,6 @@ ChecksXCodeCLI
 ChecksCPUCores
 
 #################################################################################################
-
-# Macports tarball information
-
-# Uncomment this line to force a specific version of Macports to use, else lastest will be used.
-#MP_VERSION="2.3.3"
-MP_URL="https://distfiles.macports.org/MacPorts/"
-MP_BUILDTEMP=~/mptemp
 
 # Pathes rules
 ORIG_PATH="$PATH"

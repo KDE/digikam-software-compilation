@@ -9,12 +9,20 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+#################################################################################################
+# Manage script traces to log file
+
+exec > >(tee 02-build-digikam.full.log) 2>&1
+
+#################################################################################################
+
 echo "02-build-digikam.sh : build digiKam using MacPorts."
 echo "---------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
 
+. ../common/configbundlepkg.sh
 . ../common/common.sh
 StartScript
 CommonSetup
@@ -24,25 +32,6 @@ ChecksCPUCores
 OsxCodeName
 
 #################################################################################################
-
-# Exiv2 tarball information
-EX_URL="http://www.exiv2.org"
-EX_BUILDTEMP=~/extemp
-EX_VERSION=0.24
-
-# Lensfun tarball information
-LF_URL="http://sourceforge.net/projects/lensfun/files/"
-LF_BUILDTEMP=~/lftemp
-LF_VERSION=0.3.1
-
-# Libraw tarball information
-LR_URL="http://www.libraw.org/data"
-LR_BUILDTEMP=~/lrtemp
-LR_VERSION=0.16.2
-
-# digiKam tarball information
-DK_URL="http://download.kde.org/stable/digikam"
-DK_BUILDTEMP=~/dktemp
 
 # Pathes rules
 ORIG_PATH="$PATH"

@@ -12,12 +12,20 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-echo "03-build-package.sh : build digiKam binary PKG."
+#################################################################################################
+# Manage script traces to log file
+
+exec > >(tee 03-build-package.full.log) 2>&1
+
+#################################################################################################
+
+echo "03-build-package.sh : build digiKam bundle PKG."
 echo "-----------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
 
+. ../common/configbundlepkg.sh
 . ../common/common.sh
 StartScript
 CommonSetup
