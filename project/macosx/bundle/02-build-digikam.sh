@@ -148,6 +148,7 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
     tar zxvf lensfun-$LF_VERSION.tar.gz
 
     cd lensfun-$LF_VERSION
+    rm -f build/CMakeModules/FindGLIB2.cmake
     echo -e "\n\n"
 
     echo "---------- Configuring Lensfun"
