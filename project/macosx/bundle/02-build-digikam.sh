@@ -165,6 +165,7 @@ if [[ $ENABLE_LENSFUN == 1 ]]; then
         -DBUILD_DOC=OFF \
         -DINSTALL_HELPER_SCRIPTS=OFF \
         -DGLIB2_INCLUDE_DIR=${INSTALL_PREFIX}/include/glib-2.0/ \
+        -DGLIB2_LIBRARIES=${INSTALL_PREFIX}/lib/libglib-2.0.dylib \
         .
 
     echo -e "\n\n"
