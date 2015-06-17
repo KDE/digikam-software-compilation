@@ -21,7 +21,8 @@ MP_BUILDTEMP=~/mptemp
 # Exiv2 tarball information
 EX_URL="http://www.exiv2.org"
 EX_BUILDTEMP=~/extemp
-EX_VERSION=0.24
+EX_VERSION=svn
+#EX_VERSION=0.25
 
 # Lensfun tarball information
 LF_URL="http://sourceforge.net/projects/lensfun/files/"
