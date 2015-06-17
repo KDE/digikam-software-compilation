@@ -70,6 +70,7 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 
     if [[ "$EX_VERSION" == "svn" ]] ; then
         svn checkout svn://dev.exiv2.org/svn/trunk exiv2-$EX_VERSION
+        make config
     else
         curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
         tar zxvf exiv2-$EX_VERSION.tar.gz
@@ -102,9 +103,7 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 #         -DEXIV2_ENABLE_SSH=OFF \
 #         .
 
-    make config
-
-    configure \
+    ./configure \
         --prefix=${INSTALL_PREFIX} \
         --enable-debug=full
 
@@ -221,7 +220,6 @@ if [[ $ENABLE_LIBRAW == 1 ]]; then
 
     ./configure \
         --prefix=$INSTALL_PREFIX \
-        --enable-debug=full \
         --enable-openmp \
         --enable-lcms \
         --disable-examples \
