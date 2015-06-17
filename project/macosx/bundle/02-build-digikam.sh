@@ -80,27 +80,33 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 
     echo "---------- Configuring Exiv2"
 
-    cmake \
-        -G "Unix Makefiles" \
-        -DCMAKE_BUILD_TYPE=debugfull \
-        -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-        -DCMAKE_OSX_ARCHITECTURES=x86_64 \
-        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
-        -DEXIV2_ENABLE_SHARED=ON \
-        -DEXIV2_ENABLE_XMP=ON \
-        -DEXIV2_ENABLE_LIBXMP=ON \
-        -DEXIV2_ENABLE_PNG=ON \
-        -DEXIV2_ENABLE_NLS=ON \
-        -DEXIV2_ENABLE_PRINTUCS2=ON \
-        -DEXIV2_ENABLE_LENSDATA=ON \
-        -DEXIV2_ENABLE_COMMERCIAL=OFF \
-        -DEXIV2_ENABLE_BUILD_SAMPLES=OFF \
-        -DEXIV2_ENABLE_BUILD_PO=ON \
-        -DEXIV2_ENABLE_VIDEO=OFF \
-        -DEXIV2_ENABLE_WEBREADY=OFF \
-        -DEXIV2_ENABLE_CURL=OFF \
-        -DEXIV2_ENABLE_SSH=OFF \
-        .
+#     cmake \
+#         -G "Unix Makefiles" \
+#         -DCMAKE_BUILD_TYPE=debugfull \
+#         -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
+#         -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+#         -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
+#         -DEXIV2_ENABLE_SHARED=ON \
+#         -DEXIV2_ENABLE_XMP=ON \
+#         -DEXIV2_ENABLE_LIBXMP=ON \
+#         -DEXIV2_ENABLE_PNG=ON \
+#         -DEXIV2_ENABLE_NLS=ON \
+#         -DEXIV2_ENABLE_PRINTUCS2=ON \
+#         -DEXIV2_ENABLE_LENSDATA=ON \
+#         -DEXIV2_ENABLE_COMMERCIAL=OFF \
+#         -DEXIV2_ENABLE_BUILD_SAMPLES=OFF \
+#         -DEXIV2_ENABLE_BUILD_PO=ON \
+#         -DEXIV2_ENABLE_VIDEO=OFF \
+#         -DEXIV2_ENABLE_WEBREADY=OFF \
+#         -DEXIV2_ENABLE_CURL=OFF \
+#         -DEXIV2_ENABLE_SSH=OFF \
+#         .
+
+    make config
+
+    configure \
+        --prefix=${INSTALL_PREFIX} \
+        --enable-debug=full
 
     echo -e "\n\n"
 
@@ -215,6 +221,7 @@ if [[ $ENABLE_LIBRAW == 1 ]]; then
 
     ./configure \
         --prefix=$INSTALL_PREFIX \
+        --enable-debug=full \
         --enable-openmp \
         --enable-lcms \
         --disable-examples \
