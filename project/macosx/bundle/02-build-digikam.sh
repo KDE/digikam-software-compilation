@@ -22,7 +22,7 @@ echo "---------------------------------------------------"
 #################################################################################################
 # Pre-processing checks
 
-. ../common/configbundlepkg.sh
+. ./configbundlepkg.sh
 . ../common/common.sh
 StartScript
 ChecksRunAsRoot
@@ -68,9 +68,12 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 
     echo "---------- Downloading Exiv2 $EX_VERSION"
 
-    curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
-
-    tar zxvf exiv2-$EX_VERSION.tar.gz
+    if [[ "$EX_VERSION" == "svn" ]] ; then
+        svn checkout svn://dev.exiv2.org/svn/trunk exiv2-$EX_VERSION
+    else
+        curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
+        tar zxvf exiv2-$EX_VERSION.tar.gz
+    fi
 
     cd exiv2-$EX_VERSION
     echo -e "\n\n"
@@ -93,6 +96,10 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
         -DEXIV2_ENABLE_COMMERCIAL=OFF \
         -DEXIV2_ENABLE_BUILD_SAMPLES=OFF \
         -DEXIV2_ENABLE_BUILD_PO=ON \
+        -DEXIV2_ENABLE_VIDEO=OFF \
+        -DEXIV2_ENABLE_WEBREADY=OFF \
+        -DEXIV2_ENABLE_CURL=OFF \
+        -DEXIV2_ENABLE_SSH=OFF \
         .
 
     echo -e "\n\n"
