@@ -105,8 +105,7 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 #         .
 
     ./configure \
-        --prefix=${INSTALL_PREFIX} \
-        --enable-debug=full
+        --prefix=${INSTALL_PREFIX}
 
     echo -e "\n\n"
 
