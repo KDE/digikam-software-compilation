@@ -70,13 +70,14 @@ if [[ $ENABLE_EXIV2 == 1 ]]; then
 
     if [[ "$EX_VERSION" == "svn" ]] ; then
         svn checkout svn://dev.exiv2.org/svn/trunk exiv2-$EX_VERSION
+        cd exiv2-$EX_VERSION
         make config
     else
         curl -L -o "exiv2-$EX_VERSION.tar.gz" "$EX_URL/exiv2-$EX_VERSION.tar.gz"
         tar zxvf exiv2-$EX_VERSION.tar.gz
+        cd exiv2-$EX_VERSION
     fi
 
-    cd exiv2-$EX_VERSION
     echo -e "\n\n"
 
     echo "---------- Configuring Exiv2"
