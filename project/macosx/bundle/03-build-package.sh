@@ -213,7 +213,7 @@ on checkService(service)
 end checkService
 
 on checkProcess(appName)
-	tell application "System Events" to (name of processes) contains appName
+	tell application "System Events" to (name of every process) contains appName
 end checkProcess
 
 if not checkService("org.freedesktop.dbus-session") then
