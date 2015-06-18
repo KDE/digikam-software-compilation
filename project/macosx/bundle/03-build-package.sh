@@ -396,12 +396,12 @@ echo -e "\n---------- Compute package checksums for digiKam $DIGIKAM_VERSION\n"
 echo "File       : $TARGET_PKG_FILE"
 echo -n "Size       : "
 du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
-echo -n "SHA256 sum : "
-shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
-echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
 md5 -q "$TARGET_PKG_FILE"
+echo -n "SHA1 sum   : "
+shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "SHA256 sum : "
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
