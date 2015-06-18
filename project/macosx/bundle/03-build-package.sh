@@ -213,14 +213,7 @@ on checkService(service)
 end checkService
 
 on checkProcess(appName)
-	tell application "System Events"
-		set processList to name of every process
-		if appName is in processList then
-			return true
-		else
-			return false
-		end if
-	end tell
+	tell application "System Events" to (name of processes) contains appName
 end checkProcess
 
 if not checkService("org.freedesktop.dbus-session") then
