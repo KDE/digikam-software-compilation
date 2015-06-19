@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2010-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2010-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -88,9 +88,8 @@ if(DIGIKAMSC_COMPILE_PO)
     set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 endif()
 
-if(KDE4_BUILD_TESTS)
+if(BUILD_TESTING)
     include(CTest)
-    DIGIKAMSC_TESTING()
 endif()
 
 ############################################################################################################################################
@@ -173,7 +172,7 @@ else()
     message(STATUS "digiKam core will be compiled.................. NO")
 endif()
 
-if(KDE4_BUILD_TESTS)
+if(BUILD_TESTING)
     message(STATUS "Tests code will be compiled.................... YES")
 else()
     message(STATUS "Tests code will be compiled.................... NO")
