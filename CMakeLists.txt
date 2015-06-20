@@ -209,6 +209,7 @@ if(ENABLE_COMPILE_LIBMEDIAWIKI)
 endif()
 
 if(ENABLE_COMPILE_LIBKVKONTAKTE)
+    set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules/digikamsc-compile-libkvkontakte ${CMAKE_MODULE_PATH})
     set(LIBKVKONTAKTE_LOCAL_DIR extra/libkvkontakte)
 endif()
 
