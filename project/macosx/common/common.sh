@@ -207,7 +207,7 @@ port install libpgf
 port install jpeg
 port install tiff
 port install boost
-port install opencv
+port install opencv @2.4.11_0
 
 if [[ $DISABLE_LIBRAW == 0 ]]; then
     port install libraw
