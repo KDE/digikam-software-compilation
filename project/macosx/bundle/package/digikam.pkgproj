@@ -753,7 +753,7 @@
 			<key>OVERWRITE_PERMISSIONS</key>
 			<true/>
 			<key>VERSION</key>
-			<string></string>
+			<string>4.11.0-Yosemite</string>
 		</dict>
 		<key>PROJECT_COMMENTS</key>
 		<dict>
