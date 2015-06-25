@@ -240,6 +240,7 @@ port install libxml2
 port install libxslt
 port install qca
 port install qjson
+port install enblend
 
 # For Color themes support
 
