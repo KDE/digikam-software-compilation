@@ -8,7 +8,9 @@
 
 # Pre-processing checks
 
+INSTALL_PREFIX="/opt/local"
 . ../common/common.sh
+StartScript
 CommonChecks
 
 # Update Macports installation
@@ -37,4 +39,6 @@ InstallCorePackages
 # Prepare KDE background process to run applications
 
 launchctl load -w /Library/LaunchAgents/org.freedesktop.dbus-session.plist
-/opt/local/bin/kbuildsycoca4
+$INSTALL_PREFIX/bin/kbuildsycoca4
+
+TerminateScript

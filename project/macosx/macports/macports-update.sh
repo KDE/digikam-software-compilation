@@ -8,6 +8,7 @@
 # Pre-processing checks
 
 . ../common/common.sh
+StartScript
 CommonChecks
 
 # Update Macports binary
@@ -17,3 +18,5 @@ port selfupdate
 # Update all already install packages
 
 port upgrade outdated
+
+TerminateScript

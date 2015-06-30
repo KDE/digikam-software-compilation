@@ -1,7 +1,8 @@
 #! /bin/bash
 
-# Script to prepare previously-built KDE and digiKam installation through 01-build-macports.sh and 02-build-digikam.sh
-# and package it using Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
+# Script to bundle data using previously-built KDE and digiKam installation
+# through 01-build-macports.sh and 02-build-digikam.sh scripts,
+# and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
 # Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
@@ -11,12 +12,25 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-echo "03-build-package.sh : build digiKam binary PKG."
+#################################################################################################
+# Manage script traces to log file
+
+exec > >(tee build-package.full.log) 2>&1
+
+#################################################################################################
+
+echo "03-build-package.sh : build digiKam bundle PKG."
 echo "-----------------------------------------------"
 
+#################################################################################################
 # Pre-processing checks
+
+. ./configbundlepkg.sh
 . ../common/common.sh
-CommonSetup
+StartScript
+
+#################################################################################################
+# Configurations
 
 # Directory where this script is located (default - current directory)
 BUILDDIR="$PWD"
@@ -25,7 +39,7 @@ BUILDDIR="$PWD"
 PROJECTDIR="$BUILDDIR/package"
 
 # Staging area where files to be packaged will be copied
-TEMPROOT="$BUILDDIR/opt/digikam"
+TEMPROOT="$BUILDDIR/$INSTALL_PREFIX"
 
 # KDE apps to be launched directly by user (create launch scripts)
 KDE_MENU_APPS="\
@@ -90,7 +104,6 @@ etc/xdg/menus \
 lib/kde4 \
 lib/ImageMagick* \
 lib/libgphoto* \
-lib/plugins \
 lib/sane \
 share/applications/kde4 \
 share/apps \
@@ -112,40 +125,45 @@ PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
-# If the port command isn't in install prefix/bin, $INSTALL_PREFIX is probably wrong
-if [ ! -f "$INSTALL_PREFIX/bin/port" ] ; then 
-  echo "$INSTALL_PREFIX/bin/port not found"
-  exit
-fi
-
-# Make sure digikam is installed, and figure out what version
-echo -n "Determining digikam version: "
-DIGIKAM_VERSION="`$INSTALL_PREFIX/bin/port -q installed digikam | sed "s/^.*@//;s/ (.*)//"`"
-[[ ! "$DIGIKAM_VERSION" ]] && echo "digikam port not installed" && exit
+echo -n "digiKam version: "
+DIGIKAM_VERSION=$DK_VERSION
 echo $DIGIKAM_VERSION
 
-# Is the debug variant installed (we'll need to set DYLIB_IMAGE_SUFFIX later)
-if [[ $DIGIKAM_VERSION == *"+debug"* ]] ; then
-  echo "Debug variant found"
-  DEBUG=1
-else
-  DEBUG=0
-fi
+# digiKam has been built with debug symbol. We'll need to set DYLIB_IMAGE_SUFFIX later.
+DEBUG=1
 
 # ./package sub-dir must be writable by root
 chmod 777 ${PROJECTDIR}
 
 ORIG_WD="`pwd`"
 
+#################################################################################################
+# Check if Packages CLI tools are installed
+
+if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
+    echo "Packages CLI tools are not installed"
+    echo "See (http://s.sudre.free.fr/Software/Packages/about.html for details."
+    exit 1
+else
+    echo "Check Packages CLI tools passed..."
+fi
+
+#################################################################################################
+# Create temporary dir to build package contents
+
 if [ -d "$TEMPROOT" ] ; then
-  echo "Removing temporary packaging directory $TEMPROOT"
+  echo "---------- Removing temporary packaging directory $TEMPROOT"
   rm -rf "$TEMPROOT"
 fi
 
 echo "Creating $TEMPROOT"
 mkdir -p "$TEMPROOT/Applications/digiKam"
 
-echo "Preparing KDE Applications"
+#################################################################################################
+# Prepare KDE applications for OSX
+
+echo "---------- Preparing KDE Applications"
+
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
   echo "  $app"
   # Look for application
@@ -170,6 +188,7 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
       # if built with debug variant
       if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
         echo "    Creating launcher script for $app"
+
         # Debug variant needs DYLD_IMAGE_SUFFIX="_debug set at runtime
         if [ $DEBUG ] ; then
           DYLD_ENV_CMD="DYLD_IMAGE_SUFFIX=_debug "
@@ -180,7 +199,9 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
         cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 
 #!/usr/bin/osascript
-#Partially derived from https://discussions.apple.com/thread/3934912
+# Partially derived from https://discussions.apple.com/thread/3934912 and
+# http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
+# and https://discussions.apple.com/thread/4059113
 
 on checkService(service)
 	do shell script "launchctl list"
@@ -191,9 +212,8 @@ on checkService(service)
 	end if
 end checkService
 
-on checkProcess(process)
-	tell app "System Events" to set processRunning to exists (processes whose name is "process")
-	return ProcessRunning
+on checkProcess(appName)
+	tell application "System Events" to (name of every process) contains appName
 end checkProcess
 
 if not checkService("org.freedesktop.dbus-session") then
@@ -207,7 +227,7 @@ if not checkProcess("kded4")
 	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
 end if
 
-do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
+do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
 EOF
 # ------ End KDE application launcher script
 
@@ -232,8 +252,11 @@ EOF
   done
 done
 
-# Collect dylib dependencies for all KDE and other binaries, then copy them to the staging area (creating directories as required)
-echo "Collecting dependencies for applications, binaries, and libraries:"
+#################################################################################################
+# Collect dylib dependencies for all KDE and other binaries,
+# then copy them to the staging area (creating directories as required)
+
+echo "---------- Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
 "$RECURSIVE_LIBRARY_LISTER" $binaries | sort -u | \
@@ -250,8 +273,11 @@ while read lib ; do
   fi
 done
 
+#################################################################################################
 # Copy non-binary files and directories, creating parent directories if needed
-echo "Copying non-binary files and directories..."
+
+echo "---------- Copying non-binary files and directories..."
+
 for path in $OTHER_APPS $OTHER_DIRS ; do
   dir="${path%/*}"
   if [ ! -d "$TEMPROOT/$dir" ] ; then
@@ -266,25 +292,36 @@ cd "$ORIG_WD"
 
 [[ -e "$TEMPROOT/var/run/dbus/.turd_dbus" ]] && rm -v "$TEMPROOT/var/run/dbus/.turd_dbus"
 
-# Set KDE default applications to OSX paths
-echo "Creating $TEMPROOT/share/config/kdeglobals"
+#################################################################################################
+# Set KDE default applications settings for OSX
+
+echo "---------- Creating KDE global config for OSX"
+
 cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 [General]
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
+widgetStyle=qtcurve
 EOF
 
+#################################################################################################
 # Delete dbus system config lines pertaining to running as non-root user
 # (installed version will be run as root, although MacPorts version wasn't)
-echo "Deleting dbus system config lines pertaining to running as non-root user"
+
+echo "---------- Deleting dbus system config lines pertaining to running as non-root user"
+
 sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
-# Create package preinstall script
+#################################################################################################
+# Create package pre-install script
+
+echo "---------- Create package pre-install script"
+
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated (and will be overwritten by) make-package.sh
+# Generated and will be overwritten by 03-build-package.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
   echo "Unloading dbus-system"
@@ -302,11 +339,18 @@ if [ -d "$INSTALL_PREFIX" ] ; then
 fi
 EOF
 
-# Create package postinstall script
+# Pre-install script need to be executable
+chmod 755 "$PROJECTDIR/preinstall"
+
+#################################################################################################
+# Create package post-install script
+
+echo "---------- Create package post-install script"
+
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated (and will be overwritten) by make-package.sh
+# Generated and will be overwritten by 03-build-package.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
@@ -317,23 +361,45 @@ for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
 done
 EOF
 
-# Preinstall and postinstall need to be executable
-chmod 755 "$PROJECTDIR/preinstall" "$PROJECTDIR/postinstall"
+# Post-install script need to be executable
+chmod 755 "$PROJECTDIR/postinstall"
 
+#################################################################################################
 # Build PKG file
-echo Preparing to create package for digikam $DIGIKAM_VERSION
+
+OsxCodeName
+
+echo "---------- Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
+
+TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
+echo -e "Target PKG file : $TARGET_PKG_FILE"
+
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-   set version "$DIGIKAM_VERSION"
+   set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
 
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
-mv "$PROJECTDIR/build/digikam.pkg" "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
-#Build Checksum files of package
-echo Compute package checksums for digikam $DIGIKAM_VERSION
-du -h "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-shasum -a1 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-shasum -a256 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
-md5 "$BUILDDIR/digikam-$DIGIKAM_VERSION.pkg"
+#################################################################################################
+# Show resume information and future instructions to host PKG file to KDE server
 
-echo To upload digiKam PKG file, follow instructions to http://download.kde.org/README_UPLOAD
+echo -e "\n---------- Compute package checksums for digiKam $DIGIKAM_VERSION\n"
+
+echo "File       : $TARGET_PKG_FILE"
+echo -n "Size       : "
+du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "MD5 sum    : "
+md5 -q "$TARGET_PKG_FILE"
+echo -n "SHA1 sum   : "
+shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+echo -n "SHA256 sum : "
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+
+echo -e "\n------------------------------------------------------------------"
+curl http://download.kde.org/README_UPLOAD
+echo -e "------------------------------------------------------------------\n"
+
+#################################################################################################
+
+TerminateScript
