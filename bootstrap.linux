@@ -78,5 +78,4 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DENABLE_MYSQLSUPPORT=ON \
       -DENABLE_INTERNALMYSQL=ON \
       -DENABLE_MEDIAPLAYER=OFF \
-      -Wno-dev \
       $SOURCEDIR && echo "$MESSAGE"

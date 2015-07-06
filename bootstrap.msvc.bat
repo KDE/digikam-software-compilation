@@ -46,7 +46,6 @@ cmake -G "NMake Makefiles" . ^
       -DENABLE_MYSQLSUPPORT=OFF ^
       -DENABLE_INTERNALMYSQL=OFF ^
       -DENABLE_MEDIAPLAYER=ON ^
-      -Wno-dev ^
       -DEXPAT_LIBRARY=%KF5_INSTALL_DIR%/lib/expat.lib ^
       -DCMAKE_INCLUDE_PATH=%KF5_INSTALL_DIR%/include ^
       -DCMAKE_LIBRARY_PATH=%KF5_INSTALL_DIR%/lib ^
