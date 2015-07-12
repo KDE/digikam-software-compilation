@@ -10,9 +10,13 @@
 #
 
 . ../common/common.sh
-CommonSetup
-ChecksRunAsRoot
-ChecksXCodeCLI
+CommonChecks
+
+#################################################################################################
+
+# Pathes rules
+ORIG_PATH="$PATH"
+
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
