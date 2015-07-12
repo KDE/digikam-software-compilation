@@ -9,6 +9,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+. ./configbundlepkg.sh
 . ../common/common.sh
 CommonChecks
 
