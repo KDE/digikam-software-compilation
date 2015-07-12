@@ -184,20 +184,21 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
 
 fi
 
+echo "---------- Install more recent Clang compiler from Macports for specific ports"
+port install clang_select
+port install clang-3.4
+port select --set clang mp-clang-3.4
+
 if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
-
-    echo "---------- Install more recent Clang compiler from Macports for specific ports"
-    port install clang_select
-    port install clang-3.4
-    port select --set clang mp-clang-3.4
     port install icu configure.compiler=macports-clang-3.4
-
 fi
 
 echo -e "\n"
 
 port install qt4-mac
 port install qt4-mac-sqlite3-plugin
+
+port install strigi configure.compiler=macports-clang-3.4
 
 port install kdelibs4
 port install kde4-runtime
