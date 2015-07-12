@@ -11,16 +11,19 @@
 
 . ./configbundlepkg.sh
 . ../common/common.sh
-CommonChecks
 
 #################################################################################################
 
 # Pathes rules
 ORIG_PATH="$PATH"
-
-
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
+CommonChecks
+
+#################################################################################################
+
 port
+
+#################################################################################################
 
 export PATH=$ORIG_PATH
