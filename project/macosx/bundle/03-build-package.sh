@@ -76,6 +76,7 @@ bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
 lib/libqtcurve*.dylib \
+lib/gstreamer-1.0/*.so \
 lib/kde4/kipiplugin*.so \
 lib/kde4/kstyle*.so \
 lib/kde4/digikamimageplugin*.so \
@@ -110,6 +111,7 @@ share/apps \
 share/config \
 share/dbus-1 \
 share/doc/HTML/ \
+share/gstreamer-1.0 \
 share/icons/hicolor \
 share/icons/oxygen \
 share/OpenCV \
