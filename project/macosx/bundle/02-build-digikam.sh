@@ -88,6 +88,7 @@ if [[ $ENABLE_OPENCV == 1 ]]; then
         -DCMAKE_INSTALL_NAME_DIR=${INSTALL_PREFIX}/lib \
         -DCMAKE_SYSTEM_PREFIX_PATH="${INSTALL_PREFIX};/usr" \
         -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/modules" \
+        -DBUILD_SHARED_LIBS=ON \
         -DBUILD_WITH_DEBUG_INFO=ON \
         -DBUILD_EXAMPLES=OFF \
         -DBUILD_TESTS=OFF \
