@@ -68,7 +68,8 @@ if [[ $ENABLE_OPENCV == 1 ]]; then
 
     echo "---------- Downloading OpenCV $OC_VERSION"
 
-    curl -L -o "opencv-$OC_VERSION.zip" "$OC_URL/opencv-$OC_VERSION.zip"
+    curl -L -o "opencv-$OC_VERSION.zip" "$OC_URL/$OC_VERSION/opencv-$OC_VERSION.zip"
+
     unzip opencv-$OC_VERSION.zip
     cd opencv-$OC_VERSION
 
