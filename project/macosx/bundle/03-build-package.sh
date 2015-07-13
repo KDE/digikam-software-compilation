@@ -76,6 +76,7 @@ bin/dbus-launch \
 bin/kbuildsycoca4 \
 libexec/dbus-daemon-launch-helper \
 lib/libqtcurve*.dylib \
+lib/libopencv*.dylib \
 lib/gstreamer-1.0/*.so \
 lib/kde4/kipiplugin*.so \
 lib/kde4/kstyle*.so \
