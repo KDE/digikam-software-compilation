@@ -197,7 +197,7 @@ echo -e "\n"
 
 port install qt4-mac
 
-ln -s $INSTALL_PREFIX/share/qt4/data $INSTALL_PREFIX/share/qt4/
+ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs $INSTALL_PREFIX/share/qt4/
 port install qt4-mac-sqlite3-plugin
 
 port install strigi configure.compiler=macports-clang-3.4
