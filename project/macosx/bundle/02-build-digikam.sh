@@ -358,12 +358,17 @@ echo -e "\n\n"
 
 echo "---------- Downloading digiKam $DK_VERSION"
 
-curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
-
-tar jxvf digikam-$DK_VERSION.tar.bz2
+if [[ "$DK_VERSION" == "git" ]] ; then
+    git clone git@git.kde.org:digikam-software-compilation digikam-$DK_VERSION
+    cd digikam-$DK_VERSION
+    ./download-repos
+else
+    curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
+    tar jxvf digikam-$DK_VERSION.tar.bz2
+    cd digikam-$DK_VERSION
+fi
 
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
-cd digikam-$DK_VERSION
 echo -e "\n\n"
 
 echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
@@ -379,7 +384,7 @@ echo -e "\n\n"
 
 echo "---------- Installing digiKam"
 echo -e "\n\n"
-make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+#make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 
 #################################################################################################
 

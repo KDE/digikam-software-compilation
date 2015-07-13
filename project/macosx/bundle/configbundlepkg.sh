@@ -42,7 +42,8 @@ OC_VERSION=2.4.11
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
-DK_VERSION=4.11.0
+DK_VERSION=git
+#DK_VERSION=4.11.0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
