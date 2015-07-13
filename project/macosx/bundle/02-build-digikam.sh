@@ -384,7 +384,7 @@ echo -e "\n\n"
 
 echo "---------- Installing digiKam"
 echo -e "\n\n"
-#make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 
 #################################################################################################
 
