@@ -139,6 +139,9 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 
 #     DISABLE_LIBRAW   : do not install LibRaw through Macports.
+#     DISABLE_EXIV2    : do not install LibExiv2 through Macports.
+#     DISABLE_LENSFUN  : do not install LibLensFun through Macports.
+#     DISABLE_OPENCV   : do not install LibOpenCV through Macports.
 #     CONTINUE_INSTALL : Continue aborted previous installation.
 #
 InstallCorePackages()
@@ -159,6 +162,9 @@ for i in "$@" ; do
     elif [[ $i == "DISABLE_LENSFUN" ]]; then
         echo "---------- Lensfun will not installed through Macports"
         DISABLE_LENSFUN=1
+    elif [[ $i == "DISABLE_OPENCV" ]]; then
+        echo "---------- OpenCV will not installed through Macports"
+        DISABLE_OPENCV=1
     elif [[ $i == "CONTINUE_INSTALL" ]]; then
         echo "---------- Continue aborted previous installation"
         CONTINUE_INSTALL=1
@@ -210,7 +216,10 @@ port install libpgf
 port install jpeg
 port install tiff
 port install boost
-port install opencv @2.4.11_0
+
+if [[ $DISABLE_OPENCV == 0 ]]; then
+    port install opencv
+fi
 
 if [[ $DISABLE_LIBRAW == 0 ]]; then
     port install libraw

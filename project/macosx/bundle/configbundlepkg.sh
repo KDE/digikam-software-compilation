@@ -34,10 +34,15 @@ LR_URL="http://www.libraw.org/data"
 LR_BUILDTEMP=~/lrtemp
 LR_VERSION=0.16.2
 
+# OpenCV tarball information
+OC_URL="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"
+OC_BUILDTEMP=~/octemp
+OC_VERSION=2.4.11
+
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
-DK_VERSION="4.11.0"
+DK_VERSION=4.11.0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
@@ -45,5 +50,4 @@ DK_VERSION="4.11.0"
 ENABLE_LIBRAW=1
 ENABLE_EXIV2=1
 ENABLE_LENSFUN=1
-
-
+ENABLE_OPENCV=1
