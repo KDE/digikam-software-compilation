@@ -196,6 +196,8 @@ fi
 echo -e "\n"
 
 port install qt4-mac
+
+ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs/macx-g++/qmake.conf $INSTALL_PREFIX/share/qt4/mkspecs/macx-g++/qmake.conf
 port install qt4-mac-sqlite3-plugin
 
 port install strigi configure.compiler=macports-clang-3.4
@@ -263,8 +265,5 @@ port install gstreamer1-gst-plugins-good
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
-
-# Require for QtCurves
-ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
 
 }
