@@ -220,16 +220,16 @@ port install boost
 
 if [[ $DISABLE_OPENCV == 0 ]]; then
     OPENCV_PORT_TMP=$INSTALL_PREFIX/var/tmp_opencv
-    if [ ! -d "$OPENCV_PORT_TMP" ] ; then
-        mkdir $OPENCV_PORT_TMP
+    if [ -d "$OPENCV_PORT_TMP" ] ; then
+        rm -fr $OPENCV_PORT_TMP
     fi
+    mkdir $OPENCV_PORT_TMP
     chown -R 777 $OPENCV_PORT_TMP
     cd $OPENCV_PORT_TMP
 
     svn co -r 134472 http://svn.macports.org/repository/macports/trunk/dports/graphics/opencv
     cd opencv
     port install
-    rm -rf $OPENCV_PORT_TMP
 fi
 
 if [[ $DISABLE_LIBRAW == 0 ]]; then
