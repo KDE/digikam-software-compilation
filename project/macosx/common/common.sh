@@ -223,6 +223,7 @@ if [[ $DISABLE_OPENCV == 0 ]]; then
     if [ ! -d "$OPENCV_PORT_TMP" ] ; then
         mkdir $OPENCV_PORT_TMP
     fi
+    chown -R 777 $OPENCV_PORT_TMP
     cd $OPENCV_PORT_TMP
 
     svn co -r 133932 http://svn.macports.org/repository/macports/trunk/dports/graphics/opencv
