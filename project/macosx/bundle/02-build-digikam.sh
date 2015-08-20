@@ -337,7 +337,7 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
 
     echo "---------- Downloading Hugin $HU_VERSION"
 
-    curl -L -o "hugin-$HU_VERSION.tar.bz2" "$HU_URL/hugin-$HU_VERSION/hugin-$HU_VERSION.tar.bz2"
+    curl -L -o "hugin-$HU_VERSION.tar.bz2" "$HU_URL/hugin-$HU_VERSION/hugin-$HU_VERSION.0.tar.bz2"
 
     tar jxvf hugin-$HU_VERSION.tar.bz2
     cd hugin-$HU_VERSION.0
