@@ -166,7 +166,6 @@ for i in "$@" ; do
     elif [[ $i == "DISABLE_OPENCV" ]]; then
         echo "---------- OpenCV will not installed through Macports"
         DISABLE_OPENCV=1
-    elif [[ $i == "CONTINUE_INSTALL" ]]; then
         echo "---------- Continue aborted previous installation"
         CONTINUE_INSTALL=1
     fi
@@ -254,6 +253,10 @@ port install eigen3
 if [[ $DISABLE_LENSFUN == 0 ]]; then
     port install lensfun
 fi
+
+# For Hugin
+
+port install wxWidgets-2.8
 
 # For Kipi-plugins
 
