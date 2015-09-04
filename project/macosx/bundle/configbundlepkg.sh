@@ -48,7 +48,7 @@ HU_VERSION=2013.0
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
 #DK_VERSION=git
-DK_VERSION=4.12.0
+DK_VERSION=4.13.0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
