@@ -32,7 +32,7 @@ LF_VERSION=0.3.1
 # Libraw tarball information
 LR_URL="http://www.libraw.org/data"
 LR_BUILDTEMP=~/lrtemp
-LR_VERSION=0.16.2
+LR_VERSION=0.17.0
 
 # OpenCV tarball information
 OC_URL="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"
