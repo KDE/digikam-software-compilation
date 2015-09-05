@@ -256,7 +256,7 @@ fi
 
 # For Hugin
 
-port install wxWidgets-2.8
+#port install wxWidgets-2.8
 
 # For Kipi-plugins
 
