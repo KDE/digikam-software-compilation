@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2008-2014, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2008-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
 # Copyright (c)      2012, Benjamin Girault <benjamin dot girault at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
@@ -66,6 +66,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF \
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
       -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
+      -DENABLE_OPENCV3=OFF \
       -DENABLE_LCMS2=ON \
       -DENABLE_BALOOSUPPORT=ON \
       -DENABLE_KDEPIMLIBSSUPPORT=ON \
