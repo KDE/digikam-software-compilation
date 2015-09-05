@@ -197,6 +197,19 @@ port select --set clang mp-clang-3.4
 
 if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
     port install icu configure.compiler=macports-clang-3.4
+
+    # ncurses do not link fine with cxx_stdlib option
+    NCURSES_PORT_TMP=$INSTALL_PREFIX/var/tmp_ncurses
+    if [ -d "$NCURSES_PORT_TMP" ] ; then
+        rm -fr $NCURSES_PORT_TMP
+    fi
+    mkdir $NCURSES_PORT_TMP
+    chown -R 777 $NCURSES_PORT_TMP
+    cd $NCURSES_PORT_TMP
+
+    svn co -r 131830 http://svn.macports.org/repository/macports/trunk/dports/devel/ncurses
+    cd ncurses
+    port install
 fi
 
 echo -e "\n"
