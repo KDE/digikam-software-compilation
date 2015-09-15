@@ -34,7 +34,10 @@ desc=$(<build/git_branches.txt)
 
 cd ./build
 
-cov-build --dir cov-int --tmpdir ~/tmp make -j8
+CPU_CORES=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
+echo "CPU cores detected to compile : $CPU_CORES."
+
+cov-build --dir cov-int --tmpdir ~/tmp make -j$CPU_CORES
 tar czvf myproject.tgz cov-int
 
 echo "-- SCAN Import description --"
