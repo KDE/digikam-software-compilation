@@ -32,7 +32,6 @@ digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/
 digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
 Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 libkface         : https://projects.kde.org/projects/extragear/libs/libkface
-libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
@@ -116,7 +115,6 @@ See below an example of .gitconfig file working with a developer account :
 "-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF"        Force to use local libkdcraw instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
-"-DDIGIKAMSC_COMPILE_LIBKGEOMAP=OFF"       Force to use local libkgeomap instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF"    Force to use local libkvkontakte instead version installed on your computer.

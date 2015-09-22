@@ -1,7 +1,6 @@
 "^libkexiv2" "extra/libkexiv2"
 "^libkdcraw" "extra/libkdcraw"
 "^libkface" "extra/libkface"
-"^libkgeomap" "extra/libkgeomap"
 "^libkipi" "extra/libkipi"
 "^libksane" "extra/libksane"
 "^libmediawiki" "extra/libmediawiki"

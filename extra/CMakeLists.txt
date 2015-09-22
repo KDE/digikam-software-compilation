@@ -16,10 +16,6 @@ if(DIGIKAMSC_COMPILE_LIBKIPI)
     add_subdirectory(libkipi)
 endif()
 
-if(DIGIKAMSC_COMPILE_LIBKGEOMAP)
-    ECM_OPTIONAL_ADD_SUBDIRECTORY(libkgeomap)
-endif()
-
 if(DIGIKAMSC_COMPILE_LIBKFACE)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libkface)
 endif()
