@@ -28,10 +28,6 @@ if(DIGIKAMSC_COMPILE_LIBMEDIAWIKI)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libmediawiki)
 endif()
 
-if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
-    ECM_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
-endif()
-
 if(DIGIKAMSC_COMPILE_PLUGINS)
     add_subdirectory(kipi-plugins)
 endif()

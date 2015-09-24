@@ -47,7 +47,6 @@ option(DIGIKAMSC_COMPILE_LIBKDCRAW       "Build local libkdcraw library instead 
 option(DIGIKAMSC_COMPILE_LIBKFACE        "Build local libkface library instead of using distributed files (default=ON)"           ON)
 option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
-option(DIGIKAMSC_COMPILE_LIBKVKONTAKTE   "Build local libkvkontakte library instead of using distributed files (default=OFF)"     OFF)
 
 option(DIGIKAMSC_COMPILE_PLUGINS         "Build Kipi-plugins (default=ON)"                                                        ON)
 option(DIGIKAMSC_COMPILE_CORE            "Build digiKam core (default=ON)"                                                        ON)
@@ -127,12 +126,6 @@ if(DIGIKAMSC_COMPILE_LIBMEDIAWIKI)
     message(STATUS "Local shared libmediawiki will be compiled..... YES")
 else()
     message(STATUS "Local shared libmediawiki will be compiled..... NO")
-endif()
-
-if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
-    message(STATUS "Local shared libkvkontakte will be compiled.... YES")
-else()
-    message(STATUS "Local shared libkvkontakte will be compiled.... NO")
 endif()
 
 if(DIGIKAMSC_CHECKOUT_PO)
