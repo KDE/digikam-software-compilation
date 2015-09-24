@@ -4,7 +4,6 @@
 "^libkipi" "extra/libkipi"
 "^libksane" "extra/libksane"
 "^libmediawiki" "extra/libmediawiki"
-"^libkvkontakte" "extra/libkvkontakte"
 "^kipi-plugins" "extra/kipi-plugins"
 "^digikam" "core"
 "^digikam-doc" "doc/digikam"
