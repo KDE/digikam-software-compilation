@@ -5,5 +5,5 @@ grep -r "#include <k" *                    | \
    grep -v "exiv"                          | \
    grep -v "dcraw"                         | \
    grep -v "config"                        | \
-   grep -v "geomap"                        | \
+   grep -v "ipi"                           | \
    grep -v "kio"
