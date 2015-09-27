@@ -104,21 +104,26 @@ See below an example of .gitconfig file working with a developer account :
 
 - CMAKE OPTIONS --------------------------------------------------------------
 
+Main options:
+
+"-DDIGIKAMSC_COMPILE_PLUGINS=ON"           Compile Kipi-plugins.
+"-DDIGIKAMSC_COMPILE_CORE=ON"              Compile digiKam core.
+
+Packaging options:
+
 "-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook files.
 "-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract po files from KDE repositories using ./project/release/fetch_l10n.rb Ruby script.
 "-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
 
-"-DBUILD_TESTING=ON"                       Build tests code.
+Developers only options:
 
+"-DBUILD_TESTING=ON"                       Build tests code.
 "-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF"        Force to use local libkdcraw instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
-
-"-DDIGIKAMSC_COMPILE_PLUGINS=ON"           Compile Kipi-plugins.
-"-DDIGIKAMSC_COMPILE_CORE=ON"              Compile digiKam core.
 
 Look README files from sub-dirs for more options available to configure compilation environnement.
 
