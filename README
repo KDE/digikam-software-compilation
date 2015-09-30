@@ -115,14 +115,14 @@ digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/
 Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
 
-libkface         : https://projects.kde.org/projects/extragear/libs/libkface
-libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
-libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
-libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
+libkface         : https://projects.kde.org/projects/kde/kdegraphics/libs/libkface
+libkgeomap       : https://projects.kde.org/projects/kde/kdegraphics/libs/libkgeomap
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
+libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
+libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
 
 - CMAKE OPTIONS --------------------------------------------------------------
 
