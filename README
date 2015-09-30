@@ -18,25 +18,38 @@ This is a super-repository that helps to download and compile digiKam with all c
 - RUBY     <http://www.ruby-lang.org>             (to extract translations files from KDE repositories)
 - Gettext  <https://www.gnu.org/software/gettext> (including Msgfmt)
 
-To download all needed git repositories, execute download script like this: perl ./download-repos
+* To download all needed git repositories, execute download script like this: perl ./download-repos
 
-* To compile all source code: 
+* Important: by default only compnents required for packaging are downloaded. To populate developers
+  only components, set $GITSLAVE environnement variable before to run ./download-repos script, like this:
 
-- take a look on each README files to resolve dependencies.
+  export GITSLAVE=.gitslave.devel
+
+* To compile all source code, take a look on each README files to resolve dependencies.
 
 - COMPONENTS ---------------------------------------------------------------
 
-* Redmine project pages can be found here :
+Redmine project pages can be found here :
+
+* This super repository:
 
 digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
+
+Code base:
+
 digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
 Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
+
+* Extra components managed by this Software Compilation for developers only are listed below:
+
 libkface         : https://projects.kde.org/projects/extragear/libs/libkface
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
+
+* Documentations:
 
 digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
 Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
@@ -103,11 +116,6 @@ See below an example of .gitconfig file working with a developer account :
         branch = yellow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [color "sh"]                                                                                                                                                                                                       
 
 - CMAKE OPTIONS --------------------------------------------------------------
-
-Main options:
-
-"-DDIGIKAMSC_COMPILE_PLUGINS=ON"           Compile Kipi-plugins.
-"-DDIGIKAMSC_COMPILE_CORE=ON"              Compile digiKam core.
 
 Packaging options:
 

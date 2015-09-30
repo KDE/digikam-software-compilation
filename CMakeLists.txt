@@ -39,7 +39,7 @@ option(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE r
 option(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
 
-# shared libs options
+# shared libs options for developers only
 
 option(DIGIKAMSC_COMPILE_LIBKIPI         "Build local libkipi library instead of using distributed files (default=ON)"            OFF)
 option(DIGIKAMSC_COMPILE_LIBKEXIV2       "Build local libkexiv2 library instead of using distributed files (default=ON)"          OFF)
@@ -47,9 +47,6 @@ option(DIGIKAMSC_COMPILE_LIBKDCRAW       "Build local libkdcraw library instead 
 option(DIGIKAMSC_COMPILE_LIBKFACE        "Build local libkface library instead of using distributed files (default=ON)"           OFF)
 option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
-
-option(DIGIKAMSC_COMPILE_PLUGINS         "Build Kipi-plugins (default=ON)"                                                        ON)
-option(DIGIKAMSC_COMPILE_CORE            "Build digiKam core (default=ON)"                                                        ON)
 
 ###########################################################################################################################################
 
@@ -146,18 +143,6 @@ else()
     message(STATUS "Handbooks will be compiled..................... NO")
 endif()
 
-if(DIGIKAMSC_COMPILE_PLUGINS)
-    message(STATUS "Kipi-plugins will be compiled.................. YES")
-else()
-    message(STATUS "Kipi-plugins will be compiled.................. NO")
-endif()
-
-if(DIGIKAMSC_COMPILE_CORE)
-    message(STATUS "digiKam core will be compiled.................. YES")
-else()
-    message(STATUS "digiKam core will be compiled.................. NO")
-endif()
-
 if(BUILD_TESTING)
     message(STATUS "Tests code will be compiled.................... YES")
 else()
@@ -167,10 +152,7 @@ endif()
 #############################################################################################
 
 add_subdirectory(extra)
-
-if(DIGIKAMSC_COMPILE_CORE)
-    add_subdirectory(core)
-endif()
+add_subdirectory(core)
 
 if(DIGIKAMSC_COMPILE_DOC)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
