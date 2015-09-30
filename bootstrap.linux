@@ -81,5 +81,5 @@ cmake -G "$MAKEFILES_TYPE" . \
       $SOURCEDIR && echo "$MESSAGE"
 
 if [ -d ./extra/libkvkontakte/src ]; then
-    ln -s src ./extra/libkvkontakte/Vkontakte
+    ln -sf src ./extra/libkvkontakte/Vkontakte
 fi
