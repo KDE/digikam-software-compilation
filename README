@@ -15,6 +15,10 @@ This is a super-repository that helps to download and compile digiKam with all c
 - RUBY <http://www.ruby-lang.org> (optional, to extract translations files from KDE repositories)
 
 To download all needed git repositories, execute download script like this: perl ./download-repos
+Important: by default only compnents required for packaging are downloaded. To populate developers
+only components, set $GITSLAVE environnement variable before to run ./download-repos script, like this:
+
+export GITSLAVE=".gitslave.devel"
 
 * To compile all source code: 
 
@@ -22,13 +26,15 @@ To download all needed git repositories, execute download script like this: perl
 
 - COMPONENTS ---------------------------------------------------------------
 
-* digiKam Redmine page can be found here :
+* Code base:
+
+- digiKam
+- kipi-plugins
 
 https://projects.kde.org/projects/extragear/graphics/digikam/digikam-software-compilation
 
-* Extra components managed by this Software Compilation are listed below:
+* Extra components managed by this Software Compilation for developers only are listed below:
 
-- kipi-plugins
 - libkipi
 - libkexiv2
 - libkdcraw
@@ -109,6 +115,7 @@ digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
 digiKam DOC      : https://projects.kde.org/projects/extragear/graphics/digikam/digikam-doc
 Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 Kipi-plugins DOC : https://projects.kde.org/projects/extragear/graphics/kipi-plugins/kipi-plugins-doc
+
 libkface         : https://projects.kde.org/projects/extragear/libs/libkface
 libkgeomap       : https://projects.kde.org/projects/extragear/libs/libkgeomap
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
@@ -120,9 +127,13 @@ libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksa
 
 - CMAKE OPTIONS --------------------------------------------------------------
 
+* For packaging :
+
 "-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook files.
 "-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract po files from KDE repositories using ./project/release/fetch_l10n.rb Ruby script.
 "-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
+
+* For developers only:
 
 "-DKDE4_BUILD_TESTS=on"                    Build tests code.
 
