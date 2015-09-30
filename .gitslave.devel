@@ -2,6 +2,7 @@
 "^libkdcraw" "extra/libkdcraw"
 "^libkipi" "extra/libkipi"
 "^libkface" "extra/libkface"
+"^libkgeomap" "extra/libkgeomap"
 "^libksane" "extra/libksane"
 "^libmediawiki" "extra/libmediawiki"
 "^libkvkontakte" "extra/libkvkontakte"
