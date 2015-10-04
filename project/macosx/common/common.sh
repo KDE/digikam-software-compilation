@@ -139,6 +139,9 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 
 #     DISABLE_LIBRAW   : do not install LibRaw through Macports.
+#     DISABLE_EXIV2    : do not install LibExiv2 through Macports.
+#     DISABLE_LENSFUN  : do not install LibLensFun through Macports.
+#     DISABLE_OPENCV   : do not install LibOpenCV through Macports.
 #     CONTINUE_INSTALL : Continue aborted previous installation.
 #
 InstallCorePackages()
@@ -147,6 +150,7 @@ InstallCorePackages()
 DISABLE_LIBRAW=0
 DISABLE_EXIV2=0
 DISABLE_LENSFUN=0
+DISABLE_OPENCV=0
 CONTINUE_INSTALL=0
 
 for i in "$@" ; do
@@ -159,7 +163,9 @@ for i in "$@" ; do
     elif [[ $i == "DISABLE_LENSFUN" ]]; then
         echo "---------- Lensfun will not installed through Macports"
         DISABLE_LENSFUN=1
-    elif [[ $i == "CONTINUE_INSTALL" ]]; then
+    elif [[ $i == "DISABLE_OPENCV" ]]; then
+        echo "---------- OpenCV will not installed through Macports"
+        DISABLE_OPENCV=1
         echo "---------- Continue aborted previous installation"
         CONTINUE_INSTALL=1
     fi
@@ -184,20 +190,36 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
 
 fi
 
+echo "---------- Install more recent Clang compiler from Macports for specific ports"
+port install clang_select
+port install clang-3.4
+port select --set clang mp-clang-3.4
+
 if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
+    # ncurses do not link fine with cxx_stdlib option
+    NCURSES_PORT_TMP=$INSTALL_PREFIX/var/tmp_ncurses
+    if [ -d "$NCURSES_PORT_TMP" ] ; then
+        rm -fr $NCURSES_PORT_TMP
+    fi
+    mkdir $NCURSES_PORT_TMP
+    chown -R 777 $NCURSES_PORT_TMP
+    cd $NCURSES_PORT_TMP
 
-    echo "---------- Install more recent Clang compiler from Macports for specific ports"
-    port install clang_select
-    port install clang-3.4
-    port select --set clang mp-clang-3.4
+    svn co -r 131830 http://svn.macports.org/repository/macports/trunk/dports/devel/ncurses
+    cd ncurses
+    port install
+
     port install icu configure.compiler=macports-clang-3.4
-
 fi
 
 echo -e "\n"
 
 port install qt4-mac
+
+ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs $INSTALL_PREFIX/share/qt4/
 port install qt4-mac-sqlite3-plugin
+
+port install strigi configure.compiler=macports-clang-3.4
 
 port install kdelibs4
 port install kde4-runtime
@@ -207,7 +229,20 @@ port install libpgf
 port install jpeg
 port install tiff
 port install boost
-port install opencv @2.4.11_0
+
+if [[ $DISABLE_OPENCV == 0 ]]; then
+    OPENCV_PORT_TMP=$INSTALL_PREFIX/var/tmp_opencv
+    if [ -d "$OPENCV_PORT_TMP" ] ; then
+        rm -fr $OPENCV_PORT_TMP
+    fi
+    mkdir $OPENCV_PORT_TMP
+    chown -R 777 $OPENCV_PORT_TMP
+    cd $OPENCV_PORT_TMP
+
+    svn co -r 134472 http://svn.macports.org/repository/macports/trunk/dports/graphics/opencv
+    cd opencv
+    port install
+fi
 
 if [[ $DISABLE_LIBRAW == 0 ]]; then
     port install libraw
@@ -231,6 +266,10 @@ port install eigen3
 if [[ $DISABLE_LENSFUN == 0 ]]; then
     port install lensfun
 fi
+
+# For Hugin
+
+#port install wxWidgets-2.8
 
 # For Kipi-plugins
 
@@ -262,8 +301,5 @@ port install gstreamer1-gst-plugins-good
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
-
-# Require for QtCurves
-ln -s $INSTALL_PREFIX/lib/kde4/plugins/styles $INSTALL_PREFIX/share/qt4/plugins
 
 }

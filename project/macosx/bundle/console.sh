@@ -9,13 +9,21 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+. ./configbundlepkg.sh
 . ../common/common.sh
-CommonSetup
-ChecksRunAsRoot
-ChecksXCodeCLI
 
+#################################################################################################
+
+# Pathes rules
+ORIG_PATH="$PATH"
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
+CommonChecks
+
+#################################################################################################
+
 port
+
+#################################################################################################
 
 export PATH=$ORIG_PATH
