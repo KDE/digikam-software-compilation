@@ -214,16 +214,13 @@ fi
 
 echo -e "\n"
 
-port install qt4-mac
+port install qt5-mac
 
-ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs $INSTALL_PREFIX/share/qt4/
-port install qt4-mac-sqlite3-plugin
+#ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs $INSTALL_PREFIX/share/qt4/
+port install qt5-mac-sqlite3-plugin
 
-port install strigi configure.compiler=macports-clang-3.4
+#port install strigi configure.compiler=macports-clang-3.4
 
-port install kdelibs4
-port install kde4-runtime
-port install oxygen-icons
 port install libpng
 port install libpgf
 port install jpeg
@@ -277,9 +274,13 @@ port install sane-backends
 port install expat
 port install libxml2
 port install libxslt
-port install qca
-port install qjson
+#port install qca
+#port install qjson
 port install enblend
+
+port install kdelibs4
+port install kde4-runtime
+port install oxygen-icons
 
 # For Color themes support
 
