@@ -1,6 +1,6 @@
 #!/bin/sh
 
-grep -r "#include <k" *                    | \
+grep --exclude-dir PORT.KF5 -r "#include <k" * | \
    grep -v "#include <klocalizedstring.h>" | \
    grep -v "exiv"                          | \
    grep -v "dcraw"                         | \
