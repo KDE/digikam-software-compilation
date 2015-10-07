@@ -6,4 +6,4 @@ grep --exclude-dir PORT.KF5 -r "#include <k" * | \
    grep -v "dcraw"                         | \
    grep -v "config"                        | \
    grep -v "ipi"                           | \
-   grep -v "kio"
+   grep -v "action"
