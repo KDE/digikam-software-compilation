@@ -8,10 +8,6 @@ if(DIGIKAMSC_COMPILE_LIBKEXIV2)
     add_subdirectory(libkexiv2)
 endif()
 
-if(DIGIKAMSC_COMPILE_LIBKDCRAW)
-    add_subdirectory(libkdcraw)
-endif()
-
 if(DIGIKAMSC_COMPILE_LIBKIPI)
     add_subdirectory(libkipi)
 endif()

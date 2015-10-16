@@ -45,7 +45,6 @@ Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plu
 libkface         : https://projects.kde.org/projects/kde/kdegraphics/libs/libkface
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
-libkdcraw        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkdcraw
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
 libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
@@ -129,7 +128,6 @@ Developers only options:
 "-DBUILD_TESTING=ON"                       Build tests code.
 "-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKEXIV2=OFF"        Force to use local libkexiv2 instead version installed on your computer.
-"-DDIGIKAMSC_COMPILE_LIBKDCRAW=OFF"        Force to use local libkdcraw instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.

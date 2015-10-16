@@ -43,7 +43,6 @@ option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"    
 
 option(DIGIKAMSC_COMPILE_LIBKIPI         "Build local libkipi library instead of using distributed files (default=ON)"            OFF)
 option(DIGIKAMSC_COMPILE_LIBKEXIV2       "Build local libkexiv2 library instead of using distributed files (default=ON)"          OFF)
-option(DIGIKAMSC_COMPILE_LIBKDCRAW       "Build local libkdcraw library instead of using distributed files (default=ON)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBKFACE        "Build local libkface library instead of using distributed files (default=ON)"           OFF)
 option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
@@ -100,12 +99,6 @@ if(DIGIKAMSC_COMPILE_LIBKEXIV2)
     message(STATUS "Local shared libkexiv2 will be compiled........ YES")
 else()
     message(STATUS "Local shared libkexiv2 will be compiled........ NO")
-endif()
-
-if(DIGIKAMSC_COMPILE_LIBKDCRAW)
-    message(STATUS "Local shared libkdcraw will be compiled........ YES")
-else()
-    message(STATUS "Local shared libkdcraw will be compiled........ NO")
 endif()
 
 if(DIGIKAMSC_COMPILE_LIBKSANE)
