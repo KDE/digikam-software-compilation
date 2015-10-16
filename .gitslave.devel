@@ -3,7 +3,7 @@
 "^libkface" "extra/libkface"
 "^libksane" "extra/libksane"
 "^libmediawiki" "extra/libmediawiki"
-#"^libkvkontakte" "extra/libkvkontakte"
+"^libkvkontakte" "extra/libkvkontakte"
 "^digikam" "core"
 "^kipi-plugins" "extra/kipi-plugins"
 "^digikam-doc" "doc/digikam"
