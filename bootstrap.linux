@@ -38,6 +38,7 @@ else
 fi
 
 QT_INSTALL_PREFIX=`qtpaths --install-prefix`
+QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
 export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
@@ -58,6 +59,7 @@ cd $BUILDDIR
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX/ \
+      -DKDE_INSTALL_QTPLUGINDIR=$QT_PLUGIN_INSTALL_DIR/ \
       $ADDITIONAL_CMAKE_FLAGS \
       -DBUILD_TESTING=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
