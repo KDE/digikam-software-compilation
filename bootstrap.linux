@@ -83,3 +83,7 @@ cmake -G "$MAKEFILES_TYPE" . \
 if [ -d ./extra/libkvkontakte/src ]; then
     ln -sf src ./extra/libkvkontakte/Vkontakte
 fi
+
+if [ -d ./extra/libmediawiki/src ]; then
+    ln -sf src ./extra/libmediawiki/MediaWiki
+fi
