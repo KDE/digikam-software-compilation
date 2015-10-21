@@ -4,10 +4,6 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
-if(DIGIKAMSC_COMPILE_LIBKEXIV2)
-    add_subdirectory(libkexiv2)
-endif()
-
 if(DIGIKAMSC_COMPILE_LIBKIPI)
     add_subdirectory(libkipi)
 endif()

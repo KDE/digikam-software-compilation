@@ -1,4 +1,3 @@
-"^libkexiv2" "extra/libkexiv2"
 "^libkipi" "extra/libkipi"
 "^libkface" "extra/libkface"
 "^libksane" "extra/libksane"
