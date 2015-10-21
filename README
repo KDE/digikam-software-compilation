@@ -44,7 +44,6 @@ Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plu
 
 libkface         : https://projects.kde.org/projects/kde/kdegraphics/libs/libkface
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
-libkexiv2        : https://projects.kde.org/projects/kde/kdegraphics/libs/libkexiv2
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
 libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
