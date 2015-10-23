@@ -4,7 +4,7 @@
 
 CMake                       X                                           X                           X                   >= 3.0.0
 ECM                         X                                           X                           X                   >= 1.7.0
-        
+
 
 Qt5::Core                   X                      X                    X                           X                   >= 5.4.0
 Qt5::Gui                    X                      X                    X                           X                   >= 5.4.0
@@ -17,7 +17,7 @@ Qt5::XmlPatterns                                                        X       
 Qt5::Svg                                                                X                                               >= 5.4.0
 Qt5::WebKitWidgets                                                      X                           X                   >= 5.4.0
 Qt5::PrintSupport                                                       X                           X                   >= 5.4.0
-Qt5::OpenGL                                                            opt                                              >= 5.4.0
+Qt5::OpenGL                                                            opt                                              >= 5.4.0            AdvSlideShow + ImageViewer tools
 Qt5::Test                                                              opt                         opt                  >= 5.4.0
 Qt5::Multimedia                                                                                    opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer
 Qt5::MultimediaWidgets                                                                             opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer
@@ -26,46 +26,46 @@ Qt5::MultimediaWidgets                                                          
 KF5::Config                                       X                     X                           X                   >= 5.5.0
 KF5::I18n                                         X                     X                           X                   >= 5.5.0
 KF5::XmlGui                                       X                     X                           X                   >= 5.5.0
-KF5::Service                                      X                     X                                               >= 5.5.0
+KF5::Service                                      X                     X                           X                   >= 5.5.0                                                        Image Editor use KService : remove plugins interface
 KF5::KIO                                                                X                           X                   >= 5.5.0
 KF5::IconThemes                                                         X                           X                   >= 5.5.0
 KF5::WindowSystem                                                       X                           X                   >= 5.5.0
-KF5::ThreadWeaver                                                       X                                               >= 5.5.0            Panorama tool
-KF5::Parts                                                              X                                               >= 5.5.0
-KF5::Archive                                                            X                                               >= 5.5.0            FlashExport tool
+KF5::ThreadWeaver                                                       X                                               >= 5.5.0            Panorama tool                               Make as optional
+KF5::Archive                                                            X                                               >= 5.5.0            FlashExport tool                            Make as optional
 KF5::CalendarCore                                                      opt                                              >= 5.5.0            Calendar tool
 KF5;;Solid                                                                                          X                   >= 5.5.0
 KF5;;NotifyConfig                                                                                   X                   >= 5.5.0
 KF5;;Notifications                                                                                  X                   >= 5.5.0
-KF5::ItemModels                                                                                    opt                  >= 5.5.0            Geolocation support                         Found a more pure Qt5 solution (only used in gpsimagesortproxymodel.cpp)
+KF5::ItemModels                                                                                    opt                  >= 5.5.0            Geolocation support                         Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp)
 KF5::Bookmarks                                                                                     opt                  >= 5.5.0            Geolocation support
 KF5::FileMetaData                                                                                  opt                  >= 5.5.0            KDE Baloo support
 KF5::AkonadiContact                                                                                opt                  >= 5.5.0            KDE Mail contacts support
-KF5::Completion                                                                                    opt                  >= 5.5.0                                                        Port to QCompleter (See modelcompletion.cpp)
+KF5::Completion                                                                                    opt                  >= 5.5.0                                                        Port to QLineEdit and QCompleter (See searchtextbar.cpp modelcompletion.cpp)
+KF5::CoreAddons                                                                                                         >= 5.5.0                                                        CameraController use KProcess and KMacroExpander
 
 
-OpenCV                      X                                                                       X                   2.x or 3.x
+OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag
 Flex                                                                   opt                                                                  Panorama tool
 Bison                                                                  opt                                                                  Panorama tool
 Phonon4Qt5                                                             opt                                                                  AdvSlideShow tool                           Port to Qt5::Multimedia/MultimediaWidgets
 OpenGL                                                                 opt                                                                  AdvSlideShow + ImageViewer tools
 QtKOAuth                                                               opt                                                                  ImgUr tool
-libmediawiki                                                           opt                                                                  MediaWiki tool
-libkvkontakte                                                          opt                                                                  Vkontakte tool
+libmediawiki                                                           opt                                              >= 5.5.0            MediaWiki tool
+libkvkontakte                                                          opt                                              >= 4.70.0           Vkontakte tool
 libtiff                                                                                             X
 libpng                                                                                              X
 libjpeg                                                                                             X
-libpgf                                                                                              X
+libpgf                                                                                              X                   >= 6.12.24
 libboost                                                                                            X
 liblcms                                                                                             X                   >= 2.x
 libexpat                                                                                            X
-libexiv2                                                                                            X
+libexiv2                                                                                            X                   >= 0.25
 libkface                                                                                           opt                  >= 5.0.0            Faces management support
 libkipi                                                                                            opt                  >= 5.0.0            Kipi-plugins support
 libksane                                                                                           opt                  >= 5.0.0            Digital scanner support
-libjpasper                                                                                         opt                                      JPEG-2000 support
-libmarble                                                                                          opt                                      Geolocation support
-libeigen3                                                                                          opt                                      Refocus tool                                Use Eigen3 from OpenCV instead
-liblensfun                                                                                         opt                                      LensCorrection tool
+libjpasper                                                                                         opt                  >= 1.900.1          JPEG-2000 support
+libmarble                                                                                          opt                  >= 0.21.80          Geolocation support
+libeigen3                                                                                          opt                  >= 3.2              Refocus tool                                Use Eigen3 from OpenCV instead
+liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool
 liblqr-1                                                                                           opt                                      Liquid rescale tool
-libgphoto2                                                                                         opt                                      Digital camera drivers support
+libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support
