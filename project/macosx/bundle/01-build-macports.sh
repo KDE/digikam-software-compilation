@@ -187,7 +187,7 @@ port -v selfupdate
 
 if [[ $CONTINUE_INSTALL == 0 ]]; then
 
-    port -v upgrade outdated
+#    port -v upgrade outdated
     echo -e "\n"
 
     #echo "---------- Modifying net-snmp portfile to install when not root"
