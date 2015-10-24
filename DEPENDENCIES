@@ -13,6 +13,7 @@ Qt5::Sql                    X                                                   
 Qt5::Xml                    X                                           X                           X                   >= 5.4.0
 Qt5::DBus                                                                                           X                   >= 5.4.0
 Qt5::Concurrent                                                         X                           X                   >= 5.4.0
+Qt5::Network                                                            X                                               >= 5.4.0
 Qt5::XmlPatterns                                                        X                                               >= 5.4.0
 Qt5::Svg                                                                X                                               >= 5.4.0
 Qt5::WebKitWidgets                                                      X                           X                   >= 5.4.0
