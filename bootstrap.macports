@@ -44,6 +44,8 @@ fi
 
 cd build
 
+#      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.3/Modules;${INSTALL_PREFIX}/share/apps/cmake/modules" \
+
 cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX}/ \
@@ -68,7 +70,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
       -DCMAKE_INSTALL_NAME_DIR=/opt/local/lib \
       -DCMAKE_SYSTEM_PREFIX_PATH="/opt/local;/usr" \
-      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.3/Modules;${INSTALL_PREFIX}/share/apps/cmake/modules" \
+      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.3/Modules" \
       -DBUNDLE_INSTALL_DIR=${BUNDLE_INSTALL_DIR} \
       -DQT_QT_INCLUDE_DIR=/opt/local/include \
       -DQT_LIBRARY_DIR=/opt/local/lib \
