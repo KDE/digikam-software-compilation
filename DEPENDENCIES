@@ -2,7 +2,7 @@
                         --------                -------             ------------                  -------               -------             -------                                     ----
 
 
-CMake                       X                      X                    X                           X                   >= 3.0.0
+CMake                       X                      X                    X                           X                   >= 3.0.0            > 3.1.0 hightly recommend
 ECM                         X                      X                    X                           X                   >= 1.7.0
 
 
@@ -20,8 +20,8 @@ Qt5::WebKitWidgets                                                      X       
 Qt5::PrintSupport                                                       X                           X                   >= 5.4.0
 Qt5::OpenGL                                                            opt                                              >= 5.4.0            AdvSlideShow + ImageViewer tools
 Qt5::Test                                                              opt                         opt                  >= 5.4.0
-Qt5::Multimedia                                                                                    opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer
-Qt5::MultimediaWidgets                                                                             opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer
+Qt5::Multimedia                                                                                    opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0  Must be fixed with Qt 5.5.0. Need testing
+Qt5::MultimediaWidgets                                                                             opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0  Must be fixed with Qt 5.5.0. Need testing
 
 
 KF5::Config                                       X                     X                           X                   >= 5.5.0
@@ -39,8 +39,8 @@ KF5;;NotifyConfig                                                               
 KF5;;Notifications                                                                                  X                   >= 5.5.0
 KF5::ItemModels                                                                                    opt                  >= 5.5.0            Geolocation support                         Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp)
 KF5::Bookmarks                                                                                     opt                  >= 5.5.0            Geolocation support
-KF5::FileMetaData                                                                                  opt                  >= 5.5.0            KDE files indexer support
-KF5::AkonadiContact                                                                                opt                  >= 5.5.0            KDE Mail contacts support
+KF5::FileMetaData                                                                                  opt                  >= 5.5.0            KDE files indexer support                   Still experimental, disabled by default
+KF5::AkonadiContact                                                                                opt                  >= 5.5.0            KDE Mail contacts support                   Still experimental, disabled by default
 KF5::Completion                                                                                    opt                  >= 5.5.0                                                        Port to QLineEdit and QCompleter (See searchtextbar.cpp modelcompletion.cpp)
 KF5::CoreAddons                                                                                                         >= 5.5.0                                                        CameraController use KProcess and KMacroExpander
 
