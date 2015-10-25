@@ -27,7 +27,7 @@ Qt5::MultimediaWidgets                                                          
 KF5::Config                                       X                     X                           X                   >= 5.5.0
 KF5::I18n                                         X                     X                           X                   >= 5.5.0
 KF5::XmlGui                                       X                     X                           X                   >= 5.5.0
-KF5::Service                                      X                     X                           X                   >= 5.5.0                                                        Image Editor use KService : remove plugins interface.
+KF5::Service                                      X                     X                           X                   >= 5.5.0                                                        Image Editor use KService : remove plugins interface (Showfoto do not load plugins).
 KF5::KIO                                                                X                           X                   >= 5.5.0
 KF5::IconThemes                                                         X                           X                   >= 5.5.0
 KF5::WindowSystem                                                       X                           X                   >= 5.5.0
