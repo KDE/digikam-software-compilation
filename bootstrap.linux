@@ -76,7 +76,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DENABLE_MYSQLSUPPORT=ON \
       -DENABLE_INTERNALMYSQL=ON \
       -DENABLE_MEDIAPLAYER=OFF \
-      -DENABLE_KINOTIFY=OFF \
       $SOURCEDIR && echo "$MESSAGE"
 
 if [ -d ./extra/libkvkontakte/src ]; then
