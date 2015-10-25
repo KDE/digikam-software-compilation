@@ -1,9 +1,9 @@
-                        libkface                libkipi             kipi-plugins                  digiKam               version             remarks                                     TODO    
+                        libkface                libkipi             kipi-plugins                  digiKam               version             remarks                                     TODO
+                        --------                -------             ------------                  -------               -------             -------                                     ----
 
 
-
-CMake                       X                                           X                           X                   >= 3.0.0
-ECM                         X                                           X                           X                   >= 1.7.0
+CMake                       X                      X                    X                           X                   >= 3.0.0
+ECM                         X                      X                    X                           X                   >= 1.7.0
 
 
 Qt5::Core                   X                      X                    X                           X                   >= 5.4.0
@@ -45,22 +45,22 @@ KF5::Completion                                                                 
 KF5::CoreAddons                                                                                                         >= 5.5.0                                                        CameraController use KProcess and KMacroExpander
 
 
-OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag
-Flex                                                                   opt                                                                  Panorama tool
-Bison                                                                  opt                                                                  Panorama tool
-Phonon4Qt5                                                             opt                                                                  AdvSlideShow tool                           Port to Qt5::Multimedia/MultimediaWidgets
+OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag  2.x support is stable, 3.x support is beta
+Flex                                                                   opt                                              >= 2.5              Panorama tool
+Bison                                                                  opt                                              >= 3.0              Panorama tool
+Phonon4Qt5                                                             opt                                              >= 4.8.3            AdvSlideShow tool                           Port to Qt5::Multimedia/MultimediaWidgets
 OpenGL                                                                 opt                                                                  AdvSlideShow + ImageViewer tools
-QtKOAuth                                                               opt                                                                  ImgUr tool
+QtKOAuth                                                               opt                                              >= 0.97             ImgUr tool
 libmediawiki                                                           opt                                              >= 5.5.0            MediaWiki tool
 libkvkontakte                                                          opt                                              >= 4.70.0           Vkontakte tool
-libtiff                                                                                             X
-libpng                                                                                              X
-libjpeg                                                                                             X
+libtiff                                                                                             X                   >= 4.0
+libpng                                                                                              X                   >= 1.6
+libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommend
 libpgf                                                                                              X                   >= 6.12.24
-libboost                                                                                            X
+libboost                                                                                            X                   >= 1.55.0
 liblcms                                                                                             X                   >= 2.x
-libexpat                                                                                            X
-libexiv2                                                                                            X                   >= 0.25
+libexpat                                                                                            X                   >= 2.1.0
+libexiv2                                                                                            X                   >= 0.25             0.24 deprecated due to huge bugs list
 libkface                                                                                           opt                  >= 5.0.0            Faces management support
 libkipi                                                                                            opt                  >= 5.0.0            Kipi-plugins support
 libksane                                                                                           opt                  >= 5.0.0            Digital scanner support
@@ -68,5 +68,5 @@ libjpasper                                                                      
 libmarble                                                                                          opt                  >= 0.21.80          Geolocation support
 libeigen3                                                                                          opt                  >= 3.2              Refocus tool                                Use Eigen3 from OpenCV instead
 liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool
-liblqr-1                                                                                           opt                                      Liquid rescale tool
+liblqr-1                                                                                           opt                  >= 0.4.2            Liquid rescale tool
 libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support
