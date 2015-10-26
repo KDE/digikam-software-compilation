@@ -8,6 +8,9 @@
 
 SOURCEDIR=$PWD
 
+command -v kf5-config >/dev/null 2>&1 || { echo >&2 "This script require kf5-config CLI tool but it's not installed. Aborting."; exit 1; }
+command -v qtpaths >/dev/null 2>&1 || { echo >&2 "This script require qtpaths CLI tool but it's not installed. Aborting."; exit 1; }
+
 if [ "$1" == "" ]; then
     MAKEFILES_TYPE='Unix Makefiles'
     BUILDDIR=$PWD"/build"
