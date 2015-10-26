@@ -9,7 +9,7 @@ ECM                         X                      X                    X       
 Qt5::Core                   X                      X                    X                           X                   >= 5.4.0
 Qt5::Gui                    X                      X                    X                           X                   >= 5.4.0
 Qt5::Widgets                X                      X                    X                           X                   >= 5.4.0
-Qt5::Sql                    X                                                                       X                   >= 5.4.0
+Qt5::Sql                    X                                                                       X                   >= 5.4.0            Including Qt5 Sqlite plugin.
 Qt5::Xml                    X                                           X                           X                   >= 5.4.0
 Qt5::DBus                                                                                           X                   >= 5.4.0
 Qt5::Concurrent                                                         X                           X                   >= 5.4.0
