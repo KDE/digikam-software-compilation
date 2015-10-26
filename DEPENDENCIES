@@ -21,7 +21,8 @@ Qt5::PrintSupport                                                       X       
 Qt5::OpenGL                                                            opt                                              >= 5.4.0            AdvSlideShow + ImageViewer tools.
 Qt5::Multimedia                                                                                    opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
 Qt5::MultimediaWidgets                                                                             opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
-Qt5::Test                                                              opt                         opt                  >= 5.4.0            To compile test codes (BUILD_TESTING=on)
+Qt5::X11Extras                                                                                     opt                  >= 5.4.0            For color management support under Linux.
+Qt5::Test                                                              opt                         opt                  >= 5.4.0            To compile test codes (BUILD_TESTING=on).
 
 
 KF5::Config                                       X                     X                           X                   >= 5.5.0
@@ -31,42 +32,42 @@ KF5::Service                                      X                     X       
 KF5::KIO                                                                X                           X                   >= 5.5.0
 KF5::IconThemes                                                         X                           X                   >= 5.5.0
 KF5::WindowSystem                                                       X                           X                   >= 5.5.0
-KF5::ThreadWeaver                                                      opt                                              >= 5.5.0            Panorama tool
-KF5::Archive                                                           opt                                              >= 5.5.0            FlashExport tool
-KF5::CalendarCore                                                      opt                                              >= 5.5.0            Calendar tool
+KF5::ThreadWeaver                                                      opt                                              >= 5.5.0            Panorama tool.
+KF5::Archive                                                           opt                                              >= 5.5.0            FlashExport tool.
+KF5::CalendarCore                                                      opt                                              >= 5.5.0            Calendar tool.
 KF5;;Solid                                                                                          X                   >= 5.5.0
 KF5;;NotifyConfig                                                                                   X                   >= 5.5.0
 KF5;;Notifications                                                                                  X                   >= 5.5.0
-KF5::ItemModels                                                                                    opt                  >= 5.5.0            Geolocation support                                 Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
-KF5::Bookmarks                                                                                     opt                  >= 5.5.0            Geolocation support
+KF5::ItemModels                                                                                    opt                  >= 5.5.0            Geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
+KF5::Bookmarks                                                                                     opt                  >= 5.5.0            Geolocation support.
 KF5::FileMetaData                                                                                  opt                  >= 5.5.0            KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)  Still experimental, disabled by default. Implementation from KDE side very unstable.
 KF5::AkonadiContact                                                                                opt                  >= 5.5.0            KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on) Still experimental, disabled by default. Need testing.
 KF5::Completion                                                                                    opt                  >= 5.5.0                                                                Port to QLineEdit and QCompleter (See searchtextbar.cpp modelcompletion.cpp).
 KF5::CoreAddons                                                                                                         >= 5.5.0                                                                CameraController use KProcess and KMacroExpander.
 
 
-OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag          2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3 on). Need testing.
-Flex                                                                   opt                                              >= 2.5              Panorama tool
-Bison                                                                  opt                                              >= 3.0              Panorama tool
-Phonon4Qt5                                                             opt                                              >= 4.8.3            AdvSlideShow tool                                   Port to Qt5::Multimedia/MultimediaWidgets.
-libmesa                                                                opt                                              >= 11.0             AdvSlideShow + ImageViewer tools (Linux only)
-libqtkoauth                                                            opt                                              >= 0.97             ImgUr tool
+OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3 on). Need testing.
+Flex                                                                   opt                                              >= 2.5              Panorama tool.
+Bison                                                                  opt                                              >= 3.0              Panorama tool.
+Phonon4Qt5                                                             opt                                              >= 4.8.3            AdvSlideShow tool.                                  Port to Qt5::Multimedia/MultimediaWidgets.
+libmesa                                                                opt                                              >= 11.0             AdvSlideShow + ImageViewer tools (Linux only).
+libqtkoauth                                                            opt                                              >= 0.97             ImgUr tool.
 libmediawiki                                                           opt                                              >= 5.5.0            MediaWiki tool (DIGIKAMSC_COMPILE_LIBMEDIAWIKI=on)
 libkvkontakte                                                          opt                                              >= 4.70.0           Vkontakte tool (DIGIKAMSC_COMPILE_LIBKVKONTAKTE=on)
-libtiff                                                                                             X                   >= 4.0
-libpng                                                                                              X                   >= 1.6
-libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommended
-libpgf                                                                                              X                   >= 6.12.24
-libboost                                                                                            X                   >= 1.55.0
-liblcms                                                                                             X                   >= 2.x
-libexpat                                                                                            X                   >= 2.1.0
-libexiv2                                                                                            X                   >= 0.25             0.24 deprecated due to huge bugs list
-libkface                                                                                           opt                  >= 5.0.0            Faces management (DIGIKAMSC_COMPILE_LIBKFACE=on)
+libtiff                                                                                             X                   >= 4.0              For DImg image loader.
+libpng                                                                                              X                   >= 1.6              For DImg image loader.
+libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommended.
+libpgf                                                                                              X                   >= 6.12.24          For thumbnails database image wavelets encoding.
+libboost                                                                                            X                   >= 1.55.0           For Versionning support.
+liblcms                                                                                             X                   >= 2.x              For Color Management support.
+libexpat                                                                                            X                   >= 2.1.0            For DNG converter.
+libexiv2                                                                                            X                   >= 0.25             Metadata low level management. 0.24 deprecated.
+libkface                                                                                           opt                  >= 5.0.0            Faces management (DIGIKAMSC_COMPILE_LIBKFACE=on).
 libkipi                                                                                            opt                  >= 5.0.0            Kipi-plugins support (DIGIKAMSC_COMPILE_LIBKIPI=on)
-libksane                                                                                           opt                  >= 5.0.0            Digital scanner (DIGIKAMSC_COMPILE_LIBKSANE=on)
-libjpasper                                                                                         opt                  >= 1.900.1          JPEG-2000 support
-libmarble                                                                                          opt                  >= 0.21.80          Geolocation support
-libeigen3                                                                                          opt                  >= 3.2              Refocus tool                                        See if Clapack from OpenCV can be used instead.
-liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool
-liblqr-1                                                                                           opt                  >= 0.4.2            Liquid rescale tool
-libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support
+libksane                                                                                           opt                  >= 5.0.0            Digital scanner (DIGIKAMSC_COMPILE_LIBKSANE=on).
+libjpasper                                                                                         opt                  >= 1.900.1          For JPEG-2000 support.
+libmarble                                                                                          opt                  >= 0.21.80          For geolocation support.
+libeigen3                                                                                          opt                  >= 3.2              Refocus tool.                                       See if Clapack from OpenCV can be used instead.
+liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool.
+liblqr-1                                                                                           opt                  >= 0.4.2            Liquid rescale tool.
+libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support.
