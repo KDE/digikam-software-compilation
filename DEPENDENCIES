@@ -54,6 +54,7 @@ libmesa                                                                opt      
 libqtkoauth                                                            opt                                              >= 0.97             ImgUr tool.
 libmediawiki                                                           opt                                              >= 5.5.0            MediaWiki tool (DIGIKAMSC_COMPILE_LIBMEDIAWIKI=on)
 libkvkontakte                                                          opt                                              >= 4.70.0           Vkontakte tool (DIGIKAMSC_COMPILE_LIBKVKONTAKTE=on)
+libpthread                                                                                          X                   >= 2.0.0            For DNG converter.
 libtiff                                                                                             X                   >= 4.0              For DImg image loader.
 libpng                                                                                              X                   >= 1.6              For DImg image loader.
 libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommended.
