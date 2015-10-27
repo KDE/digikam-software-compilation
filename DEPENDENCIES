@@ -72,3 +72,5 @@ libeigen3                                                                       
 liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool.
 liblqr-1                                                                                           opt                  >= 0.4.2            Liquid rescale tool.
 libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support.
+libgomp                                                                                            opt                  >= 5.0              OpenMP support for Libraw.
+libxml2                                                                                            opt                  >= 2.0              RawSpeed Codecs support for LibRaw.
