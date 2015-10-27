@@ -11,17 +11,17 @@ Qt5::Gui                    X                      X                    X       
 Qt5::Widgets                X                      X                    X                           X                   >= 5.4.0
 Qt5::Sql                    X                                                                       X                   >= 5.4.0            Including Qt5 Sqlite plugin.
 Qt5::Xml                    X                                           X                           X                   >= 5.4.0
-Qt5::DBus                                                                                           X                   >= 5.4.0
 Qt5::Concurrent                                                         X                           X                   >= 5.4.0
+Qt5::WebKitWidgets                                                      X                           X                   >= 5.4.0
+Qt5::PrintSupport                                                       X                           X                   >= 5.4.0
+Qt5::DBus                                                                                           X                   >= 5.4.0
 Qt5::Network                                                            X                                               >= 5.4.0
 Qt5::XmlPatterns                                                        X                                               >= 5.4.0
 Qt5::Svg                                                                X                                               >= 5.4.0
-Qt5::WebKitWidgets                                                      X                           X                   >= 5.4.0
-Qt5::PrintSupport                                                       X                           X                   >= 5.4.0
-Qt5::OpenGL                                                            opt                                              >= 5.4.0            AdvSlideShow + ImageViewer tools.
 Qt5::Multimedia                                                                                    opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
 Qt5::MultimediaWidgets                                                                             opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
 Qt5::X11Extras                                                                                     opt                  >= 5.4.0            For color management support under Linux.
+Qt5::OpenGL                                                            opt                                              >= 5.4.0            AdvSlideShow + ImageViewer tools.
 Qt5::Test                                                              opt                         opt                  >= 5.4.0            To compile test codes (BUILD_TESTING=on).
 
 
@@ -46,7 +46,7 @@ KF5::Completion                                                                 
 KF5::CoreAddons                                                                                                         >= 5.5.0                                                                CameraController use KProcess and KMacroExpander.
 
 
-OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3 on). Need testing.
+OpenCV                      X                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on). Need testing.
 libpthread                                                                                          X                   >= 2.0.0            For DNG converter.
 libtiff                                                                                             X                   >= 4.0              For DImg image loader.
 libpng                                                                                              X                   >= 1.6              For DImg image loader.
