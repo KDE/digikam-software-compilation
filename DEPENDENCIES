@@ -50,7 +50,7 @@ OpenCV                      X                                                   
 libpthread                                                                                          X                   >= 2.0.0            For DNG converter.
 libtiff                                                                                             X                   >= 4.0              For DImg image loader.
 libpng                                                                                              X                   >= 1.6              For DImg image loader.
-libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommended.
+libjpeg                                                                                             X                   >= 6b               jpeglib >= 8.0 hightly recommended for RawEngine.
 libpgf                                                                                              X                   >= 6.12.24          For thumbnails database image wavelets encoding.
 libboost                                                                                            X                   >= 1.55.0           For Versionning support.
 liblcms                                                                                             X                   >= 2.x              For Color Management support.
@@ -72,5 +72,5 @@ libeigen3                                                                       
 liblensfun                                                                                         opt                  >= 0.2.8            LensCorrection tool.
 liblqr-1                                                                                           opt                  >= 0.4.2            Liquid rescale tool.
 libgphoto2                                                                                         opt                  >= 2.5              Digital camera drivers support.
-libgomp                                                                                            opt                  >= 5.0              OpenMP support for Libraw.
-libxml2                                                                                            opt                  >= 2.0              RawSpeed Codecs support for LibRaw.
+libgomp                                                                                            opt                  >= 5.0              OpenMP support for RawEngine.
+libxml2                                                                                            opt                  >= 2.0              RawSpeed Codecs support for RawEngine.
