@@ -8,10 +8,6 @@ if(DIGIKAMSC_COMPILE_LIBKIPI)
     add_subdirectory(libkipi)
 endif()
 
-if(DIGIKAMSC_COMPILE_LIBKFACE)
-    ECM_OPTIONAL_ADD_SUBDIRECTORY(libkface)
-endif()
-
 if(DIGIKAMSC_COMPILE_LIBKSANE)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libksane)
 endif()
