@@ -374,11 +374,11 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
 
 fi
 
-InstallKDEExtraLib(libkdcraw)
-InstallKDEExtraLib(libkexiv2)
-InstallKDEExtraLib(libkipi)
-InstallKDEExtraLib(libkgeomap)
-InstallKDEExtraLib(libkface)
+InstallKDEExtraLib("libkdcraw")
+InstallKDEExtraLib("libkexiv2")
+InstallKDEExtraLib("libkipi")
+InstallKDEExtraLib("libkgeomap")
+InstallKDEExtraLib("libkface")
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
