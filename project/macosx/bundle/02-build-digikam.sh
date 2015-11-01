@@ -431,6 +431,11 @@ InstallKDEExtraLib "libkexiv2"
 InstallKDEExtraLib "libkipi"
 InstallKDEExtraLib "libkgeomap"
 InstallKDEExtraLib "libkface"
+InstallKDEExtraLib "libksane"
+
+KD_VERSION="4.12.0"
+KD_URL="http://download.kde.org/stable/libkvkontakte"
+InstallKDEExtraLib "libkvkontakte"
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
