@@ -44,6 +44,11 @@ HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
 HU_VERSION=2013.0
 
+# KDE extra libs tarball information
+KD_URL="http://download.kde.org/stable/applications/"
+KD_BUILDTEMP=~/kdtemp
+KD_VERSION=15.08.2
+
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
