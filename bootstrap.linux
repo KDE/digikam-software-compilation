@@ -31,18 +31,19 @@ else
     exit 1
 fi
 
+QT_INSTALL_PREFIX=`qtpaths --install-prefix`
+QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
+export PATH=$QT_INSTALL_PREFIX/bin:$PATH
+
 if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
     DIGIKAM_INSTALL_PREFIX=`kf5-config --prefix 2>/dev/null`
 else
     # bootstrap.local may have preset DIGIKAM_INSTALL_PREFIX.
+    QT_PLUGIN_INSTALL_DIR=$DIGIKAM_INSTALL_PREFIX/lib/plugins
     export PATH=$DIGIKAM_INSTALL_PREFIX/bin:$PATH
     export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
     export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
 fi
-
-QT_INSTALL_PREFIX=`qtpaths --install-prefix`
-QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
-export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kf5-config --path lib 2>/dev/null`/pkgconfig
