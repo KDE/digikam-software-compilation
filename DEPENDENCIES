@@ -32,21 +32,20 @@ KF5::Service                  X                     X                           
 KF5::KIO                                            X                           X                   >= 5.5.0
 KF5::IconThemes                                     X                           X                   >= 5.5.0
 KF5::WindowSystem                                   X                           X                   >= 5.5.0
-KF5;;Solid                                                                      X                   >= 5.5.0
-KF5;;NotifyConfig                                                               X                   >= 5.5.0
-KF5;;Notifications                                                              X                   >= 5.5.0
-KF5::ThreadWeaver                                  opt                                              >= 5.5.0            Panorama tool.
-KF5::Archive                                       opt                                              >= 5.5.0            FlashExport tool.
-KF5::CalendarCore                                  opt                                              >= 5.5.0            Calendar tool.
+KF5::Solid                                                                      X                   >= 5.5.0
+KF5::NotifyConfig                                                               X                   >= 5.5.0
+KF5::Notifications                                                              X                   >= 5.5.0
+KF5::CoreAddons                                                                 X                   >= 5.5.0            CameraController use KProcess and KMacroExpander.   Port to QProcess.
+KF5::Completion                                                                opt                  >= 5.5.0            Used only by SearchTextBar and ModelCompletion      Port to QLineEdit and QCompleter.
 KF5::ItemModels                                                                opt                  >= 5.5.0            Geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
 KF5::Bookmarks                                                                 opt                  >= 5.5.0            Geolocation support.
 KF5::FileMetaData                                                              opt                  >= 5.5.0            KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)  Still experimental, disabled by default. Implementation from KDE side very unstable.
 KF5::AkonadiContact                                                            opt                  >= 5.5.0            KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on) Still experimental, disabled by default. Need testing.
-KF5::Completion                                                                opt                  >= 5.5.0                                                                Port to QLineEdit and QCompleter (See searchtextbar.cpp modelcompletion.cpp).
-KF5::CoreAddons                                                                                     >= 5.5.0                                                                CameraController use KProcess and KMacroExpander.
+KF5::ThreadWeaver                                  opt                                              >= 5.5.0            Panorama tool.
+KF5::Archive                                       opt                                              >= 5.5.0            FlashExport tool.
+KF5::CalendarCore                                  opt                                              >= 5.5.0            Calendar tool.
 
-
-OpenCV                                                                          X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on). Need testing.
+libopencv                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on). Need testing.
 libpthread                                                                      X                   >= 2.0.0            For DNG converter.
 libtiff                                                                         X                   >= 4.0              For DImg image loader.
 libpng                                                                          X                   >= 1.6              For DImg image loader.
