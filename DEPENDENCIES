@@ -45,7 +45,7 @@ KF5::ThreadWeaver                                  opt                          
 KF5::Archive                                       opt                                              >= 5.5.0            FlashExport tool.
 KF5::CalendarCore                                  opt                                              >= 5.5.0            Calendar tool.
 
-libopencv                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on). Need testing.
+libopencv                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on) and need opencv_contribe module.
 libpthread                                                                      X                   >= 2.0.0            For DNG converter.
 libtiff                                                                         X                   >= 4.0              For DImg image loader.
 libpng                                                                          X                   >= 1.6              For DImg image loader.
