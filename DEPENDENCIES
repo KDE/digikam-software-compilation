@@ -9,7 +9,7 @@ ECM                            X                    X                           
 Qt5::Core                      X                    X                           X                   >= 5.4.0
 Qt5::Gui                       X                    X                           X                   >= 5.4.0
 Qt5::Widgets                   X                    X                           X                   >= 5.4.0
-Qt5::Sql                                                                        X                   >= 5.4.0            Including Qt5 Sqlite plugin.
+Qt5::Sql                                                                        X                   >= 5.4.0            Including Qt5::Sqlite and Qt5::Mysql plugins.
 Qt5::Xml                                            X                           X                   >= 5.4.0
 Qt5::Concurrent                                     X                           X                   >= 5.4.0
 Qt5::WebKitWidgets                                  X                           X                   >= 5.4.0
@@ -35,7 +35,7 @@ KF5::WindowSystem                                   X                           
 KF5::Solid                                                                      X                   >= 5.5.0
 KF5::NotifyConfig                                                               X                   >= 5.5.0
 KF5::Notifications                                                              X                   >= 5.5.0
-KF5::CoreAddons                                                                 X                   >= 5.5.0            CameraController use KProcess and KMacroExpander.   Port to QProcess.
+KF5::CoreAddons                                                                 X                   >= 5.5.0            Needs for KAboutData.
 KF5::Completion                                                                opt                  >= 5.5.0            Used only by SearchTextBar and ModelCompletion      Port to QLineEdit and QCompleter.
 KF5::ItemModels                                                                opt                  >= 5.5.0            Geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
 KF5::Bookmarks                                                                 opt                  >= 5.5.0            Geolocation support.
