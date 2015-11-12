@@ -36,7 +36,6 @@ KF5::Solid                                                                      
 KF5::NotifyConfig                                                               X                   >= 5.5.0
 KF5::Notifications                                                              X                   >= 5.5.0
 KF5::CoreAddons                                                                 X                   >= 5.5.0            Needs for KAboutData.
-KF5::Completion                                                                opt                  >= 5.5.0            Used only by SearchTextBar and ModelCompletion      Port to QLineEdit and QCompleter.
 KF5::ItemModels                                                                opt                  >= 5.5.0            Geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
 KF5::Bookmarks                                                                 opt                  >= 5.5.0            Geolocation support.
 KF5::FileMetaData                                                              opt                  >= 5.5.0            KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)  Still experimental, disabled by default. Implementation from KDE side very unstable.
