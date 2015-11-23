@@ -58,7 +58,7 @@ Flex                                               opt                          
 Bison                                              opt                                              >= 3.0              Panorama tool.
 Phonon4Qt5                                         opt                                              >= 4.8.3            AdvSlideShow tool.                                  Port to Qt5::Multimedia/MultimediaWidgets.
 libmesa                                            opt                                              >= 11.0             AdvSlideShow + ImageViewer tools (Linux only).
-libqtkoauth                                        opt                                              >= 0.97             ImgUr tool.
+libqtkoauth                                        opt                                              >= 0.97             ImgUr tool. This lib must be compiled with Qt5.
 libmediawiki                                       opt                                              >= 5.5.0            MediaWiki tool (DIGIKAMSC_COMPILE_LIBMEDIAWIKI=on)
 libkvkontakte                                      opt                                              >= 4.70.0           Vkontakte tool (DIGIKAMSC_COMPILE_LIBKVKONTAKTE=on)
 libkipi                                                                        opt                  >= 5.0.0            Kipi-plugins support (DIGIKAMSC_COMPILE_LIBKIPI=on)
