@@ -42,7 +42,6 @@ Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plu
 
 * Extra components managed by this Software Compilation for developers only are listed below:
 
-libkface         : https://projects.kde.org/projects/kde/kdegraphics/libs/libkface
 libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
