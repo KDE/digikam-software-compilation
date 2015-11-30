@@ -8,8 +8,8 @@
 
 SOURCEDIR=$PWD
 
-command -v kf5-config >/dev/null 2>&1 || { echo >&2 "This script require kf5-config CLI tool but it's not installed. Aborting."; exit 1; }
-command -v qtpaths >/dev/null 2>&1 || { echo >&2 "This script require qtpaths CLI tool but it's not installed. Aborting."; exit 1; }
+command -v kf5-config >/dev/null 2>&1 || { echo >&2 "This script require kf5-config CLI tool from KDE project but it's not installed. Aborting."; exit 1; }
+command -v qtpaths >/dev/null 2>&1 || { echo >&2 "This script require qtpaths CLI tool from Qt5 project but it's not installed. Aborting."; exit 1; }
 
 if [ "$1" == "" ]; then
     MAKEFILES_TYPE='Unix Makefiles'
@@ -48,7 +48,7 @@ fi
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kf5-config --path lib 2>/dev/null`/pkgconfig
 
-echo "Qt      Install Path : $QT_INSTALL_PREFIX"
+echo "Qt5     Install Path : $QT_INSTALL_PREFIX"
 echo "KF5     Install Path : "`kf5-config --prefix 2>/dev/null`
 echo "digiKam Install Path : $DIGIKAM_INSTALL_PREFIX"
 
@@ -73,7 +73,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DDIGIKAMSC_COMPILE_LIBKSANE=ON \
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
       -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
-      -DENABLE_OPENCV3=ON \
+      -DENABLE_OPENCV3=OFF \
       -DENABLE_KFILEMETADATASUPPORT=ON \
       -DENABLE_AKONADICONTACTSUPPORT=ON \
       -DENABLE_MYSQLSUPPORT=ON \
