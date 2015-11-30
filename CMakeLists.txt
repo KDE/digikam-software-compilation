@@ -10,7 +10,7 @@ message(STATUS "----------------------------------------------------------------
 message(STATUS "Starting CMake configuration for: ${PROJECT_NAME}")
 
 set(CMAKE_MIN_VERSION   "3.0.0")
-set(ECM_MIN_VERSION     "1.7.0")
+set(ECM_MIN_VERSION     "1.5.0")
 
 cmake_minimum_required(VERSION ${CMAKE_MIN_VERSION})
 
