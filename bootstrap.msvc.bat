@@ -1,6 +1,6 @@
 @ECHO OFF
 
-REM  Copyright (c) 2008-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+REM  Copyright (c) 2008-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 REM
 REM  Redistribution and use is allowed according to the terms of the BSD license.
 REM  For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -34,7 +34,7 @@ cmake -G "NMake Makefiles" . ^
       -DDIGIKAMSC_COMPILE_LIBKIPI=ON ^
       -DDIGIKAMSC_COMPILE_LIBKSANE=ON ^
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON ^
-      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
+      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON ^
       -DENABLE_OPENCV3=OFF ^
       -DENABLE_KFILEMETADATASUPPORT=OFF ^
       -DENABLE_AKONADICONTACTSUPPORT=OFF ^
