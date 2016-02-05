@@ -20,8 +20,8 @@ This is a super-repository that helps to download and compile digiKam with all c
 
 * To download all needed git repositories, execute download script like this: perl ./download-repos
 
-* Important: by default only compnents required for packaging are downloaded. To populate developers
-  only components, set $GITSLAVE environnement variable before to run ./download-repos script, like this:
+* Important: by default only components required for packaging are downloaded. To populate whole developers
+  components, set $GITSLAVE environnement variable before to run ./download-repos script, like this:
 
   export GITSLAVE=.gitslave.devel
 
