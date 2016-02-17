@@ -40,9 +40,9 @@ KF5::ItemModels                                                                o
 KF5::Bookmarks                                                                 opt                  >= 5.5.0            Geolocation support.
 KF5::FileMetaData                                                              opt                  >= 5.5.0            KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)  Still experimental, disabled by default. Implementation from KDE side very unstable.
 KF5::AkonadiContact                                                            opt                  >= 4.89.0           KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on) Still experimental, disabled by default. Need testing.
+KF5::CalendarCore                                                              opt                  >= 4.81.0           Calendar tool.
 KF5::ThreadWeaver                                  opt                                              >= 5.5.0            Panorama tool.
 KF5::Archive                                       opt                                              >= 5.5.0            FlashExport tool.
-KF5::CalendarCore                                  opt                                              >= 4.81.0           Calendar tool.
 
 libopencv                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on).
 libpthread                                                                      X                   >= 2.0.0            For DNG converter.
