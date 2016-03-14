@@ -1,72 +1,72 @@
-                            libkipi             kipi-plugins                  digiKam               version             remarks                                             TODO
-                            -------             ------------                  -------               -------             -------                                             ----
+                            libkipi             kipi-plugins                  digiKam               version             Project URL                                                                                         remarks                                                 TODO
+                            -------             ------------                  -------               -------             -----------                                                                                         -------                                                 ----
 
 
-CMake                          X                    X                           X                   >= 3.0.0            > 3.1.0 hightly recommended.
-ECM                            X                    X                           X                   >= 1.7.0
+CMake                          X                    X                           X                   >= 3.0.0            http://www.cmake.org                                                                                > 3.1.0 hightly recommended.
+ECM                            X                    X                           X                   >= 1.7.0            https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 
 
-Qt5::Core                      X                    X                           X                   >= 5.4.0
-Qt5::Gui                       X                    X                           X                   >= 5.4.0
-Qt5::Widgets                   X                    X                           X                   >= 5.4.0
-Qt5::Sql                                                                        X                   >= 5.4.0            Including Qt5::Sqlite and Qt5::Mysql plugins.
-Qt5::Xml                                            X                           X                   >= 5.4.0
-Qt5::Concurrent                                     X                           X                   >= 5.4.0
-Qt5::WebKitWidgets                                  X                           X                   >= 5.4.0
-Qt5::PrintSupport                                   X                           X                   >= 5.4.0
-Qt5::DBus                                                                       X                   >= 5.4.0
-Qt5::Network                                        X                                               >= 5.4.0
-Qt5::XmlPatterns                                    X                                               >= 5.4.0
-Qt5::Svg                                            X                                               >= 5.4.0
-Qt5::Multimedia                                                                opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
-Qt5::MultimediaWidgets                                                         opt                  >= 5.4.0            Optional due to Qt5 bug with GStreamer 1.0          Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
-Qt5::X11Extras                                                                 opt                  >= 5.4.0            For color management support under Linux.
-Qt5::OpenGL                                                                    opt                  >= 5.4.0            For Presentation tool.
-Qt5::Test                                          opt                         opt                  >= 5.4.0            To compile test codes (BUILD_TESTING=on).
+Qt5::Core                      X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::Gui                       X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::Widgets                   X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::Sql                                                                        X                   >= 5.4.0            http://www.qtsoftware.com                                                                           Including Qt5::Sqlite and Qt5::Mysql plugins.
+Qt5::Xml                                            X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::Concurrent                                     X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::WebKitWidgets                                  X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::PrintSupport                                   X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::DBus                                                                       X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::Network                                        X                                               >= 5.4.0            http://www.qtsoftware.com
+Qt5::XmlPatterns                                    X                                               >= 5.4.0            http://www.qtsoftware.com
+Qt5::Svg                                            X                                               >= 5.4.0            http://www.qtsoftware.com
+Qt5::Multimedia                                                                opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           Optional due to Qt5 bug with GStreamer 1.0              Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
+Qt5::MultimediaWidgets                                                         opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           Optional due to Qt5 bug with GStreamer 1.0              Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
+Qt5::X11Extras                                                                 opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           For color management support under Linux.
+Qt5::OpenGL                                                                    opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           For Presentation tool.
+Qt5::Test                                          opt                         opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           To compile test codes (BUILD_TESTING=on).
 
 
-KF5::Config                   X                     X                           X                   >= 5.5.0
-KF5::XmlGui                   X                     X                           X                   >= 5.5.0
-KF5::Service                  X                     X                           X                   >= 5.5.0                                                                Image Editor use KService : remove plugins interface (Showfoto do not load plugins).
-KF5::I18n                                           X                           X                   >= 5.5.0
-KF5::KIO                                            X                           X                   >= 5.5.0
-KF5::IconThemes                                     X                           X                   >= 5.5.0
-KF5::WindowSystem                                   X                           X                   >= 5.5.0
-KF5::Solid                                                                      X                   >= 5.5.0
-KF5::NotifyConfig                                                               X                   >= 5.5.0
-KF5::Notifications                                                              X                   >= 5.5.0
-KF5::CoreAddons                                                                 X                   >= 5.5.0            Needs for KAboutData.
-KF5::ItemModels                                                                opt                  >= 5.5.0            Geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
-KF5::Bookmarks                                                                 opt                  >= 5.5.0            Geolocation support.
-KF5::FileMetaData                                                              opt                  >= 5.5.0            KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)  Still experimental, disabled by default. Implementation from KDE side very unstable.
-KF5::AkonadiContact                                                            opt                  >= 4.89.0           KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on) Still experimental, disabled by default. Need testing.
-KF5::CalendarCore                                                              opt                  >= 4.81.0           Calendar tool.
-KF5::ThreadWeaver                                                              opt                  >= 5.5.0            Panorama tool.
-KF5::Archive                                       opt                                              >= 5.5.0            FlashExport tool.
+KF5::Config                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kconfig
+KF5::XmlGui                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kxmlgui
+KF5::Service                  X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kservice                                               Image Editor use KService                               Remove plugins interface (Showfoto do not load plugins).
+KF5::I18n                                           X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/ki18n
+KF5::KIO                                            X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kio
+KF5::IconThemes                                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kiconthemes
+KF5::WindowSystem                                   X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kwindowsystem
+KF5::Solid                                                                      X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/solid
+KF5::NotifyConfig                                                               X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/knotifyconfig
+KF5::Notifications                                                              X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/knotifications
+KF5::CoreAddons                                                                 X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kcoreaddons                                            Needs for KAboutData.
+KF5::ItemModels                                                                opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/kitemmodels                                            For geolocation support.                                Replace by a pure Qt5 solution (only used in gpsimagesortproxymodel.cpp).
+KF5::Bookmarks                                                                 opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/kbookmarks                                             For geolocation support.
+KF5::FileMetaData                                                              opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/kfilemetadata                                          KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)      Still experimental, disabled by default. Implementation from KDE side very unstable.
+KF5::AkonadiContact                                                            opt                  >= 4.89.0           https://projects.kde.org/projects/kde/kdepimlibs/repository/revisions/master/show/akonadi-contact   KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on)     Still experimental, disabled by default. Need testing.
+KF5::CalendarCore                                                              opt                  >= 4.81.0           https://projects.kde.org/projects/kde/pim/kcalcore                                                  For calendar tool.
+KF5::ThreadWeaver                                                              opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/threadweaver                                           For panorama tool.
+KF5::Archive                                       opt                                              >= 5.5.0            https://projects.kde.org/projects/frameworks/karchive                                               For FlashExport tool.
 
-libopencv                                                                       X                   2.x or 3.x          Both versions supported using a cmake flag.         2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on).
-libpthread                                                                      X                   >= 2.0.0            For DNG converter.
-libtiff                                                                         X                   >= 4.0              For DImg image loader.
-libpng                                                                          X                   >= 1.6              For DImg image loader.
-libjpeg                                                                         X                   >= 6b               jpeglib >= 8.0 hightly recommended for RawEngine.
-libpgf                                                                          X                   >= 6.12.24          For thumbnails database image wavelets encoding.
-libboost                                                                        X                   >= 1.55.0           For Versionning support.
-liblcms                                                                         X                   >= 2.x              For Color Management support.
-libexpat                                                                        X                   >= 2.1.0            For DNG converter.
-libexiv2                                                                        X                   >= 0.25             Metadata low level management. 0.24 deprecated.
-Flex                                                                           opt                  >= 2.5.0            For Panorama tool.
-Bison                                                                          opt                  >= 2.5.0            For Panorama tool.
-libmesa                                                                        opt                  >= 11.0             For Presentation tools (Linux only).
-libqtkoauth                                        opt                                              >= 0.97             For ImgUr tool. This lib must be compiled with Qt5.
-libmediawiki                                       opt                                              >= 5.5.0            For MediaWiki tool (DIGIKAMSC_COMPILE_LIBMEDIAWIKI=on)
-libkvkontakte                                      opt                                              >= 4.70.0           For Vkontakte tool (DIGIKAMSC_COMPILE_LIBKVKONTAKTE=on)
-libkipi                                                                        opt                  >= 5.0.0            Kipi-plugins support (DIGIKAMSC_COMPILE_LIBKIPI=on)
-libksane                                                                       opt                  >= 5.0.0            Digital scanner (DIGIKAMSC_COMPILE_LIBKSANE=on).
-libjpasper                                                                     opt                  >= 1.900.1          For JPEG-2000 support.
-libmarble                                                                      opt                  >= 0.21.80          For geolocation support.
-libeigen3                                                                      opt                  >= 3.2              For Refocus tool.                                   See if Clapack from OpenCV can be used instead.
-liblensfun                                                                     opt                  >= 0.2.8            For LensCorrection tool.
-liblqr-1                                                                       opt                  >= 0.4.2            For Liquid rescale tool.
-libgphoto2                                                                     opt                  >= 2.5              Digital camera drivers support.
-libgomp                                                                        opt                  >= 5.0              OpenMP support for RawEngine.
-libxml2                                                                        opt                  >= 2.0              RawSpeed Codecs support for RawEngine.
+libopencv                                                                       X                   2.x or 3.x          http://opencv.willowgarage.com                                                                      Both versions supported using a cmake flag.             2.x support is stable, 3.x support is beta (with cmake option ENABLE_OPENCV3=on).
+libpthread                                                                      X                   >= 2.0.0            http://www.gnu.org/software/hurd/libpthread.html                                                    For DNG converter.
+libtiff                                                                         X                   >= 4.0              http://www.remotesensing.org/libtiff                                                                For DImg image loader.
+libpng                                                                          X                   >= 1.6              http://www.libpng.org/pub/png/libpng.html                                                           For DImg image loader.
+libjpeg                                                                         X                   >= 6b               http://www.ijg.org                                                                                  jpeglib >= 8.0 hightly recommended for RawEngine.
+libpgf                                                                          X                   >= 6.12.24          http://www.libpgf.org                                                                               For thumbnails database image wavelets encoding.
+libboost                                                                        X                   >= 1.55.0           http://www.boost.org/doc/libs                                                                       For Versionning support.
+liblcms                                                                         X                   >= 2.x              http://www.littlecms.com                                                                            For Color Management support.
+libexpat                                                                        X                   >= 2.1.0            http://expat.sourceforge.net                                                                        For DNG converter.
+libexiv2                                                                        X                   >= 0.25             http://www.exiv2.org                                                                                Metadata low level management. 0.24 deprecated.
+Flex                                                                           opt                  >= 2.5.0            http://flex.sourceforge.net                                                                         For Panorama tool.
+Bison                                                                          opt                  >= 2.5.0            http://www.gnu.org/software/bison/bison.html                                                        For Panorama tool.
+libmesa                                                                        opt                  >= 11.0             http://www.mesa3d.org                                                                               For Presentation tools (Linux only).
+libqtkoauth                                        opt                                              >= 0.97             https://github.com/kypeli/kQOAuth                                                                   For ImgUr tool. This lib must be compiled with Qt5.
+libmediawiki                                       opt                                              >= 5.5.0            https://projects.kde.org/projects/extragear/libs/libmediawiki                                       For MediaWiki tool (DIGIKAMSC_COMPILE_LIBMEDIAWIKI=on)
+libkvkontakte                                      opt                                              >= 4.70.0           https://projects.kde.org/projects/extragear/libs/libkvkontatke                                      For Vkontakte tool (DIGIKAMSC_COMPILE_LIBKVKONTAKTE=on)
+libkipi                                                                        opt                  >= 5.0.0            https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi                                      Kipi-plugins support (DIGIKAMSC_COMPILE_LIBKIPI=on)
+libksane                                                                       opt                  >= 5.0.0            https://projects.kde.org/projects/kde/kdegraphics/libs/libksane                                     Digital scanner (DIGIKAMSC_COMPILE_LIBKSANE=on).
+libjpasper                                                                     opt                  >= 1.900.1          http://www.ece.uvic.ca/~mdadams/jasper                                                              For JPEG-2000 support.
+libmarble                                                                      opt                  >= 0.21.80          https://projects.kde.org/projects/kde/kdeedu/marble                                                 For geolocation support.
+libeigen3                                                                      opt                  >= 3.2              http://eigen.tuxfamily.org                                                                          For Refocus tool.                                       See if Clapack from OpenCV can be used instead.
+liblensfun                                                                     opt                  >= 0.2.8            http://lensfun.sourceforge.net                                                                      For LensCorrection tool.
+liblqr-1                                                                       opt                  >= 0.4.2            http://liblqr.wikidot.com                                                                           For Liquid rescale tool.
+libgphoto2                                                                     opt                  >= 2.5              http://www.gphoto.org                                                                               Digital camera drivers support.
+libgomp                                                                        opt                  >= 5.0              https://gcc.gnu.org/onlinedocs/libgomp                                                              OpenMP support for RawEngine.
+libxml2                                                                        opt                  >= 2.0              http://xmlsoft.org                                                                                  RawSpeed Codecs support for RawEngine.
