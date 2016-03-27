@@ -37,7 +37,7 @@ LR_VERSION=0.17.0
 # OpenCV tarball information
 OC_URL="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"
 OC_BUILDTEMP=~/octemp
-OC_VERSION=2.4.11
+OC_VERSION=3.1.0
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
