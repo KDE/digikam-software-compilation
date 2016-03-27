@@ -48,6 +48,26 @@ else
 fi
 
 #################################################################################################
+# Build KF5 frameworks in a temporary directory and installation
+
+InstallKDEExtraLib "extra-cmake-modules"
+InstallKDEExtraLib "kconfig"
+InstallKDEExtraLib "kcoreaddons"
+InstallKDEExtraLib "kwindowsystem"
+InstallKDEExtraLib "solid"
+InstallKDEExtraLib "kio"
+
+# InstallKDEExtraLib "kservice"
+# InstallKDEExtraLib "ki18n"
+# InstallKDEExtraLib "kiconthemes"
+# InstallKDEExtraLib "knotifyconfig"
+# InstallKDEExtraLib "knotifications"
+# InstallKDEExtraLib "kxmlgui"
+
+
+exit 0
+
+#################################################################################################
 # Build OpenCV in temporary directory and installation
 
 if [[ $ENABLE_OPENCV == 1 ]]; then

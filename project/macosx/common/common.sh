@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2013-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -161,12 +161,13 @@ cd "$KD_BUILDTEMP"
 echo -e "\n\n"
 
 echo "---------- Downloading $LIB_NAME $KD_VERSION"
+echo "---------- URL: $KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
 
-curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/src/$LIB_NAME-$KD_VERSION.tar.xz"
-tar jxvf $LIB_NAME-$KD_VERSION.tar.xz
-cd $LIB_NAME-$KD_VERSION
+curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz"
+tar jxf $LIB_NAME-$KD_VERSION.tar.xz
+cd $LIB_NAME-$KD_VERSION.0
 
-cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION
+cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION.0
 echo -e "\n\n"
 
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
