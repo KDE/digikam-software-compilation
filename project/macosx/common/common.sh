@@ -135,6 +135,58 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 }
 
 ########################################################################
+# Install extra KF5 frameworks library
+# argument : library name 
+#
+InstallKDEExtraLib()
+{
+
+LIB_NAME=$1
+
+if [ -d "$KD_BUILDTEMP" ] ; then
+   echo "---------- Removing existing $KD_BUILDTEMP"
+   rm -rf "$KD_BUILDTEMP"
+fi
+
+echo "---------- Creating $KD_BUILDTEMP"
+mkdir "$KD_BUILDTEMP"
+
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot create $4 directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$KD_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading $LIB_NAME $KD_VERSION"
+
+curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/src/$LIB_NAME-$KD_VERSION.tar.xz"
+tar jxvf $LIB_NAME-$KD_VERSION.tar.xz
+cd $LIB_NAME-$KD_VERSION
+
+cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION
+echo -e "\n\n"
+
+echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
+
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
+
+echo -e "\n\n"
+
+echo "---------- Building $LIB_NAME $KD_VERSION"
+cd build
+make -j$CPU_CORES
+echo -e "\n\n"
+
+echo "---------- Installing $LIB_NAME $KD_VERSION"
+echo -e "\n\n"
+make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+
+}
+
+########################################################################
 # Install Macports core packages to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 

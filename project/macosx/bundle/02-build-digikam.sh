@@ -3,63 +3,11 @@
 # Script to build digiKam using MacPorts
 # This script must be run as sudo
 #
-# Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
-
-########################################################################
-# Install KDE extra library
-# argument : library name 
-#
-InstallKDEExtraLib()
-{
-
-LIB_NAME=$1
-
-if [ -d "$KD_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $KD_BUILDTEMP"
-   rm -rf "$KD_BUILDTEMP"
-fi
-
-echo "---------- Creating $KD_BUILDTEMP"
-mkdir "$KD_BUILDTEMP"
-
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot create $4 directory."
-    echo "---------- Aborting..."
-    exit;
-fi
-
-cd "$KD_BUILDTEMP"
-echo -e "\n\n"
-
-echo "---------- Downloading $LIB_NAME $KD_VERSION"
-
-curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/src/$LIB_NAME-$KD_VERSION.tar.xz"
-tar jxvf $LIB_NAME-$KD_VERSION.tar.xz
-cd $LIB_NAME-$KD_VERSION
-
-cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION
-echo -e "\n\n"
-
-echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
-
-./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
-
-echo -e "\n\n"
-
-echo "---------- Building $LIB_NAME $KD_VERSION"
-cd build
-make -j$CPU_CORES
-echo -e "\n\n"
-
-echo "---------- Installing $LIB_NAME $KD_VERSION"
-echo -e "\n\n"
-make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
-
-}
 
 #################################################################################################
 # Manage script traces to log file
@@ -426,10 +374,20 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
 
 fi
 
-InstallKDEExtraLib "libkipi"
-InstallKDEExtraLib "libksane"
+#################################################################################################
+# Build KF5 frameworks in a temporary directory and installation
 
-KD_VERSION="4.12.0"
+InstallKDEExtraLib "kconfig"
+InstallKDEExtraLib "kxmlgui"
+InstallKDEExtraLib "kservice"
+InstallKDEExtraLib "ki18n"
+InstallKDEExtraLib "kio"
+InstallKDEExtraLib "kiconthemes"
+InstallKDEExtraLib "kwindowsystem"
+InstallKDEExtraLib "solid"
+InstallKDEExtraLib "knotifyconfig"
+InstallKDEExtraLib "knotifications"
+InstallKDEExtraLib "kcoreaddons"
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
