@@ -11,7 +11,7 @@
 
 ########################################################################
 # Install KDE extra library
-# argument : lib name 
+# argument : library name 
 #
 InstallKDEExtraLib()
 {
@@ -50,12 +50,12 @@ echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 echo -e "\n\n"
 
-echo "---------- Building digiKam"
+echo "---------- Building $LIB_NAME $KD_VERSION"
 cd build
 make -j$CPU_CORES
 echo -e "\n\n"
 
-echo "---------- Installing digiKam"
+echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 
@@ -426,16 +426,10 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
 
 fi
 
-InstallKDEExtraLib "libkdcraw"
-InstallKDEExtraLib "libkexiv2"
 InstallKDEExtraLib "libkipi"
-InstallKDEExtraLib "libkgeomap"
-InstallKDEExtraLib "libkface"
 InstallKDEExtraLib "libksane"
 
 KD_VERSION="4.12.0"
-KD_URL="http://download.kde.org/stable/libkvkontakte"
-InstallKDEExtraLib "libkvkontakte"
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
