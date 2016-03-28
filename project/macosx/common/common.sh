@@ -307,6 +307,7 @@ echo -e "\n"
 port install dbus
 port install qt5
 port install qt5-sqlite-plugin
+port install qt5-qtscript
 port install cmake
 port install opencv
 port install libpng
@@ -324,6 +325,7 @@ port install eigen3
 port install expat
 port install libxml2
 port install libxslt
+port install docbook-xml-5.0
 
 exit -1
 

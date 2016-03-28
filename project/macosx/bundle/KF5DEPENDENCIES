@@ -1,0 +1,10 @@
+extracmakemodules
+kconfig
+kcoreaddons
+kwindowsystem
+solid
+ki18n				: Qt5Script
+kcrash				: 
+kservice			: kcrash
+kdoctools			: docbook-xml
+kio,  				: karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks
