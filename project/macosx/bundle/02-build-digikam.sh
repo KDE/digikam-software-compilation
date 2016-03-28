@@ -61,6 +61,7 @@ InstallKDEExtraLib "ki18n"
 InstallKDEExtraLib "kcrash"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kdoctools"
+InstallKDEExtraLib "kcodecs"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kio"
 

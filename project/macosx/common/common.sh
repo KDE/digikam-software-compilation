@@ -325,7 +325,8 @@ port install eigen3
 port install expat
 port install libxml2
 port install libxslt
-port install docbook-xml-5.0
+port install docbook-xml
+port install docbook-xsl
 
 exit -1
 

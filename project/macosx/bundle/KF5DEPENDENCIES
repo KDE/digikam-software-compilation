@@ -6,5 +6,6 @@ solid
 ki18n				: Qt5Script
 kcrash				: 
 kservice			: kcrash
-kdoctools			: docbook-xml
+kdoctools			: docbook-xml, docbook-xsl
+kbookmarks			: kcodecs
 kio,  				: karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks
