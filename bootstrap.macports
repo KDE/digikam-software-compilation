@@ -74,6 +74,10 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DQT_QMAKE_EXECUTABLE=${QTDIR}/bin/qmake \
       ..
 
+CMAKE_VAL_RET=$?
+
+echo "Cmake configure return $CMAKE_VAL_RET"
+
 if [ -d ./extra/libkvkontakte/src ]; then
     ln -sf src ./extra/libkvkontakte/Vkontakte
 fi
@@ -81,3 +85,5 @@ fi
 if [ -d ./extra/libmediawiki/src ]; then
     ln -sf src ./extra/libmediawiki/MediaWiki
 fi
+
+exit $CMAKE_VAL_RET
