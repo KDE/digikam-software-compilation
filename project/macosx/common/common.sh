@@ -164,26 +164,58 @@ echo "---------- Downloading $LIB_NAME $KD_VERSION"
 echo "---------- URL: $KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
 
 curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz"
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot download $LIB_NAME-$KD_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
 tar jxf $LIB_NAME-$KD_VERSION.tar.xz
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot extract $LIB_NAME-$KD_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
 cd $LIB_NAME-$KD_VERSION.0
-
 cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION.0
-echo -e "\n\n"
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot copy $LIB_NAME-$KD_VERSION.tar.xz archive to temp dir."
+    echo "---------- Aborting..."
+    exit;
+fi
 
+echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
 echo -e "\n\n"
-
 echo "---------- Building $LIB_NAME $KD_VERSION"
 cd build
-make -j$CPU_CORES
-echo -e "\n\n"
 
+make -j$CPU_CORES
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
 echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
+
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
 }
 
