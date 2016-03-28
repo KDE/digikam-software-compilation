@@ -188,7 +188,7 @@ make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 }
 
 ########################################################################
-# Install Macports core packages to compile digiKam
+# Install Macports core packages before to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 
 #     DISABLE_LIBRAW   : do not install LibRaw through Macports.
@@ -243,13 +243,18 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
 
 fi
 
-echo "---------- Install more recent Clang compiler from Macports for specific ports"
-port install clang_select
-port install clang-3.4
-port select --set clang mp-clang-3.4
+# With OSX less than El Capitan, we need a more recent Clang compiler than one provided by XCode.
+if [[ $MAJOR_OSX_VERSION -lt 10 ]]; then
 
+	echo "---------- Install more recent Clang compiler from Macports for specific ports"
+	port install clang_select
+	port install clang-3.4
+	port select --set clang mp-clang-3.4
+fi
+
+# With older OSX release, there are some problem to link with cxx_stdlib option.
 if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
-    # ncurses do not link fine with cxx_stdlib option
+    # ncurses fixes
     NCURSES_PORT_TMP=$INSTALL_PREFIX/var/tmp_ncurses
     if [ -d "$NCURSES_PORT_TMP" ] ; then
         rm -fr $NCURSES_PORT_TMP
@@ -267,21 +272,31 @@ fi
 
 echo -e "\n"
 
-port install qt4-mac
-
-ln -s $INSTALL_PREFIX/share/qt4/data/mkspecs $INSTALL_PREFIX/share/qt4/
-port install qt4-mac-sqlite3-plugin
-
-port install strigi configure.compiler=macports-clang-3.4
-
-port install kdelibs4
-port install kde4-runtime
-port install oxygen-icons
+port install dbus
+port install qt5
+port install qt5-sqlite-plugin
+port install cmake
+port install opencv
 port install libpng
 port install libpgf
 port install jpeg
 port install tiff
 port install boost
+port install gettext
+port install libusb
+port install libgphoto2
+port install jasper
+port install liblqr
+port install lcms2
+port install eigen3
+port install expat
+port install libxml2
+port install libxslt
+
+exit -1
+
+
+port install strigi configure.compiler=macports-clang-3.4
 
 if [[ $DISABLE_OPENCV == 0 ]]; then
     OPENCV_PORT_TMP=$INSTALL_PREFIX/var/tmp_opencv
@@ -307,15 +322,6 @@ fi
 
 # For core optional dependencies
 
-port install gettext
-port install libusb
-port install libgphoto2
-port install marble
-port install jasper
-port install liblqr
-port install lcms2
-port install eigen3
-
 if [[ $DISABLE_LENSFUN == 0 ]]; then
     port install lensfun
 fi
@@ -326,13 +332,10 @@ fi
 
 # For Kipi-plugins
 
-port install sane-backends
-port install expat
-port install libxml2
-port install libxslt
 port install qca
 port install qjson
 port install enblend
+port install sane-backends
 
 # For Color themes support
 

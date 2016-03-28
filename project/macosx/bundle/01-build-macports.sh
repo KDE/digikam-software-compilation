@@ -3,8 +3,8 @@
 # Script to build a bundle Macports installation with all digiKam dependencies in a dedicated directory
 # This script must be run as sudo
 #
-# Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
-# Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015,      Shanti, <listaccount at revenant dot org>
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -39,25 +39,25 @@ ORIG_WD="`pwd`"
 #################################################################################################
 # Check if /opt exists and standard Macports install path
 
-if [ -d "/opt" ] ; then
-    if [ -d "/opt/local" ] ; then
-        echo "---------- A standard Macports install exists on /opt/local."
-        echo "           To prevent wrong links from this bundle to this repository"
-        echo "           this one must be disabled (moving to /opt/local.back for ex)."
-        echo "---------- Aborting..."
-        exit;
-    fi
-else
-    echo "---------- /opt do not exist, creating"
-
-    mkdir "/opt"
-
-    if [ $? -ne 0 ] ; then
-        echo "---------- Cannot create /opt directory."
-        echo "---------- Aborting..."
-        exit;
-    fi
-fi
+# if [ -d "/opt" ] ; then
+#     if [ -d "/opt/local" ] ; then
+#         echo "---------- A standard Macports install exists on /opt/local."
+#         echo "           To prevent wrong links from this bundle to this repository"
+#         echo "           this one must be disabled (moving to /opt/local.back for ex)."
+#         echo "---------- Aborting..."
+#         exit;
+#     fi
+# else
+#     echo "---------- /opt do not exist, creating"
+# 
+#     mkdir "/opt"
+# 
+#     if [ $? -ne 0 ] ; then
+#         echo "---------- Cannot create /opt directory."
+#         echo "---------- Aborting..."
+#         exit;
+#     fi
+# fi
 
 #################################################################################################
 # Check if a previous bundle already exist
