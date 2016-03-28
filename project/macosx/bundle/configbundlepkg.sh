@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2013-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -37,23 +37,23 @@ LR_VERSION=0.17.0
 # OpenCV tarball information
 OC_URL="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"
 OC_BUILDTEMP=~/octemp
-OC_VERSION=2.4.11
+OC_VERSION=3.1.0
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
 HU_VERSION=2013.0
 
-# KDE extra libs tarball information
-KD_URL="http://download.kde.org/stable/applications/"
-KD_BUILDTEMP=~/kdtemp
-KD_VERSION=15.08.2
+# KF5 extra libs tarball information
+KD_URL="http://download.kde.org/stable/frameworks/"
+KD_BUILDTEMP=~/kf5temp
+KD_VERSION=5.20
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
-#DK_VERSION=git
-DK_VERSION=4.14.0
+DK_VERSION=git
+#DK_VERSION=4.14.0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
