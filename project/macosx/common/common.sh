@@ -143,6 +143,11 @@ InstallKDEExtraLib()
 
 LIB_NAME=$1
 
+if [ $SILENT_OP -ne 1 ]; then
+    VERBOSE_MAKE="-s"
+    VERBOSE_CONF="2>&1 > /dev/null"
+fi
+
 if [ -d "$KD_BUILDTEMP" ] ; then
    echo "---------- Removing existing $KD_BUILDTEMP"
    rm -rf "$KD_BUILDTEMP"
@@ -188,7 +193,7 @@ fi
 echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
-./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS" $VERBOSE_CONF
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
@@ -199,7 +204,7 @@ echo -e "\n\n"
 echo "---------- Building $LIB_NAME $KD_VERSION"
 cd build
 
-make -j$CPU_CORES
+make $VERBOSE_MAKE -j$CPU_CORES
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
@@ -210,7 +215,7 @@ echo -e "\n\n"
 echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
 
-make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+make $VERBOSE_MAKE install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."

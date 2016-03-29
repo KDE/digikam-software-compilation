@@ -55,6 +55,9 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=git
 #DK_VERSION=4.14.0
 
+# Option to silent operations while configuring, compiling and installing extra libraries.
+SILENT_OP=1
+
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
 # 1: use tarball
