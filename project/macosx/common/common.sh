@@ -143,7 +143,7 @@ InstallKDEExtraLib()
 
 LIB_NAME=$1
 
-if [ $SILENT_OP -ne 1 ]; then
+if [ $SILENT_OP -ne 0 ]; then
     VERBOSE_MAKE="-s"
     VERBOSE_CONF="2>&1 > /dev/null"
 fi
@@ -168,7 +168,7 @@ echo -e "\n\n"
 echo "---------- Downloading $LIB_NAME $KD_VERSION"
 echo "---------- URL: $KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
 
-curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz"
+curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz" $VERBOSE_CONF
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot download $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."
