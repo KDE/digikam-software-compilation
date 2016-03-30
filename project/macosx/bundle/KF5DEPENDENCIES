@@ -7,5 +7,7 @@ ki18n				: Qt5Script
 kcrash				: 
 kservice			: kcrash
 kdoctools			: docbook-xml, docbook-xsl, p5-uri
-kbookmarks			: kcodecs
+kxmlgui				: kitemviews
+kconfigwidgets      : kguiaddons, kwidgetsaddons
+kbookmarks			: kcodecs, kconfigwidgets, kauth
 kio,  				: karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks

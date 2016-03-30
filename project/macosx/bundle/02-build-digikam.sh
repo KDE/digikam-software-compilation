@@ -60,15 +60,22 @@ InstallKDEExtraLib "kdbusaddons"
 InstallKDEExtraLib "ki18n"
 InstallKDEExtraLib "kcrash"
 InstallKDEExtraLib "kdoctools"
-InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kcodecs"
+InstallKDEExtraLib "kauth"
+InstallKDEExtraLib "kguiaddons"
+InstallKDEExtraLib "kwidgetsaddons"
+InstallKDEExtraLib "kitemviews"
+
+InstallKDEExtraLib "kconfigwidgets"
+InstallKDEExtraLib "kxmlgui"
 InstallKDEExtraLib "kbookmarks"
+InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kio"
 
 # InstallKDEExtraLib "kiconthemes"
 # InstallKDEExtraLib "knotifyconfig"
 # InstallKDEExtraLib "knotifications"
-# InstallKDEExtraLib "kxmlgui"
+
 
 
 exit 0
