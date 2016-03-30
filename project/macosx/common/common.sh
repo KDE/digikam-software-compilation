@@ -332,6 +332,7 @@ port install libxml2
 port install libxslt
 port install docbook-xml
 port install docbook-xsl
+port install p5-uri
 
 exit -1
 
