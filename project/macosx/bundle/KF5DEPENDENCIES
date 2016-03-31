@@ -9,5 +9,8 @@ kservice			: kcrash
 kdoctools			: docbook-xml, docbook-xsl, p5-uri
 kxmlgui				: kitemviews
 kconfigwidgets      : kguiaddons, kwidgetsaddons
+kiconthemes			: kconfigwidgets
+knotifications		: phonon4qt5
 kbookmarks			: kcodecs, kconfigwidgets, kauth
 kio,  				: karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks
+knotifyconfig		: kcompletion, phonon4qt5, kio

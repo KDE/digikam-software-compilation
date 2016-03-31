@@ -65,17 +65,16 @@ InstallKDEExtraLib "kauth"
 InstallKDEExtraLib "kguiaddons"
 InstallKDEExtraLib "kwidgetsaddons"
 InstallKDEExtraLib "kitemviews"
+InstallKDEExtraLib "kcompletion"
 
+InstallKDEExtraLib "knotifications"
 InstallKDEExtraLib "kconfigwidgets"
+InstallKDEExtraLib "kiconthemes"
 InstallKDEExtraLib "kxmlgui"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kio"
-
-# InstallKDEExtraLib "kiconthemes"
-# InstallKDEExtraLib "knotifyconfig"
-# InstallKDEExtraLib "knotifications"
-
+InstallKDEExtraLib "knotifyconfig"
 
 
 exit 0
