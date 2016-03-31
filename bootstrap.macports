@@ -11,19 +11,24 @@
 
 
 INSTALL_PREFIX=$1
+
 if [ "$INSTALL_PREFIX" = "" ]; then
-        INSTALL_PREFIX=/opt/local
-        BUNDLE_INSTALL_DIR=/Applications/MacPorts/KF5
+    INSTALL_PREFIX="/opt/local"
+    BUNDLE_INSTALL_DIR="/Applications/KF5"
+    BUNDLE_DATA_INSTALL_DIR="/Library/Application Support"
 else
-       BUNDLE_INSTALL_DIR=${INSTALL_PREFIX}/Applications/MacPorts/KF5
+    BUNDLE_INSTALL_DIR="${INSTALL_PREFIX}/Applications/KF5"
+    BUNDLE_DATA_INSTALL_DIR="${INSTALL_PREFIX}/Library/Application Support"
 fi
 
 BUILD_TYPE=$2
+
 if [ "$BUILD_TYPE" = "" ]; then
         BUILD_TYPE=debug
 fi
 
 TARGET_TYPE=$3
+
 if [ "$TARGET_TYPE" = "" ]; then
         TARGET_TYPE=x86_64
 fi
@@ -69,7 +74,8 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_NAME_DIR=${INSTALL_PREFIX}/lib \
       -DCMAKE_SYSTEM_PREFIX_PATH="${INSTALL_PREFIX};/usr" \
       -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.3/Modules" \
-      -DKDE_INSTALL_BUNDLEDIR=${BUNDLE_INSTALL_DIR} \
+      -DCMAKE_INSTALL_BUNDLEDIR=${BUNDLE_INSTALL_DIR} \
+      -DDATA_INSTALL_DIR=${BUNDLE_DATA_INSTALL_DIR} \
       -DQT_QT_INCLUDE_DIR=${QT_INCLUDE_DIR} \
       -DQT_LIBRARY_DIR=${QTDIR}/lib \
       -DQT_QMAKE_EXECUTABLE=${QTDIR}/bin/qmake \

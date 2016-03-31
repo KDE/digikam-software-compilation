@@ -67,13 +67,13 @@ InstallKDEExtraLib "kwidgetsaddons"
 InstallKDEExtraLib "kitemviews"
 InstallKDEExtraLib "kcompletion"
 
-InstallKDEExtraLib "knotifications"
 InstallKDEExtraLib "kconfigwidgets"
 InstallKDEExtraLib "kiconthemes"
 InstallKDEExtraLib "kxmlgui"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kio"
+InstallKDEExtraLib "knotifications"
 InstallKDEExtraLib "knotifyconfig"
 
 

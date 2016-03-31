@@ -10,7 +10,7 @@ kdoctools			: docbook-xml, docbook-xsl, p5-uri
 kxmlgui				: kitemviews
 kconfigwidgets      : kguiaddons, kwidgetsaddons
 kiconthemes			: kconfigwidgets
-knotifications		: phonon4qt5
 kbookmarks			: kcodecs, kconfigwidgets, kauth
 kio,  				: karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks
+knotifications		: phonon4qt5
 knotifyconfig		: kcompletion, phonon4qt5, kio
