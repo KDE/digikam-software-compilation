@@ -9,7 +9,8 @@ ki18n               : qt5script                                                 
 kcrash              : kwindowsystem, kcoreaddons                                                                                        : -
 kdoctools           : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                    : MEINPROC_NO_KARCHIVE=OFF
 ktextwidgets        : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet         : -
-kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons, kwindowsystem : FORCE_DISABLE_KGLOBALACCEL=OFF
+kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons, 				:
+   					: kglobalaccel, kwindowsystem 																						: FORCE_DISABLE_KGLOBALACCEL=OFF
 kconfigwidgets      : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                                : -
 kiconthemes         : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                    : -
 kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                               : -
