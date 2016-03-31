@@ -136,12 +136,20 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 
 ########################################################################
 # Install extra KF5 frameworks library
-# argument : library name 
+# arguments : library name, additional cmake flags, download url 
 #
 InstallKDEExtraLib()
 {
 
 LIB_NAME=$1
+ADDITIONAL_CMAKE_FLAGS=$2
+DURL=$3
+
+if [[ $3 == "" ]]; then
+	DURL=$KD_URL
+else
+	DURL=$3
+fi
 
 if [ $SILENT_OP -ne 0 ]; then
     VERBOSE_MAKE="-s"
@@ -166,9 +174,9 @@ cd "$KD_BUILDTEMP"
 echo -e "\n\n"
 
 echo "---------- Downloading $LIB_NAME $KD_VERSION"
-echo "---------- URL: $KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
+echo "---------- URL: $DURL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
 
-curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz" $VERBOSE_CONF
+curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$DURL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz" $VERBOSE_CONF
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot download $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."

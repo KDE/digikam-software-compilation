@@ -17,5 +17,6 @@ kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes
 kio                 : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,          :
                     : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                                : KIOCORE_ONLY=OFF
 kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
-knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon4qt5                                                          : -
-knotifyconfig       : kcompletion, phonon4qt5, kio, kconfig, ki18n                                                                      : 
+phonon				: opengl, 																													: PHONON_BUILD_PHONON4QT5=ON PHONON_BUILD_DESIGNER_PLUGIN=OFF PHONON_BUILD_EXPERIMENTAL=OFF
+knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon                                                          : -
+knotifyconfig       : kcompletion, phonon, kio, kconfig, ki18n                                                                      : 

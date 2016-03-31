@@ -61,6 +61,7 @@ InstallKDEExtraLib "ki18n"
 InstallKDEExtraLib "kcrash"
 InstallKDEExtraLib "kdoctools"
 
+# NOTE : see http://kde-core-devel.kde.narkive.com/Uoj5HRzH/building-kio-on-mac
 ln -s "${INSTALL_PREFIX}/share/kf5/" "/private/var/root/Library/Application Support/kf5"
 
 InstallKDEExtraLib "kcodecs"
@@ -80,6 +81,7 @@ InstallKDEExtraLib "kxmlgui"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kjobwidgets"
 InstallKDEExtraLib "kio"
+InstallKDEExtraLib "phonon" "-DPHONON_BUILD_PHONON4QT5=ON -DPHONON_BUILD_DESIGNER_PLUGIN=OFF -DPHONON_BUILD_EXPERIMENTAL=OFF" "http://download.kde.org/stable/phonon/4.8.3/src/"
 InstallKDEExtraLib "knotifications"
 InstallKDEExtraLib "knotifyconfig"
 
