@@ -1,18 +1,18 @@
-    Modules         :   Inter-dependencies                                              :   Compilation options to use
---------------------+-------------------------------------------------------------------+--------------------------------------------------
-extracmakemodules   : -                                                                 :
-kconfig             : -                                                                 :
-kcoreaddons         : -                                                                 :
-kwindowsystem       : -                                                                 :
-solid               : -                                                                 :
-ki18n               : Qt5Script                                                         :
-kcrash              : -                                                                 :
-kservice            : kcrash                                                            :
-kdoctools           : docbook-xml, docbook-xsl, p5-uri                                  :
-kxmlgui             : kitemviews                                                        :
-kconfigwidgets      : kguiaddons, kwidgetsaddons                                        :
-kiconthemes         : kconfigwidgets                                                    :
-kbookmarks          : kcodecs, kconfigwidgets, kauth                                    :
-kio                 : karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks     :
-knotifications      : phonon4qt5                                                        :
-knotifyconfig       : kcompletion, phonon4qt5, kio                                      :
+    Modules         :   Inter-dependencies                                                                                              :   Compilation options to use
+--------------------+-------------------------------------------------------------------------------------------------------------------+--------------------------------------------------
+extracmakemodules   : -                                                                                                                 : -
+kconfig             : -                                                                                                                 : -
+kcoreaddons         : -                                                                                                                 : -
+kwindowsystem       : -                                                                                                                 : -
+solid               : -                                                                                                                 : Use default options to off.
+ki18n               : qt5script                                                                                                         : BUILD_WITH_QTSCRIPT=ON.
+kcrash              : kwindowsystem, kcoreaddons                                                                                        : -
+kdoctools           : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                    : MEINPROC_NO_KARCHIVE=OFF
+kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons, kwindowsystem : FORCE_DISABLE_KGLOBALACCEL=OFF
+kconfigwidgets      : kguiaddons, kwidgetsaddons                                                                                        : 
+kiconthemes         : kconfigwidgets                                                                                                    : 
+kbookmarks          : kcodecs, kconfigwidgets, kauth                                                                                    : 
+kio                 : karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks                                                     : 
+kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
+knotifications      : phonon4qt5                                                                                                        : 
+knotifyconfig       : kcompletion, phonon4qt5, kio                                                                                      : 
