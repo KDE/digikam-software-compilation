@@ -9,10 +9,11 @@ ki18n               : qt5script                                                 
 kcrash              : kwindowsystem, kcoreaddons                                                                                        : -
 kdoctools           : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                    : MEINPROC_NO_KARCHIVE=OFF
 kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons, kwindowsystem : FORCE_DISABLE_KGLOBALACCEL=OFF
-kconfigwidgets      : kguiaddons, kwidgetsaddons                                                                                        : 
-kiconthemes         : kconfigwidgets                                                                                                    : 
-kbookmarks          : kcodecs, kconfigwidgets, kauth                                                                                    : 
-kio                 : karchive, kdbusaddons, ki18n, kservice, kdoctools, kbookmarks                                                     : 
+kconfigwidgets      : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                                : -
+kiconthemes         : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                    : -
+kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                               : -
+kio                 : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,          :
+                    : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                                : KIOCORE_ONLY=OFF
 kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
-knotifications      : phonon4qt5                                                                                                        : 
-knotifyconfig       : kcompletion, phonon4qt5, kio                                                                                      : 
+knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon4qt5                                                          : -
+knotifyconfig       : kcompletion, phonon4qt5, kio, kconfig, ki18n                                                                      : 
