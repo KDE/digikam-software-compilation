@@ -5,8 +5,8 @@
 # and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
-# Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
-# Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015,      Shanti, <listaccount at revenant dot org>
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -19,7 +19,7 @@ exec > >(tee build-package.full.log) 2>&1
 
 #################################################################################################
 
-echo "03-build-package.sh : build digiKam bundle PKG."
+echo "04-build-package.sh : build digiKam bundle PKG."
 echo "-----------------------------------------------"
 
 #################################################################################################
