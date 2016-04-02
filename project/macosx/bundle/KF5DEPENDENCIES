@@ -9,14 +9,14 @@ ki18n               : qt5script                                                 
 kcrash              : kwindowsystem, kcoreaddons                                                                                        : -
 kdoctools           : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                    : MEINPROC_NO_KARCHIVE=OFF
 ktextwidgets        : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet         : -
-kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons, 				:
-   					: kglobalaccel, kwindowsystem 																						: FORCE_DISABLE_KGLOBALACCEL=OFF
+kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons,               :
+                    : kglobalaccel, kwindowsystem                                                                                       : FORCE_DISABLE_KGLOBALACCEL=OFF
 kconfigwidgets      : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                                : -
 kiconthemes         : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                    : -
 kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                               : -
 kio                 : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,          :
                     : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                                : KIOCORE_ONLY=OFF
 kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
-phonon				: opengl, 																													: PHONON_BUILD_PHONON4QT5=ON PHONON_BUILD_DESIGNER_PLUGIN=OFF PHONON_BUILD_EXPERIMENTAL=OFF
-knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon                                                          : -
-knotifyconfig       : kcompletion, phonon, kio, kconfig, ki18n                                                                      : 
+
+knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon                                                              : -
+knotifyconfig       : kcompletion, phonon, kio, kconfig, ki18n                                                                          :
