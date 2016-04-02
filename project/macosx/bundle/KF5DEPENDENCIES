@@ -17,6 +17,3 @@ kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes
 kio                 : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,          :
                     : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                                : KIOCORE_ONLY=OFF
 kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
-
-knotifications      : kwindowsystem, kconfig, kcodecs, kcoreaddons, phonon                                                              : -
-knotifyconfig       : kcompletion, phonon, kio, kconfig, ki18n                                                                          :
