@@ -3,8 +3,8 @@
 # Script to list recursive dylib dependencies for binaries/dylibs passed as arguments.
 # Modified from https://github.com/mixxxdj/mixxx/blob/master/build/osx/otool.py.
 #
-# Copyright (c) 2015, Shanti, <listaccount at revenant dot org>
-# Copyright (c) 2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015,      Shanti, <listaccount at revenant dot org>
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.

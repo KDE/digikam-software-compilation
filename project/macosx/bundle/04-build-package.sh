@@ -324,7 +324,7 @@ echo "---------- Create package pre-install script"
 # Unload dbus-system, delete /Applications entries, delete existing installation
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated and will be overwritten by 03-build-package.sh
+# Generated and will be overwritten by 04-build-package.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
   echo "Unloading dbus-system"
@@ -353,7 +353,7 @@ echo "---------- Create package post-install script"
 # Loads dbus-system and creates Applications menu icons
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated and will be overwritten by 03-build-package.sh
+# Generated and will be overwritten by 04-build-package.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
