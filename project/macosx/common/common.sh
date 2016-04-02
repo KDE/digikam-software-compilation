@@ -136,19 +136,24 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 
 ########################################################################
 # Install extra KF5 frameworks library
-# arguments : library name, additional cmake flags, download url 
+# arguments : library name, additional cmake flags, download url, version 
 #
 InstallKDEExtraLib()
 {
 
 LIB_NAME=$1
 ADDITIONAL_CMAKE_FLAGS=$2
-DURL=$3
+LIB_URL=$3
+LIB_VERSION=$4
+FRAMEWORK=0
 
-if [[ $3 == "" ]]; then
-	DURL=$KD_URL
-else
-	DURL=$3
+if [[ "$LIB_URL" == "" ]]; then
+	LIB_URL=$KD_URL
+    FRAMEWORK=1
+fi
+
+if [[ "$LIB_VERSION" == "" ]]; then
+	LIB_VERSION=$KD_VERSION
 fi
 
 if [ $SILENT_OP -ne 0 ]; then
@@ -164,8 +169,8 @@ fi
 echo "---------- Creating $KD_BUILDTEMP"
 mkdir "$KD_BUILDTEMP"
 
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot create $4 directory."
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot create $KD_BUILDTEMP directory."
     echo "---------- Aborting..."
     exit;
 fi
@@ -173,27 +178,38 @@ fi
 cd "$KD_BUILDTEMP"
 echo -e "\n\n"
 
-echo "---------- Downloading $LIB_NAME $KD_VERSION"
-echo "---------- URL: $DURL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
+echo "---------- Downloading $LIB_NAME $LIB_VERSION"
+echo "---------- URL: $LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.tar.xz"
 
-curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$DURL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz" $VERBOSE_CONF
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot download $LIB_NAME-$KD_VERSION.tar.xz archive."
+if [ $FRAMEWORK -ne 0 ]; then
+	curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.0.tar.xz" $VERBOSE_CONF
+else
+	curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_NAME-$LIB_VERSION.tar.xz" $VERBOSE_CONF
+fi
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot download $LIB_NAME-$LIB_VERSION.tar.xz archive."
     echo "---------- Aborting..."
     exit;
 fi
 
-tar jxf $LIB_NAME-$KD_VERSION.tar.xz
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot extract $LIB_NAME-$KD_VERSION.tar.xz archive."
+tar jxf $LIB_NAME-$LIB_VERSION.tar.xz
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot extract $LIB_NAME-$LIB_VERSION.tar.xz archive."
     echo "---------- Aborting..."
     exit;
 fi
 
-cd $LIB_NAME-$KD_VERSION.0
-cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$KD_VERSION.0
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot copy $LIB_NAME-$KD_VERSION.tar.xz archive to temp dir."
+if [ $FRAMEWORK -ne 0 ]; then
+	cd $LIB_NAME-$LIB_VERSION.0
+    cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION.0
+else
+	cd $LIB_NAME-$LIB_VERSION
+    cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION
+fi
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot copy $LIB_NAME-$LIB_VERSION.tar.xz archive to temp dir."
     echo "---------- Aborting..."
     exit;
 fi
@@ -202,30 +218,30 @@ echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS" $VERBOSE_CONF
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure $LIB_NAME-$LIB_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Building $LIB_NAME $KD_VERSION"
+echo "---------- Building $LIB_NAME $LIB_VERSION"
 cd build
 
 make $VERBOSE_MAKE -j$CPU_CORES
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot compile $LIB_NAME-$LIB_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Installing $LIB_NAME $KD_VERSION"
+echo "---------- Installing $LIB_NAME $LIB_VERSION"
 echo -e "\n\n"
 
 make $VERBOSE_MAKE install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
-if [ $? -ne 0 ] ; then
-    echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot install $LIB_NAME-$LIB_VERSION."
     echo "---------- Aborting..."
     exit;
 fi

@@ -61,7 +61,7 @@ SILENT_OP=0
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file
 # 1: use tarball
-ENABLE_LIBRAW=1
+ENABLE_LIBRAW=0
 ENABLE_EXIV2=1
 ENABLE_LENSFUN=1
 ENABLE_OPENCV=0

@@ -81,12 +81,12 @@ InstallKDEExtraLib "kxmlgui"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kjobwidgets"
 InstallKDEExtraLib "kio"
-InstallKDEExtraLib "phonon" "-DPHONON_BUILD_PHONON4QT5=ON -DPHONON_BUILD_DESIGNER_PLUGIN=OFF -DPHONON_BUILD_EXPERIMENTAL=OFF" "http://download.kde.org/stable/phonon/4.8.3/src/"
-InstallKDEExtraLib "knotifications"
-InstallKDEExtraLib "knotifyconfig"
 
+#InstallKDEExtraLib "phonon" "-DPHONON_BUILD_PHONON4QT5=ON -DPHONON_BUILD_DESIGNER_PLUGIN=OFF -DPHONON_BUILD_EXPERIMENTAL=OFF" "http://download.kde.org/stable/phonon/4.8.3/src/" "4.8.3"
+#InstallKDEExtraLib "knotifications"
+#InstallKDEExtraLib "knotifyconfig"
+#InstallKDEExtraLib "marble" "" "http://download.kde.org/stable/applications/15.12.3/src/" "15.12.3"
 
-exit 0
 
 #################################################################################################
 # Build OpenCV in temporary directory and installation
@@ -414,21 +414,6 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
     make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
 
 fi
-
-#################################################################################################
-# Build KF5 frameworks in a temporary directory and installation
-
-InstallKDEExtraLib "kconfig"
-InstallKDEExtraLib "kxmlgui"
-InstallKDEExtraLib "kservice"
-InstallKDEExtraLib "ki18n"
-InstallKDEExtraLib "kio"
-InstallKDEExtraLib "kiconthemes"
-InstallKDEExtraLib "kwindowsystem"
-InstallKDEExtraLib "solid"
-InstallKDEExtraLib "knotifyconfig"
-InstallKDEExtraLib "knotifications"
-InstallKDEExtraLib "kcoreaddons"
 
 #################################################################################################
 # Build digiKam in temporary directory and installation
