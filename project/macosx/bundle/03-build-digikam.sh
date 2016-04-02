@@ -66,7 +66,6 @@ fi
 
 cd "$DK_BUILDTEMP"
 echo -e "\n\n"
-
 echo "---------- Downloading digiKam $DK_VERSION"
 
 if [[ "$DK_VERSION" == "git" ]] ; then
@@ -81,22 +80,43 @@ else
 fi
 
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
-echo -e "\n\n"
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot copy bootstrap configuration file to temp dir."
+    echo "---------- Aborting..."
+    exit;
+fi
 
+echo -e "\n\n"
 echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure digiKam $DK_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
 echo -e "\n\n"
-
 echo "---------- Building digiKam"
+
 cd build
 make -j$CPU_CORES
-echo -e "\n\n"
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot compile digiKam $DK_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
+echo -e "\n\n"
 echo "---------- Installing digiKam"
 echo -e "\n\n"
+
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot install digiKam $DK_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
 #################################################################################################
 

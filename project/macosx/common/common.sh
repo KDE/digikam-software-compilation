@@ -182,9 +182,9 @@ echo "---------- Downloading $LIB_NAME $LIB_VERSION"
 echo "---------- URL: $LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.tar.xz"
 
 if [ $FRAMEWORK -ne 0 ]; then
-	curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.0.tar.xz" $VERBOSE_CONF
+    curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.0.tar.xz" $VERBOSE_CONF
 else
-	curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_NAME-$LIB_VERSION.tar.xz" $VERBOSE_CONF
+    curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_NAME-$LIB_VERSION.tar.xz" $VERBOSE_CONF
 fi
 
 if [ $? -ne 0 ]; then
@@ -201,10 +201,10 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ $FRAMEWORK -ne 0 ]; then
-	cd $LIB_NAME-$LIB_VERSION.0
+    cd $LIB_NAME-$LIB_VERSION.0
     cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION.0
 else
-	cd $LIB_NAME-$LIB_VERSION
+    cd $LIB_NAME-$LIB_VERSION
     cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION
 fi
 
