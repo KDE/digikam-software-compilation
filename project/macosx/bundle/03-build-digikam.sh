@@ -72,6 +72,7 @@ echo "---------- Downloading digiKam $DK_VERSION"
 if [[ "$DK_VERSION" == "git" ]] ; then
     git clone git@git.kde.org:digikam-software-compilation digikam-$DK_VERSION
     cd digikam-$DK_VERSION
+    export GITSLAVE=".gitslave.devel"
     ./download-repos
 else
     curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
