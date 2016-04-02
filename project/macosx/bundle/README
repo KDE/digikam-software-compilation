@@ -1,17 +1,23 @@
 RESUME
+------
 Scripts to build binary digiKam packages for Mac OS X
 
 AUTHORS
+-------
+(c) 2015-2016 by :
+
 Shanti <listaccount at revenant dot org>
 Gilles Caulier <caulier dot gilles at gmail dot com>
 
 DESCRIPTION
+-----------
 These files and scripts are used to make binary packages of the digiKam
 Software Collection packages for OS X. In addition to this README, there are
 comments in the scripts that provide some additional explanation for how they
 work.
 
 REQUIREMENTS
+------------
 The scripts build digiKam with MacPorts, so you will need Xcode and the other
 prerequisites for Macports. See http://www.macports.org/install.php for details.
 
@@ -26,11 +32,14 @@ is little error checking or validation. I make no claims to be compentent at
 coding or packaging, or to the suitability or saftety of the scripts or 
 software compiled/packaged using them.
 
-COMPONENTS:
-There are 3 scripts to be run by the user, 01-build-macports.sh, which installs
-MacPorts and all dependencies, 02-build-digikam.sh which compiles and install digiKam,
-and 03-build-packages.sh, which makes a PKG binary installer.
+COMPONENTS
+----------
+There are 4 scripts to be run by the user. 2 first ones installs
+MacPorts and all dependencies, next one digiKam, and last one makes a 
+PKG binary installer for OSX.
 
+SCRIPT DESCRIPTIONS
+-------------------
 All scripts should be run from within the digikam-package directory.
 
 * 01-build-macports.sh:
@@ -38,16 +47,21 @@ All scripts should be run from within the digikam-package directory.
 This script downloads and configures a custom non-root install
 of MacPorts to /opt/digikam. The PKG will install to the same place,
 avoiding the confusion associated with relocation and install_name_tool. The
-custom location, as opposed to /opt/local, should allow digikam to co-exist
-with a standard Macports installation (but probably not another KDE
-installation).
+custom location, as opposed to /opt/local, should allow digiKam to co-exist
+with a standard Macports installation
 
-* 02-build-digikam.sh:
+* 02-build-extralibs.sh:
+
+This script configures, and compile a custom non-root install to /opt/digikam
+of extra libraries, including KF5 frameworks, and most important photo management
+libs used by digiKam as Exiv2 and LensFun.
+
+* 03-build-digikam.sh:
 
 This script configures, and compile a custom non-root install of digiKam to
-/opt/digikam
+/opt/digikam.
 
-* 03-build-packages.sh:
+* 04-build-packages.sh:
 
 Once you've successfully built digiKam, /opt/digikam may contain over 10GB of files.
 The make-package.sh script grabs the ~500MB needed to run digiKam and showfoto,
@@ -55,7 +69,7 @@ and places them in ~/digikam-package/opt. These include applications documentati
 and translations.
 
 This script creates Applescript launch applications for the programs that will
-be run by the user (digikam, showfoto, etc), and preinstall/postinstall
+be run by the user (digiKam, Showfoto, etc), and preinstall/postinstall
 scripts in digikam-package/package.
 
 The launcher applications:
@@ -73,13 +87,14 @@ put everything together.
 
 * rll.py
 
-Run by 03-build-packages.sh. It is a python script that takes a list of binaries
-and libraries supplied by 03-build-packages.sh and recursively lists the dylibs on
+Run by 04-build-packages.sh. It is a python script that takes a list of binaries
+and libraries supplied by 04-build-packages.sh and recursively lists the dylibs on
 which they depend, and their dependencies, etc.. Adapted with minimal
 modification (mostly deleting stuff) from
 https://github.com/mixxxdj/mixxx/blob/master/build/osx/otool.py.
 
-LICENSE
+LICENSES
+--------
 rll.py, like the otool.py source from which it has been adapted, is licensed
 under GNU General Public License version 2.
 
