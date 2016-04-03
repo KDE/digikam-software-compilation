@@ -348,7 +348,6 @@ port install gettext
 port install libusb
 port install libgphoto2
 port install jasper
-port install liblqr
 port install lcms2
 port install eigen3
 port install expat
@@ -360,8 +359,8 @@ port install p5-uri
 
 exit -1
 
+port install liblqr
 
-port install strigi configure.compiler=macports-clang-3.4
 
 if [[ $DISABLE_OPENCV == 0 ]]; then
     OPENCV_PORT_TMP=$INSTALL_PREFIX/var/tmp_opencv
