@@ -302,6 +302,18 @@ cd "$ORIG_WD"
 
 echo "---------- Creating KDE global config for OSX"
 
+if [ ! -d "$TEMPROOT/share/config" ] ; then
+    echo "---------- $TEMPROOT/share/config do not exist, creating"
+
+    mkdir "$TEMPROOT/share/config"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $TEMPROOT/share/config directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+fi
+
 cat << EOF > "$TEMPROOT/share/config/kdeglobals"
 [General]
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
