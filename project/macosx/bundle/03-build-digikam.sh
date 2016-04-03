@@ -80,11 +80,6 @@ else
 fi
 
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
-if [ $? -ne 0 ]; then
-    echo "---------- Cannot copy bootstrap configuration file to temp dir."
-    echo "---------- Aborting..."
-    exit;
-fi
 
 echo -e "\n\n"
 echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
