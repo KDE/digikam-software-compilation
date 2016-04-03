@@ -44,52 +44,53 @@ TEMPROOT="$BUILDDIR/$INSTALL_PREFIX"
 # KDE apps to be launched directly by user (create launch scripts)
 KDE_MENU_APPS="\
 digikam \
-dngconverter \
-panoramagui \
 showfoto \
-systemsettings \
 "
+#dngconverter \
+#panoramagui \
+#systemsettings \
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
-kcmshell4 \
-kded4 \
-kdeinit4 \
-kdialog \
-kdebugdialog \
-khelpcenter \
-knotify4 \
-scangui \
-drkonqi \
+kded \
 "
+#kcmshell4 \
+#kdeinit4 \
+#kdialog \
+#kdebugdialog \
+#khelpcenter \
+#knotify4 \
+#scangui \
+#drkonqi \
 
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
-Applications/KDE4 \
-lib/kde4/libexec \
+Applications/KF5 \
+lib/plugins/kf5 \
 "
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
 bin/dbus-daemon \
 bin/dbus-launch \
-bin/kbuildsycoca4 \
+bin/kbuildsycoca5 \
 libexec/dbus-daemon-launch-helper \
-lib/libqtcurve*.dylib \
 lib/libopencv*.dylib \
-lib/gstreamer-1.0/*.so \
-lib/kde4/kipiplugin*.so \
-lib/kde4/kstyle*.so \
-lib/kde4/digikamimageplugin*.so \
-lib/kde4/kcm_*.so \
-lib/kde4/kio_digikam*.so \
-lib/kde4/libexec/klauncher \
-lib/kde4/libexec/lnusertemp \
-lib/kde4/plugins/styles/*.so \
-share/qt4/plugins/designer/libphononwidgets.dylib \
-share/qt4/plugins/imageformats/*.dylib \
-share/qt4/plugins/sqldrivers/*.dylib \
+lib/plugins \
+lib/libexec \
+libexec/qt5/plugins/imageformats/*.dylib \
+libexec/qt5/plugins/sqldrivers/*.dylib \
+libexec/qt5/plugins/printsupport/*.dylib \
+libexec/qt5/plugins/printsupport/*.dylib \
+libexec/qt5/plugins/platforms/*.dylib \
+libexec/qt5/plugins/mediaservice/*.dylib \
+libexec/qt5/plugins/iconengines/*.dylib \
+libexec/qt5/plugins/audio/*.dylib \
 "
+
+#lib/gstreamer-1.0/*.so \
+#lib/libqtcurve*.dylib \
+#lib/kde4/kstyle*.so \
 
 binaries="$OTHER_APPS"
 
@@ -99,30 +100,31 @@ binaries="$OTHER_APPS"
 OTHER_DIRS="\
 Library/LaunchAgents/org.freedesktop.dbus-session.plist \
 Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
-etc/ImageMagick* \
 etc/dbus-1 \
-etc/sane.d \
 etc/xdg/menus \
-lib/kde4 \
-lib/ImageMagick* \
 lib/libgphoto* \
-lib/sane \
-share/applications/kde4 \
-share/apps \
-share/config \
+share/applications \
 share/dbus-1 \
 share/doc/HTML/ \
-share/gstreamer-1.0 \
 share/icons/hicolor \
-share/icons/oxygen \
 share/OpenCV \
-share/kde4 \
-share/qt4/ \
+share/kf5 \
 share/lensfun \
 share/locale/ \
 share/mime \
 var/run/dbus \
 "
+
+#share/qt4/ \
+#share/icons/oxygen \
+#share/gstreamer-1.0 \
+#share/config \
+#share/apps \
+#lib/sane \
+#lib/kde4 \
+#lib/ImageMagick* \
+#etc/sane.d \
+#etc/ImageMagick* \
 
 PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
