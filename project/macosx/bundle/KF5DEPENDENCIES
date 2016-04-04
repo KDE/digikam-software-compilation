@@ -1,19 +1,19 @@
-    Modules         :   Inter-dependencies                                                                                              :   Compilation options to use
---------------------+-------------------------------------------------------------------------------------------------------------------+--------------------------------------------------
-extracmakemodules   : -                                                                                                                 : -
-kconfig             : -                                                                                                                 : -
-kcoreaddons         : -                                                                                                                 : -
-kwindowsystem       : -                                                                                                                 : -
-solid               : -                                                                                                                 : Use default options to off.
-ki18n               : qt5script                                                                                                         : BUILD_WITH_QTSCRIPT=ON.
-kcrash              : kwindowsystem, kcoreaddons                                                                                        : -
-kdoctools           : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                    : MEINPROC_NO_KARCHIVE=OFF
-ktextwidgets        : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet         : -
-kxmlgui             : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons,               :
-                    : kglobalaccel, kwindowsystem                                                                                       : FORCE_DISABLE_KGLOBALACCEL=OFF
-kconfigwidgets      : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                                : -
-kiconthemes         : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                    : -
-kbookmarks          : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                               : -
-kio                 : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,          :
-                    : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                                : KIOCORE_ONLY=OFF
-kservice            : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                       : -
+Order : Modules           : DK dependency : Inter-dependencies                                                                                              :   Compilation options to use
+------+-------------------+---------------:-----------------------------------------------------------------------------------------------------------------+--------------------------------------------------
+  1   : extracmakemodules :       X       : -                                                                                                               : -
+  2   : kconfig           :       X       : -                                                                                                               : -
+  3   : kcoreaddons       :       X       : -                                                                                                               : -
+  4   : kwindowsystem     :       X       : -                                                                                                               : -
+  5   : solid             :       X       : -                                                                                                               : Use default options to off.
+  6   : ki18n             :       X       : qt5script                                                                                                       : BUILD_WITH_QTSCRIPT=ON.
+  7   : kcrash            :               : kwindowsystem, kcoreaddons                                                                                      : -
+  8   : kdoctools         :               : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                  : MEINPROC_NO_KARCHIVE=OFF
+  9   : ktextwidgets      :               : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet       : -
+  10  : kxmlgui           :       X       : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons,             :
+      :                   :               : kglobalaccel, kwindowsystem                                                                                     : FORCE_DISABLE_KGLOBALACCEL=OFF
+  11  : kconfigwidgets    :               : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                              : -
+  12  : kiconthemes       :       X       : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                  : -
+  13  : kbookmarks        :               : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                             : -
+  14  : kservice          :       X       : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                     : -
+  15  : kio               :       X       : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,        :
+      :                   :               : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                              : KIOCORE_ONLY=OFF
