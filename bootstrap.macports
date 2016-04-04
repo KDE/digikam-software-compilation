@@ -55,7 +55,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX}/ \
       -DCMAKE_OSX_ARCHITECTURES=${TARGET_TYPE} \
       $ADDITIONAL_CMAKE_FLAGS \
-      -DBUILD_TESTING=OFF \
+      -DBUILD_TESTING=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_COMPILE_PO=OFF \
       -DDIGIKAMSC_COMPILE_DOC=OFF \
@@ -74,7 +74,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
       -DCMAKE_INSTALL_NAME_DIR=${INSTALL_PREFIX}/lib \
       -DCMAKE_SYSTEM_PREFIX_PATH="${INSTALL_PREFIX};/usr" \
-      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.3/Modules" \
+      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/Modules;${INSTALL_PREFIX}/share/cmake-3.5/Modules" \
       -DKDE_INSTALL_BUNDLEDIR=${BUNDLE_INSTALL_DIR} \
       -DKDE_INSTALL_DATADIR=${BUNDLE_DATA_INSTALL_DIR} \
       -DQT_QT_INCLUDE_DIR=${QT_INCLUDE_DIR} \
@@ -83,8 +83,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       ..
 
 CMAKE_VAL_RET=$?
-
-echo "Cmake configure return $CMAKE_VAL_RET"
 
 if [ -d ./extra/libkvkontakte/src ]; then
     ln -sf src ./extra/libkvkontakte/Vkontakte
