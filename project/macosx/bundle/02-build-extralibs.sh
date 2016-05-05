@@ -38,9 +38,6 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
-# Temporally solution to be able to use Qt4::qmake at the same time than Qt5:qmake
-#export PATH=$INSTALL_PREFIX/libexec/qt4/bin:$PATH
-
 if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
     EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
 else
