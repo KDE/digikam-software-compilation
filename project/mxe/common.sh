@@ -140,6 +140,7 @@ if [ $? -ne 0 ]; then
 fi
 
 cd $LIB_NAME-$KD_VERSION.0
+pwd
 
 echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
@@ -148,11 +149,9 @@ x86_64-w64-mingw32.shared-cmake -G "Unix Makefiles" . \
                                 -DCMAKE_BUILD_TYPE=debug \
                                 -DBUILD_TESTING=OFF \
                                 -DCMAKE_COLOR_MAKEFILE=ON \
-                                -DCMAKE_INSTALL_PREFIX=$MXE_BUILDROOT/mxe/usr/x86_64-w64-mingw32.shared/ \
+                                -DCMAKE_INSTALL_PREFIX=$MXE_BUILDROOT/usr/x86_64-w64-mingw32.shared/ \
                                 -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-                                -DINSTALL_ROOT=$MXE_BUILDROOT/mxe/usr/x86_64-w64-mingw32.shared \
-                                -DMXE_TOOLCHAIN=${MXE_BUILDROOT}/mxe/usr/x86_64-w64-mingw32.shared/share/cmake/mxe-conf.cmake \
-                                ..
+                                -DMXE_TOOLCHAIN=${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared/share/cmake/mxe-conf.cmake
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."

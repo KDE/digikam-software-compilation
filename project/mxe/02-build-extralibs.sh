@@ -32,7 +32,7 @@ StartScript
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
-export PATH=$MXE_BUILDROOT/mxe/usr/bin:$MXE_BUILDROOT/mxe/usr/x86_64-w64-mingw32.shared/qt5/bin:$PATH
+export PATH=$MXE_BUILDROOT/usr/bin:$MXE_BUILDROOT/usr/x86_64-w64-mingw32.shared/qt5/bin:$PATH
 cd $MXE_BUILDROOT
 
 #################################################################################################
