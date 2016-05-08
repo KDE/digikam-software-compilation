@@ -10,7 +10,7 @@
 # Mxe configuration
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
 MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
-MXE_BUILDROOT="./build"
+MXE_BUILDROOT="`pwd`/build"
 MXE_PACKAGES="gcc \
               cmake \
               opencv \
