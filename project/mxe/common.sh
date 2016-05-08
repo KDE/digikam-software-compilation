@@ -132,7 +132,7 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
-tar jxf $LIB_NAME-$KD_VERSION.tar.xz
+tar -xJf $LIB_NAME-$KD_VERSION.tar.xz
 if [ $? -ne 0 ]; then
     echo "---------- Cannot extract $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."
