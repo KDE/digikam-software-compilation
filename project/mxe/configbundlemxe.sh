@@ -43,7 +43,7 @@ HU_VERSION=2013.0
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.20
+KD_VERSION=5.21
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
