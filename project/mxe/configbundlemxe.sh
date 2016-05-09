@@ -9,10 +9,15 @@
 
 # MXE configuration
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
-MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+
+# 64 bits
+#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+# 32 bits
+MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+
 MXE_BUILDROOT="`pwd`/build"
-MXE_TOOLCHAIN=${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared/share/cmake/mxe-conf.cmake
-MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared/
+MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
+MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 MXE_PACKAGES="gcc \
               libxml2 \
               libxslt \

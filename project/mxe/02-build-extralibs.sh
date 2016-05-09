@@ -16,7 +16,7 @@ exec > >(tee build-extralibs.full.log) 2>&1
 
 #################################################################################################
 
-echo "02-build-extralibs.sh : build extra libraries using Mex."
+echo "02-build-extralibs.sh : build extra libraries using MEX."
 echo "--------------------------------------------------------"
 
 #################################################################################################
@@ -32,7 +32,7 @@ StartScript
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
-export PATH=$MXE_BUILDROOT/usr/bin:$MXE_BUILDROOT/usr/x86_64-w64-mingw32.shared/qt5/bin:$PATH
+export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
 cd $MXE_BUILDROOT
 
 #################################################################################################
