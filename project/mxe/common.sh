@@ -20,40 +20,6 @@ fi
 }
 
 ########################################################################
-# Check if Xcode Command Line tools are installed
-ChecksXCodeCLI()
-{
-
-xcode-select --print-path
-
-if [[ $? -ne 0 ]]; then
-    echo "XCode CLI tools are not installed"
-    echo "See http://www.macports.org/install.php for details."
-    exit 1
-else
-    echo "Check XCode CLI tools passed..."
-fi
-
-}
-
-########################################################################
-# Check if Macports is installed
-ChecksMacports()
-{
-
-which port
-
-if [[ $? -ne 0 ]]; then
-    echo "Macports is not installed"
-    echo "See http://www.macports.org/install.php for details."
-    exit 1
-else
-    echo "Check Macports passed..."
-fi
-
-}
-
-########################################################################
 # Check CPU core available (Linux or OSX)
 ChecksCPUCores()
 {

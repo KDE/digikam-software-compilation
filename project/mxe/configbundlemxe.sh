@@ -7,15 +7,16 @@
 
 ########################################################################
 
-# Mxe configuration
+# MXE configuration
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
 MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 MXE_BUILDROOT="`pwd`/build"
 MXE_TOOLCHAIN=${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared/share/cmake/mxe-conf.cmake
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared/
 MXE_PACKAGES="gcc \
+              libxml2 \
+              libxslt \
               cmake \
-              opencv \
               libpng \
               jpeg \
               tiff \
@@ -24,13 +25,12 @@ MXE_PACKAGES="gcc \
               jasper \
               expat \
               lcms \
-              libxml2
-              libxslt \
               boost \
               eigen \
               zlib \
               exiv2 \
               freeglut \
+              opencv \
               dbus \
               qt5 \
              "

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a bundle Mxe installation with all digiKam dependencies in a dedicated directory
+# Script to build a bundle MXE installation with all digiKam dependencies in a dedicated directory
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
@@ -64,27 +64,27 @@ fi
 if [[ $CONTINUE_INSTALL == 0 ]]; then
 
     #################################################################################################
-    # Checkout latest Mxe from github
+    # Checkout latest MXE from github
 
     git clone $MXE_GIT_URL $MXE_BUILDROOT
 
 fi
 
 #################################################################################################
-# Mxe update
+# MXE update
 
 export PATH=$MXE_BUILDROOT/usr/bin:$MXE_BUILDROOT/usr/x86_64-w64-mingw32.shared/qt5/bin:$PATH
 cd $MXE_BUILDROOT
 
 echo -e "\n"
-echo "---------- Updating Mxe"
+echo "---------- Updating MXE"
 git pull
 
 #################################################################################################
 # Dependencies build and installation
 
 echo -e "\n"
-echo "---------- Building digiKam dependencies with Mxe"
+echo "---------- Building digiKam dependencies with MXE"
 
 make MXE_TARGETS=$MXE_BUILD_TARGETS $MXE_PACKAGES
 
@@ -95,5 +95,3 @@ echo -e "\n"
 export PATH=$ORIG_PATH
 
 TerminateScript
-
-exit 0

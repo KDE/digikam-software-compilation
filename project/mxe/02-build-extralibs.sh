@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build extra libraries using Mex env.
+# Script to build extra libraries using MEX env.
 # This script must be run as sudo
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
