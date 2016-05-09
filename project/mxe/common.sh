@@ -31,17 +31,6 @@ echo "CPU Cores detected : $CPU_CORES"
 }
 
 ########################################################################
-# Performs All Checks
-CommonChecks()
-{
-
-ChecksRunAsRoot
-ChecksXCodeCLI
-ChecksMacports
-
-}
-
-########################################################################
 # For time execution measurement ; startup
 StartScript()
 {
@@ -111,19 +100,19 @@ pwd
 echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
-x86_64-w64-mingw32.shared-cmake -G "Unix Makefiles" . \
-                                -DBUILD_TESTING=OFF \
-                                -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                                -DCMAKE_BUILD_TYPE=debug \
-                                -DCMAKE_COLOR_MAKEFILE=ON \
-                                -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
-                                -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-                                -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
-                                -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
-                                -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                                -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                                -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                                -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
+${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
+                           -DBUILD_TESTING=OFF \
+                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_COLOR_MAKEFILE=ON \
+                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
