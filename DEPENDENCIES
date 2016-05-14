@@ -29,7 +29,7 @@ KF5::Config                   X                     X                           
 KF5::XmlGui                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kxmlgui
 KF5::Service                  X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kservice                                               Image Editor use KService                               Remove plugins interface (Showfoto do not load plugins).
 KF5::I18n                                           X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/ki18n
-KF5::KIO                                            X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kio
+KF5::KIO                                            X                          opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/kio
 KF5::WindowSystem                                   X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kwindowsystem
 KF5::IconThemes                                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kiconthemes                                            Needs for KIconDialog.
 KF5::Solid                                                                      X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/solid
