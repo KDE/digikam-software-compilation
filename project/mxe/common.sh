@@ -105,12 +105,13 @@ if [ ! -z "$PATCH" ]; then
     patch -p1 < $PATCH
 fi
 
+echo -e "\n\n"
+echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
+
+
 rm -rf build
 mkdir build
 cd build
-
-echo -e "\n\n"
-echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DBUILD_TESTING=OFF \
@@ -156,3 +157,4 @@ if [ $? -ne 0 ]; then
 fi
 
 }
+
