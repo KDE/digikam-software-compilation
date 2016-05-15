@@ -60,8 +60,8 @@ InstallKDEExtraLib()
 LIB_NAME=$1
 
 if [ -d "$KD_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $KD_BUILDTEMP"
-   rm -rf "$KD_BUILDTEMP"
+    echo "---------- Removing existing $KD_BUILDTEMP"
+    rm -rf "$KD_BUILDTEMP"
 fi
 
 echo "---------- Creating $KD_BUILDTEMP"
@@ -96,6 +96,9 @@ fi
 
 cd $LIB_NAME-$KD_VERSION.0
 pwd
+rm -rf build
+mkdir build
+cd build
 
 echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
@@ -112,7 +115,8 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           ..
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
@@ -122,9 +126,9 @@ fi
 
 echo -e "\n\n"
 echo "---------- Building $LIB_NAME $KD_VERSION"
-cd build
 
 make -j$CPU_CORES
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
