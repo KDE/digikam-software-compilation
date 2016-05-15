@@ -66,6 +66,9 @@ InstallKDEExtraLib "kbookmarks"
 
 cd $ORIG_WD/png2ico
 
+mkdir build
+cd build
+
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DBUILD_TESTING=OFF \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
@@ -78,10 +81,13 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           ..
 
 make -j$CPU_CORES
 make install/fast
+cd ..
+rmdir -fr build
 
 #################################################################################################
 
