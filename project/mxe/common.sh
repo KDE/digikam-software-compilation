@@ -149,9 +149,101 @@ echo -e "\n\n"
 echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
 
-make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+}
+
+########################################################################
+# Install extra KF5 component
+# arguments :
+# $1: git url
+#
+InstallKDEExtraComponent()
+{
+
+GIT_URL=$1
+
+if [ -d "$KD_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $KD_BUILDTEMP"
+    rm -rf "$KD_BUILDTEMP"
+fi
+
+echo "---------- Creating $KD_BUILDTEMP"
+mkdir "$KD_BUILDTEMP"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot create $KD_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$KD_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading $GIT_URL"
+
+git clone $GIT_URL
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot download $$GIT_URL."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+pwd
+
+echo -e "\n\n"
+echo "---------- Configure $GIT_URL"
+
+rm -rf build
+mkdir build
+cd build
+
+${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
+                           -DBUILD_TESTING=OFF \
+                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_COLOR_MAKEFILE=ON \
+                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           ..
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure $GIT_URL."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
+echo "---------- Building $GIT_URL"
+
+make -j$CPU_CORES
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot compile $GIT_URL."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
+echo "---------- Installing $GIT_URL"
+echo -e "\n\n"
+
+make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot install $GIT_URL."
     echo "---------- Aborting..."
     exit;
 fi
