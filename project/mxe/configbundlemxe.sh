@@ -35,6 +35,7 @@ MXE_PACKAGES="gcc \
               expat \
               lcms \
               lensfun \
+              liblqr-1 \
               boost \
               eigen \
               zlib \
@@ -42,6 +43,10 @@ MXE_PACKAGES="gcc \
               freeglut \
               opencv \
               dbus \
+              gst-plugins-base \
+              gst-plugins-bad \
+              gst-plugins-good \
+              gst-plugins-ugly \
               qt5 \
              "
 
