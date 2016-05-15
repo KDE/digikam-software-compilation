@@ -58,7 +58,7 @@ InstallKDEExtraLib "kconfigwidgets"
 InstallKDEExtraLib "kiconthemes"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kglobalaccel"
-InstallKDEExtraLib "kxmlgui"
+InstallKDEExtraLib "kxmlgui" "$ORIG_WD/kxmlgui.patch"
 InstallKDEExtraLib "kbookmarks"
 
 #################################################################################################

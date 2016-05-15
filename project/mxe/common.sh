@@ -52,12 +52,15 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 
 ########################################################################
 # Install extra KF5 frameworks library
-# arguments : library name, additional cmake flags, download url, version 
+# arguments :
+# $1: library name
+# $2: path to patch to apply
 #
 InstallKDEExtraLib()
 {
 
 LIB_NAME=$1
+PATCH=$2
 
 if [ -d "$KD_BUILDTEMP" ] ; then
     echo "---------- Removing existing $KD_BUILDTEMP"
@@ -96,6 +99,12 @@ fi
 
 cd $LIB_NAME-$KD_VERSION.0
 pwd
+
+if [ ! -z "$PATCH" ]; then
+    echo "---------- Apply patch $PATCH to $LIB_NAME."
+    patch -p1 < $PATCH
+fi
+
 rm -rf build
 mkdir build
 cd build
