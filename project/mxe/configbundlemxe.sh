@@ -34,6 +34,7 @@ MXE_PACKAGES="gcc \
               jasper \
               expat \
               lcms \
+              lensfun \
               boost \
               eigen \
               zlib \
