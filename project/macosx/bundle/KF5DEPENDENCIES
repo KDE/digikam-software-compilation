@@ -5,6 +5,7 @@ Order : Modules           : DK dependency : Inter-dependencies                  
   3   : kcoreaddons       :       X       : -                                                                                                               : -
   4   : kwindowsystem     :       X       : -                                                                                                               : -
   5   : solid             :       X       : -                                                                                                               : Use default options to off.
+  6   : threadwearver     :       X       : -                                                                                                               : -
   6   : ki18n             :       X       : qt5script                                                                                                       : BUILD_WITH_QTSCRIPT=ON.
   7   : kcrash            :               : kwindowsystem, kcoreaddons                                                                                      : -
   8   : kdoctools         :               : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                  : MEINPROC_NO_KARCHIVE=OFF
