@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Copyright (c) 2008-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+# Arguments : $1 : MXE build root path to MXE bundle dir (default ./project/mxe/build).
+#             $2 : build type   'debug' to hack (default), 'release' for production.
+#             $3 : MXE build target : x86_64-w64-mingw32.shared (default - 64 bits shared) or i686-w64-mingw32.shared (32 bits shared).
+
+
+MXE_BUILDROOT=$1
+
+if [ "$MXE_BUILDROOT" = "" ]; then
+    MXE_BUILDROOT="`pwd`/project/mxe/build"
+fi
+
+BUILD_TYPE=$2
+
+if [ "$BUILD_TYPE" = "" ]; then
+    BUILD_TYPE=debug
+fi
+
+MXE_BUILD_TARGETS=$3
+
+if [ "$MXE_BUILD_TARGETS" = "" ]; then
+    MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+fi
+
+MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
+MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
+
+echo "Installing to $MXE_BUILDROOT for target $MXE_BUILD_TARGETS with build mode $BUILD_TYPE"
+
+# Pathes rules
+ORIG_PATH="$PATH"
+
+export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
+
+# We will work on command line using GNU make
+export MAKEFILES_TYPE='Unix Makefiles'
+
+if [ ! -d "build" ]; then
+    mkdir build
+fi
+
+cd build
+
+${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
+                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+                           -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+                           -DCMAKE_COLOR_MAKEFILE=ON \
+                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           -DOpenCV_DIR=${MXE_INSTALL_PREFIX}/lib \
+                           -DBUILD_TESTING=OFF \
+                           -DDIGIKAMSC_CHECKOUT_PO=OFF \
+                           -DDIGIKAMSC_COMPILE_PO=OFF \
+                           -DDIGIKAMSC_COMPILE_DOC=OFF \
+                           -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
+                           -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
+                           -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
+                           -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
+                           -DENABLE_OPENCV3=OFF \
+                           -DENABLE_KFILEMETADATASUPPORT=OFF \
+                           -DENABLE_AKONADICONTACTSUPPORT=OFF \
+                           -DENABLE_MYSQLSUPPORT=OFF \
+                           -DENABLE_INTERNALMYSQL=OFF \
+                           -DENABLE_MEDIAPLAYER=ON \
+                           ..
+
+CMAKE_VAL_RET=$?
+
+if [ -d ./extra/libkvkontakte/src ]; then
+    ln -sf src ./extra/libkvkontakte/Vkontakte
+fi
+
+if [ -d ./extra/libmediawiki/src ]; then
+    ln -sf src ./extra/libmediawiki/MediaWiki
+fi
+
+export PATH=$ORIG_PATH
+
+exit $CMAKE_VAL_RET
