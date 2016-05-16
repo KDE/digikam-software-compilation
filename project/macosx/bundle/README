@@ -26,6 +26,7 @@ http://s.sudre.free.fr/Software/Packages/about.html
 which does the actual packaging of the files needed to install digiKam.
 
 HERE THERE BE DRAGONS
+---------------------
 Use these scripts at your own risk.  For example, both scripts contain 
 "rm -rf" (to clear previous builds) -- a mistake could wipe your drive. There 
 is little error checking or validation. I make no claims to be compentent at
