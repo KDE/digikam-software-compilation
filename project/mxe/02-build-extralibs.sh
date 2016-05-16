@@ -88,7 +88,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
 make -j$CPU_CORES
 make install/fast
 cd ..
-rmdir -fr build
+rm -rf build
 
 #################################################################################################
 
