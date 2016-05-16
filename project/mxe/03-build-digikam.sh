@@ -91,7 +91,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DDIGIKAMSC_CHECKOUT_PO=OFF \
                            -DDIGIKAMSC_COMPILE_PO=OFF \
                            -DDIGIKAMSC_COMPILE_DOC=OFF \
-                           -DDIGIKAMSC_COMPILE_LIBKIPI=OFF \
+                           -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
                            -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
                            -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
                            -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
