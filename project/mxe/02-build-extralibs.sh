@@ -65,6 +65,8 @@ InstallKDEExtraLib "kbookmarks"
 #################################################################################################
 # Build KF5 extra components
 
+# Install PNG2Ico CLI tool used by ECM.
+
 cd $ORIG_WD/png2ico
 
 mkdir build
@@ -89,6 +91,10 @@ make -j$CPU_CORES
 make install/fast
 cd ..
 rm -rf build
+
+# Marble for geolocation tools.
+
+InstallKDEExtraComponentFromGit "marble"
 
 #################################################################################################
 

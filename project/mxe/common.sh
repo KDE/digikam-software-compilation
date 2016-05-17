@@ -163,10 +163,10 @@ fi
 # arguments :
 # $1: git url
 #
-InstallKDEExtraComponent()
+InstallKDEExtraComponentFromGit()
 {
 
-GIT_URL=$1
+COMPONENT=$1
 
 if [ -d "$KD_BUILDTEMP" ] ; then
     echo "---------- Removing existing $KD_BUILDTEMP"
@@ -185,20 +185,21 @@ fi
 cd "$KD_BUILDTEMP"
 echo -e "\n\n"
 
-echo "---------- Downloading $GIT_URL"
+echo "---------- Downloading $COMPONENT"
 
-git clone $GIT_URL
+git clone git@git.kde.org:$COMPONENT
 
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot download $$GIT_URL."
+    echo "---------- Cannot download $COMPONENT."
     echo "---------- Aborting..."
     exit;
 fi
 
+cd $COMPONENT
 pwd
 
 echo -e "\n\n"
-echo "---------- Configure $GIT_URL"
+echo "---------- Configure $COMPONENT"
 
 rm -rf build
 mkdir build
@@ -220,30 +221,30 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            ..
 
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot configure $GIT_URL."
+    echo "---------- Cannot configure $COMPONENT."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Building $GIT_URL"
+echo "---------- Building $COMPONENT"
 
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot compile $GIT_URL."
+    echo "---------- Cannot compile $COMPONENT."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Installing $GIT_URL"
+echo "---------- Installing $COMPONENT"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
 
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot install $GIT_URL."
+    echo "---------- Cannot install $COMPONENT."
     echo "---------- Aborting..."
     exit;
 fi
