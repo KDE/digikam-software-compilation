@@ -72,36 +72,8 @@ echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 
 rm -rf build
 mkdir build
-cd build
 
-${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
-                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=debug \
-                           -DCMAKE_COLOR_MAKEFILE=ON \
-                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
-                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
-                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
-                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
-                           -DOpenCV_DIR=${MXE_INSTALL_PREFIX}/lib \
-                           -DBUILD_TESTING=OFF \
-                           -DDIGIKAMSC_CHECKOUT_PO=OFF \
-                           -DDIGIKAMSC_COMPILE_PO=OFF \
-                           -DDIGIKAMSC_COMPILE_DOC=OFF \
-                           -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
-                           -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
-                           -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF \
-                           -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
-                           -DENABLE_OPENCV3=OFF \
-                           -DENABLE_KFILEMETADATASUPPORT=OFF \
-                           -DENABLE_AKONADICONTACTSUPPORT=OFF \
-                           -DENABLE_MYSQLSUPPORT=OFF \
-                           -DENABLE_INTERNALMYSQL=OFF \
-                           -DENABLE_MEDIAPLAYER=ON \
-                           ..
+./bootstrap.mxe $MXE_BUILDROOT debug $MXE_BUILD_TARGETS
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
@@ -112,6 +84,7 @@ fi
 echo -e "\n\n"
 echo "---------- Building digiKam"
 
+cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
