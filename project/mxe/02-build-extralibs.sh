@@ -94,7 +94,7 @@ rm -rf build
 
 # Marble for geolocation tools.
 
-InstallKDEExtraComponentFromGit "marble"
+#InstallKDEExtraComponentFromGit "marble"
 
 #################################################################################################
 
