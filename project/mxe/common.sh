@@ -55,12 +55,14 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 # arguments :
 # $1: library name
 # $2: path to patch to apply
+# $3: configure options
 #
 InstallKDEExtraLib()
 {
 
 LIB_NAME=$1
 PATCH=$2
+OPTIONS=$3
 
 if [ -d "$KD_BUILDTEMP" ] ; then
     echo "---------- Removing existing $KD_BUILDTEMP"
@@ -106,7 +108,7 @@ if [ ! -z "$PATCH" ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
+echo "---------- Configure $LIB_NAME with configure options : $OPTIONS"
 
 
 rm -rf build
@@ -126,6 +128,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
                            -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           $OPTIONS \
                            ..
 
 if [ $? -ne 0 ]; then
@@ -137,7 +140,8 @@ fi
 echo -e "\n\n"
 echo "---------- Building $LIB_NAME $KD_VERSION"
 
-make -j$CPU_CORES
+make
+# -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
