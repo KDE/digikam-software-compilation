@@ -60,7 +60,6 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
                            -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
                            -DOpenCV_DIR=${MXE_INSTALL_PREFIX}/lib \
-                           -DPng2Ico_EXECUTABLE=${MXE_INSTALL_PREFIX}/bin/png2ico.exe \
                            -DBUILD_TESTING=ON \
                            -DDIGIKAMSC_CHECKOUT_PO=OFF \
                            -DDIGIKAMSC_COMPILE_PO=OFF \
@@ -76,6 +75,8 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_INTERNALMYSQL=OFF \
                            -DENABLE_MEDIAPLAYER=ON \
                            ..
+
+#                           -DPng2Ico_EXECUTABLE=${MXE_INSTALL_PREFIX}/bin/png2ico.exe \
 
 CMAKE_VAL_RET=$?
 
