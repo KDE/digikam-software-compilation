@@ -212,7 +212,7 @@ if [ ! -z "$PATCH" ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Configure $COMPONENT"
+echo "---------- Configure $COMPONENT with configure options : $OPTIONS"
 
 rm -rf build
 mkdir build
