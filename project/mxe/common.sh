@@ -163,7 +163,119 @@ fi
 }
 
 ########################################################################
-# Install extra KF5 component
+# Install extra KF5 applicatiopn
+# arguments :
+# $1: application name
+# $2: path to patch to apply
+# $3: configure options
+#
+InstallKDEExtraApp()
+{
+
+APP_NAME=$1
+PATCH=$2
+OPTIONS=$3
+
+if [ -d "$KA_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $KA_BUILDTEMP"
+    rm -rf "$KA_BUILDTEMP"
+fi
+
+echo "---------- Creating $KA_BUILDTEMP"
+mkdir "$KA_BUILDTEMP"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot create $KA_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$KA_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading APP_NAME $KA_VERSION"
+echo "---------- URL: $KD_URL/$KA_VERSION/$APP_NAME-$KA_VERSION.tar.xz"
+
+curl -L -o "$APP_NAME-$KA_VERSION.tar.xz" "$KA_URL/$KA_VERSION/src/$APP_NAME-$KA_VERSION.tar.xz"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot download $APP_NAME-$KA_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+tar -xJf $APP_NAME-$KA_VERSION.tar.xz
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot extract $APP_NAME-$KA_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd $APP_NAME-$KA_VERSION.0
+pwd
+
+if [ ! -z "$PATCH" ]; then
+    echo "---------- Apply patch $PATCH to $APP_NAME."
+    patch -p1 < $PATCH
+fi
+
+echo -e "\n\n"
+echo "---------- Configure $APP_NAME with configure options : $OPTIONS"
+
+
+rm -rf build
+mkdir build
+cd build
+
+${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
+                           -DBUILD_TESTING=OFF \
+                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_COLOR_MAKEFILE=ON \
+                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           $OPTIONS \
+                           ..
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure $APP_NAME-$KA_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
+echo "---------- Building $APP_NAME $KA_VERSION"
+
+make
+# -j$CPU_CORES
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot compile $APP_NAME-$KA_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
+echo "---------- Installing $APP_NAME $KA_VERSION"
+echo -e "\n\n"
+
+make install/fast && cd "$ORIG_WD" && rm -rf "$KA_BUILDTEMP"
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot install $APP_NAME-$KA_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+}
+
+########################################################################
+# Install extra KF5 component from git
 # arguments :
 # $1: git url
 # $2: path to patch to apply

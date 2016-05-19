@@ -69,17 +69,17 @@ InstallKDEExtraLib "kio" "" "-DKIOCORE_ONLY=ON"
 
 # Marble for geolocation tools.
 
-InstallKDEExtraComponentFromGit "marble" "" \
-                                "-DWITH_DESIGNER_PLUGIN=OFF \
-                                 -DBUILD_MARBLE_TESTS=OFF \
-                                 -DBUILD_MARBLE_TOOLS=OFF \
-                                 -DBUILD_MARBLE_EXAMPLES=OFF \
-                                 -DBUILD_MARBLE_APPS=OFF \
-                                 -DBUILD_MARBLE_TESTS=OFF \
-                                 -DBUILD_WITH_DBUS=OFF \
-                                 -DBUILD_TESTING=OFF \
-                                 -DQTONLY=ON \
-                                 -Wno-dev"
+InstallKDEExtraApp "marble" "" \
+                   "-DWITH_DESIGNER_PLUGIN=OFF \
+                   -DBUILD_MARBLE_TESTS=OFF \
+                   -DBUILD_MARBLE_TOOLS=OFF \
+                   -DBUILD_MARBLE_EXAMPLES=OFF \
+                   -DBUILD_MARBLE_APPS=OFF \
+                   -DBUILD_MARBLE_TESTS=OFF \
+                   -DBUILD_WITH_DBUS=OFF \
+                   -DBUILD_TESTING=OFF \
+                   -DQTONLY=ON \
+                   -Wno-dev"
 
 #################################################################################################
 
