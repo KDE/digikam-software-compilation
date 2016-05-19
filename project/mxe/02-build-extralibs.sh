@@ -67,41 +67,26 @@ InstallKDEExtraLib "kio" "" "-DKIOCORE_ONLY=ON"
 #################################################################################################
 # Build KF5 extra components
 
-# Install PNG2Ico CLI tool used by ECM.
-
-cd $ORIG_WD/png2ico
-
-mkdir build
-cd build
-
-${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
-                           -DBUILD_TESTING=OFF \
-                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=debug \
-                           -DCMAKE_COLOR_MAKEFILE=ON \
-                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
-                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
-                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
-                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
-                           ..
-
-make -j$CPU_CORES
-make install/fast
-cd ..
-rm -rf build
-
 # Marble for geolocation tools.
 
 #InstallKDEExtraComponentFromGit "marble" "" "-DWITH_DESIGNER_PLUGIN=OFF -DBUILD_MARBLE_TESTS=OFF -DBUILD_MARBLE_TOOLS=OFF -DBUILD_MARBLE_EXAMPLES=OFF -DBUILD_MARBLE_APPS=OFF -DBUILD_MARBLE_TESTS=OFF -DQTONLY=ON -Wno-dev"
 
 #################################################################################################
 
-cd "$ORIG_WD"
-
 export PATH=$ORIG_PATH
+
+# Build PNG2Ico CLI tool used by ECM for host OS.
+
+cd $ORIG_WD/png2ico
+
+cmake . \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_COLOR_MAKEFILE=ON
+
+make -j$CPU_CORES
+
+#################################################################################################
+
+cd "$ORIG_WD"
 
 TerminateScript

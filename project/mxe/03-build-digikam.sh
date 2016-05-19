@@ -73,7 +73,7 @@ echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 rm -rf build
 mkdir build
 
-./bootstrap.mxe $MXE_BUILDROOT debug $MXE_BUILD_TARGETS
+./bootstrap.mxe $MXE_BUILDROOT debug $MXE_BUILD_TARGETS -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
