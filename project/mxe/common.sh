@@ -166,11 +166,15 @@ fi
 # Install extra KF5 component
 # arguments :
 # $1: git url
+# $2: path to patch to apply
+# $3: configure options
 #
 InstallKDEExtraComponentFromGit()
 {
 
 COMPONENT=$1
+PATCH=$2
+OPTIONS=$3
 
 if [ -d "$KD_BUILDTEMP" ] ; then
     echo "---------- Removing existing $KD_BUILDTEMP"
@@ -202,6 +206,11 @@ fi
 cd $COMPONENT
 pwd
 
+if [ ! -z "$PATCH" ]; then
+    echo "---------- Apply patch $PATCH to $LIB_NAME."
+    patch -p1 < $PATCH
+fi
+
 echo -e "\n\n"
 echo "---------- Configure $COMPONENT"
 
@@ -222,6 +231,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
                            -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
                            -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+                           $OPTIONS \
                            ..
 
 if [ $? -ne 0 ]; then
