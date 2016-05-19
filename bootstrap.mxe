@@ -44,6 +44,10 @@ if [ ! -d "build" ]; then
     mkdir build
 fi
 
+if [ -e "./project/mxe/png2ico/png2ico" ]; then
+    PNG2ICO_PATH="-DPng2Ico_EXECUTABLE=`pwd`/project/mxe/png2ico/png2ico"
+fi
+
 cd build
 
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
@@ -73,10 +77,9 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_MYSQLSUPPORT=OFF \
                            -DENABLE_INTERNALMYSQL=OFF \
                            -DENABLE_MEDIAPLAYER=ON \
-                           ${OPTIONS}
+                           ${PNG2ICO_PATH} \
+                           ${OPTIONS} \
                            ..
-
-#                           -DPng2Ico_EXECUTABLE=${MXE_INSTALL_PREFIX}/bin/png2ico.exe \
 
 CMAKE_VAL_RET=$?
 
