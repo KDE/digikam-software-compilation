@@ -15,9 +15,9 @@ MXE_GIT_URL="https://github.com/mxe/mxe.git"
 # 64 bits static
 #MXE_BUILD_TARGETS="x86_64-w64-mingw32.static"
 # 32 bits shared
-#MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
 # 64 bits shared
-MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 
 MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
@@ -55,10 +55,15 @@ HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
 HU_VERSION=2013.0
 
-# KF5 extra libs tarball information
+# KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
-KD_BUILDTEMP=~/kf5temp
+KD_BUILDTEMP=~/kf5libtemp
 KD_VERSION=5.22
+
+# KF5 extra applications tarball information
+KA_URL="http://download.kde.org/stable/applications/"
+KA_BUILDTEMP=~/kf5apptemp
+KA_VERSION=16.04.1
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
