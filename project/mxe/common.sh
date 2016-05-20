@@ -193,7 +193,7 @@ fi
 cd "$KA_BUILDTEMP"
 echo -e "\n\n"
 
-echo "---------- Downloading APP_NAME $KA_VERSION"
+echo "---------- Downloading $APP_NAME $KA_VERSION"
 echo "---------- URL: $KD_URL/$KA_VERSION/$APP_NAME-$KA_VERSION.tar.xz"
 
 curl -L -o "$APP_NAME-$KA_VERSION.tar.xz" "$KA_URL/$KA_VERSION/src/$APP_NAME-$KA_VERSION.tar.xz"
@@ -211,7 +211,7 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
-cd $APP_NAME-$KA_VERSION.0
+cd $APP_NAME-$KA_VERSION
 pwd
 
 if [ ! -z "$PATCH" ]; then
@@ -221,7 +221,6 @@ fi
 
 echo -e "\n\n"
 echo "---------- Configure $APP_NAME with configure options : $OPTIONS"
-
 
 rm -rf build
 mkdir build
