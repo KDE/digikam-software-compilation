@@ -25,7 +25,8 @@ fi
 MXE_BUILD_TARGETS=$3
 
 if [ "$MXE_BUILD_TARGETS" = "" ]; then
-    MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+    MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+#    MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 fi
 
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
