@@ -81,6 +81,10 @@ InstallKDEExtraApp "marble" "" \
                     -DQTONLY=ON \
                     -Wno-dev"
 
+# Marble install shared lib at wrong place.
+mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
+mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
+
 #################################################################################################
 
 export PATH=$ORIG_PATH
