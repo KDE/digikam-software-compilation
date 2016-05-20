@@ -85,6 +85,10 @@ InstallKDEExtraApp "marble" "" \
 mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
 mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
 
+# KCalCore for Calendar tool.
+# Disabled currently due to dependencies to KDE4LibsSupport
+#InstallKDEExtraApp "kcalcore"
+
 #################################################################################################
 
 export PATH=$ORIG_PATH
