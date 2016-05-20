@@ -140,8 +140,7 @@ fi
 echo -e "\n\n"
 echo "---------- Building $LIB_NAME $KD_VERSION"
 
-make
-# -j$CPU_CORES
+make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
@@ -251,8 +250,7 @@ fi
 echo -e "\n\n"
 echo "---------- Building $APP_NAME $KA_VERSION"
 
-make
-# -j$CPU_CORES
+make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot compile $APP_NAME-$KA_VERSION."
