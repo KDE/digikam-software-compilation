@@ -59,10 +59,10 @@ InstallKDEExtraLib "kconfigwidgets"
 InstallKDEExtraLib "kiconthemes"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kglobalaccel"
-InstallKDEExtraLib "kxmlgui" "$ORIG_WD/kxmlgui.patch"
+InstallKDEExtraLib "kxmlgui" "$ORIG_WD/kxmlgui-drop-ktextwidgets.patch"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kjobwidgets"
-InstallKDEExtraLib "kio" "" "-DKIOCORE_ONLY=ON"
+InstallKDEExtraLib "kio" "$ORIG_WD/kio-drop-ktextwidgets.patch"
 
 #################################################################################################
 # Build KF5 extra components
