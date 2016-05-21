@@ -31,7 +31,7 @@ if [ "$MXE_BUILD_TARGETS" = "" ]; then
     elif [ -d "${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared" ]
         echo "Auto-detected 64 bits shared MXE target"
         MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
-    elif
+    else
         echo "Cannot auto-detect MXE target!"
         exit
     fi
