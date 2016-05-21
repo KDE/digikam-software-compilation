@@ -25,10 +25,10 @@ fi
 MXE_BUILD_TARGETS=$3
 
 if [ "$MXE_BUILD_TARGETS" = "" ]; then
-    if [ -d "${MXE_BUILDROOT}/usr/i686-w64-mingw32.shared" ]
+    if [ -d "${MXE_BUILDROOT}/usr/i686-w64-mingw32.shared" ]; then
         echo "Auto-detected 32 bits shared MXE target"
         MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
-    elif [ -d "${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared" ]
+    elif [ -d "${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared" ]; then
         echo "Auto-detected 64 bits shared MXE target"
         MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
     else
