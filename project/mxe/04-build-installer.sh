@@ -80,6 +80,11 @@ cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $PROJECT
 cp -r $MXE_INSTALL_PREFIX/share/icons                                   $PROJECTDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/k*                                      $PROJECTDIR/data
 
+#################################################################################################
+# Cleanup^symbol in binary files to free space.
+
+find $PROJECTDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+find $PROJECTDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 
 exit
 
