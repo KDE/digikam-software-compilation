@@ -1,7 +1,6 @@
 #! /bin/bash
 
-# Script to bundle data using previously-built KDE and digiKam installation
-# through 01-build-macports.sh and 02-build-digikam.sh scripts,
+# Script to bundle data using previously-built KDE and digiKam installation.
 # and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #

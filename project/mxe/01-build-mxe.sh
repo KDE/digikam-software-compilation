@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to build a bundle MXE installation with all digiKam dependencies in a dedicated directory
+# Script to build a bundle MXE installation with all digiKam dependencies in a dedicated directory.
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #

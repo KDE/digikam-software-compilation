@@ -1,11 +1,8 @@
 #! /bin/bash
 
 # Script to bundle data using previously-built KDE and digiKam installation
-# through 01-build-macports.sh and 02-build-digikam.sh scripts,
-# and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
-# This script must be run as sudo
+# and create a Windows installer file with NSIS application
 #
-# Copyright (c) 2015,      Shanti, <listaccount at revenant dot org>
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
@@ -15,7 +12,7 @@
 #################################################################################################
 # Manage script traces to log file
 
-exec > >(tee build-package.full.log) 2>&1
+exec > >(tee build-installer.full.log) 2>&1
 
 #################################################################################################
 
@@ -25,8 +22,8 @@ echo "-----------------------------------------------"
 #################################################################################################
 # Pre-processing checks
 
-. ./configbundlepkg.sh
-. ../common/common.sh
+. ./configbundlemxe.sh
+. ./common.sh
 StartScript
 
 #################################################################################################
