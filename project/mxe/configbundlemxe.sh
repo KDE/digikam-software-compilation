@@ -15,17 +15,17 @@ MXE_GIT_URL="https://github.com/mxe/mxe.git"
 # 64 bits static
 #MXE_BUILD_TARGETS="x86_64-w64-mingw32.static"
 # 32 bits shared
-MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+#MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
 # 64 bits shared
-#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 
 MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 MXE_PACKAGES="gcc \
+              cmake \
               libxml2 \
               libxslt \
-              cmake \
               libpng \
               jpeg \
               tiff \
@@ -50,10 +50,6 @@ MXE_PACKAGES="gcc \
               qt5 \
              "
 
-# Hugin tarball information
-HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
-HU_BUILDTEMP=~/hutemp
-HU_VERSION=2013.0
 
 # KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
@@ -64,6 +60,11 @@ KD_VERSION=5.22
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
 KA_VERSION=16.04.1
+
+# Hugin tarball information
+HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
+HU_BUILDTEMP=~/hutemp
+HU_VERSION=2013.0
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
