@@ -39,6 +39,8 @@ PROJECTDIR="$BUILDDIR/installer"
 #################################################################################################
 # Copy files
 
+echo -e "\n---------- Copy files in bundle directory\n"
+
 if [ -d "$PROJECTDIR" ]; then
     rm -fr $PROJECTDIR
     mkdir $PROJECTDIR
@@ -82,6 +84,8 @@ cp -r $MXE_INSTALL_PREFIX/share/k*                                      $PROJECT
 
 #################################################################################################
 # Cleanup^symbol in binary files to free space.
+
+echo -e "\n---------- Strip symbols in binary files\n"
 
 find $PROJECTDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 find $PROJECTDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
