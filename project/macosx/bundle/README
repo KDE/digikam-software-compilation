@@ -12,7 +12,7 @@ Gilles Caulier <caulier dot gilles at gmail dot com>
 DESCRIPTION
 -----------
 These files and scripts are used to make binary packages of the digiKam
-Software Collection packages for OS X. In addition to this README, there are
+Software Collection for OS X. In addition to this README, there are
 comments in the scripts that provide some additional explanation for how they
 work.
 
