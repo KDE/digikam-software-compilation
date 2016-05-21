@@ -42,6 +42,7 @@ cd $MXE_BUILDROOT
 
 InstallKDEExtraLib "extra-cmake-modules"
 InstallKDEExtraLib "kconfig"
+InstallKDEExtraLib "breeze-icons"
 InstallKDEExtraLib "kcoreaddons"
 InstallKDEExtraLib "kwindowsystem"
 InstallKDEExtraLib "solid"
