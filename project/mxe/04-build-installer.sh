@@ -29,6 +29,17 @@ StartScript
 ChecksCPUCores
 
 #################################################################################################
+# Check if NSIS CLI tools id installed
+
+if ! which makensis ; then
+    echo "NSIS CLI tool is not installed"
+    echo "See http://nsis.sourceforge.net/ for details."
+    exit 1
+else
+    echo "Check NSIS CLI tools passed..."
+fi
+
+#################################################################################################
 # Configurations
 
 # Directory where this script is located (default - current directory)
@@ -115,7 +126,7 @@ echo    "File       : $TARGET_INSTALLER"
 echo -n "Size       : "
 du -h "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
-md5sum -q "$TARGET_INSTALLER"
+md5sum "$TARGET_INSTALLER"
 echo -n "SHA1 sum   : "
 shasum -a1 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
