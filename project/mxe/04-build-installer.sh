@@ -34,61 +34,61 @@ ChecksCPUCores
 BUILDDIR="$PWD"
 
 # Directory where installer files are located
-PROJECTDIR="$BUILDDIR/installer"
+BUNDLEDIR="$BUILDDIR/bundle"
 
 #################################################################################################
 # Copy files
 
 echo -e "\n---------- Copy files in bundle directory\n"
 
-if [ -d "$PROJECTDIR" ]; then
-    rm -fr $PROJECTDIR
-    mkdir $PROJECTDIR
+if [ -d "$BUNDLEDIR" ]; then
+    rm -fr $BUNDLEDIR
+    mkdir $BUNDLEDIR
 fi
 
-mkdir -p $PROJECTDIR/share
-mkdir -p $PROJECTDIR/translations
-mkdir -p $PROJECTDIR/data
+mkdir -p $BUNDLEDIR/share
+mkdir -p $BUNDLEDIR/translations
+mkdir -p $BUNDLEDIR/data
 
-cp    $BUILDDIR/qt.conf                                                 $PROJECTDIR/
+cp    $BUILDDIR/qt.conf                                                 $BUNDLEDIR/
 
 # Programs and shared libraries
-cp    $MXE_INSTALL_PREFIX/bin/showfoto.exe                              $PROJECTDIR/
-cp    $MXE_INSTALL_PREFIX/bin/digikam.exe                               $PROJECTDIR/
-cp    $MXE_INSTALL_PREFIX/bin/kbuildsycoca5.exe                         $PROJECTDIR/
-cp    $MXE_INSTALL_PREFIX/bin/*.dll                                     $PROJECTDIR/
-find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $PROJECTDIR/ \;
+cp    $MXE_INSTALL_PREFIX/bin/showfoto.exe                              $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/digikam.exe                               $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/kbuildsycoca5.exe                         $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/*.dll                                     $BUNDLEDIR/
+find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;
 
 # Qt5
-cp    $MXE_INSTALL_PREFIX/qt5/bin/*.dll                                 $PROJECTDIR/
-cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $PROJECTDIR/
+cp    $MXE_INSTALL_PREFIX/qt5/bin/*.dll                                 $BUNDLEDIR/
+cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/
 
 # i18n
-cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $PROJECTDIR/translations
-cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $PROJECTDIR/translations
-cp -r $MXE_INSTALL_PREFIX/share/locale                                  $PROJECTDIR/data
+cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations
+cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations
+cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data
 
 # Marble
-cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $PROJECTDIR/
-cp -r $MXE_INSTALL_PREFIX/data/*                                        $PROJECTDIR/data
+cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/
+cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data
 
 # GStreamer
-cp -r $MXE_INSTALL_PREFIX/lib/gstreamer-1.0/*.dll                       $PROJECTDIR/
+cp -r $MXE_INSTALL_PREFIX/lib/gstreamer-1.0/*.dll                       $BUNDLEDIR/
 
 # Data files
-cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $PROJECTDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $PROJECTDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $PROJECTDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/icons                                   $PROJECTDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/k*                                      $PROJECTDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/icons                                   $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
 
 #################################################################################################
 # Cleanup^symbol in binary files to free space.
 
 echo -e "\n---------- Strip symbols in binary files\n"
 
-find $PROJECTDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
-find $PROJECTDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 
 exit
 
