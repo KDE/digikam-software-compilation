@@ -12,9 +12,9 @@
  ;
  ; Script arguments:
  ; VERSION  : the digiKam version string.
- ; KDE4PATH : the path where whole digiKam bundle is installed.
+ ; BUNDLEPATH : the path where whole digiKam bundle is installed.
  ;
- ; Example: C:\NSIS\makensis.exe /DVERSION=4.1.0 /DKDE4PATH=C:\KDE digikam.nsi
+ ; Example: makensis.exe /DVERSION=5.0.0 /DBUNDLEPATH=../bundle digikam.nsi
  ;
  ; Extra NSIS plugins to install in order to run this script :
  ;
@@ -415,7 +415,7 @@
         ;The SetOutPath is required because otherwise NSIS will assume all files are
         ;in the same folder even though they are sourced from different folders
         ;The \*.* is required for File /r because without it, NSIS would add every 
-        ;folder with the name 'bin' in all subdirectories of ${KDE4PATH}
+        ;folder with the name 'bin' in all subdirectories of ${BUNDLEPATH}
 
         SetOutPath "$INSTDIR\bin"
 
@@ -428,43 +428,43 @@
         ;File "${MSVCRuntimePath}\msvcp100d.dll"
         ;File "${MSVCRuntimePath}\msvcr100d.dll"
         ;File "${MSVCOpenMPPath}\vcomp100d.dll"
-        File /r "${KDE4PATH}\bin\*.*"
+        File /r "${BUNDLEPATH}\bin\*.*"
         ;SetOutPath "$INSTDIR\certs"
-        ;File /r "${KDE4PATH}\certs\*.*"
+        ;File /r "${BUNDLEPATH}\certs\*.*"
         ;SetOutPath "$INSTDIR\data"
-        ;File /r "${KDE4PATH}\data\*.*"
+        ;File /r "${BUNDLEPATH}\data\*.*"
         ;SetOutPath "$INSTDIR\database"
-        ;File /r "${KDE4PATH}\database\*.*"
+        ;File /r "${BUNDLEPATH}\database\*.*"
         ;SetOutPath "$INSTDIR\doc"
-        ;File /r "${KDE4PATH}\doc\*.*"
+        ;File /r "${BUNDLEPATH}\doc\*.*"
         SetOutPath "$INSTDIR\etc"
-        File /r /x kdesettings.bat /x portage "${KDE4PATH}\etc\*.*"
+        File /r /x kdesettings.bat /x portage "${BUNDLEPATH}\etc\*.*"
         ;SetOutPath "$INSTDIR\hosting"
-        ;File /r "${KDE4PATH}\hosting\*.*"
+        ;File /r "${BUNDLEPATH}\hosting\*.*"
         ;SetOutPath "$INSTDIR\imports"
-        ;File /r "${KDE4PATH}\imports\*.*"
+        ;File /r "${BUNDLEPATH}\imports\*.*"
         SetOutPath "$INSTDIR\include"
-        File /r "${KDE4PATH}\include\*.*"
+        File /r "${BUNDLEPATH}\include\*.*"
         SetOutPath "$INSTDIR\lib"
-        File /r "${KDE4PATH}\lib\*.*"
+        File /r "${BUNDLEPATH}\lib\*.*"
         ;SetOutPath "$INSTDIR\manifest"
-        ;File /r "${KDE4PATH}\manifest\*.*"
+        ;File /r "${BUNDLEPATH}\manifest\*.*"
         SetOutPath "$INSTDIR\phrasebooks"
-        File /r "${KDE4PATH}\phrasebooks\*.*"
+        File /r "${BUNDLEPATH}\phrasebooks\*.*"
         SetOutPath "$INSTDIR\plugins"
-        File /r "${KDE4PATH}\plugins\*.*"
+        File /r "${BUNDLEPATH}\plugins\*.*"
         ;SetOutPath "$INSTDIR\scripts"
-        ;File /r "${KDE4PATH}\scripts\*.*"
+        ;File /r "${BUNDLEPATH}\scripts\*.*"
         SetOutPath "$INSTDIR\share"
-        File /r "${KDE4PATH}\share\*.*"
+        File /r "${BUNDLEPATH}\share\*.*"
         SetOutPath "$INSTDIR\translations"
-        File /r "${KDE4PATH}\translations\*.*"
+        File /r "${BUNDLEPATH}\translations\*.*"
         ;SetOutPath "$INSTDIR\vad"
-        ;File /r "${KDE4PATH}\vad\*.*"
+        ;File /r "${BUNDLEPATH}\vad\*.*"
         ;SetOutPath "$INSTDIR\vsp"
-        ;File /r "${KDE4PATH}\vsp\*.*"
+        ;File /r "${BUNDLEPATH}\vsp\*.*"
         ;SetOutPath "$INSTDIR\xdg"
-        ;File /r "${KDE4PATH}\xdg\*.*"
+        ;File /r "${BUNDLEPATH}\xdg\*.*"
 
         ;Store installation folder
 
