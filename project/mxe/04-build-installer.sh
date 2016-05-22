@@ -90,6 +90,14 @@ echo -e "\n---------- Strip symbols in binary files\n"
 find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 
+#################################################################################################
+# Build NSIS installer.
+
+echo -e "\n---------- Build NSIS installer\n"
+
+cd installer
+$MXE_INSTALL_PREFIX/bin/makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
+
 exit
 
 #################################################################################################

@@ -14,7 +14,7 @@
  ; VERSION  : the digiKam version string.
  ; BUNDLEPATH : the path where whole digiKam bundle is installed.
  ;
- ; Example: makensis.exe /DVERSION=5.0.0 /DBUNDLEPATH=../bundle digikam.nsi
+ ; Example: makensis.exe -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
  ;
  ; Extra NSIS plugins to install in order to run this script :
  ;
