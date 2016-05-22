@@ -146,7 +146,7 @@ ORIG_WD="`pwd`"
 
 if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
     echo "Packages CLI tools are not installed"
-    echo "See (http://s.sudre.free.fr/Software/Packages/about.html for details."
+    echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
     exit 1
 else
     echo "Check Packages CLI tools passed..."
