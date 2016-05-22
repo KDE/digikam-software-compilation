@@ -43,7 +43,6 @@ MXE_PACKAGES="gcc \
               freeglut \
               opencv \
               dbus \
-              nsis \
               gst-plugins-base \
               gst-plugins-bad \
               gst-plugins-good \

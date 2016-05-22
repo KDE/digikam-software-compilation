@@ -2,6 +2,7 @@
 
 # Script to bundle data using previously-built KDE and digiKam installation
 # and create a Windows installer file with NSIS application
+# Dependency : NSIS makensis program for Linux.
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
@@ -96,24 +97,29 @@ find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS
 echo -e "\n---------- Build NSIS installer\n"
 
 cd installer
-$MXE_INSTALL_PREFIX/bin/makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
 
-exit
+if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
+    TARGET_INSTALLER=digiKam-installer-$DK_VERSION-win32.exe
+else
+    TARGET_INSTALLER=digiKam-installer-$DK_VERSION-win64.exe
+fi
+
+makensis -DVERSION=$DK_VERSION -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
-# Show resume information and future instructions to host PKG file to KDE server
+# Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DIGIKAM_VERSION\n"
+echo -e "\n---------- Compute package checksums for digiKam $DK_VERSION\n"
 
-echo "File       : $TARGET_PKG_FILE"
+echo    "File       : $TARGET_INSTALLER"
 echo -n "Size       : "
-du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+du -h "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
-md5 -q "$TARGET_PKG_FILE"
+md5sum -q "$TARGET_INSTALLER"
 echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+shasum -a1 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
-shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+shasum -a256 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD

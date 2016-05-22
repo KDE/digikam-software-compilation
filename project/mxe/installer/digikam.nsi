@@ -7,14 +7,15 @@
  ; Description : Null Soft windows installer based for digiKam
  ;
  ; Copyright (C) 2010      by Julien Narboux <julien at narboux dot fr>
- ; Copyright (C) 2010-2016 by Gilles Caulier <caulier dot gilles at gmail dot com>
  ; Copyright (C) 2011-2014 by Ananta Palani <anantapalani at gmail dot com>
+ ; Copyright (C) 2010-2016 by Gilles Caulier <caulier dot gilles at gmail dot com>
  ;
  ; Script arguments:
- ; VERSION  : the digiKam version string.
+ ; VERSION    : the digiKam version as string.
  ; BUNDLEPATH : the path where whole digiKam bundle is installed.
+ ; OUTPUT     : the output installer file name as string.
  ;
- ; Example: makensis.exe -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
+ ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle -DARCH=win32 digikam.nsi
  ;
  ; Extra NSIS plugins to install in order to run this script :
  ;
@@ -54,7 +55,7 @@
     !define PRODUCT_HOMEPAGE "http://www.digikam.org"
     !define SUPPORT_HOMEPAGE "http://www.digikam.org/support"
     !define ABOUT_HOMEPAGE "http://www.digikam.org/about"
-    !define OUTFILE "${MY_PRODUCT}-installer-${VERSION}-win32.exe"
+    !define OUTFILE "${OUTPUT}"
     !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
     !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
 
@@ -92,10 +93,12 @@
     ${StrStr}
     ${StrStrAdv}
 
+    !addplugindir "./plugins"
+
     ;Requires Registry plugin :
     ;http://nsis.sourceforge.net/Registry_plug-in
 
-    !include "Registry.nsh"
+    !include "./plugins/Registry.nsh"
 
     ;-------------------------------------------
 
@@ -147,7 +150,6 @@
 
         ;Run the uninstaller
 
-        ;uninst:
         ClearErrors
 
         IfSilent 0 notSilent
@@ -259,7 +261,9 @@
 
         ${If} $0 == 1
 
-            ;TODO: consider adding a RunOnce entry for the installer to HKCU instead of telling the user they need to run the installer themselves (can't add to HKLM because basic user wouldn't have access, only admins do) - this would require using the UAC plugin to handle elevation by starting as a normal user, elevating, and then dropping back to normal when writing to HKCU
+            ;TODO: consider adding a RunOnce entry for the installer to HKCU instead of telling the user they need to run the installer
+            ;themselves (can't add to HKLM because basic user wouldn't have access, only admins do).
+            ;this would require using the UAC plugin to handle elevation by starting as a normal user, elevating, and then dropping back to normal when writing to HKCU
             ;TODO: need to internationalize string (see VLC / clementine / etc)
 
             MessageBox MB_YESNO|MB_ICONSTOP|MB_TOPMOST|MB_SETFOREGROUND "You must reboot to complete uninstallation of a previous install of ${MY_PRODUCT} before ${MY_PRODUCT} ${VERSION} can be installed.$\r$\n$\r$\n\
@@ -414,57 +418,54 @@
         ;Copy only required directories
         ;The SetOutPath is required because otherwise NSIS will assume all files are
         ;in the same folder even though they are sourced from different folders
-        ;The \*.* is required for File /r because without it, NSIS would add every 
+        ;The \*.* is required for File /r because without it, NSIS would add every
         ;folder with the name 'bin' in all subdirectories of ${BUNDLEPATH}
 
-        SetOutPath "$INSTDIR\bin"
+        SetOutPath "$INSTDIR\"
+        File /r "${BUNDLEPATH}\*.dll"
+        File /r "${BUNDLEPATH}\*.exe"
+        File /r "${BUNDLEPATH}\*.conf"
 
-        ;Microsoft does not allow debug libraries to be redistributed, so compile
-        ;using one of the release modes to ensure the *d.dll are not required
+        SetOutPath "$INSTDIR\data"
+        File /r "${BUNDLEPATH}\data\*.*"
 
-        File "${MSVCRuntimePath}\msvcp100.dll"
-        File "${MSVCRuntimePath}\msvcr100.dll"
-        File "${MSVCOpenMPPath}\vcomp100.dll"
-        ;File "${MSVCRuntimePath}\msvcp100d.dll"
-        ;File "${MSVCRuntimePath}\msvcr100d.dll"
-        ;File "${MSVCOpenMPPath}\vcomp100d.dll"
-        File /r "${BUNDLEPATH}\bin\*.*"
-        ;SetOutPath "$INSTDIR\certs"
-        ;File /r "${BUNDLEPATH}\certs\*.*"
-        ;SetOutPath "$INSTDIR\data"
-        ;File /r "${BUNDLEPATH}\data\*.*"
-        ;SetOutPath "$INSTDIR\database"
-        ;File /r "${BUNDLEPATH}\database\*.*"
-        ;SetOutPath "$INSTDIR\doc"
-        ;File /r "${BUNDLEPATH}\doc\*.*"
-        SetOutPath "$INSTDIR\etc"
-        File /r /x kdesettings.bat /x portage "${BUNDLEPATH}\etc\*.*"
-        ;SetOutPath "$INSTDIR\hosting"
-        ;File /r "${BUNDLEPATH}\hosting\*.*"
-        ;SetOutPath "$INSTDIR\imports"
-        ;File /r "${BUNDLEPATH}\imports\*.*"
-        SetOutPath "$INSTDIR\include"
-        File /r "${BUNDLEPATH}\include\*.*"
-        SetOutPath "$INSTDIR\lib"
-        File /r "${BUNDLEPATH}\lib\*.*"
-        ;SetOutPath "$INSTDIR\manifest"
-        ;File /r "${BUNDLEPATH}\manifest\*.*"
-        SetOutPath "$INSTDIR\phrasebooks"
-        File /r "${BUNDLEPATH}\phrasebooks\*.*"
         SetOutPath "$INSTDIR\plugins"
         File /r "${BUNDLEPATH}\plugins\*.*"
-        ;SetOutPath "$INSTDIR\scripts"
-        ;File /r "${BUNDLEPATH}\scripts\*.*"
-        SetOutPath "$INSTDIR\share"
-        File /r "${BUNDLEPATH}\share\*.*"
+
+        ;SetOutPath "$INSTDIR\share"
+        ;File /r "${BUNDLEPATH}\share\*.*"
+
         SetOutPath "$INSTDIR\translations"
         File /r "${BUNDLEPATH}\translations\*.*"
-        ;SetOutPath "$INSTDIR\vad"
-        ;File /r "${BUNDLEPATH}\vad\*.*"
-        ;SetOutPath "$INSTDIR\vsp"
-        ;File /r "${BUNDLEPATH}\vsp\*.*"
-        ;SetOutPath "$INSTDIR\xdg"
-        ;File /r "${BUNDLEPATH}\xdg\*.*"
+
+            ;;SetOutPath "$INSTDIR\certs"
+            ;;File /r "${BUNDLEPATH}\certs\*.*"
+            ;;SetOutPath "$INSTDIR\database"
+            ;;File /r "${BUNDLEPATH}\database\*.*"
+            ;;SetOutPath "$INSTDIR\doc"
+            ;;File /r "${BUNDLEPATH}\doc\*.*"
+            ;SetOutPath "$INSTDIR\etc"
+            ;File /r /x kdesettings.bat /x portage "${BUNDLEPATH}\etc\*.*"
+            ;;SetOutPath "$INSTDIR\hosting"
+            ;;File /r "${BUNDLEPATH}\hosting\*.*"
+            ;;SetOutPath "$INSTDIR\imports"
+            ;;File /r "${BUNDLEPATH}\imports\*.*"
+            ;SetOutPath "$INSTDIR\include"
+            ;File /r "${BUNDLEPATH}\include\*.*"
+            ;SetOutPath "$INSTDIR\lib"
+            ;File /r "${BUNDLEPATH}\lib\*.*"
+            ;;SetOutPath "$INSTDIR\manifest"
+            ;;File /r "${BUNDLEPATH}\manifest\*.*"
+            ;SetOutPath "$INSTDIR\phrasebooks"
+            ;File /r "${BUNDLEPATH}\phrasebooks\*.*"
+            ;;SetOutPath "$INSTDIR\scripts"
+            ;;File /r "${BUNDLEPATH}\scripts\*.*"
+            ;;SetOutPath "$INSTDIR\vad"
+            ;;File /r "${BUNDLEPATH}\vad\*.*"
+            ;;SetOutPath "$INSTDIR\vsp"
+            ;;File /r "${BUNDLEPATH}\vsp\*.*"
+            ;;SetOutPath "$INSTDIR\xdg"
+            ;;File /r "${BUNDLEPATH}\xdg\*.*"
 
         ;Store installation folder
 
@@ -496,6 +497,7 @@
         SectionGetSize SecDigiKam $0
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "EstimatedSize" "$0"
         pop $0
+
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "NoModify" "1"
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "NoRepair" "1"
         ;WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "VersionMajor" "2"
@@ -514,11 +516,13 @@
         SetOutPath "$INSTDIR\bin"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk" "$INSTDIR\bin\digikam.exe"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk" "$INSTDIR\bin\showfoto.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk" "$INSTDIR\bin\dngconverter.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk" "$INSTDIR\bin\expoblending.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk" "$INSTDIR\bin\panoramagui.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Scan.lnk" "$INSTDIR\bin\scangui.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk" "$INSTDIR\bin\systemsettings.exe"
+
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk" "$INSTDIR\bin\dngconverter.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk" "$INSTDIR\bin\expoblending.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk" "$INSTDIR\bin\panoramagui.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Scan.lnk" "$INSTDIR\bin\scangui.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk" "$INSTDIR\bin\systemsettings.exe"
+
         WriteINIStr "$SMPROGRAMS\$StartMenuFolder\The ${MY_PRODUCT} HomePage.url" "InternetShortcut" "URL" "${PRODUCT_HOMEPAGE}"
 
         !insertmacro MUI_STARTMENU_WRITE_END
@@ -536,26 +540,26 @@
         Delete "$INSTDIR\RELEASENOTES.txt"
         Delete "$INSTDIR\digikam-uninstaller.ico"
 
-        RMDir /r "$INSTDIR\kde4" ;remove any old installs
-        RMDir /r "$INSTDIR\bin"
-        RMDir /r "$INSTDIR\certs"
-        ;RMDir /r "$INSTDIR\data"
-        ;RMDir /r "$INSTDIR\database"
-        ;RMDir /r "$INSTDIR\doc"
-        RMDir /r "$INSTDIR\etc"
-        RMDir /r "$INSTDIR\hosting"
-        RMDir /r "$INSTDIR\imports"
-        RMDir /r "$INSTDIR\include"
-        RMDir /r "$INSTDIR\lib"
-        ;RMDir /r "$INSTDIR\manifest"
-        RMDir /r "$INSTDIR\phrasebooks"
+        RMDir /r "$INSTDIR\"
+        RMDir /r "$INSTDIR\data"
         RMDir /r "$INSTDIR\plugins"
-        ;RMDir /r "$INSTDIR\scripts"
-        RMDir /r "$INSTDIR\share"
+        ;RMDir /r "$INSTDIR\share"
         RMDir /r "$INSTDIR\translations"
-        ;RMDir /r "$INSTDIR\vad"
-        ;RMDir /r "$INSTDIR\vsp"
-        RMDir /r "$INSTDIR\xdg"
+
+            ;RMDir /r "$INSTDIR\certs"
+            ;;RMDir /r "$INSTDIR\database"
+            ;;RMDir /r "$INSTDIR\doc"
+            ;RMDir /r "$INSTDIR\etc"
+            ;RMDir /r "$INSTDIR\hosting"
+            ;RMDir /r "$INSTDIR\imports"
+            ;RMDir /r "$INSTDIR\include"
+            ;RMDir /r "$INSTDIR\lib"
+            ;;RMDir /r "$INSTDIR\manifest"
+            ;RMDir /r "$INSTDIR\phrasebooks"
+            ;;RMDir /r "$INSTDIR\scripts"
+            ;;RMDir /r "$INSTDIR\vad"
+            ;;RMDir /r "$INSTDIR\vsp"
+            ;RMDir /r "$INSTDIR\xdg"
 
         ;Do not do a recursive removal of $INSTDIR because user may have accidentally installed into system critical directory!
 
@@ -569,12 +573,14 @@
         Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk"
         Delete "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk"
         Delete "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk"
-        Delete "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk"
-        Delete "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk"
-        Delete "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk"
-        Delete "$SMPROGRAMS\$StartMenuFolder\Scan.lnk"
-        Delete "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk"
         Delete "$SMPROGRAMS\$StartMenuFolder\The ${MY_PRODUCT} HomePage.url"
+
+            ;Delete "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk"
+            ;Delete "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk"
+            ;Delete "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk"
+            ;Delete "$SMPROGRAMS\$StartMenuFolder\Scan.lnk"
+            ;Delete "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk"
+
         RMDir /r "$SMPROGRAMS\$StartMenuFolder"
 
         ;Remove registry entries
