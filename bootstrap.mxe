@@ -6,7 +6,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 # Arguments : $1 : MXE build root path to MXE bundle dir (default ./project/mxe/build).
-#             $2 : build type : 'debug' to hack (default), 'release' for production.
+#             $2 : build type : 'debugdull' to hack (default), 'release' for production, relwithdebinfo for packaging.
 #             $3 : MXE build target : x86_64-w64-mingw32.shared (default - 64 bits shared) or i686-w64-mingw32.shared (32 bits shared).
 #             $4 : Cmake extra configure options.
 
@@ -19,7 +19,7 @@ fi
 BUILD_TYPE=$2
 
 if [ "$BUILD_TYPE" = "" ]; then
-    BUILD_TYPE=debug
+    BUILD_TYPE=relwithdebinfo
 fi
 
 MXE_BUILD_TARGETS=$3
