@@ -425,6 +425,7 @@
         File /r "${BUNDLEPATH}\*.dll"
         File /r "${BUNDLEPATH}\*.exe"
         File /r "${BUNDLEPATH}\*.conf"
+        File /r "${BUNDLEPATH}\*.rcc"
 
         SetOutPath "$INSTDIR\data"
         File /r "${BUNDLEPATH}\data\*.*"

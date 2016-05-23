@@ -48,10 +48,28 @@ BUILDDIR="$PWD"
 # Directory where installer files are located
 BUNDLEDIR="$BUILDDIR/bundle"
 
+ORIG_WD="`pwd`"
+
+#################################################################################################
+# Build icons-set ressource
+
+echo -e "\n---------- Build icons-set ressource\n"
+
+cd $ORIG_WD/icon-rcc
+
+cmake -DCMAKE_INSTALL_PREFIX="$MXE_INSTALL_PREFIX" \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_COLOR_MAKEFILE=ON \
+      .
+
+make -j$CPU_CORES
+
 #################################################################################################
 # Copy files
 
 echo -e "\n---------- Copy files in bundle directory\n"
+
+cd $ORIG_WD
 
 if [ -d "$BUNDLEDIR" ]; then
     rm -fr $BUNDLEDIR
@@ -63,6 +81,7 @@ mkdir -p $BUNDLEDIR/translations
 mkdir -p $BUNDLEDIR/data
 
 cp    $BUILDDIR/qt.conf                                                 $BUNDLEDIR/
+cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/
 
 # Programs and shared libraries
 cp    $MXE_INSTALL_PREFIX/bin/showfoto.exe                              $BUNDLEDIR/
@@ -91,7 +110,6 @@ cp -r $MXE_INSTALL_PREFIX/lib/gstreamer-1.0/*.dll                       $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/icons                                   $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
 
 #################################################################################################
@@ -101,13 +119,13 @@ echo -e "\n---------- Strip symbols in binary files\n"
 
 find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
-
+exit
 #################################################################################################
 # Build NSIS installer.
 
 echo -e "\n---------- Build NSIS installer\n"
 
-cd installer
+cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
     TARGET_INSTALLER=digiKam-installer-$DK_VERSION-win32.exe
