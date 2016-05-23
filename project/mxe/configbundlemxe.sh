@@ -12,9 +12,9 @@ MXE_GIT_URL="https://github.com/mxe/mxe.git"
 
 #MXE_BUILD_TARGETS="x86_64-w64-mingw32.static"
 # 32 bits shared
-MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+#MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
 # 64 bits shared
-#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 
 MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
