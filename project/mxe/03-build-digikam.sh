@@ -74,6 +74,9 @@ echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
 rm -rf build
 mkdir build
 
+sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/" ./bootstrap.mxe > /dev/null
+sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/" ./bootstrap.mxe > /dev/null
+
 ./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo $MXE_BUILD_TARGETS -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
 
 if [ $? -ne 0 ]; then
