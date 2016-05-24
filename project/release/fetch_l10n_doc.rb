@@ -49,7 +49,7 @@ if !(File.exists?("doc-translated") && File.directory?("doc-translated"))
 end
 
 Dir.chdir( "doc-translated" )
-docmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
 i18nlangs.each_line do |lang|
     lang.chomp!()
     if (lang != nil && lang != "")
@@ -74,9 +74,10 @@ i18nlangs.each_line do |lang|
             makefile.close()
             #puts( "done.\n" )
         end
+
         Dir.chdir("..")
+        topmakefile << "add_subdirectory( #{lang} )\n"
     end
-    Dir.chdir("..")
 end
 
 puts ("\n")
