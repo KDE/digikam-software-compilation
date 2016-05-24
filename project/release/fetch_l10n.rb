@@ -45,7 +45,68 @@ else
     i18nlangs = `cat project/release/subdirs`
 end
 
-##########"
+##########################################################################################
+#EXTRACT TRANSLATED APPLICATION FILES
+
+if !(File.exists?("po") && File.directory?("po"))
+    Dir.mkdir( "po" )
+end
+Dir.chdir( "po" )
+topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+i18nlangs.each_line do |lang|
+    lang.chomp!()
+    if (lang != nil && lang != "")
+        if !(File.exists?(lang) && File.directory?(lang))
+            Dir.mkdir(lang)
+        end
+        Dir.chdir(lang)
+        for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googledrive','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
+
+            puts "Copying #{lang}'s #{part} over..  "
+            if isWindows
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
+            else
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+            end
+
+            if FileTest.size( "#{part}.po" ) == 0
+                File.delete( "#{part}.po" )
+                puts "Delete File #{part}.po"
+            end
+    
+            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+            makefile << "file(GLOB _po_files *.po)\n"
+            makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )\n"
+            makefile.close()
+    
+            puts( "done.\n" )
+        end
+    
+        # libkvkontakte is in extragear-libs.
+        for part in ['libkvkontakte']
+            puts "Copying #{lang}'s #{part} over..  "
+            if isWindows
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
+            else
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+            end
+
+            if FileTest.size( "#{part}.po" ) == 0
+                File.delete( "#{part}.po" )
+                puts "Delete File #{part}.po"
+            end
+    
+            puts( "done.\n" )
+        end
+
+        Dir.chdir("..")
+        topmakefile << "add_subdirectory( #{lang} )\n"
+    end
+end
+
+##########################################################################################
+#EXTRACT TRANSLATED DOCUMENTATION FILES
+
 if !(File.exists?("doc-translated") && File.directory?("doc-translated"))
     Dir.mkdir( "doc-translated" )
 end
@@ -73,105 +134,11 @@ i18nlangs.each_line do |lang|
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
-	    puts( "done.\n" )
+            puts( "done.\n" )
         end
         Dir.chdir("..")
     end
     Dir.chdir("..")
-end
-
-#################
-
-if !(File.exists?("po") && File.directory?("po"))
-    Dir.mkdir( "po" )
-end
-Dir.chdir( "po" )
-topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-i18nlangs.each_line do |lang|
-    lang.chomp!()
-    if (lang != nil && lang != "")
-        if !(File.exists?(lang) && File.directory?(lang))
-            Dir.mkdir(lang)
-        end
-        Dir.chdir(lang)
-        for part in ['digikam','kipiplugin_acquireimages','kipiplugin_advancedslideshow','kipiplugin_batchprocessimages','kipiplugin_calendar','kipiplugin_dngconverter','kipiplugin_expoblending','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickrexport','kipiplugin_galleryexport','kipiplugin_gpssync','kipiplugin_htmlexport','kipiplugin_imageviewer','kipiplugin_ipodexport','kipiplugin_jpeglossless','kipiplugin_kioexportimport','kipiplugin_metadataedit','kipiplugin_picasawebexport','kipiplugin_piwigoexport','kipiplugin_printimages','kipiplugin_rawconverter','kipiplugin_removeredeyes','kipiplugin_sendimages','kipiplugin_shwup','kipiplugin_smug','kipiplugins','kipiplugin_timeadjust', 'kipiplugin_debianscreenshots', 'kipiplugin_dlnaexport', 'kipiplugin_dropbox', 'kipiplugin_googledrive', 'kipiplugin_imageshackexport', 'kipiplugin_imgurexport', 'kipiplugin_jalbumexport', 'kipiplugin_kmlexport', 'kipiplugin_kopete', 'kipiplugin_panorama', 'kipiplugin_photivointegration', 'kipiplugin_photolayouteditor', 'kipiplugin_rajceexport', 'kipiplugin_videoslideshow', 'kipiplugin_vkontakte', 'kipiplugin_wallpaper', 'kipiplugin_wikimedia', 'kipiplugin_yandexfotki' ]
-
-    # Do not include kipiplugin_wallpaper for now as the plugin is disable.
-            puts "Copying #{lang}'s #{part} over..  "
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
-            else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
-            end
-
-            if FileTest.size( "#{part}.po" ) == 0
-                File.delete( "#{part}.po" )
-                puts "Delete File #{part}.po"
-            end
-    
-            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-            makefile << "file(GLOB _po_files *.po)\n"
-            makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )\n"
-            makefile.close()
-    
-            puts( "done.\n" )
-        end
-    
-         # we add the translation for kgeomap which is in extragear-libs
-        for part in ['libkgeomap']
-            puts "Copying #{lang}'s #{part} over..  "
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
-            else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
-            end
-
-            if FileTest.size( "#{part}.po" ) == 0
-                File.delete( "#{part}.po" )
-                puts "Delete File #{part}.po"
-            end
-
-            puts( "done.\n" )
-        end
-    
-        # libkvkontakte is in kdereview but will be moved soon.
-        for part in ['libkvkontakte']
-            puts "Copying #{lang}'s #{part} over..  "
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po > #{part}.po `
-            else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
-            end
-
-            if FileTest.size( "#{part}.po" ) == 0
-                File.delete( "#{part}.po" )
-                puts "Delete File #{part}.po"
-            end
-    
-            puts( "done.\n" )
-        end
-
-        for part in ['libkipi']
-          puts "Copying #{lang}'s #{part} over..  "
-          if isWindows
-            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdegraphics/#{part}.po > #{part}.po `
-          else
-            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdegraphics/#{part}.po 2> /dev/null | tee #{part}.po `
-          end
-          if FileTest.size( "#{part}.po" ) == 0
-            File.delete( "#{part}.po" )
-            puts "Delete File #{part}.po"
-          end
-
-          puts( "done.\n" )
-        end
-
-        Dir.chdir("..")
-        topmakefile << "add_subdirectory( #{lang} )\n"
-    end
 end
 
 puts "\n"
