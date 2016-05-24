@@ -76,7 +76,7 @@ i18nlangs.each_line do |lang|
 
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "file(GLOB _po_files *.po)\n"
-            makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} ${_po_files} )\n"
+            makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES ${_po_files} )\n"
             makefile.close()
 
             puts( "done.\n" )
