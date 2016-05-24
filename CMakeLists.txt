@@ -67,6 +67,8 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
                             ERROR_QUIET)
             message(STATUS "Application translation files extraction done.")
 
+        endif()
+
         if(DIGIKAMSC_CHECKOUT_DOC)
 
             message(STATUS "Extract documentation translation files from KDE repositories. Please wait, it can take a while...")
@@ -75,6 +77,8 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
                             OUTPUT_QUIET
                             ERROR_QUIET)
             message(STATUS "Documentation translation files extraction done.")
+
+        endif()
 
     else()
 
