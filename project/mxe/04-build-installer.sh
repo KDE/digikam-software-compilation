@@ -82,10 +82,17 @@ mkdir -p $BUNDLEDIR/data
 cp    $BUILDDIR/qt.conf                                                 $BUNDLEDIR/
 cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/
 
-# Programs and shared libraries
+# Programs
 cp    $MXE_INSTALL_PREFIX/bin/showfoto.exe                              $BUNDLEDIR/
 cp    $MXE_INSTALL_PREFIX/bin/digikam.exe                               $BUNDLEDIR/
 cp    $MXE_INSTALL_PREFIX/bin/kbuildsycoca5.exe                         $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/kioexec.exe                               $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/kioslave.exe                              $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/dbus-daemon.exe                           $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/dbus-lauch.exe                            $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/dbus-send.exe                             $BUNDLEDIR/
+
+# Shared libraries
 cp    $MXE_INSTALL_PREFIX/bin/*.dll                                     $BUNDLEDIR/
 find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;
 
