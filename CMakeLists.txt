@@ -110,6 +110,28 @@ endif()
 
 ############################################################################################################################################
 
+if(DIGIKAMSC_COMPILE_DIGIKAM)
+    if(NOT EXISTS ${CMAKE_SOURCE_DIR}/core)
+        message(STATUS "digiKam core will be compiled.................. NO (source code not available)")
+        set (DIGIKAMSC_COMPILE_DIGIKAM OFF)
+    else()
+        message(STATUS "digiKam core will be compiled.................. YES")
+    endif()
+else()
+    message(STATUS "digiKam core will be compiled.................. NO")
+endif()
+
+if(DIGIKAMSC_COMPILE_KIPIPLUGINS)
+    if(NOT EXISTS ${CMAKE_SOURCE_DIR}/extra/kipi-plugins)
+        message(STATUS "Kipiplugins will be compiled................... NO (source code not available)")
+        set (DIGIKAMSC_COMPILE_KIPIPLUGINS OFF)
+    else()
+        message(STATUS "Kipiplugins will be compiled................... YES")
+    endif()
+else()
+    message(STATUS "Kipiplugins will be compiled................... NO")
+endif()
+
 if(DIGIKAMSC_COMPILE_LIBKIPI)
     if(NOT EXISTS ${CMAKE_SOURCE_DIR}/extra/libkipi)
         message(STATUS "Local shared libkipi will be compiled.......... NO (library source code not available)")
