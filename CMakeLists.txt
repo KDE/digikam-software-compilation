@@ -62,9 +62,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
             message(STATUS "Extract application translation files from KDE repositories. Please wait, it can take a while...")
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb"
-                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                            OUTPUT_QUIET
-                            ERROR_QUIET)
+                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
             message(STATUS "Application translation files extraction done.")
 
         endif()
@@ -73,9 +71,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
             message(STATUS "Extract documentation translation files from KDE repositories. Please wait, it can take a while...")
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_doc.rb"
-                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                            OUTPUT_QUIET
-                            ERROR_QUIET)
+                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
             message(STATUS "Documentation translation files extraction done.")
 
         endif()
