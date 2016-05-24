@@ -76,7 +76,6 @@ if [ -d "$BUNDLEDIR" ]; then
     mkdir $BUNDLEDIR
 fi
 
-mkdir -p $BUNDLEDIR/share
 mkdir -p $BUNDLEDIR/translations
 mkdir -p $BUNDLEDIR/data
 

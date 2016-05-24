@@ -433,12 +433,11 @@
         SetOutPath "$INSTDIR\plugins"
         File /r "${BUNDLEPATH}\plugins\*.*"
 
-        ;SetOutPath "$INSTDIR\share"
-        ;File /r "${BUNDLEPATH}\share\*.*"
-
         SetOutPath "$INSTDIR\translations"
         File /r "${BUNDLEPATH}\translations\*.*"
 
+            ;SetOutPath "$INSTDIR\share"
+            ;File /r "${BUNDLEPATH}\share\*.*"
             ;;SetOutPath "$INSTDIR\certs"
             ;;File /r "${BUNDLEPATH}\certs\*.*"
             ;;SetOutPath "$INSTDIR\database"
@@ -547,6 +546,7 @@
         ;RMDir /r "$INSTDIR\share"
         RMDir /r "$INSTDIR\translations"
 
+            ;RMDir /r "$INSTDIR\share"
             ;RMDir /r "$INSTDIR\certs"
             ;;RMDir /r "$INSTDIR\database"
             ;;RMDir /r "$INSTDIR\doc"
