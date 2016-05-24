@@ -20,4 +20,6 @@ if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(libkvkontakte)
 endif()
 
-add_subdirectory(kipi-plugins)
+if(DIGIKAMSC_COMPILE_KIPIPLUGINS)
+    add_subdirectory(kipi-plugins)
+endif()
