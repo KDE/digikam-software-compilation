@@ -89,7 +89,7 @@ cp    $MXE_INSTALL_PREFIX/bin/kbuildsycoca5.exe                         $BUNDLED
 cp    $MXE_INSTALL_PREFIX/bin/kioexec.exe                               $BUNDLEDIR/
 cp    $MXE_INSTALL_PREFIX/bin/kioslave.exe                              $BUNDLEDIR/
 cp    $MXE_INSTALL_PREFIX/bin/dbus-daemon.exe                           $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/dbus-lauch.exe                            $BUNDLEDIR/
+cp    $MXE_INSTALL_PREFIX/bin/dbus-launch.exe                           $BUNDLEDIR/
 cp    $MXE_INSTALL_PREFIX/bin/dbus-send.exe                             $BUNDLEDIR/
 
 # Shared libraries
