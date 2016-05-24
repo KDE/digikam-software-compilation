@@ -214,8 +214,11 @@ if(DIGIKAMSC_COMPILE_DIGIKAM)
     add_subdirectory(core)
 endif()
 
-if(DIGIKAMSC_COMPILE_PO)
+if(DIGIKAMSC_COMPILE_PO OR DIGIKAMSC_COMPILE_DOC)
     find_package(Gettext REQUIRED)
+endif()
+
+if(DIGIKAMSC_COMPILE_PO)
     add_subdirectory(po)
 endif()
 
