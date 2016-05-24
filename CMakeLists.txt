@@ -215,7 +215,6 @@ if(DIGIKAMSC_COMPILE_DIGIKAM)
 endif()
 
 if(DIGIKAMSC_COMPILE_PO)
-    find_package(Msgfmt  REQUIRED)
     find_package(Gettext REQUIRED)
     add_subdirectory(po)
 endif()
