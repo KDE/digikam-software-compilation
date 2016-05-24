@@ -120,8 +120,9 @@ Packaging options:
 "-DDIGIKAMSC_COMPILE_DIGIKAM=ON"           Build digiKam core.
 "-DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON"       Build kipi-plugins.
 
+"-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract application translation files from KDE repositories.
+"-DDIGIKAMSC_CHECKOUT_DOC=ON"              Extract documentation translation files from KDE repositories.
 "-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook files.
-"-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract po files from KDE repositories using ./project/release/fetch_l10n.rb Ruby script.
 "-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
 
 Developers only options:

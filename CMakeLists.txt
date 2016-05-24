@@ -35,7 +35,8 @@ include(FeatureSummary)
 
 # doc and translations options
 
-option(DIGIKAMSC_CHECKOUT_PO             "Checkout translations files from KDE repositories (default=OFF)"                        OFF)
+option(DIGIKAMSC_CHECKOUT_PO             "Checkout application translations files from KDE repositories (default=OFF)"            OFF)
+option(DIGIKAMSC_CHECKOUT_DOC            "Checkout documentation translations files from KDE repositories (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
 
@@ -51,19 +52,34 @@ option(DIGIKAMSC_COMPILE_KIPIPLUGINS     "Build kipi-plugins (default=ON)"      
 
 ###########################################################################################################################################
 
-if(DIGIKAMSC_CHECKOUT_PO)
+if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
     find_package(Ruby)
 
     if(RUBY_EXECUTABLE)
-        message(STATUS "Extract translation files from KDE repositories. Please wait, it can take a while...")
-        execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n.rb"
-                        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-                        OUTPUT_QUIET
-                        ERROR_QUIET)
-        message(STATUS "Translation files extraction done.")
+
+        if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
+
+            message(STATUS "Extract application translation files from KDE repositories. Please wait, it can take a while...")
+            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb"
+                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+                            OUTPUT_QUIET
+                            ERROR_QUIET)
+            message(STATUS "Application translation files extraction done.")
+
+        if(DIGIKAMSC_CHECKOUT_DOC)
+
+            message(STATUS "Extract documentation translation files from KDE repositories. Please wait, it can take a while...")
+            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_doc.rb"
+                            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+                            OUTPUT_QUIET
+                            ERROR_QUIET)
+            message(STATUS "Documentation translation files extraction done.")
+
     else()
+
         message(STATUS "Could not find Ruby to extract translation files")
+
     endif()
 
 endif()
@@ -135,9 +151,15 @@ else()
 endif()
 
 if(DIGIKAMSC_CHECKOUT_PO)
-    message(STATUS "Extract translations files..................... YES")
+    message(STATUS "Extract application translations files......... YES")
 else()
-    message(STATUS "Extract translations files..................... NO")
+    message(STATUS "Extract application translations files......... NO")
+endif()
+
+if(DIGIKAMSC_CHECKOUT_DOC)
+    message(STATUS "Extract documentation translations files....... YES")
+else()
+    message(STATUS "Extract documentation translations files....... NO")
 endif()
 
 if(DIGIKAMSC_COMPILE_PO)
@@ -166,13 +188,13 @@ if(DIGIKAMSC_COMPILE_DIGIKAM)
     add_subdirectory(core)
 endif()
 
-if(DIGIKAMSC_COMPILE_DOC)
-    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
-    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc-translated)
-endif()
-
 if(DIGIKAMSC_COMPILE_PO)
     find_package(Msgfmt  REQUIRED)
     find_package(Gettext REQUIRED)
     add_subdirectory(po)
+endif()
+
+if(DIGIKAMSC_COMPILE_DOC)
+    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
+    ECM_OPTIONAL_ADD_SUBDIRECTORY(doc-translated)
 endif()

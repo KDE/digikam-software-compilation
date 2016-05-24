@@ -74,6 +74,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DOpenCV_DIR=${MXE_INSTALL_PREFIX}/lib \
                            -DBUILD_TESTING=ON \
                            -DDIGIKAMSC_CHECKOUT_PO=OFF \
+                           -DDIGIKAMSC_CHECKOUT_DOC=OFF \
                            -DDIGIKAMSC_COMPILE_PO=OFF \
                            -DDIGIKAMSC_COMPILE_DOC=OFF \
                            -DDIGIKAMSC_COMPILE_DIGIKAM=ON \
