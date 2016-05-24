@@ -4,8 +4,11 @@
 # Requires ruby version >= 1.9
 # 
 # originally a Ruby script for generating Amarok tarball releases from KDE SVN
-# (c) 2005 Mark Kretschmann <kretschmann@kde.org>
-# (c) 2014 Nicolas Lécureuil <kde@nicolaslecureuil.fr>
+#
+# Copyright (c)      2005, Mark Kretschmann, <kretschmann at kde dot org>
+# Copyright (c)      2014, Nicolas Lécureuil, <kde at nicolaslecureuil dot fr>
+# Copyright (c) 2010-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
 # Some parts of this code taken from cvs2dist
 # License: GNU General Public License V2
 
@@ -59,9 +62,9 @@ i18nlangs.each_line do |lang|
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
             puts "Copying #{lang}'s #{part}.docbook over..  "
             if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
             else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
             end
             if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
                 File.delete( "#{part}.docbook" )
@@ -96,10 +99,10 @@ i18nlangs.each_line do |lang|
     # Do not include kipiplugin_wallpaper for now as the plugin is disable.
             puts "Copying #{lang}'s #{part} over..  "
             if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
             else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
             end
 
             if FileTest.size( "#{part}.po" ) == 0
@@ -119,10 +122,10 @@ i18nlangs.each_line do |lang|
         for part in ['libkgeomap']
             puts "Copying #{lang}'s #{part} over..  "
             if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
             else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
             end
 
             if FileTest.size( "#{part}.po" ) == 0
@@ -137,10 +140,10 @@ i18nlangs.each_line do |lang|
         for part in ['libkvkontakte']
             puts "Copying #{lang}'s #{part} over..  "
             if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdereview/#{part}.po > #{part}.po `
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po > #{part}.po `
             else
-                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
+                #`svn cat #{protocol}://#{user}@svn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdereview/#{part}.po 2> /dev/null | tee #{part}.po `
             end
 
             if FileTest.size( "#{part}.po" ) == 0
@@ -154,9 +157,9 @@ i18nlangs.each_line do |lang|
         for part in ['libkipi']
           puts "Copying #{lang}'s #{part} over..  "
           if isWindows
-            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdegraphics/#{part}.po > #{part}.po `
+            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdegraphics/#{part}.po > #{part}.po `
           else
-            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kde4/#{lang}/messages/kdegraphics/#{part}.po 2> /dev/null | tee #{part}.po `
+            `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/kdegraphics/#{part}.po 2> /dev/null | tee #{part}.po `
           end
           if FileTest.size( "#{part}.po" ) == 0
             File.delete( "#{part}.po" )
