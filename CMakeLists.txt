@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2010-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2010-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -45,6 +45,9 @@ option(DIGIKAMSC_COMPILE_LIBKIPI         "Build local libkipi library instead of
 option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
 option(DIGIKAMSC_COMPILE_LIBKVKONTAKTE   "Build local libkvkontakte library instead of using distributed files (default=OFF)"     OFF)
+
+option(DIGIKAMSC_COMPILE_DIGIKAM         "Build digiKam core (default=ON)"                                                        ON)
+option(DIGIKAMSC_COMPILE_KIPIPLUGINS     "Build kipi-plugins (default=ON)"                                                        ON)
 
 ###########################################################################################################################################
 
@@ -158,7 +161,10 @@ endif()
 #############################################################################################
 
 add_subdirectory(extra)
-add_subdirectory(core)
+
+if(DIGIKAMSC_COMPILE_DIGIKAM)
+    add_subdirectory(core)
+endif()
 
 if(DIGIKAMSC_COMPILE_DOC)
     ECM_OPTIONAL_ADD_SUBDIRECTORY(doc)
