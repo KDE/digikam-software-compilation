@@ -122,8 +122,8 @@ Packaging options:
 
 "-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract application translation files from KDE repositories.
 "-DDIGIKAMSC_CHECKOUT_DOC=ON"              Extract documentation translation files from KDE repositories.
-"-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook files.
-"-DDIGIKAMSC_COMPILE_PO=ON"                Build translations files. It require to checkout po files before from KDE repositories.
+"-DDIGIKAMSC_COMPILE_DOC=ON"               Build handbook i18n files. It require to checkout documentation translations files before from KDE repositories.
+"-DDIGIKAMSC_COMPILE_PO=ON"                Build GUI i18n files. It require to checkout application translations files before from KDE repositories.
 
 Developers only options:
 
