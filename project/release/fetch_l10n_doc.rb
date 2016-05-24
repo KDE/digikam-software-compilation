@@ -34,10 +34,6 @@ end
 #user = `kdialog --inputbox "Your SVN user:"`.chomp()
 #protocol = `kdialog --radiolist "Do you use https or svn+ssh?" https https 0 "svn+ssh" "svn+ssh" 1`.chomp()
 
-puts "\n"
-puts "**** l10n ****"
-puts "\n"
-
 i18nlangs = []
 if isWindows
     i18nlangs = `type .\\project\\release\\subdirs`
@@ -57,12 +53,13 @@ docmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC
 i18nlangs.each_line do |lang|
     lang.chomp!()
     if (lang != nil && lang != "")
+        print("#{lang} ")
         if !(File.exists?(lang) && File.directory?(lang))
             Dir.mkdir(lang)
         end
         Dir.chdir(lang)
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
-            puts "Copying #{lang}'s #{part}.docbook over..  "
+            #puts "Copying #{lang}'s #{part}.docbook over..  "
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
             else
@@ -70,16 +67,16 @@ i18nlangs.each_line do |lang|
             end
             if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
                 File.delete( "#{part}.docbook" )
-                puts "Delete File #{part}.docbook"
+                #puts "Delete File #{part}.docbook"
             end
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
-            puts( "done.\n" )
+            #puts( "done.\n" )
         end
         Dir.chdir("..")
     end
     Dir.chdir("..")
 end
 
-puts "\n"
+puts ("\n")
