@@ -58,7 +58,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
     if(RUBY_EXECUTABLE)
 
-        if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
+        if(DIGIKAMSC_CHECKOUT_PO)
 
             message(STATUS "Extract application translation files from KDE repositories. Please wait, it can take a while...")
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb"
