@@ -193,6 +193,8 @@
     !define MUI_ICON "digikam-installer.ico"
     !define MUI_UNICON "digikam-uninstaller.ico"
     !define !define MUI_FINISHPAGE_RUN
+    !define MUI_FINISHPAGE_RUN
+    !define MUI_FINISHPAGE_RUN_TEXT "Read release notes"
     !define MUI_FINISHPAGE_RUN_FUNCTION functionFinishRun
     !define MUI_FINISHPAGE_LINK "Visit digiKam project website"
     !define MUI_FINISHPAGE_LINK_LOCATION "http://www.digikam.org"
