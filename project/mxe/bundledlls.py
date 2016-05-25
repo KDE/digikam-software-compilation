@@ -36,6 +36,8 @@ import argparse
 import shutil
 import string
 
+# -----------------------------------------------
+
 # The mingw pathes matches in MXE build directory
 default_path_prefixes = [ 
     os.getcwd() + "/build/usr/i686-w64-mingw32.shared/qt5/bin/", 
@@ -82,46 +84,51 @@ blacklist = [
     "msvfw32.dll",
 ]
 
+# -----------------------------------------------
 
 def find_full_path(filename, path_prefixes):
+
     path = None
-    print(filename)
+    #print(filename)
 
     for path_prefix in path_prefixes:
         path_candidate1 = os.path.join(path_prefix, filename)
-        print(path_candidate1)
+        #print(path_candidate1)
 
         if os.path.exists(path_candidate1):
             path = path_candidate1
-            print("Found")
+            #print("Found")
             break
 
         path_candidate2 = os.path.join(path_prefix, filename.lower())
-        print(path_candidate2)
+        #print(path_candidate2)
 
         if os.path.exists(path_candidate2):
             path = path_candidate2
-            print("Found")
+            #print("Found")
             break
 
     if path is None:
         raise RuntimeError(
             "Can't find " + filename + ". If it is an inbuilt Windows DLL, "
             "please add it to the blacklist variable in the script and send "
-            "a pull request!"
-        )
+            "a pull request!")
 
     return path
 
+# -----------------------------------------------
 
 def gather_deps(path, path_prefixes, seen):
-    ret = [path]
+
+    ret    = [path]
     output = subprocess.check_output(["objdump", "-p", path]).decode('utf-8').split("\n")
+
     for line in output:
+
         if not line.startswith("\tDLL Name: "):
             continue
 
-        dep = line.split("DLL Name: ")[1].strip()
+        dep  = line.split("DLL Name: ")[1].strip()
         ldep = dep.lower()
 
         print("Searching: " + ldep)
@@ -134,36 +141,41 @@ def gather_deps(path, path_prefixes, seen):
 
         dep_path = find_full_path(dep, path_prefixes)
         seen.extend([ldep])
-        subdeps = gather_deps(dep_path, path_prefixes, seen)
+        subdeps  = gather_deps(dep_path, path_prefixes, seen)
+
         ret.extend(subdeps)
 
     return ret
 
+# -----------------------------------------------
 
 def main():
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "exe_file",
-        help="EXE or DLL file that you need to bundle dependencies for"
+        help = "EXE or DLL file that you need to bundle dependencies for"
     )
     parser.add_argument(
         "--copy",
-        action="store_true",
-        help="In addition to printing out the dependencies, also copy them next to the exe_file"
+        action = "store_true",
+        help   = "In addition to printing out the dependencies, also copy them next to the exe_file"
     )
+
     parser.add_argument(
         "--upx",
-        action="store_true",
-        help="Only valid if --copy is provided. Run UPX on all the DLLs and EXE."
+        action = "store_true",
+        help   = "Only valid if --copy is provided. Run UPX on all the DLLs and EXE."
     )
+
     args = parser.parse_args()
 
     if args.upx and not args.copy:
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
 
-    print("Binary search pathes:")
-    for item in default_path_prefixes:
-        print(item)
+    #print("Binary search pathes:")
+    #for item in default_path_prefixes:
+    #    print(item)
 
     print("\n")
 
@@ -173,6 +185,7 @@ def main():
     print("\n".join(all_deps))
 
     if args.copy:
+
         print("Copying enabled, will now copy all dependencies next to the exe_file.\n")
 
         parent_dir = os.path.dirname(os.path.abspath(args.exe_file))
@@ -185,6 +198,7 @@ def main():
             if args.upx:
                 subprocess.call(["upx", target])
 
+# -----------------------------------------------
 
 if __name__ == "__main__":
     main()

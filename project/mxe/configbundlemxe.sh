@@ -8,14 +8,16 @@
 ########################################################################
 
 # MXE configuration
-MXE_GIT_URL="https://github.com/mxe/mxe.git"
 
-#MXE_BUILD_TARGETS="x86_64-w64-mingw32.static"
-# 32 bits shared
+#------------
+# IMPORTANT: Target Windows architecture to build target installer. Just comment unwanted one.
+# Windows 32 bits shared
 #MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
-# 64 bits shared
+# Windows 64 bits shared
 MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+#------------
 
+MXE_GIT_URL="https://github.com/mxe/mxe.git"
 MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
@@ -43,6 +45,7 @@ MXE_PACKAGES="gcc \
               qt5 \
              "
 
+#-------------------------------------------------------------------------------------------
 
 # KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
