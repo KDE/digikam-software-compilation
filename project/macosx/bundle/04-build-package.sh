@@ -80,7 +80,6 @@ lib/libexec \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
 libexec/qt5/plugins/printsupport/*.dylib \
-libexec/qt5/plugins/printsupport/*.dylib \
 libexec/qt5/plugins/platforms/*.dylib \
 libexec/qt5/plugins/mediaservice/*.dylib \
 libexec/qt5/plugins/iconengines/*.dylib \
