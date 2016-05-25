@@ -1,7 +1,7 @@
 RESUME
 ------
 Scripts to build binary digiKam installer for Windows under Linux using cross-compiler 
-envirronnement MXE and NSIS application.
+environnement MXE and NSIS application.
 
 AUTHORS
 -------
@@ -63,7 +63,15 @@ be run by the user (digiKam, Showfoto, etc). It use makensis CLI tool from NSIS
 application dedicated to build Windows installer. This one is available for Linux
 as Mingw package.
 
+* rll.py
+
+Run by 04-build-installer.sh. It is a python script that takes a list of binaries
+and libraries supplied by 04-build-installer.sh and recursively lists the dlls on
+which they depend, and their dependencies, etc...
+Adapted with minimal modification (mostly deleting stuff) from
+https://github.com/mpreisler/mingw-bundledlls
+
 LICENSES
 --------
-The scripts and other contents of this package that I have created are licensed
-licensed under the GNU General Public License version 2, or any later version.
+The scripts and other contents of this package are licensed
+under the GNU General Public License version 2, or any later version.

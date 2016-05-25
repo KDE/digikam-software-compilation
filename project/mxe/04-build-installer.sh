@@ -118,8 +118,8 @@ dbus-launch.exe \
 for app in $EXE_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
-    $ORIG_WD/bundledlls.py --copy $BUNDLEDIR/$app
-    
+    $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
+
 done
 
 # Plugins Shared libraries -----------------
