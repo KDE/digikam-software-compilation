@@ -1,8 +1,15 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
+# Python script that takes an EXE file, automatically figures out all the DLL dependencies,
+# and copies them next to the EXE.
+#
 # The MIT License (MIT)
 #
-# Copyright (c) 2015 Martin Preisler
+# Copyright (c) 2015 Martin Preisler <martin at preisler dot me>
+# Copyright (c) 2016 Gilles Caulier <caulier dot gilles at gmail dot com>
+#
+# Blog post         : https://martin.preisler.me/2015/03/mingw-bundledlls-automatically-bundle-dlls/
+# Github repository : https://github.com/mpreisler/mingw-bundledlls
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,16 +34,17 @@ import subprocess
 import os.path
 import argparse
 import shutil
+import string
 
-# The mingw path matches where Fedora 21 installs mingw32
+# The mingw pathes matches in MXE build directory
 default_path_prefixes = [ 
-    "./build/usr/i686-w64-mingw32.shared/qt5/bin/", 
-    "./build/usr/x86_64-w64-mingw32.shared/qt5/bin/",
-    "./build/usr/i686-w64-mingw32.shared/bin/",
-    "./build/usr/x86_64-w64-mingw32.shared/bin/",
+    os.getcwd() + "/build/usr/i686-w64-mingw32.shared/qt5/bin/", 
+    os.getcwd() + "/build/usr/x86_64-w64-mingw32.shared/qt5/bin/", 
+    os.getcwd() + "/build/usr/i686-w64-mingw32.shared/bin/", 
+    os.getcwd() + "/build/usr/x86_64-w64-mingw32.shared/bin/"
 ]
 
-# This blacklist may need extending
+# Blacklist of native Windows dlls (may need extending)
 blacklist = [
     "advapi32.dll",
     "kernel32.dll", 
@@ -65,17 +73,35 @@ blacklist = [
     "userenv.dll",
     "opengl32.dll",
     "secur32.dll",
+    "psapi.dll",
+    "wsock32.dll",
+    "setupapi.dll",
+    "avicap32.dll",
+    "avifil32.dll",
+    "comctl32.dll",
+    "msvfw32.dll",
 ]
 
 
 def find_full_path(filename, path_prefixes):
     path = None
-    #print(filename)
-    for path_prefix in path_prefixes:
-        path_candidate = os.path.join(path_prefix, filename)
+    print(filename)
 
-        if os.path.exists(path_candidate):
-            path = path_candidate
+    for path_prefix in path_prefixes:
+        path_candidate1 = os.path.join(path_prefix, filename)
+        print(path_candidate1)
+
+        if os.path.exists(path_candidate1):
+            path = path_candidate1
+            print("Found")
+            break
+
+        path_candidate2 = os.path.join(path_prefix, filename.lower())
+        print(path_candidate2)
+
+        if os.path.exists(path_candidate2):
+            path = path_candidate2
+            print("Found")
             break
 
     if path is None:
@@ -98,7 +124,8 @@ def gather_deps(path, path_prefixes, seen):
         dep = line.split("DLL Name: ")[1].strip()
         ldep = dep.lower()
 
-        print(ldep)
+        print("Searching: " + ldep)
+
         if ldep in blacklist:
             continue
 
@@ -133,6 +160,12 @@ def main():
 
     if args.upx and not args.copy:
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
+
+    print("Binary search pathes:")
+    for item in default_path_prefixes:
+        print(item)
+
+    print("\n")
 
     all_deps = set(gather_deps(args.exe_file, default_path_prefixes, []))
     all_deps.remove(args.exe_file)
