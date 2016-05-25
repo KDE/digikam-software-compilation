@@ -189,6 +189,8 @@
     !define MUI_ICON "digikam-installer.ico"
     !define MUI_UNICON "digikam-uninstaller.ico"
     !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\RELEASENOTES.txt"
+    !define MUI_FINISHPAGE_LINK "Visit digiKam project website"
+    !define MUI_FINISHPAGE_LINK_LOCATION "http://www.digikam.org"
 
     ;Variable for the folder of the start menu
 
