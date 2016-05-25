@@ -94,7 +94,7 @@ cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
 
 # Qt configuration
-cp    $BUILDDIR/qt.conf                                                 $BUNDLEDIR/
+cp    $BUILDDIR/data/qt.conf                                            $BUNDLEDIR/
 
 # Ressource icons-set
 cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/
