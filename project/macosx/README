@@ -4,10 +4,8 @@ Scripts to build binary digiKam packages for Mac OS X
 
 AUTHORS
 -------
-(c) 2015-2016 by :
-
-Shanti <listaccount at revenant dot org>
-Gilles Caulier <caulier dot gilles at gmail dot com>
+(c)      2015 by Shanti <listaccount at revenant dot org>
+(c) 2015-2016 by Gilles Caulier <caulier dot gilles at gmail dot com>
 
 DESCRIPTION
 -----------
@@ -27,16 +25,16 @@ which does the actual packaging of the files needed to install digiKam.
 
 HERE THERE BE DRAGONS
 ---------------------
-Use these scripts at your own risk.  For example, both scripts contain 
-"rm -rf" (to clear previous builds) -- a mistake could wipe your drive. There 
+Use these scripts at your own risk.  For example, both scripts contain
+"rm -rf" (to clear previous builds) -- a mistake could wipe your drive. There
 is little error checking or validation. I make no claims to be compentent at
-coding or packaging, or to the suitability or saftety of the scripts or 
+coding or packaging, or to the suitability or saftety of the scripts or
 software compiled/packaged using them.
 
 COMPONENTS
 ----------
 There are 4 scripts to be run by the user. 2 first ones installs
-MacPorts and all dependencies, next one digiKam, and last one makes a 
+MacPorts and all dependencies, next one digiKam, and last one makes a
 PKG binary installer for OSX.
 
 SCRIPT DESCRIPTIONS
@@ -75,7 +73,7 @@ scripts in digikam-package/package.
 
 The launcher applications:
      1) load dbus-session with launchctl if it isn't already loaded
-     2) launch kded4 if it isn't already running and
+     2) launch kded if it isn't already running and
      3) set "DYLD_IMAGE_SUFFIX=_debug" if the digikam port was built with  the
        +debug variant.
 

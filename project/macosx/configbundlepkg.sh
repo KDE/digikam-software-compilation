@@ -18,36 +18,15 @@ MP_BUILDTEMP=~/mptemp
 # Uncomment this line to force a specific version of Macports to use, else lastest will be used.
 #MP_VERSION="2.3.3"
 
-# Exiv2 tarball information
-EX_URL="http://www.exiv2.org"
-EX_BUILDTEMP=~/extemp
-#EX_VERSION=svn
-EX_VERSION=0.25
-
-# Lensfun tarball information
-LF_URL="http://sourceforge.net/projects/lensfun/files/"
-LF_BUILDTEMP=~/lftemp
-LF_VERSION=0.3.1
-
-# Libraw tarball information
-LR_URL="http://www.libraw.org/data"
-LR_BUILDTEMP=~/lrtemp
-LR_VERSION=0.17.0
-
-# OpenCV tarball information
-OC_URL="http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/"
-OC_BUILDTEMP=~/octemp
-OC_VERSION=3.1.0
-
-# Hugin tarball information
-HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
-HU_BUILDTEMP=~/hutemp
-HU_VERSION=2013.0
-
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.21
+KD_VERSION=5.22
+
+# KF5 extra applications tarball information
+KA_URL="http://download.kde.org/stable/applications/"
+KA_BUILDTEMP=~/kf5apptemp
+KA_VERSION=16.04.1
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
@@ -55,14 +34,16 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=git
 #DK_VERSION=5.0.0
 
+# Hugin tarball information
+HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
+HU_BUILDTEMP=~/hutemp
+HU_VERSION=2013.0
+
 # Option to silent operations while configuring, compiling and installing extra libraries.
 SILENT_OP=0
 
-# Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
+# Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
 # 0: use port file
 # 1: use tarball
-ENABLE_LIBRAW=0
-ENABLE_EXIV2=1
 ENABLE_LENSFUN=1
-ENABLE_OPENCV=0
 ENABLE_HUGIN=0

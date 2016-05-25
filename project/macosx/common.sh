@@ -252,29 +252,17 @@ fi
 # Install Macports core packages before to compile digiKam
 # See https://trac.macports.org/wiki/KDE for details
 # Possible arguments : 
-#     DISABLE_LIBRAW   : do not install LibRaw through Macports.
-#     DISABLE_EXIV2    : do not install LibExiv2 through Macports.
 #     DISABLE_LENSFUN  : do not install LibLensFun through Macports.
-#     DISABLE_OPENCV   : do not install LibOpenCV through Macports.
 #     CONTINUE_INSTALL : Continue aborted previous installation.
 #
 InstallCorePackages()
 {
 
-DISABLE_LIBRAW=0
-DISABLE_EXIV2=0
 DISABLE_LENSFUN=0
-DISABLE_OPENCV=0
 CONTINUE_INSTALL=0
 
 for i in "$@" ; do
-    if [[ $i == "DISABLE_LIBRAW" ]]; then
-        echo "---------- LibRaw will not installed through Macports"
-        DISABLE_LIBRAW=1
-    elif [[ $i == "DISABLE_EXIV2" ]]; then
-        echo "---------- Exiv2 will not installed through Macports"
-        DISABLE_EXIV2=1
-    elif [[ $i == "DISABLE_LENSFUN" ]]; then
+    if [[ $i == "DISABLE_LENSFUN" ]]; then
         echo "---------- Lensfun will not installed through Macports"
         DISABLE_LENSFUN=1
     elif [[ $i == "DISABLE_OPENCV" ]]; then
@@ -343,6 +331,7 @@ port install libpng
 port install libpgf
 port install jpeg
 port install tiff
+port install exiv2
 port install boost
 port install gettext
 port install libusb
@@ -353,6 +342,7 @@ port install eigen3
 port install expat
 port install libxml2
 port install libxslt
+port install lensfun
 port install docbook-xml
 port install docbook-xsl
 port install p5-uri
@@ -360,35 +350,6 @@ port install p5-uri
 exit -1
 
 port install liblqr
-
-
-if [[ $DISABLE_OPENCV == 0 ]]; then
-    OPENCV_PORT_TMP=$INSTALL_PREFIX/var/tmp_opencv
-    if [ -d "$OPENCV_PORT_TMP" ] ; then
-        rm -fr $OPENCV_PORT_TMP
-    fi
-    mkdir $OPENCV_PORT_TMP
-    chown -R 777 $OPENCV_PORT_TMP
-    cd $OPENCV_PORT_TMP
-
-    svn co -r 134472 http://svn.macports.org/repository/macports/trunk/dports/graphics/opencv
-    cd opencv
-    port install
-fi
-
-if [[ $DISABLE_LIBRAW == 0 ]]; then
-    port install libraw
-fi
-
-if [[ $DISABLE_EXIV2 == 0 ]]; then
-    port install exiv2
-fi
-
-# For core optional dependencies
-
-if [[ $DISABLE_LENSFUN == 0 ]]; then
-    port install lensfun
-fi
 
 # For Hugin
 
