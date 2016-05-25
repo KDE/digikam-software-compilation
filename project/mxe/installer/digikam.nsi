@@ -181,6 +181,10 @@
 ;-------------------------------------------------------------------------------
 ;Interface Configuration
 
+    Function functionFinishRun
+        ExecShell "" "$instdir\releasenotes.html"
+    FunctionEnd
+
     !define MUI_HEADERIMAGE
     !define MUI_HEADERIMAGE_BITMAP "digikam_header.bmp" 
     !define MUI_WELCOMEFINISHPAGE_BITMAP "digikam_welcome.bmp"
@@ -188,7 +192,8 @@
     !define MUI_ABORTWARNING
     !define MUI_ICON "digikam-installer.ico"
     !define MUI_UNICON "digikam-uninstaller.ico"
-    !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\RELEASENOTES.txt"
+    !define !define MUI_FINISHPAGE_RUN
+    !define MUI_FINISHPAGE_RUN_FUNCTION functionFinishRun
     !define MUI_FINISHPAGE_LINK "Visit digiKam project website"
     !define MUI_FINISHPAGE_LINK_LOCATION "http://www.digikam.org"
 
@@ -414,7 +419,7 @@
 
         SetOutPath "$INSTDIR"
 
-        File "RELEASENOTES.txt"
+        File "releasenotes.html"
         File "digikam-uninstaller.ico"
 
         ;Copy only required directories
@@ -539,7 +544,7 @@
         ;No longer adding /REBOOTOK to Delete and RMDir since using LockedList and also potentially uninstalling from the installer
 
         Delete "$INSTDIR\Uninstall.exe"
-        Delete "$INSTDIR\RELEASENOTES.txt"
+        Delete "$INSTDIR\releasenotes.html"
         Delete "$INSTDIR\digikam-uninstaller.ico"
 
         RMDir /r "$INSTDIR\"
