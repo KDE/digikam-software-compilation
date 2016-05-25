@@ -12,9 +12,9 @@
 #------------
 # IMPORTANT: Target Windows architecture to build target installer. Just comment unwanted one.
 # Windows 32 bits shared
-#MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
 # Windows 64 bits shared
-MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
 #------------
 
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
