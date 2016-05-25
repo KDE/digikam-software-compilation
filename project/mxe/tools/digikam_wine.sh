@@ -8,7 +8,7 @@ export KDEDIRS=$MYDK
 export KDEDIR=$MYDK
 export WINEPATH=$MYDK\\:$WINEPATH
 
-cd bundle
+cd ../bundle
 
 wine64 kbuildsycoca5
 wine64 digikam
