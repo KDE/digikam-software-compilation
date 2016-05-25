@@ -13,7 +13,8 @@
 #################################################################################################
 # Manage script traces to log file
 
-exec > >(tee build-macports.full.log) 2>&1
+mkdir -p ./logs
+exec > >(tee ./logs/build-macports.full.log) 2>&1
 
 #################################################################################################
 
@@ -24,7 +25,7 @@ echo "--------------------------------------------------------------------------
 # Pre-processing checks
 
 . ./configbundlepkg.sh
-. ../common/common.sh
+. ./common.sh
 StartScript
 ChecksRunAsRoot
 ChecksXCodeCLI

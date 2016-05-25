@@ -148,12 +148,12 @@ LIB_VERSION=$4
 FRAMEWORK=0
 
 if [[ "$LIB_URL" == "" ]]; then
-	LIB_URL=$KD_URL
+    LIB_URL=$KD_URL
     FRAMEWORK=1
 fi
 
 if [[ "$LIB_VERSION" == "" ]]; then
-	LIB_VERSION=$KD_VERSION
+    LIB_VERSION=$KD_VERSION
 fi
 
 if [ $SILENT_OP -ne 0 ]; then
@@ -307,10 +307,10 @@ fi
 # With OSX less than El Capitan, we need a more recent Clang compiler than one provided by XCode.
 if [[ $MAJOR_OSX_VERSION -lt 10 ]]; then
 
-	echo "---------- Install more recent Clang compiler from Macports for specific ports"
-	port install clang_select
-	port install clang-3.4
-	port select --set clang mp-clang-3.4
+    echo "---------- Install more recent Clang compiler from Macports for specific ports"
+    port install clang_select
+    port install clang-3.4
+    port select --set clang mp-clang-3.4
 fi
 
 # With older OSX release, there are some problem to link with cxx_stdlib option.
