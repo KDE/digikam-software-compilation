@@ -40,10 +40,6 @@ MXE_PACKAGES="gcc \
               freeglut \
               opencv \
               dbus \
-              gst-plugins-base \
-              gst-plugins-bad \
-              gst-plugins-good \
-              gst-plugins-ugly \
               qt5 \
              "
 
