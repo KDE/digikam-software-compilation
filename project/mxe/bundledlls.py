@@ -131,7 +131,7 @@ def gather_deps(path, path_prefixes, seen):
         dep  = line.split("DLL Name: ")[1].strip()
         ldep = dep.lower()
 
-        print("Searching: " + ldep)
+        #print("Searching: " + ldep)
 
         if ldep in blacklist:
             continue
@@ -152,10 +152,12 @@ def gather_deps(path, path_prefixes, seen):
 def main():
 
     parser = argparse.ArgumentParser()
+
     parser.add_argument(
         "exe_file",
         help = "EXE or DLL file that you need to bundle dependencies for"
     )
+
     parser.add_argument(
         "--copy",
         action = "store_true",
@@ -165,7 +167,7 @@ def main():
     parser.add_argument(
         "--upx",
         action = "store_true",
-        help   = "Only valid if --copy is provided. Run UPX on all the DLLs and EXE."
+        help   = "Only valid if --copy is provided. Run UPX on all the DLLs and EXE. See https://en.wikipedia.org/wiki/UPX for details"
     )
 
     args = parser.parse_args()
@@ -173,11 +175,7 @@ def main():
     if args.upx and not args.copy:
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
 
-    #print("Binary search pathes:")
-    #for item in default_path_prefixes:
-    #    print(item)
-
-    print("\n")
+    print("Scan dependencies for " + args.exe_file + "\n")
 
     all_deps = set(gather_deps(args.exe_file, default_path_prefixes, []))
     all_deps.remove(args.exe_file)
@@ -186,7 +184,7 @@ def main():
 
     if args.copy:
 
-        print("Copying enabled, will now copy all dependencies next to the exe_file.\n")
+        print("Copying enabled, will now copy all dependencies near to the exe file.\n")
 
         parent_dir = os.path.dirname(os.path.abspath(args.exe_file))
 

@@ -69,6 +69,8 @@ make -j$CPU_CORES
 
 echo -e "\n---------- Copy files in bundle directory\n"
 
+# Directories creation ---------------------
+
 cd $ORIG_WD
 
 if [ -d "$BUNDLEDIR" ]; then
@@ -79,47 +81,60 @@ fi
 mkdir -p $BUNDLEDIR/translations
 mkdir -p $BUNDLEDIR/data
 
+# Data files -------------------------------
+
+# For Marble
+cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data
+
+# Generics
+cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
+
+# Qt configuration
 cp    $BUILDDIR/qt.conf                                                 $BUNDLEDIR/
+
+# Ressource icons-set
 cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/
-
-# Programs
-cp    $MXE_INSTALL_PREFIX/bin/showfoto.exe                              $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/digikam.exe                               $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/kbuildsycoca5.exe                         $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/kioexec.exe                               $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/kioslave.exe                              $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/dbus-daemon.exe                           $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/dbus-launch.exe                           $BUNDLEDIR/
-cp    $MXE_INSTALL_PREFIX/bin/dbus-send.exe                             $BUNDLEDIR/
-
-# Shared libraries
-cp    $MXE_INSTALL_PREFIX/bin/*.dll                                     $BUNDLEDIR/
-find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;
-
-# Qt5
-cp    $MXE_INSTALL_PREFIX/qt5/bin/*.dll                                 $BUNDLEDIR/
-cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/
 
 # i18n
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations
 cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data
 
-# Marble
+# Programs ---------------------------------
+
+EXE_FILES="\
+digikam.exe \
+showfoto.exe \
+kbuildsycoca5.exe \
+kioexec.exe \
+kioslave.exe \
+dbus-daemon.exe \
+dbus-launch.exe \
+"
+
+for app in $EXE_FILES ; do
+
+    cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
+    $ORIG_WD/bundledlls.py --copy $BUNDLEDIR/$app
+    
+done
+
+# Plugins Shared libraries -----------------
+
+# For Marble
 cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/
-cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data
 
-# GStreamer
-cp -r $MXE_INSTALL_PREFIX/lib/gstreamer-1.0/*.dll                       $BUNDLEDIR/
+# For Qt5
+cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/
 
-# Data files
-cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
-
+# Generics
+find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;
+ 
 #################################################################################################
-# Cleanup^symbol in binary files to free space.
+# Cleanup symbols in binary files to free space.
 
 echo -e "\n---------- Strip symbols in binary files\n"
 
