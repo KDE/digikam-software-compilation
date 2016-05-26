@@ -39,12 +39,6 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
-if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
-    EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
-else
-    EXTRA_CXX_FLAGS=""
-fi
-
 #################################################################################################
 # Build digiKam in temporary directory and installation
 
@@ -77,12 +71,13 @@ else
     cd digikam-$DK_VERSION
 fi
 
-cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
+cp -f $ORIG_WD/../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
 
 echo -e "\n\n"
-echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
+echo "---------- Configure digiKam"
 
-./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS"
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
     echo "---------- Aborting..."
@@ -94,6 +89,7 @@ echo "---------- Building digiKam"
 
 cd build
 make -j$CPU_CORES
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot compile digiKam $DK_VERSION."
     echo "---------- Aborting..."
@@ -105,6 +101,7 @@ echo "---------- Installing digiKam"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install digiKam $DK_VERSION."
     echo "---------- Aborting..."
