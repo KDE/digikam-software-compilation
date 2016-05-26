@@ -37,7 +37,7 @@ DK_VERSION=git
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
-HU_VERSION=2013.0
+HU_VERSION=2015.0
 
 # Option to silent operations while configuring, compiling and installing extra libraries.
 SILENT_OP=0
@@ -45,5 +45,4 @@ SILENT_OP=0
 # Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
 # 0: use port file
 # 1: use tarball
-ENABLE_LENSFUN=1
 ENABLE_HUGIN=0

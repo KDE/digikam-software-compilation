@@ -60,7 +60,7 @@ KA_VERSION=16.04.1
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
-HU_VERSION=2013.0
+HU_VERSION=2015.0
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
