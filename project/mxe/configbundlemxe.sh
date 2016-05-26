@@ -43,7 +43,15 @@ MXE_PACKAGES="gcc \
               opencv \
               dbus \
               qt5 \
+              wxwidgets
+              vigra
+              libpano13
              "
+
+#For hugin 2015.0. WxWidget do not compile as shared.
+#              wxwidgets
+#              vigra
+#              libpano13
 
 #-------------------------------------------------------------------------------------------
 
@@ -67,9 +75,6 @@ DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
 DK_VERSION=git
 #DK_VERSION=5.0.0
-
-# Option to silent operations while configuring, compiling and installing extra libraries.
-SILENT_OP=0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 # 0: use port file

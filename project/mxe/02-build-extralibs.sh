@@ -38,61 +38,6 @@ export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
 cd $MXE_BUILDROOT
 
 #################################################################################################
-# Build KF5 frameworks in a temporary directory and installation
-# See KF5DEPENDENCIES details about the big puzzle
-
-InstallKDEExtraLib "extra-cmake-modules"
-InstallKDEExtraLib "kconfig"
-InstallKDEExtraLib "breeze-icons"
-InstallKDEExtraLib "kcoreaddons"
-InstallKDEExtraLib "kwindowsystem"
-InstallKDEExtraLib "solid"
-InstallKDEExtraLib "threadweaver"
-InstallKDEExtraLib "karchive"
-InstallKDEExtraLib "kdbusaddons"
-InstallKDEExtraLib "ki18n"
-InstallKDEExtraLib "kcrash"
-InstallKDEExtraLib "kcodecs"
-InstallKDEExtraLib "kauth"
-InstallKDEExtraLib "kguiaddons"
-InstallKDEExtraLib "kwidgetsaddons"
-InstallKDEExtraLib "kitemviews"
-InstallKDEExtraLib "kcompletion"
-InstallKDEExtraLib "kconfigwidgets"
-InstallKDEExtraLib "kiconthemes"
-InstallKDEExtraLib "kservice"
-InstallKDEExtraLib "kglobalaccel"
-InstallKDEExtraLib "kxmlgui" "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch"
-InstallKDEExtraLib "kbookmarks"
-InstallKDEExtraLib "kjobwidgets"
-InstallKDEExtraLib "kio" "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"
-
-#################################################################################################
-# Build KF5 extra components
-
-# Marble for geolocation tools.
-
-InstallKDEExtraApp "marble" "" \
-                   "-DWITH_DESIGNER_PLUGIN=OFF \
-                    -DBUILD_MARBLE_TESTS=OFF \
-                    -DBUILD_MARBLE_TOOLS=OFF \
-                    -DBUILD_MARBLE_EXAMPLES=OFF \
-                    -DBUILD_MARBLE_APPS=OFF \
-                    -DBUILD_MARBLE_TESTS=OFF \
-                    -DBUILD_WITH_DBUS=OFF \
-                    -DBUILD_TESTING=OFF \
-                    -DQTONLY=ON \
-                    -Wno-dev"
-
-# Marble install shared lib at wrong place.
-mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
-mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
-
-# KCalCore for Calendar tool.
-# Disabled currently due to dependencies to KDE4LibsSupport
-#InstallKDEExtraApp "kcalcore"
-
-#################################################################################################
 # Build Hugin in temporary directory and installation
 
 if [[ $ENABLE_HUGIN == 1 ]]; then
@@ -152,6 +97,62 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
     make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
 
 fi
+exit
+
+#################################################################################################
+# Build KF5 frameworks in a temporary directory and installation
+# See KF5DEPENDENCIES details about the big puzzle
+
+InstallKDEExtraLib "extra-cmake-modules"
+InstallKDEExtraLib "kconfig"
+InstallKDEExtraLib "breeze-icons"
+InstallKDEExtraLib "kcoreaddons"
+InstallKDEExtraLib "kwindowsystem"
+InstallKDEExtraLib "solid"
+InstallKDEExtraLib "threadweaver"
+InstallKDEExtraLib "karchive"
+InstallKDEExtraLib "kdbusaddons"
+InstallKDEExtraLib "ki18n"
+InstallKDEExtraLib "kcrash"
+InstallKDEExtraLib "kcodecs"
+InstallKDEExtraLib "kauth"
+InstallKDEExtraLib "kguiaddons"
+InstallKDEExtraLib "kwidgetsaddons"
+InstallKDEExtraLib "kitemviews"
+InstallKDEExtraLib "kcompletion"
+InstallKDEExtraLib "kconfigwidgets"
+InstallKDEExtraLib "kiconthemes"
+InstallKDEExtraLib "kservice"
+InstallKDEExtraLib "kglobalaccel"
+InstallKDEExtraLib "kxmlgui" "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch"
+InstallKDEExtraLib "kbookmarks"
+InstallKDEExtraLib "kjobwidgets"
+InstallKDEExtraLib "kio" "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"
+
+#################################################################################################
+# Build KF5 extra components
+
+# Marble for geolocation tools.
+
+InstallKDEExtraApp "marble" "" \
+                   "-DWITH_DESIGNER_PLUGIN=OFF \
+                    -DBUILD_MARBLE_TESTS=OFF \
+                    -DBUILD_MARBLE_TOOLS=OFF \
+                    -DBUILD_MARBLE_EXAMPLES=OFF \
+                    -DBUILD_MARBLE_APPS=OFF \
+                    -DBUILD_MARBLE_TESTS=OFF \
+                    -DBUILD_WITH_DBUS=OFF \
+                    -DBUILD_TESTING=OFF \
+                    -DQTONLY=ON \
+                    -Wno-dev"
+
+# Marble install shared lib at wrong place.
+mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
+mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
+
+# KCalCore for Calendar tool.
+# Disabled currently due to dependencies to KDE4LibsSupport
+#InstallKDEExtraApp "kcalcore"
 
 #################################################################################################
 

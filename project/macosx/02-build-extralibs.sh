@@ -76,62 +76,31 @@ InstallKDEExtraLib "kjobwidgets"
 InstallKDEExtraLib "kio"
 
 #################################################################################################
-# Build Hugin in temporary directory and installation
+# Build KF5 extra components
 
-if [[ $ENABLE_HUGIN == 1 ]]; then
+# Marble for geolocation tools.
 
-    if [ -d "$HU_BUILDTEMP" ] ; then
-    echo "---------- Removing existing $HU_BUILDTEMP"
-    rm -rf "$HU_BUILDTEMP"
-    fi
+InstallKDEExtraApp "marble" "" \
+                   "-DWITH_DESIGNER_PLUGIN=OFF \
+                    -DBUILD_MARBLE_TESTS=OFF \
+                    -DBUILD_MARBLE_TOOLS=OFF \
+                    -DBUILD_MARBLE_EXAMPLES=OFF \
+                    -DBUILD_MARBLE_APPS=OFF \
+                    -DBUILD_MARBLE_TESTS=OFF \
+                    -DBUILD_WITH_DBUS=OFF \
+                    -DBUILD_TESTING=OFF \
+                    -DQTONLY=ON \
+                    -Wno-dev"
 
-    echo "---------- Creating $HU_BUILDTEMP"
-    mkdir "$HU_BUILDTEMP"
+# Marble install shared lib at wrong place.
+mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
+mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
 
-    if [ $? -ne 0 ] ; then
-        echo "---------- Cannot create $HU_BUILDTEMP directory."
-        echo "---------- Aborting..."
-        exit;
-    fi
+# KCalCore for Calendar tool.
+# Disabled currently due to dependencies to KDE4LibsSupport
+#InstallKDEExtraApp "kcalcore"
 
-    cd "$HU_BUILDTEMP"
-    echo -e "\n\n"
-
-    echo "---------- Downloading Hugin $HU_VERSION"
-
-    curl -L -o "hugin-$HU_VERSION.tar.bz2" "$HU_URL/hugin-$HU_VERSION/hugin-$HU_VERSION.0.tar.bz2"
-
-    tar jxvf hugin-$HU_VERSION.tar.bz2
-    cd hugin-$HU_VERSION.0
-
-    echo -e "\n\n"
-
-    echo "---------- Configuring Hugin"
-
-    cmake \
-        -G "Unix Makefiles" \
-        -DCMAKE_BUILD_TYPE=debugfull \
-        -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
-        -DCMAKE_OSX_ARCHITECTURES=x86_64 \
-        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}" \
-        -DCMAKE_COLOR_MAKEFILE=ON \
-        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-        -DCMAKE_INSTALL_NAME_DIR=${INSTALL_PREFIX}/lib \
-        -DCMAKE_SYSTEM_PREFIX_PATH="${INSTALL_PREFIX};/usr" \
-        -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/modules" \
-        .
-
-    echo -e "\n\n"
-
-    echo "---------- Building Hugin"
-    make -j$CPU_CORES
-    echo -e "\n\n"
-
-    echo "---------- Installing Hugin"
-    echo -e "\n\n"
-    make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
-
-fi
+#################################################################################################
 
 export PATH=$ORIG_PATH
 
