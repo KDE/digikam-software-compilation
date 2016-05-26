@@ -70,13 +70,13 @@ else
 fi
 
 echo -e "\n\n"
-echo "---------- Configure digiKam with CXX extra flags : $EXTRA_CXX_FLAGS"
+echo "---------- Configure digiKam $DK_VERSION"
 
 rm -rf build
 mkdir build
 
 sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g" ./bootstrap.mxe > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.mxe
-sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g" ./bootstrap.mxe > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.mxe
+sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"   ./bootstrap.mxe > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.mxe
 chmod +x ./bootstrap.mxe
 
 ./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo $MXE_BUILD_TARGETS -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
@@ -88,7 +88,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Building digiKam"
+echo "---------- Building digiKam $DK_VERSION"
 
 cd build
 make -j$CPU_CORES
@@ -100,10 +100,11 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Installing digiKam"
+echo "---------- Installing digiKam $DK_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install digiKam $DK_VERSION."
     echo "---------- Aborting..."

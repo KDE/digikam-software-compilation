@@ -74,7 +74,11 @@ fi
 cp -f $ORIG_WD/../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
 
 echo -e "\n\n"
-echo "---------- Configure digiKam"
+echo "---------- Configure digiKam $DK_VERSION"
+
+sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g" ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
+sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"   ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
+chmod +x ./bootstrap.macports
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64"
 
@@ -85,7 +89,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Building digiKam"
+echo "---------- Building digiKam $DK_VERSION"
 
 cd build
 make -j$CPU_CORES
@@ -97,7 +101,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "\n\n"
-echo "---------- Installing digiKam"
+echo "---------- Installing digiKam $DK_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
