@@ -39,12 +39,6 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
-if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
-    EXTRA_CXX_FLAGS="-mmacosx-version-min=10.7 -stdlib=libc++"
-else
-    EXTRA_CXX_FLAGS=""
-fi
-
 #################################################################################################
 # Build KF5 frameworks in a temporary directory and installation
 # See KF5DEPENDENCIES details about the big puzzle
@@ -93,8 +87,8 @@ InstallKDEExtraApp "marble" "" \
                     -Wno-dev"
 
 # Marble install shared lib at wrong place.
-#mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
-#mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
+mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libastro*  $INSTALL_PREFIX/lib
+mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libmarble* $INSTALL_PREFIX/lib
 
 # KCalCore for Calendar tool.
 # Disabled currently due to dependencies to KDE4LibsSupport
