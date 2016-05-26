@@ -258,21 +258,6 @@ fi
 InstallCorePackages()
 {
 
-DISABLE_LENSFUN=0
-CONTINUE_INSTALL=0
-
-for i in "$@" ; do
-    if [[ $i == "DISABLE_LENSFUN" ]]; then
-        echo "---------- Lensfun will not installed through Macports"
-        DISABLE_LENSFUN=1
-    elif [[ $i == "DISABLE_OPENCV" ]]; then
-        echo "---------- OpenCV will not installed through Macports"
-        DISABLE_OPENCV=1
-        echo "---------- Continue aborted previous installation"
-        CONTINUE_INSTALL=1
-    fi
-done
-
 OsxCodeName
 
 if [[ $CONTINUE_INSTALL == 0 ]]; then
@@ -350,10 +335,7 @@ port install p5-uri
 exit -1
 
 port install liblqr
-
-# For Hugin
-
-#port install wxWidgets-2.8
+port install hugin
 
 # For Kipi-plugins
 
@@ -362,22 +344,10 @@ port install qjson
 port install enblend
 port install sane-backends
 
-# For Color themes support
-
-port install kdeartwork
-
 # For Acqua style support (including KDE system settings)
 
 port install kde4-workspace
 port install qtcurve
-
-# For video support
-
-port install kdemultimedia4
-port install ffmpegthumbs
-port install phonon
-port install gstreamer1-gst-libav
-port install gstreamer1-gst-plugins-good
 
 # For documentations
 port install texlive-fonts-recommended

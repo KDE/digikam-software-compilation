@@ -202,13 +202,7 @@ fi
 echo -e "\n"
 echo "---------- Building digiKam dependencies with Macports"
 
-Arguments=""
-
-if [[ $CONTINUE_INSTALL == 1 ]]; then
-    Arguments=$Arguments" CONTINUE_INSTALL"
-fi
-
-InstallCorePackages $Arguments
+InstallCorePackages
 
 echo -e "\n"
 
