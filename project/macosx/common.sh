@@ -210,6 +210,7 @@ fi
 echo -e "\n\n"
 echo "---------- Building $LIB_NAME $KD_VERSION"
 
+cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
@@ -223,6 +224,7 @@ echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
@@ -232,7 +234,7 @@ fi
 }
 
 ########################################################################
-# Install extra KF5 applicatiopn
+# Install extra KF5 application
 # arguments :
 # $1: application name
 # $2: path to patch to apply
@@ -307,6 +309,7 @@ fi
 echo -e "\n\n"
 echo "---------- Building $APP_NAME $KA_VERSION"
 
+cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
@@ -320,6 +323,7 @@ echo "---------- Installing $APP_NAME $KA_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$KA_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install $APP_NAME-$KA_VERSION."
     echo "---------- Aborting..."
