@@ -79,8 +79,9 @@ if [ -d "$BUNDLEDIR" ]; then
     mkdir $BUNDLEDIR
 fi
 
-mkdir -p $BUNDLEDIR/translations
 mkdir -p $BUNDLEDIR/data
+mkdir -p $BUNDLEDIR/etc
+mkdir -p $BUNDLEDIR/translations
 
 # Data files -------------------------------
 
@@ -91,6 +92,7 @@ cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/solid                                   $BUNDLEDIR/data
 cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
 
 # Qt configuration
@@ -104,14 +106,28 @@ cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations
 cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data
 
+# DBus
+cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc
+cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/data
+
+# XDG
+cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc
+cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/data
+
 # Programs ---------------------------------
 
 EXE_FILES="\
 digikam.exe \
 showfoto.exe \
 kbuildsycoca5.exe \
+kconf_update.exe \
+kconfig_compiler_kf5.exe \
+kiod5.exe \
 kioexec.exe \
 kioslave.exe \
+kquitapp5.exe \
+kreadconfig5.exe \
+kwriteconfig5.exe \
 dbus-daemon.exe \
 dbus-launch.exe \
 "
@@ -164,11 +180,11 @@ echo -e "\n---------- Compute package checksums for digiKam $DK_VERSION\n"
 
 echo    "File       : $TARGET_INSTALLER"
 echo -n "Size       : "
-du -h "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
+du -h "$TARGET_INSTALLER"        | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
-md5sum "$TARGET_INSTALLER"
+md5sum "$TARGET_INSTALLER"       | { read first rest ; echo $first ; }
 echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
+shasum -a1 "$TARGET_INSTALLER"   | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
 shasum -a256 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
 
