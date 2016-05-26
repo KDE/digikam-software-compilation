@@ -8,7 +8,7 @@
 # Arguments : $1 : install path '/opt/local' (default).
 #             $2 : build type   'debug' to hack (default), 'release' for production.
 #             $3 : target type  'x86_64' for OSX Lion (default), 'i386' for Snow Leopard.
-
+#             $4 : Cmake extra configure options.
 
 INSTALL_PREFIX=$1
 
@@ -33,6 +33,8 @@ if [ "$TARGET_TYPE" = "" ]; then
         TARGET_TYPE=x86_64
 fi
 
+OPTIONS=$4
+
 echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE"
 
 # set devel env from MacOS-X through MacPorts
@@ -54,7 +56,6 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
       -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX}/ \
       -DCMAKE_OSX_ARCHITECTURES=${TARGET_TYPE} \
-      $ADDITIONAL_CMAKE_FLAGS \
       -DBUILD_TESTING=ON \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_CHECKOUT_DOC=OFF \
@@ -83,6 +84,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DQT_QT_INCLUDE_DIR=${QT_INCLUDE_DIR} \
       -DQT_LIBRARY_DIR=${QTDIR}/lib \
       -DQT_QMAKE_EXECUTABLE=${QTDIR}/bin/qmake \
+      ${OPTIONS} \
       ..
 
 CMAKE_VAL_RET=$?

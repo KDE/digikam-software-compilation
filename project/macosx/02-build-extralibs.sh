@@ -70,10 +70,10 @@ InstallKDEExtraLib "kconfigwidgets"
 InstallKDEExtraLib "kiconthemes"
 InstallKDEExtraLib "kservice"
 InstallKDEExtraLib "kglobalaccel"
-InstallKDEExtraLib "kxmlgui"
+InstallKDEExtraLib "kxmlgui" "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch"
 InstallKDEExtraLib "kbookmarks"
 InstallKDEExtraLib "kjobwidgets"
-InstallKDEExtraLib "kio"
+InstallKDEExtraLib "kio" "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"
 
 #################################################################################################
 # Build KF5 extra components
@@ -93,8 +93,8 @@ InstallKDEExtraApp "marble" "" \
                     -Wno-dev"
 
 # Marble install shared lib at wrong place.
-mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
-mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
+#mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
+#mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
 
 # KCalCore for Calendar tool.
 # Disabled currently due to dependencies to KDE4LibsSupport

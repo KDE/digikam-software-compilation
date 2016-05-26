@@ -136,34 +136,21 @@ echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OS
 
 ########################################################################
 # Install extra KF5 frameworks library
-# arguments : library name, additional cmake flags, download url, version 
+# arguments :
+# $1: library name
+# $2: path to patch to apply
+# $3: configure options
 #
 InstallKDEExtraLib()
 {
 
 LIB_NAME=$1
-ADDITIONAL_CMAKE_FLAGS=$2
-LIB_URL=$3
-LIB_VERSION=$4
-FRAMEWORK=0
-
-if [[ "$LIB_URL" == "" ]]; then
-    LIB_URL=$KD_URL
-    FRAMEWORK=1
-fi
-
-if [[ "$LIB_VERSION" == "" ]]; then
-    LIB_VERSION=$KD_VERSION
-fi
-
-if [ $SILENT_OP -ne 0 ]; then
-    VERBOSE_MAKE="-s"
-    VERBOSE_CONF="2>&1 > /dev/null"
-fi
+PATCH=$2
+OPTIONS=$3
 
 if [ -d "$KD_BUILDTEMP" ] ; then
-   echo "---------- Removing existing $KD_BUILDTEMP"
-   rm -rf "$KD_BUILDTEMP"
+    echo "---------- Removing existing $KD_BUILDTEMP"
+    rm -rf "$KD_BUILDTEMP"
 fi
 
 echo "---------- Creating $KD_BUILDTEMP"
@@ -178,70 +165,163 @@ fi
 cd "$KD_BUILDTEMP"
 echo -e "\n\n"
 
-echo "---------- Downloading $LIB_NAME $LIB_VERSION"
-echo "---------- URL: $LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.tar.xz"
+echo "---------- Downloading $LIB_NAME $KD_VERSION"
+echo "---------- URL: $KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.tar.xz"
 
-if [ $FRAMEWORK -ne 0 ]; then
-    curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_VERSION/$LIB_NAME-$LIB_VERSION.0.tar.xz" $VERBOSE_CONF
-else
-    curl -L -o "$LIB_NAME-$LIB_VERSION.tar.xz" "$LIB_URL/$LIB_NAME-$LIB_VERSION.tar.xz" $VERBOSE_CONF
-fi
+curl -L -o "$LIB_NAME-$KD_VERSION.tar.xz" "$KD_URL/$KD_VERSION/$LIB_NAME-$KD_VERSION.0.tar.xz"
 
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot download $LIB_NAME-$LIB_VERSION.tar.xz archive."
+    echo "---------- Cannot download $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."
     exit;
 fi
 
-tar jxf $LIB_NAME-$LIB_VERSION.tar.xz
+tar -xJf $LIB_NAME-$KD_VERSION.tar.xz
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot extract $LIB_NAME-$LIB_VERSION.tar.xz archive."
+    echo "---------- Cannot extract $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."
     exit;
 fi
 
-if [ $FRAMEWORK -ne 0 ]; then
-    cd $LIB_NAME-$LIB_VERSION.0
-    cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION.0
-else
-    cd $LIB_NAME-$LIB_VERSION
-    cp -f $ORIG_WD/../../../bootstrap.macports $KD_BUILDTEMP/$LIB_NAME-$LIB_VERSION
+cd $LIB_NAME-$KD_VERSION.0
+pwd
+
+if [ ! -z "$PATCH" ]; then
+    echo "---------- Apply patch $PATCH to $LIB_NAME."
+    patch -p1 < $PATCH
 fi
 
+echo -e "\n\n"
+echo "---------- Configure $LIB_NAME with configure options : $OPTIONS"
+
+rm -rf build
+mkdir build
+
+cp $ORIG_WD/../../bootstrap.macports ./
+
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" $OPTIONS
+
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot copy $LIB_NAME-$LIB_VERSION.tar.xz archive to temp dir."
+    echo "---------- Cannot configure $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Configure $LIB_NAME with CXX extra flags : $EXTRA_CXX_FLAGS"
+echo "---------- Building $LIB_NAME $KD_VERSION"
 
-./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "$EXTRA_CXX_FLAGS" $VERBOSE_CONF
+make -j$CPU_CORES
+
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot configure $LIB_NAME-$LIB_VERSION."
+    echo "---------- Cannot compile $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Building $LIB_NAME $LIB_VERSION"
-cd build
+echo "---------- Installing $LIB_NAME $KD_VERSION"
+echo -e "\n\n"
 
-make $VERBOSE_MAKE -j$CPU_CORES
+make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot compile $LIB_NAME-$LIB_VERSION."
+    echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+}
+
+########################################################################
+# Install extra KF5 applicatiopn
+# arguments :
+# $1: application name
+# $2: path to patch to apply
+# $3: configure options
+#
+InstallKDEExtraApp()
+{
+
+APP_NAME=$1
+PATCH=$2
+OPTIONS=$3
+
+if [ -d "$KA_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $KA_BUILDTEMP"
+    rm -rf "$KA_BUILDTEMP"
+fi
+
+echo "---------- Creating $KA_BUILDTEMP"
+mkdir "$KA_BUILDTEMP"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot create $KA_BUILDTEMP directory."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd "$KA_BUILDTEMP"
+echo -e "\n\n"
+
+echo "---------- Downloading $APP_NAME $KA_VERSION"
+echo "---------- URL: $KD_URL/$KA_VERSION/$APP_NAME-$KA_VERSION.tar.xz"
+
+curl -L -o "$APP_NAME-$KA_VERSION.tar.xz" "$KA_URL/$KA_VERSION/src/$APP_NAME-$KA_VERSION.tar.xz"
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot download $APP_NAME-$KA_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+tar -xJf $APP_NAME-$KA_VERSION.tar.xz
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot extract $APP_NAME-$KA_VERSION.tar.xz archive."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+cd $APP_NAME-$KA_VERSION
+pwd
+
+if [ ! -z "$PATCH" ]; then
+    echo "---------- Apply patch $PATCH to $APP_NAME."
+    patch -p1 < $PATCH
+fi
+
+echo -e "\n\n"
+echo "---------- Configure $APP_NAME with configure options : $OPTIONS"
+
+rm -rf build
+mkdir build
+
+cp $ORIG_WD/../../bootstrap.macports ./
+
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" $OPTIONS
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure $APP_NAME-$KA_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
 
 echo -e "\n\n"
-echo "---------- Installing $LIB_NAME $LIB_VERSION"
+echo "---------- Building $APP_NAME $KA_VERSION"
+
+make -j$CPU_CORES
+
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot compile $APP_NAME-$KA_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
+
+echo -e "\n\n"
+echo "---------- Installing $APP_NAME $KA_VERSION"
 echo -e "\n\n"
 
-make $VERBOSE_MAKE install/fast && cd "$ORIG_WD" && rm -rf "$DK_BUILDTEMP"
+make install/fast && cd "$ORIG_WD" && rm -rf "$KA_BUILDTEMP"
 if [ $? -ne 0 ]; then
-    echo "---------- Cannot install $LIB_NAME-$LIB_VERSION."
+    echo "---------- Cannot install $APP_NAME-$KA_VERSION."
     echo "---------- Aborting..."
     exit;
 fi
