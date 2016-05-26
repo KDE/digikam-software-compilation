@@ -93,6 +93,7 @@ if [ $? -ne 0 ]; then
 fi
 
 tar -xJf $LIB_NAME-$KD_VERSION.tar.xz
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot extract $LIB_NAME-$KD_VERSION.tar.xz archive."
     echo "---------- Aborting..."
@@ -153,6 +154,7 @@ echo "---------- Installing $LIB_NAME $KD_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$KD_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install $LIB_NAME-$KD_VERSION."
     echo "---------- Aborting..."
@@ -162,7 +164,7 @@ fi
 }
 
 ########################################################################
-# Install extra KF5 applicatiopn
+# Install extra KF5 application
 # arguments :
 # $1: application name
 # $2: path to patch to apply
@@ -263,6 +265,7 @@ echo "---------- Installing $APP_NAME $KA_VERSION"
 echo -e "\n\n"
 
 make install/fast && cd "$ORIG_WD" && rm -rf "$KA_BUILDTEMP"
+
 if [ $? -ne 0 ]; then
     echo "---------- Cannot install $APP_NAME-$KA_VERSION."
     echo "---------- Aborting..."

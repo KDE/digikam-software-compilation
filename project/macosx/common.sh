@@ -424,8 +424,6 @@ port install hugin
 
 # For Kipi-plugins
 
-port install qca
-port install qjson
 port install enblend
 port install sane-backends
 
