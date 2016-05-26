@@ -38,8 +38,8 @@ OPTIONS=$4
 echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE"
 
 # set devel env from MacOS-X through MacPorts
-export QTDIR=$INSTALL_PREFIX/libexec/qt4
-export QT_INCLUDE_DIR=$INSTALL_PREFIX/libexec/qt4/include
+export QTDIR=$INSTALL_PREFIX/libexec/qt5
+export QT_INCLUDE_DIR=$QTDIR/include
 export PATH=$QTDIR/bin:$PATH
 export PKG_CONFIG_PATH=$INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
 
