@@ -118,7 +118,7 @@ cd build
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DBUILD_TESTING=OFF \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -228,7 +228,7 @@ cd build
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DBUILD_TESTING=OFF \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -330,7 +330,7 @@ cd build
 ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DBUILD_TESTING=OFF \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=debug \
+                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \

@@ -93,6 +93,67 @@ mv $MXE_INSTALL_PREFIX/libmarble* $MXE_INSTALL_PREFIX/bin
 #InstallKDEExtraApp "kcalcore"
 
 #################################################################################################
+# Build Hugin in temporary directory and installation
+
+if [[ $ENABLE_HUGIN == 1 ]]; then
+
+    if [ -d "$HU_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $HU_BUILDTEMP"
+    rm -rf "$HU_BUILDTEMP"
+    fi
+
+    echo "---------- Creating $HU_BUILDTEMP"
+    mkdir "$HU_BUILDTEMP"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $HU_BUILDTEMP directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    cd "$HU_BUILDTEMP"
+    echo -e "\n\n"
+
+    echo "---------- Downloading Hugin $HU_VERSION"
+
+    curl -L -o "hugin-$HU_VERSION.tar.bz2" "$HU_URL/hugin-$HU_VERSION/hugin-$HU_VERSION.0.tar.bz2"
+
+    tar jxvf hugin-$HU_VERSION.tar.bz2
+    cd hugin-$HU_VERSION.0
+
+    echo -e "\n\n"
+
+    echo "---------- Configuring Hugin"
+
+    cmake \
+        -G "Unix Makefiles" \
+        -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+        -DCMAKE_BUILD_TYPE=relwithdebinfo \
+        -DCMAKE_COLOR_MAKEFILE=ON \
+        -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+        -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+        -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+        -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+        -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+        -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+        -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+        -DOpenCV_DIR=${MXE_INSTALL_PREFIX}/lib \
+        .
+
+    echo -e "\n\n"
+
+    echo "---------- Building Hugin"
+    make -j$CPU_CORES
+    echo -e "\n\n"
+
+    echo "---------- Installing Hugin"
+    echo -e "\n\n"
+    make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
+
+fi
+
+#################################################################################################
 
 export PATH=$ORIG_PATH
 
