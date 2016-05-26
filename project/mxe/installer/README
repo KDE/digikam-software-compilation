@@ -1,6 +1,6 @@
-To publish digiKam Windows installer on KDE download repository:
+Other KDE projects which provide a Windows installer :
 
-1/ Make NSIS installer (see instructions from digiKam.nsi header).
-2/ Compute checksums of installer file following instructions from ftp://ftp.kde.org/pub/kde/README_UPLOAD
-3/ Uploader installer file to ftp://upload.kde.org/incoming
-4/ Open a ticket to https://sysadmin.kde.org/tickets/ with file description and checksums.
+Kate     : https://quickgit.kde.org/?p=scratch%2Fsars%2Fkate-windows.git
+Krita    : https://quickgit.kde.org/?p=krita.git
+RKward   : https://quickgit.kde.org/?p=rkward.git&a=tree
+Calligra : https://quickgit.kde.org/?p=calligra.git
