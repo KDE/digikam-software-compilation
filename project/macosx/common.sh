@@ -344,48 +344,14 @@ InstallCorePackages()
 
 OsxCodeName
 
-if [[ $CONTINUE_INSTALL == 0 ]]; then
-
-    # Remove kdelibs Avahi dependency. For details see bug https://bugs.kde.org/show_bug.cgi?id=257679#c6
-    echo "---------- Removing Avahi dependency from kdelibs4"
-    sed -e "s/port:avahi *//" -e "s/-DWITH_Avahi=ON/-DWITH_Avahi=OFF/" -i ".orig-avahi" "`port file kdelibs4`"
-
-    if [[ $MAJOR_OSX_VERSION -lt 9 ]]; then
-
-        # QtCurve and Akonadi do not compile fine with older clang compiler due to C++11 syntax
-        # See details here : https://trac.macports.org/wiki/LibcxxOnOlderSystems
-        echo "---------- Ajust C++11 compilation rules for older OSX release"
-        echo -e "\ncxx_stdlib         libc++\nbuildfromsource    always\ndelete_la_files    yes\n" >> $INSTALL_PREFIX/etc/macports/macports.conf
-
-    fi
-
-fi
-
 # With OSX less than El Capitan, we need a more recent Clang compiler than one provided by XCode.
+
 if [[ $MAJOR_OSX_VERSION -lt 10 ]]; then
 
     echo "---------- Install more recent Clang compiler from Macports for specific ports"
     port install clang_select
     port install clang-3.4
     port select --set clang mp-clang-3.4
-fi
-
-# With older OSX release, there are some problem to link with cxx_stdlib option.
-if [[ $MAJOR_OSX_VERSION -lt 8 ]]; then
-    # ncurses fixes
-    NCURSES_PORT_TMP=$INSTALL_PREFIX/var/tmp_ncurses
-    if [ -d "$NCURSES_PORT_TMP" ] ; then
-        rm -fr $NCURSES_PORT_TMP
-    fi
-    mkdir $NCURSES_PORT_TMP
-    chown -R 777 $NCURSES_PORT_TMP
-    cd $NCURSES_PORT_TMP
-
-    svn co -r 131830 http://svn.macports.org/repository/macports/trunk/dports/devel/ncurses
-    cd ncurses
-    port install
-
-    port install icu configure.compiler=macports-clang-3.4
 fi
 
 echo -e "\n"
@@ -419,11 +385,10 @@ port install p5-uri
 
 exit -1
 
+# TODO check if these packages below still necessary
+
 port install liblqr
 port install hugin
-
-# For Kipi-plugins
-
 port install enblend
 port install sane-backends
 

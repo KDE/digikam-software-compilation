@@ -154,11 +154,13 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
     echo -e "\n\n"
 
     echo "---------- Configuring MacPorts"
+
     ./configure --prefix="$INSTALL_PREFIX" \
-            --with-applications-dir="$INSTALL_PREFIX/Applications" \
-            --with-no-root-privileges \
-            --with-install-user="$(id -n -u)" \
-            --with-install-group="$(id -n -g)" 
+                --with-applications-dir="$INSTALL_PREFIX/Applications" \
+                --with-no-root-privileges \
+                --with-install-user="$(id -n -u)" \
+                --with-install-group="$(id -n -g)" 
+
     echo -e "\n\n"
 
     echo "---------- Building MacPorts"
