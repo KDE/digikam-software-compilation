@@ -63,35 +63,40 @@ KDE_MENU_APPS="\
 digikam \
 showfoto \
 "
-#dngconverter \
-#panoramagui \
-#systemsettings \
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
-kded \
+kiod5 \
+kioexec \
+kioslave \
+kconf_update \
+kconfig_compiler_kf5 \
 "
-#kcmshell4 \
-#kdeinit4 \
-#kdialog \
-#kdebugdialog \
-#khelpcenter \
-#knotify4 \
-#scangui \
 #drkonqi \
+#knotify4 \
+#khelpcenter \
+#kdebugdialog \
+#kdialog \
+#kdeinit4 \
+#kcmshell4 \
+#kded \
 
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
 Applications/KF5 \
 lib/plugins/kf5 \
+lib/libexec/kf5 \
 "
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
+libexec/dbus-daemon-launch-helper \
 bin/dbus-daemon \
 bin/dbus-launch \
 bin/kbuildsycoca5 \
-libexec/dbus-daemon-launch-helper \
+bin/kquitapp5 \
+bin/kreadconfig5 \
+bin/kwriteconfig5 \
 lib/libopencv*.dylib \
 lib/plugins \
 lib/libexec \
@@ -117,20 +122,20 @@ OTHER_DIRS="\
 Library/LaunchAgents/org.freedesktop.dbus-session.plist \
 Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
 etc/dbus-1 \
-etc/xdg/menus \
+etc/xdg \
 lib/libgphoto* \
 share/applications \
 share/dbus-1 \
-share/doc/HTML/ \
-share/icons/hicolor \
 share/OpenCV \
-share/kf5 \
+share/k* \
 share/lensfun \
 share/locale/ \
 share/mime \
 var/run/dbus \
 "
 
+share/icons/hicolor \
+#share/doc/HTML/ \
 #share/qt4/ \
 #share/icons/oxygen \
 #share/gstreamer-1.0 \
@@ -185,35 +190,45 @@ echo "---------- Preparing KDE Applications"
 
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
   echo "  $app"
+
   # Look for application
+
   for searchpath in $KDE_APP_PATHS ; do
 
     # Copy the application if it is found (create directory if necessary)
+
     if [ -d "$INSTALL_PREFIX/$searchpath/$app.app" ] ; then
       echo "    Found $app in $INSTALL_PATH/$searchpath"
+
       # Create destination directory if necessary and copy app
+
       if [ ! -d "$TEMPROOT/$searchpath" ] ; then 
         echo "    Creating $TEMPROOT/$searchpath"
         mkdir -p "$TEMPROOT/$searchpath"
       fi
+
       echo "    Copying $app"
       cp -pr "$INSTALL_PREFIX/$searchpath/$app.app" "$TEMPROOT/$searchpath/"
 
       # Add executable to list of binaries for which we need to collect dependencies for
+
       binaries="$binaries $searchpath/$app.app/Contents/MacOS/$app"
 
       # If application is to be run by user, create Applescript launcher to
       # load dbus-session if necessary, launch kded4, set DYLD_IMAGE_SUFFIX
       # if built with debug variant
+
       if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
         echo "    Creating launcher script for $app"
 
         # Debug variant needs DYLD_IMAGE_SUFFIX="_debug set at runtime
+
         if [ $DEBUG ] ; then
           DYLD_ENV_CMD="DYLD_IMAGE_SUFFIX=_debug "
         else
           DYLD_ENV_CMD=""
         fi
+
 # ------ Create KDE application launcher script
         cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 
@@ -251,6 +266,7 @@ EOF
 # ------ End KDE application launcher script
 
         # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
+
         if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
           echo "    Found icon for $app launcher"
           cp -p "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
@@ -396,6 +412,7 @@ done
 EOF
 
 # Post-install script need to be executable
+
 chmod 755 "$PROJECTDIR/postinstall"
 
 #################################################################################################
