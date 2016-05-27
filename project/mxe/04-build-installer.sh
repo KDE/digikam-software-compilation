@@ -24,7 +24,7 @@ echo "--------------------------------------------------------"
 #################################################################################################
 # Pre-processing checks
 
-. ./configbundlemxe.sh
+. ./config.sh
 . ./common.sh
 StartScript
 ChecksCPUCores

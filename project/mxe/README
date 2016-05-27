@@ -35,7 +35,7 @@ SCRIPT DESCRIPTIONS
 All scripts should be run from within the digikam-package directory.
 
 IMPORTANT: set properly the right architecture target in first : windows 32 or 64 bits.
-Look in configbundlemxe.sh file for details.
+Look in config.sh file for details.
 
 * 01-build-mxe.sh:
 
