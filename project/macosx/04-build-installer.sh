@@ -30,19 +30,23 @@ echo "-------------------------------------------------"
 StartScript
 
 #################################################################################################
-# Build icons-set ressource
 
+# Pathes rules
+ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
+
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
+#################################################################################################
+# Build icons-set ressource
 
 echo -e "\n---------- Build icons-set ressource\n"
 
 cd $ORIG_WD/icon-rcc
 
-cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
-      -DCMAKE_BUILD_TYPE=debug \
-      -DCMAKE_COLOR_MAKEFILE=ON \
-      -Wno-dev \
-      .
+cp -f $ORIG_WD/../../bootstrap.macports .
+
+./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "-Wno-dev"
 
 make -j$CPU_CORES
 
@@ -460,5 +464,7 @@ curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################
+
+export PATH=$ORIG_PATH
 
 TerminateScript
