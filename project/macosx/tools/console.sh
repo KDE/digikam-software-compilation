@@ -9,7 +9,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-. ../configbundlepkg.sh
+. ../config.sh
 . ../common.sh
 
 #################################################################################################

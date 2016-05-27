@@ -23,7 +23,7 @@ echo "---------------------------------------------------"
 #################################################################################################
 # Pre-processing checks
 
-. ./configbundlepkg.sh
+. ./config.sh
 . ./common.sh
 StartScript
 ChecksRunAsRoot
