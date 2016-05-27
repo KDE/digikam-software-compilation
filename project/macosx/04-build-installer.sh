@@ -165,19 +165,19 @@ chmod 777 ${PROJECTDIR}
 # Check if Packages CLI tools are installed
 
 if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
-    echo "Packages CLI tools are not installed"
-    echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
-    exit 1
+        echo "Packages CLI tools are not installed"
+        echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
+        exit 1
 else
-    echo "Check Packages CLI tools passed..."
+        echo "Check Packages CLI tools passed..."
 fi
 
 #################################################################################################
 # Create temporary dir to build package contents
 
 if [ -d "$TEMPROOT" ] ; then
-  echo "---------- Removing temporary packaging directory $TEMPROOT"
-  rm -rf "$TEMPROOT"
+        echo "---------- Removing temporary packaging directory $TEMPROOT"
+        rm -rf "$TEMPROOT"
 fi
 
 echo "Creating $TEMPROOT"
@@ -189,48 +189,48 @@ mkdir -p "$TEMPROOT/Applications/digiKam"
 echo "---------- Preparing KDE Applications"
 
 for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
-  echo "  $app"
+    echo "  $app"
 
-  # Look for application
+    # Look for application
 
-  for searchpath in $KDE_APP_PATHS ; do
+    for searchpath in $KDE_APP_PATHS ; do
 
-    # Copy the application if it is found (create directory if necessary)
+        # Copy the application if it is found (create directory if necessary)
 
-    if [ -d "$INSTALL_PREFIX/$searchpath/$app.app" ] ; then
-      echo "    Found $app in $INSTALL_PATH/$searchpath"
+        if [ -d "$INSTALL_PREFIX/$searchpath/$app.app" ] ; then
+            echo "    Found $app in $INSTALL_PATH/$searchpath"
 
-      # Create destination directory if necessary and copy app
+            # Create destination directory if necessary and copy app
 
-      if [ ! -d "$TEMPROOT/$searchpath" ] ; then 
-        echo "    Creating $TEMPROOT/$searchpath"
-        mkdir -p "$TEMPROOT/$searchpath"
-      fi
-
-      echo "    Copying $app"
-      cp -pr "$INSTALL_PREFIX/$searchpath/$app.app" "$TEMPROOT/$searchpath/"
-
-      # Add executable to list of binaries for which we need to collect dependencies for
-
-      binaries="$binaries $searchpath/$app.app/Contents/MacOS/$app"
-
-      # If application is to be run by user, create Applescript launcher to
-      # load dbus-session if necessary, launch kded4, set DYLD_IMAGE_SUFFIX
-      # if built with debug variant
-
-      if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
-        echo "    Creating launcher script for $app"
-
-        # Debug variant needs DYLD_IMAGE_SUFFIX="_debug set at runtime
-
-        if [ $DEBUG ] ; then
-          DYLD_ENV_CMD="DYLD_IMAGE_SUFFIX=_debug "
-        else
-          DYLD_ENV_CMD=""
+        if [ ! -d "$TEMPROOT/$searchpath" ] ; then 
+            echo "    Creating $TEMPROOT/$searchpath"
+            mkdir -p "$TEMPROOT/$searchpath"
         fi
 
-# ------ Create KDE application launcher script
-        cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
+        echo "    Copying $app"
+        cp -pr "$INSTALL_PREFIX/$searchpath/$app.app" "$TEMPROOT/$searchpath/"
+
+        # Add executable to list of binaries for which we need to collect dependencies for
+
+        binaries="$binaries $searchpath/$app.app/Contents/MacOS/$app"
+
+        # If application is to be run by user, create Applescript launcher to
+        # load dbus-session if necessary, launch kded4, set DYLD_IMAGE_SUFFIX
+        # if built with debug variant
+
+        if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
+            echo "    Creating launcher script for $app"
+
+            # Debug variant needs DYLD_IMAGE_SUFFIX="_debug set at runtime
+
+            if [ $DEBUG ] ; then
+                DYLD_ENV_CMD="DYLD_IMAGE_SUFFIX=_debug "
+            else
+                DYLD_ENV_CMD=""
+            fi
+
+            # ------ Create KDE application launcher script
+            cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 
 #!/usr/bin/osascript
 # Partially derived from https://discussions.apple.com/thread/3934912 and
@@ -263,28 +263,30 @@ end if
 
 do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
 EOF
-# ------ End KDE application launcher script
+                # ------ End KDE application launcher script
 
-        # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
+                # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
 
-        if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
-          echo "    Found icon for $app launcher"
-          cp -p "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
-        else
-          for icon in "$INSTALL_PREFIX/$searchpath/$app.app/"Contents/Resources/*.icns ; do
-            echo "    Using icon for $app launcher: $icon"
-            cp -p "$icon" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
+                if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
+                    echo "    Found icon for $app launcher"
+                    cp -p "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
+                else
+                    for icon in "$INSTALL_PREFIX/$searchpath/$app.app/"Contents/Resources/*.icns ; do
+                        echo "    Using icon for $app launcher: $icon"
+                        cp -p "$icon" "$TEMPROOT/Applications/digiKam/$app.app/Contents/Resources/applet.icns"
+                        break
+                    done
+                fi
+
+                chmod 755 "$TEMPROOT/Applications/digiKam/$app.app"
+            fi
+
+            # Don't keep looking through search paths once we've found the app
             break
-          done
         fi
 
-        chmod 755 "$TEMPROOT/Applications/digiKam/$app.app"
-      fi
+    done
 
-      # Don't keep looking through search paths once we've found the app
-      break
-    fi
-  done
 done
 
 #################################################################################################
@@ -294,18 +296,22 @@ done
 echo "---------- Collecting dependencies for applications, binaries, and libraries:"
 
 cd "$INSTALL_PREFIX"
+
 "$RECURSIVE_LIBRARY_LISTER" $binaries | sort -u | \
 while read lib ; do
-  lib="`echo $lib | sed "s:$INSTALL_PREFIX/::"`"
-  if [ ! -e "$TEMPROOT/$lib" ] ; then
-    dir="${lib%/*}"
-    if [ ! -d "$TEMPROOT/$dir" ] ; then
-      echo "  Creating $TEMPROOT/$dir"
-      mkdir -p "$TEMPROOT/$dir"
+    lib="`echo $lib | sed "s:$INSTALL_PREFIX/::"`"
+
+    if [ ! -e "$TEMPROOT/$lib" ] ; then
+        dir="${lib%/*}"
+
+        if [ ! -d "$TEMPROOT/$dir" ] ; then
+            echo "  Creating $TEMPROOT/$dir"
+            mkdir -p "$TEMPROOT/$dir"
+        fi
+
+        echo "  $lib"
+        cp -aH "$INSTALL_PREFIX/$lib" "$TEMPROOT/$dir/"
     fi
-    echo "  $lib"
-    cp -aH "$INSTALL_PREFIX/$lib" "$TEMPROOT/$dir/"
-  fi
 done
 
 #################################################################################################
@@ -314,13 +320,15 @@ done
 echo "---------- Copying non-binary files and directories..."
 
 for path in $OTHER_APPS $OTHER_DIRS ; do
-  dir="${path%/*}"
-  if [ ! -d "$TEMPROOT/$dir" ] ; then
-    echo "  Creating $TEMPROOT/$dir"
-    mkdir -p "$TEMPROOT/$dir"
-  fi
-  echo "  $path"
-  cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/$dir/"
+    dir="${path%/*}"
+
+    if [ ! -d "$TEMPROOT/$dir" ] ; then
+        echo "  Creating $TEMPROOT/$dir"
+        mkdir -p "$TEMPROOT/$dir"
+    fi
+
+    echo "  $path"
+    cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/$dir/"
 done
 
 cd "$ORIG_WD"
@@ -426,7 +434,7 @@ TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-   set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
+    set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
 
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
