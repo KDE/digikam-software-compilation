@@ -61,6 +61,7 @@ cd $ORIG_WD/icon-rcc
 cmake -DCMAKE_INSTALL_PREFIX="$MXE_INSTALL_PREFIX" \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_COLOR_MAKEFILE=ON \
+      -Wno-dev \
       .
 
 make -j$CPU_CORES
