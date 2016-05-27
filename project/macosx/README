@@ -60,16 +60,16 @@ libs used by digiKam as Exiv2 and LensFun.
 This script configures, and compile a custom non-root install of digiKam to
 /opt/digikam.
 
-* 04-build-packages.sh:
+* 04-build-installer.sh:
 
 Once you've successfully built digiKam, /opt/digikam may contain over 10GB of files.
-The make-package.sh script grabs the ~500MB needed to run digiKam and showfoto,
-and places them in ~/digikam-package/opt. These include applications documentations
+This script grabs the ~500MB needed to run digiKam and showfoto,
+and places them in ./installer/opt. These include applications documentations
 and translations.
 
 This script creates Applescript launch applications for the programs that will
 be run by the user (digiKam, Showfoto, etc), and preinstall/postinstall
-scripts in digikam-package/package.
+scripts in ./installer.
 
 The launcher applications:
      1) load dbus-session with launchctl if it isn't already loaded
@@ -86,8 +86,8 @@ put everything together.
 
 * rll.py
 
-Run by 04-build-packages.sh. It is a python script that takes a list of binaries
-and libraries supplied by 04-build-packages.sh and recursively lists the dylibs on
+Run by 04-build-installer.sh. It is a python script that takes a list of binaries
+and libraries supplied by 04-build-installer.sh and recursively lists the dylibs on
 which they depend, and their dependencies, etc.. Adapted with minimal
 modification (mostly deleting stuff) from
 https://github.com/mixxxdj/mixxx/blob/master/build/osx/otool.py.

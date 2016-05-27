@@ -15,12 +15,12 @@
 # Manage script traces to log file
 
 mkdir -p ./logs
-exec > >(tee ./logs/build-package.full.log) 2>&1
+exec > >(tee ./logs/build-installer.full.log) 2>&1
 
 #################################################################################################
 
-echo "04-build-package.sh : build digiKam bundle PKG."
-echo "-----------------------------------------------"
+echo "04-build-installer.sh : build digiKam bundle PKG."
+echo "-------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
@@ -53,7 +53,7 @@ make -j$CPU_CORES
 BUILDDIR="$PWD"
 
 # Directory where Packages project files are located
-PROJECTDIR="$BUILDDIR/package"
+PROJECTDIR="$BUILDDIR/installer"
 
 # Staging area where files to be packaged will be copied
 TEMPROOT="$BUILDDIR/$INSTALL_PREFIX"
@@ -153,7 +153,7 @@ echo $DIGIKAM_VERSION
 # digiKam has been built with debug symbol. We'll need to set DYLIB_IMAGE_SUFFIX later.
 DEBUG=1
 
-# ./package sub-dir must be writable by root
+# ./installer sub-dir must be writable by root
 chmod 777 ${PROJECTDIR}
 
 #################################################################################################
@@ -350,9 +350,10 @@ sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.c
 echo "---------- Create package pre-install script"
 
 # Unload dbus-system, delete /Applications entries, delete existing installation
+
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated and will be overwritten by 04-build-package.sh
+# Generated and will be overwritten by 04-build-installer.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
   echo "Unloading dbus-system"
@@ -371,6 +372,7 @@ fi
 EOF
 
 # Pre-install script need to be executable
+
 chmod 755 "$PROJECTDIR/preinstall"
 
 #################################################################################################
@@ -379,9 +381,10 @@ chmod 755 "$PROJECTDIR/preinstall"
 echo "---------- Create package post-install script"
 
 # Loads dbus-system and creates Applications menu icons
+
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated and will be overwritten by 04-build-package.sh
+# Generated and will be overwritten by 04-build-installer.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
