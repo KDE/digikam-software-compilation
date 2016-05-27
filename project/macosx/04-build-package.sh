@@ -30,6 +30,23 @@ echo "-----------------------------------------------"
 StartScript
 
 #################################################################################################
+# Build icons-set ressource
+
+ORIG_WD="`pwd`"
+
+echo -e "\n---------- Build icons-set ressource\n"
+
+cd $ORIG_WD/icon-rcc
+
+cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_COLOR_MAKEFILE=ON \
+      -Wno-dev \
+      .
+
+make -j$CPU_CORES
+
+#################################################################################################
 # Configurations
 
 # Directory where this script is located (default - current directory)
@@ -138,8 +155,6 @@ DEBUG=1
 
 # ./package sub-dir must be writable by root
 chmod 777 ${PROJECTDIR}
-
-ORIG_WD="`pwd`"
 
 #################################################################################################
 # Check if Packages CLI tools are installed
