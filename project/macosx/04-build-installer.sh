@@ -50,6 +50,8 @@ cp -f $ORIG_WD/../../bootstrap.macports .
 
 make -j$CPU_CORES
 
+cd $ORIG_WD
+
 #################################################################################################
 # Configurations
 
@@ -138,7 +140,7 @@ share/mime \
 var/run/dbus \
 "
 
-share/icons/hicolor \
+#share/icons/hicolor \
 #share/doc/HTML/ \
 #share/qt4/ \
 #share/icons/oxygen \
