@@ -46,7 +46,11 @@ cd $ORIG_WD/icon-rcc
 
 cp -f $ORIG_WD/../../bootstrap.macports .
 
-./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "-Wno-dev"
+cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_COLOR_MAKEFILE=ON \
+      -Wno-dev \
+      .
 
 make -j$CPU_CORES
 
@@ -104,7 +108,6 @@ bin/kquitapp5 \
 bin/kreadconfig5 \
 bin/kwriteconfig5 \
 lib/libopencv*.dylib \
-lib/plugins \
 lib/libexec \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
@@ -130,6 +133,7 @@ Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
 etc/dbus-1 \
 etc/xdg \
 lib/libgphoto* \
+lib/plugins \
 share/applications \
 share/dbus-1 \
 share/OpenCV \
