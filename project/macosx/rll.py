@@ -63,11 +63,12 @@ def otool(binary):
     stdin, stdout, stderr = os.popen3('otool -L "%s"' % binary)
 
     try:
-        header = stdout.readline() #discard the first line since it is just the name of the file or an error message (or if reading .as, the first item on the list)
+        # discard the first line since it is just the name of the file or an error message (or if reading .as, the first item on the list)
+        header = stdout.readline()
 
         if not binary+":\n" == header:
 
-            #as far as I know otool -L only parses .dylibs and .a (but if it does anything else we should cover that case here)
+            # as far as I know otool -L only parses .dylibs and .a (but if it does anything else we should cover that case here)
             if header.startswith("Archive : "):
                 raise Exception("'%s' an archive (.a) file." % binary)
             else:
@@ -112,7 +113,8 @@ def embed_dependencies(binary,
     "this is a badly named function"
     "Note: sometimes Mach-O binaries depend on themselves. Deal with it."
 
-    # "ignore_missing means whether to ignore if we can't load a binary for examination (e.g. if you have references to plugins) XXX is the list"
+    # "ignore_missing means whether to ignore if we can't load a binary for examination
+    # (e.g. if you have references to plugins) XXX is the list"
 
     #binary = os.path.abspath(binary)
 
@@ -124,13 +126,17 @@ def embed_dependencies(binary,
 
     while todo:
 
-        e = todo.pop() # because of how this is written, popping from the end is a depth-first search. Popping from the front would be a breadth-first search. Neat!
+        # because of how this is written, popping from the end is a depth-first search. 
+        # Popping from the front would be a breadth-first search. Neat!
+
+        e = todo.pop()
 
         # Figure out the absolute path to the library
 
         if e.startswith('/'):
             p = e
-        elif e.startswith('@'): # it's a relative load path
+        elif e.startswith('@'):
+            # it's a relative load path
             raise Exception("Unable to make heads nor tails, sah, of install name '%s'. Relative paths are for already-bundled binaries, this function does not support them." % e)
         else:
             # experiments show that giving an unspecified path is asking dyld(1) to find the library for us. This covers that case.
@@ -138,6 +144,7 @@ def embed_dependencies(binary,
             for P in ['']+LOCAL+SYSTEM: 
                 p = os.path.abspath(os.path.join(P, e))
                 #print "SEARCHING IN LIBPATH; TRYING", p
+
                 if os.path.exists(p):
                     break
             else:
@@ -151,6 +158,7 @@ def embed_dependencies(binary,
             if ".framework/Versions/" in p:
                 # If dependency is a framework, return
                 # framework directory not shared library
+
                 f = re.sub("/Versions/[0-9]*/.*","",p)
 
                 if f not in done:
@@ -165,6 +173,8 @@ def embed_dependencies(binary,
     assert all(e.startswith("/") for e in done), "embed_dependencies() is broken, some path in this list is not absolute: %s" % (done,)
 
     return sorted(done)
+
+# ---------------------------------------------------------------
 
 deplist = []
 
