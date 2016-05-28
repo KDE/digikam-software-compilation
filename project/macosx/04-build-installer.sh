@@ -108,7 +108,6 @@ bin/kquitapp5 \
 bin/kreadconfig5 \
 bin/kwriteconfig5 \
 lib/libopencv*.dylib \
-lib/libexec \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
 libexec/qt5/plugins/printsupport/*.dylib \
@@ -134,6 +133,7 @@ etc/dbus-1 \
 etc/xdg \
 lib/libgphoto* \
 lib/plugins \
+lib/libexec \
 share/applications \
 share/dbus-1 \
 share/OpenCV \

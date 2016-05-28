@@ -74,17 +74,16 @@ InstallKDEExtraLib "kio"                 "$ORIG_WD/patches/kio-drop-ktextwidgets
 
 # Marble for geolocation tools.
 
-InstallKDEExtraApp "marble" "" \
-                   "-DWITH_DESIGNER_PLUGIN=OFF \
-                    -DBUILD_MARBLE_TESTS=OFF \
-                    -DBUILD_MARBLE_TOOLS=OFF \
-                    -DBUILD_MARBLE_EXAMPLES=OFF \
-                    -DBUILD_MARBLE_APPS=OFF \
-                    -DBUILD_MARBLE_TESTS=OFF \
-                    -DBUILD_WITH_DBUS=OFF \
-                    -DBUILD_TESTING=OFF \
-                    -DQTONLY=ON \
-                    -Wno-dev"
+InstallKDEExtraApp "marble"              "$ORIG_WD/patches/marble-libs-install-path.patch"  "-DWITH_DESIGNER_PLUGIN=OFF \
+                                                                                             -DBUILD_MARBLE_TESTS=OFF \
+                                                                                             -DBUILD_MARBLE_TOOLS=OFF \
+                                                                                             -DBUILD_MARBLE_EXAMPLES=OFF \
+                                                                                             -DBUILD_MARBLE_APPS=OFF \
+                                                                                             -DBUILD_MARBLE_TESTS=OFF \
+                                                                                             -DBUILD_WITH_DBUS=OFF \
+                                                                                             -DBUILD_TESTING=OFF \
+                                                                                             -DQTONLY=ON \
+                                                                                             -Wno-dev"
 
 # Marble install shared lib at wrong place.
 mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libastro*  $INSTALL_PREFIX/lib
