@@ -28,6 +28,8 @@ echo "-------------------------------------------------"
 . ./config.sh
 . ./common.sh
 StartScript
+ChecksRunAsRoot
+OsxCodeName
 
 #################################################################################################
 
@@ -240,12 +242,12 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
             fi
 
             # ------ Create KDE application launcher script
-            cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
+            # Partially derived from https://discussions.apple.com/thread/3934912 and
+            # http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
+            # and https://discussions.apple.com/thread/4059113
 
+            cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 #!/usr/bin/osascript
-# Partially derived from https://discussions.apple.com/thread/3934912 and
-# http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
-# and https://discussions.apple.com/thread/4059113
 
 on checkService(service)
 	do shell script "launchctl list"
@@ -263,13 +265,13 @@ end checkProcess
 if not checkService("org.freedesktop.dbus-session") then
 	log "Running launchctl load -w $INSTALL_PREFIX/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
 	do shell script "launchctl load -w $INSTALL_PREFIX/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
-	log "Running $DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca4"
-	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca4"
+	log "Running $DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
+	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
 end if
 
-if not checkProcess("kded4")
-	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
-end if
+#if not checkProcess("kded4")
+#	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
+#end if
 
 do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
 EOF
@@ -434,9 +436,13 @@ EOF
 chmod 755 "$PROJECTDIR/postinstall"
 
 #################################################################################################
-# Build PKG file
+# Copy icons-set ressource file
 
-OsxCodeName
+# TODO: check if it's the right place to share this file between Showfoto and digiKam
+cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/lib
+
+#################################################################################################
+# Build PKG file
 
 echo "---------- Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
 
