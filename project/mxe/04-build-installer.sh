@@ -89,33 +89,46 @@ mkdir -p $BUNDLEDIR/translations
 # Data files -------------------------------
 
 # For Marble
-cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data         2>/dev/null
 
 # Generics
-cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/solid                                   $BUNDLEDIR/data
-cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/solid                                   $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data         2>/dev/null
 
 # Qt configuration
-cp    $BUILDDIR/data/qt.conf                                            $BUNDLEDIR/
+cp    $BUILDDIR/data/qt.conf                                            $BUNDLEDIR/             2>/dev/null
 
 # Ressource icons-set
-cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/
+cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/             2>/dev/null
 
 # i18n
-cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations
-cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations
-cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations 2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations 2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data         2>/dev/null
 
 # DBus
-cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc
-cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc          2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/data         2>/dev/null
 
 # XDG
-cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc
-cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/data
+cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/data         2>/dev/null
+
+# Plugins Shared libraries -----------------
+
+# For Marble
+cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/             2>/dev/null
+
+# For Qt5
+cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/             2>/dev/null
+
+# Generics
+find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
+
+echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
 
 # Programs ---------------------------------
 
@@ -137,22 +150,11 @@ dbus-launch.exe \
 
 for app in $EXE_FILES ; do
 
-    cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
+    cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/ 2>/dev/null
     $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
 
 done
 
-# Plugins Shared libraries -----------------
-
-# For Marble
-cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/
-
-# For Qt5
-cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/
-
-# Generics
-find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;
- 
 #################################################################################################
 # Cleanup symbols in binary files to free space.
 

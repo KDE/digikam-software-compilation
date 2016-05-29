@@ -180,17 +180,17 @@ def main():
     all_deps = set(gather_deps(args.exe_file, default_path_prefixes, []))
     all_deps.remove(args.exe_file)
 
-    print("\n".join(all_deps))
+    #print("\n".join(all_deps))
 
     if args.copy:
 
-        print("Copying enabled, will now copy all dependencies near to the exe file.\n")
+        #print("Copying enabled, will now copy recursively all dependencies near to the exe file.\n")
 
         parent_dir = os.path.dirname(os.path.abspath(args.exe_file))
 
         for dep in all_deps:
             target = os.path.join(parent_dir, os.path.basename(dep))
-            print("Copying '%s' to '%s'" % (dep, target))
+            #print("Copying '%s' to '%s'" % (dep, target))
             shutil.copy(dep, parent_dir)
 
             if args.upx:

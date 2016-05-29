@@ -38,6 +38,9 @@
  ;
  ; ============================================================ ;;
 
+    ;Verbose level (no script)
+    !verbose 3
+
 ;-------------------------------------------------------------------------------
 ; Compression rules optimizations
 ; We will use LZMA compression as 7Zip, with a dictionary size of 96Mb (to reproduce 7Zip Ultra compression mode)
