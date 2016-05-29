@@ -523,14 +523,14 @@
         SetOutPath "$INSTDIR"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
         SetOutPath "$INSTDIR\bin"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk" "$INSTDIR\bin\digikam.exe"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk" "$INSTDIR\bin\showfoto.exe"
+        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk" "$INSTDIR\digikam.exe"
+        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk" "$INSTDIR\showfoto.exe"
 
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk" "$INSTDIR\bin\dngconverter.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk" "$INSTDIR\bin\expoblending.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk" "$INSTDIR\bin\panoramagui.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Scan.lnk" "$INSTDIR\bin\scangui.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk" "$INSTDIR\bin\systemsettings.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk" "$INSTDIR\dngconverter.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk" "$INSTDIR\expoblending.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk" "$INSTDIR\panoramagui.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Scan.lnk" "$INSTDIR\scangui.exe"
+            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk" "$INSTDIR\systemsettings.exe"
 
         WriteINIStr "$SMPROGRAMS\$StartMenuFolder\The ${MY_PRODUCT} HomePage.url" "InternetShortcut" "URL" "${PRODUCT_HOMEPAGE}"
 
