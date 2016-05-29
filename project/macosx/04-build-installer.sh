@@ -39,6 +39,8 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
+DKRELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
+
 #################################################################################################
 # Build icons-set ressource
 
@@ -163,9 +165,7 @@ PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
-echo -n "digiKam version: "
-DIGIKAM_VERSION=$DK_VERSION
-echo $DIGIKAM_VERSION
+echo -n "digiKam version: $DKRELEASEID"
 
 # digiKam has been built with debug symbol. We'll need to set DYLIB_IMAGE_SUFFIX later.
 DEBUG=1
@@ -212,7 +212,7 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
         if [ -d "$INSTALL_PREFIX/$searchpath/$app.app" ] ; then
             echo "    Found $app in $INSTALL_PATH/$searchpath"
 
-            # Create destination directory if necessary and copy app
+        # Create destination directory if necessary and copy app
 
         if [ ! -d "$TEMPROOT/$searchpath" ] ; then 
             echo "    Creating $TEMPROOT/$searchpath"
@@ -389,21 +389,20 @@ echo "---------- Create package pre-install script"
 
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
-# Generated and will be overwritten by 04-build-installer.sh
 
 if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
-  echo "Unloading dbus-system"
-  launchctl unload "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system"
+    echo "Unloading dbus-system"
+    launchctl unload "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system"
 fi
 
 if [ -d /Applications/digiKam ] ; then
-  echo "Removing digikam from Applications folder"
-  rm -r /Applications/digiKam
+    echo "Removing digikam from Applications folder"
+    rm -r /Applications/digiKam
 fi
 
 if [ -d "$INSTALL_PREFIX" ] ; then
-  echo "Removing $INSTALL_PREFIX"
-  rm -rf "$INSTALL_PREFIX"
+    echo "Removing $INSTALL_PREFIX"
+    rm -rf "$INSTALL_PREFIX"
 fi
 EOF
 
@@ -420,14 +419,13 @@ echo "---------- Create package post-install script"
 
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-# Generated and will be overwritten by 04-build-installer.sh
 
 launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
 [[ ! -d /Applications/digiKam ]] && mkdir "/Applications/digiKam"
 
 for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
-  ln -s "\$app" /Applications/digiKam/\${app##*/}
+    ln -s "\$app" /Applications/digiKam/\${app##*/}
 done
 EOF
 
@@ -444,13 +442,13 @@ cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Application/KF5/digikam.app/Contents/M
 #################################################################################################
 # Build PKG file
 
-echo "---------- Create package for digiKam $DIGIKAM_VERSION for OSX $OSX_CODE_NAME"
+echo "---------- Create OSX package for digiKam $DKRELEASEID"
 
-TARGET_PKG_FILE=$BUILDDIR/digikam-$DIGIKAM_VERSION-$OSX_CODE_NAME.pkg
+TARGET_PKG_FILE=$BUILDDIR/digikam-$DKRELEASEID-osx.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-    set version "$DIGIKAM_VERSION-$OSX_CODE_NAME"
+    set version "$DKRELEASEID"
 
 $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 
@@ -459,15 +457,15 @@ mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 #################################################################################################
 # Show resume information and future instructions to host PKG file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DIGIKAM_VERSION\n"
+echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n"
 
-echo "File       : $TARGET_PKG_FILE"
+echo    "File       : $TARGET_PKG_FILE"
 echo -n "Size       : "
-du -h "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
 md5 -q "$TARGET_PKG_FILE"
 echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
+shasum -a1 "$TARGET_PKG_FILE"   | { read first rest ; echo $first ; }
 echo -n "SHA256 sum : "
 shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
 
