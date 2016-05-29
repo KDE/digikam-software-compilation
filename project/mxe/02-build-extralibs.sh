@@ -97,7 +97,6 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
     make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
 
 fi
-exit
 
 #################################################################################################
 # Build KF5 frameworks in a temporary directory and installation
