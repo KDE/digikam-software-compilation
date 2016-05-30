@@ -16,6 +16,13 @@ Software Collection for Windows 32 bits or 64 bits. In addition to this README,
 there are comments in the scripts that provide some additional explanation for
 how they work.
 
+Note : these cross-compiling scripts exists because the way provided by KDE team to compile 
+a KDE application under Windows with MSVC compiler through emerge tool never work and is just
+a big pain to use/configure/run with a Windows OS. Also KDE Windows initiative look like 
+unmaintained/inactive since a while.
+Another big advantage of cross-compiling is to not require a Windows to do the job, which 
+is definitively a weird operating system to compile and hack.
+
 REQUIREMENTS
 ------------
 The scripts build digiKam with MXE cross compiler, so you will need all dependencies
