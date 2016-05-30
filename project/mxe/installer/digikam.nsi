@@ -184,7 +184,7 @@
     ;-------------------------------------------
 
     Function .onInstSuccess
-        ExecShell "" "$instdir\kbuildsycoca5.exe"
+        ExecWait '"$instdir\kbuildsycoca5.exe" "--noincremental"'
     FunctionEnd
 
 ;-------------------------------------------------------------------------------
