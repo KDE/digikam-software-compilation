@@ -135,6 +135,9 @@ echo -e "\n---------- Copy executables with recursive dependencies in bundle dir
 BIN_FILES="\
 digikam.exe \
 showfoto.exe \
+kdeinit5.exe \
+klauncher.exe \
+kwrapper5.exe \
 kbuildsycoca5.exe \
 kconf_update.exe \
 kconfig_compiler_kf5.exe \
