@@ -43,9 +43,6 @@ MXE_PACKAGES="gcc \
               opencv \
               dbus \
               qt5 \
-              wxwidgets
-              vigra
-              libpano13
              "
 
 #For hugin 2015.0. WxWidget do not compile as shared.
