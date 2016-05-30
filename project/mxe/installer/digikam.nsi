@@ -181,6 +181,12 @@
 
     FunctionEnd
 
+    ;-------------------------------------------
+
+    Function .onInstSuccess
+        ExecShell "" "$instdir\kbuildsycoca5.exe"
+    FunctionEnd
+
 ;-------------------------------------------------------------------------------
 ;Interface Configuration
 
