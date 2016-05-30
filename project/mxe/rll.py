@@ -175,7 +175,7 @@ def main():
     if args.upx and not args.copy:
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
 
-    print("Scan dependencies for " + args.exe_file + "\n")
+    print("Scan dependencies for " + args.exe_file)
 
     all_deps = set(gather_deps(args.exe_file, default_path_prefixes, []))
     all_deps.remove(args.exe_file)

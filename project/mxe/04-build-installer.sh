@@ -125,14 +125,14 @@ cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLED
 # For Qt5
 cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/             2>/dev/null
 
-# Generics
+# KF5 plugins
 find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
 
 echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
 
 # Programs ---------------------------------
 
-EXE_FILES="\
+BIN_FILES="\
 digikam.exe \
 showfoto.exe \
 kbuildsycoca5.exe \
@@ -146,9 +146,10 @@ kreadconfig5.exe \
 kwriteconfig5.exe \
 dbus-daemon.exe \
 dbus-launch.exe \
+`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
 "
 
-for app in $EXE_FILES ; do
+for app in $BIN_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/ 2>/dev/null
     $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
