@@ -12,7 +12,7 @@ Qt5::Widgets                   X                    X                           
 Qt5::Sql                                                                        X                   >= 5.4.0            http://www.qtsoftware.com                                                                           Including Qt5::Sqlite and Qt5::Mysql plugins.
 Qt5::Xml                                            X                           X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::Concurrent                                     X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::WebKitWidgets                                  X                           X                   >= 5.4.0            http://www.qtsoftware.com
+Qt5::WebKitWidgets                                                              X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::PrintSupport                                   X                           X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::DBus                                                                       X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::Network                                        X                                               >= 5.4.0            http://www.qtsoftware.com
