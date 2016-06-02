@@ -136,16 +136,7 @@ echo -e "\n---------- Copy executables with recursive dependencies in bundle dir
 BIN_FILES="\
 digikam.exe \
 showfoto.exe \
-kded5.exe \
-kdeinit5.exe \
-klauncher.exe \
-kwrapper5.exe \
 kbuildsycoca5.exe \
-kconf_update.exe \
-kconfig_compiler_kf5.exe \
-kiod5.exe \
-kioexec.exe \
-kioslave.exe \
 kquitapp5.exe \
 kreadconfig5.exe \
 kwriteconfig5.exe \
@@ -153,6 +144,14 @@ dbus-daemon.exe \
 dbus-launch.exe \
 `find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
 "
+
+#kded5.exe \
+#kdeinit5.exe \
+#klauncher.exe \
+#kiod5.exe \
+#kioexec.exe \
+#kioslave.exe \
+#kwrapper5.exe \
 
 #`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
 
