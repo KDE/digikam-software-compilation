@@ -86,17 +86,29 @@ endif()
 
 if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
-    message(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Translations compilation disabled...")
+    message(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Application translations compilation disabled...")
 
     if(NOT DIGIKAMSC_CHECKOUT_PO)
-        message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract po files from KDE repositories.")
+        message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract GUI i18n files from KDE repositories.")
     endif()
 
     set(DIGIKAMSC_COMPILE_PO OFF)
 
 endif()
 
-if(DIGIKAMSC_COMPILE_PO)
+if(DIGIKAMSC_COMPILE_DOC AND NOT EXISTS ${CMAKE_SOURCE_DIR}/doc-translated/)
+
+    message(STATUS "${CMAKE_SOURCE_DIR}/doc-translated/ dir do not exists. Documentation translations compilation disabled...")
+
+    if(NOT DIGIKAMSC_CHECKOUT_DOC)
+        message(STATUS "You can use DIGIKAMSC_CHECKOUT_DOC option to extract doc i18n files from KDE repositories.")
+    endif()
+
+    set(DIGIKAMSC_COMPILE_DOC OFF)
+
+endif()
+
+if(DIGIKAMSC_COMPILE_PO OR DIGIKAMSC_COMPILE_DOC)
     set_property(GLOBAL PROPERTY ALLOW_DUPLICATE_CUSTOM_TARGETS 1)
 endif()
 
