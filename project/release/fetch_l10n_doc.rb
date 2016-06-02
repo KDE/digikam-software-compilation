@@ -52,10 +52,40 @@ end
 
 Dir.chdir( "doc-translated" )
 topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+topmakefile << "add_subdirectory(digikam)\n"
 
-# digikam
+if !(File.exists?("digikam") && File.directory?("digikam"))
+    Dir.mkdir("digikam")
+end
 
-print("digiKam: ")
+if !(File.exists?("kipi-plugins") && File.directory?("kipi-plugins"))
+    Dir.mkdir("kipi-plugins")
+end
+
+l1makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+l1makefile << "add_subdirectory(digikam)\n"
+l1makefile << "add_subdirectory(kipi-plugins)\n"
+
+# -- digiKam + Showfoto extraction ------------------------------------------------------
+
+Dir.chdir("digikam")
+
+if !(File.exists?("digikam") && File.directory?("digikam"))
+    Dir.mkdir("digikam")
+end
+
+if !(File.exists?("showfoto") && File.directory?("showfoto"))
+    Dir.mkdir("showfoto")
+end
+
+l2makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+l2makefile << "add_subdirectory(digikam)\n"
+l2makefile << "add_subdirectory(showfoto)\n"
+
+print("digikam: ")
+
+Dir.chdir("digikam")
+l3makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
 
 i18nlangs.each_line do |lang|
     lang.chomp!()
@@ -99,7 +129,7 @@ i18nlangs.each_line do |lang|
 
         if (complete == true)
            # complete checkout
-            topmakefile << "add_subdirectory( #{lang} )\n"
+            l3makefile << "add_subdirectory( #{lang} )\n"
             print(" ")
         else
             # uncomplete checkout
@@ -110,6 +140,134 @@ i18nlangs.each_line do |lang|
      end
 end
 
-# TODO: add showfoto and kipiplugins
+Dir.chdir("..")
+puts ("\n")
 
+# ------------------
+
+print("showfoto: ")
+
+Dir.chdir("showfoto")
+l4makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+
+i18nlangs.each_line do |lang|
+    lang.chomp!()
+
+    if (lang != nil && lang != "")
+
+        print("#{lang}")
+
+        if !(File.exists?(lang) && File.directory?(lang))
+            Dir.mkdir(lang)
+        end
+
+        Dir.chdir(lang)
+
+        # This boolean variable is true if full documentation translation can be fetch from repository.
+        complete = true
+
+        for part in ['index']
+
+            if isWindows
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook > #{part}.docbook`
+            else
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+            end
+
+            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
+                File.delete( "#{part}.docbook" )
+                complete = false
+                break
+            end
+
+        end
+
+        if (complete == true)
+            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+            makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
+            makefile.close()
+        end
+
+        Dir.chdir("..")
+
+        if (complete == true)
+           # complete checkout
+            l4makefile << "add_subdirectory( #{lang} )\n"
+            print(" ")
+        else
+            # uncomplete checkout
+            FileUtils.rm_r(lang)
+            print("(u) ")
+        end
+
+     end
+end
+
+Dir.chdir("..")
+Dir.chdir("..")
+puts ("\n")
+
+# -- kipi-plugins extraction ------------------------------------------------------
+
+
+print("kipi-plugins: ")
+
+Dir.chdir("kipi-plugins")
+l4makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+
+i18nlangs.each_line do |lang|
+    lang.chomp!()
+
+    if (lang != nil && lang != "")
+
+        print("#{lang}")
+
+        if !(File.exists?(lang) && File.directory?(lang))
+            Dir.mkdir(lang)
+        end
+
+        Dir.chdir(lang)
+
+        # This boolean variable is true if full documentation translation can be fetch from repository.
+        complete = true
+
+        # TODO : mostly handook files here are obsolete and must be removed.
+        for part in ['acquireimages' 'effectimages' 'geolocation' 'index' 'printwizard' 'renameimages' 'slideshow' 'colorimages' 'filterimages' 'imagesgallery' 'jpeglossless' 'rawconverter' 'resizeimages' 'convertimages' 'flickrexport' 'imageviewer' 'metadataeditor' 'recompressimages' 'sendimages']
+
+            if isWindows
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/kipi-plugins/#{part}.docbook > #{part}.docbook`
+            else
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/kipi-plugins/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+            end
+
+            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
+                File.delete( "#{part}.docbook" )
+                complete = false
+                break
+            end
+
+        end
+
+        if (complete == true)
+            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+            makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
+            makefile.close()
+        end
+
+        Dir.chdir("..")
+
+        if (complete == true)
+           # complete checkout
+            l4makefile << "add_subdirectory( #{lang} )\n"
+            print(" ")
+        else
+            # uncomplete checkout
+            FileUtils.rm_r(lang)
+            print("(u) ")
+        end
+
+     end
+end
+
+Dir.chdir("..")
 puts ("\n")
