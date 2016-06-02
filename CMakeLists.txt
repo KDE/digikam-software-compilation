@@ -118,6 +118,9 @@ endif()
 
 ############################################################################################################################################
 
+message(STATUS "----------------------------------------------------------------------------------")
+message(STATUS "Compilation configuration for: ${PROJECT_NAME}")
+
 if(DIGIKAMSC_COMPILE_DIGIKAM)
     if(NOT EXISTS ${CMAKE_SOURCE_DIR}/core)
         message(STATUS "digiKam core will be compiled.................. NO (source code not available)")
