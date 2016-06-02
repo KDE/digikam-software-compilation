@@ -65,6 +65,9 @@ i18nlangs.each_line do |lang|
 
         Dir.chdir(lang)
 
+
+        # digikam
+
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
 
             if isWindows
@@ -72,13 +75,17 @@ i18nlangs.each_line do |lang|
             else
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
             end
+
             if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
                 File.delete( "#{part}.docbook" )
             end
+
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
         end
+
+        # TODO: add showfoto and kipiplugins
 
         Dir.chdir("..")
         topmakefile << "add_subdirectory( #{lang} )\n"
