@@ -68,7 +68,6 @@ i18nlangs.each_line do |lang|
 
         for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googledrive','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
 
-            #puts "Copying #{lang}'s #{part} over..  "
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
             else
@@ -86,6 +85,7 @@ i18nlangs.each_line do |lang|
         end
 
         # libkvkontakte is in extragear-libs.
+
         for part in ['libkvkontakte']
 
             if isWindows
@@ -96,7 +96,6 @@ i18nlangs.each_line do |lang|
 
             if FileTest.size( "#{part}.po" ) == 0
                 File.delete( "#{part}.po" )
-                #puts "Delete File #{part}.po"
             end
         end
 
