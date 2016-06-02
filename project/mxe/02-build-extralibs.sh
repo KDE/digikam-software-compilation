@@ -125,10 +125,12 @@ InstallKDEExtraLib "kservice"            ""                                     
 InstallKDEExtraLib "kglobalaccel"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kxmlgui"             "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch" "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kbookmarks"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kjobwidgets"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kio"                 "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"     "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kinit"               "$ORIG_WD/patches/kinit-mingw-support.patch"       "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kded"                ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+
+# KIO is only required by some KIPI tool. KIO is a worse under Windows. Disabled.
+#InstallKDEExtraLib "kjobwidgets"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+#InstallKDEExtraLib "kio"                 "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"     "-DBUILD_TESTING=OFF -Wno-dev"
+#InstallKDEExtraLib "kinit"               "$ORIG_WD/patches/kinit-mingw-support.patch"       "-DBUILD_TESTING=OFF -Wno-dev"
+#InstallKDEExtraLib "kded"                ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 
 #################################################################################################
 # Build KF5 extra components
