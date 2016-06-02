@@ -66,6 +66,8 @@ i18nlangs.each_line do |lang|
 
         Dir.chdir(lang)
 
+        # digiKam core and kipiplugins from extragear-graphics
+
         for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googledrive','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
 
             if isWindows
@@ -84,7 +86,7 @@ i18nlangs.each_line do |lang|
             makefile.close()
         end
 
-        # libkvkontakte is in extragear-libs.
+        # libkvkontakte from extragear-libs.
 
         for part in ['libkvkontakte']
 
