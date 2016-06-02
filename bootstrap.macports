@@ -40,8 +40,11 @@ echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUI
 # set devel env from MacOS-X through MacPorts
 export QTDIR=$INSTALL_PREFIX/libexec/qt5
 export QT_INCLUDE_DIR=$QTDIR/include
-export PATH=$QTDIR/bin:$PATH
 export PKG_CONFIG_PATH=$INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# Pathes rules
+ORIG_PATH="$PATH"
+export PATH=$INSTALL_PREFIX/bin:$QTDIR/bin:$PATH
 
 # We will work on command line using GNU make
 export MAKEFILES_TYPE='Unix Makefiles'
@@ -96,5 +99,7 @@ fi
 if [ -d ./extra/libmediawiki/src ]; then
     ln -sf src ./extra/libmediawiki/MediaWiki
 fi
+
+export PATH=$ORIG_PATH
 
 exit $CMAKE_VAL_RET
