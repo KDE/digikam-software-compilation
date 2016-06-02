@@ -13,6 +13,7 @@
 # License: GNU General Public License V2
 
 require 'rbconfig'
+require 'fileutils'
 isWindows = RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/i
 
 branch = "trunk"
@@ -43,7 +44,7 @@ else
 end
 
 ##########################################################################################
-#EXTRACT TRANSLATED DOCUMENTATION FILES
+# EXTRACT TRANSLATED DOCUMENTATION FILES
 
 if !(File.exists?("doc-translated") && File.directory?("doc-translated"))
     Dir.mkdir( "doc-translated" )
@@ -52,12 +53,16 @@ end
 Dir.chdir( "doc-translated" )
 topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
 
+# digikam
+
+print("digiKam: ")
+
 i18nlangs.each_line do |lang|
     lang.chomp!()
 
     if (lang != nil && lang != "")
 
-        print("#{lang} ")
+        print("#{lang}")
 
         if !(File.exists?(lang) && File.directory?(lang))
             Dir.mkdir(lang)
@@ -65,8 +70,8 @@ i18nlangs.each_line do |lang|
 
         Dir.chdir(lang)
 
-
-        # digikam
+        # This boolean variable is true if full documentation translation can be fetch from repository.
+        complete = true
 
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
 
@@ -78,18 +83,33 @@ i18nlangs.each_line do |lang|
 
             if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
                 File.delete( "#{part}.docbook" )
+                complete = false
+                break
             end
 
+        end
+
+        if (complete == true)
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
         end
 
-        # TODO: add showfoto and kipiplugins
-
         Dir.chdir("..")
-        topmakefile << "add_subdirectory( #{lang} )\n"
-    end
+
+        if (complete == true)
+           # complete checkout
+            topmakefile << "add_subdirectory( #{lang} )\n"
+            print(" ")
+        else
+            # uncomplete checkout
+            FileUtils.rm_r(lang)
+            print("(u) ")
+        end
+
+     end
 end
+
+# TODO: add showfoto and kipiplugins
 
 puts ("\n")

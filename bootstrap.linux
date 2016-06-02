@@ -52,10 +52,6 @@ echo "Qt5     Install Path : $QT_INSTALL_PREFIX"
 echo "KF5     Install Path : "`kf5-config --prefix 2>/dev/null`
 echo "digiKam Install Path : $DIGIKAM_INSTALL_PREFIX"
 
-#export VERBOSE=1
-#export CC=gcc4.4
-#export CXX=g++4.4
-
 mkdir -p $DIGIKAM_INSTALL_PREFIX
 mkdir -p $BUILDDIR
 cd $BUILDDIR
