@@ -16,8 +16,8 @@ Order : Modules           : DK dependency : Inter-dependencies                  
   12  : kiconthemes       :       X       : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                  : -
   13  : kbookmarks        :               : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                             : -
   14  : kservice          :       X       : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                     : -
-  15  : kio               :       X       : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,        :
+  15  : kio               :   kipi tools  : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,        :
       :                   :               : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                              : KIOCORE_ONLY=OFF
-  16  : kinit             :               : kio, kservice, ki18n, kwindowsystem, kcrash, kconfig                                                            : -
-  17  : kded              :               : kconfig, kcoreaddons, kcrash, kdbusaddons, kinit, kservice                                                      : -
+  16  : kinit             :   kipi tools  : kio, kservice, ki18n, kwindowsystem, kcrash, kconfig                                                            : -
+  17  : kded              :   kipi tools  : kconfig, kcoreaddons, kcrash, kdbusaddons, kinit, kservice                                                      : -
 
