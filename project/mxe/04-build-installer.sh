@@ -73,7 +73,7 @@ make -j$CPU_CORES
 
 echo -e "\n---------- Copy files in bundle directory\n"
 
-# Directories creation ---------------------
+# Directories creation -----------------------------------------------------------------------
 
 cd $ORIG_WD
 
@@ -84,9 +84,10 @@ fi
 
 mkdir -p $BUNDLEDIR/data
 mkdir -p $BUNDLEDIR/etc
+mkdir -p $BUNDLEDIR/share
 mkdir -p $BUNDLEDIR/translations
 
-# Data files -------------------------------
+# Data files ---------------------------------------------------------------------------------
 
 # For Marble
 cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data         2>/dev/null
@@ -111,13 +112,13 @@ cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLED
 
 # DBus
 cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc          2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/share        2>/dev/null
 
 # XDG
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/share        2>/dev/null
 
-# Plugins Shared libraries -----------------
+# Plugins Shared libraries -------------------------------------------------------------------
 
 # For Marble
 cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/             2>/dev/null
@@ -130,11 +131,12 @@ find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLED
 
 echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
 
-# Programs ---------------------------------
+# Executables and plugins shared libraries dependencies scan ---------------------------------
 
 BIN_FILES="\
 digikam.exe \
 showfoto.exe \
+kded5.exe \
 kdeinit5.exe \
 klauncher.exe \
 kwrapper5.exe \
@@ -151,6 +153,8 @@ dbus-daemon.exe \
 dbus-launch.exe \
 `find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
 "
+
+#`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
 
 for app in $BIN_FILES ; do
 
