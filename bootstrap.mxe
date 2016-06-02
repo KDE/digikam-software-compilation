@@ -46,7 +46,6 @@ echo "Installing to $MXE_BUILDROOT for target $MXE_BUILD_TARGETS with build mode
 
 # Pathes rules
 ORIG_PATH="$PATH"
-
 export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
 
 if [ ! -d "build" ]; then
