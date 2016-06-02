@@ -56,6 +56,7 @@ i18nlangs.each_line do |lang|
     lang.chomp!()
 
     if (lang != nil && lang != "")
+
         print("#{lang} ")
 
         if !(File.exists?(lang) && File.directory?(lang))
@@ -65,7 +66,7 @@ i18nlangs.each_line do |lang|
         Dir.chdir(lang)
 
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
-            #puts "Copying #{lang}'s #{part}.docbook over..  "
+
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
             else
@@ -73,12 +74,10 @@ i18nlangs.each_line do |lang|
             end
             if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
                 File.delete( "#{part}.docbook" )
-                #puts "Delete File #{part}.docbook"
             end
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
-            #puts( "done.\n" )
         end
 
         Dir.chdir("..")

@@ -77,20 +77,17 @@ i18nlangs.each_line do |lang|
 
             if FileTest.size( "#{part}.po" ) == 0
                 File.delete( "#{part}.po" )
-                #puts "Delete File #{part}.po"
             end
 
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
             makefile << "file(GLOB _po_files *.po)\n"
             makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES ${_po_files} )\n"
             makefile.close()
-
-            #puts( "done.\n" )
         end
 
         # libkvkontakte is in extragear-libs.
         for part in ['libkvkontakte']
-            #puts "Copying #{lang}'s #{part} over..  "
+
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
             else
@@ -101,8 +98,6 @@ i18nlangs.each_line do |lang|
                 File.delete( "#{part}.po" )
                 #puts "Delete File #{part}.po"
             end
-
-            #puts( "done.\n" )
         end
 
         Dir.chdir("..")
