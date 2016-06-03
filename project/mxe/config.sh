@@ -22,6 +22,7 @@ MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 MXE_PACKAGES="gcc \
+              gdb \
               cmake \
               libxml2 \
               libxslt \

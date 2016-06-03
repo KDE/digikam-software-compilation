@@ -134,6 +134,7 @@ echo -e "\n---------- Copy executables with recursive dependencies in bundle dir
 # Executables and plugins shared libraries dependencies scan ---------------------------------
 
 BIN_FILES="\
+gdb.exe \
 digikam.exe \
 showfoto.exe \
 kbuildsycoca5.exe \
