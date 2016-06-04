@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#
 # Script to run all MXE based sub-scripts to build Windows installer.
 # Possible option : "-f" to force operations without to ask confirmation to user.
 #
