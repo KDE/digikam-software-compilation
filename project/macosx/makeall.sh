@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#
 # Script to run all Macports based sub-scripts to build OSX installer.
 # Possible option : "-f" to force operations without to ask confirmation to user.
 #

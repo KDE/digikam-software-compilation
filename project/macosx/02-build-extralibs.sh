@@ -66,8 +66,9 @@ InstallKDEExtraLib "kservice"            ""                                     
 InstallKDEExtraLib "kglobalaccel"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kxmlgui"             "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch" "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kbookmarks"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kjobwidgets"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "kio"                 "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"     "-DBUILD_TESTING=OFF -Wno-dev"
+
+#InstallKDEExtraLib "kjobwidgets"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+#InstallKDEExtraLib "kio"                 "$ORIG_WD/patches/kio-drop-ktextwidgets.patch"     "-DBUILD_TESTING=OFF -Wno-dev"
 
 #################################################################################################
 # Build KF5 extra components
