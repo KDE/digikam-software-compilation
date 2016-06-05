@@ -27,7 +27,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 if [ -d "$INSTALL_PREFIX" ] ; then
 
-    if [ $1 -ne "-f" ]
+    if [ $1 -ne "-f" ] ; then
 
         read -p "A previous Macports build already exist and it will be removed. Do you want to continue ? [(c)ontinue/(s)top] " answer
 
