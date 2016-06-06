@@ -78,6 +78,7 @@ echo "---------- Configure digiKam $DK_VERSION"
 
 sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g" ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
 sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"   ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
+sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"               ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
 chmod +x ./bootstrap.macports
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "-Wno-dev"
