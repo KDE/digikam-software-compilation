@@ -68,7 +68,7 @@ i18nlangs.each_line do |lang|
 
         # digiKam core and kipiplugins from extragear-graphics
 
-        for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googledrive','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
+        for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googleservices','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
