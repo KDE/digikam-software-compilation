@@ -175,4 +175,6 @@ make -j$CPU_CORES
 
 cd "$ORIG_WD"
 
+export PATH=$ORIG_PATH
+
 TerminateScript
