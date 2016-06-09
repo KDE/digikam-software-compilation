@@ -1,7 +1,10 @@
 RESUME
 ------
-Scripts to build binary digiKam installer for Windows under Linux using cross-compiler 
+This scripts build a binary digiKam installer for Windows under Linux using cross-compiler
 environnement MXE and NSIS application.
+
+This script follow instructions from Qt bundle deployement for Windows as shared libraries
+available at this url: http://doc.qt.io/qt-5/windows-deployment.html
 
 AUTHORS
 -------
