@@ -36,7 +36,6 @@ MXE_PACKAGES="gcc \
               lcms \
               lensfun \
               liblqr-1 \
-              boost \
               eigen \
               zlib \
               exiv2 \
