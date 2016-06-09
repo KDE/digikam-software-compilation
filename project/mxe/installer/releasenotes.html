@@ -12,18 +12,28 @@
 <body lang="en-US" dir="ltr">
 <pre class="western">
 
-Thank you for installing digiKam!
+<h1>Thank you for installing digiKam!</h1>
 
 We would like to inform you that this port of digiKam under Windows is not as stable as the Linux version.
 
 digiKam works mostly fine under Windows, but some features are still broken due to some bugs or not yet 
 implemented features in the underlying <a href="http://www.kde.org">KDE.org</a> libraries.
 
+This installer have be cross-compiled under Linux using <a href="http://mxe.cc/">MXE project</a>.
+
+<h1>Requirements and Limitations</h1>
+
 To handle video files with digiKam under Windows, we need an extra and free video codec package, 
 as <a href"http://www.codecguide.com/download_kl.htm">KLite Codec Pack</a> for exemple. 
 
 Note that due to some limitation in Windows video interface, it's not currently possible to get video file thumnails. 
 See <a href="http://doc.qt.io/qt-5/qtmultimedia-windows.html">this page</a> for details.
+
+Not all digiKam plugins are avaiable under Windows as under Linux. It still some works to port these tools and this can take a while.
+
+Mysql is not yet available to cross-compile with MXE. So, Mysql database support is currently disabled in digiKam.
+
+<h1>Contribute and Help</h1>
 
 To report a bug or a whish, please follow instructions at <a href="http://www.digikam.org/support">digiKam project web site</a>.
 
