@@ -4,7 +4,7 @@
 # <a href="http://www.digikam.org">http://www.digikam.org</a>
 #
 # @date   2011-11-02
-# @brief  simple Bash script to replace CRLF by EOL
+# @brief  Script to replace tabs by 4 spaces.
 #
 # @author Copyright (C) 2011-2016 by Gilles Caulier
 #         <a href="mailto:caulier dot gilles at gmail dot com">caulier dot gilles at gmail dot com</a>
@@ -24,11 +24,5 @@
 
 #!/bin/bash
 
-for f in `find -iname \*`; do
-    if file $f | grep "CRLF"
-    then
-        echo "Patched EOL of file: $f"
-        tr -d '\15\32' < $f > $f.tr
-        mv $f.tr $f
-    fi
-done
+find . -name "*.c" -o -name "*.h" | xargs -I {} -t bash -c " expand -t 4 {}  > tmp ; cat tmp > {}"
+rm -f tmp
