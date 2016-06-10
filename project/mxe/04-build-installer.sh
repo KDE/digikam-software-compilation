@@ -110,9 +110,10 @@ cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations 2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data         2>/dev/null
 
+# DBUS disabled for the moment. See bug #364116
 # DBus
-cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc          2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/share        2>/dev/null
+#cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc          2>/dev/null
+#cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/share        2>/dev/null
 
 # XDG
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
@@ -141,18 +142,12 @@ kbuildsycoca5.exe \
 kquitapp5.exe \
 kreadconfig5.exe \
 kwriteconfig5.exe \
-dbus-daemon.exe \
-dbus-launch.exe \
 `find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
 "
 
-#kded5.exe \
-#kdeinit5.exe \
-#klauncher.exe \
-#kiod5.exe \
-#kioexec.exe \
-#kioslave.exe \
-#kwrapper5.exe \
+# DBUS disabled for the moment. See bug #364116
+#dbus-daemon.exe \
+#dbus-launch.exe \
 
 #`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
 
