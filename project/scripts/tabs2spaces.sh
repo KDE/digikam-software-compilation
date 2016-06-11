@@ -24,5 +24,5 @@
 
 #!/bin/bash
 
-find . -name "*.c" -o -name "*.h" | xargs -I {} -t bash -c " expand -t 4 {}  > tmp ; cat tmp > {}"
+find . -name "*.cpp" -o -name "*.h" | xargs -I {} -t bash -c " expand -t 4 {}  > tmp ; cat tmp > {}"
 rm -f tmp
