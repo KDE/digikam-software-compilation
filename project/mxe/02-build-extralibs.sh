@@ -183,9 +183,6 @@ if [[ $ENABLE_MARIADB == 1 ]]; then
 
 fi
 
-exit
-
-
 #################################################################################################
 # Build KF5 frameworks in a temporary directory and installation
 # See KF5DEPENDENCIES details about the big puzzle

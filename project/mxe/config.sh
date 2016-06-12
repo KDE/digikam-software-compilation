@@ -70,7 +70,7 @@ HU_VERSION=2015.0
 # MariaDB tarball information
 MD_URL="http://de-rien.fr/mariadb"
 MD_BUILDTEMP=~/mdtemp
-MD_VERSION=10.1.14
+MD_VERSION=10.2.0
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
@@ -81,4 +81,3 @@ DK_VERSION=git
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 ENABLE_HUGIN=0
 ENABLE_MARIADB=0
-
