@@ -9,6 +9,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+# Halt on error
+set -e
+
 #################################################################################################
 # Manage script traces to log file
 
@@ -97,6 +100,91 @@ if [[ $ENABLE_HUGIN == 1 ]]; then
     make install && cd "$ORIG_WD" && rm -rf "$HU_BUILDTEMP"
 
 fi
+
+#################################################################################################
+# Build MariaDB in temporary directory and installation
+
+if [[ $ENABLE_MARIADB == 1 ]]; then
+
+    if [ -d "$MD_BUILDTEMP" ] ; then
+    echo "---------- Removing existing $MD_BUILDTEMP"
+    rm -rf "$MD_BUILDTEMP"
+    fi
+
+    echo "---------- Creating $MD_BUILDTEMP"
+    mkdir "$MD_BUILDTEMP"
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot create $MD_BUILDTEMP directory."
+        echo "---------- Aborting..."
+        exit;
+    fi
+
+    cd "$MD_BUILDTEMP"
+    echo -e "\n\n"
+
+    echo "---------- Downloading MariaDB $MD_VERSION"
+
+    curl -L -o "mariadb-$MD_VERSION.tar.gz" "$MD_URL/mariadb-$MD_VERSION/source/mariadb-$MD_VERSION.tar.gz"
+
+    tar xvf mariadb-$MD_VERSION.tar.gz
+    cd mariadb-$MD_VERSION
+
+    echo -e "\n\n"
+
+    echo "---------- Configuring Native MariaDB"
+
+    mkdir build.linux
+    cd build.linux
+
+    export PATH=$ORIG_PATH
+
+    cmake -DWITHOUT_SERVER=ON -DWITH_UNIT_TESTS=OFF -DWITH_VALGRIND=OFF ..
+
+    echo "---------- Building Native MariaDB"
+
+    make -j$CPU_CORES
+
+    export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
+
+    echo "---------- Configuring MariaDB with MXE"
+
+    cd ..
+    mkdir build.mxe
+    cd build.mxe
+
+    cmake \
+        -G "Unix Makefiles" \
+        -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+        -DCMAKE_BUILD_TYPE=relwithdebinfo \
+        -DCMAKE_COLOR_MAKEFILE=ON \
+        -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+        -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+        -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+        -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+        -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+        -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+        -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+        -DSTACK_DIRECTION=-1 \
+        -DHAVE_IB_GCC_ATOMIC_BUILTINS=1 \
+        -DIMPORT_EXECUTABLES=../build.linux/import_executables.cmake \
+        ..
+
+    echo -e "\n\n"
+
+    echo "---------- Building MariaDB with MXE"
+    make -j$CPU_CORES
+    echo -e "\n\n"
+
+    echo "---------- Installing MariaDB with MXE"
+    echo -e "\n\n"
+    make install && cd "$ORIG_WD" && rm -rf "$MD_BUILDTEMP"
+
+fi
+
+exit
+
 
 #################################################################################################
 # Build KF5 frameworks in a temporary directory and installation

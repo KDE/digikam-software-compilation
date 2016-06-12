@@ -67,6 +67,11 @@ HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
 HU_VERSION=2015.0
 
+# MariaDB tarball information
+MD_URL="http://de-rien.fr/mariadb"
+MD_BUILDTEMP=~/mdtemp
+MD_VERSION=10.1.14
+
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
@@ -74,6 +79,6 @@ DK_VERSION=git
 #DK_VERSION=5.0.0
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
-# 0: use port file
-# 1: use tarball
 ENABLE_HUGIN=0
+ENABLE_MARIADB=1
+
