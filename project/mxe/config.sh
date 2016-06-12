@@ -80,5 +80,5 @@ DK_VERSION=git
 
 # Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
 ENABLE_HUGIN=0
-ENABLE_MARIADB=1
+ENABLE_MARIADB=0
 
