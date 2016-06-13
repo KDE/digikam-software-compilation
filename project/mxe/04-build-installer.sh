@@ -137,7 +137,7 @@ echo -e "\n---------- Copy executables with recursive dependencies in bundle dir
 
 # Executables and plugins shared libraries dependencies scan ---------------------------------
 
-BIN_FILES="\
+EXE_FILES="\
 gdb.exe \
 digikam.exe \
 showfoto.exe \
@@ -145,18 +145,37 @@ kbuildsycoca5.exe \
 kquitapp5.exe \
 kreadconfig5.exe \
 kwriteconfig5.exe \
-`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
 "
 
 # DBUS disabled for the moment. See bug #364116
 #dbus-daemon.exe \
 #dbus-launch.exe \
 
-#`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
-
-for app in $BIN_FILES ; do
+for app in $EXE_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
+    $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
+
+done
+
+DLL_FILES="\
+`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f` \
+"
+
+#`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
+
+for app in $DLL_FILES ; do
+
+    cp $app $BUNDLEDIR/
+
+done
+
+DLL_FILES="\
+`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
+"
+
+for app in $DLL_FILES ; do
+
     $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
 
 done
