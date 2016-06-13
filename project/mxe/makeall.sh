@@ -9,11 +9,11 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-. ./config.sh
-StartScript
-
 # halt on error
 set -e
+
+. ./config.sh
+StartScript
 
 echo "This script will build from scratch the digiKam installer for Windows using MXE."
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"

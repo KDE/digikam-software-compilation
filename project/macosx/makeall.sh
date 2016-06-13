@@ -9,6 +9,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+# halt on error
+set -e
+
 #################################################################################################
 # Pre-processing checks
 
@@ -18,9 +21,6 @@ StartScript
 ChecksRunAsRoot
 ChecksXCodeCLI
 ChecksCPUCores
-
-# halt on error
-set -e
 
 INSTALL_PREFIX=~/tmp
 echo "This script will build from scratch the digiKam installer for OSX using Macports."
