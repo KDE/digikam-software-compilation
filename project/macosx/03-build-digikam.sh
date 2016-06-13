@@ -9,6 +9,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+# Halt on error
+set -e
+
 #################################################################################################
 # Manage script traces to log file
 
