@@ -156,7 +156,7 @@ kwriteconfig5.exe \
 
 for app in $BIN_FILES ; do
 
-    cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/ 2>/dev/null
+    cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
     $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
 
 done
