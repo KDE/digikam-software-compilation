@@ -55,7 +55,7 @@ MXE_PACKAGES="gcc \
 # KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5libtemp
-KD_VERSION=5.22
+KD_VERSION=5.23
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
