@@ -737,7 +737,7 @@
 			<key>OVERWRITE_PERMISSIONS</key>
 			<true/>
 			<key>VERSION</key>
-			<string>git-ElCapitan</string>
+			<string>5.0.0-beta7</string>
 		</dict>
 		<key>PROJECT_COMMENTS</key>
 		<dict>

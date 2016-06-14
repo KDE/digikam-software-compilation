@@ -359,6 +359,7 @@ echo -e "\n"
 port install dbus
 port install qt5
 port install qt5-sqlite-plugin
+port install qt5-mysql-plugin
 port install qt5-qtscript
 port install qt5-qtwebkit
 port install cmake
@@ -379,9 +380,8 @@ port install expat
 port install libxml2
 port install libxslt
 port install lensfun
-port install docbook-xml
-port install docbook-xsl
 port install p5-uri
+port install mariadb-10.0
 
 exit -1
 
@@ -400,5 +400,7 @@ port install qtcurve
 # For documentations
 port install texlive-fonts-recommended
 port install texlive-fontutils
+port install docbook-xml
+port install docbook-xsl
 
 }
