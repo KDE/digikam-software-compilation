@@ -8,16 +8,15 @@ Order : Modules           : DK dependency : Inter-dependencies                  
   6   : threadwearver     :       X       : -                                                                                                               : -
   6   : ki18n             :       X       : qt5script                                                                                                       : BUILD_WITH_QTSCRIPT=ON.
   7   : kcrash            :               : kwindowsystem, kcoreaddons                                                                                      : -
-  8   : kdoctools         :               : docbook-xml, docbook-xsl, , karchive, ki18n, p5-uri, docbookxml4, docbookxsl, libxslt, libxml2                  : MEINPROC_NO_KARCHIVE=OFF
-  9   : ktextwidgets      :               : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet       : -
-  10  : kxmlgui           :       X       : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons,             :
+  8   : ktextwidgets      :               : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet       : -
+  9   : kxmlgui           :       X       : kcoreaddons, kitemviews, kconfig, kconfigwidgets, ki18n, kiconthemes, ktextwidgets, kwidgetsaddons,             :
       :                   :               : kglobalaccel, kwindowsystem                                                                                     : FORCE_DISABLE_KGLOBALACCEL=OFF
-  11  : kconfigwidgets    :               : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig, kdoctools                              : -
-  12  : kiconthemes       :       X       : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                  : -
-  13  : kbookmarks        :               : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                             : -
-  14  : kservice          :       X       : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n, kdoctools                                                     : -
-  15  : kio               :   kipi tools  : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, kdoctools, solid, kbookmarks, kcompletion,        :
+  10  : kconfigwidgets    :               : kguiaddons, kwidgetsaddons, ki18n, kauth, kcoreaddons, kcodecs, kconfig,                               : -
+  11  : kiconthemes       :       X       : kconfigwidgets, ki18n, kcoreaddons, kwidgetsaddons, kitemviews                                                  : -
+  12  : kbookmarks        :               : kcodecs, kconfigwidgets, kconfig, kcoreaddons, kiconthemes, kwidgetsaddons, kxmlgui                             : -
+  13  : kservice          :       X       : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n,                                                      : -
+  14  : kio               :   kipi tools  : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, solid, kbookmarks, kcompletion,        :
       :                   :               : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                              : KIOCORE_ONLY=OFF
-  16  : kinit             :   kipi tools  : kio, kservice, ki18n, kwindowsystem, kcrash, kconfig                                                            : -
-  17  : kded              :   kipi tools  : kconfig, kcoreaddons, kcrash, kdbusaddons, kinit, kservice                                                      : -
+  15  : kinit             :   kipi tools  : kio, kservice, ki18n, kwindowsystem, kcrash, kconfig                                                            : -
+  16  : kded              :   kipi tools  : kconfig, kcoreaddons, kcrash, kdbusaddons, kinit, kservice                                                      : -
 

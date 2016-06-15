@@ -381,7 +381,6 @@ port install libxml2
 port install libxslt
 port install lensfun
 port install p5-uri
-port install mariadb-10.0
 
 exit -1
 
@@ -391,11 +390,6 @@ port install liblqr
 port install hugin
 port install enblend
 port install sane-backends
-
-# For Acqua style support (including KDE system settings)
-
-port install kde4-workspace
-port install qtcurve
 
 # For documentations
 port install texlive-fonts-recommended
