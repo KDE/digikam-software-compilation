@@ -21,7 +21,7 @@ MP_BUILDTEMP=~/mptemp
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.22
+KD_VERSION=5.23
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
