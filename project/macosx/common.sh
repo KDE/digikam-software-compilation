@@ -380,9 +380,8 @@ port install expat
 port install libxml2
 port install libxslt
 port install lensfun
-port install p5-uri
 
-exit -1
+return
 
 # TODO check if these packages below still necessary
 
