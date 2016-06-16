@@ -356,7 +356,6 @@ fi
 
 echo -e "\n"
 
-port install dbus
 port install qt5
 port install qt5-sqlite-plugin
 port install qt5-mysql-plugin

@@ -107,9 +107,6 @@ lib/libexec/kf5 \
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
-libexec/dbus-daemon-launch-helper \
-bin/dbus-daemon \
-bin/dbus-launch \
 bin/kbuildsycoca5 \
 bin/kquitapp5 \
 bin/kreadconfig5 \
@@ -134,9 +131,6 @@ binaries="$OTHER_APPS"
 # Note : share/locale and share/doc/HTML are not optimized to only host digiKam
 # translations and documentations
 OTHER_DIRS="\
-Library/LaunchAgents/org.freedesktop.dbus-session.plist \
-Library/LaunchDaemons/org.freedesktop.dbus-system.plist \
-etc/dbus-1 \
 etc/xdg \
 lib/libgphoto* \
 lib/plugins \
@@ -148,7 +142,6 @@ share/k* \
 share/lensfun \
 share/locale/ \
 share/mime \
-var/run/dbus \
 "
 
 #share/icons/hicolor \
@@ -348,8 +341,6 @@ done
 
 cd "$ORIG_WD"
 
-[[ -e "$TEMPROOT/var/run/dbus/.turd_dbus" ]] && rm -v "$TEMPROOT/var/run/dbus/.turd_dbus"
-
 #################################################################################################
 # Set KDE default applications settings for OSX
 
@@ -374,14 +365,6 @@ TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
 widgetStyle=qtcurve
 EOF
-
-#################################################################################################
-# Delete dbus system config lines pertaining to running as non-root user
-# (installed version will be run as root, although MacPorts version wasn't)
-
-echo "---------- Deleting dbus system config lines pertaining to running as non-root user"
-
-sed -i "" '/<!-- Run as special user -->/{N;N;d;}' $TEMPROOT/etc/dbus-1/system.conf
 
 #################################################################################################
 # Create package pre-install script
