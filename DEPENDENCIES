@@ -14,10 +14,10 @@ Qt5::Xml                                            X                           
 Qt5::Concurrent                                     X                           X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::WebKitWidgets                                                              X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::PrintSupport                                   X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::DBus                                                                       X                   >= 5.4.0            http://www.qtsoftware.com
 Qt5::Network                                        X                                               >= 5.4.0            http://www.qtsoftware.com
 Qt5::XmlPatterns                                    X                                               >= 5.4.0            http://www.qtsoftware.com
 Qt5::Svg                                            X                                               >= 5.4.0            http://www.qtsoftware.com
+Qt5::DBus                                                                      opt                  >= 5.4.0            http://www.qtsoftware.com
 Qt5::Multimedia                                                                opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           Optional due to Qt5 bug with GStreamer 1.0              Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
 Qt5::MultimediaWidgets                                                         opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           Optional due to Qt5 bug with GStreamer 1.0              Must be fixed with Qt 5.5.x. Need testing (ENABLE_MEDIAPLAYER=on).
 Qt5::X11Extras                                                                 opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           For color management support under Linux.
