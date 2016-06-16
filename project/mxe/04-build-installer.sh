@@ -113,11 +113,6 @@ cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLED
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations 2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data         2>/dev/null
 
-# DBUS disabled for the moment. See bug #364116
-# DBus
-#cp -r $MXE_INSTALL_PREFIX/etc/dbus-1                                    $BUNDLEDIR/etc          2>/dev/null
-#cp -r $MXE_INSTALL_PREFIX/share/dbus-1                                  $BUNDLEDIR/share        2>/dev/null
-
 # XDG
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/share        2>/dev/null
@@ -146,11 +141,6 @@ kquitapp5.exe \
 kreadconfig5.exe \
 kwriteconfig5.exe \
 "
-
-# DBUS disabled for the moment. See bug #364116
-#dbus-daemon.exe \
-#dbus-launch.exe \
-
 for app in $EXE_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
