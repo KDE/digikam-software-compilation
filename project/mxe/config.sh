@@ -41,7 +41,6 @@ MXE_PACKAGES="gcc \
               exiv2 \
               freeglut \
               opencv \
-              dbus \
               qt5 \
              "
 
