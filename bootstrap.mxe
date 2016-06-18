@@ -86,7 +86,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_KFILEMETADATASUPPORT=OFF \
                            -DENABLE_AKONADICONTACTSUPPORT=OFF \
                            -DENABLE_MYSQLSUPPORT=ON \
-                           -DENABLE_INTERNALMYSQL=OFF \
+                           -DENABLE_INTERNALMYSQL=ON \
                            -DENABLE_MEDIAPLAYER=ON \
                            -DENABLE_DBUS=OFF \
                            ${PNG2ICO_PATH} \
