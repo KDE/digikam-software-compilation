@@ -389,7 +389,7 @@ chmod 755 "$PROJECTDIR/postinstall"
 # Copy icons-set ressource file
 
 # TODO: check if it's the right place to share this file between Showfoto and digiKam
-cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Application/KF5/digikam.app/Contents/MacOS/
+cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/MacOS/
 
 #################################################################################################
 # Build PKG file
