@@ -136,7 +136,6 @@ lib/libgphoto* \
 lib/plugins \
 lib/libexec \
 share/applications \
-share/dbus-1 \
 share/OpenCV \
 share/k* \
 share/lensfun \
@@ -245,35 +244,14 @@ for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
             cat << EOF | osacompile -o "$TEMPROOT/Applications/digiKam/$app.app"
 #!/usr/bin/osascript
 
-on checkService(service)
-	do shell script "launchctl list"
-	if the result contains service then
-		return true
-	else
-		return false
-	end if
-end checkService
-
-on checkProcess(appName)
-	tell application "System Events" to (name of every process) contains appName
-end checkProcess
-
-if not checkService("org.freedesktop.dbus-session") then
-	log "Running launchctl load -w $INSTALL_PREFIX/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
-	do shell script "launchctl load -w $INSTALL_PREFIX/Library/LaunchAgents/org.freedesktop.dbus-session.plist"
-	log "Running $DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
-	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
-end if
-
-#if not checkProcess("kded4")
-#	do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/Applications/KDE4/kded4.app/Contents/MacOS/kded4 &> /dev/null &"
-#end if
+log "Running $DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
+do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
 
 do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
 EOF
                 # ------ End KDE application launcher script
 
-                # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns (e.g. panoramagui), grab the first icon
+                # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns, grab the first icon
 
                 if [ -f "$INSTALL_PREFIX/$searchpath/$app.app/Contents/Resources/${app}_SRCS.icns" ] ; then
                     echo "    Found icon for $app launcher"
@@ -376,11 +354,6 @@ echo "---------- Create package pre-install script"
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
 
-if [ \`launchctl list | grep -c org.freedesktop.dbus-system\` -gt 0 ] ; then
-    echo "Unloading dbus-system"
-    launchctl unload "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system"
-fi
-
 if [ -d /Applications/digiKam ] ; then
     echo "Removing digikam from Applications folder"
     rm -r /Applications/digiKam
@@ -405,8 +378,6 @@ echo "---------- Create package post-install script"
 
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
-
-launchctl load -w "$INSTALL_PREFIX/Library/LaunchDaemons/org.freedesktop.dbus-system.plist"
 
 [[ ! -d /Applications/digiKam ]] && mkdir "/Applications/digiKam"
 
