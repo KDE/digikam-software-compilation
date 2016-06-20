@@ -83,9 +83,6 @@ showfoto \
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
-kiod5 \
-kioexec \
-kioslave \
 kconf_update \
 kconfig_compiler_kf5 \
 "
@@ -94,9 +91,7 @@ kconfig_compiler_kf5 \
 #khelpcenter \
 #kdebugdialog \
 #kdialog \
-#kdeinit4 \
 #kcmshell4 \
-#kded \
 
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
