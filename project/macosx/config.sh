@@ -12,11 +12,41 @@
 # Directory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
 
-# Macports tarball information
+# Macports configuration
 MP_URL="https://distfiles.macports.org/MacPorts/"
 MP_BUILDTEMP=~/mptemp
 # Uncomment this line to force a specific version of Macports to use, else lastest will be used.
 #MP_VERSION="2.3.3"
+MP_PACKAGES="qt5 \
+             qt5-sqlite-plugin \
+             qt5-mysql-plugin \
+             qt5-qtscript \
+             qt5-qtwebkit \
+             cmake \
+             opencv \
+             libpng \
+             libpgf \
+             jpeg \
+             tiff \
+             exiv2 \
+             boost \
+             gettext \
+             libusb \
+             libgphoto2 \
+             jasper \
+             lcms2 \
+             eigen3 \
+             expat \
+             libxml2 \
+             libxslt \
+             lensfun \
+             "
+
+# TODO check if these packages below still necessary
+#             liblqr
+#             hugin
+#             enblend
+#             sane-backends
 
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"

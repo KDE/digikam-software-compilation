@@ -356,43 +356,6 @@ fi
 
 echo -e "\n"
 
-port install qt5
-port install qt5-sqlite-plugin
-port install qt5-mysql-plugin
-port install qt5-qtscript
-port install qt5-qtwebkit
-port install cmake
-port install opencv
-port install libpng
-port install libpgf
-port install jpeg
-port install tiff
-port install exiv2
-port install boost
-port install gettext
-port install libusb
-port install libgphoto2
-port install jasper
-port install lcms2
-port install eigen3
-port install expat
-port install libxml2
-port install libxslt
-port install lensfun
-
-return
-
-# TODO check if these packages below still necessary
-
-port install liblqr
-port install hugin
-port install enblend
-port install sane-backends
-
-# For documentations
-port install texlive-fonts-recommended
-port install texlive-fontutils
-port install docbook-xml
-port install docbook-xsl
+port install $MP_PACKAGES
 
 }
