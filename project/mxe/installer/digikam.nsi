@@ -448,9 +448,6 @@
         SetOutPath "$INSTDIR\data"
         File /r "${BUNDLEPATH}\data\*.*"
 
-        SetOutPath "$INSTDIR\plugins"
-        File /r "${BUNDLEPATH}\plugins\*.*"
-
         SetOutPath "$INSTDIR\translations"
         File /r "${BUNDLEPATH}\translations\*.*"
 
@@ -560,8 +557,6 @@
 
         RMDir /r "$INSTDIR\"
         RMDir /r "$INSTDIR\data"
-        RMDir /r "$INSTDIR\plugins"
-        ;RMDir /r "$INSTDIR\share"
         RMDir /r "$INSTDIR\translations"
 
             ;RMDir /r "$INSTDIR\share"

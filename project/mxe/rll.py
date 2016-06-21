@@ -82,6 +82,12 @@ blacklist = [
     "avifil32.dll",
     "comctl32.dll",
     "msvfw32.dll",
+    "shfolder.dll",
+    "odbc32.dll",
+    "dxva2.dll",
+    "evr.dll",
+    "mf.dll",
+    "mfplat.dll",
 ]
 
 # -----------------------------------------------

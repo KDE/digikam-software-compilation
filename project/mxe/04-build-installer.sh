@@ -120,13 +120,13 @@ cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLED
 # Plugins Shared libraries -------------------------------------------------------------------
 
 # For Marble
-cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/             2>/dev/null
+find $MXE_INSTALL_PREFIX/plugins -name "*.dll" -type f -exec cp {}      $BUNDLEDIR/ \;          2>/dev/null
 
 # For Qt5
-cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/             2>/dev/null
+find $MXE_INSTALL_PREFIX/qt5/plugins -name "*.dll" -type f -exec cp {}  $BUNDLEDIR/ \;          2>/dev/null
 
 # KF5 plugins
-find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
+find $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {}  $BUNDLEDIR/ \;          2>/dev/null
 
 echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
 
@@ -149,19 +149,9 @@ for app in $EXE_FILES ; do
 done
 
 DLL_FILES="\
-`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f` \
-"
-
-#`find  $BUNDLEDIR/plugins -name "*.dll" -type f -exec basename {} \;` \
-
-for app in $DLL_FILES ; do
-
-    cp $app $BUNDLEDIR/
-
-done
-
-DLL_FILES="\
+`find  $MXE_INSTALL_PREFIX/qt5/plugins -name "*.dll" -type f -exec basename {} \;` \
 `find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \;` \
+`find  $MXE_INSTALL_PREFIX/plugins     -name "*.dll" -type f -exec basename {} \;` \
 "
 
 for app in $DLL_FILES ; do
