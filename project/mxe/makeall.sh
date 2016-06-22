@@ -13,6 +13,7 @@
 set -e
 
 . ./config.sh
+. ./common.sh
 StartScript
 
 echo "This script will build from scratch the digiKam installer for Windows using MXE."
@@ -20,7 +21,7 @@ echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 if [ -d "$MXE_BUILDROOT" ] ; then
 
-    if [ $1 -ne "-f" ]
+    if [ "$1" != "-f" ] ; then
 
         read -p "A previous MXE build already exist and it will be removed. Do you want to continue ? [(c)ontinue/(s)top] " answer
 
