@@ -35,8 +35,8 @@ if [ -d "$MXE_BUILDROOT" ] ; then
     fi
 
     echo "---------- Removing existing MXE build"
-    chmod +w "$MXE_BUILDROOT/usr/readonly"
-    chattr -i "$MXE_BUILDROOT/usr/readonly/.gitkeep"
+#    chmod +w "$MXE_BUILDROOT/usr/readonly"
+#    chattr -i "$MXE_BUILDROOT/usr/readonly/.gitkeep"
     rm -fr $MXE_BUILDROOT
 
 fi
