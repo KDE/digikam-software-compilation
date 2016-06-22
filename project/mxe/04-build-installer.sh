@@ -145,19 +145,19 @@ kwriteconfig5.exe \
 for app in $EXE_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
-    $ORIG_WD/rll.py --copy $BUNDLEDIR/$app
+    $ORIG_WD/rll.py --copy --odir $BUNDLEDIR --efile $BUNDLEDIR/$app
 
 done
 
 DLL_FILES="\
-`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \; | | sed "s|^|$BUNDLEDIR|"` \
-`find  $MXE_INSTALL_PREFIX/qt5/plugins -name "*.dll" -type f | sed 's|$MXE_INSTALL_PREFIX/qt5/||'`           \
-`find  $MXE_INSTALL_PREFIX/plugins     -name "*.dll" -type f | sed 's|$MXE_INSTALL_PREFIX/plugins/||'`       \
+`find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec basename {} \; | sed "s|^|$BUNDLEDIR/|"` \
+`find  $MXE_INSTALL_PREFIX/qt5/plugins -name "*.dll" -type f | sed 's|$MXE_INSTALL_PREFIX/qt5/||'`          \
+`find  $MXE_INSTALL_PREFIX/plugins     -name "*.dll" -type f | sed 's|$MXE_INSTALL_PREFIX/plugins/||'`      \
 "
 
 for app in $DLL_FILES ; do
 
-    $ORIG_WD/rll.py --copy $app
+    $ORIG_WD/rll.py --copy --odir $BUNDLEDIR --efile $app
 
 done
 

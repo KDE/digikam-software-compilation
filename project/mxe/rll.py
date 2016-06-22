@@ -160,8 +160,17 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "exe_file",
+        "--efile",
+        type = str,
+        action = "store",
         help = "EXE or DLL file that you need to bundle dependencies for"
+    )
+
+    parser.add_argument(
+        "--odir",
+        type = str,
+        action = "store",
+        help = "Directory to store found dlls"
     )
 
     parser.add_argument(
@@ -181,10 +190,10 @@ def main():
     if args.upx and not args.copy:
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
 
-    print("Scan dependencies for " + args.exe_file)
+    print("Scan dependencies for " + args.efile)
 
-    all_deps = set(gather_deps(args.exe_file, default_path_prefixes, []))
-    all_deps.remove(args.exe_file)
+    all_deps = set(gather_deps(args.efile, default_path_prefixes, []))
+    all_deps.remove(args.efile)
 
     #print("\n".join(all_deps))
 
@@ -192,12 +201,10 @@ def main():
 
         #print("Copying enabled, will now copy recursively all dependencies near to the exe file.\n")
 
-        parent_dir = os.path.dirname(os.path.abspath(args.exe_file))
-
         for dep in all_deps:
-            target = os.path.join(parent_dir, os.path.basename(dep))
+            target = os.path.join(args.odir, os.path.basename(dep))
             #print("Copying '%s' to '%s'" % (dep, target))
-            shutil.copy(dep, parent_dir)
+            shutil.copy(dep, args.odir)
 
             if args.upx:
                 subprocess.call(["upx", target])
