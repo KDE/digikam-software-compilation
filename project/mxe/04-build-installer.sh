@@ -138,8 +138,6 @@ digikam.exe \
 showfoto.exe \
 kbuildsycoca5.exe \
 kquitapp5.exe \
-kreadconfig5.exe \
-kwriteconfig5.exe \
 "
 
 for app in $EXE_FILES ; do
