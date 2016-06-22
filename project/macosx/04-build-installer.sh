@@ -95,7 +95,6 @@ lib/libexec/kf5 \
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
 bin/kbuildsycoca5 \
-bin/kquitapp5 \
 lib/libopencv*.dylib \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
