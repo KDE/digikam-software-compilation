@@ -83,16 +83,8 @@ showfoto \
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
-kconf_update \
 kconfig_compiler_kf5 \
 "
-#drkonqi \
-#knotify4 \
-#khelpcenter \
-#kdebugdialog \
-#kdialog \
-#kcmshell4 \
-
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
 Applications/KF5 \
@@ -104,8 +96,6 @@ lib/libexec/kf5 \
 OTHER_APPS="\
 bin/kbuildsycoca5 \
 bin/kquitapp5 \
-bin/kreadconfig5 \
-bin/kwriteconfig5 \
 lib/libopencv*.dylib \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
