@@ -48,8 +48,8 @@ if [ -d "$MXE_BUILDROOT" ] ; then
     if echo "$answer" | grep -iq "^r" ;then
 
         echo "---------- Removing existing $MXE_BUILDROOT"
-        chmod +w "$MXE_BUILDROOT/usr/readonly"
-        chattr -i "$MXE_BUILDROOT/usr/readonly/.gitkeep"
+#        chmod +w "$MXE_BUILDROOT/usr/readonly"
+#        chattr -i "$MXE_BUILDROOT/usr/readonly/.gitkeep"
         rm -rf "$MXE_BUILDROOT"
 
     elif echo "$answer" | grep -iq "^c" ;then
