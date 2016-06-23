@@ -59,7 +59,7 @@ KD_VERSION=5.23
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.04.1
+KA_VERSION=16.04.2
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
