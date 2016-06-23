@@ -56,7 +56,7 @@ KD_VERSION=5.23
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.04.1
+KA_VERSION=16.04.2
 
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
@@ -68,9 +68,6 @@ DK_VERSION=git
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
 HU_VERSION=2015.0
-
-# Option to silent operations while configuring, compiling and installing extra libraries.
-SILENT_OP=0
 
 # Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
 # 0: use port file
