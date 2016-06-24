@@ -158,7 +158,6 @@ for app in $DLL_FILES ; do
 
 done
 
-#$BUNDLEDIR/
 #################################################################################################
 # Cleanup symbols in binary files to free space.
 
