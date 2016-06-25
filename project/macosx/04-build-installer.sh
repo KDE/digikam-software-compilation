@@ -83,7 +83,6 @@ showfoto \
 
 # KDE apps to be included but not launched directly by user
 KDE_OTHER_APPS="\
-kconfig_compiler_kf5 \
 "
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
@@ -128,7 +127,6 @@ share/mime \
 "
 
 #share/icons/hicolor \
-#share/doc/HTML/ \
 #share/qt4/ \
 #share/icons/oxygen \
 #share/gstreamer-1.0 \
@@ -136,9 +134,7 @@ share/mime \
 #share/apps \
 #lib/sane \
 #lib/kde4 \
-#lib/ImageMagick* \
 #etc/sane.d \
-#etc/ImageMagick* \
 
 PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
@@ -375,9 +371,9 @@ EOF
 chmod 755 "$PROJECTDIR/postinstall"
 
 #################################################################################################
-# Copy icons-set ressource file
+# Copy icons-set resource file
 
-cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Ressources/
+cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 
 #################################################################################################
 # Build PKG file
