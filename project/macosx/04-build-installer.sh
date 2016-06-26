@@ -111,19 +111,25 @@ libexec/qt5/plugins/audio/*.dylib \
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
-# Note : share/locale and share/doc/HTML are not optimized to only host digiKam
-# translations and documentations
 OTHER_DIRS="\
-etc/xdg \
 lib/libgphoto* \
 lib/plugins \
 lib/libexec \
+"
+#lib/sane \
+#lib/kde4 \
+
+OTHER_DATA="\
+etc/xdg \
 share/applications \
 share/OpenCV \
 share/k* \
 share/lensfun \
 share/locale/ \
 share/mime \
+Library/Application/ \
+Marble.app/Contents/Resources/ \
+Marble.app/Contents/MacOS/resources/ \
 "
 
 #share/icons/hicolor \
@@ -132,8 +138,6 @@ share/mime \
 #share/gstreamer-1.0 \
 #share/config \
 #share/apps \
-#lib/sane \
-#lib/kde4 \
 #etc/sane.d \
 
 PACKAGESUTIL="/usr/local/bin/packagesutil"
@@ -297,6 +301,12 @@ for path in $OTHER_APPS $OTHER_DIRS ; do
     cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/$dir/"
 done
 
+# Special case with data dirs. QStandardPaths::GenericDataLocation was patched everywhere
+# in source code by QStandardPaths::AppDataLocation 
+for path in $OTHER_DATA ; do
+    cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
+done
+
 cd "$ORIG_WD"
 
 #################################################################################################
@@ -304,19 +314,19 @@ cd "$ORIG_WD"
 
 echo "---------- Creating KDE global config for OSX"
 
-if [ ! -d "$TEMPROOT/share/config" ] ; then
-    echo "---------- $TEMPROOT/share/config do not exist, creating"
+if [ ! -d "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config" ] ; then
+    echo "---------- $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config do not exist, creating"
 
-    mkdir "$TEMPROOT/share/config"
+    mkdir "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config"
 
     if [ $? -ne 0 ] ; then
-        echo "---------- Cannot create $TEMPROOT/share/config directory."
+        echo "---------- Cannot create $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config directory."
         echo "---------- Aborting..."
         exit;
     fi
 fi
 
-cat << EOF > "$TEMPROOT/share/config/kdeglobals"
+cat << EOF > "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config/kdeglobals"
 [General]
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app

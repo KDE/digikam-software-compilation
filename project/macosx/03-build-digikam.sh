@@ -95,6 +95,8 @@ fi
 
 cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 
+FixApplicationBundleDataPath
+
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 

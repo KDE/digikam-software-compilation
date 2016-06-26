@@ -96,6 +96,15 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 }
 
 ########################################################################
+# Fix QStandardPaths problem with non bundle like place to sore data under OSX.
+FixApplicationBundleDataPath()
+{
+
+find . -name "*.cpp" -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;
+
+}
+
+########################################################################
 # Set strings with detected OSX info :
 #    $MAJOR_OSX_VERSION : detected OSX major ID (as 7 for 10.7 or 10 for 10.10)
 #    $OSX_CODE_NAME     : detected OSX code name
@@ -190,6 +199,8 @@ if [ ! -z "$PATCH" ]; then
     echo "---------- Apply patch $PATCH to $LIB_NAME."
     patch -p1 < $PATCH
 fi
+
+FixApplicationBundleDataPath
 
 echo -e "\n\n"
 echo "---------- Configure $LIB_NAME with configure options : $OPTIONS"
@@ -289,6 +300,8 @@ if [ ! -z "$PATCH" ]; then
     echo "---------- Apply patch $PATCH to $APP_NAME."
     patch -p1 < $PATCH
 fi
+
+FixApplicationBundleDataPath
 
 echo -e "\n\n"
 echo "---------- Configure $APP_NAME with configure options : $OPTIONS"
