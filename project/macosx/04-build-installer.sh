@@ -331,8 +331,9 @@ cat << EOF > "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config/k
 BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
-widgetStyle=qtcurve
 EOF
+
+#widgetStyle=qtcurve
 
 #################################################################################################
 # Create package pre-install script
