@@ -17,6 +17,4 @@ Order : Modules           : DK dependency : Inter-dependencies                  
   13  : kservice          :       X       : kcrash, kconfig, kcoreaddons, kdbusaddons, ki18n,                                                      : -
   14  : kio               :   kipi tools  : karchive, kconfig, kcoreaddons, kdbusaddons, ki18n, kservice, solid, kbookmarks, kcompletion,        :
       :                   :               : kconfigwidgets, kiconthemes, kitemviews, kjobwidgets, kwidgetsaddons, kwidowsystem                              : KIOCORE_ONLY=OFF
-  15  : kinit             :   kipi tools  : kio, kservice, ki18n, kwindowsystem, kcrash, kconfig                                                            : -
-  16  : kded              :   kipi tools  : kconfig, kcoreaddons, kcrash, kdbusaddons, kinit, kservice                                                      : -
 
