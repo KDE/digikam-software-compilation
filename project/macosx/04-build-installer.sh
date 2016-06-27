@@ -81,9 +81,6 @@ digikam \
 showfoto \
 "
 
-# KDE apps to be included but not launched directly by user
-KDE_OTHER_APPS="\
-"
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
 Applications/KF5 \
@@ -105,8 +102,6 @@ libexec/qt5/plugins/audio/*.dylib \
 "
 
 #lib/gstreamer-1.0/*.so \
-#lib/libqtcurve*.dylib \
-#lib/kde4/kstyle*.so \
 
 binaries="$OTHER_APPS"
 
@@ -119,6 +114,7 @@ lib/libexec \
 #lib/sane \
 #lib/kde4 \
 
+# Additional Data Directories - to be copied recursively
 OTHER_DATA="\
 etc/xdg \
 share/applications \
@@ -140,6 +136,7 @@ Marble.app/Contents/MacOS/resources/ \
 #share/apps \
 #etc/sane.d \
 
+# Packaging tool paths
 PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
@@ -179,7 +176,7 @@ mkdir -p "$TEMPROOT/Applications/digiKam"
 
 echo "---------- Preparing KDE Applications"
 
-for app in $KDE_MENU_APPS $KDE_OTHER_APPS ; do
+for app in $KDE_MENU_APPS ; do
     echo "  $app"
 
     # Look for application
@@ -307,6 +304,11 @@ for path in $OTHER_DATA ; do
     cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
 done
 
+# Showfoto resources dir will be merged with digiKam. A symbolic link to digiKam resources dir will be used for Showfoto
+cp -a "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources/" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
+rm -rf "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
+ln -s "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources" "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
+
 cd "$ORIG_WD"
 
 #################################################################################################
@@ -332,8 +334,6 @@ BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
 TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
 EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
 EOF
-
-#widgetStyle=qtcurve
 
 #################################################################################################
 # Create package pre-install script
