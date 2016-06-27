@@ -26,6 +26,53 @@ unmaintained/inactive since a while.
 Another big advantage of cross-compiling is to not require a Windows to do the job, which 
 is definitively a weird operating system to compile and hack.
 
+BUNDLE CONTENTS
+---------------
+
+Note : the bundle is rellocable.
+
+.                                                   Executable, shared dlls, KDE plugins dlls, qt.conf
+├── data
+│   ├── audio                                       Marble data files
+│   ├── bitmaps                                     Marble data files
+│   ├── digikam                                     digiKam data files
+│   ├── flags                                       Marble data files
+│   ├── kconf_update                                Really need ?
+│   ├── kf5                                         Really need ?
+│   │   ├── kauth
+│   │   └── kcharselect
+│   ├── kipiplugin_flashexport                      Flash Kipi tool data files
+│   ├── kipiplugin_piwigo                           Piwigo Kipi tool data files
+│   ├── kipiplugin_printimages                      PrintImages Kipi tool data files
+│   ├── knotifications5                             Really need ?
+│   ├── kservices5
+│   ├── kservicetypes5
+│   ├── kxmlgui5                                    KDE xml gui decription files
+│   │   ├── digikam
+│   │   ├── kipi
+│   │   └── showfoto
+│   ├── lensfun                                     Lensfun data files
+│   ├── locale                                      KDE GUI translations
+│   ├── maps                                        Marble data files
+│   ├── mwdbii                                      Marble data files
+│   ├── naturalearth                                Marble data files
+│   ├── placemarks                                  Marble data files
+│   ├── showfoto                                    Showfoto data files
+│   ├── solid
+│   │   └── actions
+│   ├── stars                                       Marble data files
+│   ├── svg                                         Marble data files
+│   └── weather                                     Marble data files
+├── etc                                             Really need ?
+│   └── xdg
+│       └── ui
+├── plugins                                         Qt plugins
+├── share                                           Really need ?
+│   └── xdg
+│       └── menus
+└── translations                                    Qt GUI translations
+
+
 REQUIREMENTS
 ------------
 The scripts build digiKam with MXE cross compiler, so you will need all dependencies
