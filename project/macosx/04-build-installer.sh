@@ -90,8 +90,10 @@ lib/libexec/kf5 \
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
 OTHER_APPS="\
+Applications/KF5/digikam.app/Contents/MacOS/digikam \
+Applications/KF5/showfoto.app/Contents/MacOS/showfoto \
+lib/plugins/*.so \
 bin/kbuildsycoca5 \
-lib/libopencv*.dylib \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
 libexec/qt5/plugins/printsupport/*.dylib \
@@ -101,6 +103,7 @@ libexec/qt5/plugins/iconengines/*.dylib \
 libexec/qt5/plugins/audio/*.dylib \
 "
 
+#lib/libopencv*.dylib \
 #lib/gstreamer-1.0/*.so \
 
 binaries="$OTHER_APPS"
@@ -280,6 +283,11 @@ while read lib ; do
         cp -aH "$INSTALL_PREFIX/$lib" "$TEMPROOT/$dir/"
     fi
 done
+
+#################################################################################################
+# Move plugins to right run-time directory
+
+mv "$TEMPROOT/lib/plugins/*.so" "$TEMPROOT/libexec/qt5/plugins/"
 
 #################################################################################################
 # Copy non-binary files and directories, creating parent directories if needed
