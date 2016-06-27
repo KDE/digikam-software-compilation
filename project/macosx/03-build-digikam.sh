@@ -85,6 +85,8 @@ sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"               ./bootstrap.macp
 sed -e "s/DENABLE_DBUS=ON/DENABLE_DBUS=OFF/g"                   ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
 chmod +x ./bootstrap.macports
 
+FixApplicationBundleDataPath
+
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "-Wno-dev"
 
 if [ $? -ne 0 ]; then
@@ -94,8 +96,6 @@ if [ $? -ne 0 ]; then
 fi
 
 cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
-
-FixApplicationBundleDataPath
 
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
