@@ -45,8 +45,8 @@ Note : the bundle is rellocable.
 │   ├── kipiplugin_piwigo                           Piwigo Kipi tool data files
 │   ├── kipiplugin_printimages                      PrintImages Kipi tool data files
 │   ├── knotifications5                             Really need ?
-│   ├── kservices5
-│   ├── kservicetypes5
+│   ├── kservices5                                  KDE service descriptions
+│   ├── kservicetypes5                              KDE service type definitions
 │   ├── kxmlgui5                                    KDE xml gui decription files
 │   │   ├── digikam
 │   │   ├── kipi
@@ -58,8 +58,7 @@ Note : the bundle is rellocable.
 │   ├── naturalearth                                Marble data files
 │   ├── placemarks                                  Marble data files
 │   ├── showfoto                                    Showfoto data files
-│   ├── solid
-│   │   └── actions
+│   ├── solid                                       Solid service descriptions
 │   ├── stars                                       Marble data files
 │   ├── svg                                         Marble data files
 │   └── weather                                     Marble data files
