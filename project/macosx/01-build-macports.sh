@@ -178,7 +178,7 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
 +no_root -startupitem
 startupitem_type none
 startupitem_install no
-macosx_deployment_target 10.9
+macosx_deployment_target $OSX_MIN_TARGET
 EOF
 
 fi
