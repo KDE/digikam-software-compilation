@@ -220,7 +220,7 @@ for app in $KDE_MENU_APPS ; do
 log "Running $DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
 do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
 
-do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app --args --graphicssystem=native"
+do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
 EOF
                 # ------ End KDE application launcher script
 
@@ -338,7 +338,7 @@ EOF
 
 echo "---------- Create package pre-install script"
 
-# Unload dbus-system, delete /Applications entries, delete existing installation
+# Delete /Applications entries, delete existing installation
 
 cat << EOF > "$PROJECTDIR/preinstall"
 #!/bin/bash
