@@ -375,6 +375,8 @@ cat << EOF > "$PROJECTDIR/postinstall"
 for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
     ln -s "\$app" /Applications/digiKam/\${app##*/}
 done
+
+open $INSTALL_PREFIX/Applications/KF5/digikam.app/Contents/Resources/releasenotes.html
 EOF
 
 # Post-install script need to be executable
@@ -382,9 +384,10 @@ EOF
 chmod 755 "$PROJECTDIR/postinstall"
 
 #################################################################################################
-# Copy icons-set resource file
+# Copy icons-set resource file and release notes.
 
 cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
+cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 
 #################################################################################################
 # Build PKG file
