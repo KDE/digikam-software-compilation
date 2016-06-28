@@ -26,7 +26,7 @@ MP_PACKAGES="qt5 \
              cmake \
              opencv \
              libpng \
-             libpgf \
+             liblqr \
              jpeg \
              tiff \
              exiv2 \
@@ -44,7 +44,6 @@ MP_PACKAGES="qt5 \
              "
 
 # TODO check if these packages below still necessary
-#             liblqr
 #             hugin
 #             enblend
 #             sane-backends
