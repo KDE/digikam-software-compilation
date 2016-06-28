@@ -133,7 +133,7 @@ PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
-echo -n "digiKam version: $DKRELEASEID\n"
+echo "digiKam version: $DKRELEASEID"
 
 # digiKam has been built with debug symbol. We'll need to set DYLIB_IMAGE_SUFFIX later.
 DEBUG=1
