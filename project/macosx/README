@@ -20,6 +20,72 @@ Software Collection for OS X. In addition to this README, there are
 comments in the scripts that provide some additional explanation for how they
 work.
 
+BUNDLE CONTENTS
+---------------
+
+|-Applications
+   |---KF5                                    Binary applications directories (digiKam and Showfoto
+   |-----digikam.app
+   |-------Contents
+   |---------MacOS
+   |---------Resources                        share data files (marble, i18n, etc...)
+   |-----showfoto.app
+   |-------Contents
+   |---------MacOS
+   |---------Resources                        ==> symbolic link to shared Applications/KF5/digikam.app/Contents/Resources
+   |---digiKam                                Link to OSX desktop with scripts.
+   |-----digikam.app
+   |-------Contents
+   |---------MacOS
+   |---------Resources
+   |-----------Scripts
+   |-----showfoto.app
+   |-------Contents
+   |---------MacOS
+   |---------Resources
+   |-----------Scripts
+   |-bin                                      Extra binaries
+   |-lib                                      Shared libraries
+   |---mysql56
+   |-----mysql
+   |-libexec                                  Run-times libraries and plugins
+   |---qt5
+   |-----lib
+   |-------QtConcurrent.framework
+   |-------QtCore.framework
+   |-------QtDBus.framework
+   |-------QtGui.framework
+   |-------QtLocation.framework
+   |-------QtMultimedia.framework
+   |-------QtMultimediaWidgets.framework
+   |-------QtNetwork.framework
+   |-------QtOpenGL.framework
+   |-------QtPositioning.framework
+   |-------QtPrintSupport.framework
+   |-------QtQml.framework
+   |-------QtQuick.framework
+   |-------QtScript.framework
+   |-------QtSensors.framework
+   |-------QtSql.framework
+   |-------QtSvg.framework
+   |-------QtWebChannel.framework
+   |-------QtWebKit.framework
+   |-------QtWebKitWidgets.framework
+   |-------QtWidgets.framework
+   |-------QtXml.framework
+   |-------QtXmlPatterns.framework
+   |-----plugins                              Qt and KF5 plugins
+   |-------audio
+   |-------geoservices
+   |-------iconengines
+   |-------imageformats
+   |-------mediaservice
+   |-------platforms
+   |-------position
+   |-------printsupport
+   |-------sqldrivers
+
+
 REQUIREMENTS
 ------------
 The scripts build digiKam with MacPorts, so you will need Xcode and the other
