@@ -31,45 +31,45 @@ BUNDLE CONTENTS
 
 Note : the bundle is rellocable.
 
-.                                                   Executable, shared dlls, KDE plugins dlls, qt.conf
-├── data
-│   ├── audio                                       Marble data files
-│   ├── bitmaps                                     Marble data files
-│   ├── digikam                                     digiKam data files
-│   ├── flags                                       Marble data files
-│   ├── kconf_update                                Really need ?
-│   ├── kf5                                         Really need ?
-│   │   ├── kauth
-│   │   └── kcharselect
-│   ├── kipiplugin_flashexport                      Flash Kipi tool data files
-│   ├── kipiplugin_piwigo                           Piwigo Kipi tool data files
-│   ├── kipiplugin_printimages                      PrintImages Kipi tool data files
-│   ├── knotifications5                             Really need ?
-│   ├── kservices5                                  KDE service descriptions
-│   ├── kservicetypes5                              KDE service type definitions
-│   ├── kxmlgui5                                    KDE xml gui decription files
-│   │   ├── digikam
-│   │   ├── kipi
-│   │   └── showfoto
-│   ├── lensfun                                     Lensfun data files
-│   ├── locale                                      KDE GUI translations
-│   ├── maps                                        Marble data files
-│   ├── mwdbii                                      Marble data files
-│   ├── naturalearth                                Marble data files
-│   ├── placemarks                                  Marble data files
-│   ├── showfoto                                    Showfoto data files
-│   ├── solid                                       Solid service descriptions
-│   ├── stars                                       Marble data files
-│   ├── svg                                         Marble data files
-│   └── weather                                     Marble data files
-├── etc                                             Really need ?
-│   └── xdg
-│       └── ui
-├── plugins                                         Qt plugins
-├── share                                           Really need ?
-│   └── xdg
-│       └── menus
-└── translations                                    Qt GUI translations
+|                                                    Executable, shared dlls, KDE plugins dlls, qt.conf
+|--- data
+|   |--- audio                                       Marble data files
+|   |--- bitmaps                                     Marble data files
+|   |--- digikam                                     digiKam data files
+|   |--- flags                                       Marble data files
+|   |--- kconf_update                                Really need ?
+|   |--- kf5                                         Really need ?
+|   |   |--- kauth
+|   |   |-- kcharselect
+|   |--- kipiplugin_flashexport                      Flash Kipi tool data files
+|   |--- kipiplugin_piwigo                           Piwigo Kipi tool data files
+|   |--- kipiplugin_printimages                      PrintImages Kipi tool data files
+|   |--- knotifications5                             Really need ?
+|   |--- kservices5                                  KDE service descriptions
+|   |--- kservicetypes5                              KDE service type definitions
+|   |--- kxmlgui5                                    KDE xml gui decription files
+|   |   |--- digikam
+|   |   |--- kipi
+|   |   |-- showfoto
+|   |--- lensfun                                     Lensfun data files
+|   |--- locale                                      KDE GUI translations
+|   |--- maps                                        Marble data files
+|   |--- mwdbii                                      Marble data files
+|   |--- naturalearth                                Marble data files
+|   |--- placemarks                                  Marble data files
+|   |--- showfoto                                    Showfoto data files
+|   |--- solid                                       Solid service descriptions
+|   |--- stars                                       Marble data files
+|   |--- svg                                         Marble data files
+|   |-- weather                                      Marble data files
+|--- etc                                             Really need ?
+|   |-- xdg
+|       |-- ui
+|--- plugins                                         Qt plugins
+|--- share                                           Really need ?
+|   |-- xdg
+|       |-- menus
+|-- translations                                     Qt GUI translations
 
 
 REQUIREMENTS

@@ -23,6 +23,8 @@ work.
 BUNDLE CONTENTS
 ---------------
 
+Note : the bundle is not rellocable.
+
 |-Applications
    |---KF5                                    Binary applications directories (digiKam and Showfoto
    |-----digikam.app
