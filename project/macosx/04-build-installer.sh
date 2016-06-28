@@ -84,8 +84,6 @@ showfoto \
 # Paths to search for KDE applications above
 KDE_APP_PATHS="\
 Applications/KF5 \
-lib/plugins/kf5 \
-lib/libexec/kf5 \
 "
 
 # Other apps - non-MacOS binaries & libraries to be included with required dylibs
@@ -101,21 +99,18 @@ libexec/qt5/plugins/platforms/*.dylib \
 libexec/qt5/plugins/mediaservice/*.dylib \
 libexec/qt5/plugins/iconengines/*.dylib \
 libexec/qt5/plugins/audio/*.dylib \
+libexec/qt5/plugins/position/*.dylib \
+libexec/qt5/plugins/geoservices/*.dylib \
 "
-
-#lib/libopencv*.dylib \
-#lib/gstreamer-1.0/*.so \
 
 binaries="$OTHER_APPS"
 
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
 OTHER_DIRS="\
-lib/libgphoto* \
 lib/plugins \
-lib/libexec \
 "
+
 #lib/sane \
-#lib/kde4 \
 
 # Additional Data Directories - to be copied recursively
 OTHER_DATA="\
@@ -131,12 +126,6 @@ Marble.app/Contents/Resources/ \
 Marble.app/Contents/MacOS/resources/ \
 "
 
-#share/icons/hicolor \
-#share/qt4/ \
-#share/icons/oxygen \
-#share/gstreamer-1.0 \
-#share/config \
-#share/apps \
 #etc/sane.d \
 
 # Packaging tool paths
@@ -285,11 +274,6 @@ while read lib ; do
 done
 
 #################################################################################################
-# Move plugins to right run-time directory
-
-mv "$TEMPROOT/lib/plugins/*.so" "$TEMPROOT/libexec/qt5/plugins/"
-
-#################################################################################################
 # Copy non-binary files and directories, creating parent directories if needed
 
 echo "---------- Copying non-binary files and directories..."
@@ -318,6 +302,12 @@ rm -rf "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
 ln -s "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources" "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
 
 cd "$ORIG_WD"
+
+#################################################################################################
+# Move KF5 run-time plugins to the right place
+
+find  $TEMPROOT/lib/plugins -name "*.so" -type f -maxdepth 1 -exec mv {} $TEMPROOT/libexec/qt5/plugins/ \;
+rm -rf $TEMPROOT/lib/plugins
 
 #################################################################################################
 # Set KDE default applications settings for OSX
