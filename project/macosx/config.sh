@@ -7,7 +7,8 @@
 
 ########################################################################
 
-# Set common variables for bundle PKG
+# Minimum OSX target for backward binary compatibility
+OSX_MIN_TARGET="10.9"
 
 # Directory where MacPorts will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"

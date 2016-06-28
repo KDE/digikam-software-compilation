@@ -32,6 +32,8 @@ echo "-------------------------------------------------"
 . ./common.sh
 StartScript
 ChecksRunAsRoot
+ChecksXCodeCLI
+ChecksCPUCores
 OsxCodeName
 
 #################################################################################################

@@ -34,6 +34,7 @@ else
     echo "Check XCode CLI tools passed..."
 fi
 
+export MACOSX_DEPLOYMENT_TARGET=$OSX_MIN_TARGET
 }
 
 ########################################################################
