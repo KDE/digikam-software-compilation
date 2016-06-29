@@ -312,30 +312,6 @@ find  $TEMPROOT/lib/plugins -name "*.so" -type f -maxdepth 1 -exec mv {} $TEMPRO
 rm -rf $TEMPROOT/lib/plugins
 
 #################################################################################################
-# Set KDE default applications settings for OSX
-
-echo "---------- Creating KDE global config for OSX"
-
-if [ ! -d "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config" ] ; then
-    echo "---------- $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config do not exist, creating"
-
-    mkdir "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config"
-
-    if [ $? -ne 0 ] ; then
-        echo "---------- Cannot create $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config directory."
-        echo "---------- Aborting..."
-        exit;
-    fi
-fi
-
-cat << EOF > "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/config/kdeglobals"
-[General]
-BrowserApplication[\$e]=!/usr/bin/open /Applications/Safari.app
-TerminalApplication[\$e]=!/usr/bin/open /Applications/Utilities/Terminal.app
-EmailClient[\$e]=!/usr/bin/open /Applications/Mail.app
-EOF
-
-#################################################################################################
 # Create package pre-install script
 
 echo "---------- Create package pre-install script"
