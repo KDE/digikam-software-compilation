@@ -11,7 +11,7 @@
 OSX_MIN_TARGET="10.9"
 
 # Directory where not relocable bundle will be built, and where it will be installed by packaging script
-INSTALL_PREFIX="/opt/digikam"
+INSTALL_PREFIX="/Applications/digiKam.app"
 
 # Macports configuration
 MP_URL="https://distfiles.macports.org/MacPorts/"
