@@ -85,7 +85,7 @@ sed -e "s/DENABLE_DBUS=ON/DENABLE_DBUS=OFF/g"                   ./bootstrap.mxe 
 
 chmod +x ./bootstrap.mxe
 
-./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo $MXE_BUILD_TARGETS -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
+./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."

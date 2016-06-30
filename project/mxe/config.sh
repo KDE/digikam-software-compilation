@@ -10,15 +10,26 @@
 # MXE configuration
 
 #------------
-# IMPORTANT: Target Windows architecture to build target installer. Just comment unwanted one.
-# Windows 32 bits shared
-MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
-# Windows 64 bits shared
-#MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+# IMPORTANT: Target Windows architecture to build installer. Possible values: 32 or 64 bits.
+MXE_ARCHBITS=32
 #------------
 
+if [[ $MXE_ARCHBITS == 32 ]]; then
+    # Windows 32 bits shared
+    MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+    MXE_BUILDROOT="`pwd`/build.win32"
+elif [[ $MXE_ARCHBITS == 64 ]]; then
+    # Windows 64 bits shared
+    MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+    MXE_BUILDROOT="`pwd`/build.win64"
+else
+    echo "Unsupported or wrong target Windows architecture: $MXE_ARCHBITS bits."
+    exit -1
+fi
+
+echo "Target Windows architecture: $MXE_ARCHBITS bits."
+
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
-MXE_BUILDROOT="`pwd`/build"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 MXE_PACKAGES="gcc \
@@ -77,6 +88,6 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=git
 #DK_VERSION=5.0.0
 
-# Libraries to build outside Macports at the same time than digiKam through 02-build-digikam.sh
+# Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
 ENABLE_HUGIN=0
 ENABLE_MARIADB=0
