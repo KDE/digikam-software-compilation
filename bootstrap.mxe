@@ -11,7 +11,7 @@
 
 MXE_BUILDROOT=$1
 
-if [ "$MXE_BUILDROOT" = "" ]; then
+if [[ $MXE_BUILDROOT == "" ]]; then
 
     if [ -d "`pwd`/project/mxe/build.win32" ]; then
 
@@ -28,9 +28,24 @@ if [ "$MXE_BUILDROOT" = "" ]; then
     else
 
         echo "Cannot auto-detect MXE target!"
-        exit
+        exit -1
 
     fi
+
+elif [[ $MXE_BUILDROOT == *.win32 ]]; then
+
+    echo "MXE target : 32 bits shared"
+    MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+
+elif [[ $MXE_BUILDROOT == *.win64 ]]; then
+
+    echo "MXE target : 64 bits shared"
+    MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+
+else
+
+    echo "Invalid MXE target!"
+    exit -1
 
 fi
 
