@@ -5,15 +5,33 @@
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
-# Arguments : $1 : MXE build root path to MXE bundle dir (default ./project/mxe/build).
-#             $2 : build type : 'debugdull' to hack (default), 'release' for production, relwithdebinfo for packaging.
-#             $3 : MXE build target : x86_64-w64-mingw32.shared (default - 64 bits shared) or i686-w64-mingw32.shared (32 bits shared).
-#             $4 : Cmake extra configure options.
+# Arguments : $1 : MXE build root path to MXE bundle dir (default ./project/mxe/build.win32).
+#             $2 : build type : 'debugfull' to hack (default), 'release' for production, relwithdebinfo for packaging.
+#             $3 : Cmake extra configure options.
 
 MXE_BUILDROOT=$1
 
 if [ "$MXE_BUILDROOT" = "" ]; then
-    MXE_BUILDROOT="`pwd`/project/mxe/build"
+
+    if [ -d "`pwd`/project/mxe/build.win32" ]; then
+
+        echo "Auto-detected 32 bits shared MXE target"
+        MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
+        MXE_BUILDROOT="`pwd`/project/mxe/build.win32"
+
+    elif [ -d "`pwd`/project/mxe/build.win64" ]; then
+
+        echo "Auto-detected 64 bits shared MXE target"
+        MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
+        MXE_BUILDROOT="`pwd`/project/mxe/build.win64"
+
+    else
+
+        echo "Cannot auto-detect MXE target!"
+        exit
+
+    fi
+
 fi
 
 BUILD_TYPE=$2
@@ -22,25 +40,10 @@ if [ "$BUILD_TYPE" = "" ]; then
     BUILD_TYPE=relwithdebinfo
 fi
 
-MXE_BUILD_TARGETS=$3
-
-if [ "$MXE_BUILD_TARGETS" = "" ]; then
-    if [ -d "${MXE_BUILDROOT}/usr/i686-w64-mingw32.shared" ]; then
-        echo "Auto-detected 32 bits shared MXE target"
-        MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
-    elif [ -d "${MXE_BUILDROOT}/usr/x86_64-w64-mingw32.shared" ]; then
-        echo "Auto-detected 64 bits shared MXE target"
-        MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
-    else
-        echo "Cannot auto-detect MXE target!"
-        exit
-    fi
-fi
-
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 
-OPTIONS=$4
+OPTIONS=$3
 
 echo "Installing to $MXE_BUILDROOT for target $MXE_BUILD_TARGETS with build mode $BUILD_TYPE and configure options $OPTIONS"
 
