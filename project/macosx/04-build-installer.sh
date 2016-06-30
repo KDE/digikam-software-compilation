@@ -197,8 +197,7 @@ for app in $KDE_MENU_APPS ; do
         binaries="$binaries $searchpath/$app.app/Contents/MacOS/$app"
 
         # If application is to be run by user, create Applescript launcher to
-        # load dbus-session if necessary, launch kded4, set DYLD_IMAGE_SUFFIX
-        # if built with debug variant
+        # load kbuildsycoca5. Set DYLD_IMAGE_SUFFIX if built with debug variant
 
         if [[ $KDE_MENU_APPS == *"$app"* ]] ; then
             echo "    Creating launcher script for $app"
@@ -341,7 +340,7 @@ chmod 755 "$PROJECTDIR/preinstall"
 
 echo "---------- Create package post-install script"
 
-# Loads dbus-system and creates Applications menu icons
+# Creates Applications menu icons
 
 cat << EOF > "$PROJECTDIR/postinstall"
 #!/bin/bash
