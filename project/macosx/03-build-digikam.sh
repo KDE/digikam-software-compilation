@@ -64,7 +64,7 @@ echo -e "\n\n"
 echo "---------- Downloading digiKam $DK_VERSION"
 
 if [[ "$DK_VERSION" == "git" ]] ; then
-    git clone git@git.kde.org:digikam-software-compilation digikam-$DK_VERSION
+    git clone git://anongit.kde.org/digikam-software-compilation.git digikam-$DK_VERSION
     cd digikam-$DK_VERSION
     export GITSLAVE=".gitslave.devel"
     ./download-repos
