@@ -40,10 +40,10 @@ import string
 
 # The mingw pathes matches in MXE build directory
 default_path_prefixes = [ 
-    os.getcwd() + "/build/usr/i686-w64-mingw32.shared/qt5/bin/", 
-    os.getcwd() + "/build/usr/x86_64-w64-mingw32.shared/qt5/bin/", 
-    os.getcwd() + "/build/usr/i686-w64-mingw32.shared/bin/", 
-    os.getcwd() + "/build/usr/x86_64-w64-mingw32.shared/bin/"
+    os.getcwd() + "/build.win32/usr/i686-w64-mingw32.shared/qt5/bin/", 
+    os.getcwd() + "/build.win64/usr/x86_64-w64-mingw32.shared/qt5/bin/", 
+    os.getcwd() + "/build.win32/usr/i686-w64-mingw32.shared/bin/", 
+    os.getcwd() + "/build.win64/usr/x86_64-w64-mingw32.shared/bin/"
 ]
 
 # Blacklist of native Windows dlls (may need extending)
