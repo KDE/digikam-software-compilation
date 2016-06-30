@@ -110,13 +110,13 @@ binaries="$OTHER_APPS"
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
 OTHER_DIRS="\
 lib/plugins \
+etc/xdg \
 "
 
 #lib/sane \
 
 # Additional Data Directories - to be copied recursively
 OTHER_DATA="\
-etc/xdg \
 share/applications \
 share/OpenCV \
 share/k* \

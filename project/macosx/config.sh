@@ -10,14 +10,16 @@
 # Minimum OSX target for backward binary compatibility
 OSX_MIN_TARGET="10.9"
 
-# Directory where MacPorts will be built, and where it will be installed by packaging script
+# Directory where not relocable bundle will be built, and where it will be installed by packaging script
 INSTALL_PREFIX="/opt/digikam"
 
 # Macports configuration
 MP_URL="https://distfiles.macports.org/MacPorts/"
 MP_BUILDTEMP=~/mptemp
+
 # Uncomment this line to force a specific version of Macports to use, else lastest will be used.
 #MP_VERSION="2.3.3"
+
 MP_PACKAGES="qt5 \
              qt5-sqlite-plugin \
              qt5-mysql-plugin \
