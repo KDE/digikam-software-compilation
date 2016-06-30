@@ -35,6 +35,7 @@ MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 MXE_PACKAGES="gcc \
               gdb \
               cmake \
+              freeglut \
               libxml2 \
               libxslt \
               libpng \
@@ -50,7 +51,6 @@ MXE_PACKAGES="gcc \
               eigen \
               zlib \
               exiv2 \
-              freeglut \
               opencv \
               qt5 \
              "
