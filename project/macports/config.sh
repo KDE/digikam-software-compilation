@@ -8,6 +8,8 @@
 ########################################################################
 
 # Minimum OSX target for backward binary compatibility
+# This require to install older OSX SDKs with Xcode. 
+# See this url for details: https://github.com/phracker/MacOSX-SDKs
 OSX_MIN_TARGET="10.9"
 
 # Directory where not relocable bundle will be built, and where it will be installed by packaging script
