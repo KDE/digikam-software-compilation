@@ -80,6 +80,9 @@ and the other prerequisites for MXE. See http://mxe.cc/#requirements for details
 You will also need to install NSIS software (http://nsis.sourceforge.net/)
 which does the actual packaging of the files needed to install digiKam.
 
+IMPORTANT: set the right architecture target in first : windows 32 or 64 bits.
+Look in config.sh file for details.
+
 COMPONENTS
 ----------
 There are 4 scripts to be run by the user. 2 first ones installs
@@ -88,10 +91,7 @@ binary installer for Windows.
 
 SCRIPT DESCRIPTIONS
 -------------------
-All scripts should be run from within the digikam-package directory.
-
-IMPORTANT: set properly the right architecture target in first : windows 32 or 64 bits.
-Look in config.sh file for details.
+All scripts should be run from within this directory.
 
 * 01-build-mxe.sh:
 
