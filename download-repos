@@ -12,3 +12,5 @@ if ( $? > 0 )
     print "$ : Failed to populate gits repositories, aborting.\n";
     exit (-1);
 }
+
+exit (0);

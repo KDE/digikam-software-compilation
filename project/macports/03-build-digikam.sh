@@ -67,7 +67,14 @@ if [[ "$DK_VERSION" == "git" ]] ; then
     git clone git://anongit.kde.org/digikam-software-compilation.git digikam-$DK_VERSION
     cd digikam-$DK_VERSION
     export GITSLAVE=".gitslave.devel"
+
     ./download-repos
+
+    if [ $? -ne 0 ] ; then
+        echo "---------- Cannot clone repositories."
+        echo "---------- Aborting..."
+        exit;
+    fi
 else
     curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
     tar jxvf digikam-$DK_VERSION.tar.bz2
