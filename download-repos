@@ -10,5 +10,5 @@ system("perl ./gits populate");
 if ( $? > 0 )
 {
     print "$ : Failed to populate gits repositories, aborting.\n";
-    exit;
+    exit (-1);
 }
