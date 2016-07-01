@@ -113,6 +113,9 @@ You will also need to install Packages software from
 http://s.sudre.free.fr/Software/Packages/about.html
 which does the actual packaging of the files needed to install digiKam.
 
+IMPORTANT: set the minimal OSX target for backward compatibility in first.
+Look in config.sh file for details.
+
 HERE THERE BE DRAGONS
 ---------------------
 Use these scripts at your own risk.  For example, both scripts contain
