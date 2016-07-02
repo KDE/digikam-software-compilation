@@ -35,6 +35,14 @@ else
 fi
 
 export MACOSX_DEPLOYMENT_TARGET=$OSX_MIN_TARGET
+
+OSX_MAJOR=`echo $MACOSX_DEPLOYMENT_TARGET | awk -F '.' '{print $1 "." $2}'| cut -d . -f 2`
+
+if [[ $OSX_MAJOR -lt 9 ]]; then
+    export CXXFLAGS=-stdlib=libc++
+fi
+
+echo "Target OSX minimal version: $MACOSX_DEPLOYMENT_TARGET"
 }
 
 ########################################################################
@@ -114,7 +122,9 @@ OsxCodeName()
 
 MAJOR_OSX_VERSION=$(sw_vers -productVersion | awk -F '.' '{print $1 "." $2}'| cut -d . -f 2)
 
-if [[ $MAJOR_OSX_VERSION == "11" ]]
+if [[ $MAJOR_OSX_VERSION == "12" ]]
+    then OSX_CODE_NAME="Sierra"
+elif [[ $MAJOR_OSX_VERSION == "11" ]]
     then OSX_CODE_NAME="ElCapitan"
 elif [[ $MAJOR_OSX_VERSION == "10" ]]
     then OSX_CODE_NAME="Yosemite"
