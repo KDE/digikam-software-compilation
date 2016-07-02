@@ -174,9 +174,9 @@ echo -e "\n---------- Build NSIS installer\n"
 cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
-    TARGET_INSTALLER=digiKam_$DKRELEASEID_Win32.exe
+    TARGET_INSTALLER=digiKam-$DKRELEASEID-Win32.exe
 else
-    TARGET_INSTALLER=digiKam_$DKRELEASEID_Win64.exe
+    TARGET_INSTALLER=digiKam-$DKRELEASEID-Win64.exe
 fi
 
 makensis -DVERSION=$DKRELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
