@@ -52,6 +52,7 @@ MP_PACKAGES="qt5 \
              libxml2 \
              libxslt \
              lensfun \
+             gdb \
              "
 
 # TODO check if these packages below still necessary
