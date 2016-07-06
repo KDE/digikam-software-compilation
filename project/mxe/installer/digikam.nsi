@@ -13,10 +13,9 @@
  ; Script arguments:
  ; VERSION    : the digiKam version as string.
  ; BUNDLEPATH : the path where whole digiKam bundle is installed.
- ; ARCH       : the Windows architecture as win32 or win64.
  ; OUTPUT     : the output installer file name as string.
  ;
- ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle -DARCH=win32 digikam.nsi
+ ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
  ;
  ; Extra NSIS plugins to install in order to run this script :
  ;
@@ -77,11 +76,8 @@
 
     ;Default installation folder
 
-    ${If} $ARCH != "win32"
-        InstallDir "$PROGRAMFILES\${MY_PRODUCT}"
-    ${Else}
-        InstallDir "PROGRAMFILES64\${MY_PRODUCT}"
-    ${EndIf}
+    !include x64.nsh
+    InstallDir "PROGRAMFILES64\${MY_PRODUCT}"
 
     ;Get installation folder from registry if available
 
