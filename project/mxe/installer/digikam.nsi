@@ -13,6 +13,7 @@
  ; Script arguments:
  ; VERSION    : the digiKam version as string.
  ; BUNDLEPATH : the path where whole digiKam bundle is installed.
+ ; ARCH       : the Windows architecture as win32 or win64.
  ; OUTPUT     : the output installer file name as string.
  ;
  ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle -DARCH=win32 digikam.nsi
@@ -38,8 +39,8 @@
  ;
  ; ============================================================ ;;
 
-    ;Verbose level (no script)
-    !verbose 3
+;Verbose level (no script)
+!verbose 3
 
 ;-------------------------------------------------------------------------------
 ; Compression rules optimizations
@@ -59,14 +60,6 @@
     !define SUPPORT_HOMEPAGE "http://www.digikam.org/support"
     !define ABOUT_HOMEPAGE "http://www.digikam.org/about"
     !define OUTFILE "${OUTPUT}"
-    !define MSVCRuntimePath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.CRT"
-    !define MSVCOpenMPPath "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\redist\x86\Microsoft.VC100.OPENMP"
-
-    ;The libraries in the system folder are often outdated. It is better to use the
-    ;the latest redistributable instead
-
-    ;!define MSVCRuntimePath "C:\Windows\System32"
-    ;!define MSVCOpenMPPath "C:\Windows\System32"
 
 ;-------------------------------------------------------------------------------
 ;General Setup
@@ -84,7 +77,11 @@
 
     ;Default installation folder
 
-    InstallDir "$PROGRAMFILES\${MY_PRODUCT}"
+    ${If} $ARCH != "win32"
+        InstallDir "$PROGRAMFILES\${MY_PRODUCT}"
+    ${Else}
+        InstallDir "PROGRAMFILES64\${MY_PRODUCT}"
+    ${EndIf}
 
     ;Get installation folder from registry if available
 
