@@ -77,7 +77,7 @@
     ;Default installation folder
 
     !include x64.nsh
-    InstallDir "PROGRAMFILES64\${MY_PRODUCT}"
+    InstallDir "$PROGRAMFILES64\${MY_PRODUCT}"
 
     ;Get installation folder from registry if available
 
