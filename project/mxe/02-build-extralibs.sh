@@ -249,7 +249,7 @@ export PATH=$ORIG_PATH
 
 cd $ORIG_WD/png2ico
 
-rm -f CMakeCache.txt > dev/null
+rm -f CMakeCache.txt > /dev/null
 
 cmake . \
       -DCMAKE_BUILD_TYPE=debug \
