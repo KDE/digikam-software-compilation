@@ -177,13 +177,11 @@ cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
     TARGET_INSTALLER=digiKam-$DKRELEASEID-Win32.exe
-    TARGET_ARCH=win32
 else
     TARGET_INSTALLER=digiKam-$DKRELEASEID-Win64.exe
-    TARGET_ARCH=win64
 fi
 
-makensis -DVERSION=$DKRELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER -DARCH=$TARGET_ARCH ./digikam.nsi
+makensis -DVERSION=$DKRELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
