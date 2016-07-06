@@ -74,8 +74,8 @@ if [[ "$DK_VERSION" == "git" ]] ; then
         exit;
     fi
 else
-    curl -L -o "digikam-$DK_VERSION.tar.bz2" "$DK_URL/digikam-$DK_VERSION.tar.bz2"
-    tar jxvf digikam-$DK_VERSION.tar.bz2
+    curl -L -o "digikam-$DK_VERSION.tar.xz" "$DK_URL/digikam-$DK_VERSION.tar.xz"
+    tar xJf digikam-$DK_VERSION.tar.xz
     cd digikam-$DK_VERSION
 fi
 
