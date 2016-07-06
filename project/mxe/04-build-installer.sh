@@ -63,6 +63,8 @@ echo -e "\n---------- Build icons-set ressource\n"
 
 cd $ORIG_WD/icon-rcc
 
+rm -f CMakeCache.txt > dev/null
+
 cmake -DCMAKE_INSTALL_PREFIX="$MXE_INSTALL_PREFIX" \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_COLOR_MAKEFILE=ON \
