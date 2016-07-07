@@ -72,6 +72,14 @@ KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
 KA_VERSION=16.04.2
 
+# digiKam tarball information
+DK_URL="http://download.kde.org/stable/digikam"
+DK_BUILDTEMP=~/dktemp
+#DK_VERSION=git
+DK_VERSION=5.0.0
+# Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
+DK_EPOCH="-1"
+
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
 HU_BUILDTEMP=~/hutemp
@@ -81,12 +89,6 @@ HU_VERSION=2015.0
 MD_URL="http://de-rien.fr/mariadb"
 MD_BUILDTEMP=~/mdtemp
 MD_VERSION=10.2.0
-
-# digiKam tarball information
-DK_URL="http://download.kde.org/stable/digikam"
-DK_BUILDTEMP=~/dktemp
-DK_VERSION=git
-#DK_VERSION=5.0.0
 
 # Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
 ENABLE_HUGIN=0

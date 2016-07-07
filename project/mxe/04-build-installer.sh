@@ -54,7 +54,7 @@ BUNDLEDIR="$BUILDDIR/bundle"
 
 ORIG_WD="`pwd`"
 
-DKRELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
+DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
 
 #################################################################################################
 # Build icons-set ressource
@@ -176,17 +176,17 @@ echo -e "\n---------- Build NSIS installer\n"
 cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
-    TARGET_INSTALLER=digiKam-$DKRELEASEID-Win32.exe
+    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win32.exe
 else
-    TARGET_INSTALLER=digiKam-$DKRELEASEID-Win64.exe
+    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64.exe
 fi
 
-makensis -DVERSION=$DKRELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
+makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n"
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"
 
 echo    "File       : $TARGET_INSTALLER"
 echo -n "Size       : "
