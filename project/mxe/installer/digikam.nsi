@@ -74,10 +74,7 @@
 
     RequestExecutionLevel admin
 
-    ;Default installation folder
-
     !include x64.nsh
-    InstallDir "$PROGRAMFILES64\${MY_PRODUCT}"
 
     ;Get installation folder from registry if available
 
@@ -99,6 +96,16 @@
     ;-------------------------------------------
 
     Function .onInit
+
+        ;Default installation folder
+
+        ${If} $InstDir == "" ; Don't override setup.exe /D=c:\custom\dir
+            ${If} ${RunningX64}
+                 StrCpy $InstDir "$PROGRAMFILES64\${MY_PRODUCT}"
+            ${Else}
+                 StrCpy $InstDir "$PROGRAMFILES32\${MY_PRODUCT}"
+            ${EndIf}
+        ${EndIf}
 
         Push $0
         UserInfo::GetAccountType
