@@ -61,22 +61,18 @@ cd "$DK_BUILDTEMP"
 echo -e "\n\n"
 echo "---------- Downloading digiKam $DK_VERSION"
 
-if [[ "$DK_VERSION" == "git" ]] ; then
-    git clone git://anongit.kde.org/digikam-software-compilation.git digikam-$DK_VERSION
-    cd digikam-$DK_VERSION
-    export GITSLAVE=".gitslave.devel"
+git clone git://anongit.kde.org/digikam-software-compilation.git digikam-$DK_VERSION
+cd digikam-$DK_VERSION
+export GITSLAVE=".gitslave.devel"
+./download-repos
 
-    ./download-repos
+git -C ./core checkout $DK_VERSION
+git -C ./extra/kipi-plugins checkout $DK_VERSION
 
-    if [ $? -ne 0 ] ; then
-        echo "---------- Cannot clone repositories."
-        echo "---------- Aborting..."
-        exit;
-    fi
-else
-    curl -L -o "digikam-$DK_VERSION.tar.xz" "$DK_URL/digikam-$DK_VERSION.tar.xz"
-    tar xJf digikam-$DK_VERSION.tar.xz
-    cd digikam-$DK_VERSION
+if [ $? -ne 0 ] ; then
+    echo "---------- Cannot clone repositories."
+    echo "---------- Aborting..."
+    exit;
 fi
 
 echo -e "\n\n"

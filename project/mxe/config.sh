@@ -11,7 +11,7 @@
 
 #------------
 # IMPORTANT: Target Windows architecture to build installer. Possible values: 32 or 64 bits.
-MXE_ARCHBITS=32
+MXE_ARCHBITS=64
 #------------
 
 if [[ $MXE_ARCHBITS == 32 ]]; then
@@ -72,13 +72,14 @@ KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
 KA_VERSION=16.04.2
 
-# digiKam tarball information
+# digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
+# Location to build source code.
 DK_BUILDTEMP=~/dktemp
-#DK_VERSION=git
-DK_VERSION=5.0.0
+# digiKam tag version from git. Official tarball do not include extra shared libraries.
+DK_VERSION=v5.0.0
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-1"
+DK_EPOCH=""
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
