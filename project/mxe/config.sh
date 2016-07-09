@@ -11,7 +11,7 @@
 
 #------------
 # IMPORTANT: Target Windows architecture to build installer. Possible values: 32 or 64 bits.
-MXE_ARCHBITS=64
+MXE_ARCHBITS=32
 #------------
 
 if [[ $MXE_ARCHBITS == 32 ]]; then
@@ -54,11 +54,6 @@ MXE_PACKAGES="gcc \
               opencv \
               qt5 \
              "
-
-#For hugin 2015.0. WxWidget do not compile as shared.
-#              wxwidgets
-#              vigra
-#              libpano13
 
 #-------------------------------------------------------------------------------------------
 

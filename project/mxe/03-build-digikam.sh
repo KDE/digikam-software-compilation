@@ -66,14 +66,14 @@ cd digikam-$DK_VERSION
 export GITSLAVE=".gitslave.devel"
 ./download-repos
 
-git -C ./core checkout $DK_VERSION
-git -C ./extra/kipi-plugins checkout $DK_VERSION
-
 if [ $? -ne 0 ] ; then
     echo "---------- Cannot clone repositories."
     echo "---------- Aborting..."
     exit;
 fi
+
+git -C ./core checkout $DK_VERSION
+git -C ./extra/kipi-plugins checkout $DK_VERSION
 
 echo -e "\n\n"
 echo "---------- Configure digiKam $DK_VERSION"
