@@ -52,14 +52,7 @@ MP_PACKAGES="qt5 \
              libxml2 \
              libxslt \
              lensfun \
-             gdb \
              "
-
-# TODO check if these packages below still necessary
-#             liblqr \
-#             hugin
-#             enblend
-#             sane-backends
 
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
@@ -74,8 +67,10 @@ KA_VERSION=16.04.2
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
-DK_VERSION=git
-#DK_VERSION=5.0.0
+# digiKam tag version from git. Official tarball do not include extra shared libraries.
+DK_VERSION=v5.0.0
+# Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
+DK_EPOCH=""
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"

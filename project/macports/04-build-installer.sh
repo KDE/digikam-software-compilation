@@ -96,7 +96,6 @@ Applications/KF5/digikam.app/Contents/MacOS/digikam \
 Applications/KF5/showfoto.app/Contents/MacOS/showfoto \
 lib/plugins/*.so \
 bin/kbuildsycoca5 \
-bin/ggdb \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
 libexec/qt5/plugins/printsupport/*.dylib \
@@ -130,8 +129,6 @@ Library/Application/ \
 Marble.app/Contents/Resources/ \
 Marble.app/Contents/MacOS/resources/ \
 "
-
-#etc/sane.d \
 
 # Packaging tool paths
 PACKAGESUTIL="/usr/local/bin/packagesutil"
@@ -372,7 +369,7 @@ cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Conten
 
 echo "---------- Create OSX package for digiKam $DKRELEASEID"
 
-TARGET_PKG_FILE=$BUILDDIR/digiKam-$DKRELEASEID-MacOS-x86-64.pkg
+TARGET_PKG_FILE=$BUILDDIR/digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
