@@ -7,7 +7,7 @@
  ; Description : Null Soft windows installer based for digiKam
  ;
  ; Copyright (C) 2010      by Julien Narboux <julien at narboux dot fr>
- ; Copyright (C) 2011-2014 by Ananta Palani <anantapalani at gmail dot com>
+ ; Copyright (C) 2011-2014 by Ananta Palani  <anantapalani at gmail dot com>
  ; Copyright (C) 2010-2016 by Gilles Caulier <caulier dot gilles at gmail dot com>
  ;
  ; Script arguments:
@@ -16,7 +16,7 @@
  ; TARGETARCH : the target Windows architecture (32 or 64 bits).
  ; OUTPUT     : the output installer file name as string.
  ;
- ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
+ ; Example: makensis -DVERSION=5.0.0 -DTARGETARCH=32 -DBUNDLEPATH=../bundle digikam.nsi
  ;
  ; Extra NSIS plugins to install in order to run this script :
  ;
@@ -468,32 +468,17 @@
 
             ;SetOutPath "$INSTDIR\share"
             ;File /r "${BUNDLEPATH}\share\*.*"
-            ;;SetOutPath "$INSTDIR\certs"
-            ;;File /r "${BUNDLEPATH}\certs\*.*"
             ;;SetOutPath "$INSTDIR\database"
             ;;File /r "${BUNDLEPATH}\database\*.*"
             ;;SetOutPath "$INSTDIR\doc"
             ;;File /r "${BUNDLEPATH}\doc\*.*"
             ;SetOutPath "$INSTDIR\etc"
-            ;File /r /x kdesettings.bat /x portage "${BUNDLEPATH}\etc\*.*"
-            ;;SetOutPath "$INSTDIR\hosting"
-            ;;File /r "${BUNDLEPATH}\hosting\*.*"
             ;;SetOutPath "$INSTDIR\imports"
             ;;File /r "${BUNDLEPATH}\imports\*.*"
-            ;SetOutPath "$INSTDIR\include"
-            ;File /r "${BUNDLEPATH}\include\*.*"
             ;SetOutPath "$INSTDIR\lib"
             ;File /r "${BUNDLEPATH}\lib\*.*"
-            ;;SetOutPath "$INSTDIR\manifest"
-            ;;File /r "${BUNDLEPATH}\manifest\*.*"
-            ;SetOutPath "$INSTDIR\phrasebooks"
-            ;File /r "${BUNDLEPATH}\phrasebooks\*.*"
             ;;SetOutPath "$INSTDIR\scripts"
             ;;File /r "${BUNDLEPATH}\scripts\*.*"
-            ;;SetOutPath "$INSTDIR\vad"
-            ;;File /r "${BUNDLEPATH}\vad\*.*"
-            ;;SetOutPath "$INSTDIR\vsp"
-            ;;File /r "${BUNDLEPATH}\vsp\*.*"
             ;;SetOutPath "$INSTDIR\xdg"
             ;;File /r "${BUNDLEPATH}\xdg\*.*"
 
@@ -547,12 +532,6 @@
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk" "$INSTDIR\digikam.exe"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk" "$INSTDIR\showfoto.exe"
 
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk" "$INSTDIR\dngconverter.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk" "$INSTDIR\expoblending.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk" "$INSTDIR\panoramagui.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Scan.lnk" "$INSTDIR\scangui.exe"
-            ;CreateShortCut "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk" "$INSTDIR\systemsettings.exe"
-
         WriteINIStr "$SMPROGRAMS\$StartMenuFolder\The ${MY_PRODUCT} HomePage.url" "InternetShortcut" "URL" "${PRODUCT_HOMEPAGE}"
 
         !insertmacro MUI_STARTMENU_WRITE_END
@@ -576,19 +555,13 @@
         RMDir /r "$INSTDIR\translations"
 
             ;RMDir /r "$INSTDIR\share"
-            ;RMDir /r "$INSTDIR\certs"
             ;;RMDir /r "$INSTDIR\database"
             ;;RMDir /r "$INSTDIR\doc"
             ;RMDir /r "$INSTDIR\etc"
             ;RMDir /r "$INSTDIR\hosting"
             ;RMDir /r "$INSTDIR\imports"
-            ;RMDir /r "$INSTDIR\include"
             ;RMDir /r "$INSTDIR\lib"
-            ;;RMDir /r "$INSTDIR\manifest"
-            ;RMDir /r "$INSTDIR\phrasebooks"
             ;;RMDir /r "$INSTDIR\scripts"
-            ;;RMDir /r "$INSTDIR\vad"
-            ;;RMDir /r "$INSTDIR\vsp"
             ;RMDir /r "$INSTDIR\xdg"
 
         ;Do not do a recursive removal of $INSTDIR because user may have accidentally installed into system critical directory!
@@ -604,12 +577,6 @@
         Delete "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk"
         Delete "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk"
         Delete "$SMPROGRAMS\$StartMenuFolder\The ${MY_PRODUCT} HomePage.url"
-
-            ;Delete "$SMPROGRAMS\$StartMenuFolder\DNGConverter.lnk"
-            ;Delete "$SMPROGRAMS\$StartMenuFolder\ExpoBlending.lnk"
-            ;Delete "$SMPROGRAMS\$StartMenuFolder\Panorama.lnk"
-            ;Delete "$SMPROGRAMS\$StartMenuFolder\Scan.lnk"
-            ;Delete "$SMPROGRAMS\$StartMenuFolder\SystemSettings.lnk"
 
         RMDir /r "$SMPROGRAMS\$StartMenuFolder"
 
