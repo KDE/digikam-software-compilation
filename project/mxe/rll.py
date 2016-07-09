@@ -29,7 +29,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
 import subprocess
 import os.path
 import argparse
@@ -37,14 +36,6 @@ import shutil
 import string
 
 # -----------------------------------------------
-
-# The mingw pathes matches in MXE build directory
-default_path_prefixes = [ 
-    os.getcwd() + "/build.win32/usr/i686-w64-mingw32.shared/qt5/bin/", 
-    os.getcwd() + "/build.win64/usr/x86_64-w64-mingw32.shared/qt5/bin/", 
-    os.getcwd() + "/build.win32/usr/i686-w64-mingw32.shared/bin/", 
-    os.getcwd() + "/build.win64/usr/x86_64-w64-mingw32.shared/bin/"
-]
 
 # Blacklist of native Windows dlls (may need extending)
 blacklist = [
@@ -160,6 +151,13 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
+        "--installprefix",
+        type = str,
+        action = "store",
+        help = "Install prefix path in build directory."
+    )
+
+    parser.add_argument(
         "--efile",
         type = str,
         action = "store",
@@ -191,6 +189,12 @@ def main():
         raise RuntimeError("Can't run UPX if --copy hasn't been provided.")
 
     print("Scan dependencies for " + args.efile)
+
+    # The mingw pathes matches in MXE build directory
+    default_path_prefixes = [
+        args.installprefix + "/qt5/bin/",
+        args.installprefix + "/bin/",
+    ]
 
     all_deps = set(gather_deps(args.efile, default_path_prefixes, []))
     all_deps.remove(args.efile)

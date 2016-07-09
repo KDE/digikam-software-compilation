@@ -144,7 +144,7 @@ kbuildsycoca5.exe \
 for app in $EXE_FILES ; do
 
     cp $MXE_INSTALL_PREFIX/bin/$app $BUNDLEDIR/
-    $ORIG_WD/rll.py --copy --odir $BUNDLEDIR --efile $BUNDLEDIR/$app
+    $ORIG_WD/rll.py --copy --installprefix $MXE_INSTALL_PREFIX --odir $BUNDLEDIR --efile $BUNDLEDIR/$app
 
 done
 
@@ -156,7 +156,7 @@ DLL_FILES="\
 
 for app in $DLL_FILES ; do
 
-    $ORIG_WD/rll.py --copy --odir $BUNDLEDIR --efile $app
+    $ORIG_WD/rll.py --copy --installprefix $MXE_INSTALL_PREFIX --odir $BUNDLEDIR --efile $app
 
 done
 
