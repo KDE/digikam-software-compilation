@@ -181,7 +181,7 @@ else
     TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64.exe
 fi
 
-makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=../bundle -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
+makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=../bundle -DTARGETARCH=$MXE_ARCHBITS -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server

@@ -13,6 +13,7 @@
  ; Script arguments:
  ; VERSION    : the digiKam version as string.
  ; BUNDLEPATH : the path where whole digiKam bundle is installed.
+ ; TARGETARCH : the target Windows architecture (32 or 64 bits).
  ; OUTPUT     : the output installer file name as string.
  ;
  ; Example: makensis -DVERSION=5.0.0 -DBUNDLEPATH=../bundle digikam.nsi
@@ -97,10 +98,21 @@
 
     Function .onInit
 
-        ;Default installation folder
+        ;Do not permit to install 64 bits to 32 bits.
+
+        ${If} ${TARGETARCH} == "64"
+        ${AndIfNot} ${RunningX64}
+
+            MessageBox MB_OK|MB_ICONSTOP|MB_TOPMOST|MB_SETFOREGROUND "This is the 64 bits installer, and it cannot be installed to a 32 bits system."
+            SetErrorLevel 2
+            Quit
+
+        ${EndIf}
+
+        ;Default installation folder depending of target architecture.
 
         ${If} $InstDir == "" ; Don't override setup.exe /D=c:\custom\dir
-            ${If} ${RunningX64}
+            ${If} ${TARGETARCH} == "64"
                  StrCpy $InstDir "$PROGRAMFILES64\${MY_PRODUCT}"
             ${Else}
                  StrCpy $InstDir "$PROGRAMFILES32\${MY_PRODUCT}"
