@@ -68,20 +68,6 @@ l1makefile << "add_subdirectory(kipi-plugins)\n"
 
 # -- digiKam + Showfoto extraction ------------------------------------------------------
 
-Dir.chdir("digikam")
-
-if !(File.exists?("digikam") && File.directory?("digikam"))
-    Dir.mkdir("digikam")
-end
-
-if !(File.exists?("showfoto") && File.directory?("showfoto"))
-    Dir.mkdir("showfoto")
-end
-
-l2makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-l2makefile << "add_subdirectory(digikam)\n"
-l2makefile << "add_subdirectory(showfoto)\n"
-
 print("digikam: ")
 
 Dir.chdir("digikam")
@@ -99,6 +85,7 @@ i18nlangs.each_line do |lang|
         end
 
         Dir.chdir(lang)
+        Dir.mkdir("digikam")
 
         # This boolean variable is true if full documentation translation can be fetch from repository.
         complete = true
@@ -106,13 +93,13 @@ i18nlangs.each_line do |lang|
         for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar']
 
             if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > #{part}.docbook`
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
             else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook 2> /dev/null | tee digikam/#{part}.docbook`
             end
 
-            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
-                File.delete( "#{part}.docbook" )
+            if File.exists?("digikam/#{part}.docbook") and FileTest.size( "digikam/#{part}.docbook" ) == 0
+                File.delete( "digikam/#{part}.docbook" )
                 complete = false
                 break
             end
@@ -121,14 +108,14 @@ i18nlangs.each_line do |lang|
 
         if (complete == true)
             makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-            makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
+            makefile << "KDOCTOOLS_CREATE_HANDBOOK( digikam/index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
             makefile.close()
         end
 
         Dir.chdir("..")
 
         if (complete == true)
-           # complete checkout
+            # complete checkout
             l3makefile << "add_subdirectory( #{lang} )\n"
             print(" ")
         else
@@ -147,68 +134,64 @@ puts ("\n")
 
 print("showfoto: ")
 
-Dir.chdir("showfoto")
-l4makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+Dir.chdir("digikam")
 
 i18nlangs.each_line do |lang|
     lang.chomp!()
 
     if (lang != nil && lang != "")
 
-        print("#{lang}")
+        if (File.exists?(lang))
 
-        if !(File.exists?(lang) && File.directory?(lang))
-            Dir.mkdir(lang)
-        end
+            print("#{lang}")
 
-        Dir.chdir(lang)
+            Dir.chdir(lang)
+            Dir.mkdir("showfoto")
 
-        # This boolean variable is true if full documentation translation can be fetch from repository.
-        complete = true
+            # This boolean variable is true if full documentation translation can be fetch from repository.
+            complete = true
 
-        for part in ['index']
+            for part in ['index']
 
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook > #{part}.docbook`
+                if isWindows
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook > showfoto/#{part}.docbook`
+                else
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook 2> /dev/null | tee showfoto/#{part}.docbook`
+                end
+
+                if File.exists?("showfoto/#{part}.docbook") and FileTest.size( "showfoto/#{part}.docbook" ) == 0
+                    File.delete( "showfoto/#{part}.docbook" )
+                    complete = false
+                    break
+                end
+
+            end
+
+            if (complete == true)
+                makefile = File.open( "CMakeLists.txt", File::RDWR)
+                makefile << "KDOCTOOLS_CREATE_HANDBOOK( showfoto/index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
+                makefile.close()
+            end
+
+            if (complete == true)
+                # complete checkout
+                print(" ")
             else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
+                # uncomplete checkout
+                print("(u) ")
             end
 
-            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
-                File.delete( "#{part}.docbook" )
-                complete = false
-                break
-            end
+            Dir.chdir("..")
 
-        end
-
-        if (complete == true)
-            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-            makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
-            makefile.close()
-        end
-
-        Dir.chdir("..")
-
-        if (complete == true)
-           # complete checkout
-            l4makefile << "add_subdirectory( #{lang} )\n"
-            print(" ")
-        else
-            # uncomplete checkout
-            FileUtils.rm_r(lang)
-            print("(u) ")
         end
 
      end
 end
 
 Dir.chdir("..")
-Dir.chdir("..")
 puts ("\n")
 
 # -- kipi-plugins extraction ------------------------------------------------------
-
 
 print("kipi-plugins: ")
 
@@ -257,7 +240,7 @@ i18nlangs.each_line do |lang|
         Dir.chdir("..")
 
         if (complete == true)
-           # complete checkout
+            # complete checkout
             l4makefile << "add_subdirectory( #{lang} )\n"
             print(" ")
         else
