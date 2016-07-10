@@ -91,7 +91,7 @@ endif()
 
 if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
-    message(STATUS "${CMAKE_SOURCE_DIR}/po/ dir do not exists. Application translations compilation disabled...")
+    message(STATUS "Application translations directory is missing. Compilation of application translations is disabled...")
 
     if(NOT DIGIKAMSC_CHECKOUT_PO)
         message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract GUI i18n files from KDE repositories.")
@@ -101,9 +101,11 @@ if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
 
 endif()
 
-if(DIGIKAMSC_COMPILE_DOC AND NOT EXISTS ${CMAKE_SOURCE_DIR}/doc-translated/)
+if(DIGIKAMSC_COMPILE_DOC AND
+   (NOT EXISTS ${CMAKE_SOURCE_DIR}/doc/ OR NOT EXISTS ${CMAKE_SOURCE_DIR}/doc-translated/)
+  )
 
-    message(STATUS "${CMAKE_SOURCE_DIR}/doc-translated/ dir do not exists. Documentation translations compilation disabled...")
+    message(STATUS "At least, one documentation directory is missing. Compilation of documentation is disabled...")
 
     if(NOT DIGIKAMSC_CHECKOUT_DOC)
         message(STATUS "You can use DIGIKAMSC_CHECKOUT_DOC option to extract doc i18n files from KDE repositories.")
