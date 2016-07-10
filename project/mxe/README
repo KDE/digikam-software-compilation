@@ -127,6 +127,10 @@ which they depend, and their dependencies, etc...
 Adapted with minimal modification (mostly deleting stuff) from
 https://github.com/mpreisler/mingw-bundledlls
 
+* makeall.sh
+
+This script permit to build 32 and 64 bits installers from scratch at the same time.
+
 LICENSES
 --------
 The scripts and other contents of this package are licensed
