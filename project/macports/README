@@ -185,6 +185,10 @@ which they depend, and their dependencies, etc.. Adapted with minimal
 modification (mostly deleting stuff) from
 https://github.com/mixxxdj/mixxx/blob/master/build/osx/otool.py.
 
+* makeall.sh
+
+This script permit to build whole package from scratch.
+
 LICENSES
 --------
 rll.py, like the otool.py source from which it has been adapted, is licensed
