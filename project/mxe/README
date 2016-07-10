@@ -129,7 +129,7 @@ https://github.com/mpreisler/mingw-bundledlls
 
 * makeall.sh
 
-This script permit to build 32 and 64 bits installers from scratch at the same time.
+This script permit to build whole 32 and 64 bits installers from scratch at the same time.
 
 LICENSES
 --------
