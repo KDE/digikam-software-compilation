@@ -94,40 +94,40 @@ mkdir -p $BUNDLEDIR/translations
 
 # Data files ---------------------------------------------------------------------------------
 
-# For Marble
+echo -e "\n---------- Marble data"
 cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLEDIR/data         2>/dev/null
 
-# Generics
+echo -e "\n---------- Generics data"
 cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data         2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data         2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data         2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/solid                                   $BUNDLEDIR/data         2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data         2>/dev/null
 
-# Qt configuration
+echo -e "\n---------- Qt config"
 cp    $BUILDDIR/data/qt.conf                                            $BUNDLEDIR/             2>/dev/null
 
-# Ressource icons-set
+echo -e "\n---------- icons-set"
 cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/             2>/dev/null
 
-# i18n
+echo -e "\n---------- i18n"
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations 2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations 2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data         2>/dev/null
 
-# XDG
+echo -e "\n---------- Xdg"
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/share        2>/dev/null
 
 # Plugins Shared libraries -------------------------------------------------------------------
 
-# For Marble
+echo -e "\n---------- Marble plugins"
 cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/             2>/dev/null
 
-# For Qt5
+echo -e "\n---------- Qt5 plugins"
 cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/             2>/dev/null
 
-# KF5 plugins
+echo -e "\n---------- KF5 plugins"
 find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
 
 echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
