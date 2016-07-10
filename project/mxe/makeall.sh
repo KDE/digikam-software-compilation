@@ -17,13 +17,13 @@ set -e
 StartScript
 
 echo "This script will build from scratch the digiKam installer for Windows using MXE."
-echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-if [ -d "$MXE_BUILDROOT" ] ; then
+if [[ -d "`pwd`/build.win32" ]] || [[ -d "`pwd`/build.win64" ]] ; then
 
     if [ "$1" != "-f" ] ; then
 
-        read -p "A previous MXE build already exist and it will be removed. Do you want to continue ? [(c)ontinue/(s)top] " answer
+        read -p "Previous MXE build already exist and it will be removed. Do you want to continue ? [(c)ontinue/(s)top] " answer
 
         if echo "$answer" | grep -iq "^s" ; then
 
@@ -35,11 +35,25 @@ if [ -d "$MXE_BUILDROOT" ] ; then
     fi
 
     echo "---------- Removing existing MXE build"
-#    chmod +w "$MXE_BUILDROOT/usr/readonly"
-#    chattr -i "$MXE_BUILDROOT/usr/readonly/.gitkeep"
-    rm -fr $MXE_BUILDROOT
+    rm -fr `pwd`/build.win32
+    rm -fr `pwd`/build.win64
 
 fi
+
+echo "++++++++++++++++   Build 32 bits Installer   ++++++++++++++++++++++++++++++++++"
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+sed -e "s/MXE_ARCHBITS=64/MXE_ARCHBITS=32/g" ./config.sh > ./tmp.sh ; mv -f ./tmp.sh ./config.sh
+
+./01-build-mxe.sh
+./02-build-extralibs.sh
+./03-build-digikam.sh
+./04-build-installer.sh
+
+echo "++++++++++++++++   Build 64 bits Installer   ++++++++++++++++++++++++++++++++++"
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+sed -e "s/MXE_ARCHBITS=32/MXE_ARCHBITS=64/g" ./config.sh > ./tmp.sh ; mv -f ./tmp.sh ./config.sh
 
 ./01-build-mxe.sh
 ./02-build-extralibs.sh
