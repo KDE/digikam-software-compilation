@@ -23,7 +23,7 @@ add_custom_command(OUTPUT breeze.rcc
 
     COMMAND ${QT_RCC_EXECUTABLE} -binary -o ${CMAKE_BINARY_DIR}/breeze.rcc -root /icons aliased.qrc
 
-    WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/share/icons
+    WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/data/icons
     DEPENDS qrcAlias
 )
 

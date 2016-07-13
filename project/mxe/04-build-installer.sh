@@ -99,10 +99,10 @@ cp -r $MXE_INSTALL_PREFIX/data/*                                        $BUNDLED
 
 echo -e "\n---------- Generics data"
 cp -r $MXE_INSTALL_PREFIX/share/lensfun                                 $BUNDLEDIR/data         2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/digikam                                 $BUNDLEDIR/data         2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/showfoto                                $BUNDLEDIR/data         2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/solid                                   $BUNDLEDIR/data         2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/k*                                      $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/digikam                              $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/showfoto                             $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/solid                                $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/k*                                   $BUNDLEDIR/data         2>/dev/null
 
 echo -e "\n---------- Qt config"
 cp    $BUILDDIR/data/qt.conf                                            $BUNDLEDIR/             2>/dev/null
@@ -117,7 +117,7 @@ cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLED
 
 echo -e "\n---------- Xdg"
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/xdg                                     $BUNDLEDIR/share        2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/xdg                                  $BUNDLEDIR/share        2>/dev/null
 
 # Plugins Shared libraries -------------------------------------------------------------------
 
