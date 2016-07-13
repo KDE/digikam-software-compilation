@@ -65,7 +65,7 @@ KD_VERSION=5.24
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.04.2
+KA_VERSION=16.04.3
 
 # digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
