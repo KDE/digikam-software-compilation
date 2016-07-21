@@ -9,7 +9,13 @@
 
 # Minimum OSX target for backward binary compatibility
 # This require to install older OSX SDKs with Xcode.
-# See this url for details: https://github.com/phracker/MacOSX-SDKs
+# See this url to download a older SDK archive :
+#
+# https://github.com/phracker/MacOSX-SDKs/releases
+#
+# Uncompress the archive to /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/
+# and adjust the property "MinimumSDKVersion" from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Info.plist
+
 # Possible values:
 # 10.11 : El Capitan   (tested)
 # 10.10 : Yosemite     (tested)
