@@ -109,7 +109,9 @@ You will also need to install Packages software from which does the actual packa
 
 http://s.sudre.free.fr/Software/Packages/about.html
 
-IMPORTANT: set the minimal OSX target for backward compatibility in first.
+IMPORTANT:
+- You must set the minimal OSX target with relevant SDK installed for backward compatibility.
+- You must set the digiKam git tags to checkout right source code to package.
 Look in config.sh file for details.
 
 HERE THERE BE DRAGONS
