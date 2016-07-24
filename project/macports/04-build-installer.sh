@@ -123,7 +123,7 @@ share/applications \
 share/OpenCV \
 share/k* \
 share/lensfun \
-share/locale/ \
+share/locale \
 share/mime \
 Library/Application/ \
 Marble.app/Contents/Resources/ \

@@ -616,7 +616,7 @@
 			<key>OVERWRITE_PERMISSIONS</key>
 			<true/>
 			<key>VERSION</key>
-			<string>5.0.0</string>
+			<string>5.1.0</string>
 		</dict>
 		<key>PROJECT_COMMENTS</key>
 		<dict>
