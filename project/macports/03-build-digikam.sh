@@ -9,6 +9,9 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
+# Ask to run as root
+(( EUID != 0 )) && exec sudo -- "$0" "$@"
+
 # Halt on error
 set -e
 
