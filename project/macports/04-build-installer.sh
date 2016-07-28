@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Script to bundle data using previously-built KDE and digiKam installation.
+# Script to bundle data using previously-built digiKam installation.
 # and create a PKG file with Packages application (http://s.sudre.free.fr/Software/Packages/about.html)
 # This script must be run as sudo
 #
@@ -82,13 +82,13 @@ PROJECTDIR="$BUILDDIR/installer"
 # Staging area where files to be packaged will be copied
 TEMPROOT="$BUILDDIR/$INSTALL_PREFIX"
 
-# KDE apps to be launched directly by user (create launch scripts)
+# Applications to be launched directly by user (create launch scripts)
 KDE_MENU_APPS="\
 digikam \
 showfoto \
 "
 
-# Paths to search for KDE applications above
+# Paths to search for applications above
 KDE_APP_PATHS="\
 Applications/KF5 \
 "
@@ -169,9 +169,9 @@ echo "Creating $TEMPROOT"
 mkdir -p "$TEMPROOT/Applications/digiKam"
 
 #################################################################################################
-# Prepare KDE applications for OSX
+# Prepare applications for MacOS
 
-echo "---------- Preparing KDE Applications"
+echo "---------- Preparing Applications for MacOS"
 
 for app in $KDE_MENU_APPS ; do
     echo "  $app"
@@ -213,7 +213,7 @@ for app in $KDE_MENU_APPS ; do
                 DYLD_ENV_CMD=""
             fi
 
-            # ------ Create KDE application launcher script
+            # ------ Create application launcher script
             # Partially derived from https://discussions.apple.com/thread/3934912 and
             # http://stackoverflow.com/questions/16064957/how-to-check-in-applescript-if-an-app-is-running-without-launching-it-via-osa
             # and https://discussions.apple.com/thread/4059113
@@ -226,7 +226,7 @@ do shell script "$DYLD_ENV_CMD $INSTALL_PREFIX/bin/kbuildsycoca5"
 
 do shell script "$DYLD_ENV_CMD open $INSTALL_PREFIX/$searchpath/$app.app"
 EOF
-                # ------ End KDE application launcher script
+                # ------ End application launcher script
 
                 # Get application icon for launcher. If no icon file matches pattern app_SRCS.icns, grab the first icon
 
@@ -253,7 +253,7 @@ EOF
 done
 
 #################################################################################################
-# Collect dylib dependencies for all KDE and other binaries,
+# Collect dylib dependencies for all binaries,
 # then copy them to the staging area (creating directories as required)
 
 echo "---------- Collecting dependencies for applications, binaries, and libraries:"
@@ -300,10 +300,12 @@ for path in $OTHER_DATA ; do
     cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
 done
 
-# Showfoto resources dir will be merged with digiKam. A symbolic link to digiKam resources dir will be used for Showfoto
+# Showfoto resources dir must be merged with digiKam.
 cp -a "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources/" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
 rm -rf "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
-ln -s "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources" "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
+
+# A symbolic link to install path where is installed digiKam resources will be used for Showfoto.
+ln -s "$INSTALL_PREFIX/Applications/KF5/digikam.app/Contents/Resources" "$TEMPROOT/Applications/KF5/showfoto.app/Contents/Resources"
 
 cd "$ORIG_WD"
 
@@ -370,7 +372,7 @@ cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Conten
 #################################################################################################
 # Build PKG file
 
-echo "---------- Create OSX package for digiKam $DKRELEASEID"
+echo "---------- Create MacOS package for digiKam $DKRELEASEID"
 
 TARGET_PKG_FILE=$BUILDDIR/digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
 echo -e "Target PKG file : $TARGET_PKG_FILE"
