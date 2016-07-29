@@ -23,8 +23,8 @@ ChecksXCodeCLI
 ChecksCPUCores
 
 INSTALL_PREFIX=~/tmp
-echo "This script will build from scratch the digiKam installer for OSX using Macports."
-echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "This script will build from scratch the digiKam installer for MacOS using Macports."
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 if [ -d "$INSTALL_PREFIX" ] ; then
 

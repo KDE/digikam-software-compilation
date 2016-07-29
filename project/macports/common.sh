@@ -114,9 +114,9 @@ find . -name "*.cpp" -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLo
 }
 
 ########################################################################
-# Set strings with detected OSX info :
-#    $MAJOR_OSX_VERSION : detected OSX major ID (as 7 for 10.7 or 10 for 10.10)
-#    $OSX_CODE_NAME     : detected OSX code name
+# Set strings with detected MacOS info :
+#    $MAJOR_OSX_VERSION : detected MacOS major ID (as 7 for 10.7 or 10 for 10.10)
+#    $OSX_CODE_NAME     : detected MacOS code name
 OsxCodeName()
 {
 

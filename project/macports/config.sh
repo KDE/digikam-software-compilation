@@ -7,8 +7,8 @@
 
 ########################################################################
 
-# Minimum OSX target for backward binary compatibility
-# This require to install older OSX SDKs with Xcode.
+# Minimum MacOS target for backward binary compatibility
+# This require to install older MacOS SDKs with Xcode.
 # See this url to download a older SDK archive :
 #
 # https://github.com/phracker/MacOSX-SDKs/releases
