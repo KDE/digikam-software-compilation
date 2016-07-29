@@ -20,13 +20,17 @@ fi
 }
 
 ########################################################################
-# Check CPU core available (Linux or OSX)
+# Check CPU core available (Linux or MacOS)
 ChecksCPUCores()
 {
 
 CPU_CORES=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
 
-echo "CPU Cores detected : $CPU_CORES"
+if [[ $CPU_CORES -gt 1 ]]; then
+    CPU_CORES=$((CPU_CORES-1))
+fi
+
+echo "CPU Cores to use : $CPU_CORES"
 
 }
 
@@ -376,4 +380,3 @@ if [ $? -ne 0 ]; then
 fi
 
 }
-
