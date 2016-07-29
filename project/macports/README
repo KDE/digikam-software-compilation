@@ -1,11 +1,11 @@
 RESUME
 ------
-Scripts to build binary digiKam packages for Mac OS X
+Scripts to build binary digiKam packages for MacOS
 
-This scripts build a binary digiKam package for Mac OSX using Macports 
+This scripts build a binary digiKam package for MacOS using Macports 
 environnement and Package application.
 
-This script follow instructions from Qt bundle deployement for OSX as shared libraries
+This script follow instructions from Qt bundle deployement for MacOS as shared libraries
 available at this url: http://doc.qt.io/qt-5/osx-deployment.html
 
 AUTHORS
@@ -16,7 +16,7 @@ AUTHORS
 DESCRIPTION
 -----------
 These files and scripts are used to make binary packages of the digiKam
-Software Collection for OS X. In addition to this README, there are
+Software Collection for MacOS. In addition to this README, there are
 comments in the scripts that provide some additional explanation for how they
 work.
 
@@ -94,12 +94,13 @@ Note : the bundle is not rellocable.
 REQUIREMENTS
 ------------
 The scripts build digiKam with MacPorts, so you will need Xcode and the other
-prerequisites for Macports. To install it for OS X versions 10.7 and later,
+prerequisites for Macports. To install it for MacOS versions 10.7 and later,
 download Xcode from the AppStore:
 
 http://itunes.apple.com/us/app/xcode/id497799835?mt=12
 
-NOTE: since Xcode 4.3.2, you need to install Xcode Command Line Tools extension package to be able to use Macport on your computer.
+NOTE: since Xcode 4.3.2, you need to install Xcode Command Line Tools extension package to be able to
+use Macport on your computer.
 Run Xcode and got to Preference menu entry, Download section, and install Command Line Tools component.
 See this url for details : http://guide.macports.org/#installing.xcode.
 
@@ -116,7 +117,7 @@ Look in config.sh file for details.
 
 HERE THERE BE DRAGONS
 ---------------------
-Use these scripts at your own risk.  For example, both scripts contain
+Use these scripts at your own risk. For example, both scripts contain
 "rm -rf" (to clear previous builds) -- a mistake could wipe your drive. There
 is little error checking or validation. I make no claims to be compentent at
 coding or packaging, or to the suitability or saftety of the scripts or
@@ -126,7 +127,7 @@ COMPONENTS
 ----------
 There are 4 scripts to be run by the user. 2 first ones installs
 MacPorts and all dependencies, next one digiKam, and last one makes a
-PKG binary installer for OSX.
+PKG binary installer for MacOS.
 
 SCRIPT DESCRIPTIONS
 -------------------
@@ -154,7 +155,7 @@ This script configures, and compile a custom non-root install of digiKam to
 * 04-build-installer.sh:
 
 Once you've successfully built digiKam, /opt/digikam may contain over 10GB of files.
-This script grabs the ~500MB needed to run digiKam and showfoto,
+This script grabs the ~250MB needed to run digiKam and Showfoto,
 and places them in ./installer/opt. These include applications documentations
 and translations.
 
@@ -170,14 +171,14 @@ The launcher applications:
 
 this script also create the pre-install and post-install scripts that are run
 when the package is installed. They delete any pre-existing /opt/digikam,
-delete and recreate /Applications/digiKam, and load dbus-system with launchctl.
+delete and recreate /Applications/digiKam.
 
 Finally, this script sets the version number, and runs Packages to
 put everything together.
 
 * rll.py
 
-Run by 04-build-installer.sh. It is a python script that takes a list of binaries
+Run by 04-build-installer.sh. It is a Python script that takes a list of binaries
 and libraries supplied by 04-build-installer.sh and recursively lists the dylibs on
 which they depend, and their dependencies, etc.. Adapted with minimal
 modification (mostly deleting stuff) from
