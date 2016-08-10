@@ -168,8 +168,8 @@ i18nlangs.each_line do |lang|
             end
 
             if (complete == true)
-                makefile = File.open( "CMakeLists.txt", File::RDWR)
-                makefile << "KDOCTOOLS_CREATE_HANDBOOK( showfoto/index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
+                makefile = File.open( "CMakeLists.txt", "a")
+                makefile << "\nKDOCTOOLS_CREATE_HANDBOOK( showfoto/index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
                 makefile.close()
             end
 
