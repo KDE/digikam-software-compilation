@@ -374,7 +374,8 @@ cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Conten
 
 echo "---------- Create MacOS package for digiKam $DKRELEASEID"
 
-TARGET_PKG_FILE=$BUILDDIR/digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
+TARGET_INSTALLER=digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
+TARGET_PKG_FILE=$BUILDDIR/$TARGET_INSTALLER
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
@@ -389,7 +390,7 @@ mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
 echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n"
 
-echo    "File       : $TARGET_PKG_FILE"
+echo    "File       : $TARGET_INSTALLER"
 echo -n "Size       : "
 du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "
