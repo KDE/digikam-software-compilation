@@ -27,7 +27,7 @@ Qt5::Test                                          opt                         o
 
 KF5::Config                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kconfig
 KF5::XmlGui                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kxmlgui
-KF5::Service                  X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kservice                                               Image Editor use KService                               Remove plugins interface (Showfoto do not load plugins).
+KF5::Service                  X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kservice                                               Kipi tools use KService.
 KF5::I18n                                           X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/ki18n
 KF5::WindowSystem                                   X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kwindowsystem
 KF5::Solid                                                                      X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/solid
