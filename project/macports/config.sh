@@ -58,12 +58,13 @@ MP_PACKAGES="qt5 \
              libxml2 \
              libxslt \
              lensfun \
+             bison \
              "
 
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.24
+KD_VERSION=5.25
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
@@ -76,8 +77,8 @@ DK_BUILDTEMP=~/dktemp
 # digiKam tag version from git. Official tarball do not include extra shared libraries.
 # The list of tags can be listed with this url: https://quickgit.kde.org/?p=digikam.git&a=tags
 # If you want to package current implemntation from git, use "master" as tag.
-DK_VERSION=v5.1.0
-#DK_VERSION=master
+#DK_VERSION=v5.1.0
+DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
 

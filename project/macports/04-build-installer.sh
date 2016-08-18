@@ -370,6 +370,14 @@ cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/
 cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 
 #################################################################################################
+# Cleanup symbols in binary files to free space.
+
+echo -e "\n---------- Strip symbols in binary files\n"
+
+find $TEMPROOT -name "*.so"    | xargs strip -SXx
+find $TEMPROOT -name "*.dylib" | xargs strip -SXxc
+
+#################################################################################################
 # Build PKG file
 
 echo "---------- Create MacOS package for digiKam $DKRELEASEID"
