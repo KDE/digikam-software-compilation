@@ -113,7 +113,7 @@ cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLED
 echo -e "\n---------- i18n"
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations 2>/dev/null
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qtbase*                      $BUNDLEDIR/translations 2>/dev/null
-cp -r $MXE_INSTALL_PREFIX/share/locale                                  $BUNDLEDIR/data         2>/dev/null
+cp -r $MXE_INSTALL_PREFIX/bin/data/locale                               $BUNDLEDIR/data         2>/dev/null
 
 echo -e "\n---------- Xdg"
 cp -r $MXE_INSTALL_PREFIX/etc/xdg                                       $BUNDLEDIR/etc          2>/dev/null
