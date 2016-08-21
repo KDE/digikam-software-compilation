@@ -35,8 +35,8 @@ include(FeatureSummary)
 
 # doc and translations options
 
-option(DIGIKAMSC_CHECKOUT_PO             "Checkout application translations files from KDE repositories (default=OFF)"            OFF)
-option(DIGIKAMSC_CHECKOUT_DOC            "Checkout documentation translations files from KDE repositories (default=OFF)"          OFF)
+option(DIGIKAMSC_CHECKOUT_PO             "Checkout application translations files from git repositories (default=OFF)"            OFF)
+option(DIGIKAMSC_CHECKOUT_DOC            "Checkout documentation translations files from git repositories (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_PO              "Build translations files (default=ON)"                                                  ON)
 option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"                                                      ON)
 
@@ -60,7 +60,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
         if(DIGIKAMSC_CHECKOUT_PO)
 
-            message(STATUS "Extract application translation files from KDE repositories. Please wait, it can take a while...")
+            message(STATUS "Extract application translation files from git repositories. Please wait, it can take a while...")
 
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb"
                             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
@@ -71,7 +71,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
         if(DIGIKAMSC_CHECKOUT_DOC)
 
-            message(STATUS "Extract documentation translation files from KDE repositories. Please wait, it can take a while...")
+            message(STATUS "Extract documentation translation files from git repositories. Please wait, it can take a while...")
             message(STATUS "NOTE: (u) want mean uncomplete translations files, which will be removed from compilation.")
 
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_doc.rb"
@@ -94,24 +94,24 @@ if(DIGIKAMSC_COMPILE_PO AND NOT EXISTS ${CMAKE_SOURCE_DIR}/po/)
     message(STATUS "Application translations directory is missing. Compilation of application translations is disabled...")
 
     if(NOT DIGIKAMSC_CHECKOUT_PO)
-        message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract GUI i18n files from KDE repositories.")
+        message(STATUS "You can use DIGIKAMSC_CHECKOUT_PO option to extract GUI i18n files from git repositories.")
     endif()
 
     set(DIGIKAMSC_COMPILE_PO OFF)
 
 endif()
 
-if(DIGIKAMSC_COMPILE_DOC AND
-   (NOT EXISTS ${CMAKE_SOURCE_DIR}/doc/ OR NOT EXISTS ${CMAKE_SOURCE_DIR}/doc-translated/)
-  )
+if(DIGIKAMSC_COMPILE_DOC AND NOT EXISTS ${CMAKE_SOURCE_DIR}/doc/)
 
-    message(STATUS "At least, one documentation directory is missing. Compilation of documentation is disabled...")
-
-    if(NOT DIGIKAMSC_CHECKOUT_DOC)
-        message(STATUS "You can use DIGIKAMSC_CHECKOUT_DOC option to extract doc i18n files from KDE repositories.")
-    endif()
-
+    message(STATUS "Main one documentation directory is missing. Compilation of documentation is disabled...")
     set(DIGIKAMSC_COMPILE_DOC OFF)
+
+endif()
+
+if(NOT EXISTS ${CMAKE_SOURCE_DIR}/doc-translated/)
+
+    message(STATUS "Documentation translations directory is missing.")
+    message(STATUS "You can use DIGIKAMSC_CHECKOUT_DOC option to extract doc i18n files from git repositories.")
 
 endif()
 
