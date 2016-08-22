@@ -90,7 +90,7 @@ i18nlangs.each_line do |lang|
         # This boolean variable is true if full documentation translation can be fetch from repository.
         complete = true
 
-        for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename']
+        for part in ['color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor']
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
@@ -215,7 +215,7 @@ i18nlangs.each_line do |lang|
         complete = true
 
         # TODO : mostly handook files here are obsolete and must be removed.
-        for part in ['effectimages' 'index' 'printwizard' 'colorimages' 'filterimages' 'imagesgallery' 'jpeglossless' 'rawconverter' 'resizeimages' 'convertimages' 'flickrexport' 'imageviewer' 'metadataeditor' 'recompressimages' 'sendimages']
+        for part in ['effectimages' 'index' 'printwizard' 'colorimages' 'filterimages' 'imagesgallery' 'jpeglossless' 'rawconverter' 'resizeimages' 'convertimages' 'flickrexport' 'imageviewer' 'recompressimages' 'sendimages']
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/kipi-plugins/#{part}.docbook > #{part}.docbook`
