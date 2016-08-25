@@ -5,4 +5,3 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 ECM_OPTIONAL_ADD_SUBDIRECTORY(digikam)
-ECM_OPTIONAL_ADD_SUBDIRECTORY(kipi-plugins)
