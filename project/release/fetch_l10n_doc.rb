@@ -90,7 +90,7 @@ i18nlangs.each_line do |lang|
         # This boolean variable is true if full documentation translation can be fetch from repository.
         complete = true
 
-        for part in ['bqm-rawconverter' 'color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor']
+        for part in ['bqm-rawconverter' 'color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor' 'tool-printwizard' 'tool-flickrexport' 'tool-sendimages']
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
@@ -183,70 +183,6 @@ i18nlangs.each_line do |lang|
 
             Dir.chdir("..")
 
-        end
-
-     end
-end
-
-Dir.chdir("..")
-puts ("\n")
-
-# -- kipi-plugins extraction ------------------------------------------------------
-
-print("kipi-plugins: ")
-
-Dir.chdir("kipi-plugins")
-l4makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-
-i18nlangs.each_line do |lang|
-    lang.chomp!()
-
-    if (lang != nil && lang != "")
-
-        print("#{lang}")
-
-        if !(File.exists?(lang) && File.directory?(lang))
-            Dir.mkdir(lang)
-        end
-
-        Dir.chdir(lang)
-
-        # This boolean variable is true if full documentation translation can be fetch from repository.
-        complete = true
-
-        # TODO : mostly handook files here are obsolete and must be removed.
-        for part in ['index' 'printwizard' 'imagesgallery' 'flickrexport' 'sendimages']
-
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/kipi-plugins/#{part}.docbook > #{part}.docbook`
-            else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/kipi-plugins/#{part}.docbook 2> /dev/null | tee #{part}.docbook`
-            end
-
-            if File.exists?("#{part}.docbook") and FileTest.size( "#{part}.docbook" ) == 0
-                File.delete( "#{part}.docbook" )
-                complete = false
-                break
-            end
-
-        end
-
-        if (complete == true)
-            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-            makefile << "KDOCTOOLS_CREATE_HANDBOOK( index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/#{lang}/ SUBDIR digikam )"
-            makefile.close()
-        end
-
-        Dir.chdir("..")
-
-        if (complete == true)
-            # complete checkout
-            l4makefile << "add_subdirectory( #{lang} )\n"
-            print(" ")
-        else
-            # uncomplete checkout
-            FileUtils.rm_r(lang)
-            print("(u) ")
         end
 
      end
