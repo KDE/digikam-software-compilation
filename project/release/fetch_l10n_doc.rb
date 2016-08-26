@@ -2,7 +2,7 @@
 #
 # Ruby script for pulling l10n translations for digikam and kipi-plugins
 # Requires ruby version >= 1.9
-# 
+#
 # originally a Ruby script for generating Amarok tarball releases from KDE SVN
 #
 # Copyright (c)      2005, Mark Kretschmann, <kretschmann at kde dot org>
@@ -30,11 +30,6 @@ unless $*.empty?()
     end
 end
 
-# Using anonsvn so not necessary anymore
-# Ask user for targeted application version
-#user = `kdialog --inputbox "Your SVN user:"`.chomp()
-#protocol = `kdialog --radiolist "Do you use https or svn+ssh?" https https 0 "svn+ssh" "svn+ssh" 1`.chomp()
-
 i18nlangs = []
 
 if isWindows
@@ -52,7 +47,7 @@ end
 
 Dir.chdir( "doc-translated" )
 
-# -- digiKam + Showfoto extraction ------------------------------------------------------
+# -- digiKam extraction ------------------------------------------------------
 
 print("digikam: ")
 
@@ -72,13 +67,68 @@ i18nlangs.each_line do |lang|
         Dir.chdir(lang)
         Dir.mkdir("digikam")
 
-        # This boolean variable is true if full documentation translation can be fetch from repository.
+        # This boolean variable is true if full documentation translation files can be fetch from repository.
         complete = true
 
-        for part in ['bqm-rawconverter' 'color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance',
-                     'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing',
-                     'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor',
-                     'tool-printwizard' 'tool-flickrexport' 'tool-sendimages']
+        for part in
+            [
+            'annexes-credits',
+            'editor-color',
+            'editor-colormanagement',
+            'editor-decorate',
+            'editor-enhance',
+            'editor-filters',
+            'editor-photoediting',
+            'editor-transform',
+            'editor-using',
+            'index',
+            'intro-background',
+            'intro-camerasupport',
+            'intro-database',
+            'intro-fileformats',
+            'intro-firstrun',
+            'intro-pluginsupport',
+            'menu-bqm',
+            'menu-camera',
+            'menu-editor',
+            'menu-lighttable',
+            'menu-mainwindow',
+            'tool-acquireimages',
+            'tool-advrename',
+            'tool-calendar',
+            'tool-dropbox',
+            'tool-expoblending',
+            'tool-facebook',
+            'tool-findduplicates',
+            'tool-flashexport',
+            'tool-flickrexport',
+            'tool-geolocationeditor',
+            'tool-googleexport',
+            'tool-imageshack',
+            'tool-imgur',
+            'tool-kmlexport',
+            'tool-maintenance',
+            'tool-mediawiki',
+            'tool-metadataeditor',
+            'tool-panorama',
+            'tool-piwigoexport',
+            'tool-presentation',
+            'tool-printwizard',
+            'tool-rajce',
+            'tool-remotestorage',
+            'tool-sendimages',
+            'tool-smug',
+            'tool-vkontakte',
+            'tool-yandexfotki',
+            'using-bqm',
+            'using-camera',
+            'using-dam',
+            'using-lighttable',
+            'using-mainwindow',
+            'using-setup',
+            'using-sidebar',
+            'using-tagsmngr'
+            ]
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
@@ -117,7 +167,7 @@ end
 
 puts ("\n")
 
-# ------------------
+# -- Showfoto extraction ------------------------------------------------------
 
 print("showfoto: ")
 
@@ -133,7 +183,7 @@ i18nlangs.each_line do |lang|
             Dir.chdir(lang)
             Dir.mkdir("showfoto")
 
-            # This boolean variable is true if full documentation translation can be fetch from repository.
+            # This boolean variable is true if full documentation translation files can be fetch from repository.
             complete = true
 
             for part in ['index']
