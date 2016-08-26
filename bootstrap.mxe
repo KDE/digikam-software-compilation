@@ -107,6 +107,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_INTERNALMYSQL=ON \
                            -DENABLE_MEDIAPLAYER=ON \
                            -DENABLE_DBUS=OFF \
+                           -DENABLE_APPSTYLES=OFF \
                            ${PNG2ICO_PATH} \
                            ${OPTIONS} \
                            ..
