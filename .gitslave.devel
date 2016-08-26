@@ -4,4 +4,4 @@
 "^libkvkontakte" "extra/libkvkontakte"
 "^digikam" "core"
 "^kipi-plugins" "extra/kipi-plugins"
-"^digikam-doc" "doc/digikam"
+"^digikam-doc" "doc"
