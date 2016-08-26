@@ -51,26 +51,11 @@ if !(File.exists?("doc-translated") && File.directory?("doc-translated"))
 end
 
 Dir.chdir( "doc-translated" )
-topmakefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-topmakefile << "add_subdirectory(digikam)\n"
-
-if !(File.exists?("digikam") && File.directory?("digikam"))
-    Dir.mkdir("digikam")
-end
-
-if !(File.exists?("kipi-plugins") && File.directory?("kipi-plugins"))
-    Dir.mkdir("kipi-plugins")
-end
-
-l1makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-l1makefile << "add_subdirectory(digikam)\n"
-l1makefile << "add_subdirectory(kipi-plugins)\n"
 
 # -- digiKam + Showfoto extraction ------------------------------------------------------
 
 print("digikam: ")
 
-Dir.chdir("digikam")
 l3makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
 
 i18nlangs.each_line do |lang|
@@ -90,7 +75,10 @@ i18nlangs.each_line do |lang|
         # This boolean variable is true if full documentation translation can be fetch from repository.
         complete = true
 
-        for part in ['bqm-rawconverter' 'color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance', 'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing', 'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor' 'tool-printwizard' 'tool-flickrexport' 'tool-sendimages']
+        for part in ['bqm-rawconverter' 'color-management', 'credits-annex', 'editor-color', 'editor-decorate', 'editor-enhance',
+                     'editor-filters', 'editor-transform', 'file-formats', 'ie-menu', 'index', 'menu-descriptions', 'photo-editing',
+                     'sidebar', 'tool-acquireimages', 'tool-geolocationeditor', 'tool-presentation', 'tool-advrename', 'tool-metadateditor',
+                     'tool-printwizard' 'tool-flickrexport' 'tool-sendimages']
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
@@ -127,14 +115,11 @@ i18nlangs.each_line do |lang|
      end
 end
 
-Dir.chdir("..")
 puts ("\n")
 
 # ------------------
 
 print("showfoto: ")
-
-Dir.chdir("digikam")
 
 i18nlangs.each_line do |lang|
     lang.chomp!()
