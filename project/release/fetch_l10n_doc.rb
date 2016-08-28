@@ -96,6 +96,7 @@ i18nlangs.each_line do |lang|
             'editor-transform-crop',
             'editor-transform-freerotation',
             'editor-transform-resize',
+            'editor-transform-liquid',
             'editor-transform-shear',
             'editor-transform-perspective',
             'editor-transform-rotateflip',
