@@ -76,12 +76,12 @@ i18nlangs.each_line do |lang|
             'editor-color',
             'editor-color-auto'
             'editor-color-bw'
-            'editor-color-correction'
-            'editor-color-curves'
-            'editor-color-exposure'
-            'editor-color-levels'
-            'editor-color-mixer'
-            'editor-color-wb'
+            'editor-color-correction',
+            'editor-color-curves',
+            'editor-color-exposure',
+            'editor-color-levels',
+            'editor-color-mixer',
+            'editor-color-wb',
             'editor-colormanagement',
             'editor-decorate',
             'editor-decorate-border',
