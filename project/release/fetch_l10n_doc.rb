@@ -182,6 +182,14 @@ i18nlangs.each_line do |lang|
             'using-mainwindow',
             'using-setup',
             'using-sidebar',
+            'using-sidebar-intro',
+            'using-sidebar-properties',
+            'using-sidebar-metadata',
+            'using-sidebar-colors',
+            'using-sidebar-captions',
+            'using-sidebar-maps',
+            'using-sidebar-filters',
+            'using-sidebar-tools',
             'using-tagsmngr'
             ]
 
