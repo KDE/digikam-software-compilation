@@ -184,6 +184,8 @@ i18nlangs.each_line do |lang|
             'using-setup-album',
             'using-setup-database',
             'using-setup-metadata',
+            'using-setup-metadata-intro',
+            'using-setup-metadata-views',
             'using-setup-quality',
             'using-setup-templates',
             'using-setup-camera',
