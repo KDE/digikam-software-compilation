@@ -199,6 +199,7 @@ i18nlangs.each_line do |lang|
             'using-setup-cm',
             'using-setup-intro',
             'using-setup-misc',
+            'using-setup-misc-behavior',
             'using-setup-tooltip',
             'using-setup-collections',
             'using-setup-lighttable',
