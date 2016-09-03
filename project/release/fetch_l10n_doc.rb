@@ -127,6 +127,7 @@ i18nlangs.each_line do |lang|
             'editor-transform-rotateflip',
             'editor-using',
             'index',
+            'intro-info',
             'intro-background',
             'intro-camerasupport',
             'intro-database',
