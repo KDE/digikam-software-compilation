@@ -195,7 +195,6 @@ i18nlangs.each_line do |lang|
             'using-setup-editor-save',
             'using-setup-editor-version',
             'using-setup-editor-raw',
-            'using-setup-mimetype',
             'using-setup-theme',
             'using-setup-cm',
             'using-setup-intro',
