@@ -80,7 +80,7 @@ DK_BUILDTEMP=~/dktemp
 #DK_VERSION=v5.1.0
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-02"
+DK_EPOCH="-01"
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
