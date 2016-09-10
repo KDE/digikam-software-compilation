@@ -60,12 +60,12 @@ MXE_PACKAGES="gcc \
 # KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5libtemp
-KD_VERSION=5.25
+KD_VERSION=5.26
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.08.0
+KA_VERSION=16.08.1
 
 # digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
