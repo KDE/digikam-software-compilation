@@ -1,3 +1,0 @@
-# Ignore embedded libraw because it is modified; replacing with debian's does not work
-# see https://bugs.kde.org/show_bug.cgi?id=352458
-digikam-private-libs: embedded-library usr/lib/digikam/libdigikamcore.so.5.1.0: libraw
