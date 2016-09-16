@@ -1,0 +1,3 @@
+# The following two files are removed in clean target, so not part of the build.
+digikam source: source-is-missing core/data/about/js/bootstrap.min.js
+digikam source: source-is-missing core/data/about/js/jquery.min.js

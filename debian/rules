@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+
+PRIVATE_LIBDIR := /usr/lib/digikam
+export DEB_LDFLAGS_MAINT_APPEND := -Wl,--as-needed
+
+# The following was previously used when building with local libkipi, libkexiv2, and libkdcraw implementation
+#CONFLICTS_SUBSTVAR := libkipi-data, libkexiv2-data, libkdcraw-data, libksane-data
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+# Augment path to find gphoto2-config; workaround for #826166
+export PATH := $(PATH):/usr/lib/$(DEB_HOST_MULTIARCH)/libgphoto2-dev/bin
+
+%:
+	dh $@ --with kde --parallel 
+
+override_dh_clean:
+	rm -f core/data/about/js/bootstrap.min.js core/data/about/js/jquery.min.js
+	dh_clean
+
+override_dh_auto_configure:
+	dh_auto_configure --buildsystem=kde -- \
+	  -DCMAKE_INSTALL_RPATH="$(PRIVATE_LIBDIR)" \
+	  -DDIGIKAMSC_COMPILE_DOC=on \
+	  -DDIGIKAMSC_COMPILE_PO=on \
+	  -DENABLE_MYSQLSUPPORT=ON \
+	  -DENABLE_INTERNALMYSQL=ON
+
+override_dh_auto_install:
+	dh_auto_install
+	# remove development stuff: headers, cmake config files, pkg-config files, .so symlinks, static libs
+	rm -rf --verbose debian/tmp/usr/include
+	rm -rf --verbose debian/tmp/usr/share/kde4/apps/cmake
+	rm -rf --verbose debian/tmp/usr/lib/cmake
+	rm -rf --verbose debian/tmp/usr/lib/pkgconfig
+	find debian/tmp/usr/lib -type l -name '*.so' -exec rm --verbose {} \;
+	# remove potentially conflicting oxygen icons in global icon theme
+	rm -rf --verbose debian/tmp/usr/share/icons/oxygen
+	# remove libkipi translations, provided by kde-l10n-*
+	rm -rf --verbose debian/tmp/usr/share/locale/*/LC_MESSAGES/libkipi.mo
+	# remove haar cascades, the versions in opencv-data will be used instead
+	rm -rf --verbose debian/tmp/usr/share/kde4/apps/libkface/haarcascades
+
+override_dh_installchangelogs:
+	dh_installchangelogs -pdigikam core/ChangeLog
+	dh_installchangelogs -pkipi-plugins extra/kipi-plugins/ChangeLog
+	dh_installchangelogs --remaining-packages
+
+override_dh_install:
+	dh_install --fail-missing
+	# remove duplicate libkipiplugins copied also in digikam-private-libs
+	rm -f --verbose debian/digikam-private-libs/$(PRIVATE_LIBDIR)/libkipiplugins.so.*
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l$(CURDIR)/debian/digikam-private-libs/$(PRIVATE_LIBDIR):$(CURDIR)/debian/kipi-plugins/$(PRIVATE_LIBDIR)
+
+override_dh_gencontrol:
+	dh_gencontrol -- -Vdigikam:Conflicts='$(CONFLICTS_SUBSTVAR)'
+
+# auto tests require user interaction - override
+override_dh_auto_test:
+

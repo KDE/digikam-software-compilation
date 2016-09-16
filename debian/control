@@ -1,0 +1,173 @@
+Source: digikam
+Section: graphics
+Priority: optional
+Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
+Uploaders: Mark Purcell <msp@debian.org>,
+           Fathi Boudra <fabo@debian.org>,
+           Steve M. Robbins <smr@debian.org>
+Build-Depends: bison,
+               cmake (>= 3.0.0),
+               debhelper (>= 9),
+               extra-cmake-modules (>= 1.7.0),
+               flex,
+               libboost-graph-dev,
+               libeigen3-dev (>= 3.1.2),
+               libexiv2-dev,
+               libexpat1-dev | libexpat-dev,
+               libgphoto2-dev,
+               libjpeg-dev,
+               libkf5akonadicontact-dev,
+               libkf5calendarcore-dev,
+               libkf5filemetadata-dev,
+               libkf5kipi-dev,
+               libkf5notifications-dev,
+               libkf5notifyconfig-dev,
+               libkf5sane-dev,
+               libkf5threadweaver-dev,
+               liblcms2-dev,
+               liblensfun-dev,
+               liblqr-1-0-dev,
+               libmarble-dev,
+               libopencv-dev (>= 2.4.9),
+               libpng-dev,
+               libqt5opengl5-dev,
+               libqt5svg5-dev,
+               libqt5webkit5-dev,
+               libqt5x11extras5-dev,
+               libqt5xmlpatterns5-dev,
+               libtiff-dev,
+               libusb-1.0-0-dev [linux-any],
+               pkg-config,
+               pkg-kde-tools (>= 0.15.20~),
+               qtbase5-dev (>= 5.4.0),
+               qtbase5-dev-tools (>= 5.4.0),
+               qtmultimedia5-dev
+Build-Conflicts: libgraphicsmagick1-dev
+Standards-Version: 3.9.8
+Vcs-Svn: svn://anonscm.debian.org/pkg-kde/kde-extras/digikam/trunk
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-kde/kde-extras/digikam/trunk/
+Homepage: http://www.digikam.org
+
+Package: digikam-private-libs
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: private libraries for digiKam and kipi plugins
+ This package contains private libraries to be used by digikam and
+ kipi-plugins.
+ .
+ This has no use for anything else than digikam, since the libraries are
+ installed in a private library path.
+
+Package: digikam
+Architecture: any
+Depends: digikam-data (= ${source:Version}),
+         digikam-private-libs (= ${binary:Version}),
+         libqt5sql5-sqlite,
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends}
+Recommends: ffmpegthumbs, www-browser
+Suggests: digikam-doc, systemsettings
+Conflicts: ${digikam:Conflicts}
+Description: digital photo management application for KDE
+ Digital photo management program designed to import, organize, enhance, search
+ and export your digital images to and from your computer.
+ .
+ It provides a simple interface which makes importing and organizing digital
+ photographs a "snap". digiKam enables you to manage large numbers of
+ digital photographs in albums and to organize these photographs for easy
+ retrieval using tags (keywords), captions, collections, dates, geolocation
+ and searches. It has many features for viewing, organizing, processing and
+ sharing your images. Thus, digiKam is a formidable digital asset management
+ (DAM) software including powerful image editing functions.
+ .
+ An easy-to-use camera interface is provided, that will connect to your
+ digital camera and download photographs directly into digiKam albums.
+ More than 1000 digital cameras are supported by the gphoto2 library.
+ Of course, any media or card reader supported by your operating system
+ will interface with digiKam.
+ .
+ digiKam incorporates a fast Image Editor with many image editing tools.
+ You can use the Image Editor to view your photographs, comment and rate
+ them, correct, enhance and alter them. The editing power can be easily
+ extended by a set of plugins, the KDE Image Plugins Interface (manual)
+ .
+ While digiKam remains easy to use, it provides professional level features
+ by the dozens. It is fully 16 bit enabled including all available plugins,
+ supports RAW format conversion through libraw, DNG export and ICC color
+ management work flow.
+ .
+ digiKam can also make use of the KIPI image handling plugins to
+ extend its capabilities even further for photo manipulations,
+ import and export, etc. The kipi-plugins package contains many
+ very useful extensions.
+
+Package: showfoto
+Architecture: any
+Depends: digikam-private-libs (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: dolphin, kipi-plugins
+Breaks: digikam-doc (<< 2:2.0.0-1), kipi-plugins-common (<< 4:3.1.0-2~)
+Replaces: digikam-doc (<< 2:2.0.0-1), kipi-plugins-common (<< 4:3.1.0-2~)
+Description: image viewer/editor for KDE
+ showFoto is the standalone image editor of the digiKam project.
+ .
+ It runs without digiKam images database support, but provides all Image Editor
+ functions.
+
+Package: digikam-data
+Architecture: all
+Depends: opencv-data, ${misc:Depends}
+Breaks: kipi-plugins-common (<< 4:3.1.0-2~)
+Replaces: kipi-plugins-common (<< 4:3.1.0-2~)
+Conflicts: ${digikam:Conflicts}
+Description: digiKam architecture-independant data
+ Contains the significant amount of architecture-independent data that is
+ shipped with digiKam.
+ .
+ It has been placed in an architecture all file to reduce space on the
+ archives, rather than one copy for each architecture.
+
+Package: digikam-doc
+Architecture: all
+Depends: khelpcenter4, ${misc:Depends}
+Recommends: digikam
+Section: doc
+Description: handbook for digiKam
+ digiKam is an easy to use and powerful digital photo management
+ application.
+ .
+ This package contains the handbooks for digiKam and kipi-plugins.
+
+Package: kipi-plugins
+Architecture: any
+Depends: digikam-private-libs (= ${binary:Version}),
+         kipi-plugins-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: digikam (<< 4:2.3.0-2~), kipi-plugins-common (<< 4:3.1.0-2~)
+Replaces: digikam (<< 4:2.3.0-2~), kipi-plugins-common (<< 4:3.1.0-2~)
+Recommends: enblend, enfuse, hugin, imagemagick, konqueror, minidlna
+Suggests: gimp, kmail, vorbis-tools
+Enhances: digikam, gwenview, kphotoalbum, showimg
+Description: image manipulation/handling plugins for KIPI aware programs
+ KIPI plugins (KDE Image Plugin Interface) is an effort to develop a
+ common plugin structure for digiKam, KPhotoAlbum (formerly known as
+ KimDaBa), Showimg and Gwenview.
+ Its aim is to share image plugins among graphic applications.
+
+Package: kipi-plugins-common
+Architecture: all
+Depends: ${misc:Depends}
+Breaks: digikam (<< 4:2.3.0-2~), digikam-data (<< 4:3.1.0-2~)
+Replaces: digikam (<< 4:2.3.0-2~), digikam-data (<< 4:3.1.0-2~)
+Conflicts: ${digikam:Conflicts}
+Description: kipi-plugins architecture-independent data
+ KIPI plugins (KDE Image Plugin Interface) is an effort to develop a
+ common plugin structure for digiKam, KPhotoAlbum (formerly known as
+ KimDaBa), Showimg and Gwenview.
+ Its aim is to share image plugins among graphic applications.
+ .
+ The architecture independent data needed for the kipi-plugins package.

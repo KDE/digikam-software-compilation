@@ -1,0 +1,10 @@
+usr/share/digikam
+usr/share/icons/hicolor/*/actions
+usr/share/icons/hicolor/*/apps/digikam.*
+usr/share/icons/hicolor/*/apps/expoblending.*
+usr/share/icons/hicolor/*/apps/panorama.*
+usr/share/knotifications5/digikam*
+usr/share/kservice*/digikam*
+usr/share/kxmlgui5/digikam
+usr/share/locale/*/LC_MESSAGES/digikam.mo
+usr/share/solid
