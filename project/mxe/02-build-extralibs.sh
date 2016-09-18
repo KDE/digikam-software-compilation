@@ -227,7 +227,6 @@ InstallKDEExtraApp "marble"              ""                                     
                                                                                              -DBUILD_MARBLE_TOOLS=OFF \
                                                                                              -DBUILD_MARBLE_EXAMPLES=OFF \
                                                                                              -DBUILD_MARBLE_APPS=OFF \
-                                                                                             -DBUILD_MARBLE_TESTS=OFF \
                                                                                              -DBUILD_WITH_DBUS=OFF \
                                                                                              -DBUILD_TESTING=OFF \
                                                                                              -DQTONLY=ON \
