@@ -51,7 +51,7 @@ export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
 InstallKDEExtraLib "extra-cmake-modules" ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kconfig"             ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
-InstallKDEExtraLib "breeze-icons"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "breeze-icons"        "$ORIG_WD/patches/breeze-icons.patch"              "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kcoreaddons"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kwindowsystem"       ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "solid"               ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"

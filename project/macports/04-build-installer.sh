@@ -375,7 +375,7 @@ cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Conten
 echo -e "\n---------- Strip symbols in binary files\n"
 
 find $TEMPROOT -name "*.so"    | xargs strip -SXx
-find $TEMPROOT -name "*.dylib" | xargs strip -SXxc
+find $TEMPROOT -name "*.dylib" | xargs strip -SXx
 
 #################################################################################################
 # Build PKG file
