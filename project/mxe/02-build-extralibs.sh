@@ -217,7 +217,7 @@ InstallKDEExtraLib "kimageformats"       ""                                     
 
 # Marble for geolocation tools.
 
-InstallKDEExtraApp "marble"              "marble-libs-install.patch"                        "-DWITH_DESIGNER_PLUGIN=OFF \
+InstallKDEExtraApp "marble"              "$ORIG_WD/patches/marble-libs-install.patch"       "-DWITH_DESIGNER_PLUGIN=OFF \
                                                                                              -DBUILD_MARBLE_TESTS=OFF \
                                                                                              -DBUILD_MARBLE_TOOLS=OFF \
                                                                                              -DBUILD_MARBLE_EXAMPLES=OFF \
