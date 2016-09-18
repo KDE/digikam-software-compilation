@@ -113,7 +113,7 @@ echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($
 FixApplicationBundleDataPath()
 {
 
-find . -name "*.cpp" -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;
+LC_CTYPE=C find . -name "*.cpp" -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;
 
 }
 
