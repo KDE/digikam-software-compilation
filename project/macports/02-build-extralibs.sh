@@ -72,18 +72,18 @@ InstallKDEExtraLib "kservice"            ""                                     
 InstallKDEExtraLib "kglobalaccel"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kxmlgui"             "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch" "-DBUILD_TESTING=OFF -Wno-dev"
 InstallKDEExtraLib "kbookmarks"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kimageformats"       ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
 
 #################################################################################################
 # Build KF5 extra components
 
 # Marble for geolocation tools.
 
-InstallKDEExtraApp "marble"              "$ORIG_WD/patches/marble-libs-install-path.patch"  "-DWITH_DESIGNER_PLUGIN=OFF \
+InstallKDEExtraApp "marble"              "$ORIG_WD/patches/marble-libs-install.patch"       "-DWITH_DESIGNER_PLUGIN=OFF \
                                                                                              -DBUILD_MARBLE_TESTS=OFF \
                                                                                              -DBUILD_MARBLE_TOOLS=OFF \
                                                                                              -DBUILD_MARBLE_EXAMPLES=OFF \
                                                                                              -DBUILD_MARBLE_APPS=OFF \
-                                                                                             -DBUILD_MARBLE_TESTS=OFF \
                                                                                              -DBUILD_WITH_DBUS=OFF \
                                                                                              -DBUILD_TESTING=OFF \
                                                                                              -DQTONLY=ON \
