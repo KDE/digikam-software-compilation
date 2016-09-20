@@ -65,7 +65,7 @@ KD_VERSION=5.26
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
 KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.08.0
+KA_VERSION=16.04.3
 
 # digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
@@ -80,7 +80,7 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=v5.2.0
 #DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-01"
+DK_EPOCH="-02"
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
