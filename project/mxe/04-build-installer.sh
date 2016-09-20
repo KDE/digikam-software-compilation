@@ -186,18 +186,18 @@ makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=../bundle -DTARGETARCH=$MXE_ARCHBI
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $TARGET_INSTALLER.txt
+echo    "File       : $TARGET_INSTALLER"                                     >> $TARGET_INSTALLER.txt
+echo -n "Size       : "                                                      >> $TARGET_INSTALLER.txt
+du -h "$TARGET_INSTALLER"        | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
+echo -n "MD5 sum    : "                                                      >> $TARGET_INSTALLER.txt
+md5sum "$TARGET_INSTALLER"       | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
+echo -n "SHA1 sum   : "                                                      >> $TARGET_INSTALLER.txt
+shasum -a1 "$TARGET_INSTALLER"   | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
+echo -n "SHA256 sum : "                                                      >> $TARGET_INSTALLER.txt
+shasum -a256 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
 
-echo    "File       : $TARGET_INSTALLER"
-echo -n "Size       : "
-du -h "$TARGET_INSTALLER"        | { read first rest ; echo $first ; }
-echo -n "MD5 sum    : "
-md5sum "$TARGET_INSTALLER"       | { read first rest ; echo $first ; }
-echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_INSTALLER"   | { read first rest ; echo $first ; }
-echo -n "SHA256 sum : "
-shasum -a256 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }
-
+cat $TARGET_INSTALLER.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
