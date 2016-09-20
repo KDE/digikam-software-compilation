@@ -394,20 +394,20 @@ $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
 #################################################################################################
-# Show resume information and future instructions to host PKG file to KDE server
+# Show resume information and future instructions to host PKG file to upload server
 
-echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n"
+echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n" >  $TARGET_PKG_FILE.txt
+echo    "File       : $TARGET_INSTALLER"                                    >> $TARGET_PKG_FILE.txt
+echo -n "Size       : "                                                     >> $TARGET_PKG_FILE.txt
+du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
+echo -n "MD5 sum    : "                                                     >> $TARGET_PKG_FILE.txt
+md5 -q "$TARGET_PKG_FILE"                                                   >> $TARGET_PKG_FILE.txt
+echo -n "SHA1 sum   : "                                                     >> $TARGET_PKG_FILE.txt
+shasum -a1 "$TARGET_PKG_FILE"   | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
+echo -n "SHA256 sum : "                                                     >> $TARGET_PKG_FILE.txt
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
 
-echo    "File       : $TARGET_INSTALLER"
-echo -n "Size       : "
-du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }
-echo -n "MD5 sum    : "
-md5 -q "$TARGET_PKG_FILE"
-echo -n "SHA1 sum   : "
-shasum -a1 "$TARGET_PKG_FILE"   | { read first rest ; echo $first ; }
-echo -n "SHA256 sum : "
-shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }
-
+cat $TARGET_PKG_FILE.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
