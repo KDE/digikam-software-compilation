@@ -1,19 +1,25 @@
 SET(EXTPREFIX_frameworks "${EXTPREFIX}" )
-#
-# All needed frameworks:
-#
-#        Archive 
-#        Config 
-#        WidgetsAddons 
-#        Completion
-#        CoreAddons
-#        GuiAddons 
-#        I18n 
-#        ItemModels 
-#        ItemViews
-#        WindowSystem
-# On Linux:
-#        KCrash
+
+InstallKDEExtraLib "solid"               ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "threadweaver"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "karchive"            ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kdbusaddons"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "ki18n"               ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kcrash"              ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kcodecs"             ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kauth"               ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kguiaddons"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kwidgetsaddons"      ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kitemviews"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kcompletion"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kconfigwidgets"      ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kiconthemes"         ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kservice"            ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kglobalaccel"        ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kxmlgui"             "$ORIG_WD/patches/kxmlgui-drop-ktextwidgets.patch" "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kbookmarks"          ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+InstallKDEExtraLib "kimageformats"       ""                                                 "-DBUILD_TESTING=OFF -Wno-dev"
+
 
 ExternalProject_Add(
     ext_extra_cmake_modules
@@ -31,24 +37,6 @@ ExternalProject_Add(
     ALWAYS 0
 )
 
-
-ExternalProject_Add(
-    ext_karchive
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/frameworks/5.24/karchive-5.24.0.zip
-    URL_MD5 739843accfe9bd85ab2f1582722cf01e
-    INSTALL_DIR ${EXTPREFIX_frameworks}
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
-               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
-                ${GLOBAL_PROFILE}
-                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
-                -DBUILD_TESTING=false
-    UPDATE_COMMAND ""
-    ALWAYS 0
-    DEPENDS ext_extra_cmake_modules
-)
-
-
 ExternalProject_Add(
     ext_kconfig
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
@@ -64,6 +52,72 @@ ExternalProject_Add(
     UPDATE_COMMAND ""
     ALWAYS 0
     DEPENDS ext_karchive
+)
+
+ExternalProject_Add(
+    ext_breeze-icons
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/5.24/breeze-icons-5.24.0.zip
+    URL_MD5 f87ecff795eb76e4ec6561758a5baf87
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kconfig.diff
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+            -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
+                ${GLOBAL_PROFILE}
+                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
+                -DBUILD_TESTING=false
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_kwindowsystem
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/5.24/kwindowsystem-5.24.0.zip
+    URL_MD5 5915e4f63ded983af6db7db3a6cbae1a
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kwindowsystem-x11.diff
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+            -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
+                ${GLOBAL_PROFILE}
+                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
+                -DBUILD_TESTING=false
+    UPDATE_COMMAND ""
+    ALWAYS 0
+    DEPENDS ext_kimageformats
+)
+
+ExternalProject_Add(
+    ext_kcoreaddons
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/5.24/kcoreaddons-5.24.0.zip
+    URL_MD5 2885878625b19ad0300ef3770b897112
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/desktoptojson.diff
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+            -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
+                ${GLOBAL_PROFILE}
+                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
+                -DBUILD_TESTING=false
+    UPDATE_COMMAND ""
+    ALWAYS 0
+    DEPENDS ext_kcompletion
+)
+
+ExternalProject_Add(
+    ext_karchive
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/5.24/karchive-5.24.0.zip
+    URL_MD5 739843accfe9bd85ab2f1582722cf01e
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
+                ${GLOBAL_PROFILE}
+                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
+                -DBUILD_TESTING=false
+    UPDATE_COMMAND ""
+    ALWAYS 0
+    DEPENDS ext_extra_cmake_modules
 )
 
 
@@ -100,25 +154,6 @@ ExternalProject_Add(
     ALWAYS 0
     DEPENDS ext_kwidgetsaddons
 )
-
-
-ExternalProject_Add(
-    ext_kcoreaddons
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/frameworks/5.24/kcoreaddons-5.24.0.zip
-    URL_MD5 2885878625b19ad0300ef3770b897112
-    INSTALL_DIR ${EXTPREFIX_frameworks}
-    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/desktoptojson.diff
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
-            -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
-                ${GLOBAL_PROFILE}
-                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
-                -DBUILD_TESTING=false
-    UPDATE_COMMAND ""
-    ALWAYS 0
-    DEPENDS ext_kcompletion
-)
-
 
 ExternalProject_Add(
     ext_kguiaddons
@@ -205,22 +240,6 @@ ExternalProject_Add(
     DEPENDS ext_kitemviews
 )
 
-ExternalProject_Add(
-    ext_kwindowsystem
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/frameworks/5.24/kwindowsystem-5.24.0.zip
-    URL_MD5 5915e4f63ded983af6db7db3a6cbae1a
-    INSTALL_DIR ${EXTPREFIX_frameworks}
-    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kwindowsystem-x11.diff
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
-            -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} 
-                ${GLOBAL_PROFILE}
-                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX} 
-                -DBUILD_TESTING=false
-    UPDATE_COMMAND ""
-    ALWAYS 0
-    DEPENDS ext_kimageformats
-)
 
 ExternalProject_Add(
     ext_kcrash
