@@ -40,6 +40,9 @@ cmake3 $ORIG_WD/3rdparty \
     -DINSTALL_ROOT=/usr \
     -DEXTERNALS_DOWNLOAD_DIR=/d
 
+cmake3 --build . --config RelWithDebInfo --target ext_frameworks
+return
+
 cmake3 --build . --config RelWithDebInfo --target ext_expat
 cmake3 --build . --config RelWithDebInfo --target ext_gettext
 cmake3 --build . --config RelWithDebInfo --target ext_iconv
@@ -55,4 +58,4 @@ cmake3 --build . --config RelWithDebInfo --target ext_exiv2
 cmake3 --build . --config RelWithDebInfo --target ext_lcms2
 cmake3 --build . --config RelWithDebInfo --target ext_libraw
 cmake3 --build . --config RelWithDebInfo --target ext_qt
-#cmake3 --build . --config RelWithDebInfo --target ext_frameworks
+cmake3 --build . --config RelWithDebInfo --target ext_frameworks
