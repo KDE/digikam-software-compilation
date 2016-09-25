@@ -63,9 +63,39 @@ ExternalProject_Add(
 )
 
 ExternalProject_Add(
+    ext_kcoreaddons
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kcoreaddons-${KD_VERSION}.0.zip
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+                -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
     ext_threadweaver
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
     URL http://download.kde.org/stable/frameworks/${KD_VERSION}/threadweaver-${KD_VERSION}.0.zip
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+                -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_kwindowsystem
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kwindowsystem-${KD_VERSION}.0.zip
     INSTALL_DIR ${EXTPREFIX_frameworks}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}

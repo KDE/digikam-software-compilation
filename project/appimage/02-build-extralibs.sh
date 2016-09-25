@@ -42,12 +42,26 @@ cmake3 $ORIG_WD/3rdparty \
     -DINSTALL_ROOT=/usr \
     -DEXTERNALS_DOWNLOAD_DIR=/d
 
+
+#cmake3 --build . --config RelWithDebInfo --target ext_expat
+#cmake3 --build . --config RelWithDebInfo --target ext_gettext
+#cmake3 --build . --config RelWithDebInfo --target ext_iconv
+#cmake3 --build . --config RelWithDebInfo --target ext_zlib
+#cmake3 --build . --config RelWithDebInfo --target ext_tiff
+#cmake3 --build . --config RelWithDebInfo --target ext_jpeg
+#cmake3 --build . --config RelWithDebInfo --target ext_boost
+#cmake3 --build . --config RelWithDebInfo --target ext_eigen3
+#cmake3 --build . --config RelWithDebInfo --target ext_exiv2
+#cmake3 --build . --config RelWithDebInfo --target ext_lcms2
+#cmake3 --build . --config RelWithDebInfo --target ext_libraw
+cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
+
 cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules
 cmake3 --build . --config RelWithDebInfo --target ext_kconfig
 cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons
 cmake3 --build . --config RelWithDebInfo --target ext_solid
 cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons
-cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem
+cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_solid
 cmake3 --build . --config RelWithDebInfo --target ext_threadweaver
 cmake3 --build . --config RelWithDebInfo --target ext_karchive
@@ -69,19 +83,7 @@ cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats
 
 
-#cmake3 --build . --config RelWithDebInfo --target ext_expat
-#cmake3 --build . --config RelWithDebInfo --target ext_gettext
-#cmake3 --build . --config RelWithDebInfo --target ext_iconv
-#cmake3 --build . --config RelWithDebInfo --target ext_zlib
-#cmake3 --build . --config RelWithDebInfo --target ext_tiff
-#cmake3 --build . --config RelWithDebInfo --target ext_jpeg
-#cmake3 --build . --config RelWithDebInfo --target ext_boost
-#cmake3 --build . --config RelWithDebInfo --target ext_eigen3
-#cmake3 --build . --config RelWithDebInfo --target ext_exiv2
-#cmake3 --build . --config RelWithDebInfo --target ext_lcms2
-#cmake3 --build . --config RelWithDebInfo --target ext_libraw
-#cmake3 --build . --config RelWithDebInfo --target ext_qt
-#cmake3 --build . --config RelWithDebInfo --target ext_frameworks
+
 
 #cmake3 --build . --config RelWithDebInfo --target ext_png
 #cmake3 --build . --config RelWithDebInfo --target ext_libxml2
