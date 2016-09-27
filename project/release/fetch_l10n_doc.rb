@@ -53,6 +53,10 @@ print("digikam: ")
 
 l3makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
 
+# Get list of docbook files from documentation repository
+docbookfiles = `git archive --remote=git://anongit.kde.org/digikam-doc.git HEAD digikam | tar -t | grep docbook | cut -d / -f2 | cut -d . -f1`
+list = docbookfiles.split(/\r?\n/)
+
 i18nlangs.each_line do |lang|
     lang.chomp!()
 
@@ -70,165 +74,7 @@ i18nlangs.each_line do |lang|
         # This boolean variable is true if full documentation translation files can be fetch from repository.
         complete = true
 
-        for part in
-            [
-            'annexes-credits',
-            'editor-color',
-            'editor-color-auto',
-            'editor-color-bw',
-            'editor-color-correction',
-            'editor-color-curves',
-            'editor-color-exposure',
-            'editor-color-levels',
-            'editor-color-mixer',
-            'editor-color-neg',
-            'editor-color-wb',
-            'editor-cm',
-            'editor-cm-connection',
-            'editor-cm-intro',
-            'editor-cm-pcs',
-            'editor-cm-rendering',
-            'editor-cm-wkspace',
-            'editor-cm-definitions',
-            'editor-cm-monitor',
-            'editor-cm-rawfile',
-            'editor-cm-srgb',
-            'editor-decorate',
-            'editor-decorate-border',
-            'editor-decorate-inserttext',
-            'editor-decorate-texture',
-            'editor-enhance',
-            'editor-enhance-distortion',
-            'editor-enhance-hotpixels',
-            'editor-enhance-blur',
-            'editor-enhance-nr',
-            'editor-enhance-lenscorrection',
-            'editor-enhance-localcontrast',
-            'editor-enhance-restoration',
-            'editor-enhance-vignetting',
-            'editor-enhance-inpaint',
-            'editor-enhance-redeyes',
-            'editor-enhance-sharpen',
-            'editor-filters',
-            'editor-filters-blurfx',
-            'editor-filters-colorsfx',
-            'editor-filters-emboss',
-            'editor-filters-oilpaint',
-            'editor-filters-charcoal',
-            'editor-filters-distortionfx',
-            'editor-filters-filmgrain',
-            'editor-filters-raindrops',
-            'editor-photoediting',
-            'editor-transform',
-            'editor-transform-crop',
-            'editor-transform-freerotation',
-            'editor-transform-resize',
-            'editor-transform-liquid',
-            'editor-transform-shear',
-            'editor-transform-perspective',
-            'editor-transform-rotateflip',
-            'editor-using',
-            'index',
-            'intro-info',
-            'intro-background',
-            'intro-camerasupport',
-            'intro-contrib',
-            'intro-database',
-            'intro-imageformats',
-            'intro-movieformats',
-            'intro-firstrun',
-            'intro-pluginsupport',
-            'menu-bqm',
-            'menu-camera',
-            'menu-editor',
-            'menu-lighttable',
-            'menu-mainwindow',
-            'tool-acquireimages',
-            'tool-advrename',
-            'tool-calendar',
-            'tool-dropbox',
-            'tool-expoblending',
-            'tool-facebook',
-            'tool-findduplicates',
-            'tool-flashexport',
-            'tool-flickrexport',
-            'tool-geolocationeditor',
-            'tool-googleexport',
-            'tool-imageshack',
-            'tool-imgur',
-            'tool-kmlexport',
-            'tool-maintenance',
-            'tool-mediawiki',
-            'tool-metadataeditor',
-            'tool-panorama',
-            'tool-piwigoexport',
-            'tool-presentation',
-            'tool-printwizard',
-            'tool-rajce',
-            'tool-remotestorage',
-            'tool-sendimages',
-            'tool-smug',
-            'tool-vkontakte',
-            'tool-yandexfotki',
-            'using-bqm',
-            'using-camera',
-            'using-camera-basis',
-            'using-camera-gps',
-            'using-camera-intro',
-            'using-camera-processing',
-            'using-dam',
-            'using-dam-build',
-            'using-dam-copyright',
-            'using-dam-corruption',
-            'using-dam-intro',
-            'using-dam-workflow',
-            'using-lighttable',
-            'using-mainwindow',
-            'using-mainwindow-albumsview',
-            'using-mainwindow-datesview',
-            'using-mainwindow-fuzzysearches',
-            'using-mainwindow-imageview',
-            'using-mainwindow-intro',
-            'using-mainwindow-labelsview',
-            'using-mainwindow-peopleview',
-            'using-mainwindow-searchesview',
-            'using-mainwindow-tagsview',
-            'using-mainwindow-timelineview',
-            'using-setup',
-            'using-setup-album',
-            'using-setup-database',
-            'using-setup-metadata',
-            'using-setup-metadata-intro',
-            'using-setup-metadata-rotation-ac',
-            'using-setup-metadata-views',
-            'using-setup-quality',
-            'using-setup-templates',
-            'using-setup-camera',
-            'using-setup-editor-iface',
-            'using-setup-editor-save',
-            'using-setup-editor-version',
-            'using-setup-editor-raw',
-            'using-setup-theme',
-            'using-setup-cm',
-            'using-setup-intro',
-            'using-setup-misc',
-            'using-setup-misc-behavior',
-            'using-setup-tooltip',
-            'using-setup-collections',
-            'using-setup-lighttable',
-            'using-setup-plugins',
-            'using-setup-slideshow',
-            'using-sidebar',
-            'using-sidebar-intro',
-            'using-sidebar-properties',
-            'using-sidebar-metadata',
-            'using-sidebar-colors',
-            'using-sidebar-captions',
-            'using-sidebar-maps',
-            'using-sidebar-filters',
-            'using-sidebar-tools',
-            'using-tagsmngr'
-            ]
+        list.each do |part|
 
             if isWindows
                 `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/digikam/#{part}.docbook > digikam/#{part}.docbook`
@@ -271,6 +117,10 @@ puts ("\n")
 
 print("showfoto: ")
 
+# Get list of docbook files from documentation repository
+docbookfiles = `git archive --remote=git://anongit.kde.org/digikam-doc.git HEAD showfoto | tar -t | grep docbook | cut -d / -f2 | cut -d . -f1`
+list = docbookfiles.split(/\r?\n/)
+
 i18nlangs.each_line do |lang|
     lang.chomp!()
 
@@ -286,7 +136,7 @@ i18nlangs.each_line do |lang|
             # This boolean variable is true if full documentation translation files can be fetch from repository.
             complete = true
 
-            for part in ['index']
+            list.each do |part|
 
                 if isWindows
                     `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/docs/extragear-graphics/showfoto/#{part}.docbook > showfoto/#{part}.docbook`
