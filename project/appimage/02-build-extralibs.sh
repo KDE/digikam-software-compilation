@@ -54,13 +54,13 @@ cmake3 $ORIG_WD/3rdparty \
 #cmake3 --build . --config RelWithDebInfo --target ext_exiv2
 #cmake3 --build . --config RelWithDebInfo --target ext_lcms2
 #cmake3 --build . --config RelWithDebInfo --target ext_libraw
-cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
 
-cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules
-cmake3 --build . --config RelWithDebInfo --target ext_kconfig
-cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons
-cmake3 --build . --config RelWithDebInfo --target ext_solid
-cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons
+#cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules
+#cmake3 --build . --config RelWithDebInfo --target ext_kconfig
+#cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons
+#cmake3 --build . --config RelWithDebInfo --target ext_solid
+#cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons
 cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_solid
 cmake3 --build . --config RelWithDebInfo --target ext_threadweaver

@@ -44,6 +44,9 @@ yum -y install centos-release-scl-rh
 yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
 . /opt/rh/devtoolset-3/enable
 
+#remove system based qt devel package to prevent conflict with new one.
+yum -y erase qt-devel
+
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd  /
 
