@@ -56,6 +56,8 @@ add_subdirectory( ext_eigen3 )
 add_subdirectory( ext_expat ) # for exiv2
 add_subdirectory( ext_exiv2 )
 add_subdirectory( ext_lcms2 )
+add_subdirectory( ext_opencv )
+add_subdirectory( ext_lensfun )
 add_subdirectory( ext_qt )
 add_subdirectory( ext_libraw )
 add_subdirectory( ext_frameworks )
