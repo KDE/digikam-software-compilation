@@ -168,9 +168,9 @@ ExternalProject_Add(
 )
 
 ExternalProject_Add(
-    ext_kcodec
+    ext_kcodecs
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kcodec-${KD_VERSION}.0.zip
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kcodecs-${KD_VERSION}.0.zip
     INSTALL_DIR ${EXTPREFIX_frameworks}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}

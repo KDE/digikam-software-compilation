@@ -43,44 +43,44 @@ cmake3 $ORIG_WD/3rdparty \
     -DEXTERNALS_DOWNLOAD_DIR=/d
 
 
-#cmake3 --build . --config RelWithDebInfo --target ext_expat
-#cmake3 --build . --config RelWithDebInfo --target ext_gettext
-#cmake3 --build . --config RelWithDebInfo --target ext_iconv
-#cmake3 --build . --config RelWithDebInfo --target ext_zlib
-#cmake3 --build . --config RelWithDebInfo --target ext_tiff
-#cmake3 --build . --config RelWithDebInfo --target ext_jpeg
-#cmake3 --build . --config RelWithDebInfo --target ext_boost
-#cmake3 --build . --config RelWithDebInfo --target ext_eigen3
-#cmake3 --build . --config RelWithDebInfo --target ext_exiv2
-#cmake3 --build . --config RelWithDebInfo --target ext_lcms2
-#cmake3 --build . --config RelWithDebInfo --target ext_libraw
-#cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_expat -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_gettext -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_iconv -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_zlib -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_jpeg -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_libraw -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
 
-#cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules
-#cmake3 --build . --config RelWithDebInfo --target ext_kconfig
-#cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons
-#cmake3 --build . --config RelWithDebInfo --target ext_solid
-#cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons
-cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_solid
-cmake3 --build . --config RelWithDebInfo --target ext_threadweaver
-cmake3 --build . --config RelWithDebInfo --target ext_karchive
-cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons
-cmake3 --build . --config RelWithDebInfo --target ext_ki18n
-cmake3 --build . --config RelWithDebInfo --target ext_kcrash
-cmake3 --build . --config RelWithDebInfo --target ext_kcodecs
-cmake3 --build . --config RelWithDebInfo --target ext_kauth
-cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons
-cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons
-cmake3 --build . --config RelWithDebInfo --target ext_kitemviews
-cmake3 --build . --config RelWithDebInfo --target ext_kcompletion
-cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets
-cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes
-cmake3 --build . --config RelWithDebInfo --target ext_kservice
-cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel
-cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui
-cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks
-cmake3 --build . --config RelWithDebInfo --target ext_kimageformats
+#cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kconfig -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_threadweaver -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_karchive -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_ki18n -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kcrash -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kcodecs -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kauth -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kitemviews -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kcompletion -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kservice -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j4
 
 
 
