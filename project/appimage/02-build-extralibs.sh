@@ -25,6 +25,8 @@ fi
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/krita.appdir/usr/lib
 
+. /opt/rh/devtoolset-3/enable
+
 ORIG_WD="`pwd`"
 
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
@@ -34,8 +36,6 @@ cd  /
 cd /b
 
 rm -rf /b/* || true
-
-. /opt/rh/devtoolset-3/enable
 
 cmake3 $ORIG_WD/3rdparty \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \

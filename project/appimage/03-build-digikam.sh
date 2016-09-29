@@ -32,6 +32,27 @@ exec > >(tee ./logs/build-digikam.full.log) 2>&1
 echo "03-build-digikam.sh : build digiKam for Linux."
 echo "---------------------------------------------------"
 
+# Now we are inside CentOS 6
+grep -r "CentOS release 6" /etc/redhat-release || exit 1
+
+# qjsonparser, used to add metadata to the plugins needs to work in a en_US.UTF-8 environment. That's
+# not always set correctly in CentOS 6.7
+export LC_ALL=en_US.UTF-8
+export LANG=en_us.UTF-8
+
+# Determine which architecture should be built
+if [[ "$(arch)" = "i686" || "$(arch)" = "x86_64" ]] ; then
+  ARCH=$(arch)
+else
+  echo "Architecture could not be determined"
+  exit 1
+fi
+
+# if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
+export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/krita.appdir/usr/lib
+
+. /opt/rh/devtoolset-3/enable
+
 #################################################################################################
 
 # Pathes rules
