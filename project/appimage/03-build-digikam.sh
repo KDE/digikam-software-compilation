@@ -82,10 +82,9 @@ echo "---------- Configure digiKam $DK_VERSION"
 rm -rf build
 mkdir build
 
-sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g"                       ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"                         ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
+#sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g"                       ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
+#sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"                         ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"                                     ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_DBUS=ON/DENABLE_DBUS=OFF/g"                                         ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 sed -e "s/DDIGIKAMSC_COMPILE_LIBKSANE=ON/DDIGIKAMSC_COMPILE_LIBKSANE=OFF/g"           ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 sed -e "s/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF/g" ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 
