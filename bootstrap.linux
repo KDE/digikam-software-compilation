@@ -8,7 +8,6 @@
 
 SOURCEDIR=$PWD
 
-command -v kf5-config >/dev/null 2>&1 || { echo >&2 "This script require kf5-config CLI tool from KDE project but it's not installed. Aborting."; exit 1; }
 command -v qtpaths >/dev/null 2>&1 || { echo >&2 "This script require qtpaths CLI tool from Qt5 project but it's not installed. Aborting."; exit 1; }
 
 if [ "$1" == "" ]; then
@@ -36,7 +35,7 @@ QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
 export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
-    DIGIKAM_INSTALL_PREFIX=`kf5-config --prefix 2>/dev/null`
+    DIGIKAM_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null`
 else
     # bootstrap.local may have preset DIGIKAM_INSTALL_PREFIX.
     QT_PLUGIN_INSTALL_DIR=$DIGIKAM_INSTALL_PREFIX/lib/plugins
@@ -45,11 +44,11 @@ else
     export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
 fi
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`kf5-config --path lib 2>/dev/null`
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`kf5-config --path lib 2>/dev/null`/pkgconfig
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`qtpaths --path lib 2>/dev/null`
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`qtpaths --path lib 2>/dev/null`/pkgconfig
 
 echo "Qt5     Install Path : $QT_INSTALL_PREFIX"
-echo "KF5     Install Path : "`kf5-config --prefix 2>/dev/null`
+echo "KF5     Install Path : "`qtpaths --install-prefix 2>/dev/null`
 echo "digiKam Install Path : $DIGIKAM_INSTALL_PREFIX"
 
 mkdir -p $DIGIKAM_INSTALL_PREFIX
