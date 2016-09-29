@@ -105,13 +105,37 @@ mkdir build
 
 #sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g"                       ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 #sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"                         ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"                                     ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DDIGIKAMSC_COMPILE_LIBKSANE=ON/DDIGIKAMSC_COMPILE_LIBKSANE=OFF/g"           ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF/g" ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
+#sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"                                     ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
+#sed -e "s/DDIGIKAMSC_COMPILE_LIBKSANE=ON/DDIGIKAMSC_COMPILE_LIBKSANE=OFF/g"           ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
+#sed -e "s/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON/DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF/g" ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
 
-chmod +x ./bootstrap.linux
+#chmod +x ./bootstrap.linux
 
-./bootstrap.linux 
+#./bootstrap.linux 
+
+cmake -G "$MAKEFILES_TYPE" . \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null` \
+      -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \
+      -DBUILD_TESTING=OFF \
+      -DDIGIKAMSC_CHECKOUT_PO=OFF \
+      -DDIGIKAMSC_CHECKOUT_DOC=OFF \
+      -DDIGIKAMSC_COMPILE_PO=OFF \
+      -DDIGIKAMSC_COMPILE_DOC=OFF \
+      -DDIGIKAMSC_COMPILE_DIGIKAM=ON \
+      -DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON \
+      -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
+      -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
+      -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
+      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
+      -DENABLE_OPENCV3=ON \
+      -DENABLE_KFILEMETADATASUPPORT=OFF \
+      -DENABLE_AKONADICONTACTSUPPORT=OFF \
+      -DENABLE_MYSQLSUPPORT=ON \
+      -DENABLE_INTERNALMYSQL=ON \
+      -DENABLE_MEDIAPLAYER=OFF \
+      -DENABLE_DBUS=ON \
+      -DENABLE_APPSTYLES=ON
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
