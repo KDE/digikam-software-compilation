@@ -1,0 +1,11 @@
+SET(EXTPREFIX_cmake "${EXTPREFIX}" )
+ExternalProject_Add( ext_cmake
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+
+    INSTALL_DIR ${EXTPREFIX_cmake}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_cmake} -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} ${GLOBAL_PROFILE}
+
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)

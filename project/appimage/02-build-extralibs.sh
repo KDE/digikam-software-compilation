@@ -43,6 +43,8 @@ cmake3 $ORIG_WD/3rdparty \
     -DEXTERNALS_DOWNLOAD_DIR=/d
 
 
+cmake3 --build . --config RelWithDebInfo --target ext_cmake -- -j4
+
 #cmake3 --build . --config RelWithDebInfo --target ext_expat -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_gettext -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_iconv -- -j4
@@ -56,7 +58,7 @@ cmake3 $ORIG_WD/3rdparty \
 #cmake3 --build . --config RelWithDebInfo --target ext_libraw -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
 
 #cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_kconfig -- -j4
@@ -80,9 +82,9 @@ cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_kservice -- -j4
 #cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j4
 
 
 #cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j4
