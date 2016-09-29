@@ -45,10 +45,7 @@ yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
 . /opt/rh/devtoolset-3/enable
 
 # remove system based qt devel package to prevent conflict with new one.
-yum -y erase qt-devel cmake
-
-# cmake 3 come with cmake3 binray. make a link to usual name.
-ln -s /usr/bin/cmake3 /usr/bin/cmake
+yum -y erase qt-devel
 
 # Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
 # However, this is where .pc files get installed when bulding libraries... (FIXME)
