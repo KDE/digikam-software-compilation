@@ -43,7 +43,6 @@ if (UNIX AND NOT APPLE)
 endif ()
 
 # this list must be dependency-ordered
-add_subdirectory( ext_cmake )
 add_subdirectory( ext_iconv )
 add_subdirectory( ext_gettext )
 add_subdirectory( ext_zlib )

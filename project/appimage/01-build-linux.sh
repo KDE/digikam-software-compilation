@@ -37,15 +37,18 @@ yum -y install epel-release
 yum -y update
 
 # base dependencies and Qt5.
-yum -y install wget tar bzip2 git libtool which fuse fuse-devel libpng-devel automake libtool-ltdl-devel mesa-libEGL cppunit-devel cmake3 glibc-headers libstdc++-devel gcc-c++ freetype-devel fontconfig-devel libxml2-devel libstdc++-devel libXrender-devel patch xcb-util-keysyms-devel libXi-devel mesa-libGL-devel mesa-libGLU-devel libxcb libxcb-devel xcb-util xcb-util-devel glibc-devel xkeyboard-config libudev-devel
+yum -y install wget tar bzip2 git libtool which fuse fuse-devel libpng-devel automake libtool-ltdl-devel mesa-libEGL cppunit-devel cmake3 glibc-headers libstdc++-devel gcc-c++ freetype-devel fontconfig-devel libxml2-devel libstdc++-devel libXrender-devel patch xcb-util-keysyms-devel libXi-devel mesa-libGL-devel mesa-libGLU-devel libxcb libxcb-devel xcb-util xcb-util-devel glibc-devel xkeyboard-config libudev-devel libicu-devel gperf ruby
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
 yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
 . /opt/rh/devtoolset-3/enable
 
-#remove system based qt devel package to prevent conflict with new one.
-yum -y erase qt-devel
+# remove system based qt devel package to prevent conflict with new one.
+yum -y erase qt-devel cmake
+
+# cmake 3 come with cmake3 binray. make a link to usual name.
+ln -s /usr/bin/cmake3 /usr/bin/cmake
 
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd  /

@@ -47,7 +47,21 @@ else()
             DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
             URL https://download.qt.io/official_releases/qt/5.7/5.7.0/single/qt-everywhere-opensource-src-5.7.0.tar.gz
             INSTALL_DIR ${EXTPREFIX_qt}
-            CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_qt} -opensource -confirm-license -nomake examples -sql-sqlite -openssl -no-qml-debug -no-mtdev -no-journald -no-syslog -no-nis -no-cups -no-tslib -no-directfb -no-linuxfb -no-libproxy -no-pch -qt-zlib -qt-pcre -qt-libpng -qt-libjpeg -qt-harfbuzz -qt-freetype -qt-xcb -qt-xkbcommon-x11 -optimized-qmake -skip qt3d -skip qtactiveqt -skip qtcanvas3d -skip qtconnectivity -skip qtgraphicaleffects -skip qtwayland -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtandroidextras -skip qtserialport -skip qtgamepad
+            CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_qt} -opensource -confirm-license -nomake examples -sql-sqlite -openssl -no-qml-debug -no-mtdev -no-journald -no-syslog -no-nis -no-cups -no-tslib -no-directfb -no-linuxfb -no-libproxy -no-pch -qt-zlib -qt-pcre -qt-libpng -qt-libjpeg -qt-harfbuzz -qt-freetype -qt-xcb -qt-xkbcommon-x11 -optimized-qmake -qtwebview -skip qt3d -skip qtactiveqt -skip qtcanvas3d -skip qtconnectivity -skip qtgraphicaleffects -skip qtwayland -skip qtwebchannel -skip qtwebengine -skip qtwebsockets -skip qtandroidextras -skip qtserialport -skip qtgamepad
+
+            BUILD_COMMAND make
+            INSTALL_COMMAND make install
+            UPDATE_COMMAND ""
+            BUILD_IN_SOURCE 1
+            ALWAYS 0
+        )
+
+        ExternalProject_Add(
+            ext_qtwebkit
+            DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+            URL https://download.qt.io/community_releases/5.7/5.7.0/qtwebkit-opensource-src-5.7.0.tar.gz
+            INSTALL_DIR ${EXTPREFIX_qtwebkit}
+            CONFIGURE_COMMAND qmake PREFIX=${EXTPREFIX_qtwebkit}
 
             BUILD_COMMAND make
             INSTALL_COMMAND make install
