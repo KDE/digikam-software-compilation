@@ -113,7 +113,7 @@ mkdir build
 
 #./bootstrap.linux 
 
-cmake -G "$MAKEFILES_TYPE" . \
+cmake -G "Unix Makefiles" . \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null` \
       -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \

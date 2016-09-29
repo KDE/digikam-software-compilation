@@ -50,6 +50,12 @@ yum -y erase qt-devel cmake
 # cmake 3 come with cmake3 binray. make a link to usual name.
 ln -s /usr/bin/cmake3 /usr/bin/cmake
 
+# Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
+# However, this is where .pc files get installed when bulding libraries... (FIXME)
+# I found this by comparing the output of librevenge's "make install" command
+# between Ubuntu and CentOS 6
+ln -sf /usr/share/pkgconfig /usr/lib/pkgconfig
+
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd  /
 
@@ -62,12 +68,6 @@ cd /AppImageKit/
 git_pull_rebase_helper
 ./build.sh
 cd /
-
-# Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
-# However, this is where .pc files get installed when bulding libraries... (FIXME)
-# I found this by comparing the output of librevenge's "make install" command
-# between Ubuntu and CentOS 6
-ln -sf /usr/share/pkgconfig /usr/lib/pkgconfig
 
 # A krita build layout looks like this:
 # krita/ -- the source directory
