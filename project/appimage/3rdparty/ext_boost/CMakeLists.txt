@@ -71,18 +71,17 @@ elseif(MINGW)
        DEPENDEES install
    )
 else()
-	ExternalProject_Add( ext_boost
-        	DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-	        URL http://files.kde.org/krita/build/dependencies/boost_1_61_0.tar.bz2
-        	URL_MD5 6095876341956f65f9d35939ccea1a9f
+   ExternalProject_Add( ext_boost
+            DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+            URL http://downloads.sourceforge.net/project/boost/boost/1.62.0/boost_1_62_0.tar.bz2
 
-        	CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.sh --prefix=${PREFIX_ext_boost} --with-libraries=system
-	        BUILD_COMMAND <SOURCE_DIR>/b2 install
-	        INSTALL_COMMAND ""
-        	INSTALL_DIR ${PREFIX_ext_boost}
+            CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.sh --prefix=${PREFIX_ext_boost} --with-libraries=system
+            BUILD_COMMAND <SOURCE_DIR>/b2 install
+            INSTALL_COMMAND ""
+            INSTALL_DIR ${PREFIX_ext_boost}
 
-	        UPDATE_COMMAND ""
-        	ALWAYS 0
-	        BUILD_IN_SOURCE 1
+            UPDATE_COMMAND ""
+            ALWAYS 0
+            BUILD_IN_SOURCE 1
 )
 endif()

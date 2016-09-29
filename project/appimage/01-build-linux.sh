@@ -44,8 +44,8 @@ yum -y install centos-release-scl-rh
 yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
 . /opt/rh/devtoolset-3/enable
 
-# remove system based qt devel package to prevent conflict with new one.
-yum -y erase qt-devel
+# remove system based devel package to prevent conflict with new one.
+yum -y erase qt-devel boost-devel
 
 # Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
 # However, this is where .pc files get installed when bulding libraries... (FIXME)
@@ -65,14 +65,6 @@ cd /AppImageKit/
 git_pull_rebase_helper
 ./build.sh
 cd /
-
-# A krita build layout looks like this:
-# krita/ -- the source directory
-# krita/3rdparty -- the cmake3 definitions for the dependencies
-# d -- downloads of the dependencies from files.kde.org
-# b -- build directory for the dependencies
-# krita_build -- build directory for krita itself
-# krita.appdir -- install directory for krita and the dependencies
 
 # Create the build dir for the 3rdparty deps
 if [ ! -d /b ] ; then
