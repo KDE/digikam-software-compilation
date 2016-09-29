@@ -113,7 +113,9 @@ mkdir build
 
 #./bootstrap.linux 
 
-cmake3 -G "Unix Makefiles" . \
+cd build
+
+cmake3 -G "Unix Makefiles" .. \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null` \
       -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \
@@ -146,7 +148,6 @@ fi
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 
-cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
