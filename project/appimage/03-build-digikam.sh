@@ -98,8 +98,6 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
-cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
-
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 
