@@ -1,16 +1,14 @@
 #!/usr/bin/env ruby
 #
-# Ruby script for pulling l10n translations for digikam and kipi-plugins
+# Ruby script for pulling l10n application translations for digikam
 # Requires ruby version >= 1.9
-# 
-# originally a Ruby script for generating Amarok tarball releases from KDE SVN
 #
 # Copyright (c)      2005, Mark Kretschmann, <kretschmann at kde dot org>
 # Copyright (c)      2014, Nicolas Lécureuil, <kde at nicolaslecureuil dot fr>
 # Copyright (c) 2010-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
-# Some parts of this code taken from cvs2dist
-# License: GNU General Public License V2
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 
 require 'rbconfig'
 isWindows = RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/i
@@ -18,21 +16,32 @@ isWindows = RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/i
 branch = "trunk"
 tag = ""
 
-unless $*.empty?()
-    case $*[0]
-        when "--branch"
-            branch = `kdialog --inputbox "Enter branch name: " "branches/stable"`.chomp()
-        when "--tag"
-            tag = `kdialog --inputbox "Enter tag name: "`.chomp()
+enable_digikam = false
+enable_kipiplugins = false
+enable_libkvkontakte = false
+
+for opt in $*
+
+    case opt
+        when "--enable-digikam"
+            enable_digikam = true
+        when "--enable-kipiplugins"
+            enable_kipiplugins = true
+        when "--enable-libkvkontakte"
+            enable_libkvkontakte = true
         else
-            puts("Unknown option #{$1}. Use --branch or --tag.\n")
+            puts("Unknown option '#{opt}'.\n")
+            puts("Possible arguments to customize i18n extraction:\n")
+            puts("--enable-digikam\n")
+            puts("--enable-kipiplugins\n")
+            puts("--enable-libkvkontakte\n")
+            exit
     end
 end
 
-# Using anonsvn so not necessary anymore
-# Ask user for targeted application version
-#user = `kdialog --inputbox "Your SVN user:"`.chomp()
-#protocol = `kdialog --radiolist "Do you use https or svn+ssh?" https https 0 "svn+ssh" "svn+ssh" 1`.chomp()
+print ("extract digiKam i18n      : #{enable_digikam}\n")
+print ("extract kipiplugins i18n  : #{enable_kipiplugins}\n")
+print ("extract libkvkontakte i18n: #{enable_libkvkontakte}\n")
 
 i18nlangs = []
 
@@ -66,44 +75,88 @@ i18nlangs.each_line do |lang|
 
         Dir.chdir(lang)
 
-        # digiKam core and kipiplugins from extragear-graphics
+        makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
+        makefile << "file(GLOB _po_files *.po)\n"
+        makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES ${_po_files} )\n"
+        makefile.close()
 
-        for part in ['digikam','kipiplugin_facebook','kipiplugin_flashexport','kipiplugin_flickr','kipiplugin_remotestorage','kipiplugin_googleservices','kipiplugin_piwigo','kipiplugin_printimages','kipiplugin_sendimages','kipiplugin_smug','kipiplugins','kipiplugin_dropbox','kipiplugin_imageshack','kipiplugin_imgur','kipiplugin_kmlexport', 'kipiplugin_rajce','kipiplugin_vkontakte','kipiplugin_wikimedia','kipiplugin_yandexfotki']
+        if (enable_digikam == true)
 
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
-            else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+            # digiKam core extragear-graphics
+
+            for part in ['digikam']
+
+                if isWindows
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
+                else
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+                end
+
+                if FileTest.size( "#{part}.po" ) == 0
+                    File.delete( "#{part}.po" )
+                end
             end
-
-            if FileTest.size( "#{part}.po" ) == 0
-                File.delete( "#{part}.po" )
-            end
-
-            makefile = File.new( "CMakeLists.txt", File::CREAT | File::RDWR | File::TRUNC )
-            makefile << "file(GLOB _po_files *.po)\n"
-            makefile << "GETTEXT_PROCESS_PO_FILES( #{lang} ALL INSTALL_DESTINATION ${LOCALE_INSTALL_DIR} PO_FILES ${_po_files} )\n"
-            makefile.close()
         end
 
-        # libkvkontakte from extragear-libs.
+        if (enable_kipiplugins == true)
 
-        for part in ['libkvkontakte']
+            # kipiplugins from extragear-graphics
 
-            if isWindows
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
-            else
-                `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+            for part in ['kipiplugins',
+                         'kipiplugin_facebook',
+                         'kipiplugin_flashexport',
+                         'kipiplugin_flickr',
+                         'kipiplugin_remotestorage',
+                         'kipiplugin_googleservices',
+                         'kipiplugin_piwigo',
+                         'kipiplugin_printimages',
+                         'kipiplugin_sendimages',
+                         'kipiplugin_smug',
+                         'kipiplugin_dropbox',
+                         'kipiplugin_imageshack',
+                         'kipiplugin_imgur',
+                         'kipiplugin_kmlexport',
+                         'kipiplugin_rajce',
+                         'kipiplugin_vkontakte',
+                         'kipiplugin_wikimedia',
+                         'kipiplugin_yandexfotki'
+                        ]
+
+                if isWindows
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
+                else
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
+                end
+
+                if FileTest.size( "#{part}.po" ) == 0
+                    File.delete( "#{part}.po" )
+                end
             end
+        end
 
-            if FileTest.size( "#{part}.po" ) == 0
-                File.delete( "#{part}.po" )
+        if (enable_libkvkontakte == true)
+
+            # libkvkontakte from extragear-libs.
+
+            for part in ['libkvkontakte']
+
+                if isWindows
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po > #{part}.po `
+                else
+                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-libs/#{part}.po 2> /dev/null | tee #{part}.po `
+                end
+
+                if FileTest.size( "#{part}.po" ) == 0
+                    File.delete( "#{part}.po" )
+                end
             end
         end
 
         Dir.chdir("..")
         topmakefile << "add_subdirectory( #{lang} )\n"
+
     end
 end
 
+topmakefile.close()
 puts ("\n")

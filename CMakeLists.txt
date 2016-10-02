@@ -62,7 +62,19 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
             message(STATUS "Extract application translation files from git repositories. Please wait, it can take a while...")
 
-            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb"
+            if(DIGIKAMSC_COMPILE_DIGIKAM)
+                set(CHECKOUT_PO_DIGIKAM "--enable-digikam")
+            endif()
+
+            if(DIGIKAMSC_COMPILE_KIPIPLUGINS)
+                set(CHECKOUT_PO_KIPIPLUGINS "--enable-kipiplugins")
+            endif()
+
+            if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
+                set(CHECKOUT_PO_LIBKVKONTAKTE "--enable-libkvkontakte")
+            endif()
+
+            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb" ${CHECKOUT_PO_DIGIKAM} ${CHECKOUT_PO_KIPIPLUGINS} ${CHECKOUT_PO_LIBKVKONTAKTE}
                             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
             message(STATUS "Application translation files extraction done.")
