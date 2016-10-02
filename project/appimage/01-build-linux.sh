@@ -25,12 +25,6 @@ fi
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/krita.appdir/usr/lib
 
-git_pull_rebase_helper()
-{
-    git reset --hard HEAD
-    git pull
-}
-
 yum -y install epel-release
 
 # we need to be up to date in order to install the xcb-keysyms dependency
@@ -41,8 +35,8 @@ yum -y install wget tar bzip2 git libtool which fuse fuse-devel libpng-devel aut
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
-yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
-. /opt/rh/devtoolset-3/enable
+yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
+. /opt/rh/devtoolset-4/enable
 
 # remove system based devel package to prevent conflict with new one.
 yum -y erase qt-devel boost-devel
@@ -55,16 +49,6 @@ ln -sf /usr/share/pkgconfig /usr/lib/pkgconfig
 
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd  /
-
-# Build AppImageKit
-if [ ! -d AppImageKit ] ; then
-  git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
-fi
-
-cd /AppImageKit/
-git_pull_rebase_helper
-./build.sh
-cd /
 
 # Create the build dir for the 3rdparty deps
 if [ ! -d /b ] ; then
