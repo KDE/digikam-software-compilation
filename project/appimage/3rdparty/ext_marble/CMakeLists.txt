@@ -5,7 +5,7 @@ set(KA_VERSION 16.04.3)
 ExternalProject_Add(
     ext_marble
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.xz
+    URL http://download.kde.org/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
     INSTALL_DIR ${EXTPREFIX_marble}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_marble}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
