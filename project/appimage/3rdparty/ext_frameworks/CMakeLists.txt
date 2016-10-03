@@ -328,7 +328,7 @@ ExternalProject_Add(
                ${GLOBAL_PROFILE}
                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
                -DBUILD_TESTING=OFF
-                -Wno-dev
+               -Wno-dev
     UPDATE_COMMAND ""
     ALWAYS 0
 )
@@ -343,7 +343,7 @@ ExternalProject_Add(
                ${GLOBAL_PROFILE}
                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
                -DBUILD_TESTING=OFF
-                -Wno-dev
+               -Wno-dev
     UPDATE_COMMAND ""
     ALWAYS 0
 )
@@ -358,7 +358,7 @@ ExternalProject_Add(
                ${GLOBAL_PROFILE}
                -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
                -DBUILD_TESTING=OFF
-                -Wno-dev
+               -Wno-dev
     UPDATE_COMMAND ""
     ALWAYS 0
 )
