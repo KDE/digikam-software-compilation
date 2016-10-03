@@ -145,6 +145,14 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
+if [ -d ./extra/libkvkontakte/src ]; then
+    ln -sf src ./extra/libkvkontakte/Vkontakte
+fi
+
+if [ -d ./extra/libmediawiki/src ]; then
+    ln -sf src ./extra/libmediawiki/MediaWiki
+fi
+
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 
