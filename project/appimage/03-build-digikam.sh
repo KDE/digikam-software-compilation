@@ -51,7 +51,7 @@ fi
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/krita.appdir/usr/lib
 
-. /opt/rh/devtoolset-3/enable
+. /opt/rh/devtoolset-4/enable
 
 #################################################################################################
 
