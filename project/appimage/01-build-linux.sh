@@ -31,7 +31,45 @@ yum -y install epel-release
 yum -y update
 
 # base dependencies and Qt5.
-yum -y install wget tar bzip2 git libtool which fuse fuse-devel libjpeg-devel libpng-devel automake libtool-ltdl-devel mesa-libEGL cppunit-devel cmake3 glibc-headers libstdc++-devel gcc-c++ freetype-devel fontconfig-devel libxml2-devel libstdc++-devel libXrender-devel patch xcb-util-keysyms-devel libXi-devel mesa-libGL-devel mesa-libGLU-devel libxcb libxcb-devel xcb-util xcb-util-devel glibc-devel xkeyboard-config libudev-devel libicu-devel gperf ruby jasper-devel
+yum -y install wget \
+               tar \
+               bzip2 \
+               git \
+               libtool \
+               which \
+               fuse \
+               fuse-devel \
+               libjpeg-devel \
+               libpng-devel \
+               automake \
+               libtool-ltdl-devel \
+               mesa-libEGL \
+               cppunit-devel \
+               cmake3 \
+               glibc-headers \
+               libstdc++-devel \
+               gcc-c++ \
+               freetype-devel \
+               fontconfig-devel \
+               libxml2-devel \
+               libstdc++-devel \
+               libXrender-devel \
+               patch \
+               xcb-util-keysyms-devel \
+               libXi-devel \
+               mesa-libGL-devel \
+               mesa-libGLU-devel \
+               libxcb \
+               libxcb-devel \
+               xcb-util \
+               xcb-util-devel \
+               glibc-devel \
+               xkeyboard-config \
+               libudev-devel \
+               libicu-devel \
+               gperf \
+               ruby \
+               jasper-devel
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
@@ -48,7 +86,7 @@ yum -y erase qt-devel boost-devel
 ln -sf /usr/share/pkgconfig /usr/lib/pkgconfig
 
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
-cd  /
+cd /
 
 # Create the build dir for the 3rdparty deps
 if [ ! -d /b ] ; then
