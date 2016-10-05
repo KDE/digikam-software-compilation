@@ -38,9 +38,9 @@ cd /b
 rm -rf /b/* || true
 
 cmake3 $ORIG_WD/3rdparty \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DINSTALL_ROOT=/usr \
-    -DEXTERNALS_DOWNLOAD_DIR=/d
+       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+       -DINSTALL_ROOT=/usr \
+       -DEXTERNALS_DOWNLOAD_DIR=/d
 
 cmake3 --build . --config RelWithDebInfo --target ext_expat -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_gettext -- -j4
@@ -51,7 +51,6 @@ cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_libraw -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j4
@@ -85,12 +84,3 @@ cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j4
 
 cmake3 --build . --config RelWithDebInfo --target ext_marble -- -j4
-
-
-# To not install (we use system based lib instead):
-#cmake3 --build . --config RelWithDebInfo --target ext_jpeg -- -j4
-#cmake3 --build . --config RelWithDebInfo --target ext_png
-
-# Not sure to need these one:
-#cmake3 --build . --config RelWithDebInfo --target ext_libxml2
-#cmake3 --build . --config RelWithDebInfo --target ext_libxslt

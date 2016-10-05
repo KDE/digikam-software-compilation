@@ -7,12 +7,11 @@ project (digikam-appimage)
 #             MXE_TOOLCHAIN: the toolchain file to cross-compile using MXE
 #
 
-
 cmake_minimum_required(VERSION 2.8.6)
 
-if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "Compiling in the source directory is not supported. Use for example 'mkdir build; cd build; cmake ..'.")
-endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+endif()
 
 # Tools must be obtained to work with:
 include (ExternalProject)
@@ -37,21 +36,17 @@ message( STATUS "CMAKE_CL_64: ${CMAKE_CL_64}")
 set(GLOBAL_BUILD_TYPE RelWithDebInfo)
 set(GLOBAL_PROFILE ${GLOBAL_PROFILE} -DBUILD_TESTING=false)
 
-if (UNIX AND NOT APPLE)
+if(UNIX AND NOT APPLE)
     set(LINUX true)
     set(PATCH_COMMAND patch)
-endif ()
+endif()
 
 # this list must be dependency-ordered
 add_subdirectory( ext_iconv )
 add_subdirectory( ext_gettext )
 add_subdirectory( ext_zlib )
-add_subdirectory( ext_libxml2 )
-add_subdirectory( ext_libxslt )
 add_subdirectory( ext_boost )
-add_subdirectory( ext_jpeg )
 add_subdirectory( ext_tiff )
-add_subdirectory( ext_png )
 add_subdirectory( ext_eigen3 )
 add_subdirectory( ext_expat ) # for exiv2
 add_subdirectory( ext_exiv2 )
@@ -60,6 +55,5 @@ add_subdirectory( ext_opencv )
 add_subdirectory( ext_lensfun )
 add_subdirectory( ext_libgphoto2 )
 add_subdirectory( ext_qt )
-add_subdirectory( ext_libraw )
 add_subdirectory( ext_frameworks )
 add_subdirectory( ext_marble )
