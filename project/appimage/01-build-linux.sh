@@ -48,6 +48,7 @@ yum -y install wget \
                libtool-ltdl-devel \
                glib2-devel \
                glibc-headers \
+               mysql-devel \
                openssl-devel \
                mesa-libEGL \
                cppunit-devel \
