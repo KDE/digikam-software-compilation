@@ -34,6 +34,8 @@ yum -y update
 yum -y install wget \
                tar \
                bzip2 \
+               gettext \
+               zlib-devel \
                git \
                libtool \
                which \
