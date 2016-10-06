@@ -77,6 +77,7 @@ yum -y install wget \
                gperf \
                ruby \
                jasper-devel \
+               sqlite-devel \
                mc \
                dkms
 
