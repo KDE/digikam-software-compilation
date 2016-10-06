@@ -71,7 +71,10 @@ yum -y install wget \
                libicu-devel \
                gperf \
                ruby \
-               jasper-devel
+               jasper-devel \
+               mc \
+               dkms
+
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
