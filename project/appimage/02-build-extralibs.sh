@@ -43,14 +43,14 @@ cmake3 $ORIG_WD/3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
 #cmake3 --build . --config RelWithDebInfo --target ext_expat -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j4
+#cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit -- -j4
 

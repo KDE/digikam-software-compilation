@@ -48,6 +48,7 @@ yum -y install wget \
                libtool-ltdl-devel \
                glib2-devel \
                glibc-headers \
+               openssl-devel \
                mesa-libEGL \
                cppunit-devel \
                cmake3 \
