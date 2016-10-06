@@ -13,7 +13,6 @@ DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
-DK_BUILDTEMP=~/dktemp
 # digiKam tag version from git. Official tarball do not include extra shared libraries.
 # The list of tags can be listed with this url: https://quickgit.kde.org/?p=digikam.git&a=tags
 # If you want to package current implemntation from git, use "master" as tag.
