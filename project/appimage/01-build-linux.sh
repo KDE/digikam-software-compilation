@@ -36,6 +36,7 @@ yum -y install wget \
                bzip2 \
                gettext \
                zlib-devel \
+               expat-devel \
                git \
                libtool \
                which \
@@ -45,6 +46,8 @@ yum -y install wget \
                libpng-devel \
                automake \
                libtool-ltdl-devel \
+               glib2-devel \
+               glibc-headers \
                mesa-libEGL \
                cppunit-devel \
                cmake3 \
