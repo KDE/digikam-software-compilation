@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./config.sh
+
 # Halt on errors
 set -e
 
@@ -62,23 +64,26 @@ cp -r /usr/plugins ./usr/bin/
 # copy the Qt translation
 cp -r /usr/translations ./usr
 
-cp $(ldconfig -p | grep libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
-cp $(ldconfig -p | grep libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
-cp $(ldconfig -p | grep libGLU.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
 # Fedora 23 seemed to be missing SOMETHING from the Centos 6.7. The only message was:
 # This application failed to start because it could not find or load the Qt platform plugin "xcb".
 # Setting export QT_DEBUG_PLUGINS=1 revealed the cause.
 # QLibraryPrivate::loadPlugin failed on "/usr/lib64/qt5/plugins/platforms/libqxcb.so" : 
 # "Cannot load library /usr/lib64/qt5/plugins/platforms/libqxcb.so: (/lib64/libEGL.so.1: undefined symbol: drmGetNodeTypeFromFd)"
 # Which means that we have to copy libEGL.so.1 in too
-cp $(ldconfig -p | grep libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
+cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
 # let's not copy xcb itself, that breaks on dri3 systems https://bugs.kde.org/show_bug.cgi?id=360552
 #cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ 
-cp $(ldconfig -p | grep libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
+cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
+
+cp /usr/bin/digikam ./usr/bin
+cp /usr/bin/showfoto ./usr/bin
 
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/bin/showfoto | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-#ldd usr/lib64/digikam/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
+ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 #ldd usr/lib64/plugins/imageformats/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 
 ldd usr/bin/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I '{}' cp -v '{}' ./usr/lib || true
@@ -87,7 +92,7 @@ ldd usr/bin/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xarg
 FILES=$(find . -type f -executable)
 
 for FILE in $FILES ; do
-        ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib || true
+    ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib || true
 done
 
 #DEPS=""
@@ -166,8 +171,7 @@ rm -rf usr/share/ECM/ || true
 rm -rf usr/share/gettext || true
 rm -rf usr/share/pkgconfig || true
 
-# TODO
-strip usr/lib/digikamplugins/* usr/bin/* usr/lib/* || true
+strip usr/lib/kipiplugins_* usr/bin/* usr/lib/* || true
 
 # Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
@@ -192,10 +196,10 @@ sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/lib/libQt5XcbQpa.so.5
 rm -f ./usr/lib/libdbus-1.so.3 || true
 
 cp ../AppImageKit/AppRun .
-cp ./usr/share/applications/org.kde.digikam.desktop digikam.desktop
-cp /digikam/digikam/pics/app/64-apps-digikam.png digikam.png
-cp ./usr/share/applications/org.kde.showfoto.desktop showfoto
-cp /digikam/digikam/pics/app/64-apps-showfoto.png showfoto.png
+cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
+cp /usr/share/applications/org.kde.showfoto.desktop showfoto.desktop
+cp /usr/share/icons/hicolor/64x64/apps/showfoto.png showfoto.png
 
 # replace digikam with the lib-checking startup script.
 #cd /digikam.appdir/usr/bin
@@ -213,16 +217,11 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 # Install desktopintegration in usr/bin/digikam.wrapper -- feel free to edit it
 cd /digikam.appdir
 get_desktopintegration digikam
+get_desktopintegration showfoto
 
 cd /
 
-# TODO
-VER=$(grep "#define KRITA_VERSION_STRING" digikam_build/libs/version/digikamversion.h | cut -d '"' -f 2)
-cd /digikam
-REVISION=$(git rev-parse --short HEAD)
-cd ..
-VERSION=$VER-$REVISION
-VERSION="$(sed s/\ /-/g <<<$VERSION)"
+VERSION=$DK_VERSION
 echo $VERSION
 
 if [[ "$ARCH" = "x86_64" ]] ; then
