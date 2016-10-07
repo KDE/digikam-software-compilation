@@ -196,18 +196,13 @@ sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/lib/libQt5XcbQpa.so.5
 # or
 rm -f ./usr/lib/libdbus-1.so.3 || true
 
-cp ../AppImageKit/AppRun .
-cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
-cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
-cp /usr/share/applications/org.kde.showfoto.desktop showfoto.desktop
-cp /usr/share/icons/hicolor/64x64/apps/showfoto.png showfoto.png
+cd /
 
 # replace digikam with the lib-checking startup script.
 #cd /digikam.appdir/usr/bin
 #mv digikam digikam.real
 #wget https://raw.githubusercontent.com/boudewijnrempt/AppImages/master/recipes/digikam/digikam
 #chmod a+rx digikam
-cd / 
 
 APP=digikam
 
@@ -217,7 +212,15 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 
 # Install desktopintegration in usr/bin/digikam.wrapper -- feel free to edit it
 cd /digikam.appdir
+
+cp /AppImageKit/AppRun .
+cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
 get_desktopintegration digikam
+
+cp /AppImageKit/AppRun .
+cp /usr/share/applications/org.kde.showfoto.desktop showfoto.desktop
+cp /usr/share/icons/hicolor/64x64/apps/showfoto.png showfoto.png
 get_desktopintegration showfoto
 
 cd /
