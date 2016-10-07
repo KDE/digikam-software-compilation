@@ -78,6 +78,8 @@ yum -y install wget \
                ruby \
                jasper-devel \
                sqlite-devel \
+               libusb-devel \
+               libexif-devel \
                bison \
                flex \
                mc \
