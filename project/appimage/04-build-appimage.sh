@@ -38,19 +38,13 @@ git_pull_rebase_helper()
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd /
 
-# Build AppImageKit
-if [ ! -d AppImageKit ] ; then
-    git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
-fi
-
-cd /AppImageKit/
-git_pull_rebase_helper
-./build.sh
-cd /
-
 # Prepare the install location
+rm -rf /out/ || true
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
+mkdir -p /digikam.appdir/usr/share
+mkdir -p /digikam.appdir/usr/share/icons
+mkdir -p /digikam.appdir/usr/share/marble/data
 
 # make sure lib and lib64 are the same thing
 mkdir -p /digikam.appdir/usr/lib
@@ -63,6 +57,19 @@ cd /digikam.appdir
 cp -r /usr/plugins ./usr/bin/
 # copy the Qt translation
 cp -r /usr/translations ./usr
+# copy runtime data files
+cp -r /usr/share/digikam         ./usr/share
+cp -r /usr/share/icons/breeze    ./usr/share/icons
+cp -r /usr/share/lensfun         ./usr/share
+cp -r /usr/share/kipiplugin*     ./usr/share
+cp -r /usr/share/knotifications5 ./usr/share
+cp -r /usr/share/kservices5      ./usr/share
+cp -r /usr/share/kservicetypes5  ./usr/share
+cp -r /usr/share/kxmlgui5        ./usr/share
+cp -r /usr/share/solid           ./usr/share
+cp -r /usr/share/OpenCV          ./usr/share
+cp -r /usr/share/marble/data     ./usr/share/marble/data
+cp -r /usr/share/showfoto        ./usr/share
 
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
 cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
@@ -84,7 +91,7 @@ cp /usr/bin/showfoto ./usr/bin
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/bin/showfoto | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-ldd usr/plugins/kipiplugin*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
+ldd usr/bin/plugins/kipiplugin*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 #ldd usr/lib64/plugins/imageformats/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 
 ldd usr/bin/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I '{}' cp -v '{}' ./usr/lib || true

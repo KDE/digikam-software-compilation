@@ -110,3 +110,13 @@ fi
 if [ ! -d /d ] ; then
     mkdir /d
 fi
+
+# Build AppImageKit
+if [ ! -d AppImageKit ] ; then
+    git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
+fi
+
+cd /AppImageKit/
+git_pull_rebase_helper
+./build.sh
+cd /
