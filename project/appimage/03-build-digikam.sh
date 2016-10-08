@@ -49,7 +49,7 @@ else
 fi
 
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
-export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/krita.appdir/usr/lib
+export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
 
 . /opt/rh/devtoolset-4/enable
 
@@ -106,8 +106,7 @@ cd build
 
 cmake3 -G "Unix Makefiles" .. \
       -DCMAKE_BUILD_TYPE=debug \
-      -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null` \
-      -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \
+      -DCMAKE_INSTALL_PREFIX=/digikam.appdir/usr \
       -DBUILD_TESTING=OFF \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_CHECKOUT_DOC=OFF \
