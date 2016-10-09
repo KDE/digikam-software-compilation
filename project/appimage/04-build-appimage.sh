@@ -8,6 +8,9 @@ set -e
 # Be verbose
 set -x
 
+# Working directory
+ORIG_WD="`pwd`"
+
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1
 
@@ -54,7 +57,7 @@ ln -s lib lib64
 cd /digikam.appdir
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
-cp -r /usr/plugins ./usr/bin/
+cp -r /usr/plugins ./usr/
 # copy the Qt translation
 cp -r /usr/translations ./usr
 # copy runtime data files
@@ -69,7 +72,6 @@ cp -r /usr/share/kxmlgui5        ./usr/share
 cp -r /usr/share/solid           ./usr/share
 cp -r /usr/share/OpenCV          ./usr/share
 cp -r /usr/share/marble/data     ./usr/share/marble/data
-cp -r /usr/share/showfoto        ./usr/share
 
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
 cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
@@ -86,15 +88,14 @@ cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/
 cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
 
 cp /usr/bin/digikam ./usr/bin
-cp /usr/bin/showfoto ./usr/bin
+cp ${ORIG_WD}/data/qt.conf ./usr/bin
 
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-ldd usr/bin/showfoto | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-ldd usr/bin/plugins/kipiplugin*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
+ldd usr/plugins/kipiplugin*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 #ldd usr/lib64/plugins/imageformats/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 
-ldd usr/bin/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I '{}' cp -v '{}' ./usr/lib || true
+ldd usr/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I '{}' cp -v '{}' ./usr/lib || true
 
 # Copy in the indirect dependencies
 FILES=$(find . -type f -executable)
@@ -179,7 +180,7 @@ rm -rf usr/share/ECM/ || true
 rm -rf usr/share/gettext || true
 rm -rf usr/share/pkgconfig || true
 
-strip usr/lib/kipiplugin_* usr/bin/* usr/lib/* || true
+strip usr/plugins/kipiplugin_* usr/bin/* usr/lib/* || true
 
 # Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
@@ -192,7 +193,7 @@ cd usr/ ; find . -type f -exec sed -i -e 's|/usr|././|g' {} \; ; cd ..
 
 # We do not bundle this, so let's not search that inside the AppImage. 
 # Fixes "Qt: Failed to create XKB context!" and lets us enter text
-sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/bin/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
+sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so
 sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/lib/libQt5XcbQpa.so.5
 
 # Workaround for:
@@ -225,11 +226,6 @@ cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
 cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
 get_desktopintegration digikam
 
-cp /AppImageKit/AppRun .
-cp /usr/share/applications/org.kde.showfoto.desktop showfoto.desktop
-cp /usr/share/icons/hicolor/64x64/apps/showfoto.png showfoto.png
-get_desktopintegration showfoto
-
 cd /
 
 VERSION=$DK_VERSION
@@ -255,3 +251,5 @@ mv AppRun digikam
 cd /
 mv digikam.appdir "$APP"-"$VERSION"-x86_64
 tar -czf "$APP"-"$VERSION"-x86_64.tgz "$APP"-"$VERSION"-x86_64
+
+echo "Done..."
