@@ -38,6 +38,25 @@ git_pull_rebase_helper()
     git pull
 }
 
+#################################################################################################
+# Build icons-set ressource
+
+echo -e "\n---------- Build icons-set ressource\n"
+
+cd $ORIG_WD/icon-rcc
+
+rm -f CMakeCache.txt > /dev/null
+
+cmake3 -DCMAKE_INSTALL_PREFIX="/usr" \
+       -DCMAKE_BUILD_TYPE=debug \
+       -DCMAKE_COLOR_MAKEFILE=ON \
+       -Wno-dev \
+       .
+
+make -j$CPU_CORES
+
+#################################################################################################
+
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd /
 
@@ -46,7 +65,6 @@ rm -rf /out/ || true
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
 mkdir -p /digikam.appdir/usr/share
-mkdir -p /digikam.appdir/usr/share/icons
 mkdir -p /digikam.appdir/usr/share/marble/data
 
 # make sure lib and lib64 are the same thing
@@ -62,7 +80,7 @@ cp -r /usr/plugins ./usr/
 cp -r /usr/translations ./usr
 # copy runtime data files
 cp -r /usr/share/digikam         ./usr/share
-cp -r /usr/share/icons/breeze    ./usr/share/icons
+cp $ORIG_WD/icon-rcc/breeze.rcc  ./usr/share/digikam
 cp -r /usr/share/lensfun         ./usr/share
 cp -r /usr/share/kipiplugin*     ./usr/share
 cp -r /usr/share/knotifications5 ./usr/share
