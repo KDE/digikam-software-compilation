@@ -5,15 +5,15 @@ To compile digiKam from Git as an AppImage:
   Yum install git
   git clone git://anongit.kde.org/digikam-software-compilation.git DK
   cd DK/project/appimage/
-  bash build-linux.sh
+  bash 01-build-centos6.sh    # ~10mn
 
 - Install the dependencies
-  bash build-extralibs.sh  # ~2-3h, 5-6GB
+  bash 02-build-extralibs.sh  # ~2-3h, 5-6GB
 
 - Build digiKam:
-  bash build-digikam.sh  # ~30mm
+  bash 03-build-digikam.sh    # ~30mm
 
 - Bundle the AppImage:
-  bash build-appimage.sh  # ~5mn
+  bash 04-build-appimage.sh   # ~10mn
 
 Your appimage is ready in ./appimage/digikam-version-x86_64.appimage
