@@ -135,7 +135,6 @@ cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/
 cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
 
 cp /usr/bin/digikam ./usr/bin
-cp ${ORIG_WD}/data/qt.conf ./usr/bin
 
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
