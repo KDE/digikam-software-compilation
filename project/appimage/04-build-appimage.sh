@@ -11,6 +11,8 @@ set -x
 # Working directory
 ORIG_WD="`pwd`"
 
+DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
+
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1
 
@@ -246,15 +248,13 @@ get_desktopintegration digikam
 
 cd /
 
-VERSION=$DK_VERSION
-echo $VERSION
-
 if [[ "$ARCH" = "x86_64" ]] ; then
-        APPIMAGE=$APP"-"$VERSION"-x86_64.appimage"
+        APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64.appimage"
 fi
 if [[ "$ARCH" = "i686" ]] ; then
-        APPIMAGE=$APP"-"$VERSION"-i386.appimage"
+        APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
 fi
+
 echo $APPIMAGE
 
 mkdir -p /out
@@ -263,11 +263,5 @@ rm -f /out/*.AppImage || true
 AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ /out/$APPIMAGE
 
 chmod a+rwx /out/$APPIMAGE # So that we can edit the AppImage outside of the Docker container
-
-cd /digikam.appdir
-mv AppRun digikam
-cd /
-mv digikam.appdir "$APP"-"$VERSION"-x86_64
-tar -czf "$APP"-"$VERSION"-x86_64.tgz "$APP"-"$VERSION"-x86_64
 
 echo "Done..."
