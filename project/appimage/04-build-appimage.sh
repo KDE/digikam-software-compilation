@@ -164,7 +164,6 @@ done
 #done
 #rm -f DEPSFILE
 
-
 # The following are assumed to be part of the base system
 rm -f usr/lib/libcom_err.so.2 || true
 rm -f usr/lib/libcrypt.so.1 || true
@@ -228,6 +227,7 @@ rm -rf usr/share/gettext || true
 rm -rf usr/share/pkgconfig || true
 
 strip usr/plugins/kipiplugin_* usr/bin/* usr/lib/* || true
+cp ${ORIG_WD}/data/qt.conf ./usr/bin
 
 # Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
@@ -276,10 +276,10 @@ get_desktopintegration digikam
 cd /
 
 if [[ "$ARCH" = "x86_64" ]] ; then
-        APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64.appimage"
 fi
 if [[ "$ARCH" = "i686" ]] ; then
-        APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
 fi
 
 mkdir -p /out
