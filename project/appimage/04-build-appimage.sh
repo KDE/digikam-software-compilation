@@ -291,7 +291,7 @@ if [[ "$ARCH" = "i686" ]] ; then
 fi
 
 mkdir -p $ORIG_WD/appimage
-rm -f $ORIG_WD/appimage/*.AppImage || true
+rm -f $ORIG_WD/appimage/* || true
 AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ $ORIG_WD/appimage/$APPIMAGE
 
 chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
@@ -306,7 +306,7 @@ du -h "$ORIG_WD/appimage/$APPIMAGE"        | { read first rest ; echo $first ; }
 echo -n "MD5 sum    : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
 md5sum "$ORIG_WD/appimage/$APPIMAGE"       | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
 echo -n "SHA1 sum   : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
-sha1sum -a1 "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; } >> $ORIG_WD/appimage/$APPIMAGE.txt
+sha1sum "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; }     >> $ORIG_WD/appimage/$APPIMAGE.txt
 echo -n "SHA256 sum : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
 sha256sum "$ORIG_WD/appimage/$APPIMAGE" | { read first rest ; echo $first ; }     >> $ORIG_WD/appimage/$APPIMAGE.txt
 
