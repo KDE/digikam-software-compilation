@@ -86,11 +86,12 @@ make -j$CPU_CORES
 
 #################################################################################################
 
+echo -e "\n---------- Prepare directories in bundle\n"
+
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd /
 
 # Prepare the install location
-rm -rf /out/ || true
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
 mkdir -p /digikam.appdir/usr/share
@@ -135,6 +136,10 @@ cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/
 cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
 
 cp /usr/bin/digikam ./usr/bin
+
+#################################################################################################
+
+echo -e "\n---------- Scan dependencies recurssively\n"
 
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
@@ -258,6 +263,10 @@ cd /
 #wget https://raw.githubusercontent.com/boudewijnrempt/AppImages/master/recipes/digikam/digikam
 #chmod a+rx digikam
 
+#################################################################################################
+
+echo -e "\n---------- Create AppImage bundle\n"
+
 APP=digikam
 
 # Source functions
@@ -281,28 +290,27 @@ if [[ "$ARCH" = "i686" ]] ; then
     APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
 fi
 
-mkdir -p /out
+mkdir -p $ORIG_WD/appimage
+rm -f $ORIG_WD/appimage/*.AppImage || true
+AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ $ORIG_WD/appimage/$APPIMAGE
 
-rm -f /out/*.AppImage || true
-AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ /out/$APPIMAGE
-
-chmod a+rwx /out/$APPIMAGE
+chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $APPIMAGE.txt
-echo    "File       : $APPIMAGE"                                             >> $APPIMAGE.txt
-echo -n "Size       : "                                                      >> $APPIMAGE.txt
-du -h "$APPIMAGE"        | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
-echo -n "MD5 sum    : "                                                      >> $APPIMAGE.txt
-md5sum "$APPIMAGE"       | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
-echo -n "SHA1 sum   : "                                                      >> $APPIMAGE.txt
-shasum -a1 "$APPIMAGE"   | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
-echo -n "SHA256 sum : "                                                      >> $APPIMAGE.txt
-shasum -a256 "$APPIMAGE" | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"      > $ORIG_WD/appimage/$APPIMAGE.txt
+echo    "File       : $APPIMAGE"                                                 >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "Size       : "                                                          >> $ORIG_WD/appimage/$APPIMAGE.txt
+du -h "$ORIG_WD/appimage/$APPIMAGE"        | { read first rest ; echo $first ; } >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "MD5 sum    : "                                                          >> $ORIG_WD/appimage/$APPIMAGE.txt
+md5sum "$ORIG_WD/appimage/$APPIMAGE"       | { read first rest ; echo $first ; } >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "SHA1 sum   : "                                                          >> $ORIG_WD/appimage/$APPIMAGE.txt
+shasum -a1 "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; } >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "SHA256 sum : "                                                          >> $ORIG_WD/appimage/$APPIMAGE.txt
+shasum -a256 "$ORIG_WD/appimage/$APPIMAGE" | { read first rest ; echo $first ; } >> $ORIG_WD/appimage/$APPIMAGE.txt
 
-cat $APPIMAGE.txt
+cat $ORIG_WD/appimage/$APPIMAGE.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
