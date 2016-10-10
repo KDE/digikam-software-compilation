@@ -9,15 +9,6 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-#################################################################################################
-# Pre-processing checks
-
-. ./config.sh
-. ./common.sh
-StartScript
-ChecksCPUCores
-ChecksRunAsRoot
-
 # Halt on error
 set -e
 
@@ -29,8 +20,19 @@ exec > >(tee ./logs/build-digikam.full.log) 2>&1
 
 #################################################################################################
 
-echo "03-build-digikam.sh : build digiKam for Linux."
+echo "03-build-digikam.sh : build digiKam using CentOs 6."
 echo "---------------------------------------------------"
+
+#################################################################################################
+# Pre-processing checks
+
+. ./config.sh
+. ./common.sh
+StartScript
+ChecksCPUCores
+ChecksRunAsRoot
+
+#################################################################################################
 
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1

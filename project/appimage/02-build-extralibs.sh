@@ -1,10 +1,37 @@
 #!/bin/bash
 
+# Script to build extra libraries using CentOs 6.
+# This script must be run as sudo
+#
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+
 # Halt on errors
 set -e
 
-# Be verbose
-set -x
+#################################################################################################
+# Manage script traces to log file
+
+mkdir -p ./logs
+exec > >(tee ./logs/build-extralibs.full.log) 2>&1
+
+#################################################################################################
+
+echo "02-build-extralibs.sh : build extra libraries under CentoOS 6."
+echo "--------------------------------------------------------------"
+
+#################################################################################################
+# Pre-processing checks
+
+. ./config.sh
+. ./common.sh
+StartScript
+ChecksCPUCores
+
+#################################################################################################
 
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1
@@ -25,6 +52,8 @@ fi
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
 
+#################################################################################################
+
 . /opt/rh/devtoolset-4/enable
 
 ORIG_WD="`pwd`"
@@ -42,41 +71,45 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
-cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit -- -j$CPU_CORES
 
-cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kconfig -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_threadweaver -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_karchive -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_ki18n -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kcrash -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kcodecs -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kauth -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kitemviews -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kcompletion -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kservice -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j4
-cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kconfig -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_threadweaver -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_karchive -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_ki18n -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcrash -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcodecs -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kauth -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kitemviews -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcompletion -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kservice -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j$CPU_CORES
 
-cmake3 --build . --config RelWithDebInfo --target ext_marble -- -j4
+cmake3 --build . --config RelWithDebInfo --target ext_marble -- -j$CPU_CORES
+
+#################################################################################################
+
+TerminateScript

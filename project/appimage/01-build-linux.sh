@@ -1,10 +1,37 @@
 #!/bin/bash
 
+# Script to build a CentOS 6 installation to compile an AppImage bundle of digiKam.
+# This script must be run as sudo
+#
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+
 # Halt on errors
 set -e
 
-# Be verbose
-set -x
+#################################################################################################
+# Manage script traces to log file
+
+mkdir -p ./logs
+exec > >(tee ./logs/build-linux.full.log) 2>&1
+
+#################################################################################################
+
+echo "01-build-linux.sh : build a CentOS 6 installation to compile an AppImage of digiKam."
+echo "------------------------------------------------------------------------------------"
+
+#################################################################################################
+# Pre-processing checks
+
+. ./config.sh
+. ./common.sh
+StartScript
+ChecksCPUCores
+
+#################################################################################################
 
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1
@@ -24,6 +51,8 @@ fi
 
 # if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
+
+#################################################################################################
 
 yum -y install epel-release
 
@@ -120,3 +149,7 @@ cd /AppImageKit/
 git_pull_rebase_helper
 ./build.sh
 cd /
+
+#################################################################################################
+
+TerminateScript

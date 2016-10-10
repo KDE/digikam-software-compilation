@@ -1,17 +1,44 @@
 #!/bin/bash
 
-. ./config.sh
+# Script to bundle data using previously-built KDE and digiKam installation
+# and create a Linux AppImage bundle file.
+#
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
 
-# Halt on errors
+# Halt on error
 set -e
 
-# Be verbose
-set -x
+#################################################################################################
+# Manage script traces to log file
+
+mkdir -p ./logs
+exec > >(tee ./logs/build-appimage.full.log) 2>&1
+
+#################################################################################################
+
+echo "04-build-appimage.sh : build digiKam AppImage bundle."
+echo "-----------------------------------------------------"
+
+#################################################################################################
+# Pre-processing checks
+
+. ./config.sh
+. ./common.sh
+StartScript
+ChecksCPUCores
+
+#################################################################################################
 
 # Working directory
 ORIG_WD="`pwd`"
 
 DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
+
+#################################################################################################
 
 # Now we are inside CentOS 6
 grep -r "CentOS release 6" /etc/redhat-release || exit 1
@@ -255,13 +282,32 @@ if [[ "$ARCH" = "i686" ]] ; then
         APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
 fi
 
-echo $APPIMAGE
-
 mkdir -p /out
 
 rm -f /out/*.AppImage || true
 AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ /out/$APPIMAGE
 
-chmod a+rwx /out/$APPIMAGE # So that we can edit the AppImage outside of the Docker container
+chmod a+rwx /out/$APPIMAGE
 
-echo "Done..."
+#################################################################################################
+# Show resume information and future instructions to host installer file to KDE server
+
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $APPIMAGE.txt
+echo    "File       : $APPIMAGE"                                             >> $APPIMAGE.txt
+echo -n "Size       : "                                                      >> $APPIMAGE.txt
+du -h "$APPIMAGE"        | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
+echo -n "MD5 sum    : "                                                      >> $APPIMAGE.txt
+md5sum "$APPIMAGE"       | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
+echo -n "SHA1 sum   : "                                                      >> $APPIMAGE.txt
+shasum -a1 "$APPIMAGE"   | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
+echo -n "SHA256 sum : "                                                      >> $APPIMAGE.txt
+shasum -a256 "$APPIMAGE" | { read first rest ; echo $first ; }               >> $APPIMAGE.txt
+
+cat $APPIMAGE.txt
+echo -e "\n------------------------------------------------------------------"
+curl http://download.kde.org/README_UPLOAD
+echo -e "------------------------------------------------------------------\n"
+
+#################################################################################################
+
+TerminateScript
