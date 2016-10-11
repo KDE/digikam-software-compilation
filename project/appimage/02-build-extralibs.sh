@@ -50,6 +50,7 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
+# extralibs and Qt5 dependencies
 cmake3 --build . --config RelWithDebInfo --target ext_tiff                -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
@@ -61,6 +62,7 @@ cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2          -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_qt                  -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit            -- -j$CPU_CORES
 
+# core KF5 frameworks dependencies
 cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kconfig             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons        -- -j$CPU_CORES
@@ -87,6 +89,13 @@ cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
 
+# KF5::KIO support for Kipi-plugins
+cmake3 --build . --config RelWithDebInfo --target ext_kjobwidgets         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_sonnet               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kio                  -- -j$CPU_CORES
+
+# Geolocation support
 cmake3 --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
 
 #################################################################################################

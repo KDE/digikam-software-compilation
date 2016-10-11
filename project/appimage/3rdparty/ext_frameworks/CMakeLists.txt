@@ -362,3 +362,63 @@ ExternalProject_Add(
     UPDATE_COMMAND ""
     ALWAYS 0
 )
+
+ExternalProject_Add(
+    ext_kjobwidgets
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kjobwidgets-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_sonnet
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/sonnet-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_ktextwidgets
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/ktextwidgets-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_kio
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kio-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
