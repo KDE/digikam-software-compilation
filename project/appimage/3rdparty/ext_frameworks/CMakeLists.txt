@@ -453,3 +453,51 @@ ExternalProject_Add(
     UPDATE_COMMAND ""
     ALWAYS 0
 )
+
+ExternalProject_Add(
+    ext_kwallet
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kwallet-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+               -DBUILD_KWALLETD=OFF
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_kparts
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kparts-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+               -DBUILD_KWALLETD=OFF
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_kdewebkit
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kdewebkit-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+               -DBUILD_KWALLETD=OFF
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)

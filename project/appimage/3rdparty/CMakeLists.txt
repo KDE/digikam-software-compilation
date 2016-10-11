@@ -43,13 +43,11 @@ endif()
 
 # this list must be dependency-ordered
 add_subdirectory( ext_boost )
-add_subdirectory( ext_tiff )
 add_subdirectory( ext_eigen3 )
 add_subdirectory( ext_exiv2 )
 add_subdirectory( ext_lcms2 )
 add_subdirectory( ext_opencv )
 add_subdirectory( ext_lensfun )
-add_subdirectory( ext_libgphoto2 )
 add_subdirectory( ext_qt )
 add_subdirectory( ext_frameworks )
 add_subdirectory( ext_marble )

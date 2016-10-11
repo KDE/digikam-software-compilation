@@ -83,6 +83,9 @@ yum -y install wget \
                xkeyboard-config \
                libudev-devel \
                libicu-devel \
+               libtiff-devel \
+               libgphoto2-devel \
+               sane-backends-devel \
                gperf \
                ruby \
                jasper-devel \

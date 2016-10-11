@@ -51,14 +51,12 @@ cmake3 $ORIG_WD/3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
 # extralibs and Qt5 dependencies
-cmake3 --build . --config RelWithDebInfo --target ext_tiff                -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_boost               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_eigen3              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun             -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2          -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt                  -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit            -- -j$CPU_CORES
 
@@ -88,16 +86,19 @@ cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel        -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kparts              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
 
-# Linux Desktop support
-cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_knotifications      -- -j$CPU_CORES
-
-# KF5::KIO support for Kipi-plugins
+# KIO support for Kipi-plugins
 cmake3 --build . --config RelWithDebInfo --target ext_kjobwidgets         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_sonnet              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets        -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kio                 -- -j$CPU_CORES
+
+# Linux Desktop support
+cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_knotifications      -- -j$CPU_CORES
 
 # Geolocation support
 cmake3 --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
