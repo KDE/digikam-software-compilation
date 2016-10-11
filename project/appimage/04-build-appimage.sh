@@ -230,12 +230,6 @@ rm -f ./usr/lib/libdbus-1.so.3 || true
 
 cd /
 
-# replace digikam with the lib-checking startup script.
-#cd /digikam.appdir/usr/bin
-#mv digikam digikam.real
-#wget https://raw.githubusercontent.com/boudewijnrempt/AppImages/master/recipes/digikam/digikam
-#chmod a+rx digikam
-
 #################################################################################################
 
 echo -e "\n---------- Create AppImage bundle\n"
@@ -249,7 +243,9 @@ wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./func
 # Install desktopintegration in usr/bin/digikam.wrapper -- feel free to edit it
 cd /digikam.appdir
 
-cp /AppImageKit/AppRun .
+# We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
+cp ${ORIG_WD}/data/AppRun .
+
 cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
 cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
 get_desktopintegration digikam

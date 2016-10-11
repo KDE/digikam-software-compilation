@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Main AppImage script to wrap XDG_* variable properly for Qt5.
+# This script must be run as sudo
+#
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+#
+# Redistribution and use is allowed according to the terms of the BSD license.
+# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+#
+
+DIR="`dirname \"$0\"`"
+DIR="`( cd \"$DIR\" && pwd )`"
+export APPDIR=$DIR
+
+export APPIMAGE_ORIGINAL_XDG_DATA_DIRS=$XDG_DATA_DIRS
+export APPIMAGE_ORIGINAL_XDG_DATA_HOME=$XDG_DATA_HOME
+export APPIMAGE_ORIGINAL_PATH=$PATH
+
+export XDG_DATA_DIRS=$DIR/usr/share/:$XDG_DATA_DIRS
+export XDG_DATA_HOME=$DIR/usr/share/:$XDG_DATA_HOME
+export PATH=$DIR/usr/bin:$PATH
+
+export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
+export APPIMAGE_STARTUP_XDG_DATA_HOME=$XDG_DATA_HOME
+export APPIMAGE_STARTUP_PATH=$PATH
+
+digikam $@
