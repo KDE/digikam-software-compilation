@@ -93,8 +93,11 @@ yum -y install wget \
                libusb-devel \
                libexif-devel \
                libical-devel \
+               libxslt-devel \
                bison \
-               flex
+               flex \
+               perl-URI \
+               docbook-style-xsl
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh

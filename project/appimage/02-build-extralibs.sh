@@ -89,6 +89,7 @@ cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kparts              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kdoctools           -- -j$CPU_CORES
 
 # KIO support for Kipi-plugins
 cmake3 --build . --config RelWithDebInfo --target ext_kjobwidgets         -- -j$CPU_CORES
