@@ -272,16 +272,16 @@ chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"       > $ORIG_WD/appimage/$APPIMAGE.txt
-echo    "File       : $APPIMAGE"                                                  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "Size       : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
-du -h "$ORIG_WD/appimage/$APPIMAGE"        | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "MD5 sum    : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
-md5sum "$ORIG_WD/appimage/$APPIMAGE"       | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "SHA1 sum   : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
-sha1sum "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; }     >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "SHA256 sum : "                                                           >> $ORIG_WD/appimage/$APPIMAGE.txt
-sha256sum "$ORIG_WD/appimage/$APPIMAGE" | { read first rest ; echo $first ; }     >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"    > $ORIG_WD/appimage/$APPIMAGE.txt
+echo    "File       : $APPIMAGE"                                               >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "Size       : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
+du -h "$ORIG_WD/appimage/$APPIMAGE"     | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "MD5 sum    : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
+md5sum "$ORIG_WD/appimage/$APPIMAGE"    | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "SHA1 sum   : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
+sha1sum "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -n "SHA256 sum : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
+sha256sum "$ORIG_WD/appimage/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
 
 cat $ORIG_WD/appimage/$APPIMAGE.txt
 echo -e "\n------------------------------------------------------------------"
