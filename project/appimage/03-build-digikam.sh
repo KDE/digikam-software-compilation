@@ -87,7 +87,7 @@ cd build
 
 cmake3 -G "Unix Makefiles" .. \
       -DCMAKE_BUILD_TYPE=debug \
-      -DCMAKE_INSTALL_PREFIX=/digikam.appdir/usr \
+      -DCMAKE_INSTALL_PREFIX=/usr \
       -DBUILD_TESTING=OFF \
       -DDIGIKAMSC_CHECKOUT_PO=OFF \
       -DDIGIKAMSC_CHECKOUT_DOC=OFF \
