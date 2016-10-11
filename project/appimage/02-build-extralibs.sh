@@ -50,44 +50,44 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
-cmake3 --build . --config RelWithDebInfo --target ext_tiff -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2 -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lcms2 -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_boost -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_eigen3 -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_opencv -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lensfun -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qt -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_tiff                -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_boost               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_eigen3              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_opencv              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lensfun             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2          -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qt                  -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit            -- -j$CPU_CORES
 
 cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kconfig -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_solid -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_threadweaver -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_karchive -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_ki18n -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kcrash -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kcodecs -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kauth -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kitemviews -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kcompletion -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kservice -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kimageformats -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kconfig             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_breeze_icons        -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_solid               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem       -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_solid               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_threadweaver        -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_karchive            -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kdbusaddons         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_ki18n               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcrash              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcodecs             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kauth               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kguiaddons          -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwidgetsaddons      -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kitemviews          -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kcompletion         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kconfigwidgets      -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kiconthemes         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kservice            -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel        -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
 
-cmake3 --build . --config RelWithDebInfo --target ext_marble -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
 
 #################################################################################################
 
