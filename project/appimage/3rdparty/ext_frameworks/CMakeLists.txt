@@ -364,6 +364,37 @@ ExternalProject_Add(
 )
 
 ExternalProject_Add(
+    ext_knotifyconfig
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/knotifyconfig-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
+    ext_knotifications
+    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+    URL http://download.kde.org/stable/frameworks/${KD_VERSION}/knotifications-${KD_VERSION}.0.tar.xz
+    INSTALL_DIR ${EXTPREFIX_frameworks}
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/knotifications-drop-phonon.patch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+               -DBUILD_TESTING=OFF
+               -Wno-dev
+    UPDATE_COMMAND ""
+    ALWAYS 0
+)
+
+ExternalProject_Add(
     ext_kjobwidgets
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
     URL http://download.kde.org/stable/frameworks/${KD_VERSION}/kjobwidgets-${KD_VERSION}.0.tar.xz
