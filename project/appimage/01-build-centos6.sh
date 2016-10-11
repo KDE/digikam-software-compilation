@@ -92,11 +92,9 @@ yum -y install wget \
                sqlite-devel \
                libusb-devel \
                libexif-devel \
+               libical-devel \
                bison \
-               flex \
-               mc \
-               dkms
-
+               flex
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
