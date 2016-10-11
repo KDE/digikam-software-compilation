@@ -30,6 +30,8 @@ echo "-----------------------------------------------------"
 . ./common.sh
 StartScript
 ChecksCPUCores
+CentOS6Adjustments
+. /opt/rh/devtoolset-4/enable
 
 #################################################################################################
 
@@ -37,35 +39,6 @@ ChecksCPUCores
 ORIG_WD="`pwd`"
 
 DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
-
-#################################################################################################
-
-# Now we are inside CentOS 6
-grep -r "CentOS release 6" /etc/redhat-release || exit 1
-
-# qjsonparser, used to add metadata to the plugins needs to work in a en_US.UTF-8 environment. That's
-# not always set correctly in CentOS 6.7
-export LC_ALL=en_US.UTF-8
-export LANG=en_us.UTF-8
-
-# Determine which architecture should be built
-if [[ "$(arch)" = "i686" || "$(arch)" = "x86_64" ]] ; then
-    ARCH=$(arch)
-else
-    echo "Architecture could not be determined"
-    exit 1
-fi
-
-# if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
-export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
-
-. /opt/rh/devtoolset-4/enable
-
-git_pull_rebase_helper()
-{
-    git reset --hard HEAD
-    git pull
-}
 
 #################################################################################################
 # Build icons-set ressource

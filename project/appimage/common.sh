@@ -53,3 +53,28 @@ difftimelps=$(($TERMIN_SCRIPT-$BEGIN_SCRIPT))
 echo "Elaspsed time for script execution : $(($difftimelps / 3600 )) hours $((($difftimelps % 3600) / 60)) minutes $(($difftimelps % 60)) seconds"
 
 }
+
+########################################################################
+# For time execution measurement : shutdown
+CentOS6Adjustments()
+{
+
+# Chek if we are inside CentOS 6 or not.
+grep -r "CentOS release 6" /etc/redhat-release || exit 1
+
+# That's not always set correctly in CentOS 6.7
+export LC_ALL=en_US.UTF-8
+export LANG=en_us.UTF-8
+
+# Determine which architecture should be built
+if [[ "$(arch)" = "i686" || "$(arch)" = "x86_64" ]] ; then
+    ARCH=$(arch)
+else
+    echo "Architecture could not be determined"
+    exit 1
+fi
+
+# if the library path doesn't point to our usr/lib, linking will be broken and we won't find all deps either
+export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
+
+}
