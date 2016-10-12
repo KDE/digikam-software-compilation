@@ -127,7 +127,7 @@ ldd usr/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I
 FILES=$(find . -type f -executable)
 
 for FILE in $FILES ; do
-    ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' usr/lib || true
+    ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 done
 
 #DEPS=""
