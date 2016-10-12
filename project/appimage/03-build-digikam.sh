@@ -106,7 +106,8 @@ cmake3 -G "Unix Makefiles" .. \
       -DENABLE_INTERNALMYSQL=ON \
       -DENABLE_MEDIAPLAYER=OFF \
       -DENABLE_DBUS=ON \
-      -DENABLE_APPSTYLES=ON
+      -DENABLE_APPSTYLES=ON \
+      -Wno-dev
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
