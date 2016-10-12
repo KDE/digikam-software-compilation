@@ -47,6 +47,7 @@ yum -y install wget \
                zlib-devel \
                expat-devel \
                git \
+               subversion \
                libtool \
                which \
                fuse \
