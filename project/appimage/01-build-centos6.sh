@@ -130,7 +130,8 @@ if [ ! -d AppImageKit ] ; then
 fi
 
 cd /AppImageKit/
-git_pull_rebase_helper
+git reset --hard HEAD
+git pull
 ./build.sh
 cd /
 
