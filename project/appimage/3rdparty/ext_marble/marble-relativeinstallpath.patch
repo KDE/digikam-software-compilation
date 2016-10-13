@@ -5,7 +5,7 @@
  QString MarbleDirs::systemPath()
  {
 +	QString path = QCoreApplication::applicationDirPath() + QDir::separator() + "data";
-+	qDebug() << "Marble data path: " << path;
++	//qDebug() << "Marble data path: " << path;
 +	return path;
      QString systempath;
  
@@ -15,7 +15,7 @@
  QString MarbleDirs::pluginSystemPath()
  {
 +	QString path = QCoreApplication::applicationDirPath() + QDir::separator() + "plugins";
-+	qDebug() << "Marble plugins path: " << path;
++	//qDebug() << "Marble plugins path: " << path;
 +	return path;
      QString systempath;
  
