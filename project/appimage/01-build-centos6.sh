@@ -97,8 +97,11 @@ yum -y install wget \
                libxslt-devel \
                bison \
                flex \
-               perl-URI \
-               docbook-style-xsl
+               gstreamer \
+               gstreamer-devel \
+               gstreamer-plugins-base \
+               gstreamer-plugins-good \
+               gstreamer-plugins-bad-free 
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
