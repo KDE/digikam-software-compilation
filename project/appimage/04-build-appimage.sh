@@ -68,8 +68,7 @@ cd /
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
 mkdir -p /digikam.appdir/usr/share
-mkdir -p /digikam.appdir/usr/share/marble/data
-mkdir -p /digikam.appdir/usr/share/doc/HTML
+mkdir -p /digikam.appdir/usr/share/data
 
 # make sure lib and lib64 are the same thing
 mkdir -p /digikam.appdir/usr/lib
@@ -93,8 +92,7 @@ cp -r /usr/share/kservicetypes5  ./usr/share
 cp -r /usr/share/kxmlgui5        ./usr/share
 cp -r /usr/share/solid           ./usr/share
 cp -r /usr/share/OpenCV          ./usr/share
-cp -r /usr/share/marble/data     ./usr/share/marble/data
-cp -r /usr/share/doc/HTML        ./usr/share/doc
+cp -r /usr/share/marble/data     ./usr/share/data
 cp -r /usr/share/locale          ./usr/share
 
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
