@@ -1,13 +1,22 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -172,8 +172,8 @@
-       set(plugin_dir "${CMAKE_INSTALL_PREFIX}/assets/plugins")
-       set(data_dir "${CMAKE_INSTALL_PREFIX}/assets/data")
- else() # Linux / bsd etc...
--      set(data_dir ${CMAKE_INSTALL_FULL_DATAROOTDIR}/marble/data)
--      set(plugin_dir ${CMAKE_INSTALL_FULL_LIBDIR}/marble/plugins)
-+      set(data_dir data)
-+      set(plugin_dir plugins)
-       set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_INSTALL_FULL_DATAROOTDIR}/marble/cmake)
- endif()
+--- a/src/lib/marble/MarbleDirs.cpp
++++ b/src/lib/marble/MarbleDirs.cpp
+@@ -120,6 +120,9 @@
  
+ QString MarbleDirs::systemPath()
+ {
++	QString path = QCoreApplication::applicationDirPath() + QDir::separator() + "data";
++	qDebug() << "Marble data path: " << path;
++	return path;
+     QString systempath;
+ 
+ #ifdef Q_OS_WIN
+@@ -178,6 +181,9 @@
+ 
+ QString MarbleDirs::pluginSystemPath()
+ {
++	QString path = QCoreApplication::applicationDirPath() + QDir::separator() + "plugins";
++	qDebug() << "Marble plugins path: " << path;
++	return path;
+     QString systempath;
+ 
+ #ifdef Q_OS_MACX
