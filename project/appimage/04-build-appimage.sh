@@ -95,6 +95,7 @@ cp -r /usr/share/solid           ./usr/share
 cp -r /usr/share/OpenCV          ./usr/share
 cp -r /usr/share/marble/data     ./usr/bin/
 cp -r /usr/share/locale          ./usr/share
+cp -r /usr/lib64/gstreamer-0.10  ./usr/lib
 
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
 cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
