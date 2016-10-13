@@ -1,0 +1,13 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -172,8 +172,8 @@
+       set(plugin_dir "${CMAKE_INSTALL_PREFIX}/assets/plugins")
+       set(data_dir "${CMAKE_INSTALL_PREFIX}/assets/data")
+ else() # Linux / bsd etc...
+-      set(data_dir ${CMAKE_INSTALL_FULL_DATAROOTDIR}/marble/data)
+-      set(plugin_dir ${CMAKE_INSTALL_FULL_LIBDIR}/marble/plugins)
++      set(data_dir data)
++      set(plugin_dir plugins)
+       set(CMAKE_MODULES_INSTALL_PATH ${CMAKE_INSTALL_FULL_DATAROOTDIR}/marble/cmake)
+ endif()
+ 
