@@ -100,8 +100,11 @@ yum -y install wget \
                gstreamer \
                gstreamer-devel \
                gstreamer-plugins-base \
+               gstreamer-plugins-base-devel \
                gstreamer-plugins-good \
-               gstreamer-plugins-bad-free 
+               gstreamer-plugins-good-devel \
+               gstreamer-plugins-bad-free \
+               gstreamer-plugins-bad-free-devel 
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
