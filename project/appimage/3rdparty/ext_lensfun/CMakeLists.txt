@@ -12,7 +12,9 @@ ExternalProject_Add( ext_lensfun
     URL http://downloads.sourceforge.net/project/lensfun/0.3.2/lensfun-0.3.2.zip
 
     INSTALL_DIR ${EXTPREFIX_lensfun}
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_lensfun} -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE} ${GLOBAL_PROFILE}
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_lensfun}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
 
     UPDATE_COMMAND ""
     ALWAYS 0
