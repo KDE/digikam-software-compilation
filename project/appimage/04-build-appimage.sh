@@ -43,7 +43,7 @@ DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
 #################################################################################################
 # Build icons-set ressource
 
-echo -e "\n---------- Build icons-set ressource\n"
+echo -e "---------- Build icons-set ressource\n"
 
 cd $ORIG_WD/icon-rcc
 
@@ -59,7 +59,7 @@ make -j$CPU_CORES
 
 #################################################################################################
 
-echo -e "\n---------- Prepare directories in bundle\n"
+echo -e "---------- Prepare directories in bundle\n"
 
 # Make sure we build from the /, parts of this script depends on that. We also need to run as root...
 cd /
@@ -76,7 +76,7 @@ ln -s lib lib64
 
 #################################################################################################
 
-echo -e "\n---------- Copy Files in bundle\n"
+echo -e "---------- Copy Files in bundle\n"
 
 cd /digikam.appdir
 
@@ -108,9 +108,10 @@ cp -r /usr/share/marble/data         ./usr/bin/
 #cp /usr/bin/gst-*                    ./usr/bin
 #cp /usr/lib64/libgs*.so*             ./usr/lib
 
+ # otherwise segfaults!?
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2    | cut -d ">" -f 2 | xargs) ./usr/lib/
-cp $(ldconfig -p | grep /usr/lib64/libGL.so.1       | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
-cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/lib64/libGL.so.1       | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 # Fedora 23 seemed to be missing SOMETHING from the Centos 6.7. The only message was:
 # This application failed to start because it could not find or load the Qt platform plugin "xcb".
@@ -118,17 +119,21 @@ cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) .
 # QLibraryPrivate::loadPlugin failed on "/usr/lib64/qt5/plugins/platforms/libqxcb.so" :
 # "Cannot load library /usr/lib64/qt5/plugins/platforms/libqxcb.so: (/lib64/libEGL.so.1: undefined symbol: drmGetNodeTypeFromFd)"
 # Which means that we have to copy libEGL.so.1 in too
-cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
+
+# Otherwise F23 cannot load the Qt platform plugin "xcb"
+cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 # let's not copy xcb itself, that breaks on dri3 systems https://bugs.kde.org/show_bug.cgi?id=360552
-#cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ 
-cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
+#cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/
+
+# For Fedora 20
+cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 cp /usr/bin/digikam ./usr/bin
 
 #################################################################################################
 
-echo -e "\n---------- Scan dependencies recurssively\n"
+echo -e "---------- Scan dependencies recurssively\n"
 
 ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
@@ -146,7 +151,7 @@ done
 
 #################################################################################################
 
-echo -e "\n---------- Clean-up Bundle Directory Contents\n"
+echo -e "---------- Clean-up Bundle Directory Contents\n"
 
 # The following are assumed to be part of the base system
 rm -f usr/lib/libcom_err.so.2 || true
@@ -212,9 +217,19 @@ rm -rf usr/share/pkgconfig || true
 
 #################################################################################################
 
-echo -e "\n---------- Strip Binaries and Configuration Files \n"
+echo -e "---------- Strip Binaries Files \n"
+
+FILES=$(find . -type f -executable)
+
+for FILE in $FILES ; do
+    strip ${FILE} 2>&1>/dev/null || true
+done
 
 strip usr/plugins/kipiplugin_* usr/bin/* usr/lib/* || true
+
+#################################################################################################
+
+echo -e "---------- Strip Configuration Files \n"
 
 # Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
@@ -242,7 +257,7 @@ cd /
 
 #################################################################################################
 
-echo -e "\n---------- Create AppImage Bundle\n"
+echo -e "---------- Create AppImage Bundle\n"
 
 APP=digikam
 
