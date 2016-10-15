@@ -10,13 +10,14 @@ This is a super-repository that helps to download and compile digiKam with all c
 
 * To checkout all source code:
 
-- PERL     <http://www.perl.org>
-- GIT      <http://git-scm.com>
+- Perl       <http://www.perl.org>
+- Git        <http://git-scm.com>
 
 * To process translations files (optional)
 
-- RUBY     <http://www.ruby-lang.org>             (to extract translations files from KDE repositories)
-- Gettext  <https://www.gnu.org/software/gettext> (including Msgfmt)
+- Ruby       <http://www.ruby-lang.org>             (to extract translations files from KDE repositories)
+- Subversion <https://subversion.apache.org/>       (to extract translations files from KDE repositories)
+- Gettext    <https://www.gnu.org/software/gettext> (including Msgfmt to compile po files to mo files)
 
 * To download all needed git repositories, execute download script like this: perl ./download-repos
 
