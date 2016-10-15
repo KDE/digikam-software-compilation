@@ -79,7 +79,6 @@ cd /digikam.appdir
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
-mv ./usr/plugins/*lib*.so     ./usr/bin/plugins
 # copy the Qt translation
 cp -r /usr/translations ./usr
 # copy runtime data files
@@ -93,12 +92,18 @@ cp -r /usr/share/kservicetypes5      ./usr/share
 cp -r /usr/share/kxmlgui5            ./usr/share
 cp -r /usr/share/solid               ./usr/share
 cp -r /usr/share/OpenCV              ./usr/share
-cp -r /usr/share/marble/data         ./usr/bin/
 cp -r /usr/share/locale              ./usr/share
-cp /usr/lib64/gstreamer-0.10/*       ./usr/lib
-cp /usr/libexec/gstreamer-0.10/*     ./usr/bin
-cp /usr/bin/gst-*                    ./usr/bin
-cp /usr/lib64/libgs*.so*             ./usr/lib
+
+# For Marble
+mkdir -p /digikam.appdir/usr/bin/plugins
+mv ./usr/plugins/*lib*.so            ./usr/bin/plugins
+cp -r /usr/share/marble/data         ./usr/bin/
+
+# The Famous GStreamer puzzle. Do not work as expected of course...
+#cp /usr/lib64/gstreamer-0.10/*       ./usr/lib
+#cp /usr/libexec/gstreamer-0.10/*     ./usr/bin
+#cp /usr/bin/gst-*                    ./usr/bin
+#cp /usr/lib64/libgs*.so*             ./usr/lib
 
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
 cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
