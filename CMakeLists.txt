@@ -55,8 +55,9 @@ option(DIGIKAMSC_COMPILE_KIPIPLUGINS     "Build kipi-plugins (default=ON)"      
 if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
     find_package(Ruby)
+    find_package(Subversion)
 
-    if(RUBY_EXECUTABLE)
+    if(RUBY_EXECUTABLE AND subversion_FOUND)
 
         if(DIGIKAMSC_CHECKOUT_PO)
 
