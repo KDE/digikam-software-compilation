@@ -13,6 +13,7 @@
 require 'rbconfig'
 require 'fileutils'
 isWindows = RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/i
+STDOUT.sync = true
 
 branch = "trunk"
 tag = ""
