@@ -71,8 +71,12 @@ mkdir -p /digikam.appdir/usr/share
 
 # make sure lib and lib64 are the same thing
 mkdir -p /digikam.appdir/usr/lib
-cd  /digikam.appdir/usr
+cd /digikam.appdir/usr
 ln -s lib lib64
+
+#################################################################################################
+
+echo -e "\n---------- Copy Files in bundle\n"
 
 cd /digikam.appdir
 
@@ -104,17 +108,17 @@ cp -r /usr/share/marble/data         ./usr/bin/
 #cp /usr/bin/gst-*                    ./usr/bin
 #cp /usr/lib64/libgs*.so*             ./usr/lib
 
-cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
-cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
-cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2    | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/lib64/libGL.so.1       | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
 
 # Fedora 23 seemed to be missing SOMETHING from the Centos 6.7. The only message was:
 # This application failed to start because it could not find or load the Qt platform plugin "xcb".
 # Setting export QT_DEBUG_PLUGINS=1 revealed the cause.
-# QLibraryPrivate::loadPlugin failed on "/usr/lib64/qt5/plugins/platforms/libqxcb.so" : 
+# QLibraryPrivate::loadPlugin failed on "/usr/lib64/qt5/plugins/platforms/libqxcb.so" :
 # "Cannot load library /usr/lib64/qt5/plugins/platforms/libqxcb.so: (/lib64/libEGL.so.1: undefined symbol: drmGetNodeTypeFromFd)"
 # Which means that we have to copy libEGL.so.1 in too
-cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
+cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
 
 # let's not copy xcb itself, that breaks on dri3 systems https://bugs.kde.org/show_bug.cgi?id=360552
 #cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ 
@@ -142,7 +146,7 @@ done
 
 #################################################################################################
 
-echo -e "\n---------- Clean-up Bundle Directory\n"
+echo -e "\n---------- Clean-up Bundle Directory Contents\n"
 
 # The following are assumed to be part of the base system
 rm -f usr/lib/libcom_err.so.2 || true
@@ -238,7 +242,7 @@ cd /
 
 #################################################################################################
 
-echo -e "\n---------- Create AppImage bundle\n"
+echo -e "\n---------- Create AppImage Bundle\n"
 
 APP=digikam
 
