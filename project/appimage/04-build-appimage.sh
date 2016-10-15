@@ -83,6 +83,7 @@ cp -r /usr/translations ./usr
 # copy runtime data files
 cp -r /usr/share/digikam             ./usr/share
 cp $ORIG_WD/icon-rcc/breeze.rcc      ./usr/share/digikam
+cp ${ORIG_WD}/data/qt.conf           ./usr/bin
 cp -r /usr/share/lensfun             ./usr/share
 cp -r /usr/share/kipiplugin*         ./usr/share
 cp -r /usr/share/knotifications5     ./usr/share
@@ -106,6 +107,7 @@ cp -r /usr/share/marble/data         ./usr/bin/
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2 | cut -d ">" -f 2 | xargs) ./usr/lib/
 cp $(ldconfig -p | grep /usr/lib64/libGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
 cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # otherwise segfaults!?
+
 # Fedora 23 seemed to be missing SOMETHING from the Centos 6.7. The only message was:
 # This application failed to start because it could not find or load the Qt platform plugin "xcb".
 # Setting export QT_DEBUG_PLUGINS=1 revealed the cause.
@@ -113,6 +115,7 @@ cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1 | cut -d ">" -f 2 | xargs) ./usr/
 # "Cannot load library /usr/lib64/qt5/plugins/platforms/libqxcb.so: (/lib64/libEGL.so.1: undefined symbol: drmGetNodeTypeFromFd)"
 # Which means that we have to copy libEGL.so.1 in too
 cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ # Otherwise F23 cannot load the Qt platform plugin "xcb"
+
 # let's not copy xcb itself, that breaks on dri3 systems https://bugs.kde.org/show_bug.cgi?id=360552
 #cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/ 
 cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/ # For Fedora 20
@@ -137,18 +140,9 @@ for FILE in $FILES ; do
     ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 done
 
-#DEPS=""
-#for FILE in $FILES ; do
-#  ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' echo '{}' > DEPSFILE
-#done
-#DEPS=$(cat DEPSFILE  |sort | uniq)
-#for FILE in $DEPS ; do
-#  if [ -f $FILE ] ; then
-#    echo $FILE
-#    cp --parents -rfL $FILE ./
-#  fi
-#done
-#rm -f DEPSFILE
+#################################################################################################
+
+echo -e "\n---------- Clean-up Bundle Directory\n"
 
 # The following are assumed to be part of the base system
 rm -f usr/lib/libcom_err.so.2 || true
@@ -212,8 +206,11 @@ rm -rf usr/share/ECM/ || true
 rm -rf usr/share/gettext || true
 rm -rf usr/share/pkgconfig || true
 
+#################################################################################################
+
+echo -e "\n---------- Strip Binaries and Configuration Files \n"
+
 strip usr/plugins/kipiplugin_* usr/bin/* usr/lib/* || true
-cp ${ORIG_WD}/data/qt.conf ./usr/bin
 
 # Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
