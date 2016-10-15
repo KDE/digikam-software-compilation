@@ -50,6 +50,8 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
+# NOTE: The order to compile each component here is very important.
+
 # extralibs and Qt5 dependencies
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
@@ -86,15 +88,15 @@ cmake3 --build . --config RelWithDebInfo --target ext_kglobalaccel        -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kparts              -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
 
-# KIO support for Kipi-plugins
+# Extra support for Kipi-plugins
 cmake3 --build . --config RelWithDebInfo --target ext_kjobwidgets         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_sonnet              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets        -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kio                 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kparts              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
 
 # Linux Desktop support
 cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
