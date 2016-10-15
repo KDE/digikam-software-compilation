@@ -68,7 +68,6 @@ cd /
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
 mkdir -p /digikam.appdir/usr/share
-mkdir -p /digikam.appdir/usr/bin/plugins
 
 # make sure lib and lib64 are the same thing
 mkdir -p /digikam.appdir/usr/lib
@@ -95,8 +94,7 @@ cp -r /usr/share/OpenCV              ./usr/share
 cp -r /usr/share/locale              ./usr/share
 
 # For Marble
-mkdir -p /digikam.appdir/usr/bin/plugins
-mv ./usr/plugins/*lib*.so            ./usr/bin/plugins
+cp -r /usr/lib64/marble/plugins/     ./usr/bin/
 cp -r /usr/share/marble/data         ./usr/bin/
 
 # The Famous GStreamer puzzle. Do not work as expected of course...
