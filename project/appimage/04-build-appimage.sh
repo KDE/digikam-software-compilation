@@ -262,10 +262,10 @@ get_desktopintegration digikam
 cd /
 
 if [[ "$ARCH" = "x86_64" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64-"$DK_EPOCH".appimage"
 fi
 if [[ "$ARCH" = "i686" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID"-i386.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID"-i386-"$DK_EPOCH".appimage"
 fi
 
 mkdir -p $ORIG_WD/appimage
