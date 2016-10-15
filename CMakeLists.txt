@@ -96,7 +96,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
 
     else()
 
-        message(STATUS "Could not find Ruby to extract translation files")
+        message(STATUS "Could not find Ruby or Subversion to extract translation files")
 
     endif()
 
