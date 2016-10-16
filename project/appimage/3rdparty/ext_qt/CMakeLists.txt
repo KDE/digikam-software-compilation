@@ -32,7 +32,7 @@ ExternalProject_Add(
     ALWAYS 0
     DEPENDS ext_patch
 )
-else() 
+else()
     if (APPLE)
         ExternalProject_Add(
            ext_qt
@@ -94,6 +94,7 @@ else()
                               -skip qtandroidextras
                               -skip qtserialport
                               -skip qtgamepad
+                              -skip qtmultimedia
 
             BUILD_COMMAND make
             INSTALL_COMMAND make install
