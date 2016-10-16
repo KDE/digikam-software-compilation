@@ -8,7 +8,7 @@
 
 set(EXTPREFIX_frameworks "${EXTPREFIX}")
 
-set(KD_VERSION 5.26)
+set(KD_VERSION 5.27)
 
 ExternalProject_Add(
     ext_extra_cmake_modules

@@ -104,19 +104,12 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
-if [ -d ./extra/libkvkontakte/src ]; then
-    ln -sf src ./extra/libkvkontakte/Vkontakte
-fi
-
-if [ -d ./extra/libmediawiki/src ]; then
-    ln -sf src ./extra/libmediawiki/MediaWiki
-fi
-
-cat ../build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
+cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 
+cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
