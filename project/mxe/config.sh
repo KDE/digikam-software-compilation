@@ -60,7 +60,7 @@ MXE_PACKAGES="gcc \
 # KF5 extra libraries tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5libtemp
-KD_VERSION=5.26
+KD_VERSION=5.27
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
@@ -77,10 +77,10 @@ DK_BUILDTEMP=~/dktemp
 # digiKam tag version from git. Official tarball do not include extra shared libraries.
 # The list of tags can be listed with this url: https://quickgit.kde.org/?p=digikam.git&a=tags
 # If you want to package current implemntation from git, use "master" as tag.
-DK_VERSION=v5.2.0
-#DK_VERSION=master
+#DK_VERSION=v5.2.0
+DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-02"
+DK_EPOCH="-01"
 
 # Hugin tarball information
 HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
