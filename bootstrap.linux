@@ -42,6 +42,7 @@ export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 if [ "$CMAKE_BINARY" == "" ]; then
     CMAKE_BINARY="cmake"
+fi
 
 if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
     DIGIKAM_INSTALL_PREFIX="/usr"
