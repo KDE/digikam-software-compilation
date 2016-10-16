@@ -30,25 +30,28 @@ else
     exit 1
 fi
 
+if [[ "$ARCH" = "x86_64" ]] ; then
+    LIBPATH="lib64"
+elif [[ "$ARCH" = "i686" ]] ; then
+    LIBPATH="lib"
+fi
+
 QT_INSTALL_PREFIX=`qtpaths --install-prefix`
 QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
 export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
 if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
-    DIGIKAM_INSTALL_PREFIX=`qtpaths --install-prefix 2>/dev/null`
+    DIGIKAM_INSTALL_PREFIX="/usr"
 else
     # bootstrap.local may have preset DIGIKAM_INSTALL_PREFIX.
-    QT_PLUGIN_INSTALL_DIR=$DIGIKAM_INSTALL_PREFIX/lib/plugins
+    QT_PLUGIN_INSTALL_DIR=$DIGIKAM_INSTALL_PREFIX/$LIBPATH/plugins
     export PATH=$DIGIKAM_INSTALL_PREFIX/bin:$PATH
-    export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH
-    export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
 fi
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`qtpaths --path lib 2>/dev/null`
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:`qtpaths --path lib 2>/dev/null`/pkgconfig
+export LD_LIBRARY_PATH=$DIGIKAM_INSTALL_PREFIX/$LIBPATH:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$DIGIKAM_INSTALL_PREFIX/$LIBPATH/pkgconfig:$PKG_CONFIG_PATH
 
 echo "Qt5     Install Path : $QT_INSTALL_PREFIX"
-echo "KF5     Install Path : "`qtpaths --install-prefix 2>/dev/null`
 echo "digiKam Install Path : $DIGIKAM_INSTALL_PREFIX"
 
 mkdir -p $DIGIKAM_INSTALL_PREFIX
@@ -79,6 +82,7 @@ cmake -G "$MAKEFILES_TYPE" . \
       -DENABLE_MEDIAPLAYER=ON \
       -DENABLE_DBUS=ON \
       -DENABLE_APPSTYLES=ON \
+      -Wno-dev \
       $SOURCEDIR && echo "$MESSAGE"
 
 if [ -d ./extra/libkvkontakte/src ]; then
