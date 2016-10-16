@@ -40,6 +40,9 @@ QT_INSTALL_PREFIX=`qtpaths --install-prefix`
 QT_PLUGIN_INSTALL_DIR=`qtpaths --plugin-dir`
 export PATH=$QT_INSTALL_PREFIX/bin:$PATH
 
+if [ "$CMAKE_BINARY" == "" ]; then
+    CMAKE_BINARY="cmake"
+
 if [ "$DIGIKAM_INSTALL_PREFIX" == "" ]; then
     DIGIKAM_INSTALL_PREFIX="/usr"
 else
@@ -58,7 +61,7 @@ mkdir -p $DIGIKAM_INSTALL_PREFIX
 mkdir -p $BUILDDIR
 cd $BUILDDIR
 
-cmake -G "$MAKEFILES_TYPE" . \
+$CMAKE_BINARY -G "$MAKEFILES_TYPE" . \
       -DCMAKE_BUILD_TYPE=debug \
       -DCMAKE_INSTALL_PREFIX=$DIGIKAM_INSTALL_PREFIX/ \
       -DKDE_INSTALL_QTPLUGINDIR=$QT_PLUGIN_INSTALL_DIR/ \
