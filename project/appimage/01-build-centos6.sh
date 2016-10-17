@@ -31,6 +31,7 @@ echo "--------------------------------------------------------------------------
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
+ORIG_WD="`pwd`"
 
 #################################################################################################
 
@@ -116,7 +117,7 @@ yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
 
 echo -e "---------- Clean-up Old Packages\n"
 
-# remove system based devel package to prevent conflict with new one.
+# Remove system based devel package to prevent conflict with new one.
 yum -y erase qt-devel boost-devel
 
 #################################################################################################
@@ -145,6 +146,7 @@ fi
 echo -e "---------- Install AppImage SDK\n"
 
 # Build AppImageKit
+
 if [ ! -d AppImageKit ] ; then
     git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
 fi
@@ -153,7 +155,30 @@ cd /AppImageKit/
 git reset --hard HEAD
 git pull
 ./build.sh
-cd /
+
+#################################################################################################
+
+cd /b
+
+rm -rf /b/* || true
+
+cmake3 $ORIG_WD/3rdparty \
+       -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+       -DINSTALL_ROOT=/usr \
+       -DEXTERNALS_DOWNLOAD_DIR=/d
+
+
+# Low level libraries and Qt5 dependencies
+# NOTE: The order to compile each component here is very important.
+
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_boost               -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_eigen3              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_opencv              -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lensfun             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qt                  -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit            -- -j$CPU_CORES
 
 #################################################################################################
 

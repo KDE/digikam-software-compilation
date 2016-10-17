@@ -32,15 +32,10 @@ StartScript
 ChecksCPUCores
 CentOS6Adjustments
 . /opt/rh/devtoolset-4/enable
+ORIG_WD="`pwd`"
 
 #################################################################################################
 
-ORIG_WD="`pwd`"
-
-# Make sure we build from the /, parts of this script depends on that. We also need to run as root...
-cd  /
-
-# start building the deps
 cd /b
 
 rm -rf /b/* || true
@@ -51,16 +46,6 @@ cmake3 $ORIG_WD/3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
 # NOTE: The order to compile each component here is very important.
-
-# extralibs and Qt5 dependencies
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2               -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lcms2               -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_boost               -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_eigen3              -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_opencv              -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lensfun             -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qt                  -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit            -- -j$CPU_CORES
 
 # core KF5 frameworks dependencies
 cmake3 --build . --config RelWithDebInfo --target ext_extra_cmake_modules -- -j$CPU_CORES
