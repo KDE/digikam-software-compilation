@@ -147,20 +147,29 @@ cp /usr/bin/digikam ./usr/bin
 
 echo -e "---------- Scan dependencies recurssively\n"
 
-#ldd usr/bin/digikam | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-CopyReccursiveDependencies(usr/bin/digikam ./usr/lib)
+CopyReccursiveDependencies /usr/bin/digikam ./usr/lib
 
-ldd usr/lib64/libdigikam*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-ldd usr/plugins/kipiplugin*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
+FILES=$(ls /usr/lib64/libdigikam*.so)
+
+for FILE in $FILES ; do
+    CopyReccursiveDependencies ${FILE} ./usr/lib
+done
+
+FILES=$(ls /usr/plugins/kipiplugin*.so)
+
+for FILE in $FILES ; do
+    CopyReccursiveDependencies ${FILE} ./usr/lib
+done
+
 #ldd usr/lib64/plugins/imageformats/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
 
-ldd usr/plugins/platforms/libqxcb.so | grep "=>" | awk '{print $3}'  |  xargs -I '{}' cp -v '{}' ./usr/lib || true
+CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 
 # Copy in the indirect dependencies
 FILES=$(find . -type f -executable)
 
 for FILE in $FILES ; do
-    ldd "${FILE}" | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
+    CopyReccursiveDependencies ${FILE} ./usr/lib
 done
 
 #################################################################################################
