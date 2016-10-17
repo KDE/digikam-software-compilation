@@ -143,9 +143,9 @@ fi
 
 #################################################################################################
 
-echo -e "---------- Install AppImage SDK\n"
+echo -e "---------- Install AppImage SDKs\n"
 
-# Build AppImageKit
+# Build standard AppImageKit
 
 if [ ! -d AppImageKit ] ; then
     git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
@@ -155,6 +155,17 @@ cd /AppImageKit/
 git reset --hard HEAD
 git pull
 ./build.sh
+
+# Build new AppImageKit V2
+
+#if [ ! -d AppImageKitV2 ] ; then
+#    git clone  --depth 1 https://github.com/probonopd/appimagetool.git /AppImageKitV2
+#fi
+#
+#cd /AppImageKitV2/
+#git reset --hard HEAD
+#git pull
+#./build.sh
 
 #################################################################################################
 
