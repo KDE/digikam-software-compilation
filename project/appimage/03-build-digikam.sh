@@ -33,7 +33,6 @@ ChecksCPUCores
 ChecksRunAsRoot
 CentOS6Adjustments
 . /opt/rh/devtoolset-4/enable
-export CMAKE_BINARY=cmake3
 
 #################################################################################################
 
@@ -84,19 +83,31 @@ echo "---------- Configure digiKam $DK_VERSION"
 
 rm -rf build
 mkdir build
+cd build
 
-sed -e "s/DIGIKAMSC_CHECKOUT_PO=OFF/DIGIKAMSC_CHECKOUT_PO=ON/g"                 ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"                   ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"                               ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_OPENCV3=OFF/DENABLE_OPENCV3=ON/g"                             ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_MEDIAPLAYER=ON/DENABLE_MEDIAPLAYER=OFF/g"                     ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_KFILEMETADATASUPPORT=ON/DENABLE_KFILEMETADATASUPPORT=OFF/g"   ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_AKONADICONTACTSUPPORT=ON/DENABLE_AKONADICONTACTSUPPORT=OFF/g" ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-sed -e "s/DENABLE_MEDIAPLAYER=ON/DENABLE_MEDIAPLAYER=OFF/g"                     ./bootstrap.linux > ./tmp.linux ; mv -f ./tmp.linux ./bootstrap.linux
-
-chmod +x ./bootstrap.linux
-
-./bootstrap.linux
+cmake3 -G "Unix Makefiles" .. \
+      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_TESTING=OFF \
+      -DDIGIKAMSC_CHECKOUT_PO=ON \
+      -DDIGIKAMSC_CHECKOUT_DOC=OFF \
+      -DDIGIKAMSC_COMPILE_PO=ON \
+      -DDIGIKAMSC_COMPILE_DOC=OFF \
+      -DDIGIKAMSC_COMPILE_DIGIKAM=ON \
+      -DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON \
+      -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
+      -DDIGIKAMSC_COMPILE_LIBKSANE=ON \
+      -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
+      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
+      -DENABLE_OPENCV3=ON \
+      -DENABLE_KFILEMETADATASUPPORT=OFF \
+      -DENABLE_AKONADICONTACTSUPPORT=OFF \
+      -DENABLE_MYSQLSUPPORT=ON \
+      -DENABLE_INTERNALMYSQL=ON \
+      -DENABLE_MEDIAPLAYER=OFF \
+      -DENABLE_DBUS=ON \
+      -DENABLE_APPSTYLES=ON \
+      -Wno-dev
 
 if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
@@ -104,12 +115,19 @@ if [ $? -ne 0 ]; then
     exit;
 fi
 
-cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
+if [ -d ./extra/libkvkontakte/src ]; then
+    ln -sf src ./extra/libkvkontakte/Vkontakte
+fi
+
+if [ -d ./extra/libmediawiki/src ]; then
+    ln -sf src ./extra/libmediawiki/MediaWiki
+fi
+
+cat ../build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 
 echo -e "\n\n"
 echo "---------- Building digiKam $DK_VERSION"
 
-cd build
 make -j$CPU_CORES
 
 if [ $? -ne 0 ]; then
