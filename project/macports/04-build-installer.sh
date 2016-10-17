@@ -126,7 +126,6 @@ share/applications \
 share/OpenCV \
 share/k* \
 share/lensfun \
-share/locale \
 share/mime \
 Library/Application/ \
 Marble.app/Contents/Resources/ \
@@ -295,9 +294,25 @@ for path in $OTHER_APPS $OTHER_DIRS ; do
 done
 
 # Special case with data dirs. QStandardPaths::GenericDataLocation was patched everywhere
-# in source code by QStandardPaths::AppDataLocation 
+# in source code by QStandardPaths::AppDataLocation
 for path in $OTHER_DATA ; do
     cp -a "$INSTALL_PREFIX/$path" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
+done
+
+# copy i18n
+
+cd $INSTALL_PREFIX
+
+FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep /share/locale/ | cut -d' ' -f3  | awk '{sub("/opt/digikam/","")}1')
+
+for FILE in $FILES ; do
+    rsync -R "./$FILE" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
+done
+
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log | grep /share/locale/ | cut -d' ' -f3 | awk '{sub("/opt/digikam/","")}1')
+
+for FILE in $FILES ; do
+    rsync -R "./$FILE" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
 done
 
 # Showfoto resources dir must be merged with digiKam.
