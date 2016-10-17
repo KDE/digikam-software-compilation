@@ -78,3 +78,25 @@ fi
 export LD_LIBRARY_PATH=/usr/lib64/:/usr/lib:/digikam.appdir/usr/lib
 
 }
+
+########################################################################
+# Copy dependencies with ldd analysis
+# arg1 : original file path to parse.
+# arg2 : target path to copy dependencies
+CopyReccursiveDependencies()
+{
+
+echo "Scan dependencies for $1"
+
+FILES=$(ldd $1 | grep "=>" | awk '{print $3}')
+
+for FILE in $FILES ; do
+    if [ -f "$FILE" ] ; then
+        if [ ! -f "$2$FILE" ]
+            cp -v $FILE $2
+            echo "   ==> $FILE"
+        fi
+    fi
+done
+
+}
