@@ -41,7 +41,6 @@ ORIG_WD="`pwd`"
 DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
 
 #################################################################################################
-# Build icons-set ressource
 
 echo -e "---------- Build icons-set ressource\n"
 

@@ -34,77 +34,94 @@ CentOS6Adjustments
 
 #################################################################################################
 
+echo -e "---------- Update Linux CentOS 6\n"
+
 yum -y install epel-release
 
 # we need to be up to date in order to install the xcb-keysyms dependency
 yum -y update
 
-# base dependencies and Qt5.
+#################################################################################################
+
+echo -e "---------- Install New Development Packages\n"
+
+# Packages for base dependencies and Qt5.
 yum -y install wget \
                tar \
                bzip2 \
                gettext \
-               zlib-devel \
-               expat-devel \
                git \
                subversion \
                libtool \
                which \
                fuse \
+               automake \
+               mesa-libEGL \
+               cmake3 \
+               gcc-c++ \
+               patch \
+               libxcb \
+               xcb-util \
+               xkeyboard-config \
+               gperf \
+               ruby \
+               bison \
+               flex \
+               zlib-devel \
+               expat-devel \
                fuse-devel \
                libjpeg-devel \
                libpng-devel \
-               automake \
                libtool-ltdl-devel \
                glib2-devel \
                glibc-headers \
                mysql-devel \
                openssl-devel \
-               mesa-libEGL \
                cppunit-devel \
-               cmake3 \
-               glibc-headers \
                libstdc++-devel \
-               gcc-c++ \
                freetype-devel \
                fontconfig-devel \
                libxml2-devel \
                libstdc++-devel \
                libXrender-devel \
-               patch \
                xcb-util-keysyms-devel \
                libXi-devel \
                mesa-libGL-devel \
                mesa-libGLU-devel \
-               libxcb \
                libxcb-devel \
-               xcb-util \
                xcb-util-devel \
                glibc-devel \
-               xkeyboard-config \
                libudev-devel \
                libicu-devel \
                libtiff-devel \
                libgphoto2-devel \
                sane-backends-devel \
-               gperf \
-               ruby \
                jasper-devel \
                sqlite-devel \
                libusb-devel \
                libexif-devel \
                libical-devel \
-               libxslt-devel \
-               bison \
-               flex
+               libxslt-devel 
+
+#################################################################################################
+
+echo -e "---------- Install New Compiler Tools Set\n"
 
 # Newer compiler than what comes with CentOS 6
 yum -y install centos-release-scl-rh
 yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
 . /opt/rh/devtoolset-4/enable
 
+#################################################################################################
+
+echo -e "---------- Clean-up Old Packages\n"
+
 # remove system based devel package to prevent conflict with new one.
 yum -y erase qt-devel boost-devel
+
+#################################################################################################
+
+echo -e "---------- Prepare CentOS to Compile Nex Dependencies\n"
 
 # Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
 # However, this is where .pc files get installed when bulding libraries... (FIXME)
@@ -122,6 +139,10 @@ fi
 if [ ! -d /d ] ; then
     mkdir /d
 fi
+
+#################################################################################################
+
+echo -e "---------- Install AppImage SDK\n"
 
 # Build AppImageKit
 if [ ! -d AppImageKit ] ; then
