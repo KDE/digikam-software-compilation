@@ -82,12 +82,11 @@ cd /digikam.appdir
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
-# copy the Qt translation
-cp -r /usr/translations ./usr
+
 # copy runtime data files
 cp -r /usr/share/digikam             ./usr/share
 cp $ORIG_WD/icon-rcc/breeze.rcc      ./usr/share/digikam
-cp ${ORIG_WD}/data/qt.conf           ./usr/bin
+cp $ORIG_WD/data/qt.conf             ./usr/bin
 cp -r /usr/share/lensfun             ./usr/share
 cp -r /usr/share/kipiplugin*         ./usr/share
 cp -r /usr/share/knotifications5     ./usr/share
@@ -96,7 +95,21 @@ cp -r /usr/share/kservicetypes5      ./usr/share
 cp -r /usr/share/kxmlgui5            ./usr/share
 cp -r /usr/share/solid               ./usr/share
 cp -r /usr/share/OpenCV              ./usr/share
-cp -r /usr/share/locale              ./usr/share
+
+# copy i18n
+cp -r /usr/translations              ./usr
+
+FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
+
+for FILE in $FILES ; do
+    cp --parents $FILE ./
+done
+
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
+
+for FILE in $FILES ; do
+    cp --parents $FILE ./
+done
 
 # For Marble
 cp -r /usr/lib64/marble/plugins/     ./usr/bin/
