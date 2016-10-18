@@ -86,6 +86,7 @@ yum -y install wget \
                libxml2-devel \
                libstdc++-devel \
                libXrender-devel \
+               lcms2-devel \
                xcb-util-keysyms-devel \
                libXi-devel \
                mesa-libGL-devel \
@@ -192,12 +193,10 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=/d
 
-
 # Low level libraries and Qt5 dependencies
 # NOTE: The order to compile each component here is very important.
 
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2    -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lcms2    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_boost    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv   -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun  -- -j$CPU_CORES
