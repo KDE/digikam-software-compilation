@@ -301,15 +301,16 @@ done
 
 # copy i18n
 
-cd $INSTALL_PREFIX
+i18nprefix=$INSTALL_PREFIX/share/
+cd $i18nprefix
 
-FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep /share/locale/ | cut -d' ' -f3  | awk '{sub("/opt/digikam/","")}1')
+FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep "$INSTALL_PREFIX/share/locale/" | cut -d' ' -f3  | awk '{sub("'"$i18nprefix"'","")}1')
 
 for FILE in $FILES ; do
     rsync -R "./$FILE" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
 done
 
-FILES=$(cat $ORIG_WD/logs/build-digikam.full.log | grep /share/locale/ | cut -d' ' -f3 | awk '{sub("/opt/digikam/","")}1')
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log | grep "$INSTALL_PREFIX/share/locale/" | cut -d' ' -f3  | awk '{sub("'"$i18nprefix"'","")}1')
 
 for FILE in $FILES ; do
     rsync -R "./$FILE" "$TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/"
