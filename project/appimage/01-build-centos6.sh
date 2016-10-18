@@ -102,7 +102,11 @@ yum -y install wget \
                libusb-devel \
                libexif-devel \
                libical-devel \
-               libxslt-devel 
+               libxslt-devel \
+               xz-devel \
+               lz4-devel \
+               inotify-tools-devel \
+               openssl-devel 
 
 #################################################################################################
 
@@ -143,11 +147,11 @@ fi
 
 #################################################################################################
 
-echo -e "---------- Install AppImage SDKs\n"
+echo -e "---------- Install AppImage SDKs V1\n"
 
 # Build standard AppImageKit
 
-if [ ! -d AppImageKit ] ; then
+if [ ! -d /AppImageKit ] ; then
     git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
 fi
 
@@ -156,16 +160,25 @@ git reset --hard HEAD
 git pull
 ./build.sh
 
+#echo -e "---------- Install AppImage SDKs V2\n"
+
 # Build new AppImageKit V2
 
-#if [ ! -d AppImageKitV2 ] ; then
-#    git clone  --depth 1 https://github.com/probonopd/appimagetool.git /AppImageKitV2
+#if [ ! -d /AppImageKitV2 ] ; then
+#    git clone --recursive https://github.com/probonopd/appimagetool.git /AppImageKitV2
 #fi
-#
+
 #cd /AppImageKitV2/
-#git reset --hard HEAD
-#git pull
+#./install-build-deps.sh
 #./build.sh
+
+# Get the ID of the last successful build on Travis CI
+#ID=$(wget -q https://api.travis-ci.org/repos/probonopd/appimagetool/builds -O - | head -n 1 | sed -e 's|}|\n|g' | grep '"result":0' | head -n 1 | sed -e 's|,|\n|g' | grep '"id"' | cut -d ":" -f 2)
+
+# Get the transfer.sh URL from the logfile of the last successful build on Travis CI
+#URL=$(wget -q "https://s3.amazonaws.com/archive.travis-ci.org/jobs/$((ID+1))/log.txt" -O - | grep "https://transfer.sh/.*/appimagetool" | tail -n 1 | sed -e 's|\r||g')
+
+#wget "$URL"
 
 #################################################################################################
 
