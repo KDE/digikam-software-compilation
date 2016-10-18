@@ -9,8 +9,8 @@
 SET(EXTPREFIX_lensfun "${EXTPREFIX}" )
 ExternalProject_Add( ext_lensfun
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://downloads.sourceforge.net/project/lensfun/0.3.2/lensfun-0.3.2.zip
-
+    URL http://downloads.sourceforge.net/project/lensfun/0.3.2/lensfun-0.3.2.tar.gz
+    URL_MD5 247e59a0812ec451f6cd0d20b3379cb5
     INSTALL_DIR ${EXTPREFIX_lensfun}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_lensfun}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
