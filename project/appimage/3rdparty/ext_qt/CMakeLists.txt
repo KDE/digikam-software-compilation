@@ -62,18 +62,3 @@ ExternalProject_Add(
     ALWAYS 0
 )
 
-ExternalProject_Add(
-    ext_qtwebkit
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL https://download.qt.io/community_releases/5.7/5.7.0/qtwebkit-opensource-src-5.7.0.tar.gz
-    URL_MD5 f1417508b9a4609a104c374dc12bd307
-    INSTALL_DIR ${EXTPREFIX_qtwebkit}
-    CONFIGURE_COMMAND qmake PREFIX=${EXTPREFIX_qtwebkit}
-
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
-    UPDATE_COMMAND ""
-    BUILD_IN_SOURCE 1
-    ALWAYS 0
-)
-
