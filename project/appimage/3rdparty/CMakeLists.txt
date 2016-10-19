@@ -49,6 +49,7 @@ endif()
 
 # this list must be dependency-ordered
 add_subdirectory(ext_exiv2)
+add_subdirectory(ext_boost)
 add_subdirectory(ext_opencv)
 add_subdirectory(ext_lensfun)
 add_subdirectory(ext_qt)
