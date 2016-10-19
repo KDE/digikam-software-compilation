@@ -141,13 +141,15 @@ cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1      | cut -d ">" -f 2 | xargs) .
 # For Fedora 20
 cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
-cp /usr/bin/digikam ./usr/bin
+cp /usr/bin/digikam  ./usr/bin
+#cp /usr/bin/showfoto ./usr/bin
 
 #################################################################################################
 
 echo -e "---------- Scan dependencies recurssively\n"
 
-CopyReccursiveDependencies /usr/bin/digikam ./usr/lib
+CopyReccursiveDependencies /usr/bin/digikam  ./usr/lib
+#CopyReccursiveDependencies /usr/bin/showfoto ./usr/lib
 
 FILES=$(ls /usr/lib64/libdigikam*.so)
 
