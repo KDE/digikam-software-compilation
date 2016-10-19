@@ -94,6 +94,7 @@ cp -r /usr/share/kservicetypes5      ./usr/share
 cp -r /usr/share/kxmlgui5            ./usr/share
 cp -r /usr/share/solid               ./usr/share
 cp -r /usr/share/OpenCV              ./usr/share
+cp -r /usr/share/metainfo            ./usr/share
 
 # copy i18n
 cp -r /usr/translations              ./usr
