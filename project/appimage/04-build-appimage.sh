@@ -251,10 +251,9 @@ echo -e "---------- Strip Binaries Files \n"
 FILES=$(find . -type f -executable)
 
 for FILE in $FILES ; do
-    strip ${FILE} 2>&1>/dev/null || true
+    echo -e "Strip symbols in: $FILE"
+    strip ${FILE} 2>/dev/null || true
 done
-
-strip usr/plugins/kipiplugin_* usr/bin/* usr/lib/* || true
 
 #################################################################################################
 
