@@ -151,6 +151,7 @@ echo -e "---------- Scan dependencies recurssively\n"
 
 CopyReccursiveDependencies /usr/bin/digikam  ./usr/lib
 #CopyReccursiveDependencies /usr/bin/showfoto ./usr/lib
+CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 
 FILES=$(ls /usr/lib64/libdigikam*.so)
 
@@ -164,9 +165,11 @@ for FILE in $FILES ; do
     CopyReccursiveDependencies ${FILE} ./usr/lib
 done
 
-#ldd usr/lib64/plugins/imageformats/*.so  | grep "=>" | awk '{print $3}' | xargs -I '{}' cp -v '{}' ./usr/lib || true
-
-CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
+#FILES=$(ls /usr/lib64/plugins/imageformats/*.so)
+#
+#for FILE in $FILES ; do
+#    CopyReccursiveDependencies /usr/lib64/plugins/imageformats/*.so ./usr/lib
+#done
 
 # Copy in the indirect dependencies
 FILES=$(find . -type f -executable)
