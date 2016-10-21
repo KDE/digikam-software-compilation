@@ -17,3 +17,52 @@ To compile digiKam from Git as an AppImage:
   bash 04-build-appimage.sh   # ~10mn
 
 Your appimage is ready in ./appimage/digikam-version-x86_64.appimage
+
+BUNDLE CONTENTS
+---------------
+
+Note : the bundle is rellocable.
+
+.
+└── usr
+    ├── bin						Main executable
+    │   ├── data					Marble data
+    │   └── plugins					Marble plugins
+    ├── lib						All Shared libraries, including 64 bits
+    ├── lib64 -> lib					Symbolic link, for compatibility
+    ├── plugins						Qt5 based plugins
+    │   ├── bearer
+    │   ├── designer
+    │   ├── generic
+    │   ├── geoservices
+    │   ├── iconengines
+    │   ├── imageformats
+    │   ├── kauth					KF5 authentification
+    │   ├── kf5						Generic KF5 plugins
+    │   ├── mediaservice
+    │   ├── org.kde.kglobalaccel5.platforms		KF5 global accelerators
+    │   ├── platforminputcontexts
+    │   ├── platforms
+    │   ├── playlistformats
+    │   ├── position
+    │   ├── sensorgestures
+    │   ├── sensors
+    │   ├── sqldrivers
+    │   ├── webkit
+    │   └── xcbglintegrations
+    ├── share						Shared data files
+    │   ├── digikam					digiKam 
+    │   ├── kipiplugin_flashexport			kipi tools
+    │   ├── kipiplugin_piwigo				kipi tools
+    │   ├── kipiplugin_printimages			kipi tools
+    │   ├── knotifications5				KF5
+    │   ├── kservices5					KF5
+    │   ├── kservicetypes5				KF5
+    │   ├── kxmlgui5					KF5
+    │   ├── lensfun					Lens database for Lensfun
+    │   ├── locale					KF5 i18n
+    │   ├── metainfo					Application metadata
+    │   ├── OpenCV					OpenCv shared lib data
+    │   └── solid					KF5 Solid
+    └── translations					Qt5 i18n
+
