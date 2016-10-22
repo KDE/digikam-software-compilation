@@ -107,6 +107,7 @@ cmake3 -G "Unix Makefiles" .. \
       -DENABLE_MEDIAPLAYER=OFF \
       -DENABLE_DBUS=ON \
       -DENABLE_APPSTYLES=ON \
+      -DENABLE_KIO=OFF \
       -Wno-dev
 
 if [ $? -ne 0 ]; then
