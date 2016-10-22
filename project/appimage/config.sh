@@ -8,10 +8,10 @@
 ########################################################################
 
 # Absolute path where are downloaded all tarballs to compile.
-DOWNLOAD_DIR = "/d"
+DOWNLOAD_DIR="/d"
 
 # Absolute path where are compiled all tarballs
-BUILDING_DIR = "/b"
+BUILDING_DIR="/b"
 
 ########################################################################
 
