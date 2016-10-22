@@ -36,14 +36,14 @@ ORIG_WD="`pwd`"
 
 #################################################################################################
 
-cd /b
+cd $BUILDING_DIR
 
-rm -rf /b/* || true
+rm -rf $BUILDING_DIR/* || true
 
 cmake3 $ORIG_WD/3rdparty \
        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
        -DINSTALL_ROOT=/usr \
-       -DEXTERNALS_DOWNLOAD_DIR=/d
+       -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
 
 # NOTE: The order to compile each component here is very important.
 

@@ -97,29 +97,27 @@ cp -r /usr/share/OpenCV              ./usr/share
 cp -r /usr/share/metainfo            ./usr/share
 
 # copy i18n
+
+# Qt translations files
 cp -r /usr/translations              ./usr
 
+# KF5 translations files
 FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
 
 for FILE in $FILES ; do
     cp --parents $FILE ./
 done
 
+# digiKam translations files
 FILES=$(cat $ORIG_WD/logs/build-digikam.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
 
 for FILE in $FILES ; do
     cp --parents $FILE ./
 done
 
-# For Marble
+# Marble data and plugins files
 cp -r /usr/lib64/marble/plugins/     ./usr/bin/
 cp -r /usr/share/marble/data         ./usr/bin/
-
-# The Famous GStreamer puzzle. Do not work as expected of course...
-#cp /usr/lib64/gstreamer-0.10/*       ./usr/lib
-#cp /usr/libexec/gstreamer-0.10/*     ./usr/bin
-#cp /usr/bin/gst-*                    ./usr/bin
-#cp /usr/lib64/libgs*.so*             ./usr/lib
 
  # otherwise segfaults!?
 cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2    | cut -d ">" -f 2 | xargs) ./usr/lib/

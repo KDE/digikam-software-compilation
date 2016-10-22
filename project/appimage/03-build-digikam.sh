@@ -72,7 +72,7 @@ if [ $? -ne 0 ] ; then
     exit;
 fi
 
-cd ./core 
+cd ./core
 git checkout $DK_VERSION
 cd ../extra/kipi-plugins
 git checkout $DK_VERSION

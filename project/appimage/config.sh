@@ -7,10 +7,15 @@
 
 ########################################################################
 
+DOWNLOAD_DIR = "/d"
+BUILDING_DIR = "/b"
+
+########################################################################
+
 # digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
 # Location to build source code.
-DK_BUILDTEMP=~/dktemp
+DK_BUILDTEMP=$BUILDING_DIR/dktemp
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 # digiKam tag version from git. Official tarball do not include extra shared libraries.

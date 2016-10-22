@@ -128,7 +128,7 @@ yum -y erase qt-devel boost-devel
 
 #################################################################################################
 
-echo -e "---------- Prepare CentOS to Compile Nex Dependencies\n"
+echo -e "---------- Prepare CentOS to Compile Extra Dependencies\n"
 
 # Workaround for: On CentOS 6, .pc files in /usr/lib/pkgconfig are not recognized
 # However, this is where .pc files get installed when bulding libraries... (FIXME)
@@ -140,11 +140,11 @@ ln -sf /usr/share/pkgconfig /usr/lib/pkgconfig
 cd /
 
 # Create the build dir for the 3rdparty deps
-if [ ! -d /b ] ; then
-    mkdir /b
+if [ ! -d $BUILDING_DIR ] ; then
+    mkdir $BUILDING_DIR
 fi
-if [ ! -d /d ] ; then
-    mkdir /d
+if [ ! -d $DOWNLOAD_DIR ] ; then
+    mkdir $DOWNLOAD_DIR
 fi
 
 #################################################################################################
@@ -187,14 +187,14 @@ fi
 
 #################################################################################################
 
-cd /b
+cd $BUILDING_DIR
 
-rm -rf /b/* || true
+rm -rf $BUILDING_DIR/* || true
 
 cmake3 $ORIG_WD/3rdparty \
        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
        -DINSTALL_ROOT=/usr \
-       -DEXTERNALS_DOWNLOAD_DIR=/d
+       -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
 
 # Low level libraries and Qt5 dependencies
 # NOTE: The order to compile each component here is very important.
