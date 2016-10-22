@@ -98,7 +98,7 @@ cmake3 -G "Unix Makefiles" .. \
       -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
       -DDIGIKAMSC_COMPILE_LIBKSANE=ON \
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
-      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=ON \
+      -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
       -DENABLE_OPENCV3=ON \
       -DENABLE_KFILEMETADATASUPPORT=OFF \
       -DENABLE_AKONADICONTACTSUPPORT=OFF \
@@ -113,10 +113,6 @@ if [ $? -ne 0 ]; then
     echo "---------- Cannot configure digiKam $DK_VERSION."
     echo "---------- Aborting..."
     exit;
-fi
-
-if [ -d ./extra/libkvkontakte/src ]; then
-    ln -sf src ./extra/libkvkontakte/Vkontakte
 fi
 
 if [ -d ./extra/libmediawiki/src ]; then

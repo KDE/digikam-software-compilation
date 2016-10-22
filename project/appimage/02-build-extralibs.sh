@@ -45,6 +45,9 @@ cmake3 $ORIG_WD/3rdparty \
        -DINSTALL_ROOT=/usr \
        -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
 
+cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_knotifications      -- -j$CPU_CORES
+exit
 # NOTE: The order to compile each component here is very important.
 
 # core KF5 frameworks dependencies
@@ -80,8 +83,6 @@ cmake3 --build . --config RelWithDebInfo --target ext_sonnet              -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets        -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kio                 -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kparts              -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
 
 # Linux Desktop support
 cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
