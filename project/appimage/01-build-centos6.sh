@@ -149,38 +149,41 @@ fi
 
 #################################################################################################
 
-echo -e "---------- Install AppImage SDKs V1\n"
+if [[ $APPIMAGE_VERSION -eq 1 ]]; then
 
-# Build standard AppImageKit
+    echo -e "---------- Install AppImage SDKs V1\n"
 
-if [ ! -d /AppImageKit ] ; then
-    git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
+    # Build standard AppImageKit
+
+    if [ ! -d /AppImageKit ] ; then
+        git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
+    fi
+
+    cd /AppImageKit/
+    git reset --hard HEAD
+    git pull
+    ./build.sh
+
+elif [[ $APPIMAGE_VERSION -eq 2 ]]; then
+
+    echo -e "---------- Install AppImage SDKs V2\n"
+
+    # Build new AppImageKit V2
+
+    if [ ! -d /AppImageKitV2 ] ; then
+        git clone --recursive https://github.com/probonopd/appimagetool.git /AppImageKitV2
+    fi
+
+    cd /AppImageKitV2/
+    ./install-build-deps.sh
+    ./build.sh
+
+else
+
+    echo -e "Unknown AppImage SDK version!"
+    exit
+
 fi
-
-cd /AppImageKit/
-git reset --hard HEAD
-git pull
-./build.sh
-
-#echo -e "---------- Install AppImage SDKs V2\n"
-
-# Build new AppImageKit V2
-
-#if [ ! -d /AppImageKitV2 ] ; then
-#    git clone --recursive https://github.com/probonopd/appimagetool.git /AppImageKitV2
-#fi
-
-#cd /AppImageKitV2/
-#./install-build-deps.sh
-#./build.sh
-
-# Get the ID of the last successful build on Travis CI
-#ID=$(wget -q https://api.travis-ci.org/repos/probonopd/appimagetool/builds -O - | head -n 1 | sed -e 's|}|\n|g' | grep '"result":0' | head -n 1 | sed -e 's|,|\n|g' | grep '"id"' | cut -d ":" -f 2)
-
-# Get the transfer.sh URL from the logfile of the last successful build on Travis CI
-#URL=$(wget -q "https://s3.amazonaws.com/archive.travis-ci.org/jobs/$((ID+1))/log.txt" -O - | grep "https://transfer.sh/.*/appimagetool" | tail -n 1 | sed -e 's|\r||g')
-
-#wget "$URL"
 
 #################################################################################################
 

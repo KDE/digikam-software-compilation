@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2013-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -20,3 +20,8 @@ DK_URL="http://download.kde.org/stable/digikam"
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
+
+########################################################################
+
+# AppImage SDK version to use (1 or 2)
+APPIMAGE_VERSION=1
