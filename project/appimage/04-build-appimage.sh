@@ -283,38 +283,52 @@ cd /
 
 #################################################################################################
 
-echo -e "---------- Create AppImage Bundle\n"
-
 APP=digikam
-
-# Source functions
-wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
-. ./functions.sh
-
-# Install desktopintegration in usr/bin/digikam.wrapper -- feel free to edit it
-cd /digikam.appdir
-
-# We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
-cp ${ORIG_WD}/data/AppRun .
-
-cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
-cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
-get_desktopintegration digikam
-
-cd /
 
 if [[ "$ARCH" = "x86_64" ]] ; then
     APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64"$DK_EPOCH".appimage"
-fi
-if [[ "$ARCH" = "i686" ]] ; then
+elif [[ "$ARCH" = "i686" ]] ; then
     APPIMAGE=$APP"-"$DK_RELEASEID"-i386"$DK_EPOCH".appimage"
 fi
 
-mkdir -p $ORIG_WD/appimage
-rm -f $ORIG_WD/appimage/* || true
-AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ $ORIG_WD/appimage/$APPIMAGE
+if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
 
-chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
+    echo -e "---------- Create Bundle with AppImage SDK V1\n"
+    
+    # Source functions
+    wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+    . ./functions.sh
+
+    # Install desktopintegration in usr/bin/digikam.wrapper
+    cd /digikam.appdir
+
+    # We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
+    cp ${ORIG_WD}/data/AppRun .
+
+    cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
+    cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
+    get_desktopintegration digikam
+
+    cd /
+
+    mkdir -p $ORIG_WD/appimage
+    rm -f $ORIG_WD/appimage/* || true
+    AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ $ORIG_WD/appimage/$APPIMAGE
+
+    chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
+
+elif [[ $APPIMAGE_VERSION -eq 2 ]] ; then
+
+    echo -e "---------- Create Bundle with AppImage SDK V2\n"
+
+    # TODO
+
+else
+
+    echo -e "Unknown AppImage SDK version!"
+    exit
+
+fi
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
