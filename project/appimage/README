@@ -1,22 +1,22 @@
-To compile digiKam from Git as an AppImage:
+RESUME
+------
+This scripts build a binary digiKam bundle for Linux using CentOS 6.8.
 
-- Create a fresh CentOS 6.x environment in a VM:
-  Install from CentOS-6.8-x86_64-bin-DVD1.iso
-  Yum install git
-  git clone git://anongit.kde.org/digikam-software-compilation.git DK
-  cd DK/project/appimage/
-  bash 01-build-centos6.sh    # ~10mn
 
-- Install the dependencies
-  bash 02-build-extralibs.sh  # ~2-3h, 5-6GB
+AUTHORS
+-------
+(c) 2015-2016 by :
 
-- Build digiKam:
-  bash 03-build-digikam.sh    # ~30mm
+Gilles Caulier <caulier dot gilles at gmail dot com>
 
-- Bundle the AppImage:
-  bash 04-build-appimage.sh   # ~10mn
 
-Your appimage is ready in ./appimage/digikam-version-x86_64.appimage
+DESCRIPTION
+-----------
+These files and scripts are used to make binary bundle of the digiKam
+Software Collection for Linux 64 bits. In addition to this README,
+there are comments in the scripts that provide some additional explanation for
+how they work.
+
 
 BUNDLE CONTENTS
 ---------------
@@ -25,22 +25,22 @@ Note : the bundle is rellocable.
 
 .
 └── usr
-    ├── bin						Main executable
-    │   ├── data					Marble data
-    │   └── plugins					Marble plugins
-    ├── lib						All Shared libraries, including 64 bits
-    ├── lib64 -> lib					Symbolic link, for compatibility
-    ├── plugins						Qt5 based plugins
+    ├── bin                                         Main executable
+    │   ├── data                                    Marble data
+    │   └── plugins                                 Marble plugins
+    ├── lib                                         All Shared libraries, including 64 bits
+    ├── lib64 -> lib                                Symbolic link, for compatibility
+    ├── plugins                                     Qt5 based plugins
     │   ├── bearer
     │   ├── designer
     │   ├── generic
     │   ├── geoservices
     │   ├── iconengines
     │   ├── imageformats
-    │   ├── kauth					KF5 authentification
-    │   ├── kf5						Generic KF5 plugins
+    │   ├── kauth                                   KF5 authentification
+    │   ├── kf5                                     Generic KF5 plugins
     │   ├── mediaservice
-    │   ├── org.kde.kglobalaccel5.platforms		KF5 global accelerators
+    │   ├── org.kde.kglobalaccel5.platforms         KF5 global accelerators
     │   ├── platforminputcontexts
     │   ├── platforms
     │   ├── playlistformats
@@ -50,19 +50,70 @@ Note : the bundle is rellocable.
     │   ├── sqldrivers
     │   ├── webkit
     │   └── xcbglintegrations
-    ├── share						Shared data files
-    │   ├── digikam					digiKam 
-    │   ├── kipiplugin_flashexport			kipi tools
-    │   ├── kipiplugin_piwigo				kipi tools
-    │   ├── kipiplugin_printimages			kipi tools
-    │   ├── knotifications5				KF5
-    │   ├── kservices5					KF5
-    │   ├── kservicetypes5				KF5
-    │   ├── kxmlgui5					KF5
-    │   ├── lensfun					Lens database for Lensfun
-    │   ├── locale					KF5 i18n
-    │   ├── metainfo					Application metadata
-    │   ├── OpenCV					OpenCv shared lib data
-    │   └── solid					KF5 Solid
-    └── translations					Qt5 i18n
+    ├── share                                       Shared data files
+    │   ├── digikam                                 digiKam 
+    │   ├── kipiplugin_flashexport                  kipi tools
+    │   ├── kipiplugin_piwigo                       kipi tools
+    │   ├── kipiplugin_printimages                  kipi tools
+    │   ├── knotifications5                         KF5
+    │   ├── kservices5                              KF5
+    │   ├── kservicetypes5                          KF5
+    │   ├── kxmlgui5                                KF5
+    │   ├── lensfun                                 Lens database for Lensfun
+    │   ├── locale                                  KF5 i18n
+    │   ├── metainfo                                Application metadata
+    │   ├── OpenCV                                  OpenCv shared lib data
+    │   └── solid                                   KF5 Solid
+    └── translations                                Qt5 i18n
 
+
+REQUIREMENTS
+------------
+
+- For technical reasons about compatibility with libc, CentOS 6.8 is used to be compatible to run under other 
+Linux distributions
+
+- Create a fresh CentOS 6.8 environment in a VM:
+  Install from CentOS-6.8-x86_64-bin-DVD1.iso
+  Yum install git
+  git clone git://anongit.kde.org/digikam-software-compilation.git DK
+  cd DK/project/appimage/
+
+- You must set the digiKam git tags to checkout right source code to package.
+Look in config.sh file for details.
+
+COMPONENTS
+----------
+There are 4 scripts to be run by the user. 2 first ones installs
+components on CentOS and all dependencies, next one digiKam, and last one makes a 
+binary bundle for Linux.
+
+SCRIPT DESCRIPTIONS
+-------------------
+All scripts should be run from within this directory.
+
+* 01-build-centos6.sh:
+
+This script downloads and configures all packages for CentOS 6.8 to compile digiKam, KF5, Qt5, and all other important low level libraries. When the system is ready, this script compile and install low level and Qt5 libraries.
+
+* 02-build-extralibs.sh:
+
+This script configures, compile, and install KF5 frameworks and Marble.
+
+* 03-build-digikam.sh:
+
+This script configures, and compile digiKam.
+
+* 04-build-installer.sh:
+
+Once you've successfully built digiKam, this cscript create the AppImage bundle.
+This include applications documentations and translations.
+
+* makeall.sh
+
+This script permit to build whole 64 bits Linux bundle from scratch at the same time.
+
+LICENSES
+--------
+The scripts and other contents of this package are licensed
+under the GNU General Public License version 2, or any later version.
