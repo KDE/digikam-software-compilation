@@ -69,6 +69,7 @@ export LANG=en_us.UTF-8
 # Determine which architecture should be built
 if [[ "$(arch)" = "i686" || "$(arch)" = "x86_64" ]] ; then
     ARCH=$(arch)
+    echo "Architecture is $ARCH"
 else
     echo "Architecture could not be determined"
     exit 1
