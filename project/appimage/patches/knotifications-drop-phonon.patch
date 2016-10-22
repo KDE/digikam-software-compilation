@@ -1,25 +1,21 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 99eee81..bfad3ed 100644
+index 0104c73..de44e9a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -25,7 +25,7 @@ endif()
- include(KDEInstallDirs)
- include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
- include(KDECMakeSettings)
--find_package(Phonon4Qt5 4.6.60 NO_MODULE)
-+#find_package(Phonon4Qt5 4.6.60 NO_MODULE)
+@@ -59,11 +59,11 @@ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Codecs ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
  
- find_package(KF5Completion ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index d00c047..0575cb4 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -30,6 +30,7 @@ target_link_libraries(KF5NotifyConfig
-             Qt5::Widgets
-         PRIVATE
-             KF5::I18n
-+            KF5::Config
-             KF5::KIOWidgets     # KUrlRequester
-             ${PHONON_LIBS}
-             Qt5::DBus)
+-find_package(Phonon4Qt5 4.6.60 REQUIRED NO_MODULE)
+-set_package_properties(Phonon4Qt5 PROPERTIES
+-   DESCRIPTION "Qt-based audio library"
+-   TYPE REQUIRED
+-   PURPOSE "Required to build audio notification support")
++#find_package(Phonon4Qt5 4.6.60 REQUIRED NO_MODULE)
++#set_package_properties(Phonon4Qt5 PROPERTIES
++#   DESCRIPTION "Qt-based audio library"
++#   TYPE REQUIRED
++#   PURPOSE "Required to build audio notification support")
+ if (Phonon4Qt5_FOUND)
+   add_definitions(-DHAVE_PHONON4QT5)
+ endif()
