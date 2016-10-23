@@ -1,6 +1,6 @@
 RESUME
 ------
-This scripts build a binary digiKam bundle for Linux using CentOS 6.8.
+This scripts build a binary digiKam AppImage bundle for Linux using CentOS 6.8.
 
 
 AUTHORS
@@ -12,10 +12,14 @@ Gilles Caulier <caulier dot gilles at gmail dot com>
 
 DESCRIPTION
 -----------
-These files and scripts are used to make binary bundle of the digiKam
-Software Collection for Linux 64 bits. In addition to this README,
-there are comments in the scripts that provide some additional explanation for
-how they work.
+These files and scripts are used to make binary AppImage bundle of the digiKam
+Software Collection for Linux 64 bits.
+
+For more information about AppImage, see at this url:
+http://appimage.org/
+
+In addition to this README, there are comments in the scripts that provide some
+additional explanation for how they work.
 
 
 BUNDLE CONTENTS
@@ -70,23 +74,25 @@ Note : the bundle is rellocable.
 REQUIREMENTS
 ------------
 
-- For technical reasons about compatibility with libc, CentOS 6.8 is used to be compatible to run under other 
-Linux distributions
+- For technical reasons about compatibility with libc, CentOS 6.8 is used to be compatible
+  at run-time under other Linux distributions.
 
-- Create a fresh CentOS 6.8 environment in a VM:
+- Create a fresh CentOS 6.8 environment in a Virtual Machine:
   Install from CentOS-6.8-x86_64-bin-DVD1.iso
-  Yum install git
+  yum install git
   git clone git://anongit.kde.org/digikam-software-compilation.git DK
   cd DK/project/appimage/
 
 - You must set the digiKam git tags to checkout right source code to package.
-Look in config.sh file for details.
+  Look in config.sh file for details.
+
 
 COMPONENTS
 ----------
 There are 4 scripts to be run by the user. 2 first ones installs
 components on CentOS and all dependencies, next one digiKam, and last one makes a 
-binary bundle for Linux.
+binary AppImage bundle 64 bits for Linux.
+
 
 SCRIPT DESCRIPTIONS
 -------------------
@@ -112,6 +118,7 @@ This include applications documentations and translations.
 * makeall.sh
 
 This script permit to build whole 64 bits Linux bundle from scratch at the same time.
+
 
 LICENSES
 --------
