@@ -5,7 +5,7 @@ Order : Modules           : DK dependency : Inter-dependencies                  
   3   : kcoreaddons       :       X       : -                                                                                                               : -
   4   : kwindowsystem     :       X       : -                                                                                                               : -
   5   : solid             :       X       : -                                                                                                               : Use default options to off.
-  6   : threadwearver     :       X       : -                                                                                                               : -
+  6   : threadweaver      :       X       : -                                                                                                               : -
   6   : ki18n             :       X       : qt5script                                                                                                       : BUILD_WITH_QTSCRIPT=ON.
   7   : kcrash            :               : kwindowsystem, kcoreaddons                                                                                      : -
   8   : ktextwidgets      :               : kcompletion, kconfig, kconfigwidgets, ki18n, kiconthemes, kservice, kwidgetsaddons, kwindowsystem, sonnet       : -
