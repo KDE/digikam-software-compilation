@@ -76,6 +76,4 @@ InstallKF5Component(kjobwidgets         ${KD_VERSION} "4fd4ab8f572b7418efb38ec61
 InstallKF5Component(sonnet              ${KD_VERSION} "45bd0c4fe7f903980617bc818ee543e7" ""                                               "")
 InstallKF5Component(ktextwidgets        ${KD_VERSION} "c32881a059bd4af1874262f682b0a2e5" ""                                               "")
 InstallKF5Component(kio                 ${KD_VERSION} "b46b822a74a038531155a4189c12afae" ""                                               "")
-InstallKF5Component(kparts              ${KD_VERSION} "95c81fa648547add2e028242589f7e00" ""                                               "")
-InstallKF5Component(kdoctools           ${KD_VERSION} "c719c59151cc6bbb6fa660c0ce1e0b03" ""                                               "")
 InstallKF5Component(kwallet             ${KD_VERSION} "012d0e05887ede47f221d08474213dd8" "-DBUILD_KWALLETD=OFF;-DBUILD_KWALLET_QUERY=OFF" "")

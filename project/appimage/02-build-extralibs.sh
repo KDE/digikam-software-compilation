@@ -1,4 +1,4 @@
-#!/bin/bash
+(#!/bin/bash
 
 # Script to build extra libraries using CentOs 6.
 # This script must be run as sudo
@@ -74,12 +74,13 @@ cmake3 --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
 
-# Extra support for Kipi-plugins
+# Extra support for Kipi-plugins and digiKam
 cmake3 --build . --config RelWithDebInfo --target ext_kjobwidgets         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_sonnet              -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets        -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kio                 -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_libksane            -- -j$CPU_CORES
 
 # Linux Desktop support
 cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
