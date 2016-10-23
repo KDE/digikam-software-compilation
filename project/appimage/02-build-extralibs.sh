@@ -1,4 +1,4 @@
-(#!/bin/bash
+#!/bin/bash
 
 # Script to build extra libraries using CentOs 6.
 # This script must be run as sudo
