@@ -112,12 +112,16 @@ yum -y install wget \
 
 #################################################################################################
 
-echo -e "---------- Install New Compiler Tools Set\n"
+if [[ "$(arch)" = "x86_64" ]] ; then
 
-# Newer compiler than what comes with CentOS 6
-yum -y install centos-release-scl-rh
-yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
-. /opt/rh/devtoolset-4/enable
+    echo -e "---------- Install New Compiler Tools Set\n"
+
+    # Newer compiler than what comes with CentOS 6 (only 64 bits)
+    yum -y install centos-release-scl-rh
+    yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
+    . /opt/rh/devtoolset-4/enable
+
+fi
 
 #################################################################################################
 
