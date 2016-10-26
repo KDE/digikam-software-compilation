@@ -48,6 +48,7 @@ if(UNIX AND NOT APPLE)
 endif()
 
 # this list must be dependency-ordered
+add_subdirectory(ext_gcc)
 add_subdirectory(ext_exiv2)
 add_subdirectory(ext_boost)
 add_subdirectory(ext_opencv)
