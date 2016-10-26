@@ -26,7 +26,7 @@ ExternalProject_add(mpfr
         DEPENDS gmp
         URL http://www.mpfr.org/mpfr-current/mpfr-3.1.5.tar.xz
         URL_MD5 c4ac246cf9795a4491e7766002cd528f
-        CONFIGURE_COMMAND <SOURCE_DIR>/./configure ---with-gmp=${PREFIX_ext_gcc}
+        CONFIGURE_COMMAND <SOURCE_DIR>/./configure --with-gmp=${PREFIX_ext_gcc}
         BUILD_COMMAND make install
         INSTALL_COMMAND ""
         INSTALL_DIR ${PREFIX_ext_gcc}
@@ -60,7 +60,7 @@ ExternalProject_add(ext_gcc
         URL_MD5 f2b4d5a580061711e68f0f506e402e1c
         CONFIGURE_COMMAND <SOURCE_DIR>/./configure --with-gmp=${PREFIX_ext_gcc} --with-mpfr=${PREFIX_ext_gcc} --with-mpc=${PREFIX_ext_gcc} --prefix=${PREFIX_ext_gcc} --disable-werror --disable-multilib
         BUILD_COMMAND make
-        INSTALL_COMMAND make install
+        INSTALL_COMMAND make install COMMAND ldconfig -v
         INSTALL_DIR ${PREFIX_ext_gcc}
 
         UPDATE_COMMAND ""
