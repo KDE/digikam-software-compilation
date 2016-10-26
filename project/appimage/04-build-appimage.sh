@@ -31,7 +31,10 @@ echo "-----------------------------------------------------"
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
-. /opt/rh/devtoolset-4/enable
+
+if [[ "$(arch)" = "x86_64" ]] ; then
+    . /opt/rh/devtoolset-4/enable
+fi
 
 #################################################################################################
 
