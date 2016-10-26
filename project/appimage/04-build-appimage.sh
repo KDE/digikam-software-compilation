@@ -34,6 +34,8 @@ CentOS6Adjustments
 
 if [[ "$(arch)" = "x86_64" ]] ; then
     . /opt/rh/devtoolset-4/enable
+else
+    scl enable devtoolset-3 bash
 fi
 
 #################################################################################################
