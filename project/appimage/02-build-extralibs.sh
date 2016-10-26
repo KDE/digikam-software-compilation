@@ -35,7 +35,7 @@ CentOS6Adjustments
 if [[ "$(arch)" = "x86_64" ]] ; then
     . /opt/rh/devtoolset-4/enable
 else
-    scl enable devtoolset-3 bash
+    . /opt/rh/devtoolset-3/enable
 fi
 
 ORIG_WD="`pwd`"
