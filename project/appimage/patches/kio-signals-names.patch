@@ -1,0 +1,39 @@
+diff --git a/src/core/filejob.cpp b/src/core/filejob.cpp
+index 892551a..92968cc 100644
+--- a/src/core/filejob.cpp
++++ b/src/core/filejob.cpp
+@@ -200,7 +200,7 @@ void FileJobPrivate::start(Slave *slave)
+     q->connect(slave, SIGNAL(mimeType(QString)),
+                SLOT(slotMimetype(QString)));
+ 
+-    q->connect(slave, SIGNAL(open()),
++    q->connect(slave, SIGNAL(signalOpen()),
+                SLOT(slotOpen()));
+ 
+     q->connect(slave, SIGNAL(position(KIO::filesize_t)),
+diff --git a/src/core/slaveinterface.cpp b/src/core/slaveinterface.cpp
+index dfcf982..141d80a 100644
+--- a/src/core/slaveinterface.cpp
++++ b/src/core/slaveinterface.cpp
+@@ -151,7 +151,7 @@ bool SlaveInterface::dispatch(int _cmd, const QByteArray &rawdata)
+         emit dataReq();
+         break;
+     case MSG_OPENED:
+-        emit open();
++        emit signalOpen();
+         break;
+     case MSG_FINISHED:
+         //qDebug() << "Finished [this = " << this << "]";
+diff --git a/src/core/slaveinterface.h b/src/core/slaveinterface.h
+index f803a19..d575389 100644
+--- a/src/core/slaveinterface.h
++++ b/src/core/slaveinterface.h
+@@ -139,7 +139,7 @@ Q_SIGNALS:
+ 
+     void canResume(KIO::filesize_t);
+ 
+-    void open();
++    void signalOpen();
+     void written(KIO::filesize_t);
+ 
+     ///////////

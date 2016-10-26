@@ -75,5 +75,5 @@ InstallKF5Component(knotifications      ${KD_VERSION} "61fdefe03ef8dfcee7cffc27c
 InstallKF5Component(kjobwidgets         ${KD_VERSION} "4fd4ab8f572b7418efb38ec6153f1217" ""                                               "")
 InstallKF5Component(sonnet              ${KD_VERSION} "45bd0c4fe7f903980617bc818ee543e7" ""                                               "")
 InstallKF5Component(ktextwidgets        ${KD_VERSION} "c32881a059bd4af1874262f682b0a2e5" ""                                               "")
-InstallKF5Component(kio                 ${KD_VERSION} "b46b822a74a038531155a4189c12afae" ""                                               "")
+InstallKF5Component(kio                 ${KD_VERSION} "b46b822a74a038531155a4189c12afae" ""                                               "kio-signals-names.patch")
 InstallKF5Component(kwallet             ${KD_VERSION} "012d0e05887ede47f221d08474213dd8" "-DBUILD_KWALLETD=OFF;-DBUILD_KWALLET_QUERY=OFF" "")
