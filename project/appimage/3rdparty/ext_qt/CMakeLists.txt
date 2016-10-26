@@ -8,8 +8,6 @@
 
 SET(EXTPREFIX_qt "${EXTPREFIX}")
 
-if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
-    # 64 bits Arch
     ExternalProject_Add(
         ext_qt
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
@@ -63,10 +61,10 @@ if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
         BUILD_IN_SOURCE 1
         ALWAYS 0
     )
-else()
-    # 32 bits Arch
+
+
     ExternalProject_Add(
-        ext_qt
+        ext_qt56
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
         URL https://download.qt.io/official_releases/qt/5.6/5.6.2/single/qt-everywhere-opensource-src-5.6.2.tar.xz
         URL_MD5 5175fba2f221fd4c91e94771a57a5557
@@ -116,4 +114,3 @@ else()
         BUILD_IN_SOURCE 1
         ALWAYS 0
     )
-endif()

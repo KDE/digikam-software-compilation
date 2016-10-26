@@ -37,7 +37,16 @@ ORIG_WD="`pwd`"
 
 echo -e "---------- Update Linux CentOS 6\n"
 
-yum -y install epel-release
+if [[ "$(arch)" = "x86_64" ]] ; then
+
+    yum -y install epel-release
+
+else
+
+    yum upgrade ca-certificates --disablerepo=epel
+    yum install epel
+
+fi
 
 # we need to be up to date in order to install the xcb-keysyms dependency
 yum -y update
@@ -127,7 +136,7 @@ else
     cd /etc/yum.repos.d
     wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
     yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
-    scl enable devtoolset-3
+    . /opt/rh/devtoolset-3/enable
 
 fi
 
