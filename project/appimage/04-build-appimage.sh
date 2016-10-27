@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to bundle data using previously-built KDE and digiKam installation
+# Script to bundle data using previously-built KF5 with digiKam installation
 # and create a Linux AppImage bundle file.
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>

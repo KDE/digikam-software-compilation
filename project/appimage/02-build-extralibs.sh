@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script to build extra libraries using CentOs 6.
+# Script to build extra libraries using CentOS 6.
 # This script must be run as sudo
 #
 # Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
