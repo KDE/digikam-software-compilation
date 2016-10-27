@@ -34,8 +34,10 @@ CentOS6Adjustments
 
 if [[ "$(arch)" = "x86_64" ]] ; then
     . /opt/rh/devtoolset-4/enable
+    LIB_PATH_ALT=lib64
 else
     . /opt/rh/devtoolset-3/enable
+    LIB_PATH_ALT=lib
 fi
 
 #################################################################################################
@@ -121,13 +123,15 @@ for FILE in $FILES ; do
 done
 
 # Marble data and plugins files
-cp -r /usr/lib64/marble/plugins/     ./usr/bin/
-cp -r /usr/share/marble/data         ./usr/bin/
 
- # otherwise segfaults!?
-cp $(ldconfig -p | grep /usr/lib64/libsasl2.so.2    | cut -d ">" -f 2 | xargs) ./usr/lib/
-cp $(ldconfig -p | grep /usr/lib64/libGL.so.1       | cut -d ">" -f 2 | xargs) ./usr/lib/
-cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp -r /usr/$LIB_PATH_ALT/marble/plugins/ ./usr/bin/
+
+cp -r /usr/share/marble/data             ./usr/bin/
+
+# otherwise segfaults!?
+cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libsasl2.so.2    | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libGL.so.1       | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libGLU.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 # Fedora 23 seemed to be missing SOMETHING from the Centos 6.7. The only message was:
 # This application failed to start because it could not find or load the Qt platform plugin "xcb".
@@ -137,13 +141,13 @@ cp $(ldconfig -p | grep /usr/lib64/libGLU.so.1      | cut -d ">" -f 2 | xargs) .
 # Which means that we have to copy libEGL.so.1 in too
 
 # Otherwise F23 cannot load the Qt platform plugin "xcb"
-cp $(ldconfig -p | grep /usr/lib64/libEGL.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libEGL.so.1      | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 # let's not copy xcb itself, that breaks on dri3 systems https://bugs.kde.org/show_bug.cgi?id=360552
 #cp $(ldconfig -p | grep libxcb.so.1 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 # For Fedora 20
-cp $(ldconfig -p | grep /usr/lib64/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
+cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 cp /usr/bin/digikam  ./usr/bin
 #cp /usr/bin/showfoto ./usr/bin
@@ -152,11 +156,11 @@ cp /usr/bin/digikam  ./usr/bin
 
 echo -e "---------- Scan dependencies recurssively\n"
 
-CopyReccursiveDependencies /usr/bin/digikam  ./usr/lib
-#CopyReccursiveDependencies /usr/bin/showfoto ./usr/lib
+CopyReccursiveDependencies /usr/bin/digikam                  ./usr/lib
+#CopyReccursiveDependencies /usr/bin/showfoto                 ./usr/lib
 CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 
-FILES=$(ls /usr/lib64/libdigikam*.so)
+FILES=$(ls /usr/$LIB_PATH_ALT/libdigikam*.so)
 
 for FILE in $FILES ; do
     CopyReccursiveDependencies ${FILE} ./usr/lib
@@ -168,10 +172,10 @@ for FILE in $FILES ; do
     CopyReccursiveDependencies ${FILE} ./usr/lib
 done
 
-#FILES=$(ls /usr/lib64/plugins/imageformats/*.so)
+#FILES=$(ls /usr/$LIB_PATH_ALT/plugins/imageformats/*.so)
 #
 #for FILE in $FILES ; do
-#    CopyReccursiveDependencies /usr/lib64/plugins/imageformats/*.so ./usr/lib
+#    CopyReccursiveDependencies /usr/plugins/imageformats/*.so ./usr/lib
 #done
 
 # Copy in the indirect dependencies
@@ -299,7 +303,7 @@ fi
 if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
 
     echo -e "---------- Create Bundle with AppImage SDK V1\n"
-    
+
     # Source functions
     wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
     . ./functions.sh
