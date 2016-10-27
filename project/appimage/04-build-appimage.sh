@@ -75,6 +75,7 @@ cd /
 rm -rf /digikam.appdir/ || true
 mkdir -p /digikam.appdir/usr/bin
 mkdir -p /digikam.appdir/usr/share
+mkdir -p /digikam.appdir/usr/share/metainfo
 
 # make sure lib and lib64 are the same thing
 mkdir -p /digikam.appdir/usr/lib
@@ -89,6 +90,7 @@ cd /digikam.appdir
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
+rm -f ./usr/plugins/ktexteditor
 
 # copy runtime data files
 cp -r /usr/share/digikam             ./usr/share
@@ -102,7 +104,8 @@ cp -r /usr/share/kservicetypes5      ./usr/share
 cp -r /usr/share/kxmlgui5            ./usr/share
 cp -r /usr/share/solid               ./usr/share
 cp -r /usr/share/OpenCV              ./usr/share
-cp -r /usr/share/metainfo            ./usr/share
+cp -r /usr/share/metainfo/*digikam*  ./usr/share/metainfo/
+cp -r /usr/share/metainfo/*showfoto* ./usr/share/metainfo/
 
 # copy i18n
 
