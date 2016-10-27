@@ -30,6 +30,7 @@ echo "-----------------------------------------------------"
 . ./common.sh
 StartScript
 ChecksCPUCores
+ChecksRunAsRoot
 CentOS6Adjustments
 
 if [[ "$(arch)" = "x86_64" ]] ; then
