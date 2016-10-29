@@ -74,7 +74,7 @@ Note : the bundle is rellocable.
 REQUIREMENTS
 ------------
 
-- For technical reasons about compatibility with libc, CentOS 6.8 is used to be compatible
+- For technical reasons about compatibility with libc, CentOS 6 is used to be compatible
   at run-time under other Linux distributions.
 
 - Create a fresh CentOS 6 environment in a Virtual Machine:
@@ -114,7 +114,7 @@ This script configures, and compile digiKam.
 
 * 04-build-installer.sh:
 
-Once you've successfully built digiKam, this cscript create the AppImage bundle.
+Once you've successfully built digiKam, this script create the AppImage bundle.
 This include applications documentations and translations.
 
 * makeall.sh

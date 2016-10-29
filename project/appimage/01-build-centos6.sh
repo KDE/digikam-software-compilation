@@ -16,12 +16,12 @@ set -e
 # Manage script traces to log file
 
 mkdir -p ./logs
-exec > >(tee ./logs/build-linux.full.log) 2>&1
+exec > >(tee ./logs/build-centos6.full.log) 2>&1
 
 #################################################################################################
 
-echo "01-build-linux.sh : build a CentOS 6 installation to compile an AppImage of digiKam."
-echo "------------------------------------------------------------------------------------"
+echo "01-build-centos6.sh : build a CentOS 6 installation to compile an AppImage of digiKam."
+echo "--------------------------------------------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
