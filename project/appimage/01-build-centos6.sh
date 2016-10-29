@@ -117,8 +117,7 @@ yum -y install wget \
                xz-devel \
                lz4-devel \
                inotify-tools-devel \
-               openssl-devel \
-               docbook-xsl
+               openssl-devel 
 
 #################################################################################################
 

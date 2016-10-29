@@ -91,6 +91,8 @@ cd /digikam.appdir
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
 rm -f ./usr/plugins/ktexteditor
+rm -f ./usr/plugins/kf5/parts
+rm -f ./usr/plugins/konsolepart.so
 
 # copy runtime data files
 cp -r /usr/share/digikam             ./usr/share
