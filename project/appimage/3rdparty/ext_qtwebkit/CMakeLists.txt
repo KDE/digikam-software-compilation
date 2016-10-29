@@ -21,17 +21,3 @@ ExternalProject_Add(ext_qtwebkit
     BUILD_IN_SOURCE 1
     ALWAYS 0
 )
-
-ExternalProject_Add(ext_qtwebkit56
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL https://download.qt.io/community_releases/5.6/5.6.2/qtwebkit-opensource-src-5.6.2.tar.xz
-    URL_MD5 5196f47b75e2d6cc9663c89cf9902ef0
-    INSTALL_DIR ${EXTPREFIX_qtwebkit}
-    CONFIGURE_COMMAND qmake PREFIX=${EXTPREFIX_qtwebkit}
-
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
-    UPDATE_COMMAND ""
-    BUILD_IN_SOURCE 1
-    ALWAYS 0
-)
