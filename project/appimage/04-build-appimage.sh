@@ -96,24 +96,27 @@ rm -f ./usr/plugins/kf5/parts
 rm -f ./usr/plugins/konsolepart.so
 
 # copy runtime data files
-cp -r /usr/share/digikam             ./usr/share
-cp $ORIG_WD/icon-rcc/breeze.rcc      ./usr/share/digikam
-cp $ORIG_WD/data/qt.conf             ./usr/bin
-cp -r /usr/share/lensfun             ./usr/share
-cp -r /usr/share/kipiplugin*         ./usr/share
-cp -r /usr/share/knotifications5     ./usr/share
-cp -r /usr/share/kservices5          ./usr/share
-cp -r /usr/share/kservicetypes5      ./usr/share
-cp -r /usr/share/kxmlgui5            ./usr/share
-cp -r /usr/share/solid               ./usr/share
-cp -r /usr/share/OpenCV              ./usr/share
-cp -r /usr/share/metainfo/*digikam*  ./usr/share/metainfo/
-cp -r /usr/share/metainfo/*showfoto* ./usr/share/metainfo/
+cp -r /usr/share/digikam            	 ./usr/share
+cp $ORIG_WD/icon-rcc/breeze.rcc      	 ./usr/share/digikam
+cp $ORIG_WD/data/qt.conf            	 ./usr/bin
+cp -r /usr/share/lensfun            	 ./usr/share
+cp -r /usr/share/kipiplugin*        	 ./usr/share
+cp -r /usr/share/knotifications5   	 ./usr/share
+cp -r /usr/share/kservices5       	 ./usr/share
+cp -r /usr/share/kservicetypes5      	 ./usr/share
+cp -r /usr/share/kxmlgui5            	 ./usr/share
+cp -r /usr/share/solid               	 ./usr/share
+cp -r /usr/share/OpenCV                  ./usr/share
+cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
+cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
+cp -r /usr/share/dbus-1/interfaces/kf5*  ./usr/share/dbus-1/interfaces/
+cp -r /usr/share/dbus-1/services/*kde*   ./usr/share/dbus-1/services/
+cp -r /usr/$LIB_PATH_ALT/libexec/kf5/*   ./usr/bin
 
 # copy i18n
 
 # Qt translations files
-cp -r /usr/translations              ./usr
+cp -r /usr/translations                  ./usr
 
 # KF5 translations files
 FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
@@ -156,8 +159,10 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libEGL.so.1      | cut -d ">" -f 2 | 
 # For Fedora 20
 cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
-cp /usr/bin/digikam  ./usr/bin
-cp /usr/bin/showfoto ./usr/bin
+cp /usr/bin/digikam     ./usr/bin
+cp /usr/bin/showfoto    ./usr/bin
+cp /usr/bin/kdeinit5*   ./usr/bin
+cp /usr/bin/kwrapper5   ./usr/bin
 
 #################################################################################################
 
@@ -166,6 +171,13 @@ echo -e "---------- Scan dependencies recurssively\n"
 CopyReccursiveDependencies /usr/bin/digikam                  ./usr/lib
 CopyReccursiveDependencies /usr/bin/showfoto                 ./usr/lib
 CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
+CopyReccursiveDependencies /usr/bin/kwrapper5                ./usr/lib
+
+FILES=$(ls /usr/bin/kdeinit5*)
+
+for FILE in $FILES ; do
+    CopyReccursiveDependencies ${FILE} ./usr/lib
+done
 
 FILES=$(ls /usr/$LIB_PATH_ALT/libdigikam*.so)
 
@@ -321,6 +333,7 @@ if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
     # We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
     cp ${ORIG_WD}/data/AppRun .
 
+    # desktop integration rules
     cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
     cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
     get_desktopintegration digikam
@@ -368,3 +381,4 @@ echo -e "------------------------------------------------------------------\n"
 #################################################################################################
 
 TerminateScript
+
