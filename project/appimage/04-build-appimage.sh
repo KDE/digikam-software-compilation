@@ -45,6 +45,7 @@ fi
 
 # Working directory
 ORIG_WD="`pwd`"
+APP_IMG_DIR="/digikam.appdir"
 
 DK_RELEASEID=`cat $ORIG_WD/data/RELEASEID.txt`
 
@@ -72,21 +73,21 @@ echo -e "---------- Prepare directories in bundle\n"
 cd /
 
 # Prepare the install location
-rm -rf /digikam.appdir/ || true
-mkdir -p /digikam.appdir/usr/bin
-mkdir -p /digikam.appdir/usr/share
-mkdir -p /digikam.appdir/usr/share/metainfo
+rm -rf $APP_IMG_DIR/ || true
+mkdir -p $APP_IMG_DIR/usr/bin
+mkdir -p $APP_IMG_DIR/usr/share
+mkdir -p $APP_IMG_DIR/usr/share/metainfo
 
 # make sure lib and lib64 are the same thing
-mkdir -p /digikam.appdir/usr/lib
-cd /digikam.appdir/usr
+mkdir -p $APP_IMG_DIR/usr/lib
+cd $APP_IMG_DIR/usr
 ln -s lib lib64
 
 #################################################################################################
 
 echo -e "---------- Copy Files in bundle\n"
 
-cd /digikam.appdir
+cd $APP_IMG_DIR
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
@@ -272,9 +273,9 @@ done
 
 echo -e "---------- Strip Configuration Files \n"
 
-# Since we set /digikam.appdir as the prefix, we need to patch it away too (FIXME)
+# Since we set $APP_IMG_DIR as the prefix, we need to patch it away too (FIXME)
 # Probably it would be better to use /app as a prefix because it has the same length for all apps
-cd usr/ ; find . -type f -exec sed -i -e 's|/digikam.appdir/usr/|./././././././././|g' {} \; ; cd  ..
+cd usr/ ; find . -type f -exec sed -i -e 's|$APP_IMG_DIR/usr/|./././././././././|g' {} \; ; cd  ..
 
 # On openSUSE Qt is picking up the wrong libqxcb.so
 # (the one from the system when in fact it should use the bundled one) - is this a Qt bug?
@@ -315,7 +316,7 @@ if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
     . ./functions.sh
 
     # Install desktopintegration in usr/bin/digikam.wrapper
-    cd /digikam.appdir
+    cd $APP_IMG_DIR
 
     # We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
     cp ${ORIG_WD}/data/AppRun .
@@ -328,7 +329,7 @@ if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
 
     mkdir -p $ORIG_WD/appimage
     rm -f $ORIG_WD/appimage/* || true
-    AppImageKit/AppImageAssistant.AppDir/package /digikam.appdir/ $ORIG_WD/appimage/$APPIMAGE
+    AppImageKit/AppImageAssistant.AppDir/package $APP_IMG_DIR/ $ORIG_WD/appimage/$APPIMAGE
 
     chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
 
