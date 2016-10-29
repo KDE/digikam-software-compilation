@@ -28,4 +28,9 @@ export APPIMAGE_STARTUP_QT_PLUGIN_PATH=\$QT_PLUGIN_PATH
 export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
 export APPIMAGE_STARTUP_PATH=$PATH
 
-digikam.wrapper $@
+if [[ $1 == "showfoto" ]] ; then
+    konsole ${@:2}
+else
+    digikam.wrapper $@
+fi
+

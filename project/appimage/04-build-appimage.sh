@@ -157,14 +157,14 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libEGL.so.1      | cut -d ">" -f 2 | 
 cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
 cp /usr/bin/digikam  ./usr/bin
-#cp /usr/bin/showfoto ./usr/bin
+cp /usr/bin/showfoto ./usr/bin
 
 #################################################################################################
 
 echo -e "---------- Scan dependencies recurssively\n"
 
 CopyReccursiveDependencies /usr/bin/digikam                  ./usr/lib
-#CopyReccursiveDependencies /usr/bin/showfoto                 ./usr/lib
+CopyReccursiveDependencies /usr/bin/showfoto                 ./usr/lib
 CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 
 FILES=$(ls /usr/$LIB_PATH_ALT/libdigikam*.so)
