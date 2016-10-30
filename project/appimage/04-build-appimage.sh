@@ -96,16 +96,17 @@ rm -f ./usr/plugins/kf5/parts
 rm -f ./usr/plugins/konsolepart.so
 
 # copy runtime data files
-cp -r /usr/share/digikam            	 ./usr/share
-cp $ORIG_WD/icon-rcc/breeze.rcc      	 ./usr/share/digikam
-cp $ORIG_WD/data/qt.conf            	 ./usr/bin
-cp -r /usr/share/lensfun            	 ./usr/share
-cp -r /usr/share/kipiplugin*        	 ./usr/share
-cp -r /usr/share/knotifications5   	 ./usr/share
-cp -r /usr/share/kservices5       	 ./usr/share
-cp -r /usr/share/kservicetypes5      	 ./usr/share
-cp -r /usr/share/kxmlgui5            	 ./usr/share
-cp -r /usr/share/solid               	 ./usr/share
+cp -r /usr/share/digikam                 ./usr/share
+cp $ORIG_WD/icon-rcc/breeze.rcc          ./usr/share/digikam
+cp $ORIG_WD/data/qt.conf                 ./usr/bin
+cp -r /usr/share/lensfun                 ./usr/share
+cp -r /usr/share/kipiplugin*             ./usr/share
+cp -r /usr/share/knotifications5         ./usr/share
+cp -r /usr/share/kservices5              ./usr/share
+cp -r /usr/share/kservicetypes5          ./usr/share
+cp -r /usr/share/kxmlgui5                ./usr/share
+cp -r /usr/share/kf5                     ./usr/share
+cp -r /usr/share/solid                   ./usr/share
 cp -r /usr/share/OpenCV                  ./usr/share
 cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
 cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
