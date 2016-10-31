@@ -77,6 +77,8 @@ rm -rf $APP_IMG_DIR/ || true
 mkdir -p $APP_IMG_DIR/usr/bin
 mkdir -p $APP_IMG_DIR/usr/share
 mkdir -p $APP_IMG_DIR/usr/share/metainfo
+mkdir -p $APP_IMG_DIR/usr/share/dbus-1/interfaces
+mkdir -p $APP_IMG_DIR/usr/share/dbus-1/services
 
 # make sure lib and lib64 are the same thing
 mkdir -p $APP_IMG_DIR/usr/lib
@@ -91,9 +93,9 @@ cd $APP_IMG_DIR
 
 # FIXME: How to find out which subset of plugins is really needed? I used strace when running the binary
 cp -r /usr/plugins ./usr/
-rm -f ./usr/plugins/ktexteditor
-rm -f ./usr/plugins/kf5/parts
-rm -f ./usr/plugins/konsolepart.so
+rm -fr ./usr/plugins/ktexteditor
+rm -fr ./usr/plugins/kf5/parts
+rm -fr ./usr/plugins/konsolepart.so
 
 # copy runtime data files
 cp -r /usr/share/digikam                 ./usr/share

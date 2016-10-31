@@ -125,6 +125,10 @@ if [ -d ./extra/libmediawiki/src ]; then
     ln -sf src ./extra/libmediawiki/MediaWiki
 fi
 
+if [ -d ./extra/libkvkontakte/src ]; then
+    ln -sf src ./extra/libkvkontakte/Vkontakte
+fi
+
 cat ../build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 
 echo -e "\n\n"
