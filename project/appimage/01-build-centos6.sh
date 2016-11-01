@@ -119,8 +119,8 @@ if [[ "$(arch)" = "x86_64" ]] ; then
 
     # Newer compiler than what comes with offcial CentOS 6 (only 64 bits)
     yum -y install centos-release-scl-rh
-    yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
-    . /opt/rh/devtoolset-4/enable
+    yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
+    . /opt/rh/devtoolset-3/enable
 
 else
 
@@ -129,6 +129,7 @@ else
     wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
     yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
     . /opt/rh/devtoolset-3/enable
+    rm -f /etc/yum.repos.d/slc6-scl.repo
 
 fi
 
