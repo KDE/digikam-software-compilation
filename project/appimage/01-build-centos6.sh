@@ -37,16 +37,8 @@ ORIG_WD="`pwd`"
 
 echo -e "---------- Update Linux CentOS 6\n"
 
-if [[ "$(arch)" = "x86_64" ]] ; then
-
-    yum -y install epel-release
-
-else
-
-    yum upgrade ca-certificates --disablerepo=epel
-    yum install epel
-
-fi
+yum upgrade ca-certificates --disablerepo=epel
+yum install epel-release
 
 # we need to be up to date in order to install the xcb-keysyms dependency
 yum -y update
