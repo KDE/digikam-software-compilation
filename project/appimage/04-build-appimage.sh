@@ -82,6 +82,7 @@ mkdir -p $APP_IMG_DIR/usr/share/dbus-1/services
 
 # make sure lib and lib64 are the same thing
 mkdir -p $APP_IMG_DIR/usr/lib
+mkdir -p $APP_IMG_DIR/usr/lib/libexec
 cd $APP_IMG_DIR/usr
 ln -s lib lib64
 
@@ -114,8 +115,7 @@ cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
 cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*  ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*   ./usr/share/dbus-1/services/
-cp -r /usr/$LIB_PATH_ALT/libexec/kf5/*   ./usr/bin
-
+cp -r /usr/$LIB_PATH_ALT/libexec/kf5     ./usr/lib/libexec/
 # copy i18n
 
 # Qt translations files
@@ -164,7 +164,7 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | 
 
 cp /usr/bin/digikam     ./usr/bin
 cp /usr/bin/showfoto    ./usr/bin
-cp /usr/bin/kdeinit5*   ./usr/bin
+cp /usr/bin/kdeinit5    ./usr/bin
 cp /usr/bin/kwrapper5   ./usr/bin
 
 #################################################################################################
@@ -173,14 +173,9 @@ echo -e "---------- Scan dependencies recurssively\n"
 
 CopyReccursiveDependencies /usr/bin/digikam                  ./usr/lib
 CopyReccursiveDependencies /usr/bin/showfoto                 ./usr/lib
-CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 CopyReccursiveDependencies /usr/bin/kwrapper5                ./usr/lib
-
-FILES=$(ls /usr/bin/kdeinit5*)
-
-for FILE in $FILES ; do
-    CopyReccursiveDependencies ${FILE} ./usr/lib
-done
+CopyReccursiveDependencies /usr/bin/kdeinit5                 ./usr/lib
+CopyReccursiveDependencies /usr/plugins/platforms/libqxcb.so ./usr/lib
 
 FILES=$(ls /usr/$LIB_PATH_ALT/libdigikam*.so)
 

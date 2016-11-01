@@ -89,14 +89,9 @@ cmake3 --build . --config RelWithDebInfo --target ext_ktextwidgets        -- -j$
 cmake3 --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_libksane            -- -j$CPU_CORES
 
-# KIO support
+# Desktop integration support
 cmake3 --build . --config RelWithDebInfo --target ext_kio                 -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kinit               -- -j$CPU_CORES
-
-# libkvkontakte support
-cmake3 --build . --config RelWithDebInfo --target ext_kdewebkit           -- -j$CPU_CORES
-
-# Linux Desktop support
 cmake3 --build . --config RelWithDebInfo --target ext_knotifyconfig       -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_knotifications      -- -j$CPU_CORES
 
