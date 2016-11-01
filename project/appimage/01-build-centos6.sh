@@ -113,23 +113,27 @@ yum -y install wget \
 
 #################################################################################################
 
-echo -e "---------- Install New Compiler Tools Set\n"
+if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
 
-if [[ "$(arch)" = "x86_64" ]] ; then
+    echo -e "---------- Install New Compiler Tools Set\n"
 
-    # Newer compiler than what comes with offcial CentOS 6 (only 64 bits)
-    yum -y install centos-release-scl-rh
-    yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
-    . /opt/rh/devtoolset-3/enable
+    if [[ "$(arch)" = "x86_64" ]] ; then
 
-else
+        # Newer compiler than what comes with offcial CentOS 6 (only 64 bits)
+        yum -y install centos-release-scl-rh
+        yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
+        . /opt/rh/devtoolset-3/enable
 
-    # Newer compiler that come from Sienctifc Linux for CentOS 6 32 bits
-    cd /etc/yum.repos.d
-    wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
-    yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
-    . /opt/rh/devtoolset-3/enable
-    rm -f /etc/yum.repos.d/slc6-scl.repo
+    else
+
+        # Newer compiler that come from Sienctifc Linux for CentOS 6 32 bits
+        cd /etc/yum.repos.d
+        wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
+        yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
+        . /opt/rh/devtoolset-3/enable
+        rm -f /etc/yum.repos.d/slc6-scl.repo
+
+    fi
 
 fi
 
