@@ -29,7 +29,7 @@ export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
 export APPIMAGE_STARTUP_PATH=$PATH
 
 if [[ $1 == "showfoto" ]] ; then
-    konsole ${@:2}
+    showfoto ${@:2}
 else
     digikam.wrapper $@
 fi
