@@ -23,10 +23,16 @@ function(InstallKF5Component
                     grep "MD5 Hash"
                     COMMAND
                     grep -o -P "(?<=<tt>).*(?=</tt>)"
+                    RESULT_VARIABLE
+                    wgetresult
                     OUTPUT_VARIABLE
                     md5sm
                     OUTPUT_STRIP_TRAILING_WHITESPACE
     )
+
+    if(NOT ${wgetresult} MATCHES 0)
+        message(FATAL_ERROR "Cannot donwload MD5 sum for ${name}!")
+    endif()
 
     message(STATUS "--------------------------------")
     message(STATUS "KF5 component    : ${name}")
