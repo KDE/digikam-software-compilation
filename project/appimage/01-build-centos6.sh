@@ -122,7 +122,6 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
         # Newer compiler than what comes with offcial CentOS 6 (only 64 bits)
         yum -y install centos-release-scl-rh
         yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
-        . /opt/rh/devtoolset-3/enable
 
     else
 
@@ -130,12 +129,13 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
         cd /etc/yum.repos.d
         wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
         yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
-        . /opt/rh/devtoolset-3/enable
         rm -f /etc/yum.repos.d/slc6-scl.repo
 
     fi
 
 fi
+
+. /opt/rh/devtoolset-3/enable
 
 #################################################################################################
 
