@@ -31,12 +31,7 @@ echo "--------------------------------------------------------------"
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
-
-if [[ "$(arch)" = "x86_64" ]] ; then
-    . /opt/rh/devtoolset-4/enable
-else
-    . /opt/rh/devtoolset-3/enable
-fi
+. /opt/rh/devtoolset-3/enable
 
 ORIG_WD="`pwd`"
 
@@ -52,7 +47,7 @@ cmake3 $ORIG_WD/3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
 
 # NOTE: The order to compile each component here is very important.
-
+exit
 # core KF5 frameworks dependencies
 cmake3 --build . --config RelWithDebInfo --target ext_extra-cmake-modules -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kconfig             -- -j$CPU_CORES

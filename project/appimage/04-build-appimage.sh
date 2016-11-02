@@ -32,12 +32,11 @@ StartScript
 ChecksCPUCores
 ChecksRunAsRoot
 CentOS6Adjustments
+. /opt/rh/devtoolset-3/enable
 
 if [[ "$(arch)" = "x86_64" ]] ; then
-    . /opt/rh/devtoolset-4/enable
     LIB_PATH_ALT=lib64
 else
-    . /opt/rh/devtoolset-3/enable
     LIB_PATH_ALT=lib
 fi
 

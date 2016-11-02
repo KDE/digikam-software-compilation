@@ -32,12 +32,7 @@ StartScript
 ChecksCPUCores
 ChecksRunAsRoot
 CentOS6Adjustments
-
-if [[ "$(arch)" = "x86_64" ]] ; then
-    . /opt/rh/devtoolset-4/enable
-else
-    . /opt/rh/devtoolset-3/enable
-fi
+. /opt/rh/devtoolset-3/enable
 
 #################################################################################################
 
