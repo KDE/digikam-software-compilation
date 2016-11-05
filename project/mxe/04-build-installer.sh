@@ -49,8 +49,8 @@ fi
 # Directory where this script is located (default - current directory)
 BUILDDIR="$PWD"
 
-# Directory where installer files are located
-BUNDLEDIR="$BUILDDIR/bundle"
+# Directory where bundle files are located
+BUNDLEDIR="$BUILDDIR/temp"
 
 ORIG_WD="`pwd`"
 
@@ -173,6 +173,9 @@ find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS
 
 echo -e "\n---------- Build NSIS installer\n"
 
+mkdir -p $ORIG_WD/bundle
+rm -f $ORIG_WD/bundle/* || true
+
 cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
@@ -181,21 +184,21 @@ else
     TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64.exe
 fi
 
-makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=../bundle -DTARGETARCH=$MXE_ARCHBITS -DOUTPUT=$TARGET_INSTALLER ./digikam.nsi
+makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=$BUNDLEDIR -DTARGETARCH=$MXE_ARCHBITS -DOUTPUT=$ORIG_WD/bundle/$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $TARGET_INSTALLER.txt
-echo    "File       : $TARGET_INSTALLER"                                     >> $TARGET_INSTALLER.txt
-echo -n "Size       : "                                                      >> $TARGET_INSTALLER.txt
-du -h "$TARGET_INSTALLER"        | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
-echo -n "MD5 sum    : "                                                      >> $TARGET_INSTALLER.txt
-md5sum "$TARGET_INSTALLER"       | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
-echo -n "SHA1 sum   : "                                                      >> $TARGET_INSTALLER.txt
-shasum -a1 "$TARGET_INSTALLER"   | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
-echo -n "SHA256 sum : "                                                      >> $TARGET_INSTALLER.txt
-shasum -a256 "$TARGET_INSTALLER" | { read first rest ; echo $first ; }       >> $TARGET_INSTALLER.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"             > $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo    "File       : $TARGET_INSTALLER"                                                >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo -n "Size       : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+du -h "$ORIG_WD/bundle/$TARGET_INSTALLER"        | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo -n "MD5 sum    : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+md5sum "$ORIG_WD/bundle/$TARGET_INSTALLER"       | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo -n "SHA1 sum   : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+shasum -a1 "$ORIG_WD/bundle/$TARGET_INSTALLER"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo -n "SHA256 sum : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 
 cat $TARGET_INSTALLER.txt
 echo -e "\n------------------------------------------------------------------"
