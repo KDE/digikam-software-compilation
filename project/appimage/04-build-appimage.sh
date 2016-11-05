@@ -333,11 +333,11 @@ if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
 
     cd /
 
-    mkdir -p $ORIG_WD/appimage
-    rm -f $ORIG_WD/appimage/* || true
-    AppImageKit/AppImageAssistant.AppDir/package $APP_IMG_DIR/ $ORIG_WD/appimage/$APPIMAGE
+    mkdir -p $ORIG_WD/bundle
+    rm -f $ORIG_WD/bundle/* || true
+    AppImageKit/AppImageAssistant.AppDir/package $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 
-    chmod a+rwx $ORIG_WD/appimage/$APPIMAGE
+    chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 elif [[ $APPIMAGE_VERSION -eq 2 ]] ; then
 
@@ -355,18 +355,18 @@ fi
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"    > $ORIG_WD/appimage/$APPIMAGE.txt
-echo    "File       : $APPIMAGE"                                               >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "Size       : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
-du -h "$ORIG_WD/appimage/$APPIMAGE"     | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "MD5 sum    : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
-md5sum "$ORIG_WD/appimage/$APPIMAGE"    | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "SHA1 sum   : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
-sha1sum "$ORIG_WD/appimage/$APPIMAGE"   | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
-echo -n "SHA256 sum : "                                                        >> $ORIG_WD/appimage/$APPIMAGE.txt
-sha256sum "$ORIG_WD/appimage/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/appimage/$APPIMAGE.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $ORIG_WD/bundle/$APPIMAGE.txt
+echo    "File       : $APPIMAGE"                                             >> $ORIG_WD/bundle/$APPIMAGE.txt
+echo -n "Size       : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
+du -h "$ORIG_WD/bundle/$APPIMAGE"     | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
+echo -n "MD5 sum    : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
+md5sum "$ORIG_WD/bundle/$APPIMAGE"    | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
+echo -n "SHA1 sum   : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
+sha1sum "$ORIG_WD/bundle/$APPIMAGE"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
+echo -n "SHA256 sum : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
+sha256sum "$ORIG_WD/bundle/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
 
-cat $ORIG_WD/appimage/$APPIMAGE.txt
+cat $ORIG_WD/bundle/$APPIMAGE.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
@@ -374,4 +374,3 @@ echo -e "------------------------------------------------------------------\n"
 #################################################################################################
 
 TerminateScript
-
