@@ -398,8 +398,11 @@ find $TEMPROOT -name "*.dylib" | xargs strip -SXx
 
 echo "---------- Create MacOS package for digiKam $DKRELEASEID"
 
+mkdir -p $ORIG_WD/bundle
+rm -f $ORIG_WD/bundle/* || true
+
 TARGET_INSTALLER=digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
-TARGET_PKG_FILE=$BUILDDIR/$TARGET_INSTALLER
+TARGET_PKG_FILE=$BUILDDIR/bundle/$TARGET_INSTALLER
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
 $PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
