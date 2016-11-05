@@ -307,9 +307,9 @@ cd /
 APP=digikam
 
 if [[ "$ARCH" = "x86_64" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID"-x86-64"$DK_EPOCH".appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-x86-64.appimage"
 elif [[ "$ARCH" = "i686" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID"-i386"$DK_EPOCH".appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-i386.appimage"
 fi
 
 if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
