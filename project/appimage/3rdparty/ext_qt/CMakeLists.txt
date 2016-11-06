@@ -25,7 +25,6 @@ ExternalProject_Add(ext_qt
                   -no-journald
                   -no-syslog
                   -no-nis
-                  -no-cups
                   -no-tslib
                   -no-directfb
                   -no-linuxfb
