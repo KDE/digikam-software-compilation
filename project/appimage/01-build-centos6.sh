@@ -98,7 +98,6 @@ yum -y install wget \
                libudev-devel \
                libicu-devel \
                libtiff-devel \
-               libgphoto2-devel \
                sane-backends-devel \
                jasper-devel \
                sqlite-devel \
@@ -218,12 +217,13 @@ cmake3 $ORIG_WD/3rdparty \
 # Low level libraries and Qt5 dependencies
 # NOTE: The order to compile each component here is very important.
 
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2    -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_boost    -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_opencv   -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_lensfun  -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qt       -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_boost      -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
 
 #################################################################################################
 
