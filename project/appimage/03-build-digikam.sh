@@ -63,7 +63,7 @@ echo "---------- Downloading digiKam $DK_VERSION"
 
 git clone git://anongit.kde.org/digikam-software-compilation.git digikam-$DK_VERSION
 cd digikam-$DK_VERSION
-export GITSLAVE=".gitslave.devel"
+export GITSLAVE=".gitslave.bundle"
 ./download-repos
 
 if [ $? -ne 0 ] ; then
@@ -118,10 +118,6 @@ fi
 
 if [ -d ./extra/libmediawiki/src ]; then
     ln -sf src ./extra/libmediawiki/MediaWiki
-fi
-
-if [ -d ./extra/libkvkontakte/src ]; then
-    ln -sf src ./extra/libkvkontakte/Vkontakte
 fi
 
 cat ../build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
