@@ -101,7 +101,6 @@ rm -fr ./usr/plugins/konsolepart.so
 cp -r /usr/share/digikam                 ./usr/share
 cp $ORIG_WD/icon-rcc/breeze.rcc          ./usr/share/digikam
 cp $ORIG_WD/data/qt.conf                 ./usr/bin
-cp -r /usr/$LIB_PATH_ALT/libgphoto2*     ./usr/share
 cp -r /usr/share/lensfun                 ./usr/share
 cp -r /usr/share/kipiplugin*             ./usr/share
 cp -r /usr/share/knotifications5         ./usr/share
@@ -115,6 +114,7 @@ cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
 cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*  ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*   ./usr/share/dbus-1/services/
+cp -r /usr/$LIB_PATH_ALT/libgphoto2*     ./usr/lib
 cp -r /usr/$LIB_PATH_ALT/libexec/kf5     ./usr/lib/libexec/
 # copy i18n
 
