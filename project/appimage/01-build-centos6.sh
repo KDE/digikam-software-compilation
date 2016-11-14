@@ -142,7 +142,7 @@ fi
 echo -e "---------- Clean-up Old Packages\n"
 
 # Remove system based devel package to prevent conflict with new one.
-yum -y erase qt-devel boost-devel
+yum -y erase qt-devel boost-devel libgphoto2-devel
 
 #################################################################################################
 
