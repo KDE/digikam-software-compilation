@@ -74,6 +74,7 @@ cd /
 # Prepare the install location
 rm -rf $APP_IMG_DIR/ || true
 mkdir -p $APP_IMG_DIR/usr/bin
+mkdir -p $APP_IMG_DIR/usr/etc
 mkdir -p $APP_IMG_DIR/usr/share
 mkdir -p $APP_IMG_DIR/usr/share/metainfo
 mkdir -p $APP_IMG_DIR/usr/share/dbus-1/interfaces
@@ -121,6 +122,11 @@ cp -r /usr/$LIB_PATH_ALT/libexec/kf5     ./usr/lib/libexec/
 # copy libgphoto2 drivers
 find  /usr/lib/libgphoto2      -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2 \;      2>/dev/null
 find  /usr/lib/libgphoto2_port -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2_port \; 2>/dev/null
+
+# copy sane backends
+
+cp /usr/lib/sane                         ./usr/lib
+cp /usr/etc/sane.d                       ./usr/etc
 
 # copy i18n
 
