@@ -82,6 +82,8 @@ mkdir -p $APP_IMG_DIR/usr/share/dbus-1/services
 # make sure lib and lib64 are the same thing
 mkdir -p $APP_IMG_DIR/usr/lib
 mkdir -p $APP_IMG_DIR/usr/lib/libexec
+mkdir -p $APP_IMG_DIR/usr/lib/libgphoto2
+mkdir -p $APP_IMG_DIR/usr/lib/libgphoto2_port
 cd $APP_IMG_DIR/usr
 ln -s lib lib64
 
@@ -114,8 +116,12 @@ cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
 cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*  ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*   ./usr/share/dbus-1/services/
-cp -r /usr/lib/libgphoto2*               ./usr/lib
 cp -r /usr/$LIB_PATH_ALT/libexec/kf5     ./usr/lib/libexec/
+
+# copy libgphoto2 drivers
+find  /usr/lib/libgphoto2      -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2 \;      2>/dev/null
+find  /usr/lib/libgphoto2_port -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2_port \; 2>/dev/null
+
 # copy i18n
 
 # Qt translations files

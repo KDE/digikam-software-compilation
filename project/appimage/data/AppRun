@@ -22,6 +22,8 @@ export QT_PLUGIN_PATH=\$DIR/usr/lib/qt5/plugins/
 export XDG_DATA_DIRS=$DIR/usr/share/:$XDG_DATA_DIRS
 export PATH=$DIR/usr/bin:$DIR/usr/lib:$DIR/usr/lib/libexec/kf5:$PATH
 export KDE_FORK_SLAVES=1
+export CAMLIBS=$DIR/usr/lib/libgphoto2
+export IOLIBS=$DIR/usr/lib/libgphoto2_port
 
 export APPIMAGE_STARTUP_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 export APPIMAGE_STARTUP_QT_PLUGIN_PATH=\$QT_PLUGIN_PATH
