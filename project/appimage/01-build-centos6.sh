@@ -98,7 +98,6 @@ yum -y install wget \
                libudev-devel \
                libicu-devel \
                libtiff-devel \
-               sane-backends-devel \
                jasper-devel \
                sqlite-devel \
                libusb-devel \
@@ -142,7 +141,8 @@ fi
 echo -e "---------- Clean-up Old Packages\n"
 
 # Remove system based devel package to prevent conflict with new one.
-yum -y erase qt-devel boost-devel libgphoto2-devel
+yum -y erase qt-devel boost-devel libgphoto2 sane-backends
+
 
 #################################################################################################
 
@@ -218,6 +218,7 @@ cmake3 $ORIG_WD/3rdparty \
 # NOTE: The order to compile each component here is very important.
 
 cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_sane       -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_boost      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
