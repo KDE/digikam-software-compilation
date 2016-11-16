@@ -174,8 +174,12 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libEGL.so.1      | cut -d ">" -f 2 | 
 # For Fedora 20
 cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | xargs) ./usr/lib/
 
-cp /usr/bin/digikam     ./usr/bin
-cp /usr/bin/showfoto    ./usr/bin
+cp /usr/bin/digikam                 ./usr/bin
+cp /usr/bin/showfoto                ./usr/bin
+
+# For Solid action when camera is connected to computer
+cp /usr/$LIB_PATH_ALT/qt5/bin/qdbus ./usr/share/digikam/utils
+sed -i "/Exec=/c\Exec=digikam-camera downloadFromUdi %i" ./usr/share/solid/action/digikam-opencamera.desktop
 
 #################################################################################################
 
