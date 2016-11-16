@@ -125,8 +125,8 @@ find  /usr/lib/libgphoto2_port -name "*.so" -type f -exec cp {} ./usr/lib/libgph
 
 # copy sane backends
 
-cp /usr/lib/sane                         ./usr/lib
-cp /usr/etc/sane.d                       ./usr/etc
+cp -r /usr/lib/sane                      ./usr/lib
+cp -r /usr/etc/sane.d                    ./usr/etc
 
 # copy i18n
 
@@ -178,8 +178,8 @@ cp /usr/bin/digikam                 ./usr/bin
 cp /usr/bin/showfoto                ./usr/bin
 
 # For Solid action when camera is connected to computer
-cp /usr/$LIB_PATH_ALT/qt5/bin/qdbus ./usr/share/digikam/utils
-sed -i "/Exec=/c\Exec=digikam-camera downloadFromUdi %i" ./usr/share/solid/action/digikam-opencamera.desktop
+cp /usr/bin/qdbus                   ./usr/share/digikam/utils
+sed -i "/Exec=/c\Exec=digikam-camera downloadFromUdi %i" ./usr/share/solid/actions/digikam-opencamera.desktop
 
 #################################################################################################
 
