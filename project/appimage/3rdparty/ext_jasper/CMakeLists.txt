@@ -10,8 +10,8 @@ SET(PREFIX_ext_jasper "${EXTPREFIX}")
 
 ExternalProject_Add(ext_jasper
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.28.tar.gz
-    URL_MD5 979fd58a439ccaba8eb3b806d7e6a87e
+    URL https://github.com/mdadams/jasper/archive/version-1.900.29.zip
+    URL_MD5 0bc081a90fdb871eb26335eae30295a8
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jasper} ${GLOBAL_AUTOMAKE_PROFILE} --disable-opengl
     BUILD_COMMAND make
