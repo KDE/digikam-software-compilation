@@ -8,7 +8,7 @@
 
 SET(PREFIX_ext_gcc "${EXTPREFIX}")
 
-ExternalProject_add(gmp	 
+ExternalProject_add(gmp
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
         URL https://ftp.gnu.org/gnu/gmp/gmp-6.1.1.tar.xz
         URL_MD5 e70e183609244a332d80529e7e155a35
@@ -67,4 +67,3 @@ ExternalProject_add(ext_gcc
         ALWAYS 0
         BUILD_IN_SOURCE 1
 )
-
