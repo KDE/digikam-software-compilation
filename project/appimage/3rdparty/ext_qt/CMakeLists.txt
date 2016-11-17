@@ -32,8 +32,6 @@ ExternalProject_Add(ext_qt
                   -no-pch
                   -qt-zlib
                   -qt-pcre
-                  -qt-libpng
-                  -qt-libjpeg
                   -qt-harfbuzz
                   -qt-freetype
                   -qt-xcb
