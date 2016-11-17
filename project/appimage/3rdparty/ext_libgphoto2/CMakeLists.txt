@@ -13,6 +13,8 @@ ExternalProject_Add(ext_libgphoto2
     URL http://downloads.sourceforge.net/project/gphoto/libgphoto/2.5.10/libgphoto2-2.5.10.tar.bz2
     URL_MD5 f1e53e684a3ea51cc7958d7e4eee7f37
 
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/../../patches/libgphoto2-jpegturbo.patch
+
     INSTALL_DIR ${EXTPREFIX_libgphoto2}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_libgphoto2}
 
