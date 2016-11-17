@@ -13,7 +13,7 @@ ExternalProject_Add(ext_tiff
     URL ftp://download.osgeo.org/libtiff/tiff-4.0.6.tar.gz
     URL_MD5 d1d2e940dea0b5ad435f21f03d96dd72
 
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_tiff}  ${GLOBAL_AUTOMAKE_PROFILE}
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_tiff}
     BUILD_COMMAND make
     INSTALL_COMMAND make install
 
