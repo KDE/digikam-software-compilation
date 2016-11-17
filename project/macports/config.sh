@@ -64,7 +64,7 @@ MP_PACKAGES="qt5 \
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.27
+KD_VERSION=5.28
 
 # KF5 extra applications tarball information
 KA_URL="http://download.kde.org/stable/applications/"
@@ -81,13 +81,3 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
-
-# Hugin tarball information
-HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
-HU_BUILDTEMP=~/hutemp
-HU_VERSION=2015.0
-
-# Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
-# 0: use port file
-# 1: use tarball
-ENABLE_HUGIN=0
