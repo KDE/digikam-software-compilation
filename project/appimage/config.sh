@@ -32,4 +32,4 @@ DK_EPOCH="-01"
 ########################################################################
 
 # AppImage SDK version to use (1 or 2. 3 to disable)
-APPIMAGE_VERSION=3
+APPIMAGE_VERSION=1
