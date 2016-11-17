@@ -34,7 +34,6 @@ InstallCorePackages
 #port install valgrind
 #port install kate
 #port install konsole
-#port install kdeutils4
 
 # Prepare KDE background process to run applications
 
