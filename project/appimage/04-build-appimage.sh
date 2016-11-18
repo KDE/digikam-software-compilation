@@ -353,6 +353,8 @@ rm -f $ORIG_WD/bundle/* || true
 
 echo -e "---------- Create Bundle with AppImage SDK stage2\n"
 
+cd /
+
 if [[ "$ARCH" = "x86_64" ]] ; then
     wget -q https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-x86_64.AppImage
     chmod a+x AppImageAssistant_6-x86_64.AppImage
