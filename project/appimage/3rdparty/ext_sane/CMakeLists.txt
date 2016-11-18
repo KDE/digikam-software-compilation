@@ -15,9 +15,6 @@ ExternalProject_Add(ext_sane
 
     INSTALL_DIR ${EXTPREFIX_sane}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_sane}
-
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1
     ALWAYS 0

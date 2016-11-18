@@ -18,8 +18,6 @@ ExternalProject_Add(ext_libgphoto2
     INSTALL_DIR ${EXTPREFIX_libgphoto2}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_libgphoto2}
 
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1
     ALWAYS 0

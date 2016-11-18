@@ -14,9 +14,6 @@ ExternalProject_Add(ext_jasper
     URL_MD5 4619ec9860c10e557b3f192f5e76f596
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jasper} ${GLOBAL_AUTOMAKE_PROFILE} --disable-opengl
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
-
     UPDATE_COMMAND ""
     ALWAYS 0
 )

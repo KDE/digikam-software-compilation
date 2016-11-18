@@ -14,9 +14,6 @@ ExternalProject_Add(ext_png
     URL_MD5 faed9bb495d2e12dd0c9ec561ca60cd8
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_png}
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
-
     UPDATE_COMMAND ""
     ALWAYS 0
 )

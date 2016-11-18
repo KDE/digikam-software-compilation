@@ -51,8 +51,6 @@ ExternalProject_Add(ext_qt
                   -skip qtgamepad
                   -skip qtmultimedia
 
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1
     ALWAYS 0

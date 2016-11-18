@@ -14,9 +14,6 @@ ExternalProject_Add(ext_jpeg
     URL_MD5 55deb139b0cac3c8200b75d485fc13f3
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jpeg} --without-simd
-    BUILD_COMMAND make
-    INSTALL_COMMAND make install
-
     UPDATE_COMMAND ""
     ALWAYS 0
 )
