@@ -162,45 +162,6 @@ fi
 
 #################################################################################################
 
-if [[ $APPIMAGE_VERSION -eq 1 ]]; then
-
-    echo -e "---------- Install AppImage SDKs V1\n"
-
-    # Build standard AppImageKit
-
-    if [ ! -d /AppImageKit ] ; then
-        git clone  --depth 1 https://github.com/probonopd/AppImageKit.git /AppImageKit
-    fi
-
-    cd /AppImageKit/
-    git reset --hard HEAD
-    git pull
-    ./build.sh
-
-elif [[ $APPIMAGE_VERSION -eq 2 ]]; then
-
-    echo -e "---------- Install AppImage SDKs V2\n"
-
-    # Build new AppImageKit V2
-
-    if [ ! -d /AppImageKitV2 ] ; then
-        git clone --recursive https://github.com/probonopd/appimagetool.git /AppImageKitV2
-    fi
-
-    cd /AppImageKitV2/
-    ./install-build-deps.sh
-    ./build.sh
-
-else
-
-    echo -e "Disable AppImage SDK install!"
-
-fi
-
-echo -e "AppImage SDK installed..."
-
-#################################################################################################
-
 cd $BUILDING_DIR
 
 rm -rf $BUILDING_DIR/* || true

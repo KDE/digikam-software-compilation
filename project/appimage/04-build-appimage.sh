@@ -329,45 +329,41 @@ elif [[ "$ARCH" = "i686" ]] ; then
     APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-i386.appimage"
 fi
 
-if [[ $APPIMAGE_VERSION -eq 1 ]] ; then
+echo -e "---------- Create Bundle with AppImage SDK stage1\n"
 
-    echo -e "---------- Create Bundle with AppImage SDK V1\n"
+cd /
 
-    # Source functions
-    wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
-    . ./functions.sh
+# Source functions
+wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+. ./functions.sh
 
-    # Install desktopintegration in usr/bin/digikam.wrapper
-    cd $APP_IMG_DIR
+# Install desktopintegration in usr/bin/digikam.wrapper
+cd $APP_IMG_DIR
 
-    # We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
-    cp ${ORIG_WD}/data/AppRun .
+# We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
+cp ${ORIG_WD}/data/AppRun .
 
-    # desktop integration rules
-    cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
-    cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
-    get_desktopintegration digikam
+# desktop integration rules
+cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
+get_desktopintegration digikam
 
-    cd /
+mkdir -p $ORIG_WD/bundle
+rm -f $ORIG_WD/bundle/* || true
 
-    mkdir -p $ORIG_WD/bundle
-    rm -f $ORIG_WD/bundle/* || true
-    AppImageKit/AppImageAssistant.AppDir/package $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+echo -e "---------- Create Bundle with AppImage SDK stage2\n"
 
-    chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
-
-elif [[ $APPIMAGE_VERSION -eq 2 ]] ; then
-
-    echo -e "---------- Create Bundle with AppImage SDK V2\n"
-
-    # TODO
-
-else
-
-    echo -e "Unknown AppImage SDK version!"
-    exit
-
+if [[ "$ARCH" = "x86_64" ]] ; then
+    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-x86_64.AppImage
+    chmod a+x AppImageAssistant_6-x86_64.AppImage
+    ./AppImageAssistant_6-x86_64.AppImage $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+elif [[ "$ARCH" = "i686" ]] ; then
+    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-i686.AppImage
+    chmod a+x AppImageAssistant_6-i686.AppImage
+    ./AppImageAssistant_6-i686.AppImage $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 fi
+
+chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 #################################################################################################
 # Show resume information and future instructions to host installer file to KDE server

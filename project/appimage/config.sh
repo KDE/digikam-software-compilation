@@ -28,8 +28,3 @@ DK_URL="http://download.kde.org/stable/digikam"
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
-
-########################################################################
-
-# AppImage SDK version to use (1 or 2. 3 to disable)
-APPIMAGE_VERSION=1
