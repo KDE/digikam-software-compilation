@@ -13,7 +13,10 @@ ExternalProject_Add(ext_jpeg
     URL https://sourceforge.net/projects/libjpeg-turbo/files/1.5.1/libjpeg-turbo-1.5.1.tar.gz
     URL_MD5 55deb139b0cac3c8200b75d485fc13f3
 
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jpeg} --without-simd
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jpeg}
+                                             --without-simd
+                                             --with-jpeg8
+
     UPDATE_COMMAND ""
     ALWAYS 0
 )
