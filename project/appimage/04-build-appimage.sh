@@ -76,6 +76,7 @@ rm -rf $APP_IMG_DIR/ || true
 mkdir -p $APP_IMG_DIR/usr/bin
 mkdir -p $APP_IMG_DIR/usr/etc
 mkdir -p $APP_IMG_DIR/usr/share
+mkdir -p $APP_IMG_DIR/usr/share/icons
 mkdir -p $APP_IMG_DIR/usr/share/metainfo
 mkdir -p $APP_IMG_DIR/usr/share/dbus-1/interfaces
 mkdir -p $APP_IMG_DIR/usr/share/dbus-1/services
@@ -344,8 +345,15 @@ cd $APP_IMG_DIR
 cp ${ORIG_WD}/data/AppRun .
 
 # desktop integration rules
-cp /usr/share/applications/org.kde.digikam.desktop digikam.desktop
-cp /usr/share/icons/hicolor/64x64/apps/digikam.png digikam.png
+
+cp    /usr/share/applications/org.kde.digikam.desktop   digikam.desktop
+
+mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/apps
+cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/apps/digikam.png
+
+mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/mimetypes
+cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/mimetypes/application-vnd.digikam.png
+
 get_desktopintegration digikam
 
 mkdir -p $ORIG_WD/bundle
@@ -356,15 +364,15 @@ echo -e "---------- Create Bundle with AppImage SDK stage2\n"
 cd /
 
 if [[ "$ARCH" = "x86_64" ]] ; then
-    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-x86_64.AppImage
-    chmod a+x AppImageAssistant_6-x86_64.AppImage
-    ./AppImageAssistant_6-x86_64.AppImage $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+    APPIMGBIN=AppImageAssistant_6-x86_64.AppImage
 elif [[ "$ARCH" = "i686" ]] ; then
-    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-i686.AppImage
-    chmod a+x AppImageAssistant_6-i686.AppImage
-    ./AppImageAssistant_6-i686.AppImage $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+    APPIMGBIN=AppImageAssistant_6-i686.AppImage
 fi
 
+wget -q https://github.com/probonopd/AppImageKit/releases/download/6/$APPIMGBIN -O $APPIMGBIN
+chmod a+x $APPIMGBIN
+
+./$APPIMGBIN $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 #################################################################################################
