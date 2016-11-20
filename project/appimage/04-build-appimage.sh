@@ -336,7 +336,11 @@ echo -e "---------- Create Bundle with AppImage SDK stage1\n"
 cd /
 
 # Source functions
-wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+
+if [[ ! -s ./functions.sh ]] ; then
+    wget -q https://github.com/probonopd/AppImages/raw/master/functions.sh -O ./functions.sh
+fi
+
 . ./functions.sh
 
 # Install desktopintegration in usr/bin/digikam.wrapper
@@ -370,8 +374,11 @@ elif [[ "$ARCH" = "i686" ]] ; then
     APPIMGBIN=AppImageAssistant_6-i686.AppImage
 fi
 
-wget -q https://github.com/probonopd/AppImageKit/releases/download/6/$APPIMGBIN -O $APPIMGBIN
-chmod a+x $APPIMGBIN
+if [[ ! -s ./$APPIMGBIN ]] ; then
+    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/$APPIMGBIN -O ./$APPIMGBIN
+fi
+
+chmod a+x ./$APPIMGBIN
 
 ./$APPIMGBIN $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
