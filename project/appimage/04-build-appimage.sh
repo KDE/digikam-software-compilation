@@ -177,6 +177,7 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | 
 
 cp /usr/bin/digikam                 ./usr/bin
 cp /usr/bin/showfoto                ./usr/bin
+cp /usr/bin/kbuildsycoca5           ./usr/bin
 
 # For Solid action when camera is connected to computer
 cp /usr/bin/qdbus                   ./usr/share/digikam/utils
