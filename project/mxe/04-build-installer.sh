@@ -200,7 +200,7 @@ shasum -a1 "$ORIG_WD/bundle/$TARGET_INSTALLER"   | { read first rest ; echo $fir
 echo -n "SHA256 sum : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 
-cat $TARGET_INSTALLER.txt
+cat $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
