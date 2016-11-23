@@ -91,7 +91,28 @@ git pull
 echo -e "\n"
 echo "---------- Building digiKam dependencies with MXE"
 
-make MXE_TARGETS=$MXE_BUILD_TARGETS $MXE_PACKAGES
+make MXE_TARGETS=$MXE_BUILD_TARGETS \
+     gcc \
+     gdb \
+     cmake \
+     freeglut \
+     libxml2 \
+     libxslt \
+     libpng \
+     jpeg \
+     tiff \
+     boost \
+     gettext \
+     jasper \
+     expat \
+     lcms \
+     lensfun \
+     liblqr-1 \
+     eigen \
+     zlib \
+     exiv2 \
+     opencv \
+     qt5
 
 echo -e "\n"
 

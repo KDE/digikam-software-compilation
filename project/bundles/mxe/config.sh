@@ -32,28 +32,6 @@ echo "Target Windows architecture: $MXE_ARCHBITS bits."
 MXE_GIT_URL="https://github.com/mxe/mxe.git"
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/
 MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
-MXE_PACKAGES="gcc \
-              gdb \
-              cmake \
-              freeglut \
-              libxml2 \
-              libxslt \
-              libpng \
-              jpeg \
-              tiff \
-              boost \
-              gettext \
-              jasper \
-              expat \
-              lcms \
-              lensfun \
-              liblqr-1 \
-              eigen \
-              zlib \
-              exiv2 \
-              opencv \
-              qt5 \
-             "
 
 #-------------------------------------------------------------------------------------------
 
