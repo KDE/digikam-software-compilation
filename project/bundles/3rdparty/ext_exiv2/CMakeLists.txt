@@ -19,7 +19,7 @@ ExternalProject_Add( ext_exiv2
     # To use current implementation from SVN
 
     SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
-    PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/../../patches/exiv2-trunk.patch
+    PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
     INSTALL_DIR ${PREFIX_ext_exiv2}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_exiv2}

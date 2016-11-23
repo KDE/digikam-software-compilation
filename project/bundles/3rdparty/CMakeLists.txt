@@ -41,11 +41,7 @@ message( STATUS "CMAKE_CL_64: ${CMAKE_CL_64}")
 
 set(GLOBAL_BUILD_TYPE RelWithDebInfo)
 set(GLOBAL_PROFILE ${GLOBAL_PROFILE} -DBUILD_TESTING=false)
-
-if(UNIX AND NOT APPLE)
-    set(LINUX true)
-    set(PATCH_COMMAND patch)
-endif()
+set(PATCH_COMMAND patch)
 
 # this list must be dependency-ordered
 add_subdirectory(ext_gcc)
@@ -62,6 +58,6 @@ add_subdirectory(ext_lensfun)
 add_subdirectory(ext_gstreamer)
 add_subdirectory(ext_qt)
 add_subdirectory(ext_qtwebkit)
-add_subdirectory(ext_frameworks)
+add_subdirectory(ext_kf5)
 add_subdirectory(ext_marble)
 add_subdirectory(ext_libksane)

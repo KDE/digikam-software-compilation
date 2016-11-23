@@ -59,3 +59,11 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
+
+#-------------------------------------------------------------------------------------------
+
+# Absolute path where are downloaded all tarballs to compile.
+DOWNLOAD_DIR="`pwd`/temp/d"
+
+# Absolute path where are compiled all tarballs
+BUILDING_DIR="`pwd`/temp/b"

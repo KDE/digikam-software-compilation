@@ -16,7 +16,7 @@ ExternalProject_Add(
     URL http://download.kde.org/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
     URL_MD5 e2e6315ba8277027f03ee2b5fe9c84a6
     INSTALL_DIR ${EXTPREFIX_marble}
-    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/../../patches/marble-relativeinstallpath.patch
+    PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/marble-libs-install-appimage.patch
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_marble}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                ${GLOBAL_PROFILE}

@@ -42,7 +42,7 @@ function(InstallKF5Component
     message(STATUS "Patch to apply   : ${patch}")
 
     if(NOT "${patch}" STREQUAL "")
-        set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/../../patches/${patch}")
+        set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/${patch}")
     endif()
 
     ExternalProject_Add(ext_${name}
