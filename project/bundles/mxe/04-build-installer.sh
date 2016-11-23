@@ -174,15 +174,16 @@ find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS
 echo -e "\n---------- Build NSIS installer\n"
 
 mkdir -p $ORIG_WD/bundle
-rm -f $ORIG_WD/bundle/* || true
-
-cd $ORIG_WD/installer
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
     TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win32.exe
+    rm -f $ORIG_WD/bundle/*Win32* || true
 else
     TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64.exe
+    rm -f $ORIG_WD/bundle/*Win64* || true
 fi
+
+cd $ORIG_WD/installer
 
 makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=$BUNDLEDIR -DTARGETARCH=$MXE_ARCHBITS -DOUTPUT=$ORIG_WD/bundle/$TARGET_INSTALLER ./digikam.nsi
 
@@ -200,7 +201,7 @@ shasum -a1 "$ORIG_WD/bundle/$TARGET_INSTALLER"   | { read first rest ; echo $fir
 echo -n "SHA256 sum : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 
-cat $TARGET_INSTALLER.txt
+cat $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 echo -e "\n------------------------------------------------------------------"
 curl http://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
