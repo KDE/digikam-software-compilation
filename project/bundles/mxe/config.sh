@@ -59,17 +59,3 @@ DK_BUILDTEMP=~/dktemp
 DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
-
-# Hugin tarball information
-HU_URL="http://sourceforge.net/projects/hugin/files/hugin/"
-HU_BUILDTEMP=~/hutemp
-HU_VERSION=2015.0
-
-# MariaDB tarball information
-MD_URL="http://de-rien.fr/mariadb"
-MD_BUILDTEMP=~/mdtemp
-MD_VERSION=10.2.0
-
-# Libraries to build outside Macports at the same time than digiKam through 03-build-digikam.sh
-ENABLE_HUGIN=0
-ENABLE_MARIADB=0
