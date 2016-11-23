@@ -95,15 +95,15 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      gcc \
      gdb \
      cmake \
+     gettext \
      freeglut \
      libxml2 \
      libxslt \
+     libjpeg-turbo \
      libpng \
-     jpeg \
      tiff \
-     boost \
-     gettext \
      jasper \
+     boost \
      expat \
      lcms \
      lensfun \
