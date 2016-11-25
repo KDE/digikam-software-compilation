@@ -113,48 +113,48 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      expat \
      mman-win32 \
      pthreads \
-#     opencv \
-#     exiv2
-#     qt5
+     opencv \
+     exiv2
+     qt5
 
 echo -e "\n"
 
 #################################################################################################
 
-echo -e "\n"
-echo "---------- Building digiKam 3rd-party dependencies with MXE"
+#echo -e "\n"
+#echo "---------- Building digiKam 3rd-party dependencies with MXE"
 
 # Create the build dir for the 3rdparty deps
-if [ ! -d $BUILDING_DIR ] ; then
-    mkdir -p $BUILDING_DIR
-fi
-if [ ! -d $DOWNLOAD_DIR ] ; then
-    mkdir -p $DOWNLOAD_DIR
-fi
+#if [ ! -d $BUILDING_DIR ] ; then
+#    mkdir -p $BUILDING_DIR
+#fi
+#if [ ! -d $DOWNLOAD_DIR ] ; then
+#    mkdir -p $DOWNLOAD_DIR
+#fi
 
-cd $BUILDING_DIR
+#cd $BUILDING_DIR
 
-rm -rf $BUILDING_DIR/* || true
+#rm -rf $BUILDING_DIR/* || true
 
-${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
-                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
-                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
-                           -DCMAKE_COLOR_MAKEFILE=ON \
-                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
-                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
-                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
-                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
-                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
-                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
-                           -DINSTALL_ROOT=${MXE_INSTALL_PREFIX} \
-                           -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
+#${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
+#                           -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
+#                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
+#                           -DCMAKE_COLOR_MAKEFILE=ON \
+#                           -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
+#                           -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+#                           -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN} \
+#                           -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH} \
+#                           -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+#                           -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include \
+#                           -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib \
+#                           -DZLIB_ROOT=${CMAKE_PREFIX_PATH} \
+#                           -DINSTALL_ROOT=${MXE_INSTALL_PREFIX} \
+#                           -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR
 
 # Low level libraries
 # NOTE: The order to compile each component here is very important.
 
-${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
+#${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 
 #################################################################################################
 
