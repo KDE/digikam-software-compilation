@@ -114,7 +114,7 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      mman-win32 \
      pthreads \
      opencv \
-     exiv2
+     exiv2 \
      qt5
 
 echo -e "\n"
