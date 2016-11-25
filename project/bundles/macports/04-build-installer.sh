@@ -58,7 +58,7 @@ cd $ORIG_WD/icon-rcc
 
 rm -f CMakeCache.txt > /dev/null
 
-cp -f $ORIG_WD/../../bootstrap.macports .
+cp -f $ORIG_WD/../../../bootstrap.macports .
 
 cmake -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
       -DCMAKE_BUILD_TYPE=debug \
