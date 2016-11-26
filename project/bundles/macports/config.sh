@@ -36,31 +36,6 @@ MP_BUILDTEMP=~/mptemp
 # Uncomment this line to force a specific version of Macports to use, else lastest will be used.
 #MP_VERSION="2.3.3"
 
-MP_PACKAGES="qt5 \
-             qt5-sqlite-plugin \
-             qt5-mysql-plugin \
-             qt5-qtscript \
-             qt5-qtwebkit \
-             cmake \
-             opencv \
-             libpng \
-             jpeg \
-             tiff \
-             exiv2 \
-             boost \
-             gettext \
-             libusb \
-             libgphoto2 \
-             jasper \
-             lcms2 \
-             eigen3 \
-             expat \
-             libxml2 \
-             libxslt \
-             lensfun \
-             bison \
-             "
-
 # KF5 extra libs tarball information
 KD_URL="http://download.kde.org/stable/frameworks/"
 KD_BUILDTEMP=~/kf5temp

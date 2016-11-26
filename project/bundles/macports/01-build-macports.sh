@@ -211,7 +211,41 @@ fi
 echo -e "\n"
 echo "---------- Building digiKam dependencies with Macports"
 
-InstallCorePackages
+# With OSX less than El Capitan, we need a more recent Clang compiler than one provided by XCode.
+
+if [[ $MAJOR_OSX_VERSION -lt 10 ]]; then
+
+    echo "---------- Install more recent Clang compiler from Macports for specific ports"
+    port install clang_select
+    port install clang-3.4
+    port select --set clang mp-clang-3.4
+fi
+
+echo -e "\n"
+
+port install qt5 \
+             qt5-sqlite-plugin \
+             qt5-mysql-plugin \
+             qt5-qtscript \
+             qt5-qtwebkit \
+             cmake \
+             opencv \
+             libpng \
+             jpeg \
+             tiff \
+             exiv2 \
+             boost \
+             gettext \
+             libusb \
+             libgphoto2 \
+             jasper \
+             lcms2 \
+             eigen3 \
+             expat \
+             libxml2 \
+             libxslt \
+             lensfun \
+             bison
 
 echo -e "\n"
 

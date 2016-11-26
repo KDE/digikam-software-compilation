@@ -223,7 +223,7 @@ echo "---------- Configure $LIB_NAME with configure options : $OPTIONS"
 rm -rf build
 mkdir build
 
-cp $ORIG_WD/../../bootstrap.macports ./
+cp $ORIG_WD/../../../bootstrap.macports ./
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" $OPTIONS
 
@@ -324,7 +324,7 @@ echo "---------- Configure $APP_NAME with configure options : $OPTIONS"
 rm -rf build
 mkdir build
 
-cp $ORIG_WD/../../bootstrap.macports ./
+cp $ORIG_WD/../../../bootstrap.macports ./
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" $OPTIONS
 
@@ -357,33 +357,5 @@ if [ $? -ne 0 ]; then
     echo "---------- Aborting..."
     exit;
 fi
-
-}
-
-########################################################################
-# Install Macports core packages before to compile digiKam
-# See https://trac.macports.org/wiki/KDE for details
-# Possible arguments : 
-#     DISABLE_LENSFUN  : do not install LibLensFun through Macports.
-#     CONTINUE_INSTALL : Continue aborted previous installation.
-#
-InstallCorePackages()
-{
-
-OsxCodeName
-
-# With OSX less than El Capitan, we need a more recent Clang compiler than one provided by XCode.
-
-if [[ $MAJOR_OSX_VERSION -lt 10 ]]; then
-
-    echo "---------- Install more recent Clang compiler from Macports for specific ports"
-    port install clang_select
-    port install clang-3.4
-    port select --set clang mp-clang-3.4
-fi
-
-echo -e "\n"
-
-port install $MP_PACKAGES
 
 }
