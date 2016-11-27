@@ -56,22 +56,51 @@ function(InstallKF5Component
             set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/${patch}")
         endif()
 
-        set(macosfix "LC_CTYPE=C find . -name '*.cpp' -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;")
-
         ExternalProject_Add(ext_${name}
                             DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
                             URL http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz
                             URL_MD5 ${md5sm}
 
-                            CONFIGURE_COMMAND cp {CMAKE_CURRENT_SOURCE_DIR}/../../../bootstrap.macports <SOURCE_DIR>/.
-                                      COMMAND <SOURCE_DIR>/./bootstrap.macports ${EXTPREFIX_frameworks} "debugfull" "x86_64" ${argoptions}
-
                             PATCH_COMMAND ${patch}
-                                  COMMAND ${macosfix}
+
+                            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+                                       -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                                       -DCMAKE_OSX_ARCHITECTURES="x86_64"
+                                       ${GLOBAL_PROFILE}
+                                       -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+                                       -DBUILD_TESTING=OFF
+                                       "${argoptions}"
+                                       -DAPPLE_SUPPRESS_X11_WARNING=ON
+                                       -DCMAKE_COLOR_MAKEFILE=ON
+                                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+                                       -DCMAKE_INSTALL_NAME_DIR=${EXTPREFIX_frameworks}/lib
+                                       -DCMAKE_SYSTEM_PREFIX_PATH="${EXTPREFIX_frameworks};/usr"
+                                       -DCMAKE_MODULE_PATH="${EXTPREFIX_frameworks}/share/cmake/Modules;${EXTPREFIX_frameworks}/share/cmake-3.5/Modules"
+                                       -DKDE_INSTALL_BUNDLEDIR=${BUNDLE_INSTALL_DIR}
+                                       -DKDE_INSTALL_DATADIR=${BUNDLE_DATA_INSTALL_DIR}
+                                       -DQT_QT_INCLUDE_DIR=${EXTPREFIX_frameworks}/libexec/qt5/include
+                                       -DQT_LIBRARY_DIR=${EXTPREFIX_frameworks}/libexec/qt5/lib
+                                       -DQT_QMAKE_EXECUTABLE=${EXTPREFIX_frameworks}/libexec/qt5/bin/qmake
+                                       -Wno-dev
 
                             UPDATE_COMMAND ""
                             ALWAYS 0
         )
+
+        ExternalProject_Add_Step(
+            ext_${name} macospatch
+            COMMAND echo "MACOS PATCH"
+            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/.
+#            COMMAND "LC_CTYPE=C find . -name '*.cpp' -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;"
+            DEPENDEES patch
+        )
+
+#        ExternalProject_Add_Step(
+#            ext_${name} macosconfigure
+#            COMMAND echo "MACOS CONFIGURE"
+#            COMMAND cp {CMAKE_CURRENT_SOURCE_DIR}/../../../bootstrap.macports <SOURCE_DIR>/.
+#            DEPENDEES configure
+#        )
 
     else()
 
