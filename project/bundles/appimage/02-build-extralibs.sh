@@ -52,7 +52,6 @@ cmake3 $ORIG_WD/../3rdparty \
 cmake3 --build . --config RelWithDebInfo --target ext_extra-cmake-modules -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kconfig             -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_breeze-icons        -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_solid               -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kcoreaddons         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_kwindowsystem       -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_solid               -- -j$CPU_CORES
