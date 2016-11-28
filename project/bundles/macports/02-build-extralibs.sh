@@ -100,10 +100,6 @@ cmake --build . --config RelWithDebInfo --target ext_marble              -- -j$C
 mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libastro*  $INSTALL_PREFIX/lib
 mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libmarble* $INSTALL_PREFIX/lib
 
-# KCalCore for Calendar tool.
-# Disabled currently due to dependencies to KDE4LibsSupport
-#InstallKDEExtraApp "kcalcore"
-
 #################################################################################################
 
 export PATH=$ORIG_PATH

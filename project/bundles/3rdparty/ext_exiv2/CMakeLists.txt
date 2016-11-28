@@ -9,6 +9,7 @@
 SET(PREFIX_ext_exiv2 "${EXTPREFIX}")
 
 if(MINGW)
+
     ExternalProject_Add(ext_exiv2
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
@@ -35,7 +36,38 @@ if(MINGW)
         UPDATE_COMMAND ""
         ALWAYS 0
     )
-else()
+
+
+elseif(APPLE)
+
+    ExternalProject_Add(ext_exiv2
+        DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+
+        # To use official release tarball
+
+        #URL http://www.exiv2.org/exiv2-0.25.tar.gz
+        #URL_MD5 258d4831b30f75a01e0234065c6c2806
+
+        # To use current implementation from SVN
+
+        SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
+        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch &&
+                      ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macos.patch
+
+        CONFIGURE_COMMAND COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} debug x86_64
+
+        BUILD_COMMAND cd <SOURCE_DIR>/build.cmake && make -j
+
+        INSTALL_COMMAND cd <SOURCE_DIR>/build.cmake && make install/fast
+
+        BUILD_IN_SOURCE 1
+
+        UPDATE_COMMAND ""
+        ALWAYS 0
+    )
+
+else() # Linux
+
     ExternalProject_Add(ext_exiv2
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
@@ -61,4 +93,5 @@ else()
         UPDATE_COMMAND ""
         ALWAYS 0
     )
+
 endif()
