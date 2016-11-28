@@ -53,7 +53,7 @@ function(InstallKF5Component
         message(STATUS "Patch to apply   : ${patch}")
 
         if(NOT "${patch}" STREQUAL "")
-            set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/${patch}")
+            set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/${patch};&&")
         endif()
 
         ExternalProject_Add(ext_${name}
@@ -62,10 +62,11 @@ function(InstallKF5Component
                             URL_MD5 ${md5sm}
 
                             PATCH_COMMAND ${patch}
-                                  COMMAND grep --include=*.cpp -rl 'GenericDataLocation' <SOURCE_DIR>/. | xargs sed -i '' -e 's/GenericDataLocation/AppDataLocation/g'
-                                  COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/.
+                                          cp ${CMAKE_CURRENT_SOURCE_DIR}/../../macports/fixbundledatapath.sh <SOURCE_DIR>/. &&
+                                          <SOURCE_DIR>/fixbundledatapath.sh
 
-                            CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${argoptions}
+                            CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
+                                              <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${argoptions}
 
                             BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 

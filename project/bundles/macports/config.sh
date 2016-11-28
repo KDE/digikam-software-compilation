@@ -7,6 +7,14 @@
 
 ########################################################################
 
+# Absolute path where are downloaded all tarballs to compile.
+DOWNLOAD_DIR="`pwd`/temp.dwnld"
+
+# Absolute path where are compiled all tarballs
+BUILDING_DIR="`pwd`/temp.build"
+
+########################################################################
+
 # Minimum MacOS target for backward binary compatibility
 # This require to install older MacOS SDKs with Xcode.
 # See this url to download a older SDK archive :

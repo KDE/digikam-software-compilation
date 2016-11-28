@@ -91,7 +91,9 @@ sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"               ./bootstrap.macp
 sed -e "s/DENABLE_DBUS=ON/DENABLE_DBUS=OFF/g"                   ./bootstrap.macports > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.macports
 chmod +x ./bootstrap.macports
 
-FixApplicationBundleDataPath
+cp -f $ORIG_WD/fixbundledatapath.sh $DK_BUILDTEMP/digikam-$DK_VERSION
+
+./fixbundledatapath.sh
 
 ./bootstrap.macports "$INSTALL_PREFIX" "debugfull" "x86_64" "-Wno-dev"
 

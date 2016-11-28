@@ -17,11 +17,12 @@ if(APPLE)
                         URL http://download.kde.org/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
                         URL_MD5 e2e6315ba8277027f03ee2b5fe9c84a6
 
-                        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/marble-libs-install-macos.patch
-                              COMMAND grep --include=*.cpp -rl 'GenericDataLocation' <SOURCE_DIR>/. | xargs sed -i '' -e 's/GenericDataLocation/AppDataLocation/g'
-                              COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/.
+                        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/marble-libs-install-macos.patch &&
+                                      cp ${CMAKE_CURRENT_SOURCE_DIR}/../../macports/fixbundledatapath.sh <SOURCE_DIR>/. &&
+                                      <SOURCE_DIR>/fixbundledatapath.sh
 
-                        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_marble} debug x86_64 "-DWITH_DESIGNER_PLUGIN=OFF -DBUILD_MARBLE_TESTS=OFF -DBUILD_MARBLE_TOOLS=OFF -DBUILD_MARBLE_EXAMPLES=OFF -DBUILD_MARBLE_APPS=OFF -DBUILD_WITH_DBUS=OFF -DQTONLY=ON -DBUILD_TESTING=OFF -Wno-dev"
+                        CONFIGURE_COMMAND COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
+                                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_marble} debug x86_64 "-DWITH_DESIGNER_PLUGIN=OFF -DBUILD_MARBLE_TESTS=OFF -DBUILD_MARBLE_TOOLS=OFF -DBUILD_MARBLE_EXAMPLES=OFF -DBUILD_MARBLE_APPS=OFF -DBUILD_WITH_DBUS=OFF -DQTONLY=ON -DBUILD_TESTING=OFF -Wno-dev"
 
                         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
