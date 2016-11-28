@@ -229,7 +229,6 @@ port install qt5 \
              qt5-qtscript \
              qt5-qtwebkit \
              cmake \
-             opencv \
              libpng \
              jpeg \
              tiff \
@@ -276,7 +275,8 @@ cmake $ORIG_WD/../3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR \
        -Wno-dev
 
-cmake --build . --config RelWithDebInfo --target ext_exiv2 -- -j$CPU_CORES
+cmake --build . --config RelWithDebInfo --target ext_exiv2  -- -j$CPU_CORES
+cmake --build . --config RelWithDebInfo --target ext_opencv -- -j$CPU_CORES
 
 #################################################################################################
 
