@@ -62,47 +62,22 @@ function(InstallKF5Component
                             URL_MD5 ${md5sm}
 
                             PATCH_COMMAND ${patch}
+                                  COMMAND grep --include=*.cpp -rl 'GenericDataLocation' <SOURCE_DIR>/. | xargs sed -i '' -e 's/GenericDataLocation/AppDataLocation/g'
+                                  COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/.
 
-                            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
-                                       -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
-                                       -DCMAKE_OSX_ARCHITECTURES="x86_64"
-                                       ${GLOBAL_PROFILE}
-                                       -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
-                                       -DBUILD_TESTING=OFF
-                                       "${argoptions}"
-                                       -DAPPLE_SUPPRESS_X11_WARNING=ON
-                                       -DCMAKE_COLOR_MAKEFILE=ON
-                                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
-                                       -DCMAKE_INSTALL_NAME_DIR=${EXTPREFIX_frameworks}/lib
-                                       -DCMAKE_SYSTEM_PREFIX_PATH="${EXTPREFIX_frameworks};/usr"
-                                       -DCMAKE_MODULE_PATH="${EXTPREFIX_frameworks}/share/cmake/Modules;${EXTPREFIX_frameworks}/share/cmake-3.5/Modules"
-                                       -DKDE_INSTALL_BUNDLEDIR=${BUNDLE_INSTALL_DIR}
-                                       -DKDE_INSTALL_DATADIR=${BUNDLE_DATA_INSTALL_DIR}
-                                       -DQT_QT_INCLUDE_DIR=${EXTPREFIX_frameworks}/libexec/qt5/include
-                                       -DQT_LIBRARY_DIR=${EXTPREFIX_frameworks}/libexec/qt5/lib
-                                       -DQT_QMAKE_EXECUTABLE=${EXTPREFIX_frameworks}/libexec/qt5/bin/qmake
-                                       -Wno-dev
+                            CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${argoptions}
+
+                            BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
+
+                            INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
+
+                            BUILD_IN_SOURCE 1
 
                             UPDATE_COMMAND ""
                             ALWAYS 0
         )
 
-        ExternalProject_Add_Step(
-            ext_${name} macospatch
-            COMMAND echo "MACOS PATCH"
-            COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/.
-#            COMMAND "LC_CTYPE=C find . -name '*.cpp' -type f -exec sed -i '' -e 's/GenericDataLocation/AppDataLocation/g' {} \;"
-            DEPENDEES patch
-        )
-
-#        ExternalProject_Add_Step(
-#            ext_${name} macosconfigure
-#            COMMAND echo "MACOS CONFIGURE"
-#            COMMAND cp {CMAKE_CURRENT_SOURCE_DIR}/../../../bootstrap.macports <SOURCE_DIR>/.
-#            DEPENDEES configure
-#        )
-
-    else()
+    else() # Linux
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
@@ -154,9 +129,13 @@ function(InstallKF5Component
 
 endfunction()
 
+if(APPLE)
+    set(MacosBreezePatch breeze-icons-macos.patch)
+endif()
+
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")
 InstallKF5Component(kconfig             ${KD_VERSION} ""                                               "")
-InstallKF5Component(breeze-icons        ${KD_VERSION} ""                                               "")
+InstallKF5Component(breeze-icons        ${KD_VERSION} ""                                               "${MacosBreezePatch}")
 InstallKF5Component(solid               ${KD_VERSION} ""                                               "")
 InstallKF5Component(kcoreaddons         ${KD_VERSION} ""                                               "")
 InstallKF5Component(threadweaver        ${KD_VERSION} ""                                               "")
