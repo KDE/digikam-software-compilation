@@ -2,17 +2,11 @@ Index: bootstrap.macports
 ===================================================================
 --- bootstrap.macports	(revision 4686)
 +++ bootstrap.macports	(working copy)
-@@ -59,21 +59,20 @@
-       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-       -DCMAKE_INSTALL_NAME_DIR=${INSTALL_PREFIX}/lib \
-       -DCMAKE_SYSTEM_PREFIX_PATH="${INSTALL_PREFIX};/usr" \
--      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake/modules" \
-+      -DCMAKE_MODULE_PATH="${INSTALL_PREFIX}/share/cmake-3.7/modules" \
+@@ -63,17 +63,17 @@
        -DEXIV2_ENABLE_SHARED=ON \
        -DEXIV2_ENABLE_XMP=ON \
        -DEXIV2_ENABLE_LIBXMP=ON \
 -      -DEXIV2_ENABLE_VIDEO=ON \
-+      -DEXIV2_ENABLE_VIDEO=OFF \
        -DEXIV2_ENABLE_PNG=ON \
 -      -DEXIV2_ENABLE_NLS=ON \
 +      -DEXIV2_ENABLE_NLS=OFF \
@@ -27,8 +21,10 @@ Index: bootstrap.macports
 -      -DEXIV2_ENABLE_SSH=ON \
 +      -DEXIV2_ENABLE_BUILD_SAMPLES=OFF \
 +      -DEXIV2_ENABLE_BUILD_PO=OFF \
++      -DEXIV2_ENABLE_VIDEO=OFF \
 +      -DEXIV2_ENABLE_WEBREADY=OFF \
 +      -DEXIV2_ENABLE_CURL=OFF \
 +      -DEXIV2_ENABLE_SSH=OFF \
++      -DEXV_WANT_VISIBILITY_SUPPORT=ON \
        -Wno-dev \
        ..
