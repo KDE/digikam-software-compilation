@@ -51,6 +51,7 @@ elseif(APPLE)
         # To use current implementation from SVN
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
+
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch &&
                       ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macos.patch
 
