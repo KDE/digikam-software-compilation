@@ -56,7 +56,7 @@ elseif(APPLE)
                       ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macports.patch
 
 
-        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} debug x86_64
+        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64
 
         BUILD_COMMAND cd <SOURCE_DIR>/build.cmake && make -j
 
@@ -84,6 +84,7 @@ else() # Linux
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         INSTALL_DIR ${PREFIX_ext_exiv2}
+
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_exiv2}
                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                    ${GLOBAL_PROFILE}
