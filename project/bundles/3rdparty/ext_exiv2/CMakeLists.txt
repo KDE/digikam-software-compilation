@@ -24,8 +24,8 @@ if(MINGW)
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         INSTALL_DIR ${PREFIX_ext_exiv2}
-        CONFIGURE_COMMAND <SOURCE_DIR>/make config
-                  COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_exiv2}
+        CONFIGURE_COMMAND <SOURCE_DIR>/make config &&
+                          <SOURCE_DIR>/configure --prefix=${PREFIX_ext_exiv2}
                                                  ${GLOBAL_AUTOMAKE_PROFILE}
                                                  --disable-visibility
                                                  --disable-nls
