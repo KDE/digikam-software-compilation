@@ -52,15 +52,14 @@ elseif(APPLE)
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch &&
-                      ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macports.patch
+        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
+        CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
+                          <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64 "-DEXIV2_ENABLE_SHARED=ON -DEXIV2_ENABLE_XMP=ON -DEXIV2_ENABLE_LIBXMP=ON -DEXIV2_ENABLE_PNG=ON -DEXIV2_ENABLE_NLS=OFF -DEXIV2_ENABLE_PRINTUCS2=ON -DEXIV2_ENABLE_LENSDATA=ON -DEXIV2_ENABLE_COMMERCIAL=OFF -DEXIV2_ENABLE_BUILD_SAMPLES=OFF -DEXIV2_ENABLE_BUILD_PO=OFF -DEXIV2_ENABLE_VIDEO=OFF -DEXIV2_ENABLE_WEBREADY=OFF -DEXIV2_ENABLE_CURL=OFF -DEXIV2_ENABLE_SSH=OFF"
 
-        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64
+        BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
-        BUILD_COMMAND cd <SOURCE_DIR>/build.cmake && make -j
-
-        INSTALL_COMMAND cd <SOURCE_DIR>/build.cmake && make install/fast
+        INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
 
         BUILD_IN_SOURCE 1
 
