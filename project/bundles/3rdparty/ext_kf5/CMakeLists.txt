@@ -131,7 +131,7 @@ function(InstallKF5Component
 endfunction()
 
 if(APPLE)
-    set(MacosBreezePatch breeze-icons-macos.patch)
+    set(MacosBreezePatch breeze-icons-macports.patch)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")

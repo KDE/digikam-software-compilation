@@ -21,17 +21,18 @@ if(MINGW)
         # To use current implementation from SVN
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
-        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
+        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch &&
+                      ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-mxe.patch
 
         INSTALL_DIR ${PREFIX_ext_exiv2}
-        CONFIGURE_COMMAND <SOURCE_DIR>/make config &&
-                          <SOURCE_DIR>/configure --prefix=${PREFIX_ext_exiv2}
-                                                 ${GLOBAL_AUTOMAKE_PROFILE}
-                                                 --disable-visibility
-                                                 --disable-nls
-                                                 --with-expat
-                                                 --disable-rpath
-                                                 --with-libiconv-prefix=${PREFIX_ext_exiv2}/include
+
+        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${PREFIX_ext_exiv2}
+
+        BUILD_COMMAND cd <SOURCE_DIR>/build.cmake && make -j
+
+        INSTALL_COMMAND cd <SOURCE_DIR>/build.cmake && make install/fast
+
+        BUILD_IN_SOURCE 1
 
         UPDATE_COMMAND ""
         ALWAYS 0
@@ -53,9 +54,9 @@ elseif(APPLE)
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch &&
-                      ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macos.patch
+                      ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-config-macports.patch
 
-        CONFIGURE_COMMAND COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} debug x86_64
+        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} debug x86_64
 
         BUILD_COMMAND cd <SOURCE_DIR>/build.cmake && make -j
 
