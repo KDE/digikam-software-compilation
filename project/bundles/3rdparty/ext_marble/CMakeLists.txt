@@ -23,7 +23,7 @@ if(MINGW)
                         CMAKE_ARGS -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN}
                                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                                    -DCMAKE_COLOR_MAKEFILE=ON
-                                   -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+                                   -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_marble}
                                    -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
                                    -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN}
                                    -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH}
@@ -31,7 +31,6 @@ if(MINGW)
                                    -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include
                                    -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib
                                    -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
-                                   -DINSTALL_ROOT=${MXE_INSTALL_PREFIX}
                                    ${GLOBAL_PROFILE}
                                    "${argoptions}"
                                    -DWITH_DESIGNER_PLUGIN=OFF
@@ -43,6 +42,9 @@ if(MINGW)
                                    -DQTONLY=ON
                                    -DBUILD_TESTING=OFF
                                    -Wno-dev
+
+#                                   -DMARBLE_DATA_PATH=${INSTALL_ROOT}/data
+#                                   -DMARBLE_PLUGIN_PATH=${INSTALL_ROOT}/plugins
 
                         UPDATE_COMMAND ""
                         ALWAYS 0
