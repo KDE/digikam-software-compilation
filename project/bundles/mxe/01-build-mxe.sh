@@ -132,7 +132,6 @@ if [ ! -d $DOWNLOAD_DIR ] ; then
 fi
 
 cd $BUILDING_DIR
-
 rm -rf $BUILDING_DIR/* || true
 
 ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
