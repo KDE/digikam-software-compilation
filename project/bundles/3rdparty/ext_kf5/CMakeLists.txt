@@ -16,8 +16,55 @@ function(InstallKF5Component
          argoptions
          patch)
 
+    if(MINGW)
 
-    if(APPLE)
+        # Extract MD5 sums of each KF5 components directly from server.
+        execute_process(COMMAND
+                        wget -q -O - -o /dev/null http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz.mirrorlist
+                        COMMAND
+                        grep "MD5 Hash"
+                        COMMAND
+                        grep -o -P "(?<=<tt>).*(?=</tt>)"
+                        RESULT_VARIABLE
+                        wgetresult
+                        OUTPUT_VARIABLE
+                        md5sm
+                        OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+
+        if(NOT ${wgetresult} MATCHES 0)
+            message(FATAL_ERROR "Cannot donwload MD5 sum for ${name}!")
+        endif()
+
+        message(STATUS "--------------------------------")
+        message(STATUS "KF5 component    : ${name}")
+        message(STATUS "Component version: ${version}")
+        message(STATUS "Component MD5    : ${md5sm}")
+        message(STATUS "Configure options: ${argoptions}")
+        message(STATUS "Patch to apply   : ${patch}")
+
+        if(NOT "${patch}" STREQUAL "")
+            set(patch "${PATCH_COMMAND};-p1;-i;${CMAKE_CURRENT_SOURCE_DIR}/${patch}")
+        endif()
+
+        ExternalProject_Add(ext_${name}
+                            DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+                            URL http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz
+                            URL_MD5 ${md5sm}
+                            INSTALL_DIR ${EXTPREFIX_frameworks}
+                            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+                                       -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                                       ${GLOBAL_PROFILE}
+                                       -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+                                       -DBUILD_TESTING=OFF
+                                       "${argoptions}"
+                                       -Wno-dev
+                            PATCH_COMMAND ${patch}
+                            UPDATE_COMMAND ""
+                            ALWAYS 0
+        )
+
+    elseif(APPLE)
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
