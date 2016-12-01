@@ -43,16 +43,6 @@ MXE_TOOLCHAIN=${MXE_INSTALL_PREFIX}/share/cmake/mxe-conf.cmake
 
 #-------------------------------------------------------------------------------------------
 
-# KF5 extra libraries tarball information
-KD_URL="http://download.kde.org/stable/frameworks/"
-KD_BUILDTEMP=~/kf5libtemp
-KD_VERSION=5.28
-
-# KF5 extra applications tarball information
-KA_URL="http://download.kde.org/stable/applications/"
-KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.04.3
-
 # digiKam tarball information.
 DK_URL="http://download.kde.org/stable/digikam"
 # Location to build source code.
