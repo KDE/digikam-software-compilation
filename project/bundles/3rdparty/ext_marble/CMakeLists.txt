@@ -20,10 +20,20 @@ if(MINGW)
                         INSTALL_DIR ${EXTPREFIX_marble}
                         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/marble-libs-install-mxe.patch
 
-                        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_marble}
+                        CMAKE_ARGS -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN}
                                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                                   -DCMAKE_COLOR_MAKEFILE=ON
+                                   -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+                                   -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+                                   -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN}
+                                   -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH}
+                                   -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include
+                                   -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include
+                                   -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib
+                                   -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
+                                   -DINSTALL_ROOT=${MXE_INSTALL_PREFIX}
                                    ${GLOBAL_PROFILE}
-                                   -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX_marble}
+                                   "${argoptions}"
                                    -DWITH_DESIGNER_PLUGIN=OFF
                                    -DBUILD_MARBLE_TESTS=OFF
                                    -DBUILD_MARBLE_TOOLS=OFF

@@ -52,13 +52,23 @@ function(InstallKF5Component
                             URL http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz
                             URL_MD5 ${md5sm}
                             INSTALL_DIR ${EXTPREFIX_frameworks}
-                            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+
+                            CMAKE_ARGS -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN}
                                        -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                                       -DCMAKE_COLOR_MAKEFILE=ON
+                                       -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_frameworks}
+                                       -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+                                       -DCMAKE_TOOLCHAIN_FILE=${MXE_TOOLCHAIN}
+                                       -DCMAKE_FIND_PREFIX_PATH=${CMAKE_PREFIX_PATH}
+                                       -DCMAKE_SYSTEM_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include
+                                       -DCMAKE_INCLUDE_PATH=${CMAKE_PREFIX_PATH}/include
+                                       -DCMAKE_LIBRARY_PATH=${CMAKE_PREFIX_PATH}/lib
+                                       -DZLIB_ROOT=${CMAKE_PREFIX_PATH}
+                                       -DINSTALL_ROOT=${MXE_INSTALL_PREFIX}
                                        ${GLOBAL_PROFILE}
-                                       -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
-                                       -DBUILD_TESTING=OFF
                                        "${argoptions}"
                                        -Wno-dev
+
                             PATCH_COMMAND ${patch}
                             UPDATE_COMMAND ""
                             ALWAYS 0
