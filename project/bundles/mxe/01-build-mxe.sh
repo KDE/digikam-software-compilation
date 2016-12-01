@@ -114,7 +114,6 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      expat \
      mman-win32 \
      pthreads \
-     opencv \
      qt5
 
 echo -e "\n"
@@ -156,6 +155,7 @@ ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
 # NOTE: The order to compile each component here is very important.
 
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
+${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 
 #################################################################################################
 
