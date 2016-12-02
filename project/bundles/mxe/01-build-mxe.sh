@@ -107,7 +107,6 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      boost \
      expat \
      lcms \
-     lensfun \
      liblqr-1 \
      eigen \
      zlib \
@@ -153,6 +152,7 @@ ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
 # Low level libraries
 # NOTE: The order to compile each component here is very important.
 
+${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 
