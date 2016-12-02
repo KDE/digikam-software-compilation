@@ -13,17 +13,17 @@ MXE_BUILDROOT=$1
 
 if [[ $MXE_BUILDROOT == "" ]]; then
 
-    if [ -d "`pwd`/project/mxe/build.win32" ]; then
+    if [ -d "`pwd`/project/bundles/mxe/build.win32" ]; then
 
         echo "Auto-detected 32 bits shared MXE target"
         MXE_BUILD_TARGETS="i686-w64-mingw32.shared"
         MXE_BUILDROOT="`pwd`/project/mxe/build.win32"
 
-    elif [ -d "`pwd`/project/mxe/build.win64" ]; then
+    elif [ -d "`pwd`/project/bundles/mxe/build.win64" ]; then
 
         echo "Auto-detected 64 bits shared MXE target"
         MXE_BUILD_TARGETS="x86_64-w64-mingw32.shared"
-        MXE_BUILDROOT="`pwd`/project/mxe/build.win64"
+        MXE_BUILDROOT="`pwd`/bundles/project/mxe/build.win64"
 
     else
 
