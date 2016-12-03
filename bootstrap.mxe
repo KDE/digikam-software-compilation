@@ -111,6 +111,7 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_APPSTYLES=OFF \
                            ${PNG2ICO_PATH} \
                            ${OPTIONS} \
+                           -Wno-dev \
                            ..
 
 CMAKE_VAL_RET=$?

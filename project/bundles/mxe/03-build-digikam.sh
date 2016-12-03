@@ -90,11 +90,11 @@ chmod +x ./bootstrap.mxe
 
 ./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
 
-if [ $? -ne 0 ]; then
-    echo "---------- Cannot configure digiKam $DK_VERSION."
-    echo "---------- Aborting..."
-    exit;
-fi
+#if [ $? -ne 0 ]; then
+#    echo "---------- Cannot configure digiKam $DK_VERSION."
+#    echo "---------- Aborting..."
+#    exit;
+#fi
 
 cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 

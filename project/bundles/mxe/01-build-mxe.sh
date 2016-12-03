@@ -113,7 +113,13 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      expat \
      mman-win32 \
      pthreads \
-     qt5
+     qtbase \
+     qtimageformats \
+     qtmultimedia \
+     qttools \
+     qtwinextras \
+     qtscript \
+     qtwebkit
 
 echo -e "\n"
 
@@ -136,6 +142,7 @@ rm -rf $BUILDING_DIR/* || true
 ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
                            -DMXE_BUILDROOT=${MXE_BUILDROOT} \
+                           -DMXE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_TYPE=relwithdebinfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
@@ -152,8 +159,8 @@ ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
 # Low level libraries
 # NOTE: The order to compile each component here is very important.
 
-${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
+${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 
 #################################################################################################
