@@ -24,6 +24,8 @@ set(Exiv2_Conf -DEXIV2_ENABLE_SHARED=ON
                -DEXIV2_ENABLE_SSH=OFF
 )
 
+JoinListAsString("${Exiv2_Conf}" " " BASH_OPTIONS)
+
 if(MINGW)
 
     ExternalProject_Add(ext_exiv2
@@ -39,7 +41,7 @@ if(MINGW)
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
-        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} relwithdebinfo ${Exiv2_Conf}
+        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} relwithdebinfo ${BASH_OPTIONS}
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
@@ -59,7 +61,7 @@ elseif(APPLE)
 
         # To use official release tarball
 
-        #URL http://www.exiv2.org/exiv2-0.25.tar.gz
+        #URL http://www.exiv2.org/e\\xiv2-0.25.tar.gz
         #URL_MD5 258d4831b30f75a01e0234065c6c2806
 
         # To use current implementation from SVN
@@ -69,7 +71,7 @@ elseif(APPLE)
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                          <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64 ${Exiv2_Conf}
+                          <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64 ${BASH_OPTIONS}
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 

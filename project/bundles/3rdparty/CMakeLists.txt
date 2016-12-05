@@ -15,6 +15,11 @@ project (digikam-appimage)
 
 cmake_minimum_required(VERSION 2.8.6)
 
+function(JoinListAsString VALUES GLUE OUTPUT)
+  string(REPLACE ";" "${GLUE}" _TMP_STR "${VALUES}")
+  set(${OUTPUT} "${_TMP_STR}" PARENT_SCOPE)
+endfunction()
+
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "Compiling in the source directory is not supported. Use for example 'mkdir build; cd build; cmake ..'.")
 endif()
