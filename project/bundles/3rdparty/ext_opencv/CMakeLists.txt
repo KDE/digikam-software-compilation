@@ -13,12 +13,15 @@ set(Opencv_Conf -DBUILD_EXAMPLES=OFF
                 -DBUILD_DOCS=OFF
                 -DBUILD_PERF_TESTS=OFF
                 -DBUILD_NEW_PYTHON_SUPPORT=OFF
+                -BUILD_ZLIB=OFF
                 -DOPENCV_BUILD_3RDPARTY_LIBS=OFF
                 -DINSTALL_C_EXAMPLES=OFF
                 -DINSTALL_PYTHON_EXAMPLES=OFF
                 -DWITH_1394=OFF
                 -DWITH_VTK=OFF
                 -DWITH_CUDA=OFF
+                -DWITH_DIRECTX=OFF
+                -DWITH_DSHOW=OFF
                 -DWITH_EIGEN=OFF
                 -DWITH_FFMPEG=OFF
                 -DWITH_GSTREAMER=OFF
@@ -26,10 +29,12 @@ set(Opencv_Conf -DBUILD_EXAMPLES=OFF
                 -DWITH_IPP=OFF
                 -DWITH_JASPER=OFF
                 -DWITH_JPEG=OFF
+                -DWITH_MATLAB=OFF
                 -DWITH_OPENEXR=OFF
                 -DWITH_OPENNI=OFF
                 -DWITH_PNG=OFF
                 -DWITH_PVAPI=OFF
+                -DWITH_WIN32UI=OFF
                 -DWITH_QT=OFF
                 -DWITH_QUICKTIME=OFF
                 -DWITH_QT_OPENGL=OFF
@@ -37,6 +42,7 @@ set(Opencv_Conf -DBUILD_EXAMPLES=OFF
                 -DWITH_TIFF=OFF
                 -DWITH_UNICAP=OFF
                 -DWITH_V4L=OFF
+                -DWITH_VFW=OFF
                 -DWITH_VIDEOINPUT=OFF
                 -DWITH_XINE=OFF
                 -DWITH_OPENCL=OFF
@@ -81,7 +87,7 @@ elseif(APPLE)
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/opencv-libinstallname-macports.patch
 
         CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} relwithdebinfo x86_64 ${Opencv_Conf} -Wno-dev
+                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} relwithdebinfo x86_64 "${Opencv_Conf}"
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
