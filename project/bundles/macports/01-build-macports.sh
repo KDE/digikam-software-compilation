@@ -36,6 +36,7 @@ StartScript
 ChecksRunAsRoot
 ChecksXCodeCLI
 ChecksCPUCores
+OsxCodeName
 
 #################################################################################################
 
