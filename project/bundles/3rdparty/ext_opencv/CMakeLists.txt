@@ -47,6 +47,7 @@ set(Opencv_Conf -DBUILD_EXAMPLES=OFF
                 -DWITH_XINE=OFF
                 -DWITH_OPENCL=OFF
                 -DWITH_GPHOTO2=OFF
+                -DBUILD_opencv_videoio=OFF
 )
 
 JoinListAsString("${Opencv_Conf}" " " BASH_OPTIONS)
