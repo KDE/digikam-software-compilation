@@ -5,7 +5,7 @@
 #             INSTALL_ROOT place to install everything to
 #             MXE_TOOLCHAIN: the toolchain file to cross-compile using MXE
 #
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -62,6 +62,7 @@ add_subdirectory(ext_opencv)
 add_subdirectory(ext_lensfun)
 add_subdirectory(ext_gstreamer)
 add_subdirectory(ext_qt)
+add_subdirectory(ext_qtav)
 add_subdirectory(ext_qtwebkit)
 add_subdirectory(ext_kf5)
 add_subdirectory(ext_marble)
