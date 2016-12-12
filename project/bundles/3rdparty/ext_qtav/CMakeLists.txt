@@ -31,7 +31,7 @@ if(MINGW)
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll &&
-                          ${MXE_INSTALL_PREFIX}/qt5/bin/qmake DESTDIR=${PREFIX_ext_qtav} CONFIG+=no_examples
+                          ${MXE_INSTALL_PREFIX}/qt5/bin/qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
         BUILD_COMMAND make
 
@@ -59,11 +59,11 @@ elseif(APPLE)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
         BUILD_COMMAND make
 
-        INSTALL_COMMAND make install
+        INSTALL_COMMAND 
 
         BUILD_IN_SOURCE 1
 
@@ -80,7 +80,7 @@ else() #Linux
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
         BUILD_COMMAND make
 
