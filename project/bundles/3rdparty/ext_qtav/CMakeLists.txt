@@ -6,7 +6,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-set(EXTPREFIX_qtav "${EXTPREFIX}")
+set(PREFIX_ext_qtav "${EXTPREFIX}")
 
 if(MINGW)
 
@@ -17,7 +17,7 @@ if(MINGW)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
 
         BUILD_COMMAND make
 
@@ -38,7 +38,7 @@ elseif(APPLE)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
 
         BUILD_COMMAND make
 
@@ -59,7 +59,7 @@ else() #Linux
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
 
         BUILD_COMMAND make
 
