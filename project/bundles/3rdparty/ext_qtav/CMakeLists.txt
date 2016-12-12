@@ -8,6 +8,12 @@
 
 set(PREFIX_ext_qtav "${EXTPREFIX}")
 
+if (${MXE_ARCHBITS} MATCHES "64")
+    set(LIB_DIR "lib_win_x86_64")
+else()
+    set(LIB_DIR "lib_win_x86")
+endif()
+
 if(MINGW)
 
     ExternalProject_Add(ext_qtav
@@ -31,12 +37,12 @@ if(MINGW)
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${MXE_INSTALL_PREFIX}/qt5/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${MXE_INSTALL_PREFIX}/qt5/include/ &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/QtAV.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/QtAVWidgets.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV.a &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
-                        cp -fv  <SOURCE_DIR>/lib_win_x86/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV.a &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll
 
         BUILD_IN_SOURCE 1
 
