@@ -17,7 +17,7 @@ if(MINGW)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
+        CONFIGURE_COMMAND ${MXE_INSTALL_PREFIX}/qt5/bin/qmake PREFIX=${PREFIX_ext_qtav}
 
         BUILD_COMMAND make
 
