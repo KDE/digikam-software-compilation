@@ -44,6 +44,8 @@ OsxCodeName
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+
 #################################################################################################
 # Check if /opt exists and standard Macports install path
 
@@ -189,8 +191,6 @@ fi
 
 #################################################################################################
 # Macports update
-
-export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
 
 echo -e "\n"
 echo "---------- Updating MacPorts"
