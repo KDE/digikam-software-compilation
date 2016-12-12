@@ -244,7 +244,8 @@ port install qt5 \
              libxml2 \
              libxslt \
              lensfun \
-             bison
+             bison \
+             ffmpeg
 
 echo -e "\n"
 
