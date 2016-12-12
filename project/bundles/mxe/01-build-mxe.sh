@@ -120,7 +120,8 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      qttools \
      qtwinextras \
      qtscript \
-     qtwebkit
+     qtwebkit \
+     ffmpeg
 
 echo -e "\n"
 
