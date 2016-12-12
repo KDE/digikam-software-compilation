@@ -27,8 +27,8 @@ if(MINGW)
                         cp -f  <SOURCE_DIR>/lib_win_x86/QtAVWidgets.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
                         cp -f  <SOURCE_DIR>/lib_win_x86/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV.a &&
                         cp -f  <SOURCE_DIR>/lib_win_x86/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
-                        cp -f  <SOURCE_DIR>/lib_win_x86/libQtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
-                        cp -f  <SOURCE_DIR>/lib_win_x86/libQtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll
+                        cp -f  <SOURCE_DIR>/lib_win_x86/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
+                        cp -f  <SOURCE_DIR>/lib_win_x86/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll
 
         BUILD_IN_SOURCE 1
 
