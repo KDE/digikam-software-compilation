@@ -44,7 +44,7 @@ OsxCodeName
 ORIG_PATH="$PATH"
 ORIG_WD="`pwd`"
 
-export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:$ORIG_PATH
+export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:/$INSTALL_PREFIX/libexec/qt5/bin:$ORIG_PATH
 
 #################################################################################################
 # Check if /opt exists and standard Macports install path
@@ -256,8 +256,6 @@ echo -e "\n----------"
 echo -e "\n"
 
 #################################################################################################
-
-export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:/$INSTALL_PREFIX/libexec/qt5/bin:$ORIG_PATH
 
 # Create the build dir for the 3rdparty deps
 if [ ! -d $BUILDING_DIR ] ; then
