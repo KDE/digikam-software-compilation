@@ -29,10 +29,10 @@ if(MINGW)
                           rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAVWidgets &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/QtAV.prl &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/QtAVWidgets.prl &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV.a &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll &&
+                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV1.a &&
+                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets1.a &&
+                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV1.dll &&
+                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets1.dll &&
                           ${MXE_INSTALL_PREFIX}/qt5/bin/qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
         BUILD_COMMAND make
@@ -41,10 +41,10 @@ if(MINGW)
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${MXE_INSTALL_PREFIX}/qt5/include/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV.a &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets.a &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV.dll &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets.dll
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/
 
         BUILD_IN_SOURCE 1
 
