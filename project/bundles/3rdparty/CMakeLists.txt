@@ -1,6 +1,5 @@
-# Rules to build 3rd-party libraries for digiKam Linux bundle.
+# Rules to build 3rd-party libraries for digiKam bundles.
 #
-# Build all dependencies for digiKam from AppImage.
 # Parameters: EXTERNALS_DOWNLOAD_DIR place to download all packages
 #             INSTALL_ROOT place to install everything to
 #             MXE_TOOLCHAIN: the toolchain file to cross-compile using MXE
@@ -11,7 +10,7 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-project (digikam-appimage)
+project (digikam-bundles)
 
 cmake_minimum_required(VERSION 2.8.6)
 
