@@ -27,8 +27,6 @@ if(MINGW)
 
         CONFIGURE_COMMAND rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAV &&
                           rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAVWidgets &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/QtAV.prl &&
-                          rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/QtAVWidgets.prl &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAV1.a &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets1.a &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV1.dll &&
@@ -39,8 +37,6 @@ if(MINGW)
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${MXE_INSTALL_PREFIX}/qt5/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${MXE_INSTALL_PREFIX}/qt5/include/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets.prl ${MXE_INSTALL_PREFIX}/qt5/lib &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/ &&
@@ -61,14 +57,17 @@ elseif(APPLE)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
+        PATCH_COMMAND rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework &&
+                      rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework &&
+                      ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
+        CONFIGURE_COMMAND mkdir build && cd build && qmake ../QtAV.pro
 
-        BUILD_COMMAND make
+        BUILD_COMMAND cd build && make
 
-        INSTALL_COMMAND 
+        INSTALL_COMMAND cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
+                        cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework ${INSTALL_ROOT}/libexec/qt5/lib/
 
         BUILD_IN_SOURCE 1
 

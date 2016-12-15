@@ -2,7 +2,7 @@ diff --git a/.qmake.conf b/.qmake.conf
 index 08c6279..4878ce4 100644
 --- a/.qmake.conf
 +++ b/.qmake.conf
-@@ -12,3 +12,9 @@ macx:isEqual(QT_MAJOR_VERSION,5):greaterThan(QT_MINOR_VERSION, 3): CONFIG *= c++
+@@ -12,3 +12,8 @@ macx:isEqual(QT_MAJOR_VERSION,5):greaterThan(QT_MINOR_VERSION, 3): CONFIG *= c++
  android: CONFIG*=c++11
  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
  QMAKE_IOS_DEPLOYMENT_TARGET = 6.0
@@ -11,7 +11,6 @@ index 08c6279..4878ce4 100644
 +INCLUDEPATH += /opt/digikam/include/
 +LIBS += -L/opt/digikam/lib/ -lavcodec -lavformat -lswscale -lavutil
 +
-+BUILD_DIR = build
 diff --git a/QtAV.pro b/QtAV.pro
 index 8da5e56..1e33c60 100644
 --- a/QtAV.pro
