@@ -59,6 +59,8 @@ elseif(APPLE)
 
         PATCH_COMMAND rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework &&
+                      rm -rfv ${INSTALL_ROOT}/libexec/qt5/include/QtAV.framework &&
+                      rm -rfv ${INSTALL_ROOT}/libexec/qt5/include/QtAVWidgets.framework &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
@@ -67,7 +69,9 @@ elseif(APPLE)
         BUILD_COMMAND cd build && make
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
-                        cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework ${INSTALL_ROOT}/libexec/qt5/lib/
+                        cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
+                        ln -s ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Headers ${INSTALL_ROOT}/libexec/qt5/include/QtAV.framework &&
+                        ln -s ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework/Headers ${INSTALL_ROOT}/libexec/qt5/include/QtAVWidgets.framework
 
         BUILD_IN_SOURCE 1
 

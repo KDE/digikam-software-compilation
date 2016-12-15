@@ -46,6 +46,29 @@ ORIG_WD="`pwd`"
 
 export PATH=$INSTALL_PREFIX/bin:/$INSTALL_PREFIX/sbin:/$INSTALL_PREFIX/libexec/qt5/bin:$ORIG_PATH
 
+
+# Create the build dir for the 3rdparty deps
+if [ ! -d $BUILDING_DIR ] ; then
+    mkdir $BUILDING_DIR
+fi
+if [ ! -d $DOWNLOAD_DIR ] ; then
+    mkdir $DOWNLOAD_DIR
+fi
+
+cd $BUILDING_DIR
+
+rm -rf $BUILDING_DIR/* || true
+
+cmake $ORIG_WD/../3rdparty \
+       -DCMAKE_INSTALL_PREFIX:PATH=$INSTALL_PREFIX \
+       -DINSTALL_ROOT=$INSTALL_PREFIX \
+       -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR \
+       -Wno-dev
+
+cmake --build . --config RelWithDebInfo --target ext_qtav  -- -j$CPU_CORES
+exit
+
+
 #################################################################################################
 # Check if /opt exists and standard Macports install path
 
