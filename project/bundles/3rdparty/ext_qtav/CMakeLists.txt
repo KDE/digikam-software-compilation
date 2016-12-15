@@ -61,9 +61,10 @@ elseif(APPLE)
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
+                      ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
+        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav}
 
         BUILD_COMMAND make
 

@@ -1,0 +1,174 @@
+diff --git a/.qmake.conf b/.qmake.conf
+index 08c6279..ec44c34 100644
+--- a/.qmake.conf
++++ b/.qmake.conf
+@@ -12,3 +12,7 @@ macx:isEqual(QT_MAJOR_VERSION,5):greaterThan(QT_MINOR_VERSION, 3): CONFIG *= c++
+ android: CONFIG*=c++11
+ QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+ QMAKE_IOS_DEPLOYMENT_TARGET = 6.0
++
++CONFIG += no_examples no_config_tests no-portaudio
++INCLUDEPATH += /opt/digikam/include/
++LIBS += -L/opt/digikam/lib/ -lavcodec -lavformat -lswscale -lavutil
+diff --git a/QtAV.pro b/QtAV.pro
+index 8da5e56..1e33c60 100644
+--- a/QtAV.pro
++++ b/QtAV.pro
+@@ -77,10 +77,10 @@ unix:!mac {
+ mac|ios {
+   !no-videotoolbox: OptionalDepends *= videotoolbox
+ }
+-runConfigTests()
+-!config_avresample:!config_swresample {
+-  error("libavresample or libswresample is required. Setup your environment correctly then delete $$BUILD_DIR/.qmake.conf and run qmake again")
+-}
++#runConfigTests()
++#!config_avresample:!config_swresample {
++#  error("libavresample or libswresample is required. Setup your environment correctly then delete $$BUILD_DIR/.qmake.conf and run qmake again")
++#}
+ PACKAGE_VERSION = $$QTAV_VERSION
+ PACKAGE_NAME= QtAV
+ include(pack.pri)
+diff --git a/src/QtAV/AVClock.h b/src/QtAV/AVClock.h
+index 980e3b1..b3d386d 100644
+--- a/src/QtAV/AVClock.h
++++ b/src/QtAV/AVClock.h
+@@ -110,13 +110,13 @@ public:
+      */
+     bool syncEndOnce(int id);
+ 
+-signals:
++Q_SIGNALS:
+     void paused(bool);
+     void paused(); //equals to paused(true)
+     void resumed();//equals to paused(false)
+     void started();
+     void resetted();
+-public slots:
++public Q_SLOTS:
+     //these slots are not frequently used. so not inline
+     /*start the external clock*/
+     void start();
+diff --git a/src/QtAV/AVDemuxer.h b/src/QtAV/AVDemuxer.h
+index cdc3441..3b720f5 100644
+--- a/src/QtAV/AVDemuxer.h
++++ b/src/QtAV/AVDemuxer.h
+@@ -187,7 +187,7 @@ public:
+      */
+     void setOptions(const QVariantHash &dict);
+     QVariantHash options() const;
+-signals:
++Q_SIGNALS:
+     void unloaded();
+     void userInterrupted(); //NO direct connection because it's emit before interrupted happens
+     void loaded();
+diff --git a/src/QtAV/AVPlayer.h b/src/QtAV/AVPlayer.h
+index c0525f8..5317012 100644
+--- a/src/QtAV/AVPlayer.h
++++ b/src/QtAV/AVPlayer.h
+@@ -388,7 +388,7 @@ public:
+     MediaEndAction mediaEndAction() const;
+     void setMediaEndAction(MediaEndAction value);
+ 
+-public slots:
++public Q_SLOTS:
+     /*!
+      * \brief load
+      * Load the current media set by setFile(); Can be used to reload a media and call play() later. If already loaded, does nothing and return true.
+diff --git a/src/QtAV/Filter.h b/src/QtAV/Filter.h
+index cc5a94f..9914533 100644
+--- a/src/QtAV/Filter.h
++++ b/src/QtAV/Filter.h
+@@ -62,7 +62,7 @@ public:
+     bool uninstall();
+ public Q_SLOTS:
+     void setEnabled(bool enabled = true);
+-signals:
++Q_SIGNALS:
+     void enabledChanged(bool);
+ protected:
+     /*
+diff --git a/src/QtAV/OpenGLVideo.h b/src/QtAV/OpenGLVideo.h
+index 986b39f..b4e7f60 100644
+--- a/src/QtAV/OpenGLVideo.h
++++ b/src/QtAV/OpenGLVideo.h
+@@ -102,7 +102,7 @@ Q_SIGNALS:
+ protected:
+     DPTR_DECLARE(OpenGLVideo)
+ 
+-private slots:
++private Q_SLOTS:
+     /* used by Qt5 whose QOpenGLContext is QObject and we can call this when context is about to destroy.
+      * shader manager and material will be reset
+      */
+diff --git a/src/QtAV/Subtitle.h b/src/QtAV/Subtitle.h
+index 2d1c230..68f044a 100644
+--- a/src/QtAV/Subtitle.h
++++ b/src/QtAV/Subtitle.h
+@@ -179,7 +179,7 @@ public:
+     void setFontsDir(const QString& value);
+     bool isFontFileForced() const;
+     void setFontFileForced(bool value);
+-public slots:
++public Q_SLOTS:
+     /*!
+      * \brief start
+      * start to process the whole subtitle content in a thread
+@@ -187,7 +187,7 @@ public slots:
+     void load();
+     void loadAsync();
+     void setTimestamp(qreal t);
+-signals:
++Q_SIGNALS:
+     // TODO: also add to AVPlayer?
+     /// empty path if load from raw data
+     void loaded(const QString& path = QString());
+diff --git a/src/QtAV/SubtitleFilter.h b/src/QtAV/SubtitleFilter.h
+index bd3faa0..332bc7b 100644
+--- a/src/QtAV/SubtitleFilter.h
++++ b/src/QtAV/SubtitleFilter.h
+@@ -83,15 +83,15 @@ public:
+     QFont font() const;
+     void setColor(const QColor& c);
+     QColor color() const;
+-public slots:
++public Q_SLOTS:
+     // TODO: enable changed & autoload=> load
+     void setAutoLoad(bool value);
+-signals:
++Q_SIGNALS:
+     void rectChanged();
+     void fontChanged();
+     void colorChanged();
+     void autoLoadChanged(bool value);
+-signals:
++Q_SIGNALS:
+     void fileChanged();
+     void canRenderChanged();
+     void loaded(const QString& path);
+diff --git a/src/QtAV/VideoCapture.h b/src/QtAV/VideoCapture.h
+index 61a3cef..bba49a4 100644
+--- a/src/QtAV/VideoCapture.h
++++ b/src/QtAV/VideoCapture.h
+@@ -116,7 +116,7 @@ Q_SIGNALS:
+     void qualityChanged();
+     void captureNameChanged();
+     void captureDirChanged();
+-private slots:
++private Q_SLOTS:
+     void handleAppQuit();
+ private:
+     void setVideoFrame(const VideoFrame& frame);
+diff --git a/src/libQtAV.pro b/src/libQtAV.pro
+index 27c1570..d80771e 100644
+--- a/src/libQtAV.pro
++++ b/src/libQtAV.pro
+@@ -323,7 +323,7 @@ mac {
+   ios {
+     OBJECTIVE_SOURCES *= codec/video/SurfaceInteropCVOpenGLES.mm
+   } else {
+-    CONFIG += config_vda
++#    CONFIG += config_vda
+     SOURCES *= codec/video/SurfaceInteropIOSurface.cpp
+     #SOURCES *= codec/video/SurfaceInteropCVOpenGL.cpp
+     LIBS += -framework IOSurface
