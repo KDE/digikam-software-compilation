@@ -81,11 +81,13 @@ elseif(APPLE)
 
 else() #Linux
 
-    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-        set(LIB_DIR "lib_linux_x86_64")
-    else()
-        set(LIB_DIR "lib_linux_x86")
-    endif()
+#    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+#        set(LIB_DIR "lib_linux_x86_64")
+#    else()
+#        set(LIB_DIR "lib_linux_x86")
+#    endif()
+
+    set(LIB_DIR "lib_linux_")
 
     ExternalProject_Add(ext_qtav
 
@@ -116,9 +118,9 @@ else() #Linux
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1 ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11 ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11.0 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11.0 ${INSTALL_ROOT}/lib/
 
         BUILD_IN_SOURCE 1
