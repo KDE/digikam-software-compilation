@@ -100,14 +100,26 @@ else() #Linux
 
         CONFIGURE_COMMAND rm -rfv ${INSTALL_ROOT}/include/QtAV &&
                           rm -rfv ${INSTALL_ROOT}/include/QtAVWidgets &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so* &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so* &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.11 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.11.0 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11.0 &&
                           qmake PREFIX=${PREFIX_ext_qtav}
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${INSTALL_ROOT}/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${INSTALL_ROOT}/include/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so* ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so* ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11.0 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11.0 ${INSTALL_ROOT}/lib/
 
         BUILD_IN_SOURCE 1
 
