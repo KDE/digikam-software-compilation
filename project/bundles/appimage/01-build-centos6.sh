@@ -3,7 +3,7 @@
 # Script to build a CentOS 6 installation to compile an AppImage bundle of digiKam.
 # This script must be run as sudo
 #
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -137,6 +137,30 @@ fi
 
 #################################################################################################
 
+# Install new repo to get ffmpeg if necessary
+
+if [[ ! -f /etc/yum.repos.d/nux-dextop.repo ]] ; then
+
+    echo -e "---------- Install Repository for ffmpeg packages\n"
+
+    if [[ "$(arch)" = "x86_64" ]] ; then
+
+        rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+        rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm
+
+    else
+
+        rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+        rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/i386/nux-dextop-release-0-2.el6.nux.noarch.rpm
+
+    fi
+
+    yum -y install ffmpeg ffmpeg-devel
+
+fi
+
+#################################################################################################
+
 echo -e "---------- Clean-up Old Packages\n"
 
 # Remove system based devel package to prevent conflict with new one.
@@ -189,6 +213,7 @@ cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_qtav       -- -j$CPU_CORES
 
 #################################################################################################
 

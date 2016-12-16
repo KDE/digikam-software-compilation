@@ -1,16 +1,12 @@
 # Rules to build 3rd-party libraries for digiKam bundles.
 #
-# Parameters: EXTERNALS_DOWNLOAD_DIR place to download all packages
-#             INSTALL_ROOT place to install everything to
-#             MXE_TOOLCHAIN: the toolchain file to cross-compile using MXE
-#
 # Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-project (digikam-bundles)
+project(digikam-bundles)
 
 cmake_minimum_required(VERSION 2.8.6)
 
