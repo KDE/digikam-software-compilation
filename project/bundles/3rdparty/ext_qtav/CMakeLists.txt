@@ -8,13 +8,13 @@
 
 set(PREFIX_ext_qtav "${EXTPREFIX}")
 
-if (${MXE_ARCHBITS} MATCHES "64")
-    set(LIB_DIR "lib_win_x86_64")
-else()
-    set(LIB_DIR "lib_win_x86")
-endif()
-
 if(MINGW)
+
+    if (${MXE_ARCHBITS} MATCHES "64")
+        set(LIB_DIR "lib_win_x86_64")
+    else()
+        set(LIB_DIR "lib_win_x86")
+    endif()
 
     ExternalProject_Add(ext_qtav
 
@@ -81,6 +81,12 @@ elseif(APPLE)
 
 else() #Linux
 
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(LIB_DIR "lib_linux_x86_64")
+    else()
+        set(LIB_DIR "lib_linux_x86")
+    endif()
+
     ExternalProject_Add(ext_qtav
 
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
@@ -88,13 +94,20 @@ else() #Linux
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
         GIT_TAG v1.11.0
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
+                      ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
 
-        CONFIGURE_COMMAND qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
-        BUILD_COMMAND make
+        CONFIGURE_COMMAND rm -rfv ${INSTALL_ROOT}/include/QtAV &&
+                          rm -rfv ${INSTALL_ROOT}/include/QtAVWidgets &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so* &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so* &&
+                          qmake PREFIX=${PREFIX_ext_qtav}
 
-        INSTALL_COMMAND make install
+        INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${INSTALL_ROOT}/include/ &&
+                        cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${INSTALL_ROOT}/include/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so* ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so* ${INSTALL_ROOT}/lib/
 
         BUILD_IN_SOURCE 1
 
