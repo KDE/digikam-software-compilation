@@ -155,9 +155,9 @@ if [[ ! -f /etc/yum.repos.d/nux-dextop.repo ]] ; then
 
     fi
 
-    yum -y install ffmpeg ffmpeg-devel
-
 fi
+
+yum -y install ffmpeg ffmpeg-devel
 
 #################################################################################################
 
