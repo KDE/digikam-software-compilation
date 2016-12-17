@@ -1,6 +1,6 @@
 # Script to build KF5 Framework for digiKam bundle.
 #
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -193,7 +193,7 @@ endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")
 InstallKF5Component(kconfig             ${KD_VERSION} ""                                               "")
-InstallKF5Component(breeze-icons        ${KD_VERSION} ""                                               "${MacosBreezePatch}")
+InstallKF5Component(breeze-icons        ${KD_VERSION} "-DBINARY_ICONS_RESOURCE=OFF"                    "${MacosBreezePatch}")
 InstallKF5Component(solid               ${KD_VERSION} ""                                               "")
 InstallKF5Component(kcoreaddons         ${KD_VERSION} ""                                               "")
 InstallKF5Component(threadweaver        ${KD_VERSION} ""                                               "")
