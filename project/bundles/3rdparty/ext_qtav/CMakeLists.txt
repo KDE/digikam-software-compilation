@@ -68,7 +68,10 @@ elseif(APPLE)
 
         BUILD_COMMAND cd build && make
 
-        INSTALL_COMMAND cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
+        INSTALL_COMMAND install_name_tool -id ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Versions/1/QtAV <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework/QtAV &&
+                        install_name_tool -id ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Versions/1/QtAVWidget <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework/QtAVWidgets &&
+                        install_name_tool -change QtAV.framework/Versions/1/QtAV ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Versions/1/QtAV <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework/QtAVWidgets &&
+                        cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
                         cp -rfv <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework ${INSTALL_ROOT}/libexec/qt5/lib/ &&
                         ln -s ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Headers ${INSTALL_ROOT}/libexec/qt5/include/QtAV &&
                         ln -s ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework/Headers ${INSTALL_ROOT}/libexec/qt5/include/QtAVWidgets
