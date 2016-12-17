@@ -64,7 +64,7 @@ elseif(APPLE)
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
-        CONFIGURE_COMMAND mkdir build && cd build && qmake ../QtAV.pro
+        CONFIGURE_COMMAND mkdir build && cd build && qmake PREFIX=${PREFIX_ext_qtav} ../QtAV.pro
 
         BUILD_COMMAND cd build && make
 
@@ -80,12 +80,6 @@ elseif(APPLE)
     )
 
 else() #Linux
-
-#    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-#        set(LIB_DIR "lib_linux_x86_64")
-#    else()
-#        set(LIB_DIR "lib_linux_x86")
-#    endif()
 
     set(LIB_DIR "lib_linux_")
 
