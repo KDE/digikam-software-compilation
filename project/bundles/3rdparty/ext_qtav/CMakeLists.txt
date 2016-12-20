@@ -7,6 +7,7 @@
 #
 
 set(PREFIX_ext_qtav "${EXTPREFIX}")
+set(QTAV_VERSION v1.11.0)
 
 if(MINGW)
 
@@ -21,7 +22,7 @@ if(MINGW)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG v1.11.0
+        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch
 
@@ -55,7 +56,7 @@ elseif(APPLE)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG v1.11.0
+        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework &&
@@ -91,7 +92,7 @@ else() #Linux
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG v1.11.0
+        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
