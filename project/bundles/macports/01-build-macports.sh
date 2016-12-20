@@ -245,7 +245,7 @@ port install qt5 \
              libxslt \
              lensfun \
              bison \
-             ffmpeg-devel +gpl2 +gpl3 +nonfree
+             ffmpeg-devel
 
 echo -e "\n"
 
