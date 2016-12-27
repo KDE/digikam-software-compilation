@@ -8,7 +8,7 @@
  ;
  ; Copyright (C) 2010      by Julien Narboux <julien at narboux dot fr>
  ; Copyright (C) 2011-2014 by Ananta Palani  <anantapalani at gmail dot com>
- ; Copyright (C) 2010-2016 by Gilles Caulier <caulier dot gilles at gmail dot com>
+ ; Copyright (C) 2010-2017 by Gilles Caulier <caulier dot gilles at gmail dot com>
  ;
  ; Script arguments:
  ; VERSION    : the digiKam version as string.

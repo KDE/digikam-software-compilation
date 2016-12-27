@@ -3,7 +3,7 @@
 # Script to build digiKam using MXE
 # This script must be run as sudo
 #
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -90,11 +90,11 @@ chmod +x ./bootstrap.mxe
 
 ./bootstrap.mxe $MXE_BUILDROOT relwithdebinfo -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
 
-#if [ $? -ne 0 ]; then
-#    echo "---------- Cannot configure digiKam $DK_VERSION."
-#    echo "---------- Aborting..."
-#    exit;
-#fi
+if [ $? -ne 0 ]; then
+    echo "---------- Cannot configure digiKam $DK_VERSION."
+    echo "---------- Aborting..."
+    exit;
+fi
 
 cat ./build/core/app/utils/digikam_version.h | grep "digikam_version\[\]" | awk '{print $6}' | tr -d '";' > $ORIG_WD/data/RELEASEID.txt
 
@@ -127,4 +127,3 @@ fi
 export PATH=$ORIG_PATH
 
 TerminateScript
-

@@ -4,7 +4,7 @@
 # and create a Windows installer file with NSIS application
 # Dependency : NSIS makensis program for Linux.
 #
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -33,7 +33,7 @@ StartScript
 ChecksCPUCores
 
 #################################################################################################
-# Check if NSIS CLI tools id installed
+# Check if NSIS CLI tools is installed
 
 if ! which makensis ; then
     echo "NSIS CLI tool is not installed"
@@ -188,7 +188,7 @@ cd $ORIG_WD/installer
 makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=$BUNDLEDIR -DTARGETARCH=$MXE_ARCHBITS -DOUTPUT=$ORIG_WD/bundle/$TARGET_INSTALLER ./digikam.nsi
 
 #################################################################################################
-# Show resume information and future instructions to host installer file to KDE server
+# Show resume information and future instructions to host installer file to remotz server
 
 echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"             > $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 echo    "File       : $TARGET_INSTALLER"                                                >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt

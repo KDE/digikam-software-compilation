@@ -5,8 +5,8 @@
 #
 # The MIT License (MIT)
 #
-# Copyright (c) 2015 Martin Preisler <martin at preisler dot me>
-# Copyright (c) 2016 Gilles Caulier <caulier dot gilles at gmail dot com>
+# Copyright (c)      2015 Martin Preisler <martin at preisler dot me>
+# Copyright (c) 2016-2017 Gilles Caulier <caulier dot gilles at gmail dot com>
 #
 # Blog post         : https://martin.preisler.me/2015/03/mingw-bundledlls-automatically-bundle-dlls/
 # Github repository : https://github.com/mpreisler/mingw-bundledlls
