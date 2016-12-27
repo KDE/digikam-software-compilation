@@ -5,7 +5,7 @@
 # This script must be run as sudo
 #
 # Copyright (c) 2015,      Shanti, <listaccount at revenant dot org>
-# Copyright (c) 2015-2016, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2015-2017, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -413,7 +413,7 @@ $PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
 mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
 #################################################################################################
-# Show resume information and future instructions to host PKG file to upload server
+# Show resume information and future instructions to host PKG file to remote server
 
 echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n" >  $TARGET_PKG_FILE.txt
 echo    "File       : $TARGET_INSTALLER"                                    >> $TARGET_PKG_FILE.txt

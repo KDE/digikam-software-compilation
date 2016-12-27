@@ -384,7 +384,7 @@ chmod a+x ./$APPIMGBIN
 chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 #################################################################################################
-# Show resume information and future instructions to host installer file to KDE server
+# Show resume information and future instructions to host installer file to remote server
 
 echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $ORIG_WD/bundle/$APPIMAGE.txt
 echo    "File       : $APPIMAGE"                                             >> $ORIG_WD/bundle/$APPIMAGE.txt
