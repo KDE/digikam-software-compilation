@@ -18,7 +18,7 @@ ChecksRunAsRoot
 ChecksXCodeCLI
 ChecksCPUCores
 
-echo "++++++++++++++++++   Update MacOS Installer   +++++++++++++++++++++++++++++++++"
+echo "++++++++++++++++++++ Update MacOS Installer +++++++++++++++++++++++++++++++++++"
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 ./03-build-digikam.sh
