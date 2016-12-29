@@ -14,8 +14,11 @@ set -e
 . ./config.sh
 . ./common.sh
 StartScript
+ChecksRunAsRoot
+ChecksXCodeCLI
+ChecksCPUCores
 
-echo "++++++++++++++++++   Build MacOS Installer   ++++++++++++++++++++++++++++++++++"
+echo "++++++++++++++++++   Update MacOS Installer   +++++++++++++++++++++++++++++++++"
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 ./03-build-digikam.sh
