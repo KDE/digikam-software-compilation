@@ -7,6 +7,12 @@
 
 # Pre-processing checks
 
+# Ask to run as root
+(( EUID != 0 )) && exec sudo -- "$0" "$@"
+
+# halt on error
+set -e
+
 . ../common.sh
 StartScript
 CommonChecks

@@ -8,6 +8,12 @@
 
 # Pre-processing checks
 
+# Ask to run as root
+(( EUID != 0 )) && exec sudo -- "$0" "$@"
+
+# halt on error
+set -e
+
 INSTALL_PREFIX="/opt/local"
 . ../common.sh
 StartScript
