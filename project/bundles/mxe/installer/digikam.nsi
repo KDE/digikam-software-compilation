@@ -526,8 +526,6 @@
         ;Create shortcuts
 
         CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
-        SetOutPath "$INSTDIR"
-        CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
         SetOutPath "$INSTDIR\bin"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\${MY_PRODUCT}.lnk" "$INSTDIR\digikam.exe"
         CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Showfoto.lnk" "$INSTDIR\showfoto.exe"
