@@ -286,7 +286,7 @@ rm -rf usr/share/pkgconfig || true
 
 echo -e "---------- Strip Binaries Files \n"
 
-FILES=$(find . -type f -executable)
+FILES=$(find . -type f -executable | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)')
 
 for FILE in $FILES ; do
     echo -e "Strip symbols in: $FILE"
