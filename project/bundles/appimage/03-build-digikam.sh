@@ -86,7 +86,7 @@ mkdir build
 cd build
 
 cmake3 -G "Unix Makefiles" .. \
-      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_BUILD_TYPE=relwithdebinfo \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBUILD_TESTING=OFF \
       -DDIGIKAMSC_CHECKOUT_PO=ON \
