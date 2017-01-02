@@ -129,7 +129,6 @@ Developers only options:
 
 "-DBUILD_TESTING=ON"                       Build tests code.
 "-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
-"-DDIGIKAMSC_COMPILE_LIBKFACE=OFF"         Force to use local libkface instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKVKONTAKE=OFF"     Force to use local libkvkontakte instead version installed on your computer.
