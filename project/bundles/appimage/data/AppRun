@@ -32,6 +32,8 @@ export APPIMAGE_STARTUP_PATH=$PATH
 
 if [[ $1 == "showfoto" ]] ; then
     showfoto ${@:2}
+elif [[ $1 == "debug" ]] ; then
+    gdb digikam ${@:2}
 else
     digikam.wrapper $@
 fi
