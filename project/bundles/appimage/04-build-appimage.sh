@@ -286,7 +286,11 @@ rm -rf usr/share/pkgconfig || true
 
 echo -e "---------- Strip Binaries Files \n"
 
-FILES=$(find . -type f -executable | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)')
+if [[ $DK_DEBUG = 1 ]] ; then
+    FILES=$(find . -type f -executable | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)')
+else
+    FILES=$(find . -type f -executable)
+fi
 
 for FILE in $FILES ; do
     echo -e "Strip symbols in: $FILE"
@@ -325,10 +329,14 @@ cd /
 
 APP=digikam
 
+if [[ $DK_DEBUG = 1 ]] ; then
+    DEBUG_SUF="-debug"
+fi
+
 if [[ "$ARCH" = "x86_64" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-x86-64.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-x86-64$DEBUG_SUF.appimage"
 elif [[ "$ARCH" = "i686" ]] ; then
-    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-i386.appimage"
+    APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-i386$DEBUG_SUF.appimage"
 fi
 
 echo -e "---------- Create Bundle with AppImage SDK stage1\n"
