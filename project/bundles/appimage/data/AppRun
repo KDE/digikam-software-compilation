@@ -33,7 +33,8 @@ export APPIMAGE_STARTUP_PATH=$PATH
 if [[ $1 == "showfoto" ]] ; then
     showfoto ${@:2}
 elif [[ $1 == "debug" ]] ; then
-    gdb digikam ${@:2}
+    echo "Starting digiKam into GDB..."
+    gdb -ex="catch throw" -ex=r --args digikam ${@:2}
 else
     digikam.wrapper $@
 fi
