@@ -131,6 +131,10 @@ https://github.com/mpreisler/mingw-bundledlls
 
 This script permit to build whole 32 and 64 bits installers from scratch at the same time.
 
+* update.sh
+
+This script re-build only digiKam and installers in 32 and 64 bits.
+
 LICENSES
 --------
 The scripts and other contents of this package are licensed
