@@ -16,7 +16,7 @@ DESCRIPTION
 -----------
 These files and scripts are used to make binary installer of the digiKam
 Software Collection for Windows 32 bits or 64 bits. In addition to this README,
-there are comments in the scripts that provide some additional explanation for
+there are comments in the scripts that provide some additional explanations for
 how they work.
 
 Note : these cross-compiling scripts exists because the way provided by KDE team to compile 
@@ -75,10 +75,8 @@ Note : the bundle is rellocable.
 REQUIREMENTS
 ------------
 The scripts build digiKam with MXE cross compiler, so you will need all dependencies
-and the other prerequisites for MXE. See http://mxe.cc/#requirements for details.
-
-You will also need to install NSIS software (http://nsis.sourceforge.net/)
-which does the actual packaging of the files needed to install digiKam.
+and the other pre-requisites first for MXE.
+See http://mxe.cc/#requirements for details.
 
 IMPORTANT:
 - You must set the right target architecture : windows 32 or 64 bits.
