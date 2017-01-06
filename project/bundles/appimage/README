@@ -91,7 +91,7 @@ COMPONENTS
 ----------
 There are 4 scripts to be run by the user. 2 first ones installs
 components on CentOS 6 and all dependencies, next one digiKam, and last one makes a 
-binary AppImage bundle 64 bits for Linux.
+binary AppImage bundle for Linux.
 
 
 SCRIPT DESCRIPTIONS
@@ -120,6 +120,10 @@ This include applications documentations and translations.
 * makeall.sh
 
 This script permit to build whole Linux bundle from scratch in one time.
+
+* update.sh
+
+This script re-build only digiKam and Linux bundle.
 
 
 AT RUN-TIME ON TARGET COMPUTER
