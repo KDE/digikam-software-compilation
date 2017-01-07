@@ -390,18 +390,27 @@ cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Conten
 
 echo -e "\n---------- Strip symbols in binary files\n"
 
-find $TEMPROOT -name "*.so"    | xargs strip -SXx
-find $TEMPROOT -name "*.dylib" | xargs strip -SXx
+if [[ $DK_DEBUG = 1 ]] ; then
+    find $TEMPROOT -name "*.so"    | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs strip -SXx
+    find $TEMPROOT -name "*.dylib" | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs strip -SXx
+else
+    find $TEMPROOT -name "*.so"    | xargs strip -SXx
+    find $TEMPROOT -name "*.dylib" | xargs strip -SXx
+fi
 
 #################################################################################################
 # Build PKG file
 
 echo "---------- Create MacOS package for digiKam $DKRELEASEID"
 
+if [[ $DK_DEBUG = 1 ]] ; then
+    DEBUG_SUF="-debug"
+fi
+
 mkdir -p $ORIG_WD/bundle
 rm -f $ORIG_WD/bundle/* || true
 
-TARGET_INSTALLER=digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64.pkg
+TARGET_INSTALLER=digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64$DEBUG_SUF.pkg
 TARGET_PKG_FILE=$BUILDDIR/bundle/$TARGET_INSTALLER
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
