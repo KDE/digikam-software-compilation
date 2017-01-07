@@ -44,16 +44,6 @@ MP_BUILDTEMP=~/mptemp
 # Uncomment this line to force a specific version of Macports to use, else lastest will be used.
 #MP_VERSION="2.3.3"
 
-# KF5 extra libs tarball information
-KD_URL="http://download.kde.org/stable/frameworks/"
-KD_BUILDTEMP=~/kf5temp
-KD_VERSION=5.28
-
-# KF5 extra applications tarball information
-KA_URL="http://download.kde.org/stable/applications/"
-KA_BUILDTEMP=~/kf5apptemp
-KA_VERSION=16.04.3
-
 # digiKam tarball information
 DK_URL="http://download.kde.org/stable/digikam"
 DK_BUILDTEMP=~/dktemp
