@@ -113,6 +113,7 @@ http://s.sudre.free.fr/Software/Packages/about.html
 IMPORTANT:
 - You must set the minimal OSX target with relevant SDK installed for backward compatibility.
 - You must set the digiKam git tags to checkout right source code to package.
+- You must set the option to host debug symbols or not in package.
 Look in config.sh file for details.
 
 HERE THERE BE DRAGONS

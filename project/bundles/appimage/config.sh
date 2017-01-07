@@ -29,4 +29,4 @@ DK_VERSION=master
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 DK_EPOCH="-01"
 # Installer will include or not digiKam debug symbols
-DK_DEBUG=0
+DK_DEBUG=1

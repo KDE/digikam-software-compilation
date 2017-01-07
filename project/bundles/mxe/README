@@ -80,7 +80,8 @@ See http://mxe.cc/#requirements for details.
 
 IMPORTANT:
 - You must set the right target architecture : windows 32 or 64 bits.
-- You must set the digiKam git tags to checkout right source code to package.
+- You must set the digiKam git tags to checkout right source code in installer.
+- You must set the option to host debug symbols or not in installer.
 Look in config.sh file for details.
 
 COMPONENTS

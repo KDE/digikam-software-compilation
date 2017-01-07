@@ -83,7 +83,8 @@ REQUIREMENTS
   git clone git://anongit.kde.org/digikam-software-compilation.git DK
   cd DK/project/appimage/
 
-- You must set the digiKam git tags to checkout right source code to package.
+- You must set the digiKam git tags to checkout right source code in bundle.
+- You must set the option to host debug symbols or not in bundle.
   Look in config.sh file for details.
 
 
