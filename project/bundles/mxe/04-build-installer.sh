@@ -165,21 +165,30 @@ done
 
 echo -e "\n---------- Strip symbols in binary files\n"
 
-find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
-find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+if [[ $DK_DEBUG = 1 ]] ; then
+    find $BUNDLEDIR -name \*exe | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+    find $BUNDLEDIR -name \*dll | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+else
+    find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+    find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
+fi
 
 #################################################################################################
 # Build NSIS installer.
 
 echo -e "\n---------- Build NSIS installer\n"
 
+if [[ $DK_DEBUG = 1 ]] ; then
+    DEBUG_SUF="-debug"
+fi
+
 mkdir -p $ORIG_WD/bundle
 
 if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
-    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win32.exe
+    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win32$DEBUG_SUF.exe
     rm -f $ORIG_WD/bundle/*Win32* || true
 else
-    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64.exe
+    TARGET_INSTALLER=digiKam-$DK_RELEASEID$DK_EPOCH-Win64$DEBUG_SUF.exe
     rm -f $ORIG_WD/bundle/*Win64* || true
 fi
 
