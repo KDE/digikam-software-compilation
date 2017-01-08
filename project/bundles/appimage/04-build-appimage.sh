@@ -329,9 +329,9 @@ cd /
 
 APP=digikam
 
-if [[ $DK_DEBUG = 1 ]] ; then
-    DEBUG_SUF="-debug"
-fi
+#if [[ $DK_DEBUG = 1 ]] ; then
+#    DEBUG_SUF="-debug"
+#fi
 
 if [[ "$ARCH" = "x86_64" ]] ; then
     APPIMAGE=$APP"-"$DK_RELEASEID$DK_EPOCH"-x86-64$DEBUG_SUF.appimage"

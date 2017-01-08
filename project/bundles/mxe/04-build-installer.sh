@@ -178,9 +178,9 @@ fi
 
 echo -e "\n---------- Build NSIS installer\n"
 
-if [[ $DK_DEBUG = 1 ]] ; then
-    DEBUG_SUF="-debug"
-fi
+#if [[ $DK_DEBUG = 1 ]] ; then
+#    DEBUG_SUF="-debug"
+#fi
 
 mkdir -p $ORIG_WD/bundle
 

@@ -403,9 +403,9 @@ fi
 
 echo "---------- Create MacOS package for digiKam $DKRELEASEID"
 
-if [[ $DK_DEBUG = 1 ]] ; then
-    DEBUG_SUF="-debug"
-fi
+#if [[ $DK_DEBUG = 1 ]] ; then
+#    DEBUG_SUF="-debug"
+#fi
 
 mkdir -p $ORIG_WD/bundle
 rm -f $ORIG_WD/bundle/* || true
