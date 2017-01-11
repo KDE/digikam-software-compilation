@@ -90,7 +90,7 @@ elseif(APPLE)
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/opencv-libinstallname-macports.patch
 
         CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} relwithdebinfo x86_64 "${BASH_OPTIONS}"
+                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} RelWithDebInfo x86_64 "${BASH_OPTIONS}"
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 

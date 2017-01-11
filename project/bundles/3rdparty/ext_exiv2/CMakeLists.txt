@@ -41,7 +41,7 @@ if(MINGW)
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
-        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} relwithdebinfo ${BASH_OPTIONS}
+        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
@@ -71,7 +71,7 @@ elseif(APPLE)
         PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                          <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} relwithdebinfo x86_64 ${BASH_OPTIONS}
+                          <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} RelWithDebInfo x86_64 ${BASH_OPTIONS}
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 

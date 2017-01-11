@@ -52,7 +52,7 @@ fi
 BUILD_TYPE=$2
 
 if [ "$BUILD_TYPE" = "" ]; then
-    BUILD_TYPE=relwithdebinfo
+    BUILD_TYPE=RelWithDebInfo
 fi
 
 MXE_INSTALL_PREFIX=${MXE_BUILDROOT}/usr/${MXE_BUILD_TARGETS}/

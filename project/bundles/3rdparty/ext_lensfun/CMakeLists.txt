@@ -20,7 +20,7 @@ if (MINGW)
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/lensfun-regex-mxe.patch
 
         CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.mxe <SOURCE_DIR>/. &&
-                          <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} relwithdebinfo ${GLOBAL_PROFILE}
+                          <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${GLOBAL_PROFILE}
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
 
