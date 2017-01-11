@@ -54,7 +54,7 @@ rm -rf $BUILDING_DIR/* || true
 ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
                            -DMXE_TOOLCHAIN=${MXE_TOOLCHAIN} \
                            -DMXE_BUILDROOT=${MXE_BUILDROOT} \
-                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
+                           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
@@ -113,7 +113,7 @@ cd $ORIG_WD/png2ico
 rm -f CMakeCache.txt > /dev/null
 
 cmake . \
-      -DCMAKE_BUILD_TYPE=debug \
+      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
       -DCMAKE_COLOR_MAKEFILE=ON \
       -Wno-dev
 

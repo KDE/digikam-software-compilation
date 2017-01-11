@@ -146,7 +146,7 @@ ${MXE_BUILD_TARGETS}-cmake $ORIG_WD/../3rdparty \
                            -DMXE_BUILDROOT=${MXE_BUILDROOT} \
                            -DMXE_ARCHBITS=${MXE_ARCHBITS} \
                            -DMXE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
-                           -DCMAKE_BUILD_TYPE=relwithdebinfo \
+                           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
                            -DCMAKE_COLOR_MAKEFILE=ON \
                            -DCMAKE_INSTALL_PREFIX=${MXE_INSTALL_PREFIX} \
                            -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
