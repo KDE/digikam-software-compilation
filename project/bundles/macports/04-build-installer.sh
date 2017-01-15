@@ -383,6 +383,7 @@ chmod 755 "$PROJECTDIR/postinstall"
 # Copy icons-set resource file and release notes.
 
 cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
+cp $ORIG_WD/icon-rcc/breeze-dark.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 
 #################################################################################################
