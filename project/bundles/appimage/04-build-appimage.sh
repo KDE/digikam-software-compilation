@@ -104,6 +104,7 @@ rm -fr ./usr/plugins/konsolepart.so
 # copy runtime data files
 cp -r /usr/share/digikam                 ./usr/share
 cp $ORIG_WD/icon-rcc/breeze.rcc          ./usr/share/digikam
+cp $ORIG_WD/icon-rcc/breeze-dark.rcc     ./usr/share/digikam
 cp $ORIG_WD/data/qt.conf                 ./usr/bin
 cp -r /usr/share/lensfun                 ./usr/share
 cp -r /usr/share/kipiplugin*             ./usr/share
