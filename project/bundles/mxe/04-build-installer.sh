@@ -109,6 +109,7 @@ cp    $BUILDDIR/data/qt.conf                                            $BUNDLED
 
 echo -e "\n---------- icons-set"
 cp    $BUILDDIR/icon-rcc/breeze.rcc                                     $BUNDLEDIR/             2>/dev/null
+cp    $BUILDDIR/icon-rcc/breeze-dark.rcc                                $BUNDLEDIR/             2>/dev/null
 
 echo -e "\n---------- i18n"
 cp -r $MXE_INSTALL_PREFIX/qt5/translations/qt_*                         $BUNDLEDIR/translations 2>/dev/null
