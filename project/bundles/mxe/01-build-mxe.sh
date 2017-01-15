@@ -78,13 +78,19 @@ if [[ $CONTINUE_INSTALL == 0 ]]; then
 fi
 
 #################################################################################################
-# MXE update
+# MXE git revision to use
 
 cd $MXE_BUILDROOT
 
-echo -e "\n"
-echo "---------- Updating MXE"
-git pull
+if [[ $MXE_GIT_REVISION == "master" ]]; then
+    echo -e "\n"
+    echo "---------- Updating MXE"
+    git pull
+else
+    echo -e "\n"
+    echo "---------- Checkout MXE revision to $MXE_GIT_REVISION"
+    git checkout $MXE_GIT_REVISION
+fi
 
 #################################################################################################
 # Dependencies build and installation
