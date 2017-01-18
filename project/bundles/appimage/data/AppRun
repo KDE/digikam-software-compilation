@@ -40,11 +40,15 @@ elif [[ $1 == "debug" ]] ; then
     if [[ $2 == "showfoto" ]] ; then
 
         echo "Starting Showfoto into GDB..."
+        echo "Use 'bt' command on debugger prompt to get a crash backtrace."
+        echo "Use 'q' command to quit debugger session."
         gdb -ex="catch throw" -ex=r --args showfoto ${@:3}
 
     else
 
         echo "Starting digiKam into GDB..."
+        echo "Use 'bt' command on debugger prompt to get a crash backtrace."
+        echo "Use 'q' command to quit debugger session."
         gdb -ex="catch throw" -ex=r --args digikam ${@:2}
 
     fi
