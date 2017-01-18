@@ -356,17 +356,12 @@ fi
 cd $APP_IMG_DIR
 
 # We will use a dedicated bash script to run inside the AppImage to be sure that XDG_* variable are set for Qt5
-cp ${ORIG_WD}/data/AppRun .
+cp ${ORIG_WD}/data/AppRun ./
 
 # desktop integration rules
 
-cp    /usr/share/applications/org.kde.digikam.desktop   digikam.desktop
-
-mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/apps
-cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/apps/digikam.png
-
-mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/mimetypes
-cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/mimetypes/application-vnd.digikam.png
+cp /usr/share/applications/org.kde.digikam.desktop ./digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png ./digikam.png
 
 get_desktopintegration digikam
 
