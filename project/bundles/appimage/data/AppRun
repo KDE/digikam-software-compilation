@@ -31,11 +31,36 @@ export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
 export APPIMAGE_STARTUP_PATH=$PATH
 
 if [[ $1 == "showfoto" ]] ; then
-    showfoto ${@:2}
-elif [[ $1 == "debug" ]] ; then
-    echo "Starting digiKam into GDB..."
-    gdb -ex="catch throw" -ex=r --args digikam ${@:2}
-else
-    digikam.wrapper $@
-fi
 
+    # Run Showfoto as well.
+    showfoto ${@:2}
+
+elif [[ $1 == "debug" ]] ; then
+
+    if [[ $2 == "showfoto" ]] ; then
+
+        echo "Starting Showfoto into GDB..."
+        gdb -ex="catch throw" -ex=r --args showfoto ${@:3}
+
+    else
+
+        echo "Starting digiKam into GDB..."
+        gdb -ex="catch throw" -ex=r --args digikam ${@:2}
+
+    fi
+
+elif [[ $1 == "help" ]] ; then
+
+        echo "digiKam AppImage bundle CLI options:"
+        echo " without option     : run digiKam."
+        echo " <showfoto>         : run Showfoto instead digiKam."
+        echo " <debug>            : run digiKam into GDB."
+        echo " <debug> <showfoto> : run Showfoto into GDB."
+        echo " <help>             : show this help."
+
+else
+
+    # Run digiKam as well.
+    digikam.wrapper $@
+
+fi
