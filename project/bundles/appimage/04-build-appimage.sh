@@ -360,8 +360,10 @@ cp ${ORIG_WD}/data/AppRun ./
 
 # desktop integration rules
 
-cp /usr/share/applications/org.kde.digikam.desktop ./digikam.desktop
-cp /usr/share/icons/hicolor/64x64/apps/digikam.png ./digikam.png
+cp /usr/share/applications/org.kde.digikam.desktop  ./digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png  ./digikam.png
+cp /usr/share/applications/org.kde.showfoto.desktop ./showfoto.desktop
+cp /usr/share/icons/hicolor/64x64/apps/showfoto.png ./showfoto.png
 
 get_desktopintegration digikam
 
