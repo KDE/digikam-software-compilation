@@ -324,9 +324,9 @@ sed -i -e 's|././/share/X11/|/usr/share/X11/|g' ./usr/lib/libQt5XcbQpa.so.5
 # or
 rm -f ./usr/lib/libdbus-1.so.3 || true
 
-cd /
-
 #################################################################################################
+
+cd /
 
 APP=digikam
 
@@ -341,8 +341,6 @@ elif [[ "$ARCH" = "i686" ]] ; then
 fi
 
 echo -e "---------- Create Bundle with AppImage SDK stage1\n"
-
-cd /
 
 # Source functions
 
@@ -360,10 +358,14 @@ cp ${ORIG_WD}/data/AppRun ./
 
 # desktop integration rules
 
-cp /usr/share/applications/org.kde.digikam.desktop  ./digikam.desktop
-cp /usr/share/icons/hicolor/64x64/apps/digikam.png  ./digikam.png
-cp /usr/share/applications/org.kde.showfoto.desktop ./showfoto.desktop
-cp /usr/share/icons/hicolor/64x64/apps/showfoto.png ./showfoto.png
+cp /usr/share/applications/org.kde.digikam.desktop ./digikam.desktop
+cp /usr/share/icons/hicolor/64x64/apps/digikam.png ./digikam.png
+
+mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/apps
+cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/apps/digikam.png
+
+mkdir -p $APP_IMG_DIR/usr/share/icons/default/128x128/mimetypes
+cp -r /usr/share/icons/hicolor/128x128/apps/digikam.png ./usr/share/icons/default/128x128/mimetypes/application-vnd.digikam.png
 
 get_desktopintegration digikam
 
