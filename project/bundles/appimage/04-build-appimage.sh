@@ -102,24 +102,31 @@ rm -fr ./usr/plugins/kf5/parts
 rm -fr ./usr/plugins/konsolepart.so
 
 # copy runtime data files
-cp -r /usr/share/digikam                 ./usr/share
-cp $ORIG_WD/icon-rcc/breeze.rcc          ./usr/share/digikam
-cp $ORIG_WD/icon-rcc/breeze-dark.rcc     ./usr/share/digikam
-cp $ORIG_WD/data/qt.conf                 ./usr/bin
-cp -r /usr/share/lensfun                 ./usr/share
-cp -r /usr/share/kipiplugin*             ./usr/share
-cp -r /usr/share/knotifications5         ./usr/share
-cp -r /usr/share/kservices5              ./usr/share
-cp -r /usr/share/kservicetypes5          ./usr/share
-cp -r /usr/share/kxmlgui5                ./usr/share
-cp -r /usr/share/kf5                     ./usr/share
-cp -r /usr/share/solid                   ./usr/share
-cp -r /usr/share/OpenCV                  ./usr/share
-cp -r /usr/share/metainfo/*digikam*      ./usr/share/metainfo/
-cp -r /usr/share/metainfo/*showfoto*     ./usr/share/metainfo/
-cp -r /usr/share/dbus-1/interfaces/kf5*  ./usr/share/dbus-1/interfaces/
-cp -r /usr/share/dbus-1/services/*kde*   ./usr/share/dbus-1/services/
-cp -r /usr/$LIB_PATH_ALT/libexec/kf5     ./usr/lib/libexec/
+cp -r /usr/share/digikam                  ./usr/share
+cp -r /usr/share/showfoto                 ./usr/share
+cp $ORIG_WD/icon-rcc/breeze.rcc           ./usr/share/digikam
+cp $ORIG_WD/icon-rcc/breeze-dark.rcc      ./usr/share/digikam
+
+cd $APP_IMG_DIR/usr/share/showfoto
+ln -s ../digikam/breeze.rcc               breeze.rcc
+ln -s ../digikam/breeze-dark.rcc          breeze-dark.rcc
+
+cd $APP_IMG_DIR
+cp $ORIG_WD/data/qt.conf                  ./usr/bin
+cp -r /usr/share/lensfun                  ./usr/share
+cp -r /usr/share/kipiplugin*              ./usr/share
+cp -r /usr/share/knotifications5          ./usr/share
+cp -r /usr/share/kservices5               ./usr/share
+cp -r /usr/share/kservicetypes5           ./usr/share
+cp -r /usr/share/kxmlgui5                 ./usr/share
+cp -r /usr/share/kf5                      ./usr/share
+cp -r /usr/share/solid                    ./usr/share
+cp -r /usr/share/OpenCV                   ./usr/share
+cp -r /usr/share/metainfo/*digikam*       ./usr/share/metainfo/
+cp -r /usr/share/metainfo/*showfoto*      ./usr/share/metainfo/
+cp -r /usr/share/dbus-1/interfaces/kf5*   ./usr/share/dbus-1/interfaces/
+cp -r /usr/share/dbus-1/services/*kde*    ./usr/share/dbus-1/services/
+cp -r /usr/$LIB_PATH_ALT/libexec/kf5      ./usr/lib/libexec/
 
 # copy libgphoto2 drivers
 find  /usr/lib/libgphoto2      -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2 \;      2>/dev/null
@@ -127,13 +134,13 @@ find  /usr/lib/libgphoto2_port -name "*.so" -type f -exec cp {} ./usr/lib/libgph
 
 # copy sane backends
 
-cp -r /usr/lib/sane                      ./usr/lib
-cp -r /usr/etc/sane.d                    ./usr/etc
+cp -r /usr/lib/sane                       ./usr/lib
+cp -r /usr/etc/sane.d                     ./usr/etc
 
 # copy i18n
 
 # Qt translations files
-cp -r /usr/translations                  ./usr
+cp -r /usr/translations                   ./usr
 
 # KF5 translations files
 FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
