@@ -44,7 +44,6 @@ set(GLOBAL_PROFILE ${GLOBAL_PROFILE} -DBUILD_TESTING=false)
 set(PATCH_COMMAND patch)
 
 # this list must be dependency-ordered
-add_subdirectory(ext_gcc)
 add_subdirectory(ext_jpeg)
 add_subdirectory(ext_jasper)
 add_subdirectory(ext_png)
