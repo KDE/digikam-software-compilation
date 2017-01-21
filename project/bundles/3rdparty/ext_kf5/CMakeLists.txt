@@ -8,7 +8,7 @@
 
 set(EXTPREFIX_frameworks "${EXTPREFIX}")
 
-set(KD_VERSION 5.29)
+set(KD_VERSION 5.30)
 
 function(InstallKF5Component
          name
