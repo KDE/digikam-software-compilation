@@ -10,8 +10,8 @@ SET(EXTPREFIX_qtwebkit "${EXTPREFIX}")
 
 ExternalProject_Add(ext_qtwebkit
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL https://download.qt.io/community_releases/5.7/5.7.0/qtwebkit-opensource-src-5.7.0.tar.xz
-    URL_MD5 9379b8829639645c184fa63532035098
+    URL https://download.qt.io/community_releases/5.7/5.7.1/qtwebkit-opensource-src-5.7.1.tar.xz
+    URL_MD5 4fa8f47383ce36d59dcc36d701ce93cd
     INSTALL_DIR ${EXTPREFIX_qtwebkit}
 
     CONFIGURE_COMMAND qmake PREFIX=${EXTPREFIX_qtwebkit}
