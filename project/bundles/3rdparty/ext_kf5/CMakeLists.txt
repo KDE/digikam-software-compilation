@@ -17,8 +17,6 @@ function(InstallKF5Component
 
     if(MINGW)
 
-        set(KD_VERSION 5.30)
-
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
                         wget -q -O - -o /dev/null http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz.mirrorlist
@@ -76,9 +74,6 @@ function(InstallKF5Component
         )
 
     elseif(APPLE)
-
-        # 5.30 do not compile under MacOS
-        set(KD_VERSION 5.29)
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
@@ -141,8 +136,6 @@ function(InstallKF5Component
 
     else() # Linux
 
-        set(KD_VERSION 5.30)
-
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
                         wget -q -O - -o /dev/null http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz.mirrorlist
@@ -194,7 +187,11 @@ function(InstallKF5Component
 endfunction()
 
 if(APPLE)
+        # 5.30 do not compile under MacOS
+    set(KD_VERSION 5.29)
     set(MacosBreezePatch breeze-icons-macports.patch)
+else()
+    set(KD_VERSION 5.30)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")
