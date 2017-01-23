@@ -8,7 +8,6 @@
 
 set(EXTPREFIX_frameworks "${EXTPREFIX}")
 
-set(KD_VERSION 5.30)
 
 function(InstallKF5Component
          name
@@ -17,6 +16,8 @@ function(InstallKF5Component
          patch)
 
     if(MINGW)
+
+        set(KD_VERSION 5.30)
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
@@ -75,6 +76,9 @@ function(InstallKF5Component
         )
 
     elseif(APPLE)
+
+        # 5.30 do not compile under MacOS
+        set(KD_VERSION 5.29)
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
@@ -136,6 +140,8 @@ function(InstallKF5Component
         )
 
     else() # Linux
+
+        set(KD_VERSION 5.30)
 
         # Extract MD5 sums of each KF5 components directly from server.
         execute_process(COMMAND
