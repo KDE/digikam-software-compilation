@@ -1,22 +1,21 @@
-/* This file is part of the KDE project
-   Copyright (C) 2015 Christoph Cullmann <cullmann@kde.org>
-
-   This library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public
-   License as published by the Free Software Foundation; either
-   version 2 of the License, or (at your option) any later version.
-
-   This library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public License
-   along with this library; see the file COPYING.LIB.  If not, write to
-   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.
-*/
-
+/*  This file is part of the KDE libraries
+ *    Copyright (C) 2016 Kåre Särs <kare.sars@iki.fi>
+ *
+ *    This library is free software; you can redistribute it and/or
+ *    modify it under the terms of the GNU Library General Public
+ *    License as published by the Free Software Foundation; either
+ *    version 2 of the License, or (at your option) any later version.
+ *
+ *    This library is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *    Library General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Library General Public License
+ *    along with this library; see the file COPYING.LIB.  If not, write to
+ *    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ *    Boston, MA 02110-1301, USA.
+ */
 #include <QCoreApplication>
 #include <QFile>
 #include <QFileInfo>
@@ -25,42 +24,33 @@
 #include <QDebug>
 #include <QCommandLineParser>
 
-QString link(const QString& path, const QString& fileName)
+QString link(const QString &path, const QString &fileName)
 {
-    QFile in(QStringLiteral("%1/%2").arg(path, fileName));
-
-    if (!in.open(QIODevice::ReadOnly))
-    {
+    QFile in(path + QLatin1Char('/') + fileName);
+    if (!in.open(QIODevice::ReadOnly)) {
         qDebug() << "failed to read" << path << fileName << in.fileName();
         return QString();
     }
 
     QString firstLine = in.readLine();
-
-    if (firstLine.isEmpty())
-    {
+    if (firstLine.isEmpty()) {
         qDebug() << in.fileName() << "line could not be read...";
         return QString();
     }
-
     QRegularExpression fNameReg(QStringLiteral("(.*\\.(?:svg|png|gif|ico))"));
     QRegularExpressionMatch match = fNameReg.match(firstLine);
-
-    if (!match.hasMatch())
-    {
+    if (!match.hasMatch()) {
         return QString();
     }
 
-    QFileInfo linkInfo(QStringLiteral("%1/%2").arg(path, match.captured(1)));
+    QFileInfo linkInfo(path + QLatin1Char('/') + match.captured(1));
     QString aliasLink = link(linkInfo.path(), linkInfo.fileName());
-
-    if (!aliasLink.isEmpty())
-    {
+    if (!aliasLink.isEmpty()) {
         //qDebug() <<  fileName << "=" << match.captured(1) << "=" << aliasLink;
         return aliasLink;
     }
 
-    return  QStringLiteral("%1/%2").arg(path, match.captured(1));
+    return  path + QLatin1Char('/') + match.captured(1);
 }
 
 int parseFile(const QString &infile, const QString &outfile)
@@ -69,25 +59,19 @@ int parseFile(const QString &infile, const QString &outfile)
     QFile out(outfile);
     QRegularExpression imageReg(QStringLiteral("<file>(.*\\.(?:svg|png|gif|ico))</file>"));
 
-    if (!in.open(QIODevice::ReadOnly))
-    {
+    if (!in.open(QIODevice::ReadOnly)) {
         qDebug() << "Failed to open" << infile;
         return -1;
     }
-
-    if (!out.open(QIODevice::WriteOnly))
-    {
+    if (!out.open(QIODevice::WriteOnly)) {
         qDebug() << "Failed to create" << outfile;
         return -2;
     }
 
-    while (in.bytesAvailable())
-    {
+    while (in.bytesAvailable()) {
         QString line = QString::fromLocal8Bit(in.readLine());
         QRegularExpressionMatch match = imageReg.match(line);
-
-        if (!match.hasMatch())
-        {
+        if (!match.hasMatch()) {
             //qDebug() << "No Match: " << line;
             out.write(qPrintable(line));
             continue;
@@ -95,11 +79,8 @@ int parseFile(const QString &infile, const QString &outfile)
 
         QFileInfo info(match.captured(1));
 
-
         QString aliasLink = link(info.path(), info.fileName());
-
-        if (aliasLink.isEmpty())
-        {
+        if (aliasLink.isEmpty()) {
             //qDebug() << "No alias: " << line;
             out.write(qPrintable(line));
             continue;
@@ -109,28 +90,30 @@ int parseFile(const QString &infile, const QString &outfile)
         //qDebug() << newLine;
         out.write(qPrintable(newLine));
     }
-
     return 0;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
     QCommandLineParser parser;
 
-    QCommandLineOption inOption(QStringList()  << QLatin1String("i") << QLatin1String("infile"),  QStringLiteral("Input qrc file"),  QStringLiteral("infile"));
+    QCommandLineOption inOption(QStringList() << QLatin1String("i") << QLatin1String("infile"), QStringLiteral("Input qrc file"), QStringLiteral("infile"));
     QCommandLineOption outOption(QStringList() << QLatin1String("o") << QLatin1String("outfile"), QStringLiteral("Output qrc file"), QStringLiteral("outfile"));
+    parser.setApplicationDescription(
+        QLatin1String("On Windows git handles symbolic links by converting them "
+        "to text files containing the links to the actual file. This application "
+        "takes a .qrc file as input and outputs a .qrc file with the symbolic "
+        "links converted to qrc-aliases."));
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addOption(inOption);
     parser.addOption(outOption);
     parser.process(app);
 
-    const QString inName  = parser.value(inOption);
+    const QString inName = parser.value(inOption);
     const QString outName = parser.value(outOption);
-
-    qDebug() << inName << outName;
 
     return parseFile(inName, outName);
 }
