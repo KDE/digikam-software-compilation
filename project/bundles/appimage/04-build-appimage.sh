@@ -156,6 +156,13 @@ for FILE in $FILES ; do
     cp --parents $FILE ./
 done
 
+# digiKam icons files
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log |grep /usr/share/icons/ | cut -d' ' -f3)
+
+for FILE in $FILES ; do
+    cp --parents $FILE ./
+done
+
 # Marble data and plugins files
 
 cp -r /usr/$LIB_PATH_ALT/marble/plugins/ ./usr/bin/
