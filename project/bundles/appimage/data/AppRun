@@ -18,7 +18,7 @@ export APPIMAGE_ORIGINAL_XDG_DATA_DIRS=$XDG_DATA_DIRS
 export APPIMAGE_ORIGINAL_PATH=$PATH
 
 export LD_LIBRARY_PATH=$DIR/usr/lib/:$LD_LIBRARY_PATH
-export QT_PLUGIN_PATH=\$DIR/usr/lib/qt5/plugins/
+export QT_PLUGIN_PATH=\$DIR/usr/plugins/
 export XDG_DATA_DIRS=$DIR/usr/share/:$XDG_DATA_DIRS
 export PATH=$DIR/usr/bin:$DIR/usr/lib:$DIR/usr/lib/libexec/kf5:$DIR/usr/share/digikam/utils:$PATH
 export KDE_FORK_SLAVES=1
