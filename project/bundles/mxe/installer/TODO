@@ -1,10 +1,6 @@
 
 - Register digiKam so that it can be run when one plug a usb mass storage or a camera.
 
-- Install only the needed files not the whole kde4. Set a list of unnecessary files provided by KDE-windows installer.
-
-- Replace digikam/showphoto program icons with high-quality versions
-
 - Support multiple user install (non-administrator install)
   see: http://nsis.sourceforge.net/Add_uninstall_information_to_Add/Remove_Programs
 
@@ -17,13 +13,3 @@
   http://nsis.sourceforge.net/VLC_media_player
 
 Remark: To fix the warning when running the installer/uninstaller one need to sign the .exe, this would require to buy a 900$ certificate !
-
--------------------------------------------------------------------------------------------------------------------------
-
-Other project that use NSIS installer :
-
-- RKWard (http://rkward.sourceforge.net) :
-  http://rkward.svn.sourceforge.net/viewvc/rkward/trunk/rkward/windows_nsis
-
-- Clementine (http://www.clementine-player.org)
-  http://code.google.com/p/clementine-player/source/browse/dist/windows
