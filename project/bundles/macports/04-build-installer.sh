@@ -149,19 +149,19 @@ chmod 777 ${PROJECTDIR}
 # Check if Packages CLI tools are installed
 
 if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
-        echo "Packages CLI tools are not installed"
-        echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
-        exit 1
+    echo "Packages CLI tools are not installed"
+    echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
+    exit 1
 else
-        echo "Check Packages CLI tools passed..."
+    echo "Check Packages CLI tools passed..."
 fi
 
 #################################################################################################
 # Create temporary dir to build package contents
 
 if [ -d "$TEMPROOT" ] ; then
-        echo "---------- Removing temporary packaging directory $TEMPROOT"
-        rm -rf "$TEMPROOT"
+    echo "---------- Removing temporary packaging directory $TEMPROOT"
+    rm -rf "$TEMPROOT"
 fi
 
 echo "Creating $TEMPROOT"
