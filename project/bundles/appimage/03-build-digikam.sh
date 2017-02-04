@@ -75,7 +75,7 @@ fi
 cd ./core
 git checkout $DK_VERSION
 cd ../extra/kipi-plugins
-git checkout $DK_VERSION
+git checkout $KIPI_VERSION
 cd ../..
 
 echo -e "\n\n"
