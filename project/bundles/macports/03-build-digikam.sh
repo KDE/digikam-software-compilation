@@ -78,7 +78,7 @@ if [ $? -ne 0 ] ; then
 fi
 
 git -C ./core checkout $DK_VERSION
-git -C ./extra/kipi-plugins checkout $DK_VERSION
+git -C ./extra/kipi-plugins checkout $KIPI_VERSION
 
 cp -f $ORIG_WD/../../../bootstrap.macports $DK_BUILDTEMP/digikam-$DK_VERSION
 
