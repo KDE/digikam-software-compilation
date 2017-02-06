@@ -207,7 +207,7 @@ InstallKF5Component(ki18n               ${KD_VERSION} ""                        
 InstallKF5Component(kcrash              ${KD_VERSION} ""                                               "")
 InstallKF5Component(kcodecs             ${KD_VERSION} ""                                               "")
 InstallKF5Component(kauth               ${KD_VERSION} ""                                               "")
-InstallKF5Component(kguiaddons          ${KD_VERSION} ""                                               "kguiaddons-helpurl.patch")
+InstallKF5Component(kguiaddons          ${KD_VERSION} ""                                               "")
 InstallKF5Component(kwidgetsaddons      ${KD_VERSION} ""                                               "")
 InstallKF5Component(kitemviews          ${KD_VERSION} ""                                               "")
 InstallKF5Component(kcompletion         ${KD_VERSION} ""                                               "")

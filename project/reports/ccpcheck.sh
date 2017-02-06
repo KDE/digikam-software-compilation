@@ -6,4 +6,4 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-cppcheck --enable=warning . | grep "]:" | grep -v 'libraw' | grep -v 'greycstoration' | grep -v 'xmp_sdk'
+cppcheck --enable=warning . | grep "]:" | awk '!/libraw/ && !/greycstoration/ && !/xmp_sdk/'
