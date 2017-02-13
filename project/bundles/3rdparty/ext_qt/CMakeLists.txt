@@ -48,6 +48,7 @@ ExternalProject_Add(ext_qt
                   -skip qtgamepad
                   -skip qtvirtualkeyboard
                   -skip qtmultimedia
+                  -skip qtlocation
 
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1
