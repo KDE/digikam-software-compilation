@@ -46,6 +46,7 @@ ExternalProject_Add(ext_qt
                   -skip qtandroidextras
                   -skip qtserialport
                   -skip qtgamepad
+                  -skip qtvirtualkeyboard
                   -skip qtmultimedia
 
     UPDATE_COMMAND ""
