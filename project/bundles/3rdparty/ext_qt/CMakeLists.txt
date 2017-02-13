@@ -18,6 +18,7 @@ ExternalProject_Add(ext_qt
                   -nomake examples
                   -sql-sqlite
                   -openssl
+                  -optimized-qmake
                   -no-qml-debug
                   -no-mtdev
                   -no-journald
@@ -27,13 +28,13 @@ ExternalProject_Add(ext_qt
                   -no-linuxfb
                   -no-libproxy
                   -no-pch
+                  -no-compile-examples
                   -qt-zlib
                   -qt-pcre
                   -qt-harfbuzz
                   -qt-freetype
                   -qt-xcb
                   -qt-xkbcommon-x11
-                  -optimized-qmake
                   -skip qt3d
                   -skip qtactiveqt
                   -skip qtcanvas3d
