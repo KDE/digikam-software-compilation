@@ -64,7 +64,7 @@ elseif(APPLE)
                         CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
                                           <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_marble} debug x86_64 "-DWITH_DESIGNER_PLUGIN=OFF -DBUILD_MARBLE_TESTS=OFF -DBUILD_MARBLE_TOOLS=OFF -DBUILD_MARBLE_EXAMPLES=OFF -DBUILD_MARBLE_APPS=OFF -DBUILD_WITH_DBUS=OFF -DQTONLY=ON -DBUILD_TESTING=OFF -Wno-dev"
 
-                        BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
+                        BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
 
                         INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
 

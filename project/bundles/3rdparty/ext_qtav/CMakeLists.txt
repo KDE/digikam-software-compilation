@@ -34,7 +34,7 @@ if(MINGW)
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets1.dll &&
                           ${MXE_INSTALL_PREFIX}/qt5/bin/qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
 
-        BUILD_COMMAND make
+        BUILD_COMMAND $(MAKE)
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${MXE_INSTALL_PREFIX}/qt5/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${MXE_INSTALL_PREFIX}/qt5/include/ &&
@@ -67,7 +67,7 @@ elseif(APPLE)
 
         CONFIGURE_COMMAND mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ../QtAV.pro
 
-        BUILD_COMMAND cd build && make
+        BUILD_COMMAND cd build && $(MAKE)
 
         INSTALL_COMMAND install_name_tool -id ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework/Versions/1/QtAV <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAV.framework/QtAV &&
                         install_name_tool -id ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework/Versions/1/QtAVWidgets <SOURCE_DIR>/build/lib_osx_x86_64_llvm/QtAVWidgets.framework/QtAVWidgets &&

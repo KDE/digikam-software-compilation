@@ -73,7 +73,7 @@ elseif(APPLE)
         CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
                           <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} RelWithDebInfo x86_64 ${BASH_OPTIONS}
 
-        BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
+        BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
 
         INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
 
