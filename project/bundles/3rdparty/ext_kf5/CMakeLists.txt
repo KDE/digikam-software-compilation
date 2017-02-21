@@ -122,9 +122,9 @@ function(InstallKF5Component
                                           <SOURCE_DIR>/fixbundledatapath.sh
 
                             CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                                              <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${argoptions}
+                                              <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${GLOBAL_PROFILE} ${argoptions}
 
-                            BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
+                            BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
 
                             INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
 
@@ -187,7 +187,7 @@ function(InstallKF5Component
 endfunction()
 
 if(APPLE)
-        # 5.30 do not compile under MacOS
+    # 5.30 do not compile under MacOS
     set(KD_VERSION 5.29)
     set(MacosBreezePatch breeze-icons-macports.patch)
 else()
