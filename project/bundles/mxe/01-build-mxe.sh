@@ -127,7 +127,8 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      qtwinextras \
      qtscript \
      qtwebkit \
-     ffmpeg
+     ffmpeg \
+     openal
 
 echo -e "\n"
 
