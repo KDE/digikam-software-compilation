@@ -131,6 +131,9 @@ cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLED
 echo -e "\n---------- KF5 plugins"
 find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
 
+echo -e "\n---------- OpenAL for QtAV"
+cp -r $MXE_INSTALL_PREFIX/bin/OpenAL32.dll                              $BUNDLEDIR/             2>/dev/null
+
 echo -e "\n---------- Copy executables with recursive dependencies in bundle directory\n"
 
 # Executables and plugins shared libraries dependencies scan ---------------------------------
