@@ -110,7 +110,8 @@ yum -y install wget \
                lz4-devel \
                inotify-tools-devel \
                openssl-devel \
-               cups-devel
+               cups-devel \
+               openal-soft-devel
 
 #################################################################################################
 
