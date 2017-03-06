@@ -110,7 +110,8 @@ yum -y install wget \
                lz4-devel \
                inotify-tools-devel \
                openssl-devel \
-               cups-devel
+               cups-devel \
+               openal-soft-devel
 
 #################################################################################################
 
@@ -136,7 +137,6 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
 
 fi
 
-. /opt/rh/devtoolset-3/enable
 
 #################################################################################################
 
@@ -189,6 +189,9 @@ fi
 if [ ! -d $DOWNLOAD_DIR ] ; then
     mkdir $DOWNLOAD_DIR
 fi
+
+# enable new compiler
+. /opt/rh/devtoolset-3/enable
 
 #################################################################################################
 
