@@ -22,9 +22,7 @@ if(MINGW)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG ${QTAV_VERSION}
-
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch
+#        GIT_TAG ${QTAV_VERSION}
 
         CONFIGURE_COMMAND rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAV &&
                           rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAVWidgets &&
@@ -32,16 +30,16 @@ if(MINGW)
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/lib/libQtAVWidgets1.a &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAV1.dll &&
                           rm -fv  ${MXE_INSTALL_PREFIX}/qt5/bin/QtAVWidgets1.dll &&
-                          ${MXE_INSTALL_PREFIX}/qt5/bin/qmake PREFIX=${PREFIX_ext_qtav} CONFIG+=no_examples
+                          mkdir build && cd build && ${MXE_INSTALL_PREFIX}/qt5/bin/qmake CONFIG+=no_examples ..
 
-        BUILD_COMMAND $(MAKE)
+        BUILD_COMMAND cd build && $(MAKE)
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${MXE_INSTALL_PREFIX}/qt5/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${MXE_INSTALL_PREFIX}/qt5/include/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets1.a ${MXE_INSTALL_PREFIX}/qt5/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/QtAV1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/QtAVWidgets1.dll ${MXE_INSTALL_PREFIX}/qt5/bin/
 
         BUILD_IN_SOURCE 1
 
@@ -56,16 +54,16 @@ elseif(APPLE)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG ${QTAV_VERSION}
+#        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/include/QtAV &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/include/QtAVWidgets &&
-                      ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
-        CONFIGURE_COMMAND mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ../QtAV.pro
+#        CONFIGURE_COMMAND mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ..
+        CONFIGURE_COMMAND mkdir build && cd build && qmake ..
 
         BUILD_COMMAND cd build && $(MAKE)
 
@@ -92,6 +90,7 @@ else() #Linux
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
+#        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
 
