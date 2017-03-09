@@ -62,7 +62,6 @@ elseif(APPLE)
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/include/QtAVWidgets &&
                       ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-macos.patch
 
-#        CONFIGURE_COMMAND mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ..
         CONFIGURE_COMMAND mkdir build && cd build && qmake ..
 
         BUILD_COMMAND cd build && $(MAKE)
