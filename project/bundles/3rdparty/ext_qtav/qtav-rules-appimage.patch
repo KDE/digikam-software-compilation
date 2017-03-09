@@ -7,6 +7,6 @@ index 08c6279..4878ce4 100644
  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
  QMAKE_IOS_DEPLOYMENT_TARGET = 6.0
 +
-+CONFIG += no_examples no_config_tests
++CONFIG += no_examples
 +INCLUDEPATH += /usr/include/ffmpeg
 +

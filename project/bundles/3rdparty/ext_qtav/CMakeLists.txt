@@ -105,7 +105,7 @@ else() #Linux
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1 &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11 &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11.0 &&
-                          mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ../QtAV.pro
+                          mkdir build && cd build && qmake ..
 
         BUILD_COMMAND cd build && $(MAKE)
 
