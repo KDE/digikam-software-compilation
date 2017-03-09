@@ -216,7 +216,7 @@ shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $fir
 
 cat $ORIG_WD/bundle/$TARGET_INSTALLER.txt
 echo -e "\n------------------------------------------------------------------"
-curl http://download.kde.org/README_UPLOAD
+curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################

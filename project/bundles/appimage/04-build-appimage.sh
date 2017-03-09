@@ -421,7 +421,7 @@ sha256sum "$ORIG_WD/bundle/$APPIMAGE" | { read first rest ; echo $first ; }  >> 
 
 cat $ORIG_WD/bundle/$APPIMAGE.txt
 echo -e "\n------------------------------------------------------------------"
-curl http://download.kde.org/README_UPLOAD
+curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################

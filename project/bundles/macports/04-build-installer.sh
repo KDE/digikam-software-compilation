@@ -438,7 +438,7 @@ shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }       >> $
 
 cat $TARGET_PKG_FILE.txt
 echo -e "\n------------------------------------------------------------------"
-curl http://download.kde.org/README_UPLOAD
+curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################
