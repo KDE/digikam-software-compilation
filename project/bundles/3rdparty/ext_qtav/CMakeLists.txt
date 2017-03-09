@@ -92,11 +92,8 @@ else() #Linux
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-        GIT_TAG ${QTAV_VERSION}
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-signals-slots.patch &&
-                      ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
-
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
 
         CONFIGURE_COMMAND rm -rfv ${INSTALL_ROOT}/include/QtAV &&
                           rm -rfv ${INSTALL_ROOT}/include/QtAVWidgets &&
@@ -108,18 +105,20 @@ else() #Linux
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1 &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11 &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11.0 &&
-                          qmake PREFIX=${PREFIX_ext_qtav}
+                          mkdir build && cd build && qmake -r PREFIX=${PREFIX_ext_qtav} ../QtAV.pro
+
+        BUILD_COMMAND cd build && $(MAKE)
 
         INSTALL_COMMAND cp -rfv <SOURCE_DIR>/src/QtAV ${INSTALL_ROOT}/include/ &&
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${INSTALL_ROOT}/include/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAV.so.1.11.0 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/${LIB_DIR}/libQtAVWidgets.so.1.11.0 ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.11 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.11.0 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.11.0 ${INSTALL_ROOT}/lib/
 
         BUILD_IN_SOURCE 1
 

@@ -10,22 +10,3 @@ index 08c6279..4878ce4 100644
 +CONFIG += no_examples no_config_tests
 +INCLUDEPATH += /usr/include/ffmpeg
 +
-diff --git a/QtAV.pro b/QtAV.pro
-index 8da5e56..1e33c60 100644
---- a/QtAV.pro
-+++ b/QtAV.pro
-@@ -77,10 +77,10 @@ unix:!mac {
- mac|ios {
-   !no-videotoolbox: OptionalDepends *= videotoolbox
- }
--runConfigTests()
--!config_avresample:!config_swresample {
--  error("libavresample or libswresample is required. Setup your environment correctly then delete $$BUILD_DIR/.qmake.conf and run qmake again")
--}
-+#runConfigTests()
-+#!config_avresample:!config_swresample {
-+#  error("libavresample or libswresample is required. Setup your environment correctly then delete $$BUILD_DIR/.qmake.conf and run qmake again")
-+#}
- PACKAGE_VERSION = $$QTAV_VERSION
- PACKAGE_NAME= QtAV
- include(pack.pri)
