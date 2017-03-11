@@ -39,7 +39,6 @@ if(MINGW)
         # To use current implementation from SVN
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
-        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
 
@@ -68,8 +67,6 @@ elseif(APPLE)
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
-
         CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
                           <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} RelWithDebInfo x86_64 ${BASH_OPTIONS}
 
@@ -96,7 +93,6 @@ else() # Linux
         # To use current implementation from SVN
 
         SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
-        PATCH_COMMAND ${PATCH_COMMAND} -p0 -i ${CMAKE_CURRENT_SOURCE_DIR}/exiv2-trunk.patch
 
         INSTALL_DIR ${PREFIX_ext_exiv2}
 
