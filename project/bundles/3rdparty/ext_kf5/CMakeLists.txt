@@ -191,7 +191,7 @@ if(APPLE)
     set(KD_VERSION 5.29)
     set(MacosBreezePatch breeze-icons-macports.patch)
 else()
-    set(KD_VERSION 5.30)
+    set(KD_VERSION 5.32)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")
