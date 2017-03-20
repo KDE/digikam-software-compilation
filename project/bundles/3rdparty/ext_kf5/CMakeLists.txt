@@ -48,7 +48,7 @@ function(InstallKF5Component
 
         ExternalProject_Add(ext_${name}
                             DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-                            URL http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz
+                            URL file://${EXTERNALS_DOWNLOAD_DIR}/${name}-${version}.0.tar.xz
                             URL_MD5 ${md5sm}
                             INSTALL_DIR ${EXTPREFIX_frameworks}
 
@@ -71,6 +71,13 @@ function(InstallKF5Component
                             PATCH_COMMAND ${patch}
                             UPDATE_COMMAND ""
                             ALWAYS 0
+        )
+
+        ExternalProject_Add_step(ext_${name} before_download
+
+            # Note : under MXE, curl is not compiled with https support. We cannot use the tarball as under Linux/MacOS.
+            COMMAND wget -N http://download.kde.org/stable/frameworks/${version}/${name}-${version}.0.tar.xz -O ${EXTERNALS_DOWNLOAD_DIR}/${name}-${version}.0.tar.xz
+            DEPENDERS download
         )
 
     elseif(APPLE)
