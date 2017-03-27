@@ -245,7 +245,8 @@ port install qt5 \
              libxslt \
              lensfun \
              bison \
-             ffmpeg-devel
+             ffmpeg-devel \
+             wget +ssl
 
 echo -e "\n"
 
