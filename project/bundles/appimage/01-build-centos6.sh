@@ -213,12 +213,12 @@ cmake3 --build . --config RelWithDebInfo --target ext_png        -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_tiff       -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_libgphoto2 -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_sane       -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_boost      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtav       -- -j$CPU_CORES
 
 #################################################################################################
