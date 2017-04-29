@@ -33,12 +33,12 @@ if(MINGW)
 
         # To use official release tarball
 
-        #URL http://www.exiv2.org/exiv2-0.25.tar.gz
-        #URL_MD5 258d4831b30f75a01e0234065c6c2806
+        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
 
-        SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
+        #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
         CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
 
@@ -60,12 +60,12 @@ elseif(APPLE)
 
         # To use official release tarball
 
-        #URL http://www.exiv2.org/e\\xiv2-0.25.tar.gz
-        #URL_MD5 258d4831b30f75a01e0234065c6c2806
+        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
 
-        SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
+        #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
         CONFIGURE_COMMAND cp -f ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
                           <SOURCE_DIR>/bootstrap.macports ${PREFIX_ext_exiv2} RelWithDebInfo x86_64 ${BASH_OPTIONS}
@@ -87,12 +87,12 @@ else() # Linux
 
         # To use official release tarball
 
-        #URL http://www.exiv2.org/exiv2-0.25.tar.gz
-        #URL_MD5 258d4831b30f75a01e0234065c6c2806
+        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
 
-        SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
+        #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
         INSTALL_DIR ${PREFIX_ext_exiv2}
 
