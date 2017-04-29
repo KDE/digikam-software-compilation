@@ -32,8 +32,7 @@ if(MINGW)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         # To use official release tarball
-
-        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
         URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
@@ -60,7 +59,7 @@ elseif(APPLE)
 
         # To use official release tarball
 
-        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
         URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
@@ -87,20 +86,23 @@ else() # Linux
 
         # To use official release tarball
 
-        URL http://www.exiv2.org/exiv2-0.26-trunk.tar.gz
+        URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
         URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
 
         # To use current implementation from SVN
 
         #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        INSTALL_DIR ${PREFIX_ext_exiv2}
-
-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_exiv2}
+        CONFIGURE_COMMAND cd <SOURCE_DIR>/exiv2-trunk &&
+                   $(CMAKE_COMMAND) . -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_exiv2}
                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                    -DICONV_INCLUDE_DIR=${PREFIX_ext_exiv2}/include
                    ${Exiv2_Conf}
                    ${GLOBAL_PROFILE}
+
+        BUILD_COMMAND cd <SOURCE_DIR>/exiv2-trunk && $(MAKE)
+
+        INSTALL_COMMAND cd <SOURCE_DIR>/exiv2-trunk && $(MAKE) install/fast
 
         UPDATE_COMMAND ""
         ALWAYS 0
