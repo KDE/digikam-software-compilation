@@ -39,11 +39,12 @@ if(MINGW)
 
         #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        CONFIGURE_COMMAND <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
+        CONFIGURE_COMMAND cd <SOURCE_DIR>/exiv2-trunk && 
+                          ./bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
 
-        BUILD_COMMAND cd <SOURCE_DIR>/build && make -j
+        BUILD_COMMAND cd <SOURCE_DIR>/exiv2-trunk/build && $(MAKE) -j
 
-        INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
+        INSTALL_COMMAND cd <SOURCE_DIR>/exiv2-trunk/build && $(MAKE) install/fast
 
         BUILD_IN_SOURCE 1
 
@@ -71,7 +72,7 @@ elseif(APPLE)
 
         BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
 
-        INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
+        INSTALL_COMMAND cd <SOURCE_DIR>/build && $(MAKE) install/fast
 
         BUILD_IN_SOURCE 1
 
