@@ -8,13 +8,13 @@
 
 set(EXTPREFIX_libksane "${EXTPREFIX}" )
 
-set(KA_VERSION 16.08.2)
+set(KA_VERSION 17.04.1)
 
 ExternalProject_Add(
     ext_libksane
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
     URL http://download.kde.org/stable/applications/${KA_VERSION}/src/libksane-${KA_VERSION}.tar.xz
-    URL_MD5 359f86cafe2b9780e17c6d6c78f983aa
+    URL_MD5 fa74eb7e60c0adc284d8171e83d54fec
     INSTALL_DIR ${EXTPREFIX_libksane}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_libksane}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
