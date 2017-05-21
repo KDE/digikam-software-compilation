@@ -33,7 +33,7 @@ if(MINGW)
 
         # To use official release tarball
         URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
-        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
+        URL_MD5 f936d2ca5cbe1e18c71ca2baa5e84fb4
 
         # To use current implementation from SVN
 
@@ -61,7 +61,7 @@ elseif(APPLE)
         # To use official release tarball
 
         URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
-        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
+        URL_MD5 f936d2ca5cbe1e18c71ca2baa5e84fb4
 
         # To use current implementation from SVN
 
@@ -88,7 +88,7 @@ else() # Linux
         # To use official release tarball
 
         URL http://www.exiv2.org/builds/exiv2-0.26-trunk.tar.gz
-        URL_MD5 a171314cbd6535a356c8a7297ea8c5e7
+        URL_MD5 f936d2ca5cbe1e18c71ca2baa5e84fb4
 
         # To use current implementation from SVN
 
