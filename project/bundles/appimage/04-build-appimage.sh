@@ -143,21 +143,21 @@ cp -r /usr/etc/sane.d                     ./usr/etc
 cp -r /usr/translations                   ./usr
 
 # KF5 translations files
-FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
+FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep /usr/share/locale | grep -e .qm -e .mo | cut -d' ' -f3)
 
 for FILE in $FILES ; do
     cp --parents $FILE ./
 done
 
 # digiKam translations files
-FILES=$(cat $ORIG_WD/logs/build-digikam.full.log |grep /usr/share/locale/ | cut -d' ' -f3)
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log | grep /usr/share/locale | grep -e .qm -e .mo | cut -d' ' -f3)
 
 for FILE in $FILES ; do
     cp --parents $FILE ./
 done
 
 # digiKam icons files
-FILES=$(cat $ORIG_WD/logs/build-digikam.full.log |grep /usr/share/icons/ | cut -d' ' -f3)
+FILES=$(cat $ORIG_WD/logs/build-digikam.full.log | grep /usr/share/icons/ | cut -d' ' -f3)
 
 for FILE in $FILES ; do
     cp --parents $FILE ./
