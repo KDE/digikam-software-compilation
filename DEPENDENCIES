@@ -6,21 +6,21 @@ CMake                          X                    X                           
 ECM                            X                    X                           X                   >= 1.7.0            https://projects.kde.org/projects/kdesupport/extra-cmake-modules
 
 
-Qt5::Core                      X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::Gui                       X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::Widgets                   X                    X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::Sql                                                                        X                   >= 5.4.0            http://www.qtsoftware.com                                                                           Including Qt5::Sqlite and Qt5::Mysql plugins.
-Qt5::Xml                                            X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::Concurrent                                     X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::WebKitWidgets                                                              X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::PrintSupport                                   X                           X                   >= 5.4.0            http://www.qtsoftware.com
-Qt5::Network                                        X                                               >= 5.4.0            http://www.qtsoftware.com
-Qt5::XmlPatterns                                    X                                               >= 5.4.0            http://www.qtsoftware.com
-Qt5::Svg                                            X                                               >= 5.4.0            http://www.qtsoftware.com
-Qt5::DBus                                                                      opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           Optional: only for Linux Desktop.
-Qt5::X11Extras                                                                 opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           For color management support under Linux.
-Qt5::OpenGL                                                                    opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           For Presentation tool.
-Qt5::Test                                          opt                         opt                  >= 5.4.0            http://www.qtsoftware.com                                                                           To compile test codes (BUILD_TESTING=on).
+Qt5::Core                      X                    X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::Gui                       X                    X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::Widgets                   X                    X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::Sql                                                                        X                   >= 5.6.0            http://www.qtsoftware.com                                                                           Including Qt5::Sqlite and Qt5::Mysql plugins.
+Qt5::Xml                                            X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::Concurrent                                     X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::WebKitWidgets                                                              X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::PrintSupport                                   X                           X                   >= 5.6.0            http://www.qtsoftware.com
+Qt5::Network                                        X                                               >= 5.6.0            http://www.qtsoftware.com
+Qt5::XmlPatterns                                    X                                               >= 5.6.0            http://www.qtsoftware.com
+Qt5::Svg                                            X                                               >= 5.6.0            http://www.qtsoftware.com
+Qt5::DBus                                                                      opt                  >= 5.6.0            http://www.qtsoftware.com                                                                           Optional: only for Linux Desktop.
+Qt5::X11Extras                                                                 opt                  >= 5.6.0            http://www.qtsoftware.com                                                                           For color management support under Linux.
+Qt5::OpenGL                                                                    opt                  >= 5.6.0            http://www.qtsoftware.com                                                                           For Presentation tool.
+Qt5::Test                                          opt                         opt                  >= 5.6.0            http://www.qtsoftware.com                                                                           To compile test codes (BUILD_TESTING=on).
 
 
 KF5::Config                   X                     X                           X                   >= 5.5.0            https://projects.kde.org/projects/frameworks/kconfig
@@ -49,7 +49,7 @@ libjpeg                                                                         
 libboost                                                                        X                   >= 1.55.0           http://www.boost.org/doc/libs                                                                       For Versionning support.
 liblcms                                                                         X                   >= 2.x              http://www.littlecms.com                                                                            For Color Management support.
 libexpat                                                                        X                   >= 2.1.0            http://expat.sourceforge.net                                                                        For DNG converter.
-libexiv2                                                                        X                   >= 0.25             http://www.exiv2.org                                                                                Metadata low level management. 0.24 deprecated.
+libexiv2                                                                        X                   >= 0.26             http://www.exiv2.org                                                                                Metadata low level management. 0.24 deprecated.
 libxml2                                                                        opt                  >= 2.7.0            http://xmlsoft.org                                                                                  For HtmlGallery tool.
 libxslt                                                                        opt                  >= 1.1.0            http://xmlsoft.org/XSLT                                                                             For HtmlGallery tool.
 libqtav                                                                        opt                  >= 1.11.0           http://www.qtav.org                                                                                 To play video and audio (ENABLE_MEDIAPLAYER=on)
