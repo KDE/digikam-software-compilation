@@ -25,7 +25,7 @@ export QtAvOptions='-DBUILD_EXAMPLES=OFF \
                     -DBUILD_TESTS=OFF \
                     -DBUILD_QT5OPENGL=ON'
 
-cmake3 -G "$MAKEFILES_TYPE" . \
+cmake -G "$MAKEFILES_TYPE" . \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -Wno-dev \
       $QtAvOptions \
