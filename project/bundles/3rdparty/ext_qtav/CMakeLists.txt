@@ -7,7 +7,7 @@
 #
 
 set(PREFIX_ext_qtav "${EXTPREFIX}")
-set(QTAV_VERSION v1.11.0)
+set(QTAV_VERSION v1.12.0)
 
 if(MINGW)
 
@@ -22,7 +22,7 @@ if(MINGW)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-#        GIT_TAG ${QTAV_VERSION}
+        GIT_TAG ${QTAV_VERSION}
 
         CONFIGURE_COMMAND rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAV &&
                           rm -rfv ${MXE_INSTALL_PREFIX}/qt5/include/QtAVWidgets &&
@@ -54,7 +54,7 @@ elseif(APPLE)
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-#        GIT_TAG ${QTAV_VERSION}
+        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAV.framework &&
                       rm -rfv ${INSTALL_ROOT}/libexec/qt5/lib/QtAVWidgets.framework &&
@@ -89,7 +89,7 @@ else() #Linux
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
         GIT_REPOSITORY https://github.com/wang-bin/QtAV.git
-#        GIT_TAG ${QTAV_VERSION}
+        GIT_TAG ${QTAV_VERSION}
 
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/qtav-rules-appimage.patch
 
@@ -97,12 +97,12 @@ else() #Linux
                           rm -rfv ${INSTALL_ROOT}/include/QtAVWidgets &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1 &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.11 &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.11.0 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.12 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAV.so.1.12.0 &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so &&
                           rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1 &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11 &&
-                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.11.0 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.12 &&
+                          rm -fv  ${INSTALL_ROOT}/lib/libQtAVWidgets.so.1.12.0 &&
                           mkdir build && cd build && qmake ..
 
         BUILD_COMMAND cd build && $(MAKE)
@@ -111,12 +111,12 @@ else() #Linux
                         cp -rfv <SOURCE_DIR>/widgets/QtAVWidgets ${INSTALL_ROOT}/include/ &&
                         cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.11 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.11.0 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.12 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAV.so.1.12.0 ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so ${INSTALL_ROOT}/lib/ &&
                         cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.11 ${INSTALL_ROOT}/lib/ &&
-                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.11.0 ${INSTALL_ROOT}/lib/
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.12 ${INSTALL_ROOT}/lib/ &&
+                        cp -fv  <SOURCE_DIR>/build/${LIB_DIR}/libQtAVWidgets.so.1.12.0 ${INSTALL_ROOT}/lib/
 
         BUILD_IN_SOURCE 1
 
