@@ -228,7 +228,6 @@ port install qt5 \
              qt5-sqlite-plugin \
              qt5-mysql-plugin \
              qt5-qtscript \
-             qt5-qtwebkit \
              cmake \
              libpng \
              jpeg \

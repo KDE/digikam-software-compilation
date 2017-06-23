@@ -41,8 +41,6 @@ ExternalProject_Add(ext_qt
                   -skip qtconnectivity
                   -skip qtgraphicaleffects
                   -skip qtwayland
-                  -skip qtwebchannel
-                  -skip qtwebengine
                   -skip qtwebsockets
                   -skip qtandroidextras
                   -skip qtserialport

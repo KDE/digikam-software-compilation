@@ -64,12 +64,9 @@ yum -y install wget \
                which \
                fuse \
                automake \
-               mesa-libEGL \
                cmake3 \
                gcc-c++ \
                patch \
-               libxcb \
-               xcb-util \
                xkeyboard-config \
                gperf \
                ruby \
@@ -90,14 +87,13 @@ yum -y install wget \
                fontconfig-devel \
                libxml2-devel \
                libstdc++-devel \
-               libXrender-devel \
                lcms2-devel \
-               xcb-util-keysyms-devel \
-               libXi-devel \
                mesa-libGL-devel \
+               mesa-libEGL-devel \
                mesa-libGLU-devel \
                libxcb-devel \
                xcb-util-devel \
+               xcb-util-keysyms-devel \
                glibc-devel \
                libudev-devel \
                libicu-devel \
@@ -111,7 +107,23 @@ yum -y install wget \
                inotify-tools-devel \
                openssl-devel \
                cups-devel \
-               openal-soft-devel
+               openal-soft-devel \
+               pciutils-devel \
+               nss-devel \
+               libXrender-devel \
+               libXi-devel \
+               libXtst-devel \
+               libXcursor-devel \
+               libXrandr-devel \
+               libXScrnSaver-devel \
+               libXcomposite-devel \
+               libgudev1-devel \
+               libcap-devel \
+               snappy-devel \
+               libsrtp-devel \
+               libvpx-devel \
+               dbus-devel
+
 
 #################################################################################################
 
@@ -193,6 +205,10 @@ fi
 # enable new compiler
 . /opt/rh/devtoolset-3/enable
 
+# enable Python 2.7 for QtWebEngine
+yum -y install python27
+. /opt/rh/python27/enable
+
 #################################################################################################
 
 cd $BUILDING_DIR
@@ -217,7 +233,6 @@ cmake3 --build . --config RelWithDebInfo --target ext_boost      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtav       -- -j$CPU_CORES
 
