@@ -8,7 +8,6 @@
 
 set(EXTPREFIX_frameworks "${EXTPREFIX}")
 
-
 function(InstallKF5Component
          name
          version
@@ -193,13 +192,11 @@ function(InstallKF5Component
 
 endfunction()
 
+set(KD_VERSION 5.35)
+
 if(APPLE)
-    # 5.30 do not compile under MacOS
-    set(KD_VERSION 5.34)
     set(MacosBreezePatch breeze-icons-macports.patch)
     set(MacosThreadWeaverPatch threadweaver-macports.patch)
-else()
-    set(KD_VERSION 5.34)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                               "")
