@@ -108,7 +108,6 @@ yum -y install wget \
                openssl-devel \
                cups-devel \
                openal-soft-devel \
-               python27 \
                pciutils-devel \
                nss-devel \
                libXrender-devel \
@@ -207,6 +206,7 @@ fi
 . /opt/rh/devtoolset-3/enable
 
 # enable Python 2.7 for QtWebEngine
+yum -y install python27
 . /opt/rh/python27/enable
 
 #################################################################################################
