@@ -141,6 +141,17 @@ cp -r /usr/etc/sane.d                     ./usr/etc
 
 # Qt translations files
 cp -r /usr/translations                   ./usr
+# optimizations
+rm ./usr/translations/assistant*
+rm ./usr/translations/designer*
+rm ./usr/translations/linguist*
+rm ./usr/translations/qmlviewer*
+rm ./usr/translations/qtmultimedia*
+rm ./usr/translations/qtscript*
+rm ./usr/translations/qtquick*
+rm ./usr/translations/qt_help*
+rm ./usr/translations/qtserialport*
+rm ./usr/translations/qtwebsockets*
 
 # KF5 translations files
 FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep /usr/share/locale | grep -e .qm -e .mo | cut -d' ' -f3)
