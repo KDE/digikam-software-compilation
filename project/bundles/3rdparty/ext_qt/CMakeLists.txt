@@ -18,6 +18,7 @@ ExternalProject_Add(ext_qt
                   -confirm-license
                   -nomake examples
                   -sql-sqlite
+                  -fontconfig
                   -openssl
                   -optimized-qmake
                   -no-qml-debug
@@ -33,22 +34,30 @@ ExternalProject_Add(ext_qt
                   -qt-zlib
                   -qt-pcre
                   -qt-harfbuzz
-                  -qt-freetype
                   -qt-xcb
                   -qt-xkbcommon-x11
                   -skip qt3d
                   -skip qtactiveqt
+                  -skip qtandroidextras
                   -skip qtcanvas3d
+                  -skip qtcharts
                   -skip qtconnectivity
+                  -skip qtdatavis3d
+                  -skip qtdoc
+                  -skip qtgamepad
                   -skip qtgraphicaleffects
+                  -skip qtlocation
+                  -skip qtmultimedia
+                  -skip qtpurchasing
+                  -skip qtremoteobjects
+                  -skip qtserialport
+                  -skip qtscxml
+                  -skip qtsensors
+                  -skip qtspeech
+                  -skip qttranslations
+                  -skip qtvirtualkeyboard
                   -skip qtwayland
                   -skip qtwebsockets
-                  -skip qtandroidextras
-                  -skip qtserialport
-                  -skip qtgamepad
-                  -skip qtvirtualkeyboard
-                  -skip qtmultimedia
-                  -skip qtlocation
 
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1

@@ -127,6 +127,7 @@ cp -r /usr/share/metainfo/*showfoto*      ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*   ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*    ./usr/share/dbus-1/services/
 cp -r /usr/$LIB_PATH_ALT/libexec/kf5      ./usr/lib/libexec/
+cp -r /usr/resources                      ./usr/
 
 # copy libgphoto2 drivers
 find  /usr/lib/libgphoto2      -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2 \;      2>/dev/null
