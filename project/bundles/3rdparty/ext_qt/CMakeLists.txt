@@ -58,6 +58,8 @@ ExternalProject_Add(ext_qt
                   -skip qtvirtualkeyboard
                   -skip qtwayland
                   -skip qtwebsockets
+                  -skip qtwebchannel
+                  -skip qtwebengine
 
     UPDATE_COMMAND ""
     BUILD_IN_SOURCE 1
