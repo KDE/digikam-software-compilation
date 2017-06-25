@@ -95,7 +95,6 @@ yum -y install wget \
                xcb-util-devel \
                xcb-util-keysyms-devel \
                glibc-devel \
-               libudev-devel \
                libicu-devel \
                sqlite-devel \
                libusb-devel \
@@ -117,7 +116,6 @@ yum -y install wget \
                libXrandr-devel \
                libXScrnSaver-devel \
                libXcomposite-devel \
-               libgudev1-devel \
                libcap-devel \
                snappy-devel \
                libsrtp-devel \
@@ -148,7 +146,6 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
     fi
 
 fi
-
 
 #################################################################################################
 
@@ -181,6 +178,9 @@ echo -e "---------- Clean-up Old Packages\n"
 # Remove system based devel package to prevent conflict with new one.
 yum -y erase qt-devel boost-devel libgphoto2 sane-backends libjpeg-devel jasper-devel libpng-devel libtiff-devel
 
+#install old Python for QtWebEngine compilation
+yum -y install python27
+
 #################################################################################################
 
 echo -e "---------- Prepare CentOS to Compile Extra Dependencies\n"
@@ -202,11 +202,10 @@ if [ ! -d $DOWNLOAD_DIR ] ; then
     mkdir $DOWNLOAD_DIR
 fi
 
-# enable new compiler
+# enable new C++ compiler
 . /opt/rh/devtoolset-3/enable
 
 # enable Python 2.7 for QtWebEngine
-yum -y install python27
 . /opt/rh/python27/enable
 
 #################################################################################################
