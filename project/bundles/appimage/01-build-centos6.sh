@@ -120,8 +120,8 @@ yum -y install wget \
                snappy-devel \
                libsrtp-devel \
                libvpx-devel \
+               libudev-devel \
                dbus-devel
-
 
 #################################################################################################
 
