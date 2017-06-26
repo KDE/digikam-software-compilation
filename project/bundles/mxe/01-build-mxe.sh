@@ -122,7 +122,7 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      qtbase \
      qttranslations \
      qtimageformats \
-     qtmultimedia \
+     qtwebkit \
      qttools \
      qtwinextras \
      qtscript \
