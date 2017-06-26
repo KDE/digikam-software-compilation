@@ -107,8 +107,8 @@ else() #Linux
     ExternalProject_Add(ext_opencv
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
-        URL https://github.com/Itseez/opencv/archive/3.1.0.zip
-        URL_MD5 6082ee2124d4066581a7386972bfd52a
+        URL https://github.com/Itseez/opencv/archive/3.2.0.zip
+        URL_MD5 bfc6a261eb069b709bcfe7e363ef5899
 
         INSTALL_DIR ${EXTPREFIX_opencv}
 

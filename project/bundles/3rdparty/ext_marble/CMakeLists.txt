@@ -8,9 +8,10 @@
 
 set(EXTPREFIX_marble "${EXTPREFIX}" )
 
-set(KA_VERSION 16.04.3)
 
 if(MINGW)
+
+    set(KA_VERSION 16.04.3)
 
     ExternalProject_Add(ext_marble
                         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
@@ -52,6 +53,8 @@ if(MINGW)
 
 elseif(APPLE)
 
+    set(KA_VERSION 16.04.3)
+
     ExternalProject_Add(ext_marble
                         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
                         URL http://download.kde.org/Attic/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
@@ -76,10 +79,12 @@ elseif(APPLE)
 
 else() # Linux
 
+    set(KA_VERSION 17.04.2)
+
     ExternalProject_Add(ext_marble
                         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-                        URL http://download.kde.org/Attic/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
-                        URL_MD5 e2e6315ba8277027f03ee2b5fe9c84a6
+                        URL http://download.kde.org/stable/applications/${KA_VERSION}/src/marble-${KA_VERSION}.tar.xz
+                        URL_MD5 a5a8a9679302b6d52819659dbdaef6a8
 
                         INSTALL_DIR ${EXTPREFIX_marble}
                         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/marble-libs-install-appimage.patch
@@ -94,7 +99,6 @@ else() # Linux
                                    -DBUILD_MARBLE_EXAMPLES=OFF
                                    -DBUILD_MARBLE_APPS=OFF
                                    -DBUILD_WITH_DBUS=OFF
-                                   -DQTONLY=ON
                                    -DBUILD_TESTING=OFF
                                    -Wno-dev
 
