@@ -12,6 +12,11 @@
 # Halt on error
 set -e
 
+if [ "root" != "$USER" ]; then
+    echo "This script must be run as root..."
+    exit
+fi
+
 #################################################################################################
 # Manage script traces to log file
 
@@ -28,6 +33,7 @@ echo "-----------------------------------------------------"
 
 . ./config.sh
 . ./common.sh
+ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 ChecksRunAsRoot
@@ -205,7 +211,7 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | 
 cp /usr/bin/digikam                 ./usr/bin
 cp /usr/bin/showfoto                ./usr/bin
 cp /usr/bin/kbuildsycoca5           ./usr/bin
-cp /usr/libexec/QtWebEngineProcess  ./usr/bin
+#cp /usr/libexec/QtWebEngineProcess  ./usr/bin
 
 # For Solid action when camera is connected to computer
 cp /usr/bin/qdbus                   ./usr/share/digikam/utils

@@ -12,6 +12,11 @@
 # Halt on error
 set -e
 
+if [ "root" != "$USER" ]; then
+    echo "This script must be run as root..."
+    exit
+fi
+
 #################################################################################################
 # Manage script traces to log file
 
@@ -28,6 +33,7 @@ echo "---------------------------------------------------"
 
 . ./config.sh
 . ./common.sh
+ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 ChecksRunAsRoot
