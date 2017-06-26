@@ -133,7 +133,9 @@ cp -r /usr/share/metainfo/*showfoto*      ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*   ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*    ./usr/share/dbus-1/services/
 cp -r /usr/$LIB_PATH_ALT/libexec/kf5      ./usr/lib/libexec/
-cp -r /usr/resources                      ./usr/
+
+# QWebEngine bin data files.
+[[ -e /usr/ressources ]] && cp -r /usr/resources ./usr/
 
 # copy libgphoto2 drivers
 find  /usr/lib/libgphoto2      -name "*.so" -type f -exec cp {} ./usr/lib/libgphoto2 \;      2>/dev/null
@@ -147,18 +149,22 @@ cp -r /usr/etc/sane.d                     ./usr/etc
 # copy i18n
 
 # Qt translations files
-cp -r /usr/translations                   ./usr
-# optimizations
-rm ./usr/translations/assistant*
-rm ./usr/translations/designer*
-rm ./usr/translations/linguist*
-rm ./usr/translations/qmlviewer*
-rm ./usr/translations/qtmultimedia*
-rm ./usr/translations/qtscript*
-rm ./usr/translations/qtquick*
-rm ./usr/translations/qt_help*
-rm ./usr/translations/qtserialport*
-rm ./usr/translations/qtwebsockets*
+if [[ -e /usr/translations ]]; then
+
+    cp -r /usr/translations ./usr
+    # optimizations
+    rm ./usr/translations/assistant*
+    rm ./usr/translations/designer*
+    rm ./usr/translations/linguist*
+    rm ./usr/translations/qmlviewer*
+    rm ./usr/translations/qtmultimedia*
+    rm ./usr/translations/qtscript*
+    rm ./usr/translations/qtquick*
+    rm ./usr/translations/qt_help*
+    rm ./usr/translations/qtserialport*
+    rm ./usr/translations/qtwebsockets*
+
+fi
 
 # KF5 translations files
 FILES=$(cat $ORIG_WD/logs/build-extralibs.full.log | grep /usr/share/locale | grep -e .qm -e .mo | cut -d' ' -f3)
@@ -211,7 +217,9 @@ cp $(ldconfig -p | grep /usr/$LIB_PATH_ALT/libfreetype.so.6 | cut -d ">" -f 2 | 
 cp /usr/bin/digikam                 ./usr/bin
 cp /usr/bin/showfoto                ./usr/bin
 cp /usr/bin/kbuildsycoca5           ./usr/bin
-#cp /usr/libexec/QtWebEngineProcess  ./usr/bin
+
+# QWebEngine runtime process
+[[ -e /usr/libexec/QtWebEngineProcess ]] && cp /usr/libexec/QtWebEngineProcess ./usr/bin
 
 # For Solid action when camera is connected to computer
 cp /usr/bin/qdbus                   ./usr/share/digikam/utils
