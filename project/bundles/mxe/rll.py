@@ -38,6 +38,7 @@ import string
 # -----------------------------------------------
 
 # Blacklist of native Windows dlls (may need extending)
+# Note : Lowercase file names.
 blacklist = [
     "advapi32.dll",
     "kernel32.dll",
@@ -81,6 +82,7 @@ blacklist = [
     "mfplat.dll",
     "glu32.dll",
     "dwmapi.dll",
+    "uxtheme.dll",
 ]
 
 # -----------------------------------------------
