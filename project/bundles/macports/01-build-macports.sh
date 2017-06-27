@@ -225,6 +225,8 @@ fi
 echo -e "\n"
 
 port install qt5 \
+             qt5-qtimageformats \
+             qt5-qtwebkit \
              qt5-sqlite-plugin \
              qt5-mysql-plugin \
              qt5-qtscript \
@@ -240,9 +242,11 @@ port install qt5 \
              lcms2 \
              eigen3 \
              expat \
+             exiv2 \
              libxml2 \
              libxslt \
              lensfun \
+             opencv \
              bison \
              ffmpeg-devel \
              wget +ssl
@@ -275,8 +279,6 @@ cmake $ORIG_WD/../3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR \
        -Wno-dev
 
-cmake --build . --config RelWithDebInfo --target ext_opencv -- -j$CPU_CORES
-cmake --build . --config RelWithDebInfo --target ext_exiv2  -- -j$CPU_CORES
 cmake --build . --config RelWithDebInfo --target ext_qtav   -- -j$CPU_CORES
 
 #################################################################################################

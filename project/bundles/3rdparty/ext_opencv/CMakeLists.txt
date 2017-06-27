@@ -82,10 +82,8 @@ elseif(APPLE)
     ExternalProject_Add(ext_opencv
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
 
-        URL https://github.com/Itseez/opencv/archive/3.1.0.zip
-        URL_MD5 6082ee2124d4066581a7386972bfd52a
-
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/opencv-libinstallname-macports.patch
+        URL https://github.com/Itseez/opencv/archive/3.2.0.zip
+        URL_MD5 bfc6a261eb069b709bcfe7e363ef5899
 
         CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
                           <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} RelWithDebInfo x86_64 "${BASH_OPTIONS}"
