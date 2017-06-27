@@ -80,6 +80,7 @@ blacklist = [
     "mf.dll",
     "mfplat.dll",
     "glu32.dll",
+    "dwmapi.dll",
 ]
 
 # -----------------------------------------------
