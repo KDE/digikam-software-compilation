@@ -224,23 +224,17 @@ fi
 
 echo -e "\n"
 
-port install qt5 \
-             qt5-qtimageformats \
-             qt5-qtwebkit \
-             qt5-sqlite-plugin \
-             qt5-mysql-plugin \
-             qt5-qtscript \
-             cmake \
+port install cmake \
              libpng \
              jpeg \
              tiff \
              boost \
+             eigen3 +gcc5 \
              gettext \
              libusb \
              libgphoto2 \
              jasper \
              lcms2 \
-             eigen3 \
              expat \
              exiv2 \
              libxml2 \
@@ -248,7 +242,13 @@ port install qt5 \
              lensfun \
              opencv \
              bison \
-             ffmpeg-devel \
+             ffmpeg \
+             qt5 \
+             qt5-qtimageformats \
+             qt5-qtwebkit \
+             qt5-sqlite-plugin \
+             qt5-mysql-plugin \
+             qt5-qtscript \
              wget +ssl
 
 echo -e "\n"
