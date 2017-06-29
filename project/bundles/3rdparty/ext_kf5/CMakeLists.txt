@@ -195,7 +195,6 @@ endfunction()
 set(KD_VERSION 5.35)
 
 if(APPLE)
-    set(MacosBreezePatch breeze-icons-macports.patch)
     set(MacosThreadWeaverPatch threadweaver-macports.patch)
 endif()
 
