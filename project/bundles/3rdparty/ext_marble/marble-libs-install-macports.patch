@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 99a095f..edf1f8b 100644
+index e5cee1b4a..bd36b899e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -166,7 +166,7 @@ elseif(APPLE)
+@@ -192,7 +192,7 @@ elseif(APPLE)
        # for Mac OS X, everything is put inside an application bundle
        SET (CMAKE_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}/)
        # path for library references
