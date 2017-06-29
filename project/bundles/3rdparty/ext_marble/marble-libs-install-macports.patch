@@ -19,8 +19,8 @@ index 58715f5a8..d9e31125b 100644
        m_planetAxis(),
        m_planetAxisMatrix(),
        m_radius( radius ),
--      m_angularResolution(4.0 / abs(m_radius)),
-+      m_angularResolution(4.0 / qAbs(m_radius)),
+-      m_angularResolution(4.0 / std::abs(m_radius)),
++      m_angularResolution(4.0 / abs(m_radius)),
        m_size( size ),
        m_dirtyBox( true ),
        m_viewLatLonAltBox()
