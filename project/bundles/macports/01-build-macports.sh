@@ -236,7 +236,6 @@ port install cmake \
              jasper \
              lcms2 \
              expat \
-             exiv2 \
              libxml2 \
              libxslt \
              lensfun \
@@ -279,6 +278,7 @@ cmake $ORIG_WD/../3rdparty \
        -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOAD_DIR \
        -Wno-dev
 
+cmake --build . --config RelWithDebInfo --target ext_exiv2  -- -j$CPU_CORES
 cmake --build . --config RelWithDebInfo --target ext_qtav   -- -j$CPU_CORES
 
 #################################################################################################
