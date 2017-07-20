@@ -39,12 +39,12 @@ if(MINGW)
 
         #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        CONFIGURE_COMMAND cd <SOURCE_DIR>/exiv2-trunk && 
+        CONFIGURE_COMMAND cd <SOURCE_DIR> &&
                           ./bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo ${BASH_OPTIONS}
 
-        BUILD_COMMAND cd <SOURCE_DIR>/exiv2-trunk/build && $(MAKE) -j
+        BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE) -j
 
-        INSTALL_COMMAND cd <SOURCE_DIR>/exiv2-trunk/build && $(MAKE) install/fast
+        INSTALL_COMMAND cd <SOURCE_DIR>/build && $(MAKE) install/fast
 
         BUILD_IN_SOURCE 1
 
@@ -94,16 +94,16 @@ else() # Linux
 
         #SVN_REPOSITORY svn://dev.exiv2.org/svn/trunk
 
-        CONFIGURE_COMMAND cd <SOURCE_DIR>/exiv2-trunk &&
+        CONFIGURE_COMMAND cd <SOURCE_DIR> &&
                    $(CMAKE_COMMAND) . -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_exiv2}
                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                    -DICONV_INCLUDE_DIR=${PREFIX_ext_exiv2}/include
                    ${Exiv2_Conf}
                    ${GLOBAL_PROFILE}
 
-        BUILD_COMMAND cd <SOURCE_DIR>/exiv2-trunk && $(MAKE)
+        BUILD_COMMAND cd <SOURCE_DIR> && $(MAKE)
 
-        INSTALL_COMMAND cd <SOURCE_DIR>/exiv2-trunk && $(MAKE) install/fast
+        INSTALL_COMMAND cd <SOURCE_DIR> && $(MAKE) install/fast
 
         UPDATE_COMMAND ""
         ALWAYS 0
