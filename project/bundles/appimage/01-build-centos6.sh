@@ -28,7 +28,6 @@ echo "--------------------------------------------------------------------------
 
 . ./config.sh
 . ./common.sh
-ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
@@ -65,9 +64,12 @@ yum -y install wget \
                which \
                fuse \
                automake \
+               mesa-libEGL \
                cmake3 \
                gcc-c++ \
                patch \
+               libxcb \
+               xcb-util \
                xkeyboard-config \
                gperf \
                ruby \
@@ -88,14 +90,16 @@ yum -y install wget \
                fontconfig-devel \
                libxml2-devel \
                libstdc++-devel \
+               libXrender-devel \
                lcms2-devel \
+               xcb-util-keysyms-devel \
+               libXi-devel \
                mesa-libGL-devel \
-               mesa-libEGL-devel \
                mesa-libGLU-devel \
                libxcb-devel \
                xcb-util-devel \
-               xcb-util-keysyms-devel \
                glibc-devel \
+               libudev-devel \
                libicu-devel \
                sqlite-devel \
                libusb-devel \
@@ -107,22 +111,7 @@ yum -y install wget \
                inotify-tools-devel \
                openssl-devel \
                cups-devel \
-               openal-soft-devel \
-               pciutils-devel \
-               nss-devel \
-               libXrender-devel \
-               libXi-devel \
-               libXtst-devel \
-               libXcursor-devel \
-               libXrandr-devel \
-               libXScrnSaver-devel \
-               libXcomposite-devel \
-               libcap-devel \
-               snappy-devel \
-               libsrtp-devel \
-               libvpx-devel \
-               libudev-devel \
-               dbus-devel
+               openal-soft-devel
 
 #################################################################################################
 
@@ -147,6 +136,7 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
     fi
 
 fi
+
 
 #################################################################################################
 
@@ -179,9 +169,6 @@ echo -e "---------- Clean-up Old Packages\n"
 # Remove system based devel package to prevent conflict with new one.
 yum -y erase qt-devel boost-devel libgphoto2 sane-backends libjpeg-devel jasper-devel libpng-devel libtiff-devel
 
-#install old Python for QtWebEngine compilation
-yum -y install python27
-
 #################################################################################################
 
 echo -e "---------- Prepare CentOS to Compile Extra Dependencies\n"
@@ -203,11 +190,8 @@ if [ ! -d $DOWNLOAD_DIR ] ; then
     mkdir $DOWNLOAD_DIR
 fi
 
-# enable new C++ compiler
+# enable new compiler
 . /opt/rh/devtoolset-3/enable
-
-# enable Python 2.7 for QtWebEngine
-. /opt/rh/python27/enable
 
 #################################################################################################
 
@@ -232,11 +216,12 @@ cmake3 --build . --config RelWithDebInfo --target ext_sane       -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_boost      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_opencv     -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
-cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtav       -- -j$CPU_CORES
 
 #################################################################################################
 
 TerminateScript
+
