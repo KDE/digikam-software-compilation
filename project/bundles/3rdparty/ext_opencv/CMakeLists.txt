@@ -72,9 +72,10 @@ if(MINGW)
 
     ExternalProject_Add_step(ext_opencv before_download
 
-        # Note : under MXE, curl is not compiled with https support. We cannot use the tarball as under Linux/MacOS.
-        COMMAND wget -N https://github.com/Itseez/opencv/archive/3.1.0.zip -O ${EXTERNALS_DOWNLOAD_DIR}/3.1.0.zip
-        DEPENDERS download
+        # Note : under MXE, in case of curl is not compiled with https support,
+        # we cannot download the tarball as under Linux/MacOS.
+#        COMMAND wget -N https://github.com/Itseez/opencv/archive/3.2.0.zip -O ${EXTERNALS_DOWNLOAD_DIR}/3.2.0.zip
+#        DEPENDERS download
     )
 
 elseif(APPLE)
