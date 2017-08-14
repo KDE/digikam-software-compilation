@@ -68,6 +68,6 @@ elif [[ $1 == "help" ]] ; then
 else
 
     # Run digiKam as well.
-    digikam.wrapper $@
+    digikam $@
 
 fi
