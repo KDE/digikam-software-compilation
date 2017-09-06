@@ -71,10 +71,6 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
                 set(CHECKOUT_PO_KIPIPLUGINS "--enable-kipiplugins")
             endif()
 
-            if(DIGIKAMSC_COMPILE_LIBKVKONTAKTE)
-                set(CHECKOUT_PO_LIBKVKONTAKTE "--enable-libkvkontakte")
-            endif()
-
             execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb" ${CHECKOUT_PO_DIGIKAM} ${CHECKOUT_PO_KIPIPLUGINS} ${CHECKOUT_PO_LIBKVKONTAKTE}
                             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
