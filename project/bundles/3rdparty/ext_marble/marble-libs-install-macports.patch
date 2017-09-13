@@ -11,19 +11,6 @@ index e5cee1b4a..bd36b899e 100644
        # install the Info.plist file
        install(FILES src/mac/Info.plist DESTINATION ${CMAKE_INSTALL_PREFIX}/Marble.app/Contents)
        #SET (lib_dir ${CMAKE_INSTALL_PREFIX}/Marble.app/Contents/MacOS/lib)
-diff --git a/src/lib/marble/ViewportParams.cpp b/src/lib/marble/ViewportParams.cpp
-index 58715f5a8..d9e31125b 100644
---- a/src/lib/marble/ViewportParams.cpp
-+++ b/src/lib/marble/ViewportParams.cpp
-@@ -96,7 +96,7 @@ ViewportParamsPrivate::ViewportParamsPrivate( Projection projection,
-       m_planetAxis(),
-       m_planetAxisMatrix(),
-       m_radius( radius ),
--      m_angularResolution(4.0 / std::abs(m_radius)),
-+      m_angularResolution(4.0 / abs(m_radius)),
-       m_size( size ),
-       m_dirtyBox( true ),
-       m_viewLatLonAltBox()
 diff --git a/src/lib/astro/CMakeLists.txt b/src/lib/astro/CMakeLists.txt
 index 3dbe45571..2a3d96a4c 100644
 --- a/src/lib/astro/CMakeLists.txt
