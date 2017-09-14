@@ -127,7 +127,8 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      qtscript \
      ffmpeg \
      openal \
-     lensfun
+     lensfun \
+     nsis
 
 #     jasper \ GC 14-09-17 : disabled for the moment. It do not link
 
