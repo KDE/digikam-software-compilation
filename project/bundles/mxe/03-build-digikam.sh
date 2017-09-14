@@ -86,6 +86,9 @@ sed -e "s/DIGIKAMSC_COMPILE_PO=OFF/DIGIKAMSC_COMPILE_PO=ON/g"   ./bootstrap.mxe 
 sed -e "s/DBUILD_TESTING=ON/DBUILD_TESTING=OFF/g"               ./bootstrap.mxe > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.mxe
 sed -e "s/DENABLE_DBUS=ON/DENABLE_DBUS=OFF/g"                   ./bootstrap.mxe > ./tmp.mxe ; mv -f ./tmp.mxe ./bootstrap.mxe
 
+# to disable Jasper which have linking failure currently.
+sed -e "s/find_package(Jasper)/#find_package(Jasper)/g"         ./core/CMakeLists.txt > ./core/tmp.txt ; mv -f ./core/tmp.txt ./core/CMakeLists.txt
+
 chmod +x ./bootstrap.mxe
 
 ./bootstrap.mxe $MXE_BUILDROOT RelWithDebInfo -DPng2Ico_EXECUTABLE=${ORIG_WD}/png2ico/png2ico
