@@ -109,7 +109,6 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      libjpeg-turbo \
      libpng \
      tiff \
-     jasper \
      boost \
      expat \
      lcms \
@@ -129,6 +128,8 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      ffmpeg \
      openal \
      lensfun
+
+#     jasper \ GC 14-09-17 : disabled for the moment. It do not link
 
 echo -e "\n"
 
