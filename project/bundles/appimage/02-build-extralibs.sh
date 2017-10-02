@@ -92,6 +92,9 @@ cmake3 --build . --config RelWithDebInfo --target ext_knotifications      -- -j$
 # Geolocation support
 cmake3 --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
 
+# Calendar support
+#cmake3 --build . --config RelWithDebInfo --target ext_kcalcore            -- -j$CPU_CORES
+
 #################################################################################################
 
 TerminateScript
