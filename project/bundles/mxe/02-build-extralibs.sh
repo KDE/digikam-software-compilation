@@ -44,6 +44,7 @@ export PATH=$MXE_BUILDROOT/usr/bin:$MXE_INSTALL_PREFIX/qt5/bin:$PATH
 if [ ! -d $BUILDING_DIR ] ; then
     mkdir $BUILDING_DIR
 fi
+
 if [ ! -d $DOWNLOAD_DIR ] ; then
     mkdir $DOWNLOAD_DIR
 fi
@@ -97,6 +98,9 @@ ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_kimage
 
 # Geolocation support
 ${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
+
+# Calendar support
+#${MXE_BUILD_TARGETS}-cmake --build . --config RelWithDebInfo --target ext_kcalcore            -- -j$CPU_CORES
 
 # Marble install shared lib at wrong place.
 mv $MXE_INSTALL_PREFIX/libastro* $MXE_INSTALL_PREFIX/bin
