@@ -6,16 +6,16 @@
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
 #
 
-set(EXTPREFIX_libkcalcore "${EXTPREFIX}" )
+set(EXTPREFIX_kcalcore "${EXTPREFIX}" )
 
 set(KA_VERSION 17.08.1)
 
 ExternalProject_Add(
-    ext_libkcalcore
+    ext_kcalcore
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
     URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
     URL_MD5 7262c40c5a8fa1e60cf871517ea47802
-    INSTALL_DIR ${EXTPREFIX_libksane}
+    INSTALL_DIR ${EXTPREFIX_kcalcore}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
                ${GLOBAL_PROFILE}
