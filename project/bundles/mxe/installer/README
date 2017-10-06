@@ -1,4 +1,9 @@
-Other projects which provide a Windows installer :
+NSIS plugins used :
+
+http://nsis.sourceforge.net/LockedList_plug-in
+http://nsis.sourceforge.net/Registry_plug-in
+
+Other projects which provide a NSIS Windows installer :
 
 Kate       : https://quickgit.kde.org/?p=scratch%2Fsars%2Fkate-windows.git
 Krita      : https://quickgit.kde.org/?p=krita.git
