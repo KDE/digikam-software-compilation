@@ -114,6 +114,7 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      lcms \
      liblqr-1 \
      eigen \
+     jasper \
      zlib \
      expat \
      mman-win32 \
@@ -129,7 +130,6 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      openal \
      lensfun
 
-#     jasper \ GC 14-09-17 : disabled for the moment. It do not link
 
 echo -e "\n"
 
