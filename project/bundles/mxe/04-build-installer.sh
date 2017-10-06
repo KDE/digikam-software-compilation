@@ -33,6 +33,14 @@ StartScript
 ChecksCPUCores
 
 #################################################################################################
+
+# Pathes rules
+ORIG_PATH="$PATH"
+ORIG_WD="`pwd`"
+
+export PATH=$MXE_INSTALL_PREFIX/bin:$PATH
+
+#################################################################################################
 # Check if NSIS CLI tools is installed
 
 if ! which makensis ; then
@@ -220,5 +228,7 @@ curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################
+
+export PATH=$ORIG_PATH
 
 TerminateScript
