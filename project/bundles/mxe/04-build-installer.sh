@@ -32,18 +32,11 @@ echo "--------------------------------------------------------"
 StartScript
 ChecksCPUCores
 
-#################################################################################################
-
-# Pathes rules
-ORIG_PATH="$PATH"
-ORIG_WD="`pwd`"
-
-export PATH=$MXE_INSTALL_PREFIX/bin:$PATH
 
 #################################################################################################
 # Check if NSIS CLI tools is installed
 
-if ! which makensis ; then
+if ! which $MXE_INSTALL_PREFIX/bin/makensis ; then
     echo "NSIS CLI tool is not installed"
     echo "See http://nsis.sourceforge.net/ for details."
     exit 1
@@ -184,6 +177,14 @@ else
     find $BUNDLEDIR -name \*exe | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
     find $BUNDLEDIR -name \*dll | xargs ${MXE_BUILDROOT}/usr/bin/${MXE_BUILD_TARGETS}-strip
 fi
+
+#################################################################################################
+
+# Pathes rules
+ORIG_PATH="$PATH"
+ORIG_WD="`pwd`"
+
+export PATH=$MXE_INSTALL_PREFIX/bin:$PATH
 
 #################################################################################################
 # Build NSIS installer.
