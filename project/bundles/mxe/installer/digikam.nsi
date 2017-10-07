@@ -56,9 +56,9 @@
 
     !include "MUI2.nsh"
     !define MY_PRODUCT "digiKam"
-    !define PRODUCT_HOMEPAGE "http://www.digikam.org"
-    !define SUPPORT_HOMEPAGE "http://www.digikam.org/support"
-    !define ABOUT_HOMEPAGE "http://www.digikam.org/about"
+    !define PRODUCT_HOMEPAGE "https://www.digikam.org"
+    !define SUPPORT_HOMEPAGE "https://www.digikam.org/support"
+    !define ABOUT_HOMEPAGE "https://www.digikam.org/about"
     !define OUTFILE "${OUTPUT}"
 
 ;-------------------------------------------------------------------------------
@@ -218,7 +218,7 @@
     !define MUI_FINISHPAGE_RUN_TEXT "Read release notes"
     !define MUI_FINISHPAGE_RUN_FUNCTION functionFinishRun
     !define MUI_FINISHPAGE_LINK "Visit digiKam project website"
-    !define MUI_FINISHPAGE_LINK_LOCATION "http://www.digikam.org"
+    !define MUI_FINISHPAGE_LINK_LOCATION "https://www.digikam.org"
 
     ;Variable for the folder of the start menu
 
