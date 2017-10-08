@@ -122,11 +122,11 @@ cp -r $MXE_INSTALL_PREFIX/bin/data/xdg                                  $BUNDLED
 
 # Plugins Shared libraries -------------------------------------------------------------------
 
-echo -e "\n---------- Marble plugins"
-cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/plugins/     2>/dev/null
-
 echo -e "\n---------- Qt5 plugins"
 cp -r $MXE_INSTALL_PREFIX/qt5/plugins                                   $BUNDLEDIR/             2>/dev/null
+
+echo -e "\n---------- Marble plugins"
+cp -r $MXE_INSTALL_PREFIX/plugins/*.dll                                 $BUNDLEDIR/plugins      2>/dev/null
 
 echo -e "\n---------- KF5 plugins"
 find  $MXE_INSTALL_PREFIX/lib/plugins -name "*.dll" -type f -exec cp {} $BUNDLEDIR/ \;          2>/dev/null
