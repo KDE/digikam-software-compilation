@@ -32,11 +32,10 @@ echo "--------------------------------------------------------"
 StartScript
 ChecksCPUCores
 
-
 #################################################################################################
 # Check if NSIS CLI tools is installed
 
-if ! which $MXE_INSTALL_PREFIX/bin/makensis ; then
+if ! which makensis ; then
     echo "NSIS CLI tool is not installed"
     echo "See http://nsis.sourceforge.net/ for details."
     exit 1
@@ -179,14 +178,6 @@ else
 fi
 
 #################################################################################################
-
-# Pathes rules
-ORIG_PATH="$PATH"
-ORIG_WD="`pwd`"
-
-export PATH=$MXE_INSTALL_PREFIX/bin:$PATH
-
-#################################################################################################
 # Build NSIS installer.
 
 echo -e "\n---------- Build NSIS installer\n"
@@ -229,7 +220,5 @@ curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
 
 #################################################################################################
-
-export PATH=$ORIG_PATH
 
 TerminateScript

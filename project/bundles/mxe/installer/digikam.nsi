@@ -509,7 +509,7 @@
         ;this isn't the most accurate method but it is very fast and is accurate enough for an estimate
 
         push $0
-        SectionGetSize SecDigiKam $0
+        SectionGetSize ${SecDigiKam} $0
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "EstimatedSize" "$0"
         pop $0
 

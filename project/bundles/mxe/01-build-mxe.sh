@@ -128,8 +128,7 @@ make MXE_TARGETS=$MXE_BUILD_TARGETS \
      qtscript \
      ffmpeg \
      openal \
-     lensfun \
-     nsis
+     lensfun
 
 echo -e "\n"
 
