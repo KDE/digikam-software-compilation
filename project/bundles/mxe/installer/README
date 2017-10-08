@@ -1,9 +1,18 @@
-NSIS plugins used :
+* About
+
+NSIS is an open source Windows installer usable in a cross-compilation envirronnement.
+For more info see http://nsis.sourceforge.net/Main_Page
+
+* Requirements
+
+NSIS version >= 3 is required to be compatible with Windows 10.
+
+* Extra NSIS plugins used:
 
 http://nsis.sourceforge.net/LockedList_plug-in
 http://nsis.sourceforge.net/Registry_plug-in
 
-Other projects which provide a NSIS Windows installer :
+* Other projects which provide a NSIS Windows installer:
 
 Kate       : https://quickgit.kde.org/?p=scratch%2Fsars%2Fkate-windows.git
 Krita      : https://quickgit.kde.org/?p=krita.git
