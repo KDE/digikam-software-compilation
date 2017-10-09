@@ -14,10 +14,10 @@ http://nsis.sourceforge.net/Registry_plug-in
 
 * Other projects which provide a NSIS Windows installer:
 
-Kate       : https://quickgit.kde.org/?p=scratch%2Fsars%2Fkate-windows.git
-Krita      : https://quickgit.kde.org/?p=krita.git
-RKward     : https://quickgit.kde.org/?p=rkward.git&a=tree
-Calligra   : https://quickgit.kde.org/?p=calligra.git
-KShutdown  : https://sourceforge.net/p/kshutdown/
-Clementine : https://github.com/clementine-player/Clementine
+VLC        : https://github.com/videolan/vlc/tree/master/extras/package/win32/NSIS
+Kate       : https://cgit.kde.org/scratch/sars/kate-windows.git/tree/installer
+RKward     : https://cgit.kde.org/rkward.git/tree/windows_nsis
+KShutdown  : https://sourceforge.net/p/kshutdown/code/HEAD/tree/trunk/kshutdown2/
+Clementine : https://github.com/clementine-player/Clementine/tree/master/dist/windows
+Filezilla  : https://svn.filezilla-project.org/filezilla/FileZilla3/trunk/data/
 
