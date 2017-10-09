@@ -22,7 +22,6 @@
  ; Extra NSIS plugins to install in order to run this script :
  ;
  ; Registry   : http://nsis.sourceforge.net/Registry_plug-in
- ; LockedList : http://nsis.sourceforge.net/LockedList_plug-in
  ;
  ; NSIS script reference can be found at this url:
  ; http://nsis.sourceforge.net/Docs/Chapter4.html
@@ -94,6 +93,8 @@
     ;http://nsis.sourceforge.net/Registry_plug-in
 
     !include "./plugins/Registry.nsh"
+
+    !include "process_running.nsh"
 
     ;-------------------------------------------
 
@@ -228,58 +229,77 @@
 ;-------------------------------------------------------------------------------
 ;Functions and Macros
 
-    ;Sets up a variable to indicate to LockedListShow that it was arrived at from the previous page rather than the next
+    !macro CHECKDIGIKAM un
 
-    !macro LeavePageBeforeLockedListShow un
+        Function ${un}CheckDigikamRunning
 
-        Function ${un}LeavePageBeforeLockedListShow
-        StrCpy $R9 0
+            Push "digikam.exe"
+            Call ${un}IsProcessRunning
+            Pop $R1
+
+            ${While} $R1 != ''
+
+                MessageBox MB_ABORTRETRYIGNORE|MB_DEFBUTTON2 "digiKam appears to be running.$\nPlease close all running instances of digiKam before continuing the installation." /SD IDIGNORE IDABORT CheckDigikamRunning_abort IDIGNORE CheckDigikamRunning_ignore
+
+                Push "digikam.exe"
+                Call ${un}IsProcessRunning
+                Pop $R1
+
+            ${EndWhile}
+
+            CheckDigikamRunning_ignore:
+            Return
+
+            CheckDigikamRunning_abort:
+            Quit
+
         FunctionEnd
 
     !macroend
 
-    !insertmacro LeavePageBeforeLockedListShow ""
-    !insertmacro LeavePageBeforeLockedListShow "un."
+    ; Insert function as an installer and uninstaller function.
+    !insertmacro CHECKDIGIKAM ""
+    !insertmacro CHECKDIGIKAM "un."
 
     ;-------------------------------------------
 
-    ;Requires LockedList plugin :
-    ;http://nsis.sourceforge.net/LockedList_plug-in
-    ;TODO: internationalize MUI_HEADER_TEXT and possibly columns (see LameXP)
+    !macro CHECKSHOWFOTO un
 
-    !macro LockedListShow un
+        Function ${un}CheckShowfotoRunning
 
-        Function ${un}LockedListShow
+            Push "showfoto.exe"
+            Call ${un}IsProcessRunning
+            Pop $R1
 
-            ;Check if we are coming from the previous page or the next.
-            ;If the next page, abort.
-            ;This prevents autonext from never allowing the Back button to work.
+            ${While} $R1 != ''
 
-            ${If} $R9 == 1
+                MessageBox MB_ABORTRETRYIGNORE|MB_DEFBUTTON2 "Showfoto appears to be running.$\nPlease close all running instances of Showfoto before continuing the installation." /SD IDIGNORE IDABORT CheckShowfotoRunning_abort IDIGNORE CheckShowfotoRunning_ignore
 
-                Abort
+                Push "showfoto.exe"
+                Call ${un}IsProcessRunning
+                Pop $R1
 
-            ${EndIf}
+            ${EndWhile}
 
-            StrCpy $R9 1
-            !insertmacro MUI_HEADER_TEXT "Close Conflicting Programs" "Ensure no programs are using the install location"
-            LockedList::AddFolder $INSTDIR
-            LockedList::Dialog /autonext /autoclose
-            Pop $R0
+            CheckShowfotoRunning_ignore:
+            Return
+
+            CheckShowfotoRunning_abort:
+            Quit
 
         FunctionEnd
 
     !macroend
 
-    !insertmacro LockedListShow ""
-    !insertmacro LockedListShow "un."
+    ; Insert function as an installer and uninstaller function.
+    !insertmacro CHECKSHOWFOTO ""
+    !insertmacro CHECKSHOWFOTO "un."
 
     ;-------------------------------------------
 
     Function DirectoryLeave
 
         Call NotifyIfRebootRequired
-        Call LeavePageBeforeLockedListShow
 
     FunctionEnd
 
@@ -356,7 +376,6 @@
     !insertmacro MUI_PAGE_LICENSE "COPYING"
     !define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirectoryLeave
     !insertmacro MUI_PAGE_DIRECTORY
-    Page Custom LockedListShow
 
     ;Start Menu Folder Page Configuration
 
@@ -369,9 +388,7 @@
     !insertmacro MUI_PAGE_FINISH
 
     !insertmacro MUI_UNPAGE_WELCOME
-    !define MUI_PAGE_CUSTOMFUNCTION_LEAVE un.LeavePageBeforeLockedListShow
     !insertmacro MUI_UNPAGE_CONFIRM
-    UninstPage Custom un.LockedListShow
     !insertmacro MUI_UNPAGE_INSTFILES
 
 ;-------------------------------------------------------------------------------
@@ -439,7 +456,10 @@
 
     Section "digiKam" SecDigiKam
 
-        ;No longer killing running processes prior to install since we are using LockedList to let the user have control over this
+        ;Check running processes prior to install
+
+        Call CheckDigikamRunning
+        Call CheckShowfotoRunning
 
         SetOutPath "$INSTDIR"
 
@@ -466,22 +486,6 @@
 
         SetOutPath "$INSTDIR\translations"
         File /r "${BUNDLEPATH}\translations\*.*"
-
-            ;SetOutPath "$INSTDIR\share"
-            ;File /r "${BUNDLEPATH}\share\*.*"
-            ;;SetOutPath "$INSTDIR\database"
-            ;;File /r "${BUNDLEPATH}\database\*.*"
-            ;;SetOutPath "$INSTDIR\doc"
-            ;;File /r "${BUNDLEPATH}\doc\*.*"
-            ;SetOutPath "$INSTDIR\etc"
-            ;;SetOutPath "$INSTDIR\imports"
-            ;;File /r "${BUNDLEPATH}\imports\*.*"
-            ;SetOutPath "$INSTDIR\lib"
-            ;File /r "${BUNDLEPATH}\lib\*.*"
-            ;;SetOutPath "$INSTDIR\scripts"
-            ;;File /r "${BUNDLEPATH}\scripts\*.*"
-            ;;SetOutPath "$INSTDIR\xdg"
-            ;;File /r "${BUNDLEPATH}\xdg\*.*"
 
         ;Store installation folder
 
@@ -516,8 +520,6 @@
 
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "NoModify" "1"
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "NoRepair" "1"
-        ;WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "VersionMajor" "2"
-        ;WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MY_PRODUCT}" "VersionMinor" "2"
 
         ;Add start menu items to All Users
 
@@ -542,7 +544,10 @@
 
     Section "Uninstall"
 
-        ;No longer adding /REBOOTOK to Delete and RMDir since using LockedList and also potentially uninstalling from the installer
+        ;Check running processes prior to uninstall
+
+        Call un.CheckDigikamRunning
+        Call un.CheckShowfotoRunning
 
         Delete "$INSTDIR\Uninstall.exe"
         Delete "$INSTDIR\releasenotes.html"
@@ -552,16 +557,6 @@
         RMDir /r "$INSTDIR\data"
         RMDir /r "$INSTDIR\plugins"
         RMDir /r "$INSTDIR\translations"
-
-            ;RMDir /r "$INSTDIR\share"
-            ;;RMDir /r "$INSTDIR\database"
-            ;;RMDir /r "$INSTDIR\doc"
-            ;RMDir /r "$INSTDIR\etc"
-            ;RMDir /r "$INSTDIR\hosting"
-            ;RMDir /r "$INSTDIR\imports"
-            ;RMDir /r "$INSTDIR\lib"
-            ;;RMDir /r "$INSTDIR\scripts"
-            ;RMDir /r "$INSTDIR\xdg"
 
         ;Do not do a recursive removal of $INSTDIR because user may have accidentally installed into system critical directory!
 

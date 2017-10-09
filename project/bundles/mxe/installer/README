@@ -9,7 +9,6 @@ NSIS version >= 3 is required to be compatible with Windows 10.
 
 * Extra NSIS plugins used:
 
-http://nsis.sourceforge.net/LockedList_plug-in
 http://nsis.sourceforge.net/Registry_plug-in
 
 * Other projects which provide a NSIS Windows installer:
