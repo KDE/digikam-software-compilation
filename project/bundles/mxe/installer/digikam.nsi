@@ -19,7 +19,7 @@
  ;
  ; Example: makensis -DVERSION=5.0.0 -DTARGETARCH=32 -DBUNDLEPATH=../bundle digikam.nsi
  ;
- ; Extra NSIS plugins to install in order to run this script :
+ ; Extra NSIS plugin to install in order to run this script :
  ;
  ; Registry   : http://nsis.sourceforge.net/Registry_plug-in
  ;
@@ -336,7 +336,8 @@
 
     FunctionEnd
 
-    ;-------------------------------------------
+    ;-------------------------------------------------------------------------------------
+    ;This function require Registry plugin (http://nsis.sourceforge.net/Registry_plug-in)
 
     Function IsRebootRequired
 

@@ -116,7 +116,7 @@ The make-installer.sh script grabs the ~200MB needed to run digiKam and showfoto
 These include applications documentations and translations.
 
 This script creates Windows application links for the programs that will
-be run by the user (digiKam, Showfoto, etc). It use makensis CLI tool from NSIS 
+be run by the user (digiKam and Showfoto). It use makensis CLI tool from NSIS
 application dedicated to build Windows installer. This one is available for Linux
 as Mingw package. The version >= 3 is required to be compatible with Windows 10.
 

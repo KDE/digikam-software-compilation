@@ -7,7 +7,7 @@ For more info see http://nsis.sourceforge.net/Main_Page
 
 NSIS version >= 3 is required to be compatible with Windows 10.
 
-* Extra NSIS plugins used:
+* Extra NSIS plugin used:
 
 http://nsis.sourceforge.net/Registry_plug-in
 
