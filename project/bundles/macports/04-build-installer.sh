@@ -382,6 +382,8 @@ chmod 755 "$PROJECTDIR/postinstall"
 #################################################################################################
 # Copy icons-set resource file and release notes.
 
+echo -e "\n---------- Copy ressources files"
+
 cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 cp $ORIG_WD/icon-rcc/breeze-dark.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
@@ -398,6 +400,46 @@ else
     find $TEMPROOT -name "*.so"    | xargs strip -SXx
     find $TEMPROOT -name "*.dylib" | xargs strip -SXx
 fi
+
+#################################################################################################
+# Relocate binary files
+# For details, see these urls:
+# https://stackoverflow.com/questions/9263256/can-you-please-help-me-understand-how-mach-o-libraries-work-in-mac-os-x
+# https://matthew-brett.github.io/docosx/mac_runtime_link.html
+
+echo -e "\n---------- Relocate binary files"
+
+# relocate dynamic libraries with rpath
+
+DYLIBFILES=(`find $TEMPROOT/lib -name "*.dylib"`)
+
+RelocateBinaries DYLIBFILES[@]
+
+# relocate library executables and system objects files with rpath.
+# This include all binary files with extension as all Qt libraries.
+
+LIBEXECFILES=(`find $TEMPROOT/libexec -type f -perm +ugo+x`)
+
+RelocateBinaries LIBEXECFILES[@]
+
+# relocate main executable with rpath.
+
+MAINFILES="\
+$TEMPROOT/Applications/KF5/digikam.app/Contents/MacOS/digikam \
+$TEMPROOT/Applications/KF5/showfoto.app/Contents/MacOS/showfoto \
+$TEMPROOT/bin/kbuildsycoca5 \
+"
+
+RelocateBinaries MAINFILES[@]
+
+for APP in $MAINFILES ; do
+    install_name_tool -add_rpath @executable_path/.. $APP
+    install_name_tool -add_rpath @executable_path/../.. $APP
+    install_name_tool -add_rpath @executable_path/../../.. $APP
+    install_name_tool -add_rpath @executable_path/../../../.. $APP
+    install_name_tool -add_rpath @executable_path/../../../../.. $APP
+    install_name_tool -add_rpath @executable_path/../../../../../.. $APP
+done
 
 #################################################################################################
 # Build PKG file

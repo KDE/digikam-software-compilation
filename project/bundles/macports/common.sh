@@ -148,3 +148,37 @@ fi
 echo -e "---------- Detected OSX version 10.$MAJOR_OSX_VERSION and code name $OSX_CODE_NAME"
 
 }
+
+#################################################################################################
+# Relocate list of binaries files.
+# Replace INSTALL_PREFIX by @rpath in library pathes dependencies registered in bin file.
+# List of bin files to patch is passed as first argument.
+RelocateBinaries()
+{
+
+RPATHSTR="@rpath"
+
+FILESLIST=("${!1}")
+
+#echo "Relocate list: ${FILESLIST[@]}"
+
+for FILE in ${FILESLIST[@]} ; do
+
+    echo "Relocate binary $FILE"
+
+    # List all external dependencies starting with INSTALL_PREFIX
+    DEPS=$(otool -L $FILE | grep $INSTALL_PREFIX | awk -F ' \\\(' '{print $1}')
+
+    # For each file from bin list, we replace the absolute path to external dependency with a relative path
+    # NOTE: releative path must be resolved in main executable later.
+    for EXTLIB in $DEPS ; do
+
+        RPATHLIB=${EXTLIB/$INSTALL_PREFIX/$RPATHSTR}
+#        echo "   $EXTLIB ==> $RPATHLIB"
+        install_name_tool -change $EXTLIB $RPATHLIB $FILE
+
+    done
+
+done
+
+}
