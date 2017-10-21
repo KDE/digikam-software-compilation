@@ -583,6 +583,12 @@
 			</dict>
 			<key>PAYLOAD_TYPE</key>
 			<integer>0</integer>
+			<key>SHOW_INVISIBLE</key>
+			<false/>
+			<key>SPLIT_FORKS</key>
+			<true/>
+			<key>TREAT_MISSING_FILES_AS_WARNING</key>
+			<false/>
 			<key>VERSION</key>
 			<integer>3</integer>
 		</dict>
@@ -611,10 +617,22 @@
 			<integer>1</integer>
 			<key>CONCLUSION_ACTION</key>
 			<integer>0</integer>
+			<key>FOLLOW_SYMBOLIC_LINKS</key>
+			<false/>
 			<key>IDENTIFIER</key>
 			<string>org.freedesktop.digikam</string>
+			<key>LOCATION</key>
+			<integer>0</integer>
+			<key>NAME</key>
+			<string></string>
 			<key>OVERWRITE_PERMISSIONS</key>
 			<true/>
+			<key>PAYLOAD_SIZE</key>
+			<integer>-1</integer>
+			<key>RELOCATABLE</key>
+			<false/>
+			<key>USE_HFS+_COMPRESSION</key>
+			<false/>
 			<key>VERSION</key>
 			<string>5.8.0</string>
 		</dict>
@@ -811,9 +829,28 @@
 					<key>SEPARATOR</key>
 					<true/>
 				</dict>
+				<dict>
+					<key>PATTERNS_ARRAY</key>
+					<array>
+						<dict>
+							<key>REGULAR_EXPRESSION</key>
+							<false/>
+							<key>STRING</key>
+							<string></string>
+							<key>TYPE</key>
+							<integer>0</integer>
+						</dict>
+					</array>
+					<key>PROTECTED</key>
+					<false/>
+					<key>STATE</key>
+					<true/>
+				</dict>
 			</array>
 			<key>NAME</key>
 			<string>digikam</string>
+			<key>PAYLOAD_ONLY</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>TYPE</key>
