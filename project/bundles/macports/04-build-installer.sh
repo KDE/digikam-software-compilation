@@ -382,8 +382,6 @@ chmod 755 "$PROJECTDIR/postinstall"
 #################################################################################################
 # Copy icons-set resource file and release notes.
 
-echo -e "\n---------- Copy ressources files"
-
 cp $ORIG_WD/icon-rcc/breeze.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 cp $ORIG_WD/icon-rcc/breeze-dark.rcc $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
 cp $ORIG_WD/data/releasenotes.html $TEMPROOT/Applications/KF5/digikam.app/Contents/Resources/
@@ -406,6 +404,9 @@ fi
 # For details, see these urls:
 # https://stackoverflow.com/questions/9263256/can-you-please-help-me-understand-how-mach-o-libraries-work-in-mac-os-x
 # https://matthew-brett.github.io/docosx/mac_runtime_link.html
+
+# Not yet finalized !
+if [ ]; then
 
 echo -e "\n---------- Relocate binary files"
 
@@ -440,6 +441,8 @@ for APP in $MAINFILES ; do
     install_name_tool -add_rpath @executable_path/../../../../.. $APP
     install_name_tool -add_rpath @executable_path/../../../../../.. $APP
 done
+
+fi
 
 #################################################################################################
 # Build PKG file
