@@ -460,10 +460,7 @@ TARGET_INSTALLER=digiKam-$DKRELEASEID$DK_EPOCH-MacOS-x86-64$DEBUG_SUF.pkg
 TARGET_PKG_FILE=$BUILDDIR/bundle/$TARGET_INSTALLER
 echo -e "Target PKG file : $TARGET_PKG_FILE"
 
-$PACKAGESUTIL --file "$PROJECTDIR/digikam.pkgproj" \
-    set version "$DKRELEASEID"
-
-$PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj"
+$PACKAGESBUILD -v "$PROJECTDIR/digikam.pkgproj" --package-version "$DKRELEASEID"
 
 mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 
