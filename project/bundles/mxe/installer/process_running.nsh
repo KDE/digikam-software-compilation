@@ -238,11 +238,78 @@
 
     FunctionEnd
 
-
 !macroend
 
 ; Insert function as an installer and uninstaller function.
 !insertmacro ISPROCESSRUNNING ""
 !insertmacro ISPROCESSRUNNING "un."
+
+;-------------------------------------------
+
+!macro CHECKDIGIKAM un
+
+    Function ${un}CheckDigikamRunning
+
+        Push "digikam.exe"
+        Call ${un}IsProcessRunning
+        Pop $R1
+
+        ${While} $R1 != ''
+
+            MessageBox MB_ABORTRETRYIGNORE|MB_DEFBUTTON2 "digiKam appears to be running.$\nPlease close all running instances of digiKam before continuing the installation." /SD IDIGNORE IDABORT CheckDigikamRunning_abort IDIGNORE CheckDigikamRunning_ignore
+
+            Push "digikam.exe"
+            Call ${un}IsProcessRunning
+            Pop $R1
+
+        ${EndWhile}
+
+        CheckDigikamRunning_ignore:
+        Return
+
+        CheckDigikamRunning_abort:
+        Quit
+
+    FunctionEnd
+
+!macroend
+
+; Insert function as an installer and uninstaller function.
+!insertmacro CHECKDIGIKAM ""
+!insertmacro CHECKDIGIKAM "un."
+
+;-------------------------------------------
+
+!macro CHECKSHOWFOTO un
+
+    Function ${un}CheckShowfotoRunning
+
+        Push "showfoto.exe"
+        Call ${un}IsProcessRunning
+        Pop $R1
+
+        ${While} $R1 != ''
+
+            MessageBox MB_ABORTRETRYIGNORE|MB_DEFBUTTON2 "Showfoto appears to be running.$\nPlease close all running instances of Showfoto before continuing the installation." /SD IDIGNORE IDABORT CheckShowfotoRunning_abort IDIGNORE CheckShowfotoRunning_ignore
+
+            Push "showfoto.exe"
+            Call ${un}IsProcessRunning
+            Pop $R1
+
+        ${EndWhile}
+
+        CheckShowfotoRunning_ignore:
+        Return
+
+        CheckShowfotoRunning_abort:
+        Quit
+
+    FunctionEnd
+
+!macroend
+
+; Insert function as an installer and uninstaller function.
+!insertmacro CHECKSHOWFOTO ""
+!insertmacro CHECKSHOWFOTO "un."
 
 !endif ;EXECUTABLE_RUNNING_INCLUDED
