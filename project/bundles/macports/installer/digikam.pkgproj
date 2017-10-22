@@ -633,7 +633,7 @@
 				<key>RELOCATABLE</key>
 				<false/>
 				<key>USE_HFS+_COMPRESSION</key>
-				<false/>
+				<true/>
 				<key>VERSION</key>
 				<string>5.8.0</string>
 			</dict>
@@ -777,9 +777,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>/Users/gilles/Devel/5.x/project/bundles/macports/installer/GPL.txt</string>
+							<string>GPL.txt</string>
 							<key>PATH_TYPE</key>
-							<integer>0</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>
@@ -790,6 +790,23 @@
 			<dict>
 				<key>LOCALIZATIONS</key>
 				<array/>
+			</dict>
+			<key>SUMMARY</key>
+			<dict>
+				<key>LOCALIZATIONS</key>
+				<array>
+					<dict>
+						<key>LANGUAGE</key>
+						<string>English</string>
+						<key>VALUE</key>
+						<dict>
+							<key>PATH</key>
+							<string>releasenotes.html</string>
+							<key>PATH_TYPE</key>
+							<integer>1</integer>
+						</dict>
+					</dict>
+				</array>
 			</dict>
 			<key>TITLE</key>
 			<dict>

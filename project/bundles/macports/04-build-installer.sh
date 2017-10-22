@@ -133,7 +133,6 @@ Marble.app/Contents/MacOS/resources/ \
 "
 
 # Packaging tool paths
-PACKAGESUTIL="/usr/local/bin/packagesutil"
 PACKAGESBUILD="/usr/local/bin/packagesbuild"
 RECURSIVE_LIBRARY_LISTER="$BUILDDIR/rll.py"
 
@@ -148,12 +147,12 @@ chmod 777 ${PROJECTDIR}
 #################################################################################################
 # Check if Packages CLI tools are installed
 
-if [[ (! -f "$PACKAGESUTIL") && (! -f "$PACKAGESBUILD") ]] ; then
-    echo "Packages CLI tools are not installed"
+if [[ (! -f "$PACKAGESBUILD") ]] ; then
+    echo "Packages CLI tool is not installed"
     echo "See http://s.sudre.free.fr/Software/Packages/about.html for details."
     exit 1
 else
-    echo "Check Packages CLI tools passed..."
+    echo "Check Packages CLI tool passed..."
 fi
 
 #################################################################################################
@@ -371,8 +370,6 @@ cat << EOF > "$PROJECTDIR/postinstall"
 for app in $INSTALL_PREFIX/Applications/digiKam/*.app ; do
     ln -s "\$app" /Applications/digiKam/\${app##*/}
 done
-
-open $INSTALL_PREFIX/Applications/KF5/digikam.app/Contents/Resources/releasenotes.html
 EOF
 
 # Post-install script need to be executable
