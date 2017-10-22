@@ -96,7 +96,8 @@
 
     !include "process_running.nsh"
     !include "reboot_required.nsh"
-    
+    !include "readme_page.nsh"
+
 ;-------------------------------------------------------------------------------
 ;Events Functions
 
@@ -232,7 +233,8 @@
 ;Page Definitions
 
     !insertmacro MUI_PAGE_WELCOME
-    !insertmacro MUI_PAGE_LICENSE "COPYING"
+    !insertmacro MUI_PAGE_README "ABOUT.txt"
+    !insertmacro MUI_PAGE_LICENSE "GPL.txt"
     !define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirectoryLeave
     !insertmacro MUI_PAGE_DIRECTORY
 
