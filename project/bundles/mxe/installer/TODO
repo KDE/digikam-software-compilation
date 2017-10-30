@@ -12,4 +12,8 @@
 - Internationalize prior installation notification - see VLC:
   http://nsis.sourceforge.net/VLC_media_player
 
-Remark: To fix the warning when running the installer/uninstaller one need to sign the .exe, this would require to buy a 900$ certificate !
+Remarks:
+
+- To fix the warning when running the installer/uninstaller one need to sign the .exe, this would require to buy a 900$ certificate !
+- Unlike the MacOS PKG, the release notes contents cannot be included as well in installer dialog, as HTML is not supported.
+  A separated link to Finish Page must be used instead.

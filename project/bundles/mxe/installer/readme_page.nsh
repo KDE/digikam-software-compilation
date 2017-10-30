@@ -57,4 +57,10 @@
 
 !macroend
 
+;-------------------------------------------------------------------------------------
+
+Function functionFinishRun
+    ExecShell "" "$instdir\releasenotes.html"
+FunctionEnd
+
 !endif ;README_PAGE_NSH

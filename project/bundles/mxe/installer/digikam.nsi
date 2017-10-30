@@ -39,8 +39,10 @@
  ;
  ; ============================================================ ;;
 
+;-------------------------------------------------------------------------------
 ;Verbose level (no script)
-!verbose 3
+
+    !verbose 3
 
 ;-------------------------------------------------------------------------------
 ; Compression rules optimizations
@@ -89,12 +91,12 @@
 
     ;Requires Registry plugin :
     ;http://nsis.sourceforge.net/Registry_plug-in
-    
+
     !addplugindir "./plugins"
     !include "./plugins/Registry.nsh"
 
-    ;Local scripts
-    
+    ;Extra local scripts
+
     !include "process_running.nsh"
     !include "reboot_required.nsh"
     !include "readme_page.nsh"
@@ -102,10 +104,6 @@
 
 ;-------------------------------------------------------------------------------
 ;Interface Configuration
-
-    Function functionFinishRun
-        ExecShell "" "$instdir\releasenotes.html"
-    FunctionEnd
 
     !define MUI_HEADERIMAGE
     !define MUI_HEADERIMAGE_BITMAP "digikam_header.bmp" 
@@ -121,12 +119,12 @@
     !define MUI_FINISHPAGE_LINK "Visit digiKam project website"
     !define MUI_FINISHPAGE_LINK_LOCATION "https://www.digikam.org"
 
+;-------------------------------------------------------------------------------
+;Page Definitions
+
     ;Variable for the folder of the start menu
 
     Var StartMenuFolder
-
-;-------------------------------------------------------------------------------
-;Page Definitions
 
     !insertmacro MUI_PAGE_WELCOME
     !insertmacro MUI_PAGE_README "ABOUT.txt"
@@ -139,11 +137,10 @@
     !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
     !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${MY_PRODUCT}"
     !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-
     !insertmacro MUI_PAGE_STARTMENU Application $StartMenuFolder
+
     !insertmacro MUI_PAGE_INSTFILES
     !insertmacro MUI_PAGE_FINISH
-
     !insertmacro MUI_UNPAGE_WELCOME
     !insertmacro MUI_UNPAGE_CONFIRM
     !insertmacro MUI_UNPAGE_INSTFILES
