@@ -15,12 +15,10 @@ BUILDING_DIR="/b"
 
 ########################################################################
 
-# digiKam tarball information.
-DK_URL="http://download.kde.org/stable/digikam"
+
 # Location to build source code.
 DK_BUILDTEMP=$BUILDING_DIR/dktemp
-# digiKam tarball information
-DK_URL="http://download.kde.org/stable/digikam"
+
 # digiKam tag version from git. Official tarball do not include extra shared libraries.
 # The list of tags can be listed with this url: https://quickgit.kde.org/?p=digikam.git&a=tags
 # If you want to package current implemntation from git, use "master" as tag.
@@ -29,7 +27,17 @@ DK_VERSION=master
 #DK_VERSION=development/garbagecollection
 #KIPI_VERSION=v5.5.0
 KIPI_VERSION=master
+
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-01"
+#DK_EPOCH="-01"
+# Epoch with time-stamp for pre-release bundle
+DK_EPOCH=`date "+%Y%m%d%H%M%S"`
+
 # Installer will include or not digiKam debug symbols
 DK_DEBUG=1
+
+# Upload automatically bundle to files.kde.org (pre-release only).
+DK_UPLOAD=1
+
+# Upload URL for pre-releases.
+DK_UPLOADURL="digikam@racnoss.kde.org/srv/archives/files/digikam/"

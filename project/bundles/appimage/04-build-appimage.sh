@@ -448,9 +448,26 @@ echo -n "SHA256 sum : "                                                      >> 
 sha256sum "$ORIG_WD/bundle/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
 
 cat $ORIG_WD/bundle/$APPIMAGE.txt
-echo -e "\n------------------------------------------------------------------"
-curl https://download.kde.org/README_UPLOAD
-echo -e "------------------------------------------------------------------\n"
+
+if [[ $DK_UPLOAD = 1 ]] ; then
+
+    echo -e "---------- Cleanup older bundle AppImage files from files.kde.org repository \n"
+
+    if [[ "$ARCH" = "x86_64" ]] ; then
+        ssh $DK_UPLOADURL rm *-x86-64*.appimage
+    elif [[ "$ARCH" = "i686" ]] ; then
+        ssh $DK_UPLOADURL rm *-i386*.appimage
+    fi
+
+    echo -e "---------- Upload new bundle AppImage files to files.kde.org repository \n"
+
+    scp $ORIG_WD/bundle/$APPIMAGE     $DK_UPLOADURL
+    scp $ORIG_WD/bundle/$APPIMAGE.txt $DK_UPLOADURL
+else
+    echo -e "\n------------------------------------------------------------------"
+    curl https://download.kde.org/README_UPLOAD
+    echo -e "------------------------------------------------------------------\n"
+fi
 
 #################################################################################################
 
