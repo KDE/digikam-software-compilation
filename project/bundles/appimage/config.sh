@@ -38,6 +38,5 @@ DK_DEBUG=1
 
 # Upload automatically bundle to files.kde.org (pre-release only).
 DK_UPLOAD=1
-
-# Upload URL for pre-releases.
-DK_UPLOADURL="digikam@racnoss.kde.org/srv/archives/files/digikam/"
+DK_UPLOADURL="digikam@racnoss.kde.org"
+DK_UPLOADDIR="/srv/archives/files/digikam/"

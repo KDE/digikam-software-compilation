@@ -454,15 +454,15 @@ if [[ $DK_UPLOAD = 1 ]] ; then
     echo -e "---------- Cleanup older bundle AppImage files from files.kde.org repository \n"
 
     if [[ "$ARCH" = "x86_64" ]] ; then
-        ssh $DK_UPLOADURL rm *-x86-64*.appimage
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-x86-64*.appimage
     elif [[ "$ARCH" = "i686" ]] ; then
-        ssh $DK_UPLOADURL rm *-i386*.appimage
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-i386*.appimage
     fi
 
     echo -e "---------- Upload new bundle AppImage files to files.kde.org repository \n"
 
-    scp $ORIG_WD/bundle/$APPIMAGE     $DK_UPLOADURL
-    scp $ORIG_WD/bundle/$APPIMAGE.txt $DK_UPLOADURL
+    scp $ORIG_WD/bundle/$APPIMAGE     $DK_UPLOADURL:$DK_UPLOADDIR
+    scp $ORIG_WD/bundle/$APPIMAGE.txt $DK_UPLOADURL:$DK_UPLOADDIR
 else
     echo -e "\n------------------------------------------------------------------"
     curl https://download.kde.org/README_UPLOAD
