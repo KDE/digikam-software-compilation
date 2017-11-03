@@ -436,33 +436,33 @@ chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 #################################################################################################
 # Show resume information and future instructions to host installer file to remote server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $ORIG_WD/bundle/$APPIMAGE.txt
-echo    "File       : $APPIMAGE"                                             >> $ORIG_WD/bundle/$APPIMAGE.txt
-echo -n "Size       : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
-du -h "$ORIG_WD/bundle/$APPIMAGE"     | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
-echo -n "MD5 sum    : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
-md5sum "$ORIG_WD/bundle/$APPIMAGE"    | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
-echo -n "SHA1 sum   : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
-sha1sum "$ORIG_WD/bundle/$APPIMAGE"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
-echo -n "SHA256 sum : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.txt
-sha256sum "$ORIG_WD/bundle/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"  > $ORIG_WD/bundle/$APPIMAGE.sum
+echo    "File       : $APPIMAGE"                                             >> $ORIG_WD/bundle/$APPIMAGE.sum
+echo -n "Size       : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.sum
+du -h "$ORIG_WD/bundle/$APPIMAGE"     | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.sum
+echo -n "MD5 sum    : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.sum
+md5sum "$ORIG_WD/bundle/$APPIMAGE"    | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.sum
+echo -n "SHA1 sum   : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.sum
+sha1sum "$ORIG_WD/bundle/$APPIMAGE"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.sum
+echo -n "SHA256 sum : "                                                      >> $ORIG_WD/bundle/$APPIMAGE.sum
+sha256sum "$ORIG_WD/bundle/$APPIMAGE" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$APPIMAGE.sum
 
-cat $ORIG_WD/bundle/$APPIMAGE.txt
+cat $ORIG_WD/bundle/$APPIMAGE.sum
 
 if [[ $DK_UPLOAD = 1 ]] ; then
 
     echo -e "---------- Cleanup older bundle AppImage files from files.kde.org repository \n"
 
     if [[ "$ARCH" = "x86_64" ]] ; then
-        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-x86-64*.appimage
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-x86-64*.appimage*
     elif [[ "$ARCH" = "i686" ]] ; then
-        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-i386*.appimage
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-i386*.appimage*
     fi
 
     echo -e "---------- Upload new bundle AppImage files to files.kde.org repository \n"
 
     scp $ORIG_WD/bundle/$APPIMAGE     $DK_UPLOADURL:$DK_UPLOADDIR
-    scp $ORIG_WD/bundle/$APPIMAGE.txt $DK_UPLOADURL:$DK_UPLOADDIR
+    scp $ORIG_WD/bundle/$APPIMAGE.sum $DK_UPLOADURL:$DK_UPLOADDIR
 else
     echo -e "\n------------------------------------------------------------------"
     curl https://download.kde.org/README_UPLOAD
