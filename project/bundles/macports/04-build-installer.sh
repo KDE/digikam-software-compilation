@@ -463,21 +463,37 @@ mv "$PROJECTDIR/build/digikam.pkg" "$TARGET_PKG_FILE"
 #################################################################################################
 # Show resume information and future instructions to host PKG file to remote server
 
-echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n" >  $TARGET_PKG_FILE.txt
-echo    "File       : $TARGET_INSTALLER"                                    >> $TARGET_PKG_FILE.txt
-echo -n "Size       : "                                                     >> $TARGET_PKG_FILE.txt
-du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
-echo -n "MD5 sum    : "                                                     >> $TARGET_PKG_FILE.txt
-md5 -q "$TARGET_PKG_FILE"                                                   >> $TARGET_PKG_FILE.txt
-echo -n "SHA1 sum   : "                                                     >> $TARGET_PKG_FILE.txt
-shasum -a1 "$TARGET_PKG_FILE"   | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
-echo -n "SHA256 sum : "                                                     >> $TARGET_PKG_FILE.txt
-shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.txt
+echo -e "\n---------- Compute package checksums for digiKam $DKRELEASEID\n" >  $TARGET_PKG_FILE.sum
+echo    "File       : $TARGET_INSTALLER"                                    >> $TARGET_PKG_FILE.sum
+echo -n "Size       : "                                                     >> $TARGET_PKG_FILE.sum
+du -h "$TARGET_PKG_FILE"        | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.sum
+echo -n "MD5 sum    : "                                                     >> $TARGET_PKG_FILE.sum
+md5 -q "$TARGET_PKG_FILE"                                                   >> $TARGET_PKG_FILE.sum
+echo -n "SHA1 sum   : "                                                     >> $TARGET_PKG_FILE.sum
+shasum -a1 "$TARGET_PKG_FILE"   | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.sum
+echo -n "SHA256 sum : "                                                     >> $TARGET_PKG_FILE.sum
+shasum -a256 "$TARGET_PKG_FILE" | { read first rest ; echo $first ; }       >> $TARGET_PKG_FILE.sum
 
-cat $TARGET_PKG_FILE.txt
+cat $TARGET_PKG_FILE.sum
 echo -e "\n------------------------------------------------------------------"
 curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
+
+if [[ $DK_UPLOAD = 1 ]] ; then
+
+    echo -e "---------- Cleanup older bundle Package files from files.kde.org repository \n"
+
+    ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-MacOS-x86-64*.pkg*
+
+    echo -e "---------- Upload new bundle Package files to files.kde.org repository \n"
+
+    scp $BUILDDIR/bundle/$TARGET_INSTALLER     $DK_UPLOADURL:$DK_UPLOADDIR
+    scp $BUILDDIR/bundle/$TARGET_INSTALLER.sum $DK_UPLOADURL:$DK_UPLOADDIR
+else
+    echo -e "\n------------------------------------------------------------------"
+    curl https://download.kde.org/README_UPLOAD
+    echo -e "------------------------------------------------------------------\n"
+fi
 
 #################################################################################################
 
