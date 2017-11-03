@@ -120,6 +120,13 @@ be run by the user (digiKam and Showfoto). It use makensis CLI tool from NSIS
 application dedicated to build Windows installer. This one is available for Linux
 as Mingw package. The version >= 3 is required to be compatible with Windows 10.
 
+Depending of configuration done in config.sh, this script is able to upload automatically
+the bundle file on files.kde.org digiKam area through ssh. A valid ssh key configured
+with remote KDE server need to be set previously with the account. You can load ssh key
+at startup following instruction give at this url:
+
+https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-password-prompt
+
 * rll.py
 
 Run by 04-build-installer.sh. It is a python script that takes a list of binaries
