@@ -117,6 +117,12 @@ This script configures, and compile digiKam.
 
 Once you've successfully built digiKam, this script create the AppImage bundle.
 This include applications documentations and translations.
+Depending of configuration done in config.sh, this script is able to upload automatically
+the bundle file on files.kde.org digiKam area through ssh. A valid ssh key configured
+with remote KDE server need to be set previously with the account. You can load ssh key
+at startup following instruction give at this url:
+
+https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-password-prompt
 
 * makeall.sh
 
