@@ -203,21 +203,41 @@ makensis -DVERSION=$DK_RELEASEID -DBUNDLEPATH=$BUNDLEDIR -DTARGETARCH=$MXE_ARCHB
 #################################################################################################
 # Show resume information and future instructions to host installer file to remotz server
 
-echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"             > $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-echo    "File       : $TARGET_INSTALLER"                                                >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-echo -n "Size       : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-du -h "$ORIG_WD/bundle/$TARGET_INSTALLER"        | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-echo -n "MD5 sum    : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-md5sum "$ORIG_WD/bundle/$TARGET_INSTALLER"       | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-echo -n "SHA1 sum   : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-shasum -a1 "$ORIG_WD/bundle/$TARGET_INSTALLER"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-echo -n "SHA256 sum : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
-shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+echo -e "\n---------- Compute package checksums for digiKam $DK_RELEASEID\n"             > $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+echo    "File       : $TARGET_INSTALLER"                                                >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+echo -n "Size       : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+du -h "$ORIG_WD/bundle/$TARGET_INSTALLER"        | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+echo -n "MD5 sum    : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+md5sum "$ORIG_WD/bundle/$TARGET_INSTALLER"       | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+echo -n "SHA1 sum   : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+shasum -a1 "$ORIG_WD/bundle/$TARGET_INSTALLER"   | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+echo -n "SHA256 sum : "                                                                 >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
+shasum -a256 "$ORIG_WD/bundle/$TARGET_INSTALLER" | { read first rest ; echo $first ; }  >> $ORIG_WD/bundle/$TARGET_INSTALLER.sum
 
-cat $ORIG_WD/bundle/$TARGET_INSTALLER.txt
+cat $ORIG_WD/bundle/$TARGET_INSTALLER.sum
 echo -e "\n------------------------------------------------------------------"
 curl https://download.kde.org/README_UPLOAD
 echo -e "------------------------------------------------------------------\n"
+
+if [[ $DK_UPLOAD = 1 ]] ; then
+
+    echo -e "---------- Cleanup older Windows bundle files from files.kde.org repository \n"
+
+    if [ $MXE_BUILD_TARGETS == "i686-w64-mingw32.shared" ]; then
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-Win32*.exe*
+    else
+        ssh $DK_UPLOADURL rm -f $DK_UPLOADDIR*-Win64*.exe*
+    fi
+
+    echo -e "---------- Upload new Windows bundle files to files.kde.org repository \n"
+
+    scp $ORIG_WD/bundle/$TARGET_INSTALLER     $DK_UPLOADURL:$DK_UPLOADDIR
+    scp $ORIG_WD/bundle/$TARGET_INSTALLER.sum $DK_UPLOADURL:$DK_UPLOADDIR
+else
+    echo -e "\n------------------------------------------------------------------"
+    curl https://download.kde.org/README_UPLOAD
+    echo -e "------------------------------------------------------------------\n"
+fi
 
 #################################################################################################
 
