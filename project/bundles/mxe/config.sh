@@ -19,7 +19,7 @@ BUILDING_DIR="`pwd`/temp.build"
 
 #------------
 # IMPORTANT: Target Windows architecture to build installer. Possible values: 32 or 64 bits.
-MXE_ARCHBITS=32
+MXE_ARCHBITS=64
 #------------
 
 if [[ $MXE_ARCHBITS == 32 ]]; then
@@ -61,8 +61,8 @@ KIPI_VERSION=master
 
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 #DK_EPOCH="-01"
-# Epoch with time-stamp for pre-release bundle
-DK_EPOCH="-`date "+%Y%m%d%H%M%S"`"
+# Epoch with time-stamp for pre-release bundle in ISO format
+DK_EPOCH="-`date "+%Y%m%dT%H%M%S"`"
 
 # Installer will include or not digiKam debug symbols
 DK_DEBUG=1
