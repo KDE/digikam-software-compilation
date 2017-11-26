@@ -242,6 +242,7 @@ port install cmake \
              opencv \
              bison \
              ffmpeg \
+             sane-backends \
              qt5 \
              qt5-qtimageformats \
              qt5-qtwebkit \
