@@ -35,7 +35,7 @@ fi
 
 OPTIONS=$4
 
-echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE"
+echo "Installing to $INSTALL_PREFIX for target $TARGET_TYPE with build mode $BUILD_TYPE and compilation options $OPTIONS"
 
 # set devel env from MacOS-X through MacPorts
 export QTDIR=$INSTALL_PREFIX/libexec/qt5
