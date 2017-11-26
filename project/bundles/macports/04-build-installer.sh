@@ -98,6 +98,7 @@ OTHER_APPS="\
 Applications/KF5/digikam.app/Contents/MacOS/digikam \
 Applications/KF5/showfoto.app/Contents/MacOS/showfoto \
 lib/plugins/*.so \
+lib/sane/*.so \
 bin/kbuildsycoca5 \
 libexec/qt5/plugins/imageformats/*.dylib \
 libexec/qt5/plugins/sqldrivers/*.dylib \
@@ -116,6 +117,7 @@ binaries="$OTHER_APPS"
 OTHER_DIRS="\
 lib/plugins \
 etc/xdg \
+etc/sane.d \
 "
 
 #lib/sane \
