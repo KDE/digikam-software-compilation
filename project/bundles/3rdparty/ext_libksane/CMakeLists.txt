@@ -45,7 +45,7 @@ elseif(APPLE)
 
     set(KA_VERSION 17.08.1)
 
-    ExternalProject_Add(ext_marble
+    ExternalProject_Add(ext_libksane
                         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
                         URL http://download.kde.org/stable/applications/${KA_VERSION}/src/libksane-${KA_VERSION}.tar.xz
                         URL_MD5 fa74eb7e60c0adc284d8171e83d54fec
