@@ -93,6 +93,10 @@ cmake --build . --config RelWithDebInfo --target ext_kxmlgui             -- -j$C
 cmake --build . --config RelWithDebInfo --target ext_kbookmarks          -- -j$CPU_CORES
 cmake --build . --config RelWithDebInfo --target ext_kimageformats       -- -j$CPU_CORES
 
+# libksane support
+cmake --build . --config RelWithDebInfo --target ext_kwallet             -- -j$CPU_CORES
+cmake --build . --config RelWithDebInfo --target ext_libksane            -- -j$CPU_CORES
+
 # Geolocation support
 cmake --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
 
