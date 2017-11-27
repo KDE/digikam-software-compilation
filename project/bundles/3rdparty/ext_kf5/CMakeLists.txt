@@ -230,4 +230,4 @@ InstallKF5Component(ktextwidgets        ${KD_VERSION} ""                        
 InstallKF5Component(kio                 ${KD_VERSION} ""                                                                   "kio-signals-names.patch")
 InstallKF5Component(kinit               ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kdewebkit           ${KD_VERSION} ""                                                                   "")
-InstallKF5Component(kwallet             ${KD_VERSION} "-DBUILD_KWALLETD=OFF -DBUILD_KWALLET_QUERY=OFF -DBUILD_TESTING=OFF" "")
+InstallKF5Component(kwallet             ${KD_VERSION} "-DBUILD_KWALLETD=OFF;-DBUILD_KWALLET_QUERY=OFF;-DBUILD_TESTING=OFF" "")
