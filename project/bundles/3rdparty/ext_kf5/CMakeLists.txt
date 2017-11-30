@@ -128,7 +128,7 @@ function(InstallKF5Component
                                           <SOURCE_DIR>/fixbundledatapath.sh
 
                             CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
-                                              <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 ${argoptions}
+                                              <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_frameworks} debug x86_64 "${argoptions}"
 
                             BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
 
@@ -230,4 +230,4 @@ InstallKF5Component(ktextwidgets        ${KD_VERSION} ""                        
 InstallKF5Component(kio                 ${KD_VERSION} ""                                                                   "kio-signals-names.patch")
 InstallKF5Component(kinit               ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kdewebkit           ${KD_VERSION} ""                                                                   "")
-InstallKF5Component(kwallet             ${KD_VERSION} "-DBUILD_KWALLETD=OFF;-DBUILD_KWALLET_QUERY=OFF;-DBUILD_TESTING=OFF" "")
+InstallKF5Component(kwallet             ${KD_VERSION} ""                                                                   "kwallet-minimal.patch")
