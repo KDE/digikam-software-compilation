@@ -10,6 +10,11 @@
 #             $3 : target type  'x86_64' for OSX Lion (default), 'i386' for Snow Leopard.
 #             $4 : Cmake extra configure options.
 
+# Halt and catch errors
+set -eE
+trap 'PREVIOUS_COMMAND=$THIS_COMMAND; THIS_COMMAND=$BASH_COMMAND' DEBUG
+trap 'echo "FAILED COMMAND: $PREVIOUS_COMMAND"' ERR
+
 INSTALL_PREFIX=$1
 
 if [ "$INSTALL_PREFIX" = "" ]; then

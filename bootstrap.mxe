@@ -9,6 +9,11 @@
 #             $2 : build type : 'debugfull' to hack (default), 'release' for production, relwithdebinfo for packaging.
 #             $3 : Cmake extra configure options.
 
+# Halt and catch errors
+set -eE
+trap 'PREVIOUS_COMMAND=$THIS_COMMAND; THIS_COMMAND=$BASH_COMMAND' DEBUG
+trap 'echo "FAILED COMMAND: $PREVIOUS_COMMAND"' ERR
+
 MXE_BUILDROOT=$1
 
 if [[ $MXE_BUILDROOT == "" ]]; then
