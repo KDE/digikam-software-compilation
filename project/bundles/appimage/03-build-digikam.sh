@@ -116,6 +116,7 @@ cmake3 -G "Unix Makefiles" .. \
       -DENABLE_DBUS=ON \
       -DENABLE_APPSTYLES=ON \
       -DENABLE_KIO=OFF \
+      -DENABLE_LEGACY=OFF \
       -Wno-dev
 
 if [ $? -ne 0 ]; then
