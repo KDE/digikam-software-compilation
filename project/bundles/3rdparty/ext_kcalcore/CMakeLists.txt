@@ -8,13 +8,13 @@
 
 set(EXTPREFIX_kcalcore "${EXTPREFIX}" )
 
-set(KA_VERSION 17.08.1)
+set(KA_VERSION 17.08.3)
 
 ExternalProject_Add(
     ext_kcalcore
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
     URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
-    URL_MD5 7262c40c5a8fa1e60cf871517ea47802
+    URL_MD5 508417efe98bfd6ddfdbb99c3da6f18b
     INSTALL_DIR ${EXTPREFIX_kcalcore}
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
                -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
