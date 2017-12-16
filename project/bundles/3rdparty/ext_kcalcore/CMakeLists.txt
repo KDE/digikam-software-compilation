@@ -40,12 +40,15 @@ elseif(APPLE)
         INSTALL_DIR ${EXTPREFIX_kcalcore}
         PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-ecm.patch
 
-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
-                   -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
-                   ${GLOBAL_PROFILE}
-                   -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
-                   -DBUILD_TESTING=OFF
-                   -Wno-dev
+        CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.macports <SOURCE_DIR>/. &&
+                          <SOURCE_DIR>/bootstrap.macports ${EXTPREFIX_opencv} RelWithDebInfo x86_64 "${BASH_OPTIONS}"
+
+        BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
+
+        INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
+
+        BUILD_IN_SOURCE 1
+
         UPDATE_COMMAND ""
         ALWAYS 0
     )
