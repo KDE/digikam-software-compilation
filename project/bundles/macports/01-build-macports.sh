@@ -240,6 +240,7 @@ port install cmake \
              expat \
              libxml2 \
              libxslt \
+             libical \
              lensfun \
              opencv \
              bison \
