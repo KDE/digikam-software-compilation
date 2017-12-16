@@ -10,18 +10,61 @@ set(EXTPREFIX_kcalcore "${EXTPREFIX}" )
 
 set(KA_VERSION 17.12.0)
 
-ExternalProject_Add(
-    ext_kcalcore
-    DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
-    URL_MD5 c9df2814c18e4bd10a008b238c630c58
-    INSTALL_DIR ${EXTPREFIX_kcalcore}
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
-               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
-               ${GLOBAL_PROFILE}
-               -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
-               -DBUILD_TESTING=OFF
-               -Wno-dev
-    UPDATE_COMMAND ""
-    ALWAYS 0
-)
+if(MINGW)
+    ExternalProject_Add(
+        ext_kcalcore
+        DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+        URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
+        URL_MD5 c9df2814c18e4bd10a008b238c630c58
+        INSTALL_DIR ${EXTPREFIX_kcalcore}
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-ecm.patch
+
+        CONFIGURE_COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/../../../../bootstrap.mxe <SOURCE_DIR>/. &&
+                          <SOURCE_DIR>/bootstrap.mxe ${MXE_BUILDROOT} RelWithDebInfo -DBUILD_TESTING=OFF
+
+        BUILD_COMMAND cd <SOURCE_DIR>/build && $(MAKE)
+
+        INSTALL_COMMAND cd <SOURCE_DIR>/build && make install/fast
+
+        BUILD_IN_SOURCE 1
+
+        UPDATE_COMMAND ""
+        ALWAYS 0
+    )
+elseif(APPLE)
+    ExternalProject_Add(
+        ext_kcalcore
+        DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+        URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
+        URL_MD5 c9df2814c18e4bd10a008b238c630c58
+        INSTALL_DIR ${EXTPREFIX_kcalcore}
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-ecm.patch
+
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
+                   -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                   ${GLOBAL_PROFILE}
+                   -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+                   -DBUILD_TESTING=OFF
+                   -Wno-dev
+        UPDATE_COMMAND ""
+        ALWAYS 0
+    )
+else() # Linux
+    ExternalProject_Add(
+        ext_kcalcore
+        DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
+        URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
+        URL_MD5 c9df2814c18e4bd10a008b238c630c58
+        INSTALL_DIR ${EXTPREFIX_kcalcore}
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-ecm.patch
+
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
+                   -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+                   ${GLOBAL_PROFILE}
+                   -DCMAKE_SYSTEM_PREFIX_PATH=${EXTPREFIX}
+                   -DBUILD_TESTING=OFF
+                   -Wno-dev
+        UPDATE_COMMAND ""
+        ALWAYS 0
+    )
+endif()
