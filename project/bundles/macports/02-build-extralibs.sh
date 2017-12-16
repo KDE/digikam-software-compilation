@@ -103,7 +103,7 @@ cmake --build . --config RelWithDebInfo --target ext_libksane            -- -j$C
 cmake --build . --config RelWithDebInfo --target ext_marble              -- -j$CPU_CORES
 
 # Calendar support
-#cmake --build . --config RelWithDebInfo --target ext_kcalcore            -- -j$CPU_CORES
+cmake --build . --config RelWithDebInfo --target ext_kcalcore            -- -j$CPU_CORES
 
 # Marble install shared lib at wrong place.
 mv $INSTALL_PREFIX/Marble.app/Contents/MacOS/lib/libastro*  $INSTALL_PREFIX/lib
