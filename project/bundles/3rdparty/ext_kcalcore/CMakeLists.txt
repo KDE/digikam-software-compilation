@@ -53,13 +53,14 @@ elseif(APPLE)
         ALWAYS 0
     )
 else() # Linux
+
     ExternalProject_Add(
         ext_kcalcore
         DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
         URL http://download.kde.org/stable/applications/${KA_VERSION}/src/kcalcore-${KA_VERSION}.tar.xz
         URL_MD5 c9df2814c18e4bd10a008b238c630c58
         INSTALL_DIR ${EXTPREFIX_kcalcore}
-        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-ecm.patch
+        PATCH_COMMAND ${PATCH_COMMAND} -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/kcalcore-centos6.patch
 
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${EXTPREFIX_kcalcore}
                    -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}

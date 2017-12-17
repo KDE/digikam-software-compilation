@@ -113,7 +113,8 @@ yum -y install wget \
                inotify-tools-devel \
                openssl-devel \
                cups-devel \
-               openal-soft-devel
+               openal-soft-devel \
+               libical-devel
 
 #################################################################################################
 
