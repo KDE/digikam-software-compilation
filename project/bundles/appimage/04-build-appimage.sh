@@ -38,7 +38,6 @@ echo "-----------------------------------------------------"
 ChecksRunAsRoot
 StartScript
 ChecksCPUCores
-ChecksRunAsRoot
 CentOS6Adjustments
 . /opt/rh/devtoolset-3/enable
 

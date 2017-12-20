@@ -30,6 +30,7 @@ echo "--------------------------------------------------------------------------
 
 . ./config.sh
 . ./common.sh
+ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
