@@ -56,6 +56,9 @@
 ;-------------------------------------------------------------------------------
 ;Include Modern UI
 
+    ; Turn on UTF-8 strings encoding support.
+    Unicode true
+
     ; Add support to hdpi screen. This require NSIS >= 3.x
     ManifestDPIAware true
 

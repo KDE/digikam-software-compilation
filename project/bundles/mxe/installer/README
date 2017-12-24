@@ -20,4 +20,4 @@ KShutdown  : https://sourceforge.net/p/kshutdown/code/HEAD/tree/trunk/kshutdown2
 Clementine : https://github.com/clementine-player/Clementine/tree/master/dist/windows
 Filezilla  : https://svn.filezilla-project.org/filezilla/FileZilla3/trunk/data/
 Inkscape   : https://github.com/inkscape/inkscape/tree/bzr-original/packaging/win32
-
+Firefox    : https://dxr.mozilla.org/mozilla-central/source/browser/installer/windows/nsis/installer.nsi
