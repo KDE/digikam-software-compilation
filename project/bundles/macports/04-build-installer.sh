@@ -118,6 +118,8 @@ binaries="$OTHER_APPS"
 # Additional Files/Directories - to be copied recursively but not checked for dependencies
 OTHER_DIRS="\
 lib/plugins \
+lib/libgphoto2 \
+lib/libgphoto2_port \
 etc/xdg \
 etc/sane.d \
 "
