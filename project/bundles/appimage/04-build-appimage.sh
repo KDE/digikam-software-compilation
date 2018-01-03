@@ -419,19 +419,21 @@ echo -e "---------- Create Bundle with AppImage SDK stage2\n"
 
 cd /
 
+# Get right version of Appimage toolkit.
+
 if [[ "$ARCH" = "x86_64" ]] ; then
-    APPIMGBIN=AppImageAssistant_6-x86_64.AppImage
+    APPIMGBIN=AppImageTool-x86_64.AppImage
 elif [[ "$ARCH" = "i686" ]] ; then
-    APPIMGBIN=AppImageAssistant_6-i686.AppImage
+    APPIMGBIN=AppImageTool-i686.AppImage
 fi
 
 if [[ ! -s ./$APPIMGBIN ]] ; then
-    wget -q https://github.com/probonopd/AppImageKit/releases/download/6/$APPIMGBIN -O ./$APPIMGBIN
+    wget -q https://github.com/probonopd/AppImageKit/releases/download/10/$APPIMGBIN -O ./$APPIMGBIN
 fi
 
 chmod a+x ./$APPIMGBIN
 
-./$APPIMGBIN $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+./$APPIMGBIN -n $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 #################################################################################################
