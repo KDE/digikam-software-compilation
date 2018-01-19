@@ -192,7 +192,7 @@ function(InstallKF5Component
 
 endfunction()
 
-set(KD_VERSION 5.36)
+set(KD_VERSION 5.42)
 
 if(APPLE)
     set(MacosThreadWeaverPatch threadweaver-macports.patch)
@@ -227,7 +227,7 @@ InstallKF5Component(knotifications      ${KD_VERSION} ""                        
 InstallKF5Component(kjobwidgets         ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(sonnet              ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(ktextwidgets        ${KD_VERSION} ""                                                                   "")
-InstallKF5Component(kio                 ${KD_VERSION} ""                                                                   "kio-signals-names.patch")
+InstallKF5Component(kio                 ${KD_VERSION} ""                                                                   "kio-drop-ktextwidgets.patch")
 InstallKF5Component(kinit               ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kdewebkit           ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kwallet             ${KD_VERSION} ""                                                                   "kwallet-minimal.patch")
