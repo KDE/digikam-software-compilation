@@ -10,8 +10,8 @@ SET(PREFIX_ext_png "${EXTPREFIX}")
 
 ExternalProject_Add(ext_png
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://prdownloads.sourceforge.net/libpng/libpng-1.6.26.tar.xz
-    URL_MD5 faed9bb495d2e12dd0c9ec561ca60cd8
+    URL http://prdownloads.sourceforge.net/libpng/libpng-1.6.34.tar.xz
+    URL_MD5 c05b6ca7190a5e387b78657dbe5536b2
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_png}
     UPDATE_COMMAND ""

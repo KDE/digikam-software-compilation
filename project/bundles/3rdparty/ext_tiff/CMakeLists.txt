@@ -10,8 +10,8 @@ SET(EXTPREFIX_tiff "${EXTPREFIX}" )
 
 ExternalProject_Add(ext_tiff
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL ftp://download.osgeo.org/libtiff/tiff-4.0.6.tar.gz
-    URL_MD5 d1d2e940dea0b5ad435f21f03d96dd72
+    URL ftp://download.osgeo.org/libtiff/tiff-4.0.9.tar.gz
+    URL_MD5 54bad211279cc93eb4fca31ba9bfdc79
 
     CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_tiff}
     UPDATE_COMMAND ""

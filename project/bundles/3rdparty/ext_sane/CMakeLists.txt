@@ -10,8 +10,8 @@ SET(EXTPREFIX_sane "${EXTPREFIX}")
 
 ExternalProject_Add(ext_sane
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL https://alioth.debian.org/frs/download.php/file/4146/sane-backends-1.0.25.tar.gz
-    URL_MD5 f9ed5405b3c12f07c6ca51ee60225fe7
+    URL https://alioth.debian.org/frs/download.php/file/4224/sane-backends-1.0.27.tar.gz
+    URL_MD5 b10a08785f92a4c07ad961f4d843c934
 
     INSTALL_DIR ${EXTPREFIX_sane}
     CONFIGURE_COMMAND <SOURCE_DIR>/configure -prefix ${EXTPREFIX_sane}
