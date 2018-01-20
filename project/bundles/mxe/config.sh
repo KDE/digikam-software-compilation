@@ -60,9 +60,9 @@ DK_VERSION=master
 KIPI_VERSION=master
 
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
-DK_EPOCH="-01"
+#DK_EPOCH="-01"
 # Epoch with time-stamp for pre-release bundle in ISO format
-#DK_EPOCH="-`date "+%Y%m%dT%H%M%S"`"
+DK_EPOCH="-`date "+%Y%m%dT%H%M%S"`"
 
 # Installer will include or not digiKam debug symbols
 DK_DEBUG=1
