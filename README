@@ -39,11 +39,9 @@ digiKam SC       : https://projects.kde.org/projects/extragear/graphics/digikam/
 Code base:
 
 digiKam          : https://projects.kde.org/projects/extragear/graphics/digikam
-Kipi-plugins     : https://projects.kde.org/projects/extragear/graphics/kipi-plugins
 
 * Extra components managed by this Software Compilation for developers only are listed below:
 
-libkipi          : https://projects.kde.org/projects/kde/kdegraphics/libs/libkipi
 libksane         : https://projects.kde.org/projects/kde/kdegraphics/libs/libksane
 libmediawiki     : https://projects.kde.org/projects/extragear/libs/libmediawiki
 libkvkontatke    : https://projects.kde.org/projects/extragear/libs/libkvkontatke
@@ -118,7 +116,6 @@ See below an example of .gitconfig file working with a developer account :
 Packaging options:
 
 "-DDIGIKAMSC_COMPILE_DIGIKAM=ON"           Build digiKam core.
-"-DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON"       Build kipi-plugins.
 
 "-DDIGIKAMSC_CHECKOUT_PO=ON"               Extract application translation files from KDE repositories.
 "-DDIGIKAMSC_CHECKOUT_DOC=ON"              Extract documentation translation files from KDE repositories.
@@ -128,7 +125,6 @@ Packaging options:
 Developers only options:
 
 "-DBUILD_TESTING=ON"                       Build tests code.
-"-DDIGIKAMSC_COMPILE_LIBKIPI=OFF"          Force to use local libkipi instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKSANE=OFF"         Force to use local libksane instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=OFF"     Force to use local libmediawiki instead version installed on your computer.
 "-DDIGIKAMSC_COMPILE_LIBKVKONTAKE=OFF"     Force to use local libkvkontakte instead version installed on your computer.
