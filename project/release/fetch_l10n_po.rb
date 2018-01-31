@@ -18,26 +18,21 @@ branch = "trunk"
 tag = ""
 
 enable_digikam = false
-enable_kipiplugins = false
 
 for opt in $*
 
     case opt
         when "--enable-digikam"
             enable_digikam = true
-        when "--enable-kipiplugins"
-            enable_kipiplugins = true
         else
             puts("Unknown option '#{opt}'.\n")
             puts("Possible arguments to customize i18n extraction:\n")
             puts("--enable-digikam\n")
-            puts("--enable-kipiplugins\n")
             exit
     end
 end
 
 print ("extract digiKam i18n      : #{enable_digikam}\n")
-print ("extract kipiplugins i18n  : #{enable_kipiplugins}\n")
 
 i18nlangs = []
 
@@ -81,42 +76,6 @@ i18nlangs.each_line do |lang|
             # digiKam core extragear-graphics
 
             for part in ['digikam']
-
-                if isWindows
-                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
-                else
-                    `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po 2> /dev/null | tee #{part}.po `
-                end
-
-                if FileTest.size( "#{part}.po" ) == 0
-                    File.delete( "#{part}.po" )
-                end
-            end
-        end
-
-        if (enable_kipiplugins == true)
-
-            # kipiplugins from extragear-graphics
-
-            for part in ['kipiplugins',
-                         'kipiplugin_facebook',
-                         'kipiplugin_flashexport',
-                         'kipiplugin_flickr',
-                         'kipiplugin_remotestorage',
-                         'kipiplugin_googleservices',
-                         'kipiplugin_piwigo',
-                         'kipiplugin_printimages',
-                         'kipiplugin_sendimages',
-                         'kipiplugin_smug',
-                         'kipiplugin_dropbox',
-                         'kipiplugin_imageshack',
-                         'kipiplugin_imgur',
-                         'kipiplugin_kmlexport',
-                         'kipiplugin_rajce',
-                         'kipiplugin_vkontakte',
-                         'kipiplugin_wikimedia',
-                         'kipiplugin_yandexfotki'
-                        ]
 
                 if isWindows
                     `svn cat svn://anonsvn.kde.org/home/kde/#{branch}/l10n-kf5/#{lang}/messages/extragear-graphics/#{part}.po > #{part}.po`
