@@ -1,2 +1,4 @@
+"^libkipi" "extra/libkipi"
 "^libmediawiki" "extra/libmediawiki"
 "^digikam" "core"
+"^kipi-plugins" "extra/kipi-plugins"
