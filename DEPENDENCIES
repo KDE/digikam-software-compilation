@@ -39,7 +39,7 @@ KF5::AkonadiContact             opt                  >= 4.89.0           https:/
 KF5::CalendarCore               opt                  >= 4.81.0           https://projects.kde.org/projects/kde/pim/kcalcore                                                  For calendar tool to setup ical special events.
 KF5::KIO                        opt                  >= 5.5.0            https://projects.kde.org/projects/frameworks/kio                                                    Optional: digiKam : only for Linux Desktop
 
-libopencv                        X                   2.x or 3.x          http://opencv.willowgarage.com                                                                      Both versions supported using a cmake flag.             To compile with OpenCV 3.x use cmake option ENABLE_OPENCV3=on.
+libopencv                        X                   >= 3.1              http://opencv.willowgarage.com                                                                      Both versions supported using a cmake flag.             To compile with OpenCV 3.x use cmake option ENABLE_OPENCV3=on.
 libpthread                       X                   >= 2.0.0            http://www.gnu.org/software/hurd/libpthread.html                                                    For DNG converter.
 libtiff                          X                   >= 4.0              http://www.remotesensing.org/libtiff                                                                For DImg image loader.
 libpng                           X                   >= 1.6              http://www.libpng.org/pub/png/libpng.html                                                           For DImg image loader.
