@@ -41,9 +41,6 @@ Note : the bundle is rellocable.
 |   |--- kf5                                         Really need ?
 |   |   |--- kauth
 |   |   |-- kcharselect
-|   |--- kipiplugin_flashexport                      Flash Kipi tool data files
-|   |--- kipiplugin_piwigo                           Piwigo Kipi tool data files
-|   |--- kipiplugin_printimages                      PrintImages Kipi tool data files
 |   |--- knotifications5                             Really need ?
 |   |--- kservices5                                  KDE service descriptions
 |   |--- kservicetypes5                              KDE service type definitions

@@ -27,7 +27,7 @@ KF5::Config                X         >= 5.5.0       https://cgit.kde.org/kconfig
 KF5::XmlGui                X         >= 5.5.0       https://cgit.kde.org/kxmlgui.git/about/
 KF5::I18n                  X         >= 5.5.0       https://cgit.kde.org/ki18n.git/about/
 KF5::WindowSystem          X         >= 5.5.0       https://cgit.kde.org/kwindowsystem.git/about/
-KF5::Service               X         >= 5.5.0       https://cgit.kde.org/kservice.git/about/           ==> check if this still mandatory.
+KF5::Service               X         >= 5.5.0       https://cgit.kde.org/kservice.git/about/           TODO: make optional for KDE desktop (DFileOperations).
 KF5::Solid                 X         >= 5.5.0       https://cgit.kde.org/solid.git/about/
 KF5::CoreAddons            X         >= 5.5.0       https://cgit.kde.org/kcoreaddons.git/about/        Needs for KAboutData.
 KF5::NotifyConfig         opt        >= 5.5.0       https://cgit.kde.org/knotifyconfig.git/about/      For Linux/KDE desktop application notify configuration.
