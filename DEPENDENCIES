@@ -6,21 +6,21 @@ CMake                      X         >= 3.0.0       http://www.cmake.org        
 ECM                        X         >= 1.7.0       https://cgit.kde.org/extra-cmake-modules.git/
 
 
-Qt5::Core                  X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Gui                   X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Widgets               X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Network               X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Sql                   X         >= 5.6.0       https://github.com/qt/qtbase                       Including Qt5::Sqlite and Qt5::Mysql plugins.
-Qt5::Xml                   X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Concurrent            X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::PrintSupport          X         >= 5.6.0       https://github.com/qt/qtbase
-Qt5::Svg                   X         >= 5.6.0       https://github.com/qt/qtsvg
-Qt5::XmlPatterns           X         >= 5.6.0       https://github.com/qt/qtxmlpatterns
-Qt5::WebEngineWidgets      X         >= 5.6.0       https://github.com/qt/qtwebengine
-Qt5::X11Extras            opt        >= 5.6.0       https://github.com/qt/qtx11extras                  For color management support under Linux.
-Qt5::DBus                 opt        >= 5.6.0       https://github.com/qt/qtbase                       Optional: only for Linux Desktop.
-Qt5::OpenGL               opt        >= 5.6.0       https://github.com/qt/qtbase                       For Presentation tool.
-Qt5::Test                 opt        >= 5.6.0       https://github.com/qt/qtbase                       To compile test codes (BUILD_TESTING=on).
+Qt5::Core                  X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Gui                   X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Widgets               X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Network               X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Sql                   X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/              Including Qt5::Sqlite and Qt5::Mysql plugins.
+Qt5::Xml                   X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Concurrent            X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::PrintSupport          X         >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/
+Qt5::Svg                   X         >= 5.6.0       http://code.qt.io/cgit/qt/qtsvg.git/
+Qt5::XmlPatterns           X         >= 5.6.0       http://code.qt.io/cgit/qt/qtxmlpatterns.git/
+Qt5::WebKitWidgets         X         >= 5.6.0       http://code.qt.io/cgit/qt/qtwebkit.git/
+Qt5::X11Extras            opt        >= 5.6.0       http://code.qt.io/cgit/qt/qtx11extras.git/         For color management support under Linux.
+Qt5::DBus                 opt        >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/              Optional: only for Linux Desktop.
+Qt5::OpenGL               opt        >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/              For Presentation tool.
+Qt5::Test                 opt        >= 5.6.0       http://code.qt.io/cgit/qt/qtbase.git/              To compile test codes (BUILD_TESTING=on).
 
 
 KF5::Config                X         >= 5.5.0       https://cgit.kde.org/kconfig.git/about/
