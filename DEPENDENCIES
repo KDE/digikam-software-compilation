@@ -1,5 +1,5 @@
-                         digiKam     version        Project URL                                        remarks                                                 TODO
-                         -------     -------        -----------                                        -------                                                 ----
+                         status      version        Project URL                                        remarks                                                 TODO
+                         ------      -------        -----------                                        -------                                                 ----
 
 
 CMake                      X         >= 3.0.0       http://www.cmake.org                               > 3.1.0 hightly recommended.
