@@ -36,8 +36,8 @@ KF5::ThreadWeaver         opt        >= 5.5.0       https://cgit.kde.org/threadw
 KF5::IconThemes           opt        >= 5.5.0       https://cgit.kde.org/kiconthemes.git/about/        Optional: only for Linux Desktop (KIconDialog)
 KF5::FileMetaData         opt        >= 5.5.0       https://cgit.kde.org/kfilemetadata.git/about/      KDE files indexer (ENABLE_KFILEMETADATASUPPORT=on)      Still experimental, disabled by default. Implementation from KDE side very unstable.
 KF5::AkonadiContact       opt        >= 17.12.1     https://cgit.kde.org/akonadi-contacts.git/about/   KDE Mail contacts (ENABLE_AKONADICONTACTSUPPORT=on)     Still experimental, disabled by default. Need testing.
-KF5::CalendarCore         opt        >= 17.12.1     https://cgit.kde.org/kcalcore.git/                 For calendar tool to setup ical special events.
-KF5::KIO                  opt        >= 5.5.0       https://cgit.kde.org/kio.git/                      Optional: only for Linux Desktop
+KF5::CalendarCore         opt        >= 17.12.1     https://cgit.kde.org/kcalcore.git/about/           For calendar tool to setup ical special events.
+KF5::KIO                  opt        >= 5.5.0       https://cgit.kde.org/kio.git/about/                Optional: only for Linux Desktop
 
 libopencv                  X         >= 3.1         http://opencv.willowgarage.com                     Both versions supported using a cmake flag.             To compile with OpenCV 3.x use cmake option ENABLE_OPENCV3=on.
 libpthread                 X         >= 2.0.0       http://www.gnu.org/software/hurd/libpthread.html   For DNG converter.
