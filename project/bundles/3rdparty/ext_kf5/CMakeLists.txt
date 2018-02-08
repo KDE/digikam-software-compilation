@@ -196,6 +196,7 @@ set(KD_VERSION 5.42)
 
 if(APPLE)
     set(MacosThreadWeaverPatch threadweaver-macports.patch)
+    set(MacosKauthBackend -DKAUTH_BACKEND_NAME=Apple)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                                                   "")
@@ -210,7 +211,7 @@ InstallKF5Component(kdbusaddons         ${KD_VERSION} ""                        
 InstallKF5Component(ki18n               ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kcrash              ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kcodecs             ${KD_VERSION} ""                                                                   "")
-InstallKF5Component(kauth               ${KD_VERSION} ""                                                                   "")
+InstallKF5Component(kauth               ${KD_VERSION} "${MacosKauthBackend}"                                               "")
 InstallKF5Component(kguiaddons          ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kwidgetsaddons      ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kitemviews          ${KD_VERSION} ""                                                                   "")
