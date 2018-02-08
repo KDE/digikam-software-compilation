@@ -246,12 +246,12 @@ port install cmake \
              bison \
              ffmpeg \
              sane-backends \
-             qt5 \
-             qt5-qtimageformats \
-             qt5-qtwebkit \
-             qt5-sqlite-plugin \
-             qt5-mysql-plugin \
-             qt5-qtscript \
+             qt58 \
+             qt58-qtimageformats \
+             qt58-qtwebkit \
+             qt58-sqlite-plugin \
+             qt58-mysql-plugin \
+             qt58-qtscript \
              wget +ssl
 
 echo -e "\n"
