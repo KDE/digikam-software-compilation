@@ -55,7 +55,7 @@ DK_BUILDTEMP=~/dktemp
 # If you want to package current implemntation from git, use "master" as tag.
 #DK_VERSION=v5.8.0
 #DK_VERSION=master
-#DK_VERSION=development/6.0.0
+DK_VERSION=development/6.0.0
 
 # Installer sub version to differentiates newer updates of the installer itself, even if the underlying application hasn’t changed.
 #DK_EPOCH="-01"
