@@ -75,7 +75,6 @@ if [ $? -ne 0 ] ; then
 fi
 
 git -C ./core checkout $DK_VERSION
-git -C ./extra/kipi-plugins checkout $KIPI_VERSION
 
 echo -e "\n\n"
 echo "---------- Configure digiKam $DK_VERSION"
