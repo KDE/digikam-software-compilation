@@ -196,13 +196,14 @@ set(KD_VERSION 5.42)
 
 if(APPLE)
     set(MacosThreadWeaverPatch threadweaver-macports.patch)
+    set(MacosSolidPatch solid-iokitsupport-macports.patch)   # See https://phabricator.kde.org/D7401
     set(MacosKauthBackend -DKAUTH_BACKEND_NAME=Apple)
 endif()
 
 InstallKF5Component(extra-cmake-modules ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(kconfig             ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(breeze-icons        ${KD_VERSION} "-DBINARY_ICONS_RESOURCE=OFF"                                        "${MacosBreezePatch}")
-InstallKF5Component(solid               ${KD_VERSION} ""                                                                   "")
+InstallKF5Component(solid               ${KD_VERSION} ""                                                                   "${MacosSolidPatch}")
 InstallKF5Component(kcoreaddons         ${KD_VERSION} ""                                                                   "")
 InstallKF5Component(threadweaver        ${KD_VERSION} ""                                                                   "${MacosThreadWeaverPatch}")
 InstallKF5Component(kwindowsystem       ${KD_VERSION} ""                                                                   "")
