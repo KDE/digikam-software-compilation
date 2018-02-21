@@ -293,7 +293,8 @@ rm -f usr/lib/libusb-1.0.so.0 || true
 rm -f usr/lib/libuuid.so.1 || true
 rm -f usr/lib/libwind.so.0 || true
 rm -f usr/lib/libfontconfig.so.* || true
-#rm -f usr/lib/libopenal.so.1 || true
+# Remove this library, else appimage cannot be started properly (Bug #390162)
+rm -f usr/lib/libopenal.so.1 || true
 
 # Remove these libraries, we need to use the system versions; this means 11.04 is not supported (12.04 is our baseline)
 rm -f usr/lib/libGL.so.* || true
