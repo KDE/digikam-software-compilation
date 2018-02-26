@@ -52,13 +52,14 @@ nslookup scan5.coverity.com
 # To mesure uploading time
 SECONDS=0
 
-curl --progress-bar \
+curl --insecure \
+     --progress-bar \
      --form token=$DKCoverityToken \
      --form email=$DKCoverityEmail \
      --form file=@myproject.tgz \
      --form version=git-frameworks \
      --form description="$desc" \
-     https://scan.coverity.com/builds?project=digiKam
+     https://brb.synopsys.com/?project=digiKam
      > /dev/null
 
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
