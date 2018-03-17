@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2015, Gilles Caulier, <caulier dot gilles at gmail dot com>
+# Copyright (c) 2013-2018, Gilles Caulier, <caulier dot gilles at gmail dot com>
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -59,7 +59,7 @@ curl --insecure \
      --form file=@myproject.tgz \
      --form version=git-frameworks \
      --form description="$desc" \
-     https://brb.synopsys.com/?project=digiKam
+     https://scan.coverity.com/builds?project=digiKam
      > /dev/null
 
 echo "Done. Coverity Scan tarball 'myproject.tgz' is uploaded and ready for analyse."
