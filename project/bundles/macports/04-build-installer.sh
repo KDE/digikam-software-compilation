@@ -394,8 +394,8 @@ cp $ORIG_WD/icon-rcc/breeze-dark.rcc $TEMPROOT/Applications/KF5/digikam.app/Cont
 echo -e "\n---------- Strip symbols in binary files\n"
 
 if [[ $DK_DEBUG = 1 ]] ; then
-    find $TEMPROOT -name "*.so"    | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs strip -SXx
-    find $TEMPROOT -name "*.dylib" | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)' | xargs strip -SXx
+    find $TEMPROOT -name "*.so"    | grep -Ev '(digikam|showfoto|exiv2)' | xargs strip -SXx
+    find $TEMPROOT -name "*.dylib" | grep -Ev '(digikam|showfoto|exiv2)' | xargs strip -SXx
 else
     find $TEMPROOT -name "*.so"    | xargs strip -SXx
     find $TEMPROOT -name "*.dylib" | xargs strip -SXx

@@ -100,12 +100,9 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DDIGIKAMSC_COMPILE_PO=OFF \
                            -DDIGIKAMSC_COMPILE_DOC=OFF \
                            -DDIGIKAMSC_COMPILE_DIGIKAM=ON \
-                           -DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON \
-                           -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
                            -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
                            -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
                            -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \
-                           -DENABLE_OPENCV3=ON \
                            -DENABLE_KFILEMETADATASUPPORT=OFF \
                            -DENABLE_AKONADICONTACTSUPPORT=OFF \
                            -DENABLE_MYSQLSUPPORT=ON \
@@ -113,7 +110,6 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            -DENABLE_MEDIAPLAYER=ON \
                            -DENABLE_DBUS=OFF \
                            -DENABLE_KIO=OFF \
-                           -DENABLE_LEGACY=OFF \
                            -DENABLE_APPSTYLES=OFF \
                            ${PNG2ICO_PATH} \
                            ${OPTIONS} \
@@ -121,14 +117,6 @@ ${MXE_BUILD_TARGETS}-cmake -G "Unix Makefiles" . \
                            ..
 
 CMAKE_VAL_RET=$?
-
-if [ -d ./extra/libkvkontakte/src ]; then
-    ln -sf src ./extra/libkvkontakte/Vkontakte
-fi
-
-if [ -d ./extra/libmediawiki/src ]; then
-    ln -sf src ./extra/libmediawiki/MediaWiki
-fi
 
 export PATH=$ORIG_PATH
 

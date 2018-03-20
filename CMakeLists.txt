@@ -42,13 +42,11 @@ option(DIGIKAMSC_COMPILE_DOC             "Build handbook files (default=ON)"    
 
 # shared libs options for developers only
 
-option(DIGIKAMSC_COMPILE_LIBKIPI         "Build local libkipi library instead of using distributed files (default=OFF)"           OFF)
 option(DIGIKAMSC_COMPILE_LIBKSANE        "Build local libksane library instead of using distributed files (default=OFF)"          OFF)
 option(DIGIKAMSC_COMPILE_LIBMEDIAWIKI    "Build local libmediawiki library instead of using distributed files (default=OFF)"      OFF)
 option(DIGIKAMSC_COMPILE_LIBKVKONTAKTE   "Build local libkvkontakte library instead of using distributed files (default=OFF)"     OFF)
 
 option(DIGIKAMSC_COMPILE_DIGIKAM         "Build digiKam core (default=ON)"                                                        ON)
-option(DIGIKAMSC_COMPILE_KIPIPLUGINS     "Build kipi-plugins (default=ON)"                                                        ON)
 
 ###########################################################################################################################################
 
@@ -67,11 +65,7 @@ if(DIGIKAMSC_CHECKOUT_PO OR DIGIKAMSC_CHECKOUT_DOC)
                 set(CHECKOUT_PO_DIGIKAM "--enable-digikam")
             endif()
 
-            if(DIGIKAMSC_COMPILE_KIPIPLUGINS)
-                set(CHECKOUT_PO_KIPIPLUGINS "--enable-kipiplugins")
-            endif()
-
-            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb" ${CHECKOUT_PO_DIGIKAM} ${CHECKOUT_PO_KIPIPLUGINS} ${CHECKOUT_PO_LIBKVKONTAKTE}
+            execute_process(COMMAND ${RUBY_EXECUTABLE} "${CMAKE_SOURCE_DIR}/project/release/fetch_l10n_po.rb" ${CHECKOUT_PO_DIGIKAM} ${CHECKOUT_PO_LIBKVKONTAKTE}
                             WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
 
             message(STATUS "Application translation files extraction done.")
@@ -146,28 +140,6 @@ if(DIGIKAMSC_COMPILE_DIGIKAM)
     endif()
 else()
     message(STATUS "digiKam core will be compiled.................. NO")
-endif()
-
-if(DIGIKAMSC_COMPILE_KIPIPLUGINS)
-    if(NOT EXISTS ${CMAKE_SOURCE_DIR}/extra/kipi-plugins)
-        message(STATUS "Kipiplugins will be compiled................... NO (source code not available)")
-        set (DIGIKAMSC_COMPILE_KIPIPLUGINS OFF)
-    else()
-        message(STATUS "Kipiplugins will be compiled................... YES")
-    endif()
-else()
-    message(STATUS "Kipiplugins will be compiled................... NO")
-endif()
-
-if(DIGIKAMSC_COMPILE_LIBKIPI)
-    if(NOT EXISTS ${CMAKE_SOURCE_DIR}/extra/libkipi)
-        message(STATUS "Local shared libkipi will be compiled.......... NO (library source code not available)")
-        set (DIGIKAMSC_COMPILE_LIBKIPI OFF)
-    else()
-        message(STATUS "Local shared libkipi will be compiled.......... YES")
-    endif()
-else()
-    message(STATUS "Local shared libkipi will be compiled.......... NO")
 endif()
 
 if(DIGIKAMSC_COMPILE_LIBKSANE)

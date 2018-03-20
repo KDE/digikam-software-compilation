@@ -121,7 +121,6 @@ ln -s ../digikam/breeze-dark.rcc          breeze-dark.rcc
 cd $APP_IMG_DIR
 cp $ORIG_WD/data/qt.conf                  ./usr/bin
 cp -r /usr/share/lensfun                  ./usr/share
-cp -r /usr/share/kipiplugin*              ./usr/share
 cp -r /usr/share/knotifications5          ./usr/share
 cp -r /usr/share/kservices5               ./usr/share
 cp -r /usr/share/kservicetypes5           ./usr/share
@@ -240,12 +239,6 @@ for FILE in $FILES ; do
     CopyReccursiveDependencies ${FILE} ./usr/lib
 done
 
-FILES=$(ls /usr/plugins/kipiplugin*.so)
-
-for FILE in $FILES ; do
-    CopyReccursiveDependencies ${FILE} ./usr/lib
-done
-
 #FILES=$(ls /usr/$LIB_PATH_ALT/plugins/imageformats/*.so)
 #
 #for FILE in $FILES ; do
@@ -332,7 +325,7 @@ rm -rf usr/share/pkgconfig || true
 echo -e "---------- Strip Binaries Files \n"
 
 if [[ $DK_DEBUG = 1 ]] ; then
-    FILES=$(find . -type f -executable | grep -Ev '(digikam|showfoto|exiv2|kipiplugin)')
+    FILES=$(find . -type f -executable | grep -Ev '(digikam|showfoto|exiv2)')
 else
     FILES=$(find . -type f -executable)
 fi

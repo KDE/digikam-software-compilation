@@ -81,9 +81,6 @@ fi
 
 cd ./core
 git checkout $DK_VERSION
-cd ../extra/kipi-plugins
-git checkout $KIPI_VERSION
-cd ../..
 
 echo -e "\n\n"
 echo "---------- Configure digiKam $DK_VERSION"
@@ -101,8 +98,6 @@ cmake3 -G "Unix Makefiles" .. \
       -DDIGIKAMSC_COMPILE_PO=ON \
       -DDIGIKAMSC_COMPILE_DOC=OFF \
       -DDIGIKAMSC_COMPILE_DIGIKAM=ON \
-      -DDIGIKAMSC_COMPILE_KIPIPLUGINS=ON \
-      -DDIGIKAMSC_COMPILE_LIBKIPI=ON \
       -DDIGIKAMSC_COMPILE_LIBKSANE=OFF \
       -DDIGIKAMSC_COMPILE_LIBMEDIAWIKI=ON \
       -DDIGIKAMSC_COMPILE_LIBKVKONTAKTE=OFF \

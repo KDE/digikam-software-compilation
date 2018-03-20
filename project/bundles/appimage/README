@@ -5,7 +5,7 @@ This scripts build a binary digiKam AppImage bundle for Linux using CentOS 6.
 
 AUTHORS
 -------
-(c) 2015-2017 by :
+(c) 2015-2018 by :
 
 Gilles Caulier <caulier dot gilles at gmail dot com>
 
@@ -56,9 +56,6 @@ Note : the bundle is rellocable.
     │   └── xcbglintegrations
     ├── share                                       Shared data files
     │   ├── digikam                                 digiKam 
-    │   ├── kipiplugin_flashexport                  kipi tools
-    │   ├── kipiplugin_piwigo                       kipi tools
-    │   ├── kipiplugin_printimages                  kipi tools
     │   ├── knotifications5                         KF5
     │   ├── kservices5                              KF5
     │   ├── kservicetypes5                          KF5
